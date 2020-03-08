@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
 
   // otherwise redirect to home

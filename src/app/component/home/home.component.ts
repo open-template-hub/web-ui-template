@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../../service/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    // redirect to home if already logged in
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   ngOnInit(): void {
   }

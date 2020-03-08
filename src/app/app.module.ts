@@ -9,18 +9,28 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthRequestInterceptor } from './interceptor/auth/auth-request.interceptor';
 import { AuthResponseInterceptor } from './interceptor/auth/auth-response.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MaterialModule } from './module/material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthRequestInterceptor, multi: true },
