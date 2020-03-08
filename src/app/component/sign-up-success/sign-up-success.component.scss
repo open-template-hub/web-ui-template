@@ -1,6 +1,9 @@
-.container {
-  min-height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+mat-card {
+  max-width: 400px;
+  margin: 5rem auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
 }

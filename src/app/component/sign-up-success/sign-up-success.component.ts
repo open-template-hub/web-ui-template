@@ -15,7 +15,9 @@ export class SignUpSuccessComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.email = params.email;
+      if (params.email) {
+        this.email = params.email;
+      }
     });
   }
 }
