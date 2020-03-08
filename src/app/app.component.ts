@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from './model/User';
+import { AuthToken } from './model/AuthToken';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './service/authentication.service';
 
@@ -10,7 +10,7 @@ import { AuthenticationService } from './service/authentication.service';
 })
 export class AppComponent {
 
-  currentUser: User;
+  currentUser: AuthToken;
 
   constructor(
     private router: Router,

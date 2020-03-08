@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
+    public router: Router,
     private authenticationService: AuthenticationService
   ) {
     // redirect to home if already logged in
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

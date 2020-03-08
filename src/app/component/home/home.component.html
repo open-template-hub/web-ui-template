@@ -1,3 +1,9 @@
-<div class="container">
-  <h2 class="mat-display-3">Angular Material Login Template</h2>
-</div>
+<mat-card>
+  <mat-card-content>
+    <div fxLayout="column" fxLayoutGap="1rem">
+      <h2>Home</h2>
+      <button mat-raised-button color="primary" (click)="router.navigate(['/signup'])">Sign Up</button>
+      <button mat-raised-button color="primary" (click)="router.navigate(['/login'])">Login</button>
+    </div>
+  </mat-card-content>
+</mat-card>

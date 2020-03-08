@@ -14,13 +14,19 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './module/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { SignUpSuccessComponent } from './component/sign-up-success/sign-up-success.component';
+import { VerifyAccountComponent } from './component/verify-account/verify-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SignUpComponent,
+    SignUpSuccessComponent,
+    VerifyAccountComponent
   ],
   imports: [
     BrowserModule,

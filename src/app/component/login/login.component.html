@@ -3,12 +3,12 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
       <mat-error *ngIf="error">
-        The username and password were not recognised
+        {{error}}
       </mat-error>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Email" formControlName="username" required>
+        <input matInput placeholder="Username" formControlName="username" required>
         <mat-error>
-          Please provide a valid email address
+          Please provide a valid username
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
