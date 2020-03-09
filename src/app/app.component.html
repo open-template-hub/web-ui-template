@@ -1,6 +1,6 @@
-<div class="full-screen-image">
+<div class="full-screen-image" [class.darkTheme]="darkTheme === 'true'">
   <div class="full-screen-image-overlay">
-    <mat-toolbar color="accent" class="expanded-toolbar transparent" fxLayout="row" fxLayoutAlign="start center">
+    <mat-toolbar color="primary" class="expanded-toolbar" fxLayout="row" fxLayoutAlign="start center">
       <span>
         <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
       </span>
@@ -17,6 +17,9 @@
         <mat-icon>exit_to_app</mat-icon>
         Logout
       </button>
+      <button fxShow="false" fxShow.gt-sm mat-button (click)="switchTheme()">
+        <mat-icon>invert_colors</mat-icon>
+      </button>
       <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
@@ -25,6 +28,10 @@
       <button mat-menu-item routerLink="/">
         <mat-icon>home</mat-icon>
         Home
+      </button>
+      <button mat-menu-item (click)="switchTheme()">
+        <mat-icon>invert_colors</mat-icon>
+        Switch theme
       </button>
       <button mat-menu-item routerLink="/signup" *ngIf="!currentUser">
         <mat-icon>lock_open</mat-icon>

@@ -10,19 +10,31 @@ import { AuthenticationService } from './service/authentication.service';
 })
 export class AppComponent {
 
+  darkTheme: string;
+
   currentUser: AuthToken;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+
+    this.darkTheme = localStorage.getItem('darkTheme');
   }
 
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']).then(() => {
+      this.darkTheme = 'false';
       return true;
     });
+  }
+
+  switchTheme() {
+    this.darkTheme = this.darkTheme === 'true' ? 'false' : 'true';
+    localStorage.setItem('darkTheme', this.darkTheme);
   }
 }

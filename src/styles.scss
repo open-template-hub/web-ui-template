@@ -11,11 +11,11 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$basic-angular-ui-template-primary: mat-palette($mat-blue-grey);
-$basic-angular-ui-template-accent: mat-palette($mat-green, A200, A100, A400);
+$basic-angular-ui-template-primary: mat-palette($mat-blue-grey, 300, 200, 400);
+$basic-angular-ui-template-accent: mat-palette($mat-blue);
 
 // The warn palette is optional (defaults to red).
-$basic-angular-ui-template-warn: mat-palette($mat-deep-orange);
+$basic-angular-ui-template-warn: mat-palette($mat-orange);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $basic-angular-ui-template-theme: mat-light-theme($basic-angular-ui-template-primary, $basic-angular-ui-template-accent, $basic-angular-ui-template-warn);
@@ -24,6 +24,18 @@ $basic-angular-ui-template-theme: mat-light-theme($basic-angular-ui-template-pri
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($basic-angular-ui-template-theme);
+
+// dark theme
+$basic-angular-ui-template-dark-primary: mat-palette($mat-blue-grey, 600, 500, 700);
+$basic-angular-ui-template-dark-accent: mat-palette($mat-blue, 600, 500, 700);
+$basic-angular-ui-template-dark-warn: mat-palette($mat-orange, 600, 500, 700);
+$basic-angular-ui-template-dark-theme: mat-dark-theme($basic-angular-ui-template-dark-primary, $basic-angular-ui-template-dark-accent, $basic-angular-ui-template-dark-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($basic-angular-ui-template-theme);
+
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -68,4 +80,16 @@ p {
 
 .spinner-wrapper mat-spinner {
   position: absolute;
+}
+
+.darkTheme {
+  @include angular-material-theme($basic-angular-ui-template-dark-theme);
+}
+
+.darkTheme.full-screen-image {
+  background-image: url("assets/landing-dark.jpg");
+}
+
+.darkTheme .full-screen-image-overlay {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(200, 225, 255, 0.6)), to(rgba(200, 225, 255, 0.4)));
 }
