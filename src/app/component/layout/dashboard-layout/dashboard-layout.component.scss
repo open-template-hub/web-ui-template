@@ -6,6 +6,7 @@
 
 .navbar {
   position: fixed;
+  z-index: 1;
   transition: width 600ms ease;
   background-color: map_get($basic-angular-ui-template-primary, "default");
 }
@@ -104,6 +105,11 @@
 
   .nav-link {
     justify-content: center;
+  }
+
+  .nav-link svg {
+    width: 1.5rem;
+    min-width: 1.5rem;
   }
 
   main {
