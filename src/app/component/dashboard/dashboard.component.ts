@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']).then(() => {
+    this.router.navigate(['/']).then(() => {
       return true;
     });
   }

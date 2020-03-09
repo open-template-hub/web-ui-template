@@ -27,7 +27,7 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']).then(() => {
+    this.router.navigate(['/']).then(() => {
       this.darkTheme = 'false';
       return true;
     });
