@@ -45,6 +45,11 @@
   color: map_get($basic-angular-ui-template-primary, "darker-contrast")
 }
 
+.logo .nav-link {
+  background: map_get($basic-angular-ui-template-primary, "darker");
+  color: map_get($basic-angular-ui-template-primary, "darker-contrast")
+}
+
 .link-text {
   display: none;
   margin-left: 1rem;
@@ -63,12 +68,12 @@
 .logo {
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 1rem;
   text-align: center;
   color: map_get($basic-angular-ui-template-primary, "default");
   font-size: 1.25rem;
   letter-spacing: 0.3ch;
   width: 100%;
+  pointer-events: none;
 }
 
 .logo svg {
@@ -85,6 +90,10 @@
 
 .navbar:hover .logo svg {
   transform: rotate(-180deg);
+}
+
+.navbar:hover .logo .nav-link {
+  filter: grayscale(0%) opacity(1);
 }
 
 /* Small screens */
