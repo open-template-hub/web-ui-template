@@ -29,7 +29,12 @@
           Please provide the same value entered above
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">Sign Up</button>
+      <div class="spinner-wrapper">
+        <button mat-raised-button color="primary" [disabled]="loading">
+          Sign Up
+        </button>
+        <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

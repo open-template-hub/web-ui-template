@@ -81,7 +81,11 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['/signup-success'], { queryParams: { email: data.email } });
         },
         errorResponse => {
-          this.error = errorResponse.error;
+          if (typeof errorResponse.error === "string")  {
+            this.error = errorResponse.error;
+          } else if (errorResponse.statusText) {
+            this.error = errorResponse.statusText;
+          }
           this.loading = false;
         });
   }

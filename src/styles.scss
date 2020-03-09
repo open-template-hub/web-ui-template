@@ -15,7 +15,7 @@ $basic-angular-ui-template-primary: mat-palette($mat-blue-grey);
 $basic-angular-ui-template-accent: mat-palette($mat-green, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$basic-angular-ui-template-warn: mat-palette($mat-red);
+$basic-angular-ui-template-warn: mat-palette($mat-deep-orange);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $basic-angular-ui-template-theme: mat-light-theme($basic-angular-ui-template-primary, $basic-angular-ui-template-accent, $basic-angular-ui-template-warn);
@@ -60,3 +60,12 @@ p {
   background-size: cover;
 }
 
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-wrapper mat-spinner {
+  position: absolute;
+}
