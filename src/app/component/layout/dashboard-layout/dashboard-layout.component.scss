@@ -50,6 +50,10 @@
   color: map_get($basic-angular-ui-template-primary, "darker-contrast")
 }
 
+.logo .link-text {
+  margin-left: 1.5rem;
+}
+
 .link-text {
   display: none;
   margin-left: 1rem;
@@ -143,7 +147,7 @@
   }
 
   .navbar:hover .logo svg {
-    margin-left: 11rem;
+    margin-left: 12rem;
   }
 
   .navbar:hover .logo-text {
