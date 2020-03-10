@@ -15,6 +15,8 @@ export class DashboardLayoutComponent implements OnInit {
 
   currentUser: AuthToken;
 
+  navbarOpen = false;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -27,6 +29,8 @@ export class DashboardLayoutComponent implements OnInit {
     this.themeService.darkTheme.subscribe(darkTheme => {
       this.darkTheme = darkTheme;
     });
+
+    this.navbarOpen = sessionStorage.getItem('navbarOpen') ? (sessionStorage.getItem('navbarOpen') === 'true') : false;
   }
 
   ngOnInit(): void {
@@ -42,5 +46,10 @@ export class DashboardLayoutComponent implements OnInit {
 
   switchTheme() {
     this.themeService.switchDarkTheme();
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+    sessionStorage.setItem('navbarOpen', this.navbarOpen ? 'true' : 'false');
   }
 }

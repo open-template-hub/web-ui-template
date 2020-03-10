@@ -1,7 +1,7 @@
-<nav class="navbar">
+<nav class="navbar" [class.navbarOpen]="navbarOpen">
   <ul class="navbar-nav">
     <li class="logo">
-      <a class="nav-link">
+      <a href="javascript:void(0);" class="nav-link" (click)="toggleNavbar()">
         <span class="link-text logo-text">Dashboard</span>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right"
              class="svg-inline--fa fa-angle-double-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
