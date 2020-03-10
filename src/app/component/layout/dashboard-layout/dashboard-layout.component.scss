@@ -145,7 +145,7 @@
   }
 
   .navbarOpen .logo-text {
-    left: 0!important;
+    left: env(safe-area-inset-left)!important;
   }
 }
 
