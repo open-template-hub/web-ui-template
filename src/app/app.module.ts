@@ -19,6 +19,8 @@ import { SignUpSuccessComponent } from './component/sign-up-success/sign-up-succ
 import { VerifyAccountComponent } from './component/verify-account/verify-account.component';
 import { LandingLayoutComponent } from './component/layout/landing-layout/landing-layout.component';
 import { DashboardLayoutComponent } from './component/layout/dashboard-layout/dashboard-layout.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { DashboardLayoutComponent } from './component/layout/dashboard-layout/da
     SignUpSuccessComponent,
     VerifyAccountComponent,
     LandingLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

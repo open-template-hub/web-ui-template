@@ -27,6 +27,15 @@ p {
   word-break: break-all
 }
 
+a {
+  color: mat-color($basic-angular-ui-template-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: mat-color($basic-angular-ui-template-primary, 'darker');
+}
+
 .full-screen-image {
   height: 100%;
   background-image: url("assets/landing.jpg");
@@ -65,4 +74,8 @@ p {
 
 .darkTheme .full-screen-image-overlay {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#212121), to(rgba(200, 225, 255, 0.4)));
+}
+
+.darkTheme a:hover {
+  color: mat-color($basic-angular-ui-template-primary, 'lighter');
 }

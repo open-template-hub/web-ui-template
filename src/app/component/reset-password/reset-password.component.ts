@@ -5,21 +5,24 @@ import { AuthenticationService } from '../../service/auth/authentication.service
 import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
 
-  signUpForm: FormGroup;
+  resetPasswordForm: FormGroup;
   loading = false;
   submitted = false;
   error = '';
+  token = '';
+  username = '';
+  success = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
+    public router: Router,
     private authenticationService: AuthenticationService
   ) {
     // redirect to home if already logged in
@@ -29,9 +32,12 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.signUpForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+    this.route.queryParams.subscribe(params => {
+      this.token = params.token;
+      this.username = params.username;
+    });
+
+    this.resetPasswordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       confirmPassword: ['', Validators.required]
     }, {
@@ -59,22 +65,23 @@ export class SignUpComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.signUpForm.controls; }
+  get f() { return this.resetPasswordForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.signUpForm.invalid) {
+    if (this.resetPasswordForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.authenticationService.signUp(this.f.username.value, this.f.email.value, this.f.password.value)
+    this.authenticationService.resetPassword(this.username, this.token, this.f.password.value)
       .pipe(first())
       .subscribe(
-        data => {
-          this.router.navigate(['/signup-success'], { queryParams: { email: data.email } });
+        () => {
+          this.loading = false;
+          this.success =true;
         },
         errorResponse => {
           if (typeof errorResponse.error === "string")  {
@@ -83,6 +90,7 @@ export class SignUpComponent implements OnInit {
             this.error = errorResponse.statusText;
           }
           this.loading = false;
+          this.success = false;
         });
   }
 }

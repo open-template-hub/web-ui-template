@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   authServerUrl: 'http://localhost:4000'
+//  authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 };
 
 /*

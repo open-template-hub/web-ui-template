@@ -23,7 +23,10 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.logout();
+
+    // https://stackoverflow.com/questions/48853678/what-happens-if-we-does-not-subscribe-to-httpclient-request-which-return-observa
+    this.authenticationService.logout().subscribe();
+
     this.router.navigate(['/']).then(() => {
       return true;
     });

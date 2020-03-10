@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-content>
+  <mat-card-content fxLayout="column" fxLayoutGap="1.2rem">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
       <mat-error *ngIf="error">
@@ -28,5 +28,10 @@
         <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
       </div>
     </form>
+    <div>
+      <a href="" routerLink="/forget-password">
+        Forget password?
+      </a>
+    </div>
   </mat-card-content>
 </mat-card>

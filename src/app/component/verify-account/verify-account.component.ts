@@ -12,13 +12,12 @@ export class VerifyAccountComponent implements OnInit {
 
   loading = true;
   error = '';
+  token = '';
 
   constructor(private route: ActivatedRoute,
               public router: Router,
               private authenticationService: AuthenticationService) {
   }
-
-  token = '';
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -27,7 +26,7 @@ export class VerifyAccountComponent implements OnInit {
       this.authenticationService.verify(this.token)
         .pipe(first())
         .subscribe(
-          data => {
+          () => {
             this.loading = false;
           },
           error => {

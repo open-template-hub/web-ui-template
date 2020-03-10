@@ -9,6 +9,8 @@ import { SignUpSuccessComponent } from './component/sign-up-success/sign-up-succ
 import { VerifyAccountComponent } from './component/verify-account/verify-account.component';
 import { LandingLayoutComponent } from './component/layout/landing-layout/landing-layout.component';
 import { DashboardLayoutComponent } from './component/layout/dashboard-layout/dashboard-layout.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 
 const routes: Routes = [
   {
@@ -19,7 +21,10 @@ const routes: Routes = [
       {path: 'signup', component: SignUpComponent},
       {path: 'signup-success', component: SignUpSuccessComponent},
       {path: 'verify-account', component: VerifyAccountComponent},
-      {path: 'login', component: LoginComponent}]
+      {path: 'login', component: LoginComponent},
+      {path: 'forget-password', component: ForgetPasswordComponent},
+      {path: 'reset-password', component: ResetPasswordComponent}
+    ]
   },
   {
     path: 'dashboard',
