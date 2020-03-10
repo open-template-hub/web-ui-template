@@ -79,3 +79,24 @@ a:hover {
 .darkTheme a:hover {
   color: mat-color($basic-angular-ui-template-primary, 'lighter');
 }
+
+@media only screen and (max-width: 600px) {
+  .full-screen-image {
+    height: 120%;
+  }
+
+  .full-screen-image-overlay {
+    height: 120%;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+  .full-screen-image {
+    height: 100%;
+  }
+
+  .full-screen-image-overlay {
+    height: 100%;
+  }
+}
