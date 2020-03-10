@@ -26,10 +26,6 @@
   width: 100%;
 }
 
-.nav-item:last-child {
-  margin-top: auto;
-}
-
 .nav-link {
   display: flex;
   align-items: center;
@@ -38,7 +34,6 @@
   text-decoration: none;
   filter: grayscale(100%) opacity(0.8);
   transition: 600ms;
-  padding-left: env(safe-area-inset-left);
 }
 
 .logo .nav-link {
@@ -89,10 +84,19 @@
 
 /* Small screens */
 @media only screen and (max-width: 600px) {
+
+  main {
+    margin: 0;
+  }
+
+  .full-screen-image {
+    height: 120%;
+  }
+
   .navbar {
     bottom: 0;
     width: 100vw;
-    height: 5rem;
+    height: max(5rem, calc(5rem + env(safe-area-inset-bottom)));
   }
 
   .logo {
@@ -105,54 +109,12 @@
 
   .nav-link {
     justify-content: center;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .nav-link svg {
     width: 1.7rem;
     min-width: 1.7rem;
-  }
-
-  main {
-    margin: 0;
-  }
-}
-
-/* Large screens */
-@media only screen and (min-width: 600px) {
-  .navbar {
-    top: 0;
-    width: max(5rem, calc(5rem + env(safe-area-inset-left)));
-    height: 100vh;
-  }
-
-  .navbarOpen {
-    width: calc(16rem + env(safe-area-inset-left))!important;
-  }
-
-  .navbarOpen .logo svg {
-    transform: rotate(-270deg)!important;
-  }
-
-  .navbarOpen .logo .nav-link {
-    filter: grayscale(0%) opacity(1)!important;
-  }
-
-  .navbarOpen .link-text {
-    display: inline!important;
-  }
-
-  .navbarOpen .logo svg {
-    margin-left: 12rem!important;
-  }
-
-  .navbarOpen .logo-text {
-    left: env(safe-area-inset-left)!important;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .full-screen-image {
-    height: 120%;
   }
 }
 
@@ -161,9 +123,47 @@
   .full-screen-image {
     height: 100%;
   }
+
+  .navbar {
+    top: 0;
+    width: max(5rem, calc(5rem + env(safe-area-inset-left)));
+    height: 100vh;
+  }
+
+  .navbarOpen {
+    width: calc(16rem + env(safe-area-inset-left)) !important;
+  }
+
+  .navbarOpen .logo svg {
+    transform: rotate(-270deg) !important;
+  }
+
+  .navbarOpen .logo .nav-link {
+    filter: grayscale(0%) opacity(1) !important;
+  }
+
+  .navbarOpen .link-text {
+    display: inline !important;
+  }
+
+  .navbarOpen .logo svg {
+    margin-left: 12rem !important;
+  }
+
+  .navbarOpen .logo-text {
+    left: env(safe-area-inset-left) !important;
+  }
+
+  .nav-link {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .nav-item:last-child {
+    margin-top: auto;
+  }
 }
 
-@media (hover:hover) {
+@media (hover: hover) {
   .nav-link:hover {
     filter: grayscale(0%) opacity(1);
     background: map_get($basic-angular-ui-template-primary, "darker");
