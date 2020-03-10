@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthToken } from '../../../model/AuthToken';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../../service/authentication.service';
+import { AuthenticationService } from '../../../service/auth/authentication.service';
+import { ThemeService } from '../../../service/theme/theme.service';
 
 @Component({
   selector: 'app-landing-layout',
@@ -16,13 +17,16 @@ export class LandingLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private themeService: ThemeService
   ) {
-    this.authenticationService.currentUser.subscribe(user => {
-      this.currentUser = user;
+    this.authenticationService.currentUser.subscribe(currentUser => {
+      this.currentUser = currentUser;
     });
 
-    this.darkTheme = localStorage.getItem('darkTheme');
+    this.themeService.darkTheme.subscribe(darkTheme => {
+      this.darkTheme = darkTheme;
+    });
   }
 
   ngOnInit(): void {
@@ -37,7 +41,6 @@ export class LandingLayoutComponent implements OnInit {
   }
 
   switchTheme() {
-    this.darkTheme = this.darkTheme === 'true' ? 'false' : 'true';
-    localStorage.setItem('darkTheme', this.darkTheme);
+    this.themeService.switchDarkTheme();
   }
 }

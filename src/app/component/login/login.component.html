@@ -17,6 +17,10 @@
           Please provide a valid password
         </mat-error>
       </mat-form-field>
+      <mat-form-field floatLabel="always" appearance="none">
+        <mat-slide-toggle formControlName="rememberMe" color="primary">Remember Me</mat-slide-toggle>
+        <textarea matInput hidden></textarea>
+      </mat-form-field>
       <div class="spinner-wrapper">
         <button mat-raised-button color="primary" [disabled]="loading">
           Login

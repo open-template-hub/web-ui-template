@@ -43,9 +43,10 @@ import { DashboardLayoutComponent } from './component/layout/dashboard-layout/da
     FlexLayoutModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthRequestInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthResponseInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthRequestInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthResponseInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
