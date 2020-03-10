@@ -69,11 +69,9 @@
 </nav>
 <div class="full-screen-image" [class.darkTheme]="darkTheme === 'true'">
   <div class="full-screen-image-overlay">
-    <div style="min-height: 1000px">
-      <div fxLayout="column">
-        <br>
-      </div>
-      <router-outlet></router-outlet>
+    <div fxLayout="column">
+      <br>
     </div>
+    <router-outlet></router-outlet>
   </div>
 </div>
