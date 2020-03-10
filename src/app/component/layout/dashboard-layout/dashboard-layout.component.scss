@@ -39,12 +39,6 @@
   transition: 600ms;
 }
 
-.nav-link:hover {
-  filter: grayscale(0%) opacity(1);
-  background: map_get($basic-angular-ui-template-primary, "darker");
-  color: map_get($basic-angular-ui-template-primary, "darker-contrast")
-}
-
 .logo .nav-link {
   background: map_get($basic-angular-ui-template-primary, "darker");
   color: map_get($basic-angular-ui-template-primary, "darker-contrast")
@@ -112,8 +106,8 @@
   }
 
   .nav-link svg {
-    width: 1.6rem;
-    min-width: 1.6rem;
+    width: 1.7rem;
+    min-width: 1.7rem;
   }
 
   main {
@@ -127,30 +121,6 @@
     top: 0;
     width: 5rem;
     height: 100vh;
-  }
-
-  .navbar:hover {
-    width: 16rem;
-  }
-
-  .navbar:hover .logo svg {
-    transform: rotate(-180deg);
-  }
-
-  .navbar:hover .logo .nav-link {
-    filter: grayscale(0%) opacity(1);
-  }
-
-  .navbar:hover .link-text {
-    display: inline;
-  }
-
-  .navbar:hover .logo svg {
-    margin-left: 12rem;
-  }
-
-  .navbar:hover .logo-text {
-    left: 0;
   }
 
   .navbarOpen {
@@ -175,5 +145,52 @@
 
   .navbarOpen .logo-text {
     left: 0!important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .full-screen-image {
+    height: 120%;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+  .full-screen-image {
+    height: 100%;
+  }
+}
+
+@media (hover:hover) {
+  .nav-link:hover {
+    filter: grayscale(0%) opacity(1);
+    background: map_get($basic-angular-ui-template-primary, "darker");
+    color: map_get($basic-angular-ui-template-primary, "darker-contrast")
+  }
+
+  @media only screen and (min-width: 600px) {
+    .navbar:hover {
+      width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+      display: inline;
+    }
+  }
+
+  .navbar:hover .logo svg {
+    transform: rotate(-180deg);
+  }
+
+  .navbar:hover .logo .nav-link {
+    filter: grayscale(0%) opacity(1);
+  }
+
+  .navbar:hover .logo svg {
+    margin-left: 12rem;
+  }
+
+  .navbar:hover .logo-text {
+    left: 0;
   }
 }
