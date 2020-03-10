@@ -37,6 +37,7 @@
   text-decoration: none;
   filter: grayscale(100%) opacity(0.8);
   transition: 600ms;
+  padding-left: env(safe-area-inset-left);
 }
 
 .logo .nav-link {
@@ -119,12 +120,12 @@
 @media only screen and (min-width: 600px) {
   .navbar {
     top: 0;
-    width: 5rem;
+    width: max(5rem, calc(5rem + env(safe-area-inset-left)));
     height: 100vh;
   }
 
   .navbarOpen {
-    width: 16rem!important;
+    width: calc(16rem + env(safe-area-inset-left))!important;
   }
 
   .navbarOpen .logo svg {
@@ -170,7 +171,7 @@
 
   @media only screen and (min-width: 600px) {
     .navbar:hover {
-      width: 16rem;
+      width: calc(16rem + env(safe-area-inset-left));
     }
 
     .navbar:hover .link-text {
@@ -191,6 +192,6 @@
   }
 
   .navbar:hover .logo-text {
-    left: 0;
+    left: env(safe-area-inset-left);
   }
 }
