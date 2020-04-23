@@ -2,7 +2,12 @@
   <div class="full-screen-image-overlay">
     <mat-toolbar class="expanded-toolbar transparent" fxLayout="row" fxLayoutAlign="start center">
       <span>
-        <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+        <button mat-button routerLink="/">
+          <span class="header-logo-span">
+            <img height="36" src="/assets/brand-logo.png"/>
+            <img height="28" src="/assets/brand-name.png"/>
+          </span>
+        </button>
       </span>
       <span fxFlex></span>
       <button fxShow="false" fxShow.gt-sm mat-button routerLink="/signup" *ngIf="!currentUser">
