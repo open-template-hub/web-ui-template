@@ -1,4 +1,10 @@
-<nav class="navbar" [class.navbarOpen]="navbarOpen">
+<div class="dashboard-layout-page" [class.dark-theme]="darkTheme === 'true'">
+  <router-outlet></router-outlet>
+  <app-bottom-nav></app-bottom-nav>
+</div>
+
+
+<!-- <nav class="navbar" [class.navbarOpen]="navbarOpen">
   <ul class="navbar-nav">
     <li class="logo">
       <a href="javascript:void(0);" class="nav-link" (click)="toggleNavbar()">
@@ -67,11 +73,11 @@
     </li>
   </ul>
 </nav>
-<div class="full-screen-image" [class.darkTheme]="darkTheme === 'true'">
+<div class="full-screen-image" [class.dark-theme]="darkTheme === 'true'">
   <div class="full-screen-image-overlay">
     <div fxLayout="column">
       <br>
     </div>
     <router-outlet></router-outlet>
   </div>
-</div>
+</div> -->

@@ -1,0 +1,40 @@
+@import "../../../../themes";
+
+.top-nav {
+  height: 50px;
+  margin: 20px 35px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 3px;
+//  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+//  background-color: map_get($basic-angular-ui-template-primary, "bg-light");
+}
+
+.dark-theme.top-nav {
+//  background-color: map_get($basic-angular-ui-template-primary, "bg-dark");
+}
+
+.top-nav a {
+  border-radius: 3px;
+  padding: 10px 17px;
+  display: inline-flex;
+  align-items: center;
+  font-size:14px;
+  font-weight: 500;
+}
+
+.top-nav a:first-child {
+  margin-right: auto;
+}
+
+.top-nav a img {
+  margin: 0.2rem;
+}
+
+.dark-theme .brand-name {
+  content:url(/assets/brand-name-light.png);
+}
+.top-nav a i {
+  margin: 0.35rem;
+  font-size: 22px;
+}

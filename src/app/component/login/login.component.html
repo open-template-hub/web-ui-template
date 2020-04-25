@@ -1,31 +1,31 @@
-<mat-card>
-  <mat-card-content fxLayout="column" fxLayoutGap="1.2rem">
+<div>
+  <div fxLayout="column" fxLayoutGap="1.2rem">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
-      <mat-error *ngIf="error">
+      <div *ngIf="error">
         {{error}}
-      </mat-error>
-      <mat-form-field class="full-width-input">
-        <input matInput placeholder="Username" formControlName="username" required>
-        <mat-error>
+      </div>
+      <div class="full-width-input">
+        <input  placeholder="Username" formControlName="username" required>
+        <div>
           Please provide a valid username
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width-input">
-        <input matInput type="password" placeholder="Password" formControlName="password" required>
-        <mat-error>
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input  type="password" placeholder="Password" formControlName="password" required>
+        <div>
           Please provide a valid password
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field floatLabel="always" appearance="none">
-        <mat-slide-toggle formControlName="rememberMe" color="primary">Remember Me</mat-slide-toggle>
-        <textarea matInput hidden></textarea>
-      </mat-form-field>
+        </div>
+      </div>
+      <div >
+        <div formControlName="rememberMe">Remember Me</div>
+        <textarea  hidden></textarea>
+      </div>
       <div class="spinner-wrapper">
-        <button mat-raised-button color="primary" [disabled]="loading">
+        <button [disabled]="loading">
           Login
         </button>
-        <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+        <div *ngIf="loading"></div>
       </div>
     </form>
     <div>
@@ -33,5 +33,5 @@
         Forget password?
       </a>
     </div>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>

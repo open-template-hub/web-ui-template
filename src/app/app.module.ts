@@ -11,7 +11,6 @@ import { AuthResponseInterceptor } from './interceptor/auth/auth-response.interc
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MaterialModule } from './module/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
@@ -21,6 +20,9 @@ import { LandingLayoutComponent } from './component/layout/landing-layout/landin
 import { DashboardLayoutComponent } from './component/layout/dashboard-layout/dashboard-layout.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
+import { LandingLayoutTopNavComponent } from './component/nav/landing-layout-top-nav/landing-layout-top-nav.component';
+import { DashboardLayoutSideNavComponent } from './component/nav/dashboard-layout-side-nav/dashboard-layout-side-nav.component';
+import { BottomNavComponent } from './component/nav/bottom-nav/bottom-nav.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import { ForgetPasswordComponent } from './component/forget-password/forget-pass
     LandingLayoutComponent,
     DashboardLayoutComponent,
     ResetPasswordComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    LandingLayoutTopNavComponent,
+    DashboardLayoutSideNavComponent,
+    BottomNavComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,6 @@ import { ForgetPasswordComponent } from './component/forget-password/forget-pass
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule,
     FlexLayoutModule
   ],
   providers: [

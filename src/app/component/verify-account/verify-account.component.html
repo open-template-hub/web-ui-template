@@ -1,6 +1,6 @@
-<mat-card *ngIf="!loading">
-  <mat-card-content>
+<div *ngIf="!loading">
+  <div>
       <h2>Account verified. Proceed with login</h2>
-      <button mat-raised-button color="primary" (click)="router.navigate(['/login'])">Login</button>
-  </mat-card-content>
-</mat-card>
+      <button (click)="router.navigate(['/login'])">Login</button>
+  </div>
+</div>

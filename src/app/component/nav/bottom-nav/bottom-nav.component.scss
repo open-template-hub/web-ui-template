@@ -1,0 +1,52 @@
+@import "../../../../themes";
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  overflow-x: auto;
+  background-color: map_get($basic-angular-ui-template-primary, "bg-light");
+  visibility: hidden;
+}
+
+.dark-theme.bottom-nav {
+  background-color: map_get($basic-angular-ui-template-primary, "bg-dark");
+}
+
+.bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.bottom-nav a i {
+  margin: 0.2rem;
+  font-size: 19px;
+}
+
+.transparent {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+@media only screen and (max-width: 800px) {
+  .bottom-nav {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .bottom-nav {
+    visibility: hidden;
+  }
+}

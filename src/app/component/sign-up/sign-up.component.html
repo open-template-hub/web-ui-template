@@ -1,40 +1,40 @@
-<mat-card>
-  <mat-card-content>
+<div>
+  <div>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <h2>Sign Up</h2>
-      <mat-error *ngIf="error">
+      <div *ngIf="error">
         {{error}}
-      </mat-error>
-      <mat-form-field class="full-width-input">
-        <input matInput placeholder="Username" formControlName="username" required>
-        <mat-error>
+      </div>
+      <div class="full-width-input">
+        <input placeholder="Username" formControlName="username" required>
+        <div>
           Please provide a valid username
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width-input">
-        <input matInput placeholder="Email" formControlName="email" required>
-        <mat-error>
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input placeholder="Email" formControlName="email" required>
+        <div>
           Please provide a valid email address
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width-input">
-        <input matInput type="password" placeholder="Password" formControlName="password" required>
-        <mat-error>
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input type="password" placeholder="Password" formControlName="password" required>
+        <div>
           Please provide a valid password (min length 6)
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width-input">
-        <input matInput type="password" placeholder="Password" formControlName="confirmPassword" required>
-        <mat-error>
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input type="password" placeholder="Password" formControlName="confirmPassword" required>
+        <div>
           Please provide the same value entered above
-        </mat-error>
-      </mat-form-field>
+        </div>
+      </div>
       <div class="spinner-wrapper">
-        <button mat-raised-button color="primary" [disabled]="loading">
+        <button [disabled]="loading">
           Sign Up
         </button>
-        <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+        <div *ngIf="loading"></div>
       </div>
     </form>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>

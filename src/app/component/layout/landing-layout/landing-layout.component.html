@@ -1,56 +1,8 @@
-<div class="full-screen-image" [class.darkTheme]="darkTheme === 'true'">
-  <div class="full-screen-image-overlay">
-    <mat-toolbar class="expanded-toolbar transparent" fxLayout="row" fxLayoutAlign="start center">
-      <span>
-        <button mat-button routerLink="/">
-          <span class="header-logo-span">
-            <img height="36" src="/assets/brand-logo.png"/>
-            <img height="28" src="/assets/brand-name.png"/>
-          </span>
-        </button>
-      </span>
-      <span fxFlex></span>
-      <button fxShow="false" fxShow.gt-sm mat-button routerLink="/signup" *ngIf="!currentUser">
-        <mat-icon>lock_open</mat-icon>
-        Sign Up
-      </button>
-      <button fxShow="false" fxShow.gt-sm mat-button routerLink="/login" *ngIf="!currentUser">
-        <mat-icon>power_settings_new</mat-icon>
-        Login
-      </button>
-      <button fxShow="false" fxShow.gt-sm mat-button (click)="logout()" *ngIf="currentUser">
-        <mat-icon>exit_to_app</mat-icon>
-        Logout
-      </button>
-      <button fxShow="false" fxShow.gt-sm mat-button (click)="switchTheme()">
-        <mat-icon>invert_colors</mat-icon>
-      </button>
-      <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/">
-        <mat-icon>home</mat-icon>
-        Home
-      </button>
-      <button mat-menu-item (click)="switchTheme()">
-        <mat-icon>invert_colors</mat-icon>
-        Switch theme
-      </button>
-      <button mat-menu-item routerLink="/signup" *ngIf="!currentUser">
-        <mat-icon>lock_open</mat-icon>
-        Sign Up
-      </button>
-      <button mat-menu-item routerLink="/login" *ngIf="!currentUser">
-        <mat-icon>power_settings_new</mat-icon>
-        Login
-      </button>
-      <button mat-menu-item (click)="logout()" *ngIf="currentUser">
-        <mat-icon>exit_to_app</mat-icon>
-        Logout
-      </button>
-    </mat-menu>
-    <router-outlet></router-outlet>
+<div class="landing-layout-page" [class.dark-theme]="darkTheme === 'true'">
+  <div class="header">
+    <app-landing-layout-top-nav></app-landing-layout-top-nav>
   </div>
+  <div class="header-filler"></div>
+  <router-outlet></router-outlet>
+  <app-bottom-nav></app-bottom-nav>
 </div>

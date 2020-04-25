@@ -5,11 +5,11 @@ import { AuthenticationService } from '../../../service/auth/authentication.serv
 import { ThemeService } from '../../../service/theme/theme.service';
 
 @Component({
-  selector: 'app-landing-layout',
-  templateUrl: './landing-layout.component.html',
-  styleUrls: ['./landing-layout.component.scss']
+  selector: 'app-landing-layout-top-nav',
+  templateUrl: './landing-layout-top-nav.component.html',
+  styleUrls: ['./landing-layout-top-nav.component.scss']
 })
-export class LandingLayoutComponent implements OnInit {
+export class LandingLayoutTopNavComponent implements OnInit {
 
   darkTheme: string;
 
@@ -38,5 +38,9 @@ export class LandingLayoutComponent implements OnInit {
       this.darkTheme = 'false';
       return true;
     });
+  }
+
+  switchTheme() {
+    this.themeService.switchDarkTheme();
   }
 }
