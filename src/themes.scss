@@ -1,6 +1,6 @@
-$basic-angular-ui-template-primary: (
-  bg-light: #f5f5f5,
-  bg-dark: #202020,
+$basic-angular-ui-template-navy: (
+  bg-light: #eff0f5,
+  bg-dark: #01161d,
   default: #083e79,
   darker: #092b4e,
   lighter: #5878a3,
@@ -11,13 +11,17 @@ $basic-angular-ui-template-primary: (
   light-shadow: rgba(255, 255, 255, 0.1)
 );
 
-$basic-angular-ui-template-red: (
-  bg-light: #f5f5f5,
-  bg-dark: #202020,
+$basic-angular-ui-template-crimson: (
+  bg-light: #f5efef,
+  bg-dark: #1d0101,
   default: #e23237,
   darker: #b52e31,
   lighter: #f35559,
-  default-contrast: #76808b,
-  darker-contrast: #a5aeba,
-  lighter-contrast: #607489,
+  default-contrast: #deafaf,
+  darker-contrast: #decece,
+  lighter-contrast: #c77677,
+  dark-shadow: rgba(155, 155, 155, 0.5),
+  light-shadow: rgba(255, 255, 255, 0.1)
 );
+
+$basic-angular-ui-template-theme: $basic-angular-ui-template-navy;

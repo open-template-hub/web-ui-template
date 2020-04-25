@@ -6,16 +6,16 @@
   left: 0;
   width: 100%;
   height: 55px;
-  box-shadow: 0 0 5px map_get($basic-angular-ui-template-primary, "dark-shadow");
+  box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "dark-shadow");
   display: flex;
   overflow-x: auto;
-  background-color: map_get($basic-angular-ui-template-primary, "bg-light");
+  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
   visibility: hidden;
 }
 
 .dark-theme.bottom-nav {
-  box-shadow: 0 0 5px map_get($basic-angular-ui-template-primary, "light-shadow");
-  background-color: map_get($basic-angular-ui-template-primary, "bg-dark");
+  box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "light-shadow");
+  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
 }
 
 .bottom-nav a {

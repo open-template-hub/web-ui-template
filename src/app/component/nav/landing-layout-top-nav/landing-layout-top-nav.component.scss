@@ -7,11 +7,11 @@
   justify-content: flex-end;
   border-radius: 3px;
 //  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
-//  background-color: map_get($basic-angular-ui-template-primary, "bg-light");
+//  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
 }
 
 .dark-theme.top-nav {
-//  background-color: map_get($basic-angular-ui-template-primary, "bg-dark");
+//  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
 }
 
 .top-nav a {
