@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 55px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px map_get($basic-angular-ui-template-primary, "dark-shadow");
   display: flex;
   overflow-x: auto;
   background-color: map_get($basic-angular-ui-template-primary, "bg-light");
@@ -14,6 +14,7 @@
 }
 
 .dark-theme.bottom-nav {
+  box-shadow: 0 0 5px map_get($basic-angular-ui-template-primary, "light-shadow");
   background-color: map_get($basic-angular-ui-template-primary, "bg-dark");
 }
 
@@ -39,7 +40,7 @@
   background-color: rgba(255, 255, 255, 0);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 799px) {
   .bottom-nav {
     visibility: visible;
   }

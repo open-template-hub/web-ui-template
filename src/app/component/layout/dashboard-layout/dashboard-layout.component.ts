@@ -43,13 +43,4 @@ export class DashboardLayoutComponent implements OnInit {
       return true;
     });
   }
-
-  switchTheme() {
-    this.themeService.switchDarkTheme();
-  }
-
-  toggleNavbar() {
-    this.navbarOpen = !this.navbarOpen;
-    sessionStorage.setItem('navbarOpen', this.navbarOpen ? 'true' : 'false');
-  }
 }

@@ -10,7 +10,7 @@
   background-color: map_get($basic-angular-ui-template-primary, "bg-light");
   padding-left: 35px;
   padding-right: 35px;
-  min-height: 1500px;
+  min-height: 2000px;
 }
 
 .dark-theme.landing-layout-page {
@@ -31,7 +31,7 @@
   height: 90px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 799px) {
   .header-filler {
     display: none;
   }
