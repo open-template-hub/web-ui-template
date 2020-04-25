@@ -6,7 +6,7 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   overflow: auto;
 }
 
@@ -30,12 +30,13 @@ p {
   word-break: break-all
 }
 
-a {
+a, h1, h2, h3, h4, h5, h6 {
   color: map_get($basic-angular-ui-template-primary, "default");
   text-decoration: none;
+  font-weight: 300;
 }
 
-.dark-theme a {
+.dark-theme a, .dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6  {
   color: map_get($basic-angular-ui-template-primary, "default-contrast");
   text-decoration: none;
 }

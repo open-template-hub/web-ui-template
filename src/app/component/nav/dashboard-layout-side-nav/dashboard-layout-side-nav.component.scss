@@ -9,16 +9,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 3px;
   background-color: map_get($basic-angular-ui-template-primary, "bg-light");
-  transition: 200ms ease;
   overflow: scroll;
+  transition: 200ms ease;
 
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  box-shadow:inset 0 0 0 2000px rgba(0,0,0,.1), 5px 0 30px map_get($basic-angular-ui-template-primary, "dark-shadow");
+  box-shadow:inset 0 0 0 2000px rgba(255, 255, 255, 0.7), 5px 0 30px map_get($basic-angular-ui-template-primary, "dark-shadow");
 
   background-image: url("../../../../assets/landing.jpg");
 }
@@ -36,6 +35,7 @@
   padding: 0;
   display: inline-flex;
   align-items: center;
+  min-height: 80px;
   height: 80px;
   font-size:14px;
   font-weight: 500;
@@ -43,12 +43,10 @@
 
 .side-nav a:first-child {
   box-shadow: 0 0 5px map_get($basic-angular-ui-template-primary, "dark-shadow");
-  margin-bottom: 20px;
 }
 
 .dark-theme.side-nav a:first-child {
   box-shadow: 0 0 5px map_get($basic-angular-ui-template-primary, "light-shadow");
-  margin-bottom: 20px;
 }
 
 .side-nav a:last-child {

@@ -23,6 +23,7 @@ import { ForgetPasswordComponent } from './component/forget-password/forget-pass
 import { LandingLayoutTopNavComponent } from './component/nav/landing-layout-top-nav/landing-layout-top-nav.component';
 import { DashboardLayoutSideNavComponent } from './component/nav/dashboard-layout-side-nav/dashboard-layout-side-nav.component';
 import { BottomNavComponent } from './component/nav/bottom-nav/bottom-nav.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BottomNavComponent } from './component/nav/bottom-nav/bottom-nav.compon
     ForgetPasswordComponent,
     LandingLayoutTopNavComponent,
     DashboardLayoutSideNavComponent,
-    BottomNavComponent
+    BottomNavComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
