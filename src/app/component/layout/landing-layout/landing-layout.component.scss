@@ -1,4 +1,4 @@
-@import "../../../../themes";
+@import "src/themes";
 
 .landing-layout-page {
   background-position: center center;
@@ -6,16 +6,16 @@
   background-attachment: fixed;
   background-size: cover;
   box-shadow:inset 0 0 0 2000px rgba(255, 255, 255, 0.7);
-  background-image: url("../../../../assets/landing.jpg");
+  background-image: url("src/assets/landing.jpg");
   background-color: map_get($basic-angular-ui-template-theme, "bg-light");
   padding-left: 35px;
   padding-right: 35px;
-  min-height: 2000px;
+  min-height: 100vh;
 }
 
 .dark-theme.landing-layout-page {
   box-shadow:inset 0 0 0 2000px rgba(0,0,0,.5);
-  background-image: url("../../../../assets/landing-dark.jpg");
+  background-image: url("src/assets/landing-dark.jpg");
   background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
 }
 
@@ -29,22 +29,4 @@
 
 .header-filler {
   height: 90px;
-}
-
-@media only screen and (max-width: 799px) {
-  .header-filler {
-    display: none;
-  }
-  .header {
-    visibility: hidden;
-  }
-}
-
-@media only screen and (min-width: 800px) {
-  .header-filler {
-    display: block;
-  }
-  .header {
-    visibility: visible;
-  }
 }

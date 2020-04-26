@@ -1,6 +1,8 @@
-$basic-angular-ui-template-navy: (
+$basic-angular-ui-template-ice-blue: (
   bg-light: #eff0f5,
   bg-dark: #01161d,
+  card-light: #f6f6fa,
+  card-dark: #032028,
   default: #083e79,
   darker: #092b4e,
   lighter: #5878a3,
@@ -14,6 +16,10 @@ $basic-angular-ui-template-navy: (
 $basic-angular-ui-template-crimson: (
   bg-light: #f5efef,
   bg-dark: #1d0101,
+  card-light: #faf6f6,
+  card-dark: #611f1f,
+  card-border-light: #e2d5d5,
+  card-border-dark: #712828,
   default: #e23237,
   darker: #b52e31,
   lighter: #f35559,
@@ -24,4 +30,4 @@ $basic-angular-ui-template-crimson: (
   light-shadow: rgba(255, 255, 255, 0.1)
 );
 
-$basic-angular-ui-template-theme: $basic-angular-ui-template-navy;
+$basic-angular-ui-template-theme: $basic-angular-ui-template-ice-blue;

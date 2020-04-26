@@ -1,0 +1,39 @@
+<div class="sign-up-page">
+  <app-card [title]="'Register'">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="error">
+        {{error}}
+      </div>
+      <div class="full-width-input">
+        <input placeholder="Username" formControlName="username" required>
+        <div>
+          Please provide a valid username
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input placeholder="Email" formControlName="email" required>
+        <div>
+          Please provide a valid email address
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input type="password" placeholder="Password" formControlName="password" required>
+        <div>
+          Please provide a valid password (min length 6)
+        </div>
+      </div>
+      <div class="full-width-input">
+        <input type="password" placeholder="Password" formControlName="confirmPassword" required>
+        <div>
+          Please provide the same value entered above
+        </div>
+      </div>
+      <div class="spinner-wrapper">
+        <button [disabled]="loading">
+          Sign Up
+        </button>
+        <div *ngIf="loading"></div>
+      </div>
+    </form>
+  </app-card>
+</div>

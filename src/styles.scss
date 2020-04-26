@@ -30,15 +30,34 @@ p {
   word-break: break-all
 }
 
-a, h1, h2, h3, h4, h5, h6 {
+p, a, h1, h2, h3, h4, h5, h6, label {
   color: map_get($basic-angular-ui-template-theme, "default");
-  text-decoration: none;
   font-weight: 300;
 }
 
-.dark-theme a, .dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6  {
-  color: map_get($basic-angular-ui-template-theme, "default-contrast");
+a {
   text-decoration: none;
+}
+
+.dark-theme p,.dark-theme a, .dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6, .dark-theme label  {
+  color: map_get($basic-angular-ui-template-theme, "default-contrast");
+}
+
+button {
+  border: none;
+  border-radius: 3px;
+  padding: 0.75rem 1.5rem;
+  font-size: 14px;
+  background-color: map_get($basic-angular-ui-template-theme, "default");
+  color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  cursor:pointer;
+  transition: 200ms ease;
+  margin: 0.25rem;
+}
+
+.dark-theme button {
+  background-color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  color: map_get($basic-angular-ui-template-theme, "default");
 }
 
 @media (hover:hover) {
@@ -50,5 +69,15 @@ a, h1, h2, h3, h4, h5, h6 {
 
   .dark-theme a:hover {
     color: map_get($basic-angular-ui-template-theme, "darker-contrast");
+  }
+
+  button:hover {
+    box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
+    color: map_get($basic-angular-ui-template-theme, "darker-contrast");
+  }
+
+  .dark-theme button:hover {
+    box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "light-shadow");
+    color: map_get($basic-angular-ui-template-theme, "darker");
   }
 }
