@@ -4,7 +4,6 @@
   border-radius: 3px;
   box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
   background-color: map_get($basic-angular-ui-template-theme, "card-light");
-  min-width: 20vw;
   max-width: 90vw;
   display: flex;
   flex-direction: column;
@@ -18,7 +17,7 @@
 .card-header {
   border-radius: 3px;
   background-color: map_get($basic-angular-ui-template-theme, "default");
-  box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
+  box-shadow:0 0 5px 0 map_get($basic-angular-ui-template-theme, "default");
   max-width: 92%;
   width: 92%;
   margin-left: auto;
@@ -34,7 +33,7 @@
 
 .dark-theme .card-header {
   background-color: map_get($basic-angular-ui-template-theme, "default-contrast");
-  box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "light-shadow");
+  box-shadow:0 0 5px 0 map_get($basic-angular-ui-template-theme, "default-contrast");
 }
 
 .card-header h1, .card-header h2, .card-header h3, .card-header h4, .card-header h5, .card-header h6 {
@@ -45,5 +44,18 @@
 }
 
 .card-content {
+  margin-top: 3rem;
   padding: 25px;
+}
+
+@media only screen and (max-width: 799px) {
+  .card {
+    min-width: 90vw;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .card {
+    min-width: 25vw;
+  }
 }

@@ -4,36 +4,37 @@
       <div *ngIf="error">
         {{error}}
       </div>
-      <div class="full-width-input">
-        <input placeholder="Username" formControlName="username" required>
-        <div>
-          Please provide a valid username
-        </div>
+      <div class="input-with-icon">
+        <input type="text" placeholder="Username" formControlName="username" required>
+        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="full-width-input">
-        <input placeholder="Email" formControlName="email" required>
-        <div>
-          Please provide a valid email address
-        </div>
+      <p>
+        Please provide a valid username
+      </p>
+      <div class="input-with-icon">
+        <input type="email" placeholder="Email" formControlName="email" required>
+        <i class="fas fa-envelope fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="full-width-input">
+      <p>
+        Please provide a valid email address
+      </p>
+      <div class="input-with-icon">
         <input type="password" placeholder="Password" formControlName="password" required>
-        <div>
-          Please provide a valid password (min length 6)
-        </div>
+        <i class="fas fa-key fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="full-width-input">
-        <input type="password" placeholder="Password" formControlName="confirmPassword" required>
-        <div>
-          Please provide the same value entered above
-        </div>
+      <p>
+        Please provide a valid password (min length 6)
+      </p>
+      <div class="input-with-icon">
+        <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
+        <i class="fas fa-key fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="spinner-wrapper">
-        <button [disabled]="loading">
-          Sign Up
-        </button>
-        <div *ngIf="loading"></div>
-      </div>
+      <p>
+        Please provide the same value entered above
+      </p>
+      <button [disabled]="loading">
+        Sign Up
+      </button>
     </form>
   </app-card>
 </div>
