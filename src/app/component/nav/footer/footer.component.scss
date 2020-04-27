@@ -27,6 +27,8 @@
 @media only screen and (max-width: 799px) {
   .footer {
     margin-bottom: 55px;
+    flex-direction: column;
+    font-size: 15px;
   }
 }
 

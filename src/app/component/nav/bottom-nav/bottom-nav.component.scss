@@ -8,6 +8,7 @@
   height: 55px;
   box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "dark-shadow");
   display: flex;
+  justify-content: space-evenly;
   overflow-x: auto;
   background-color: map_get($basic-angular-ui-template-theme, "bg-light");
   visibility: hidden;
@@ -19,11 +20,11 @@
 }
 
 .bottom-nav a {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
   min-width: 50px;
   overflow: hidden;
   white-space: nowrap;
