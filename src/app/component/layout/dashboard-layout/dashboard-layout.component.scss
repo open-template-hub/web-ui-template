@@ -21,12 +21,20 @@
 }
 
 @media only screen and (max-width: 799px) {
+  .dashboard-layout-page {
+    min-height: 200vh;
+  }
+
   .dashboard-layout-page, .footer-wrap {
     margin-left: 0;
   }
 }
 
 @media only screen and (min-width: 800px) {
+  .dashboard-layout-page {
+    min-height: 100vh;
+  }
+
   .dashboard-layout-page, .footer-wrap {
     margin-left: 16rem;
   }

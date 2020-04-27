@@ -29,3 +29,15 @@
 .features h2 {
   margin-bottom: 1vh;
 }
+
+@media only screen and (max-width: 799px) {
+  .home-page {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .home-page {
+    font-size: 36px;
+  }
+}

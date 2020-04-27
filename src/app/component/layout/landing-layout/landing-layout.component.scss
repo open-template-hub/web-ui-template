@@ -30,3 +30,15 @@
 .header-filler {
   height: 90px;
 }
+
+@media only screen and (max-width: 799px) {
+  .landing-layout-page {
+    min-height: 200vh;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .landing-layout-page {
+    min-height: 100vh;
+  }
+}
