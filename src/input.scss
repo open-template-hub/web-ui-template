@@ -7,6 +7,10 @@ form {
   align-items: center;
 }
 
+form button {
+  margin-top: 2rem;
+}
+
 input, input::-webkit-input-placeholder {
   font-size: 16px;
   font-weight: 300;
@@ -49,14 +53,50 @@ input:focus {
   box-shadow: 0 0 8px 0 map_get($basic-angular-ui-template-theme, "default");
 }
 
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label {
+  display: block;
+  cursor: pointer;
+  width: fit-content;
+}
+
+input[type=checkbox] + label:before {
+  content: "\2714";
+
+  border-radius: 3px;
+  border: 2px solid map_get($basic-angular-ui-template-theme, "default-contrast");
+
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  padding-left: 0.2em;
+  padding-bottom: 0.2em;
+  margin-right: 0.2em;
+  vertical-align: center;
+  color: transparent;
+  transition: 200ms;
+}
+
+input[type=checkbox]:checked + label:before {
+  color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  background-color: map_get($basic-angular-ui-template-theme, "default");
+  border-color: map_get($basic-angular-ui-template-theme, "default");
+}
+
 .dark-theme input:focus {
   border-color: map_get($basic-angular-ui-template-theme, "default-contrast");
   box-shadow: 0 0 8px 0 map_get($basic-angular-ui-template-theme, "default-contrast");
 }
 
-.input-with-icon {
+.input-with-icon, .input-checkbox {
   width: 100%;
   position: relative;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .input-with-icon input {

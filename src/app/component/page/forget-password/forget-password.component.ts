@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
+import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -12,7 +13,6 @@ import { first } from 'rxjs/operators';
 export class ForgetPasswordComponent implements OnInit {
 
   forgetPasswordForm: FormGroup;
-  loading = false;
   submitted = false;
   error = '';
   success = false;
@@ -21,7 +21,8 @@ export class ForgetPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     public router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -46,13 +47,13 @@ export class ForgetPasswordComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    this.loadingService.setLoading(true);
     this.authenticationService.forgetPassword(this.f.username.value)
       .pipe(first())
       .subscribe(
         () => {
           this.success = true;
-          this.loading = false;
+          this.loadingService.setLoading(false);
         },
         errorResponse => {
           if (typeof errorResponse.error === "string")  {
@@ -60,8 +61,8 @@ export class ForgetPasswordComponent implements OnInit {
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;
           }
-          this.loading = false;
           this.success = false;
+          this.loadingService.setLoading(false);
         });
   }
 }

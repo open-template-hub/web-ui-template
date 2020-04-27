@@ -1,26 +1,38 @@
 <div class="login-page">
   <app-card [title]="'Log in'">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div *ngIf="error">
-        {{error}}
+      <div class="error-text error-with-icon" *ngIf="error">
+        <p>
+          {{error}}
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
       <div class="input-with-icon">
         <input type="text" placeholder="Username" formControlName="username" required>
         <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <p>
-        Please provide a valid username
-      </p>
+      <div class="error-text error-with-icon" *ngIf="f.username.touched && f.username.invalid">
+        <p>
+          Please provide a valid username
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
       <div class="input-with-icon">
         <input type="password" placeholder="Password" formControlName="password" required>
         <i class="fas fa-key fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <p>
-        Please provide a valid password
-      </p>
-      <p>Remember Me</p>
+      <div class="error-text error-with-icon" *ngIf="f.password.touched && f.password.invalid">
+        <p>
+          Please provide a valid password
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+      <div class="input-checkbox">
+        <input id="rememberMe" type="checkbox" formControlName="rememberMe">
+        <label for="rememberMe">Remember Me</label>
+      </div>
       <textarea hidden></textarea>
-      <button [disabled]="loading">
+      <button>
         Login
       </button>
       <a href="" routerLink="/forget-password">

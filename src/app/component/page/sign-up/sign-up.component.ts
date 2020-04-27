@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
+import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +13,6 @@ import { first } from 'rxjs/operators';
 export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup;
-  loading = false;
   submitted = false;
   error = '';
 
@@ -20,7 +20,8 @@ export class SignUpComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -51,7 +52,7 @@ export class SignUpComponent implements OnInit {
 
       // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ mustMatch: true });
+        matchingControl.setErrors({mustMatch: true});
       } else {
         matchingControl.setErrors(null);
       }
@@ -59,7 +60,9 @@ export class SignUpComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.signUpForm.controls; }
+  get f() {
+    return this.signUpForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -69,20 +72,21 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    this.loadingService.setLoading(true);
     this.authenticationService.signUp(this.f.username.value, this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['/signup-success'], { queryParams: { email: data.email } });
+          this.loadingService.setLoading(false);
+          this.router.navigate(['/signup-success'], {queryParams: {email: data.email}});
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
+          if (typeof errorResponse.error === 'string') {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;
           }
-          this.loading = false;
+          this.loadingService.setLoading(false);
         });
   }
 }

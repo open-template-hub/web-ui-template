@@ -5,8 +5,10 @@
   box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
   background-color: map_get($basic-angular-ui-template-theme, "card-light");
   max-width: 90vw;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .dark-theme.card {

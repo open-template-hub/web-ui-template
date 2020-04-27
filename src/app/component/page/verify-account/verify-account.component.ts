@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
+import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-verify-account',
@@ -16,10 +17,14 @@ export class VerifyAccountComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public router: Router,
-              private authenticationService: AuthenticationService) {
-  }
+              private authenticationService: AuthenticationService,
+              private loadingService: LoadingService
+  ) { }
 
   ngOnInit(): void {
+    this.loadingService.setLoading(true);
+    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
+
     this.route.queryParams.subscribe(params => {
       this.token = params.token;
 
@@ -27,11 +32,11 @@ export class VerifyAccountComponent implements OnInit {
         .pipe(first())
         .subscribe(
           () => {
-            this.loading = false;
+            this.loadingService.setLoading(false);
           },
           error => {
             this.error = error;
-            this.loading = false;
+            this.loadingService.setLoading(false);
           });
 
     });

@@ -1,5 +1,5 @@
-<div class="verify-account-page" *ngIf="!loading">
-  <app-card [title]="'Account verified'">
+<div class="verify-account-page">
+  <app-card [title]="'Account verified'" *ngIf="!loading">
     <p>Please proceed with login</p>
     <button (click)="router.navigate(['/login'])">Login</button>
   </app-card>

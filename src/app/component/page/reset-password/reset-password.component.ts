@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
+import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,7 +13,6 @@ import { first } from 'rxjs/operators';
 export class ResetPasswordComponent implements OnInit {
 
   resetPasswordForm: FormGroup;
-  loading = false;
   submitted = false;
   error = '';
   token = '';
@@ -23,7 +23,8 @@ export class ResetPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     public router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -75,13 +76,13 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    this.loadingService.setLoading(true);
     this.authenticationService.resetPassword(this.username, this.token, this.f.password.value)
       .pipe(first())
       .subscribe(
         () => {
-          this.loading = false;
           this.success =true;
+          this.loadingService.setLoading(false);
         },
         errorResponse => {
           if (typeof errorResponse.error === "string")  {
@@ -89,8 +90,8 @@ export class ResetPasswordComponent implements OnInit {
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;
           }
-          this.loading = false;
           this.success = false;
+          this.loadingService.setLoading(false);
         });
   }
 }

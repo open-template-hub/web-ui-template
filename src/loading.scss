@@ -1,0 +1,42 @@
+@import "themes";
+
+.loading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: map_get($basic-angular-ui-template-theme, "default");
+  animation: bar 1.5s infinite ease-in-out;
+}
+
+.dark-theme.loading::after {
+  background-color: map_get($basic-angular-ui-template-theme, "default-contrast");
+}
+
+@keyframes bar {
+  0% {
+    left: 0;
+    width: 25%;
+  }
+
+  25% {
+    width: 30%;
+  }
+
+  50% {
+    left: 75%;
+    width: 25%;
+  }
+
+  75% {
+    width: 30%;
+  }
+
+  100% {
+    left: 0;
+    width: 25%;
+  }
+}

@@ -11,8 +11,8 @@
   flex-direction: column;
   align-items: center;
   background-color: map_get($basic-angular-ui-template-theme, "bg-light");
-  overflow: scroll;
   transition: 200ms ease;
+  overflow: scroll;
 
   background-position: center center;
   background-repeat: no-repeat;

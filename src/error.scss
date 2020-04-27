@@ -1,0 +1,27 @@
+@import "themes";
+
+.error-with-icon {
+  width: 100%;
+  position: relative;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.error-with-icon p {
+  padding-left: 48px;
+}
+
+.error-with-icon i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px 8px;
+}
+
+.error-text, .error-text p, .error-text i {
+  color: map_get($basic-angular-ui-template-theme, "error-text");
+}
+
+.dark-theme .error-text, .dark-theme .error-text p, .dark-theme .error-text i {
+  color: map_get($basic-angular-ui-template-theme, "error-text");
+}
