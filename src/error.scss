@@ -1,5 +1,3 @@
-@import "themes";
-
 .error-with-icon {
   width: 100%;
   position: relative;
@@ -19,9 +17,5 @@
 }
 
 .error-text, .error-text p, .error-text i {
-  color: map_get($basic-angular-ui-template-theme, "error-text");
-}
-
-.dark-theme .error-text, .dark-theme .error-text p, .dark-theme .error-text i {
-  color: map_get($basic-angular-ui-template-theme, "error-text-contrast");
+  color: var(--error);
 }

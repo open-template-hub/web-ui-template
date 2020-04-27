@@ -1,22 +1,15 @@
-@import "src/themes";
-
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 55px;
-  box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "dark-shadow");
+  box-shadow: 0 0 5px var(--shadow);
   display: flex;
   justify-content: space-evenly;
   overflow-x: auto;
-  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
+  background-color: var(--background);
   visibility: hidden;
-}
-
-.dark-theme.bottom-nav {
-  box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "light-shadow");
-  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
 }
 
 .bottom-nav a {
@@ -35,10 +28,6 @@
 .bottom-nav a i {
   margin: 0.2rem;
   font-size: 19px;
-}
-
-.transparent {
-  background-color: rgba(255, 255, 255, 0);
 }
 
 @media only screen and (max-width: 799px) {

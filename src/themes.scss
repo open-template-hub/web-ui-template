@@ -1,39 +1,29 @@
-$basic-angular-ui-template-ice-blue: (
-  bg-light: #eff0f5,
-  bg-dark: #01161d,
-  card-light: #f6f6fa,
-  card-dark: #032028,
-  default: #104d90,
-  darker: #092b4e,
-  lighter: #5878a3,
-  default-contrast: #b2c6de,
-  darker-contrast: #d2e4f5,
-  lighter-contrast: #7f9cbf,
-  error-text: #e23237,
-  error-text-contrast: #ba8c8e,
-  dark-shadow: rgba(155, 155, 155, 0.5),
-  light-shadow: rgba(255, 255, 255, 0.1),
-  bg-img: url("src/assets/landing.jpg"),
-  bg-img-dark: url("src/assets/landing-dark.jpg")
-);
+:root {
+  --lighter: #5878A3;
+  --color: #104D90;
+  --darker: #092B4E;
+  --darker-contrast: #D2E4F5;
+  --contrast: #B2C6DE;
+  --lighter-contrast: #7F9CBF;
+  --brand-name: url(/assets/brand-name-dark.png);
+  --background: #EFF0F5;
+  --background-img: url("src/assets/landing.jpg");
+  --shadow: rgba(155, 155, 155, 0.5);
+  --card: #F6F6FA;
+  --error: #E23237;
+}
 
-$basic-angular-ui-template-crimson: (
-  bg-light: #f5efef,
-  bg-dark: #1d0101,
-  card-light: #faf6f6,
-  card-dark: #611f1f,
-  default: #e23237,
-  darker: #b52e31,
-  lighter: #f35559,
-  default-contrast: #deafaf,
-  darker-contrast: #decece,
-  lighter-contrast: #c77677,
-  error-text: #c18e13,
-  error-text-contrast: #c2b087,
-  dark-shadow: rgba(155, 155, 155, 0.5),
-  light-shadow: rgba(255, 255, 255, 0.1),
-  bg-img: url("src/assets/landing-crimson.jpg"),
-  bg-img-dark: url("src/assets/landing-crimson-dark.jpg")
-);
-
-$basic-angular-ui-template-theme: $basic-angular-ui-template-crimson;
+.dark-theme {
+  --lighter: #7f9cbf;
+  --color: #B2C6DE;
+  --darker: #d2e4f5;
+  --darker-contrast: #092B4E;
+  --contrast: #104D90;
+  --lighter-contrast: #5878A3;
+  --brand-name: url(/assets/brand-name-light.png);
+  --background: #01161d;
+  --background-img: url("src/assets/landing-dark.jpg");
+  --shadow: rgba(255, 255, 255, 0.1);
+  --card: #032028;
+  --error: #BA8C8E;
+}

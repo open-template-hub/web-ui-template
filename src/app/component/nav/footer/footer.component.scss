@@ -1,16 +1,9 @@
-@import 'src/themes';
-
 .footer {
   display: flex;
   padding: 15px 35px;
   justify-content: space-evenly;
-  box-shadow: 5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
-  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
-}
-
-.dark-theme.footer {
-  box-shadow: 5px 0 30px map_get($basic-angular-ui-template-theme, "light-shadow");
-  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
+  box-shadow: 5px 0 30px var(--shadow);
+  background-color: var(--background)
 }
 
 .footer a {
@@ -42,8 +35,5 @@
 
   .footer a:hover {
     background: none;
-  }
-
-  .dark-theme .footer a:hover {
   }
 }

@@ -1,6 +1,3 @@
-@import 'src/themes';
-@import 'src/brand';
-
 .side-nav {
   width: 16rem;
   height: 100vh;
@@ -10,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
+  background-color: var(--background);
   transition: 200ms ease;
   overflow: scroll;
 
@@ -18,15 +15,13 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  box-shadow:inset 0 0 0 2000px rgba(255, 255, 255, 0.7), 5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
+  box-shadow:inset 0 0 0 2000px rgba(255, 255, 255, 0.7), 5px 0 30px var(--shadow);
 
   background-image: url("src/assets/landing.jpg");
 }
 
 .dark-theme.side-nav {
-  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
-
-  box-shadow:inset 0 0 0 2000px rgba(0,0,0,.5), 5px 0 30px map_get($basic-angular-ui-template-theme, "light-shadow");
+  box-shadow:inset 0 0 0 2000px rgba(0,0,0,.5), 5px 0 30px var(--shadow);
   background-image: url("src/assets/landing-dark.jpg");
 }
 
@@ -43,11 +38,7 @@
 }
 
 .side-nav a:first-child {
-  box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "dark-shadow");
-}
-
-.dark-theme.side-nav a:first-child {
-  box-shadow: 0 0 5px map_get($basic-angular-ui-template-theme, "light-shadow");
+  box-shadow: 0 0 5px var(--shadow);
 }
 
 .side-nav a:last-child {

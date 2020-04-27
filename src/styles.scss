@@ -21,11 +21,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track:vertical {
-  background: map_get($basic-angular-ui-template-theme, "bg-dark");
+  background: var(--darker);
 }
 
 body::-webkit-scrollbar-thumb:vertical {
-  background: map_get($basic-angular-ui-template-theme, "darker");
+  background: var(--color);
 }
 
 body::-webkit-scrollbar:horizontal {
@@ -37,7 +37,7 @@ p {
 }
 
 p, a, h1, h2, h3, h4, h5, h6, label {
-  color: map_get($basic-angular-ui-template-theme, "default");
+  color: var(--color);
   font-weight: 300;
 }
 
@@ -45,18 +45,10 @@ a {
   text-decoration: none;
 }
 
-.dark-theme p,.dark-theme a, .dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6, .dark-theme label  {
-  color: map_get($basic-angular-ui-template-theme, "default-contrast");
-}
-
 @media (hover:hover) {
 
   a:hover {
-    color: map_get($basic-angular-ui-template-theme, "darker");
+    color: var(--darker);
     background: rgba(89, 118, 150, 0.2);
-  }
-
-  .dark-theme a:hover {
-    color: map_get($basic-angular-ui-template-theme, "darker-contrast");
   }
 }

@@ -1,11 +1,5 @@
-@import "themes";
-
 .brand-name {
-  content:url(/assets/brand-name-dark.png);
-}
-
-.dark-theme .brand-name {
-  content:url(/assets/brand-name-light.png);
+  content: var(--brand-name);
 }
 
 .brand-in-page {

@@ -1,18 +1,11 @@
-@import 'src/themes';
-@import 'src/brand';
-
 .dashboard-layout-page {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
+  background-color: var(--background);
   padding: 0.5rem 0 0;
   min-height: 100vh;
-}
-
-.dark-theme.dashboard-layout-page {
-  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
 }
 
 .dashboard-layout-content {
