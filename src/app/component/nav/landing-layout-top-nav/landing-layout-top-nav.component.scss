@@ -31,18 +31,15 @@
 .top-nav a img {
   margin: 0.2rem;
 }
+
 .top-nav a i {
   margin: 0.35rem;
   font-size: 22px;
 }
 
 @media only screen and (max-width: 799px) {
-  .top-nav a {
+  .top-nav {
     display: none;
-  }
-
-  .top-nav a:first-child {
-    display: inline-flex;
   }
 }
 

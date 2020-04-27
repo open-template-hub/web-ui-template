@@ -21,6 +21,10 @@
 }
 
 @media only screen and (max-width: 799px) {
+  .header-filler {
+    display: none;
+  }
+
   .dashboard-layout-page {
     min-height: 200vh;
   }
@@ -31,6 +35,10 @@
 }
 
 @media only screen and (min-width: 800px) {
+  .header-filler {
+    display: block;
+  }
+
   .dashboard-layout-page {
     min-height: 100vh;
   }

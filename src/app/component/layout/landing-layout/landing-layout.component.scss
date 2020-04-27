@@ -32,12 +32,19 @@
 }
 
 @media only screen and (max-width: 799px) {
+  .header-filler {
+    display: none;
+  }
   .landing-layout-page {
     min-height: 200vh;
   }
 }
 
 @media only screen and (min-width: 800px) {
+  .header-filler {
+    display: block;
+  }
+
   .landing-layout-page {
     min-height: 100vh;
   }

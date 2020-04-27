@@ -7,3 +7,32 @@
 .dark-theme .brand-name {
   content:url(/assets/brand-name-light.png);
 }
+
+.brand-in-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-in-page a {
+  justify-content: center;
+  align-items: center;
+  padding: 10px 17px;
+  display: inline-flex;
+}
+
+.brand-in-page a img {
+  margin: 0.2rem;
+}
+
+@media only screen and (max-width: 799px) {
+  .brand-in-page {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .brand-in-page {
+    display: none;
+  }
+}
