@@ -1,0 +1,9 @@
+<div class="dashboard-page">
+  <app-card [title]="'Dashboard'">
+      <h3>Access Token</h3>
+      <p>{{currentUser.accessToken}}</p>
+      <h3>Refresh Token</h3>
+      <p>{{currentUser.refreshToken}}</p>
+      <button (click)="logout()">Logout</button>
+  </app-card>
+</div>

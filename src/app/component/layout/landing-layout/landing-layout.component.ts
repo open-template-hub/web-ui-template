@@ -39,8 +39,4 @@ export class LandingLayoutComponent implements OnInit {
       return true;
     });
   }
-
-  switchTheme() {
-    this.themeService.switchDarkTheme();
-  }
 }

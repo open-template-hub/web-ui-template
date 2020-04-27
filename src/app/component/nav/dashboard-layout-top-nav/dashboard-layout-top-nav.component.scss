@@ -1,0 +1,52 @@
+@import "src/themes";
+@import "src/brand";
+
+.top-nav {
+  height: 50px;
+  margin: 20px 35px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 3px;
+  //  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  //  background-color: map_get($basic-angular-ui-template-theme, "bg-light");
+}
+
+.dark-theme.top-nav {
+  //  background-color: map_get($basic-angular-ui-template-theme, "bg-dark");
+}
+
+.top-nav a {
+  border-radius: 3px;
+  padding: 10px 17px;
+  align-items: center;
+  font-size:14px;
+  font-weight: 500;
+}
+
+.top-nav a:first-child {
+  margin-right: auto;
+}
+
+.top-nav a img {
+  margin: 0.2rem;
+}
+.top-nav a i {
+  margin: 0.35rem;
+  font-size: 22px;
+}
+
+@media only screen and (max-width: 799px) {
+  .top-nav a {
+    display: none;
+  }
+
+  .top-nav a:first-child {
+    display: inline-flex;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .top-nav a {
+    display: none;
+  }
+}

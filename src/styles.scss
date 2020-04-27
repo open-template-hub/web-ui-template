@@ -1,4 +1,8 @@
 @import "themes";
+@import "input";
+@import "button";
+@import "error";
+@import "loading";
 
 html, body {
   height: 100%;
@@ -6,91 +10,52 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: map_get($basic-angular-ui-template-primary, "lighter");
-  color: map_get($basic-angular-ui-template-primary, "text");
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  overflow: auto;
+  font-size: 17px;
 }
 
 body::-webkit-scrollbar {
   width: 0.25rem;
 }
 
-body::-webkit-scrollbar-track {
-  background: #1e1e24;
+body::-webkit-scrollbar-track:vertical {
+  background: map_get($basic-angular-ui-template-theme, "bg-dark");
 }
 
-body::-webkit-scrollbar-thumb {
-  background: mat-color($basic-angular-ui-template-primary);
+body::-webkit-scrollbar-thumb:vertical {
+  background: map_get($basic-angular-ui-template-theme, "darker");
+}
+
+body::-webkit-scrollbar:horizontal {
+  display: none;
 }
 
 p {
   word-break: break-all
 }
 
+p, a, h1, h2, h3, h4, h5, h6, label {
+  color: map_get($basic-angular-ui-template-theme, "default");
+  font-weight: 300;
+}
+
 a {
-  color: mat-color($basic-angular-ui-template-primary);
   text-decoration: none;
 }
 
-a:hover {
-  color: mat-color($basic-angular-ui-template-primary, 'darker');
-}
-
-.full-screen-image {
-  height: 100%;
-  background-image: url("assets/landing.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.full-screen-image-overlay {
-  height: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5)));
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.spinner-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spinner-wrapper mat-spinner {
-  position: absolute;
-}
-
-.darkTheme {
-  @include angular-material-theme($basic-angular-ui-template-dark-theme);
-}
-
-.darkTheme.full-screen-image {
-  background-image: url("assets/landing-dark.jpg");
-}
-
-.darkTheme .full-screen-image-overlay {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#212121), to(rgba(200, 225, 255, 0.4)));
-}
-
-@media only screen and (max-width: 600px) {
-  .full-screen-image {
-    height: 120%;
-  }
-}
-
-/* Large screens */
-@media only screen and (min-width: 600px) {
-  .full-screen-image {
-    height: 100%;
-  }
+.dark-theme p,.dark-theme a, .dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6, .dark-theme label  {
+  color: map_get($basic-angular-ui-template-theme, "default-contrast");
 }
 
 @media (hover:hover) {
-  .darkTheme a:hover {
-    color: mat-color($basic-angular-ui-template-primary, 'lighter');
+
+  a:hover {
+    color: map_get($basic-angular-ui-template-theme, "darker");
+    background: rgba(89, 118, 150, 0.2);
+  }
+
+  .dark-theme a:hover {
+    color: map_get($basic-angular-ui-template-theme, "darker-contrast");
   }
 }

@@ -1,0 +1,33 @@
+@import "themes";
+
+
+button {
+  border: none;
+  border-radius: 3px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 300;
+  font-size: 17px;
+  background-color: map_get($basic-angular-ui-template-theme, "default");
+  color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  cursor:pointer;
+  transition: 200ms ease;
+  margin: 0.25rem;
+}
+
+.dark-theme button {
+  background-color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  color: map_get($basic-angular-ui-template-theme, "default");
+}
+
+@media (hover:hover) {
+
+  button:hover {
+    box-shadow:0 0 5px 0 map_get($basic-angular-ui-template-theme, "default");
+    color: map_get($basic-angular-ui-template-theme, "darker-contrast");
+  }
+
+  .dark-theme button:hover {
+    box-shadow:0 0 5px 0 map_get($basic-angular-ui-template-theme, "default-contrast");
+    color: map_get($basic-angular-ui-template-theme, "darker");
+  }
+}

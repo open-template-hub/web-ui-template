@@ -1,0 +1,63 @@
+@import 'src/themes';
+
+.card {
+  border-radius: 3px;
+  box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "dark-shadow");
+  background-color: map_get($basic-angular-ui-template-theme, "card-light");
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dark-theme.card {
+  box-shadow:5px 0 30px map_get($basic-angular-ui-template-theme, "light-shadow");
+  background-color: map_get($basic-angular-ui-template-theme, "card-dark");
+}
+
+.card-header {
+  border-radius: 3px;
+  background-color: map_get($basic-angular-ui-template-theme, "default");
+  box-shadow:0 0 5px 0 map_get($basic-angular-ui-template-theme, "default");
+  max-width: 92%;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.dark-theme .card-header {
+  background-color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  box-shadow:0 0 5px 0 map_get($basic-angular-ui-template-theme, "default-contrast");
+}
+
+.card-header h1, .card-header h2, .card-header h3, .card-header h4, .card-header h5, .card-header h6 {
+  color: map_get($basic-angular-ui-template-theme, "default-contrast");
+}
+.dark-theme .card-header h1, .dark-theme .card-header h2, .dark-theme .card-header h3, .dark-theme .card-header h4, .dark-theme .card-header h5, .dark-theme .card-header h6 {
+  color: map_get($basic-angular-ui-template-theme, "default");
+}
+
+.card-content {
+  margin-top: 3rem;
+  padding: 25px;
+}
+
+@media only screen and (max-width: 799px) {
+  .card {
+    min-width: 90vw;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .card {
+    min-width: 25vw;
+  }
+}

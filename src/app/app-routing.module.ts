@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
-import { HomeComponent } from './component/home/home.component';
-import { LoginComponent } from './component/login/login.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
-import { SignUpSuccessComponent } from './component/sign-up-success/sign-up-success.component';
-import { VerifyAccountComponent } from './component/verify-account/verify-account.component';
+import { HomeComponent } from './component/page/home/home.component';
+import { LoginComponent } from './component/page/login/login.component';
+import { DashboardComponent } from './component/page/dashboard/dashboard.component';
+import { SignUpComponent } from './component/page/sign-up/sign-up.component';
+import { SignUpSuccessComponent } from './component/page/sign-up-success/sign-up-success.component';
+import { VerifyAccountComponent } from './component/page/verify-account/verify-account.component';
 import { LandingLayoutComponent } from './component/layout/landing-layout/landing-layout.component';
 import { DashboardLayoutComponent } from './component/layout/dashboard-layout/dashboard-layout.component';
-import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
-import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './component/page/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './component/page/forget-password/forget-password.component';
 
 const routes: Routes = [
   {
