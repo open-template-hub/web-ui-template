@@ -23,5 +23,5 @@
 }
 
 .dark-theme .error-text, .dark-theme .error-text p, .dark-theme .error-text i {
-  color: map_get($basic-angular-ui-template-theme, "error-text");
+  color: map_get($basic-angular-ui-template-theme, "error-text-contrast");
 }

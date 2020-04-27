@@ -10,8 +10,11 @@ $basic-angular-ui-template-ice-blue: (
   darker-contrast: #d2e4f5,
   lighter-contrast: #7f9cbf,
   error-text: #e23237,
+  error-text-contrast: #ba8c8e,
   dark-shadow: rgba(155, 155, 155, 0.5),
-  light-shadow: rgba(255, 255, 255, 0.1)
+  light-shadow: rgba(255, 255, 255, 0.1),
+  bg-img: url("src/assets/landing.jpg"),
+  bg-img-dark: url("src/assets/landing-dark.jpg")
 );
 
 $basic-angular-ui-template-crimson: (
@@ -26,8 +29,11 @@ $basic-angular-ui-template-crimson: (
   darker-contrast: #decece,
   lighter-contrast: #c77677,
   error-text: #c18e13,
+  error-text-contrast: #c2b087,
   dark-shadow: rgba(155, 155, 155, 0.5),
-  light-shadow: rgba(255, 255, 255, 0.1)
+  light-shadow: rgba(255, 255, 255, 0.1),
+  bg-img: url("src/assets/landing-crimson.jpg"),
+  bg-img-dark: url("src/assets/landing-crimson-dark.jpg")
 );
 
-$basic-angular-ui-template-theme: $basic-angular-ui-template-ice-blue;
+$basic-angular-ui-template-theme: $basic-angular-ui-template-crimson;

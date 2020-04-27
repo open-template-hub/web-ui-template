@@ -143,6 +143,10 @@ input[type=checkbox]:checked + label:before {
   border: 2px solid map_get($basic-angular-ui-template-theme, "default-contrast");
 }
 
+.dark-theme .input-checkbox span {
+  border: 2px solid map_get($basic-angular-ui-template-theme, "default");
+}
+
 .input-checkbox p {
   margin-left: 0.25rem;
 }
@@ -151,9 +155,18 @@ input[type=checkbox]:checked + label:before {
   background-color: map_get($basic-angular-ui-template-theme, "darker-contrast");
 }
 
+.dark-theme .input-checkbox:hover input ~ span {
+  background-color: map_get($basic-angular-ui-template-theme, "darker");
+}
+
 .input-checkbox input:checked ~ span {
   border-color: map_get($basic-angular-ui-template-theme, "default");
   background-color: map_get($basic-angular-ui-template-theme, "default");
+}
+
+.dark-theme .input-checkbox input:checked ~ span {
+  border-color: map_get($basic-angular-ui-template-theme, "default-contrast");
+  background-color: map_get($basic-angular-ui-template-theme, "default-contrast");
 }
 
 .input-checkbox span:after {
@@ -176,6 +189,10 @@ input[type=checkbox]:checked + label:before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.dark-theme .input-checkbox span:after {
+  border-color: map_get($basic-angular-ui-template-theme, "default");
 }
 
 @media (hover: hover) {
