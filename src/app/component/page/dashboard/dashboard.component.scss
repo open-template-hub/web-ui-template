@@ -1,9 +1,13 @@
 @import "src/themes";
 
 .dashboard-page {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 15vh;
+}
+
+.dashboard-page app-card {
+  display: flex;
+  justify-content: center;
 }

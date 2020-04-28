@@ -19,3 +19,26 @@
 .error-text, .error-text p, .error-text i {
   color: var(--error);
 }
+
+.input-error input {
+  border-color: var(--error);
+}
+
+.input-error input::-webkit-input-placeholder {
+  color: var(--error);
+}
+
+.input-error input:focus {
+  box-shadow: 0 0 8px 0 var(--error);
+}
+
+.input-error.input-with-icon input:focus + i {
+  background-color: var(--error);
+}
+
+.input-error.input-with-icon i {
+  background-color: var(--error);
+}
+
+
+

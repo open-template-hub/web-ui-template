@@ -10,7 +10,6 @@
 
 .dashboard-layout-page-content {
   padding: 0 2rem 0;
-  height: 100vh;
   min-height: 100vh;
 }
 
@@ -36,7 +35,6 @@
 
 @media screen and (min-aspect-ratio: 4/3) {
   .dashboard-layout-page-content {
-    height: 200vh;
     min-height: 200vh;
   }
 }

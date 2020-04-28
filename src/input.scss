@@ -7,6 +7,7 @@ form {
 
 form button {
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 input, input::-webkit-input-placeholder {
@@ -37,7 +38,6 @@ input:focus {
   border-color: var(--color);
   box-shadow: 0 0 8px 0 var(--color);
 }
-
 
 input[type=checkbox] {
   display: none;
@@ -75,8 +75,8 @@ input[type=checkbox]:checked + label:before {
 .input-with-icon, .input-checkbox {
   width: 100%;
   position: relative;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .input-with-icon input {
