@@ -2,7 +2,7 @@
   border-radius: 3px;
   box-shadow:5px 0 30px var(--shadow);
   background-color: var(--card);
-  max-width: 90vw;
+  max-width: 90%;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,6 @@
 
 @media only screen and (min-width: 800px) {
   .card {
-    min-width: 25vw;
+    min-width: 400px;
   }
 }

@@ -2,14 +2,13 @@
   width: 16rem;
   height: 100vh;
   margin: 0;
-  padding: 0;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--background);
-  transition: 200ms ease;
   overflow: scroll;
+  padding: 0 0 0 env(safe-area-inset-left);
 
   background-position: center center;
   background-repeat: no-repeat;
