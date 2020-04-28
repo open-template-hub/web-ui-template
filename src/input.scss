@@ -97,49 +97,53 @@ input[type=checkbox]:checked + label:before {
   border-radius: 3px 0 0 3px;
 }
 
-.input-checkbox {
+.input-checkbox-label {
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
   align-items: center;
   position: relative;
   cursor: pointer;
+  padding: 7px;
 }
 
-.input-checkbox span {
+.input-checkbox-label span {
   height: 24px;
   width: 24px;
   box-sizing: border-box;
   border-radius: 3px;
   border: 2px solid var(--contrast);
+  margin-left: 3px;
 }
 
-.input-checkbox p {
-  margin-left: 0.25rem;
+.input-checkbox-label p {
+  font-size: 16px;
+  font-weight: 300;
+  margin-left: 0.5rem;
 }
 
-.input-checkbox:hover input ~ span {
+.input-checkbox-label:hover input ~ span {
   background-color: var(--darker-contrast);
 }
 
-.input-checkbox input:checked ~ span {
+.input-checkbox-label input:checked ~ span {
   border-color: var(--color);
   background-color: var(--color);
 }
 
-.input-checkbox span:after {
+.input-checkbox-label span:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.input-checkbox input:checked ~ span:after {
+.input-checkbox-label input:checked ~ span:after {
   display: block;
 }
 
-.input-checkbox span:after {
-  left: 8px;
-  top: 3px;
+.input-checkbox-label span:after {
+  left: 17px;
+  top: 10px;
   width: 6px;
   height: 11px;
   border: solid var(--contrast);
