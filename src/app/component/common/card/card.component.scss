@@ -1,5 +1,5 @@
 .card {
-  border-radius: 3px;
+  border-radius: 6px;
   box-shadow:5px 0 30px var(--shadow);
   background-color: var(--card);
   display: flex;
@@ -10,7 +10,7 @@
 .card-header {
   border-radius: 3px;
   background-color: var(--color);
-  box-shadow:0 0 5px 0 var(--color);
+  box-shadow: 0 4px 5px 0 var(--shadow);
   max-width: 92%;
   width: 92%;
   margin-left: auto;

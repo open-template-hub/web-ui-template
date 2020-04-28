@@ -1,19 +1,19 @@
 .error-with-icon {
   width: 100%;
   position: relative;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .error-with-icon p {
-  padding-left: 48px;
+  padding-left: 49px;
 }
 
 .error-with-icon i {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 2px 8px;
+  padding: 2px 7px;
 }
 
 .error-text, .error-text p, .error-text i {
@@ -29,15 +29,15 @@
 }
 
 .input-error input:focus {
-  box-shadow: 0 0 8px 0 var(--error);
+  border-color: var(--error);
 }
 
 .input-error.input-with-icon input:focus + i {
-  background-color: var(--error);
+  color: var(--error);
 }
 
 .input-error.input-with-icon i {
-  background-color: var(--error);
+  color: var(--error);
 }
 
 

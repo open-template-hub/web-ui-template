@@ -2,18 +2,18 @@
   <app-card [title]="'Log in'">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
-        <input type="text" placeholder="Username" formControlName="username" required>
+        <input type="text" placeholder="Username..." formControlName="username" required>
         <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
       </div>
       <div class="input-with-icon" [class.input-error]="f.password.touched && f.password.invalid">
-        <input type="password" placeholder="Password" formControlName="password" required>
-        <i class="fas fa-key fa-lg fa-fw" area-hidden="true"></i>
+        <input type="password" placeholder="Password..." formControlName="password" required>
+        <i class="fas fa-lock fa-lg fa-fw" area-hidden="true"></i>
       </div>
       <div class="input-checkbox">
         <label class="input-checkbox-label">
-          <p>Remember Me</p>
           <input type="checkbox" formControlName="rememberMe">
           <span></span>
+          <p>Remember Me</p>
         </label>
       </div>
       <div class="error-text error-with-icon" *ngIf="f.username.touched && f.username.invalid">
@@ -35,7 +35,7 @@
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
       <button>
-        Login
+        LOG IN
       </button>
       <a href="" routerLink="/forget-password">
         Forget password?
