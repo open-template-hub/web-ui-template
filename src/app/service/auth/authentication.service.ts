@@ -40,7 +40,8 @@ export class AuthenticationService {
         this.currentUserSubject.next(currentUser);
 
         // TODO: get second parameter from basic info db
-        this.themeService.initDarkTheme(false);
+        this.themeService.initTheme(false);
+        this.themeService.initSideNavClosed(false);
 
         return currentUser;
       }));

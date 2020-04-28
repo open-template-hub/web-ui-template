@@ -12,6 +12,7 @@ import { ThemeService } from '../../../service/theme/theme.service';
 export class DashboardLayoutSideNavComponent implements OnInit {
 
   darkTheme: string;
+  sideNavClosed = 'false';
 
   currentUser: AuthToken;
 
@@ -27,6 +28,10 @@ export class DashboardLayoutSideNavComponent implements OnInit {
     this.themeService.darkTheme.subscribe(darkTheme => {
       this.darkTheme = darkTheme;
     });
+
+    this.themeService.sideNavClosed.subscribe(sideNavClosed => {
+      this.sideNavClosed = sideNavClosed;
+    });
   }
 
   ngOnInit(): void {
@@ -41,5 +46,9 @@ export class DashboardLayoutSideNavComponent implements OnInit {
 
   switchTheme() {
     this.themeService.switchDarkTheme();
+  }
+
+  toggleSideNav() {
+    this.themeService.toggleSideNav();
   }
 }

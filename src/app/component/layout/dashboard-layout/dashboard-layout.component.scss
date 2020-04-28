@@ -29,7 +29,11 @@
   }
 
   .dashboard-layout-page, .footer-wrap {
-    margin-left: 16rem;
+    margin-left: 256px;
+  }
+
+  .side-nav-closed .dashboard-layout-page {
+    margin-left: 80px;
   }
 }
 

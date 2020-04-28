@@ -11,12 +11,18 @@ export class DashboardLayoutComponent implements OnInit {
 
   darkTheme: string;
 
+  sideNavClosed = 'false';
+
   constructor(
     private router: Router,
     private themeService: ThemeService
   ) {
     this.themeService.darkTheme.subscribe(darkTheme => {
       this.darkTheme = darkTheme;
+    });
+
+    this.themeService.sideNavClosed.subscribe(sideNavClosed => {
+      this.sideNavClosed = sideNavClosed;
     });
   }
 

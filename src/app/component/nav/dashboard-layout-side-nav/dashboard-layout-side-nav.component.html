@@ -1,9 +1,7 @@
-<nav class="side-nav" [class.dark-theme]="darkTheme === 'true'">
-  <a routerLink="/dashboard" class="brand">
-    <img class="brand-logo" height="40" src="/assets/brand-logo.png"/>
-    <span>
-      <img class="brand-name" height="28" src="/assets/brand-name-dark.png"/>
-    </span>
+<nav class="side-nav" [class.side-nav-closed]="sideNavClosed === 'true'" [class.dark-theme]="darkTheme === 'true'">
+  <a href="javascript:void(0)" (click)="toggleSideNav()" class="brand">
+    <img class="brand-logo" height="40" alt="logo" src="/assets/brand-logo.png"/>
+    <img class="brand-name" height="28" alt="name" src="/assets/brand-name-dark.png"/>
   </a>
   <a routerLink="/dashboard">
     <i class="material-icons">dashboard</i>
