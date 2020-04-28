@@ -19,6 +19,10 @@
   margin-right: auto;
 }
 
+.top-nav a:first-child:hover {
+  background: none;
+}
+
 .top-nav a img {
   margin: 0.2rem;
 }

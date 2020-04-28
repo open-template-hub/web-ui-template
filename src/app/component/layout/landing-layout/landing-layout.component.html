@@ -1,17 +1,19 @@
 <div [class.dark-theme]="darkTheme === 'true'">
   <div class="landing-layout-page">
-  <div class="header">
-    <app-landing-layout-top-nav></app-landing-layout-top-nav>
+    <div class="header">
+      <app-landing-layout-top-nav></app-landing-layout-top-nav>
+    </div>
+    <div class="header-filler"></div>
+    <div class="brand-in-page">
+      <a routerLink="/" class="brand">
+        <img class="brand-logo" height="40" src="/assets/brand-logo.png"/>
+        <img class="brand-name" height="28" src="/assets/brand-name-dark.png"/>
+      </a>
+    </div>
+    <div class="landing-layout-page-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="header-filler"></div>
-  <div class="brand-in-page">
-    <a routerLink="/" class="brand">
-      <img class="brand-logo" height="40" src="/assets/brand-logo.png"/>
-      <img class="brand-name" height="28" src="/assets/brand-name-dark.png"/>
-    </a>
-  </div>
-  <router-outlet></router-outlet>
-</div>
-<app-footer></app-footer>
-<app-bottom-nav></app-bottom-nav>
+  <app-footer></app-footer>
+  <app-bottom-nav></app-bottom-nav>
 </div>

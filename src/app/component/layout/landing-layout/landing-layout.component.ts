@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../../service/theme/theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-layout',
@@ -10,7 +11,10 @@ export class LandingLayoutComponent implements OnInit {
 
   darkTheme: string;
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private router: Router,
+    private themeService: ThemeService
+  ) {
     this.themeService.darkTheme.subscribe(darkTheme => {
       this.darkTheme = darkTheme;
     });
