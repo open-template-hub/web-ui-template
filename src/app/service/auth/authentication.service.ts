@@ -46,6 +46,7 @@ export class AuthenticationService {
       }));
   }
 
+  // https://stackoverflow.com/questions/48853678/what-happens-if-we-does-not-subscribe-to-httpclient-request-which-return-observa
   logout() {
     this.themeService.clearThemes();
 

@@ -11,8 +11,6 @@ import { ThemeService } from '../../../service/theme/theme.service';
 })
 export class LandingLayoutTopNavComponent implements OnInit {
 
-  darkTheme: string;
-
   currentUser: AuthToken;
 
   constructor(
@@ -23,10 +21,6 @@ export class LandingLayoutTopNavComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(currentUser => {
       this.currentUser = currentUser;
     });
-
-    this.themeService.darkTheme.subscribe(darkTheme => {
-      this.darkTheme = darkTheme;
-    });
   }
 
   ngOnInit(): void {
@@ -35,7 +29,6 @@ export class LandingLayoutTopNavComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/']).then(() => {
-      this.darkTheme = 'false';
       return true;
     });
   }

@@ -58,7 +58,7 @@ export class ResetPasswordComponent implements OnInit {
 
       // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ mustMatch: true });
+        matchingControl.setErrors({mustMatch: true});
       } else {
         matchingControl.setErrors(null);
       }
@@ -66,7 +66,9 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.resetPasswordForm.controls; }
+  get f() {
+    return this.resetPasswordForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -81,11 +83,11 @@ export class ResetPasswordComponent implements OnInit {
       .pipe(first())
       .subscribe(
         () => {
-          this.success =true;
+          this.success = true;
           this.loadingService.setLoading(false);
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
+          if (typeof errorResponse.error === 'string') {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;

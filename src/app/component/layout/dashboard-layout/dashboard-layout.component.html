@@ -1,16 +1,18 @@
-<app-dashboard-layout-side-nav></app-dashboard-layout-side-nav>
-<div class="dashboard-layout-page" [class.dark-theme]="darkTheme === 'true'">
-  <div class="dashboard-layout-content">
-    <div class="brand-in-page">
-      <a routerLink="/" class="brand">
-        <img class="brand-logo" height="40" src="/assets/brand-logo.png"/>
-        <img class="brand-name" height="28" src="/assets/brand-name-dark.png"/>
-      </a>
+<div [class.dark-theme]="darkTheme === 'true'">
+  <app-dashboard-layout-side-nav></app-dashboard-layout-side-nav>
+  <div class="dashboard-layout-page">
+    <div class="dashboard-layout-content">
+      <div class="brand-in-page">
+        <a routerLink="/" class="brand">
+          <img class="brand-logo" height="40" src="/assets/brand-logo.png"/>
+          <img class="brand-name" height="28" src="/assets/brand-name-dark.png"/>
+        </a>
+      </div>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
   </div>
+  <div class="footer-wrap">
+    <app-footer></app-footer>
+  </div>
+  <app-bottom-nav></app-bottom-nav>
 </div>
-<div class="footer-wrap">
-  <app-footer></app-footer>
-</div>
-<app-bottom-nav></app-bottom-nav>

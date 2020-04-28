@@ -37,7 +37,9 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.forgetPasswordForm.controls; }
+  get f() {
+    return this.forgetPasswordForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -56,7 +58,7 @@ export class ForgetPasswordComponent implements OnInit {
           this.loadingService.setLoading(false);
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
+          if (typeof errorResponse.error === 'string') {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;
