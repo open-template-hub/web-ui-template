@@ -24,7 +24,9 @@ import { LandingLayoutTopNavComponent } from './component/nav/landing-layout-top
 import { DashboardLayoutSideNavComponent } from './component/nav/dashboard-layout-side-nav/dashboard-layout-side-nav.component';
 import { BottomNavComponent } from './component/nav/bottom-nav/bottom-nav.component';
 import { FooterComponent } from './component/nav/footer/footer.component';
-import { Card1Component } from './component/common/card/card-1/card-1.component';
+import { Card1Component } from './component/common/card/card1/card1.component';
+import { Button1Component } from './component/common/button/button1/button1.component';
+import { Button2Component } from './component/common/button/button2/button2.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { Card1Component } from './component/common/card/card-1/card-1.component'
     DashboardLayoutSideNavComponent,
     BottomNavComponent,
     FooterComponent,
-    Card1Component
+    Card1Component,
+    Button1Component,
+    Button2Component
   ],
   imports: [
     BrowserModule,

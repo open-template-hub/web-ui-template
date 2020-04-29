@@ -1,5 +1,5 @@
 <div class="login-page">
-  <app-card-1 [title]="'Log in'">
+  <app-card1 [title]="'Log in'">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
         <input type="text" placeholder="Username..." formControlName="username" required>
@@ -34,14 +34,12 @@
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <button>
-        LOG IN
-      </button>
+      <app-button1 [text]="'LOG IN'"></app-button1>
       <a href="" routerLink="/forget-password">
         Forget password?
       </a>
     </form>
     <div>
     </div>
-  </app-card-1>
+  </app-card1>
 </div>

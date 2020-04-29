@@ -1,0 +1,52 @@
+.button2 {
+  border: none;
+  border-radius: 3px;
+  font-weight: 300;
+  font-size: 14px;
+  width: 55px;
+  height: 55px;
+  background-color: var(--color);
+  color: var(--contrast);
+  cursor:pointer;
+  transition: 200ms ease;
+  margin: 2rem 0.25rem 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button2 i {
+  font-weight: 300;
+  font-size: 32px;
+}
+
+.button2.button2-with-text {
+  width: auto;
+  padding: 0 1.1rem;
+}
+
+.button2.button2-with-text i {
+  margin-right: 0.7rem;
+}
+
+.button2.button2-rounded {
+  border-radius: 100%;
+}
+
+.button2 i {
+  font-weight: 300;
+  font-size: 31px;
+}
+
+.button2:disabled {
+  background-color: var(--lighter);
+  pointer-events: none;
+}
+
+@media (hover:hover) {
+
+  .button2:hover {
+    box-shadow:0 4px 5px 0 var(--shadow);
+    color: var(--darker-contrast);
+  }
+}
