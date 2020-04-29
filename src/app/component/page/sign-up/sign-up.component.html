@@ -1,5 +1,5 @@
 <div class="sign-up-page">
-  <app-card [title]="'Register'">
+  <app-card-1 [title]="'Register'">
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
         <input type="text" placeholder="Username..." formControlName="username" required>
@@ -51,5 +51,5 @@
         GET STARTED
       </button>
     </form>
-  </app-card>
+  </app-card-1>
 </div>

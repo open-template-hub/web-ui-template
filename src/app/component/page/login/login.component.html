@@ -1,5 +1,5 @@
 <div class="login-page">
-  <app-card [title]="'Log in'">
+  <app-card-1 [title]="'Log in'">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
         <input type="text" placeholder="Username..." formControlName="username" required>
@@ -43,5 +43,5 @@
     </form>
     <div>
     </div>
-  </app-card>
+  </app-card-1>
 </div>

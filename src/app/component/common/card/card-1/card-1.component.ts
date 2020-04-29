@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LoadingService } from '../../../service/loading/loading.service';
+import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'app-card-1',
+  templateUrl: './card-1.component.html',
+  styleUrls: ['./card-1.component.scss']
 })
-export class CardComponent implements OnInit {
+export class Card1Component implements OnInit {
 
   @Input() title: string = 'Title';
 

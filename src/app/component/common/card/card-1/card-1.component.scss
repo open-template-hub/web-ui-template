@@ -1,4 +1,4 @@
-.card {
+.card-1 {
   border-radius: 6px;
   box-shadow:5px 0 30px var(--shadow);
   background-color: var(--card);
@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.card-header {
+.card-1-header {
   border-radius: 3px;
   background-color: var(--color);
   box-shadow: 0 4px 5px 0 var(--shadow);
@@ -24,23 +24,23 @@
   padding-top: 30px;
 }
 
-.card-header h1, .card-header h2, .card-header h3, .card-header h4, .card-header h5, .card-header h6 {
+.card-1-header h1, .card-1-header h2, .card-1-header h3, .card-1-header h4, .card-1-header h5, .card-1-header h6 {
   color: var(--contrast);
 }
 
-.card-content {
+.card-1-content {
   margin-top: 3rem;
   padding: 1.25rem;
 }
 
 @media only screen and (max-width: 799px) {
-  .card {
+  .card-1 {
     min-width: 95vw;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .card {
+  .card-1 {
     min-width: 435px;
   }
 }
