@@ -1,5 +1,12 @@
 <div class="login-page">
   <app-card1 [title]="'Log in'">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-button3 [rounded]="true" [brand]="'facebook'"></app-button3>
+      <app-button3 [rounded]="true" [brand]="'github'"></app-button3>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 2rem;">
+      <p>or</p>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
         <input type="text" placeholder="Username..." formControlName="username" required>
@@ -39,7 +46,5 @@
         Forget password?
       </a>
     </form>
-    <div>
-    </div>
   </app-card1>
 </div>
