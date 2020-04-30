@@ -27,6 +27,7 @@ import { FooterComponent } from './component/nav/footer/footer.component';
 import { Card1Component } from './component/common/card/card1/card1.component';
 import { Button1Component } from './component/common/button/button1/button1.component';
 import { Button2Component } from './component/common/button/button2/button2.component';
+import { Button3Component } from './component/common/button/button3/button3.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { Button2Component } from './component/common/button/button2/button2.comp
     FooterComponent,
     Card1Component,
     Button1Component,
-    Button2Component
+    Button2Component,
+    Button3Component
   ],
   imports: [
     BrowserModule,
