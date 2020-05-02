@@ -7,9 +7,11 @@ export const environment = {
   githubTag: 'GITHUB_LOCAL',
   facebookTag: 'FACEBOOK_LOCAL',
   authServerUrl: 'http://localhost:4000'
-/*  githubTag: 'GITHUB_LOCAL',
-  facebookTag: 'FACEBOOK_LOCAL',
-  authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com' */
+/*
+  githubTag: 'GITHUB',
+  facebookTag: 'FACEBOOK',
+  authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
+*/
 };
 
 /*
