@@ -31,6 +31,7 @@ import { Button3Component } from './component/common/button/button3/button3.comp
 import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
+import { Button4Component } from './component/common/button/button4/button4.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { FacebookCallbackComponent } from './component/page/callback/facebook-ca
     Button3Component,
     GithubCallbackComponent,
     SplashLayoutComponent,
-    FacebookCallbackComponent
+    FacebookCallbackComponent,
+    Button4Component
   ],
   imports: [
     BrowserModule,

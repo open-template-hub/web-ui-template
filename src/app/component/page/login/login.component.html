@@ -1,10 +1,10 @@
 <div class="login-page">
   <app-card1 [title]="'Log in'">
     <div fxLayout="row" fxLayoutAlign="center center">
-      <app-button3 [rounded]="true" [brand]="'facebook-f'"></app-button3>
-      <app-button3 [rounded]="true" [brand]="'github-alt'" (click)="githubLogin()"></app-button3>
+      <app-button4 [brand]="'facebook-f'"></app-button4>
+      <app-button4 [brand]="'github'" (click)="githubLogin()"></app-button4>
     </div>
-    <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 2rem;">
+    <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
       <p>or</p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

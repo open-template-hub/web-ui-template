@@ -9,7 +9,7 @@
         DASHBOARD
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="switchTheme()" *ngIf="currentUser">
+  <a href="javascript:void(0)" (click)="switchTheme()" *ngIf="!currentUser">
     <i class="material-icons">invert_colors</i>
     <span>
         THEME

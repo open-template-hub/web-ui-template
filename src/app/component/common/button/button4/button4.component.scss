@@ -1,0 +1,113 @@
+.button4 {
+  padding-left: 1px;
+  padding-top: 1px;
+  border-radius: 0;
+  font-weight: 300;
+  font-size: 18px;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: 0 transparent;
+  border-bottom: 2px solid transparent;
+  color: whitesmoke;
+  cursor:pointer;
+  transition: 400ms ease-out;
+  margin: 0.5rem 0.75rem 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.button4.button4-with-text {
+  width: auto;
+  padding: 0 1.1rem;
+}
+
+.button4.button4-with-text i {
+  margin-right: 0.7rem;
+}
+
+.button4 i {
+  font-weight: 300;
+  font-size: 36px;
+}
+
+.button4:disabled {
+  pointer-events: none;
+  filter: opacity(50%);
+}
+
+// Social
+
+.linkedin-in.button4 {
+  background-color: var(--linkedin);
+}
+
+.facebook-f.button4 {
+  background-color: var(--facebook);
+}
+
+.twitter.button4 {
+  background-color: var(--twitter);
+}
+
+.google.button4 {
+  background-color: var(--google);
+}
+
+.github.button4 {
+  background-color: var(--github);
+}
+
+.dribbble.button4 {
+  background-color: var(--dribbble);
+}
+
+.instagram.button4 {
+  background-color: var(--instagram);
+}
+
+@media (hover:hover) {
+
+  .button4:hover {
+    box-shadow:0 4px 7px 0 var(--shadow);
+    background-color: whitesmoke;
+    color: var(--color);
+  }
+
+  .linkedin-in.button4:hover {
+    color: var(--linkedin);
+    box-shadow:0 4px 7px 0 var(--linkedin);
+  }
+
+  .facebook-f.button4:hover {
+    color: var(--facebook);
+    box-shadow:0 4px 7px 0 var(--facebook);
+  }
+
+  .twitter.button4:hover {
+    color: var(--twitter);
+    box-shadow:0 4px 7px 0 var(--twitter);
+  }
+
+  .google.button4:hover {
+    color: var(--google);
+    box-shadow:0 4px 7px 0 var(--google);
+  }
+
+  .github.button4:hover {
+    color: var(--github);
+    box-shadow:0 4px 7px 0 var(--github);
+  }
+
+  .dribbble.button4:hover {
+    color: var(--dribbble);
+    box-shadow:0 4px 7px 0 var(--dribbble);
+  }
+
+  .instagram.button4:hover {
+    color: var(--instagram);
+    box-shadow:0 4px 7px 0 var(--instagram);
+  }
+}
