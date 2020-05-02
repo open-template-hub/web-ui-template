@@ -12,8 +12,8 @@
 }
 
 .button1:disabled {
-  background-color: var(--lighter);
   pointer-events: none;
+  filter: opacity(60%);
 }
 
 @media (hover:hover) {

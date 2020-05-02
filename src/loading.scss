@@ -1,4 +1,4 @@
-.loading::after {
+.card-bottom-loading::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -7,10 +7,22 @@
   height: 5px;
   border-radius: 3px;
   background-color: var(--color);
-  animation: bar 1.5s infinite ease-in-out;
+  animation: loading-bar 1.5s infinite ease-in-out;
 }
 
-@keyframes bar {
+.bottom-nav-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--color);
+  animation: loading-bar 1.5s infinite ease-in-out;
+}
+
+@keyframes loading-bar {
   0% {
     left: 0;
     width: 25%;
@@ -32,5 +44,16 @@
   100% {
     left: 0;
     width: 25%;
+  }
+}
+
+@media only screen and (max-width: 799px) {
+  .card-bottom-loading::after {
+    visibility: hidden;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .card-bottom-loading::after {visibility: visible
   }
 }

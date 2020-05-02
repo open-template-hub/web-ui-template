@@ -36,8 +36,8 @@
 }
 
 .button3:disabled {
-  filter: opacity(50%);
   pointer-events: none;
+  filter: opacity(60%);
 }
 
 // Social

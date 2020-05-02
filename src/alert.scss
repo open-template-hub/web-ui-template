@@ -63,3 +63,27 @@
 .input-error.input-with-icon i {
   color: var(--error);
 }
+
+.warn-text, .warn-text p, .warn-text i {
+  color: var(--warn);
+}
+
+.input-warn input {
+  border-color: var(--warn);
+}
+
+.input-warn input::-webkit-input-placeholder {
+  color: var(--warn);
+}
+
+.input-warn input:focus {
+  border-color: var(--warn);
+}
+
+.input-warn.input-with-icon input:focus + i {
+  color: var(--warn);
+}
+
+.input-warn.input-with-icon i {
+  color: var(--warn);
+}

@@ -1,4 +1,39 @@
 :root {
+  --lighter: #29607f;
+  --color: #1a4f6c;
+  --darker: #0f3d57;
+  --darker-contrast: #e7eef3;
+  --contrast: #cbdbe5;
+  --lighter-contrast: #abc3d2;
+  --background: #eaf0f3;
+  --background-shadow: rgba(255, 255, 255, 0.7);
+  --background-img: url("src/assets/landing.jpg");
+  --shadow: rgba(155, 155, 155, 0.5);
+  --card: #f7fdff;
+  --success: #228b22;
+  --error: #E23237;
+  --warn: #d28f29;
+}
+
+.dark-theme {
+  --lighter: #abc3d2;
+  --color: #cbdbe5;
+  --darker: #e7eef3;
+  --darker-contrast: #0f3d57;
+  --contrast: #1a4f6c;
+  --lighter-contrast: #29607f;
+  --background: #091d23;
+  --background-shadow: rgba(0,0,0,0.5);
+  --background-img: url("src/assets/landing-dark.jpg");
+  --shadow: rgba(76, 76, 76, 0.5);
+  --card: #0b252b;
+  --success: #398039;
+  --error: #e04e52;
+  --warn: #cda05c;
+}
+
+/*
+:root {
   --lighter: #5878A3;
   --color: #104D90;
   --darker: #092B4E;
@@ -29,3 +64,4 @@
   --success: #8dcb8d;
   --error: #BA8C8E;
 }
+*/
