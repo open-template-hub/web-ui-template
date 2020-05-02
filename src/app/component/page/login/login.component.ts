@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { LoadingService } from '../../../service/loading/loading.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -71,7 +72,7 @@ export class LoginComponent implements OnInit {
   githubLogin() {
     this.loadingService.setLoading(true);
 
-    this.authenticationService.socialLoginRedirect('GITHUB')
+    this.authenticationService.socialLoginRedirect(environment.githubTag)
       .pipe(first())
       .subscribe(
         data => {

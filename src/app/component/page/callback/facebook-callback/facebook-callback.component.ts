@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-facebook-callback',
@@ -32,7 +33,7 @@ export class FacebookCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin('FACEBOOK', code, state)
+    this.authenticationService.socialLogin(environment.facebookTag, code, state)
       .pipe(first())
       .subscribe(
         () => {

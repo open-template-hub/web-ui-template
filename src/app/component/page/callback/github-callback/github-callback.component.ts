@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-github-callback',
@@ -32,7 +33,7 @@ export class GithubCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin('GITHUB', code, state)
+    this.authenticationService.socialLogin(environment.githubTag, code, state)
       .pipe(first())
       .subscribe(
         () => {
