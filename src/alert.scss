@@ -1,19 +1,43 @@
-.error-with-icon {
+.alert-with-icon {
   width: 100%;
   position: relative;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-.error-with-icon p {
+.alert-with-icon p {
   padding-left: 49px;
 }
 
-.error-with-icon i {
+.alert-with-icon i {
   position: absolute;
   top: 0;
   left: 0;
   padding: 2px 7px;
+}
+
+.success-text, .success-text p, .success-text i {
+  color: var(--success);
+}
+
+.input-success input {
+  border-color: var(--success);
+}
+
+.input-success input::-webkit-input-placeholder {
+  color: var(--success);
+}
+
+.input-success input:focus {
+  border-color: var(--success);
+}
+
+.input-success.input-with-icon input:focus + i {
+  color: var(--success);
+}
+
+.input-success.input-with-icon i {
+  color: var(--success);
 }
 
 .error-text, .error-text p, .error-text i {
@@ -39,6 +63,3 @@
 .input-error.input-with-icon i {
   color: var(--error);
 }
-
-
-

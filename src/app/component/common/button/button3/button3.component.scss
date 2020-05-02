@@ -43,31 +43,31 @@
 // Social
 
 .linkedin-in.button3 {
-  background-color: #007bb6;
+  background-color: var(--linkedin);
 }
 
 .facebook-f.button3 {
-  background-color: #3b5998;
+  background-color: var(--facebook);
 }
 
 .twitter.button3 {
-  background-color: #00aced;
+  background-color: var(--twitter);
 }
 
 .google.button3 {
-  background-color: #4286f5;
+  background-color: var(--google);
 }
 
-.github.button3 {
-  background-color: #171515;
+.github-alt.button3 {
+  background-color: var(--github);
 }
 
 .dribbble.button3 {
-  background-color: #ea4c89;
+  background-color: var(--dribbble);
 }
 
 .instagram.button3 {
-  background-color: #125688;
+  background-color: var(--instagram);
 }
 
 @media (hover:hover) {

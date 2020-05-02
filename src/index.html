@@ -18,7 +18,7 @@
       overflow: auto;
     }
 
-    .splash-screen {
+    .index-splash-page {
       position: fixed;
       top: 0;
       left: 0;
@@ -31,7 +31,7 @@
       flex-direction: column;
     }
 
-    .splash-animation {
+    .index-splash-animation {
       margin-top: 30vh;
       display: flex;
       align-items: center;
@@ -40,18 +40,16 @@
       flex-direction: column;
     }
 
-    .logo {
-      width: 48px;
-      height: 51px;
+    .index-splash-animation img:first-child {
+      height: 55px;
     }
 
-    .name {
+    .index-splash-animation img:nth-child(2) {
       width: 194px;
-      height: 40px;
       margin-top: 10px;
     }
 
-    .splash-bar {
+    .index-splash-bar {
       width: 130px;
       height: 2px;
       background: #cfcfcf;
@@ -60,17 +58,17 @@
       overflow: hidden;
     }
 
-    .splash-bar::before {
+    .index-splash-bar::before {
       content: "";
       width: 68px;
       height: 2px;
       background: #e23237;
       position: absolute;
       left: -34px;
-      animation: bar 1.5s infinite ease;
+      animation: index-splash-bar 1.5s infinite ease;
     }
 
-    @keyframes bar {
+    @keyframes index-splash-bar {
       50% {
         left: 96px;
         background: #b52e31;
@@ -80,11 +78,11 @@
 </head>
 <body>
   <app-root>
-    <div class="splash-screen">
-      <div class="splash-animation">
-        <img src="./assets/brand-logo.png" class="logo" alt="logo"/>
-        <img src="./assets/brand-name-dark.png" class="name" alt="name"/>
-        <div class="splash-bar">
+    <div class="index-splash-page">
+      <div class="index-splash-animation">
+        <img src="./assets/brand-logo.png" alt="logo"/>
+        <img src="./assets/brand-name-dark.png" alt="name"/>
+        <div class="index-splash-bar">
         </div>
       </div>
     </div>

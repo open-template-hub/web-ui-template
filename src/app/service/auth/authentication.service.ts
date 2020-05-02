@@ -74,4 +74,22 @@ export class AuthenticationService {
   forgetPassword(username: any) {
     return this.http.post<any>(`${environment.authServerUrl}/auth/forget-password`, {username});
   }
+
+  socialLoginRedirect(key: string) {
+    return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key});
+  }
+
+  socialLogin(key: string, code: string, state: string) {
+    return this.http.post<any>(`${environment.authServerUrl}/social/login`, {key, code, state})
+      .pipe(map(currentUser => {
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        this.currentUserSubject.next(currentUser);
+
+        // TODO: get second parameter from basic info db
+        this.themeService.initTheme(false);
+        this.themeService.initSideNavClosed(false);
+
+        return currentUser;
+      }));
+  }
 }

@@ -2,7 +2,7 @@
   <app-card1 [title]="'Log in'">
     <div fxLayout="row" fxLayoutAlign="center center">
       <app-button3 [rounded]="true" [brand]="'facebook-f'"></app-button3>
-      <app-button3 [rounded]="true" [brand]="'github'"></app-button3>
+      <app-button3 [rounded]="true" [brand]="'github-alt'" (click)="githubLogin()"></app-button3>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 2rem;">
       <p>or</p>
@@ -23,19 +23,19 @@
           <p>Remember Me</p>
         </label>
       </div>
-      <div class="error-text error-with-icon" *ngIf="f.username.touched && f.username.invalid">
+      <div class="error-text alert-with-icon" *ngIf="f.username.touched && f.username.invalid">
         <p>
           Please provide a valid username
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="error-text error-with-icon" *ngIf="f.password.touched && f.password.invalid">
+      <div class="error-text alert-with-icon" *ngIf="f.password.touched && f.password.invalid">
         <p>
           Please provide a valid password
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="error-text error-with-icon" *ngIf="error">
+      <div class="error-text alert-with-icon" *ngIf="error">
         <p>
           {{error}}
         </p>

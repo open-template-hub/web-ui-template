@@ -11,6 +11,9 @@ import { LandingLayoutComponent } from './component/layout/landing-layout/landin
 import { DashboardLayoutComponent } from './component/layout/dashboard-layout/dashboard-layout.component';
 import { ResetPasswordComponent } from './component/page/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './component/page/forget-password/forget-password.component';
+import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
+import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
+import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
 
 const routes: Routes = [
   {
@@ -27,10 +30,19 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'callback',
+    component: SplashLayoutComponent,
+    children: [
+      {path: 'github', component: GithubCallbackComponent},
+      {path: 'facebook', component: FacebookCallbackComponent}
+    ]
+  },
+  {
     path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
-      {path: '', component: DashboardComponent, canActivate: [AuthGuard]}]
+      {path: '', component: DashboardComponent, canActivate: [AuthGuard]}
+    ]
   },
 
   // otherwise redirect to home

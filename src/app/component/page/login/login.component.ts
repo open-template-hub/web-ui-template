@@ -67,4 +67,24 @@ export class LoginComponent implements OnInit {
           this.loadingService.setLoading(false);
         });
   }
+
+  githubLogin() {
+    this.loadingService.setLoading(true);
+
+    this.authenticationService.socialLoginRedirect('GITHUB')
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.loadingService.setLoading(false);
+          window.location.href = data.loginUrl;
+        },
+        errorResponse => {
+          if (typeof errorResponse.error === "string")  {
+            this.error = errorResponse.error;
+          } else if (errorResponse.statusText) {
+            this.error = errorResponse.statusText;
+          }
+          this.loadingService.setLoading(false);
+        });
+  }
 }
