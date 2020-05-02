@@ -7,8 +7,8 @@
   width: 60px;
   height: 60px;
   background-color: transparent;
-  border: 0 transparent;
-  border-bottom: 2px solid transparent;
+  border: 0;
+  border-bottom: 2px solid;
   color: whitesmoke;
   cursor:pointer;
   transition: 400ms ease-out;
@@ -16,7 +16,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 .button4.button4-with-text {
