@@ -1,5 +1,13 @@
 <div class="sign-up-page">
   <app-card1 [title]="'Register'">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-button4 [brand]="'dribbble'" (click)="dribbbleLogin()"></app-button4>
+      <app-button4 [brand]="'facebook-f'" (click)="facebookLogin()"></app-button4>
+      <app-button4 [brand]="'github'" (click)="githubLogin()"></app-button4>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
+      <p>or</p>
+    </div>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
         <input type="text" placeholder="Username..." formControlName="username" required>

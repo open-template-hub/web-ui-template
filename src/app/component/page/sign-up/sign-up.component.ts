@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
 import { LoadingService } from '../../../service/loading/loading.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-sign-up',
@@ -81,6 +82,66 @@ export class SignUpComponent implements OnInit {
         },
         errorResponse => {
           if (typeof errorResponse.error === 'string') {
+            this.error = errorResponse.error;
+          } else if (errorResponse.statusText) {
+            this.error = errorResponse.statusText;
+          }
+          this.loadingService.setLoading(false);
+        });
+  }
+
+  githubLogin() {
+    this.loadingService.setLoading(true);
+
+    this.authenticationService.socialLoginRedirect(environment.githubTag)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.loadingService.setLoading(false);
+          window.location.href = data.loginUrl;
+        },
+        errorResponse => {
+          if (typeof errorResponse.error === "string")  {
+            this.error = errorResponse.error;
+          } else if (errorResponse.statusText) {
+            this.error = errorResponse.statusText;
+          }
+          this.loadingService.setLoading(false);
+        });
+  }
+
+  facebookLogin() {
+    this.loadingService.setLoading(true);
+
+    this.authenticationService.socialLoginRedirect(environment.facebookTag)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.loadingService.setLoading(false);
+          window.location.href = data.loginUrl;
+        },
+        errorResponse => {
+          if (typeof errorResponse.error === "string")  {
+            this.error = errorResponse.error;
+          } else if (errorResponse.statusText) {
+            this.error = errorResponse.statusText;
+          }
+          this.loadingService.setLoading(false);
+        });
+  }
+
+  dribbbleLogin() {
+    this.loadingService.setLoading(true);
+
+    this.authenticationService.socialLoginRedirect(environment.dribbbleTag)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.loadingService.setLoading(false);
+          window.location.href = data.loginUrl;
+        },
+        errorResponse => {
+          if (typeof errorResponse.error === "string")  {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;

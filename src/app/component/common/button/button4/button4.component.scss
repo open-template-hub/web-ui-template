@@ -68,45 +68,86 @@
   background-color: var(--instagram);
 }
 
+.button4-checked.button4, .button4:hover {
+  box-shadow:0 4px 7px 0 var(--shadow);
+  background-color: whitesmoke;
+  color: var(--color);
+}
+
+.button4-checked.button4.linkedin-in {
+  color: var(--linkedin);
+  box-shadow:0 4px 7px 0 var(--linkedin);
+}
+
+.button4-checked.button4.facebook-f {
+  color: var(--facebook);
+  box-shadow:0 4px 7px 0 var(--facebook);
+}
+
+.button4-checked.button4.twitter {
+  color: var(--twitter);
+  box-shadow:0 4px 7px 0 var(--twitter);
+}
+
+.button4-checked.button4.google {
+  color: var(--google);
+  box-shadow:0 4px 7px 0 var(--google);
+}
+
+.button4-checked.button4.github {
+  color: var(--github);
+  box-shadow:0 4px 7px 0 var(--github);
+}
+
+.button4-checked.button4.dribbble {
+  color: var(--dribbble);
+  box-shadow:0 4px 7px 0 var(--dribbble);
+}
+
+.button4-checked.button4.instagram {
+  color: var(--instagram);
+  box-shadow:0 4px 7px 0 var(--instagram);
+}
+
 @media (hover:hover) {
 
-  .button4-checked.button4, .button4:hover {
+  .button4:hover {
     box-shadow:0 4px 7px 0 var(--shadow);
     background-color: whitesmoke;
     color: var(--color);
   }
 
-  .button4-checked.button4.linkedin-in, .linkedin-in.button4:hover {
+  .linkedin-in.button4:hover {
     color: var(--linkedin);
     box-shadow:0 4px 7px 0 var(--linkedin);
   }
 
-  .button4-checked.button4.facebook-f, .facebook-f.button4:hover {
+  .facebook-f.button4:hover {
     color: var(--facebook);
     box-shadow:0 4px 7px 0 var(--facebook);
   }
 
-  .button4-checked.button4.twitter, .twitter.button4:hover {
+  .twitter.button4:hover {
     color: var(--twitter);
     box-shadow:0 4px 7px 0 var(--twitter);
   }
 
-  .button4-checked.button4.google, .google.button4:hover {
+  .google.button4:hover {
     color: var(--google);
     box-shadow:0 4px 7px 0 var(--google);
   }
 
-  .button4-checked.button4.github, .github.button4:hover {
+  .github.button4:hover {
     color: var(--github);
     box-shadow:0 4px 7px 0 var(--github);
   }
 
-  .button4-checked.button4.dribbble, .dribbble.button4:hover {
+  .dribbble.button4:hover {
     color: var(--dribbble);
     box-shadow:0 4px 7px 0 var(--dribbble);
   }
 
-  .button4-checked.button4.instagram, .instagram.button4:hover {
+  .instagram.button4:hover {
     color: var(--instagram);
     box-shadow:0 4px 7px 0 var(--instagram);
   }
