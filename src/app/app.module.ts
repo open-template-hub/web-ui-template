@@ -27,7 +27,6 @@ import { FooterComponent } from './component/nav/footer/footer.component';
 import { Card1Component } from './component/common/card/card1/card1.component';
 import { Button1Component } from './component/common/button/button1/button1.component';
 import { Button2Component } from './component/common/button/button2/button2.component';
-import { Button3Component } from './component/common/button/button3/button3.component';
 import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
@@ -54,7 +53,6 @@ import { DribbbleCallbackComponent } from './component/page/callback/dribbble-ca
     Card1Component,
     Button1Component,
     Button2Component,
-    Button3Component,
     GithubCallbackComponent,
     SplashLayoutComponent,
     FacebookCallbackComponent,

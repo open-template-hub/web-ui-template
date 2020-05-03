@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component({
@@ -12,7 +12,6 @@ export class Button4Component implements OnInit {
   @Input() brand: string = 'angular';
 
   selected: boolean = false;
-
   loading: boolean = false;
 
   constructor(private loadingService: LoadingService) {

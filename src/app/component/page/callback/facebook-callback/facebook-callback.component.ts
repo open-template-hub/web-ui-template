@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
+import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-facebook-callback',
@@ -17,7 +18,9 @@ export class FacebookCallbackComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService
+
   ) {
   }
 
@@ -37,6 +40,7 @@ export class FacebookCallbackComponent implements OnInit {
       .pipe(first())
       .subscribe(
         () => {
+          this.loadingService.setLoading(false);
           this.router.navigate([this.returnUrl]);
         },
         errorResponse => {

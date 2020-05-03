@@ -6,7 +6,7 @@
   font-size: 18px;
   width: 60px;
   height: 60px;
-  background-color: transparent;
+  background-color: var(--social);
   border: 0;
   border-bottom: 2px solid;
   color: whitesmoke;
@@ -41,31 +41,31 @@
 // Social
 
 .linkedin-in.button4 {
-  background-color: var(--linkedin);
+  --social: var(--linkedin);
 }
 
 .facebook-f.button4 {
-  background-color: var(--facebook);
+  --social: var(--facebook);
 }
 
 .twitter.button4 {
-  background-color: var(--twitter);
+  --social: var(--twitter);
 }
 
 .google.button4 {
-  background-color: var(--google);
+  --social: var(--google);
 }
 
 .github.button4 {
-  background-color: var(--github);
+  --social: var(--github);
 }
 
 .dribbble.button4 {
-  background-color: var(--dribbble);
+  --social: var(--dribbble);
 }
 
 .instagram.button4 {
-  background-color: var(--instagram);
+  --social: var(--instagram);
 }
 
 .button4-checked.button4, .button4:hover {
@@ -74,81 +74,16 @@
   color: var(--color);
 }
 
-.button4-checked.button4.linkedin-in {
-  color: var(--linkedin);
-  box-shadow:0 4px 7px 0 var(--linkedin);
-}
-
-.button4-checked.button4.facebook-f {
-  color: var(--facebook);
-  box-shadow:0 4px 7px 0 var(--facebook);
-}
-
-.button4-checked.button4.twitter {
-  color: var(--twitter);
-  box-shadow:0 4px 7px 0 var(--twitter);
-}
-
-.button4-checked.button4.google {
-  color: var(--google);
-  box-shadow:0 4px 7px 0 var(--google);
-}
-
-.button4-checked.button4.github {
-  color: var(--github);
-  box-shadow:0 4px 7px 0 var(--github);
-}
-
-.button4-checked.button4.dribbble {
-  color: var(--dribbble);
-  box-shadow:0 4px 7px 0 var(--dribbble);
-}
-
-.button4-checked.button4.instagram {
-  color: var(--instagram);
-  box-shadow:0 4px 7px 0 var(--instagram);
+.button4-checked.button4 {
+  color: var(--social);
+  box-shadow:0 4px 7px 0 var(--social);
 }
 
 @media (hover:hover) {
 
   .button4:hover {
-    box-shadow:0 4px 7px 0 var(--shadow);
+    box-shadow:0 4px 7px 0 var(--social);
     background-color: whitesmoke;
-    color: var(--color);
-  }
-
-  .linkedin-in.button4:hover {
-    color: var(--linkedin);
-    box-shadow:0 4px 7px 0 var(--linkedin);
-  }
-
-  .facebook-f.button4:hover {
-    color: var(--facebook);
-    box-shadow:0 4px 7px 0 var(--facebook);
-  }
-
-  .twitter.button4:hover {
-    color: var(--twitter);
-    box-shadow:0 4px 7px 0 var(--twitter);
-  }
-
-  .google.button4:hover {
-    color: var(--google);
-    box-shadow:0 4px 7px 0 var(--google);
-  }
-
-  .github.button4:hover {
-    color: var(--github);
-    box-shadow:0 4px 7px 0 var(--github);
-  }
-
-  .dribbble.button4:hover {
-    color: var(--dribbble);
-    box-shadow:0 4px 7px 0 var(--dribbble);
-  }
-
-  .instagram.button4:hover {
-    color: var(--instagram);
-    box-shadow:0 4px 7px 0 var(--instagram);
+    color: var(--social);
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { environment } from '../../../../../environments/environment';
 import { first } from 'rxjs/operators';
+import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-dribbble-callback',
@@ -17,7 +18,8 @@ export class DribbbleCallbackComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService
   ) {
   }
 
@@ -37,6 +39,7 @@ export class DribbbleCallbackComponent implements OnInit {
       .pipe(first())
       .subscribe(
         () => {
+          this.loadingService.setLoading(false);
           this.router.navigate([this.returnUrl]);
         },
         errorResponse => {

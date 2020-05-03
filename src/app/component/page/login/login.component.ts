@@ -76,7 +76,6 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.loadingService.setLoading(false);
           window.location.href = data.loginUrl;
         },
         errorResponse => {
@@ -96,7 +95,6 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.loadingService.setLoading(false);
           window.location.href = data.loginUrl;
         },
         errorResponse => {
@@ -116,7 +114,6 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.loadingService.setLoading(false);
           window.location.href = data.loginUrl;
         },
         errorResponse => {
