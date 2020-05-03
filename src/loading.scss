@@ -50,10 +50,18 @@
   .card-bottom-loading::after {
     visibility: hidden;
   }
+
+  .bottom-nav-loading::after {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 800px) {
   .card-bottom-loading::after {
-    visibility: visible
+    visibility: visible;
+  }
+
+  .bottom-nav-loading::after {
+    visibility: hidden;
   }
 }
