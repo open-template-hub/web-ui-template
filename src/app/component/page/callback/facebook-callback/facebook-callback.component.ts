@@ -31,12 +31,12 @@ export class FacebookCallbackComponent implements OnInit {
     const code = this.route.snapshot.queryParamMap.get('code');
     const state = this.route.snapshot.queryParamMap.get('state');
 
-    if (!code) {
+    if (!code || !state) {
       this.error = 'Please try again later';
       return;
     }
 
-    this.authenticationService.socialLogin(environment.facebookTag, code, null)
+    this.authenticationService.socialLogin(environment.facebookTag, code, state)
       .pipe(first())
       .subscribe(
         () => {
