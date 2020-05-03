@@ -21,11 +21,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track:vertical {
-  background: var(--darker);
+  background: var(--lighter-contrast);
 }
 
 body::-webkit-scrollbar-thumb:vertical {
-  background: var(--color);
+  background: var(--darker-contrast);
 }
 
 body::-webkit-scrollbar:horizontal {

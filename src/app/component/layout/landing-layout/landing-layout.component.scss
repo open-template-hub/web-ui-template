@@ -3,9 +3,9 @@
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  box-shadow:inset 0 0 0 2000px var(--background-shadow);
   background-image: var(--background-img);
   background-color: var(--background);
+  box-shadow:inset 0 0 0 2000px var(--overlay);
 }
 
 .header {
