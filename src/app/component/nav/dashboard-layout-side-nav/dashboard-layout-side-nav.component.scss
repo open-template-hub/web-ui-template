@@ -8,7 +8,7 @@
   align-items: center;
   background-color: var(--background);
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0 0 0 env(safe-area-inset-left);
 
   background-position: center center;
