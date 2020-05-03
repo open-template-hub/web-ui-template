@@ -4,9 +4,8 @@
   left: 0;
   height: 55px;
   width: 100vw;
-  display: -webkit-box;
-  box-sizing: content-box;
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: flex-start;
   overflow-x: auto;
   background-color: var(--background);
   box-shadow: 0 0 5px var(--shadow);
