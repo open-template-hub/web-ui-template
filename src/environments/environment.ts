@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  
   githubTag: 'GITHUB_LOCAL',
   facebookTag: 'FACEBOOK_LOCAL',
   authServerUrl: 'http://localhost:4000'
