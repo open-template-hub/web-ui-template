@@ -26,14 +26,13 @@ export class FacebookCallbackComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
     const code = this.route.snapshot.queryParamMap.get('code');
-    const state = this.route.snapshot.queryParamMap.get('state');
 
-    if (!code || !state) {
+    if (!code) {
       this.error = 'Please try again later';
       return;
     }
 
-    this.authenticationService.socialLogin(environment.facebookTag, code, state)
+    this.authenticationService.socialLogin(environment.facebookTag, code, null)
       .pipe(first())
       .subscribe(
         () => {
