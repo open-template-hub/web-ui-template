@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
-import { first } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
+import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-facebook-callback',
-  templateUrl: './facebook-callback.component.html',
-  styleUrls: ['./facebook-callback.component.scss']
+  selector: 'app-dribbble-callback',
+  templateUrl: './dribbble-callback.component.html',
+  styleUrls: ['./dribbble-callback.component.scss']
 })
-export class FacebookCallbackComponent implements OnInit {
+export class DribbbleCallbackComponent implements OnInit {
 
   returnUrl: string;
   error = '';
@@ -33,7 +33,7 @@ export class FacebookCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin(environment.facebookTag, code, state)
+    this.authenticationService.socialLogin(environment.dribbbleTag, code, state)
       .pipe(first())
       .subscribe(
         () => {

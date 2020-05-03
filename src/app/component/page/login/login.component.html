@@ -1,6 +1,7 @@
 <div class="login-page">
   <app-card1 [title]="'Log in'">
     <div fxLayout="row" fxLayoutAlign="center center">
+      <app-button4 [brand]="'dribbble'" (click)="dribbbleLogin()"></app-button4>
       <app-button4 [brand]="'facebook-f'" (click)="facebookLogin()"></app-button4>
       <app-button4 [brand]="'github'" (click)="githubLogin()"></app-button4>
     </div>

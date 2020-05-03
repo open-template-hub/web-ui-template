@@ -14,6 +14,7 @@ import { ForgetPasswordComponent } from './component/page/forget-password/forget
 import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
+import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,8 @@ const routes: Routes = [
     component: SplashLayoutComponent,
     children: [
       {path: 'github', component: GithubCallbackComponent},
-      {path: 'facebook', component: FacebookCallbackComponent}
+      {path: 'facebook', component: FacebookCallbackComponent},
+      {path: 'dribbble', component: DribbbleCallbackComponent}
     ]
   },
   {
