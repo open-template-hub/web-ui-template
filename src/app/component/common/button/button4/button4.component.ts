@@ -11,6 +11,8 @@ export class Button4Component implements OnInit {
   @Input() text: string = '';
   @Input() brand: string = 'angular';
 
+  selected: boolean = false;
+
   loading: boolean = false;
 
   constructor(private loadingService: LoadingService) {

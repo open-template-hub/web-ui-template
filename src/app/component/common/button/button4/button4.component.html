@@ -1,4 +1,4 @@
-<button class="button4" [disabled]="loading" [class.button4-with-text]="text" [ngClass]="brand">
+<button class="button4" [disabled]="loading" [class.button4-with-text]="text" [ngClass]="brand" [class.button4-checked]="selected && loading" (click)="selected = !selected">
   <i [classList]="'fab fa-' + brand"></i>
   {{text}}
 </button>
