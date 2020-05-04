@@ -9,43 +9,43 @@
       <p>or</p>
     </div>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-      <div class="input-with-icon" [class.input-error]="f.username.touched && f.username.invalid">
+      <div class="input-with-icon" [class.input-error]="submitted && f.username.invalid">
         <input type="text" placeholder="Username..." formControlName="username" required>
         <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="input-with-icon" [class.input-error]="f.email.touched && f.email.invalid">
+      <div class="input-with-icon" [class.input-error]="submitted && f.email.invalid">
         <input type="email" placeholder="Email..." formControlName="email" required>
         <i class="fas fa-envelope fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="input-with-icon" [class.input-error]="f.password.touched && f.password.invalid">
+      <div class="input-with-icon" [class.input-error]="submitted && f.password.invalid">
         <input type="password" placeholder="Password..." formControlName="password" required>
         <i class="fas fa-lock fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="input-with-icon" [class.input-error]="f.confirmPassword.touched && f.confirmPassword.invalid">
+      <div class="input-with-icon" [class.input-error]="submitted && f.confirmPassword.invalid">
         <input type="password" placeholder="Confirm Password..." formControlName="confirmPassword" required>
         <i class="fas fa-lock fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="f.username.touched && f.username.invalid">
+      <div class="error-text alert-with-icon" *ngIf="submitted && f.username.invalid">
         <p>
           Please provide a valid username
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="f.email.touched && f.email.invalid">
+      <div class="error-text alert-with-icon" *ngIf="submitted && f.email.invalid">
         <p>
           Please provide a valid email address
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="f.password.touched && f.password.invalid">
+      <div class="error-text alert-with-icon" *ngIf="submitted && f.password.invalid">
         <p>
           Please provide a valid password (min length 6)
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid">
+      <div class="error-text alert-with-icon" *ngIf="submitted && f.confirmPassword.invalid">
         <p>
-          Please provide the same value entered above
+          Please provide the same value for confirm password
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>

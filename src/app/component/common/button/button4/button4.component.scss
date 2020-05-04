@@ -70,14 +70,10 @@
 }
 
 .button4-checked.button4 {
-  box-shadow:0 4px 7px 0 var(--shadow);
-  background-color: whitesmoke;
-  color: var(--color);
-}
-
-.button4-checked.button4 {
-  color: var(--social);
   box-shadow:0 4px 7px 0 var(--social);
+  border-bottom-color: var(--social);
+  background-color: whitesmoke;
+  color: var(--social);
 }
 
 @media (hover:hover) {
