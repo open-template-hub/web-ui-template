@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  environment = environment;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,48 +70,10 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  linkedinLogin() {
+  socialLogin(key: string) {
     this.loadingService.setLoading(true);
 
-    this.authenticationService.socialLoginRedirect(environment.linkedinTag)
-      .pipe(first())
-      .subscribe(
-        data => {
-          window.location.href = data.loginUrl;
-        },
-        errorResponse => {
-          if (typeof errorResponse.error === "string")  {
-            this.error = errorResponse.error;
-          } else if (errorResponse.statusText) {
-            this.error = errorResponse.statusText;
-          }
-          this.loadingService.setLoading(false);
-        });
-  }
-
-  facebookLogin() {
-    this.loadingService.setLoading(true);
-
-    this.authenticationService.socialLoginRedirect(environment.facebookTag)
-      .pipe(first())
-      .subscribe(
-        data => {
-          window.location.href = data.loginUrl;
-        },
-        errorResponse => {
-          if (typeof errorResponse.error === "string")  {
-            this.error = errorResponse.error;
-          } else if (errorResponse.statusText) {
-            this.error = errorResponse.statusText;
-          }
-          this.loadingService.setLoading(false);
-        });
-  }
-
-  dribbbleLogin() {
-    this.loadingService.setLoading(true);
-
-    this.authenticationService.socialLoginRedirect(environment.dribbbleTag)
+    this.authenticationService.socialLoginRedirect(key)
       .pipe(first())
       .subscribe(
         data => {

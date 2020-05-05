@@ -3,10 +3,10 @@
   padding-top: 1px;
   border-radius: 0;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 20px;
   width: 60px;
   height: 60px;
-  background-color: var(--social);
+  background: var(--social);
   border: 0;
   border-bottom: 2px solid;
   border-bottom-color: var(--card);
@@ -31,7 +31,7 @@
 
 .button4 i {
   font-weight: 300;
-  font-size: 36px;
+  font-size: 42px;
 }
 
 .button4:disabled {
@@ -41,14 +41,6 @@
 
 // Social
 
-.linkedin-in.button4 {
-  --social: var(--linkedin);
-}
-
-.facebook-f.button4 {
-  --social: var(--facebook);
-}
-
 .twitter.button4 {
   --social: var(--twitter);
 }
@@ -57,22 +49,50 @@
   --social: var(--google);
 }
 
-.github.button4 {
-  --social: var(--github);
+.facebook-f.button4 {
+  --social: var(--facebook);
+}
+
+.linkedin-in.button4 {
+  --social: var(--linkedin);
+}
+
+.vk.button4 {
+  --social: var(--vk);
+}
+
+.gitlab.button4 {
+  --social: var(--gitlab);
+}
+
+.twitch.button4 {
+  --social: var(--twitch);
 }
 
 .dribbble.button4 {
   --social: var(--dribbble);
 }
 
-.instagram.button4 {
-  --social: var(--instagram);
+.reddit-alien.button4 {
+  --social: var(--reddit);
+}
+
+.pinterest.button4 {
+  --social: var(--pinterest);
+}
+
+.yandex.button4 {
+  --social: var(--yandex);
+}
+
+.github.button4 {
+  --social: var(--github);
 }
 
 .button4-checked.button4 {
   box-shadow:0 4px 7px 0 var(--social);
   border-bottom-color: var(--social);
-  background-color: whitesmoke;
+  background: whitesmoke;
   color: var(--social);
 }
 
@@ -80,7 +100,7 @@
 
   .button4:hover {
     box-shadow:0 4px 7px 0 var(--social);
-    background-color: whitesmoke;
+    background: whitesmoke;
     border-bottom-color: var(--social);
     color: var(--social);
   }
