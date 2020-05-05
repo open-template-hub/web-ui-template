@@ -3,5 +3,6 @@ export const environment = {
   githubTag: 'GITHUB',
   facebookTag: 'FACEBOOK',
   dribbbleTag: 'DRIBBBLE',
+  linkedinTag: 'LINKEDIN',
   authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 };
