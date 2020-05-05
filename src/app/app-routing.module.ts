@@ -15,6 +15,7 @@ import { GithubCallbackComponent } from './component/page/callback/github-callba
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
 import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
+import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,8 @@ const routes: Routes = [
     children: [
       {path: 'github', component: GithubCallbackComponent},
       {path: 'facebook', component: FacebookCallbackComponent},
-      {path: 'dribbble', component: DribbbleCallbackComponent}
+      {path: 'dribbble', component: DribbbleCallbackComponent},
+      {path: 'linkedin', component: LinkedinCallbackComponent}
     ]
   },
   {

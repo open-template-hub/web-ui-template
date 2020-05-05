@@ -32,6 +32,7 @@ import { SplashLayoutComponent } from './component/layout/splash-layout/splash-l
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
 import { Button4Component } from './component/common/button/button4/button4.component';
 import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
+import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DribbbleCallbackComponent } from './component/page/callback/dribbble-ca
     SplashLayoutComponent,
     FacebookCallbackComponent,
     Button4Component,
-    DribbbleCallbackComponent
+    DribbbleCallbackComponent,
+    LinkedinCallbackComponent
   ],
   imports: [
     BrowserModule,

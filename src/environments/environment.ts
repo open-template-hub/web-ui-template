@@ -8,11 +8,13 @@ export const environment = {
   githubTag: 'GITHUB_LOCAL',
   facebookTag: 'FACEBOOK',
   dribbbleTag: 'DRIBBBLE_LOCAL',
+  linkedinTag: 'LINKEDIN_LOCAL',
   authServerUrl: 'http://localhost:4000'
 /*
   githubTag: 'GITHUB',
   facebookTag: 'FACEBOOK',
   dribbbleTag: 'DRIBBBLE',
+  linkedinTag: 'LINKEDIN',
   authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 */
 };

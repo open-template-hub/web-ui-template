@@ -69,10 +69,10 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  githubLogin() {
+  linkedinLogin() {
     this.loadingService.setLoading(true);
 
-    this.authenticationService.socialLoginRedirect(environment.githubTag)
+    this.authenticationService.socialLoginRedirect(environment.linkedinTag)
       .pipe(first())
       .subscribe(
         data => {
