@@ -1,6 +1,6 @@
 <nav class="side-nav" [class.side-nav-closed]="sideNavClosed === 'true'" [class.dark-theme]="darkTheme === 'true'">
   <a href="javascript:void(0)" (click)="toggleSideNav()" class="brand">
-    <img class="brand-logo" height="40" alt="logo" src="/assets/brand-logo.png"/>
+    <img class="brand-logo" height="40" alt="logo" [src]="brandLogo"/>
     <h2>UI Template</h2>
   </a>
   <a routerLink="/dashboard">

@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { first } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
 import { LoadingService } from '../../../../service/loading/loading.service';
+import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component({
   selector: 'app-facebook-callback',
@@ -14,17 +15,20 @@ export class FacebookCallbackComponent implements OnInit {
 
   returnUrl: string;
   error = '';
+  brandLogo: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private loadingService: LoadingService
-
+    private loadingService: LoadingService,
+    private themeService: ThemeService
   ) {
   }
 
   ngOnInit(): void {
+    this.brandLogo = this.themeService.brandLogo;
+
     // get return url from route parameters or default to '/dashboard'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 

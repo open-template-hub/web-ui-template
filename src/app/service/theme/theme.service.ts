@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class ThemeService {
   private sideNavClosedSubject: BehaviorSubject<string>;
   public sideNavClosed: Observable<string>;
 
+  public brandLogo: string;
+
   constructor() {
     let darkThemeStorageItem = localStorage.getItem('darkTheme') ? localStorage.getItem('darkTheme') : sessionStorage.getItem('darkTheme');
     darkThemeStorageItem = darkThemeStorageItem ? darkThemeStorageItem : 'false';
@@ -22,6 +25,12 @@ export class ThemeService {
     sideNavClosedStorageItem = sideNavClosedStorageItem ? sideNavClosedStorageItem : 'false';
     this.sideNavClosedSubject = new BehaviorSubject<string>(sideNavClosedStorageItem);
     this.sideNavClosed = this.sideNavClosedSubject.asObservable();
+
+    if (environment.production) {
+      this.brandLogo = './assets/brand-logo.png';
+    } else {
+      this.brandLogo = './assets/brand-logo-blue.png'
+    }
   }
 
   initTheme(darkThemePreferred: boolean) {

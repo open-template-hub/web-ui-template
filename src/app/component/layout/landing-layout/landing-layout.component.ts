@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LandingLayoutComponent implements OnInit {
 
   darkTheme: string;
+  brandLogo: string;
 
   constructor(
     private router: Router,
@@ -18,6 +19,8 @@ export class LandingLayoutComponent implements OnInit {
     this.themeService.darkTheme.subscribe(darkTheme => {
       this.darkTheme = darkTheme;
     });
+
+    this.brandLogo = this.themeService.brandLogo;
   }
 
   ngOnInit(): void {
