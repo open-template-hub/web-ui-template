@@ -1,10 +1,13 @@
 <div class="login-page">
   <app-card1 [title]="'Log in'">
     <div fxLayout="row" fxLayoutAlign="center center">
-      <app-button4 [brand]="'facebook-f'" (click)="socialLogin(environment.facebookTag)"></app-button4>
-      <app-button4 [brand]="'linkedin-in'" (click)="socialLogin(environment.linkedinTag)"></app-button4>
-      <app-button4 [brand]="'dribbble'" (click)="socialLogin(environment.dribbbleTag)"></app-button4>
-      <app-button4 [brand]="'github'" (click)="socialLogin(environment.githubTag)"></app-button4>
+      <app-social-button [brand]="'facebook-f'" (click)="socialLogin(environment.facebookTag)"></app-social-button>
+      <app-social-button [brand]="'linkedin-in'" (click)="socialLogin(environment.linkedinTag)"></app-social-button>
+      <app-social-button [brand]="'dribbble'" (click)="socialLogin(environment.dribbbleTag)"></app-social-button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-social-button [brand]="'reddit-alien'" (click)="socialLogin(environment.redditTag)"></app-social-button>
+      <app-social-button [brand]="'github'" (click)="socialLogin(environment.githubTag)"></app-social-button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
       <p>or</p>

@@ -1,0 +1,45 @@
+.splash-content {
+  margin-top: 30vh;
+}
+
+.splash-logos > * {
+  margin: 8px;
+}
+
+.splash-logos i {
+  font-size: 28px;
+}
+
+.splash-logos img {
+  height: 55px;
+}
+
+.splash-loading-bar {
+  width: 130px;
+  height: 2px;
+  background: #cfcfcf;
+  margin-top: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-loading-bar::before {
+  content: "";
+  width: 68px;
+  height: 2px;
+  background: #e23237;
+  position: absolute;
+  left: -34px;
+  animation: splash-loading-bar 1.5s infinite ease;
+}
+
+.splash-content .alert-with-icon {
+  margin-top: 22px;
+}
+
+@keyframes splash-loading-bar {
+  50% {
+    left: 96px;
+    background: var(--reddit);
+  }
+}

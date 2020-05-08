@@ -16,6 +16,7 @@ import { SplashLayoutComponent } from './component/layout/splash-layout/splash-l
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
 import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
 import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
+import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
       {path: 'github', component: GithubCallbackComponent},
       {path: 'facebook', component: FacebookCallbackComponent},
       {path: 'dribbble', component: DribbbleCallbackComponent},
-      {path: 'linkedin', component: LinkedinCallbackComponent}
+      {path: 'linkedin', component: LinkedinCallbackComponent},
+      {path: 'reddit', component: RedditCallbackComponent}
     ]
   },
   {

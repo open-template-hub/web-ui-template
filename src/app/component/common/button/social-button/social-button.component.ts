@@ -1,12 +1,12 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component({
-  selector: 'app-button4',
-  templateUrl: './button4.component.html',
-  styleUrls: ['./button4.component.scss']
+  selector: 'app-social-button',
+  templateUrl: './social-button.component.html',
+  styleUrls: ['./social-button.component.scss']
 })
-export class Button4Component implements OnInit {
+export class SocialButtonComponent implements OnInit {
 
   @Input() text: string = '';
   @Input() brand: string = 'angular';

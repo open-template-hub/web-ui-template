@@ -30,9 +30,10 @@ import { Button2Component } from './component/common/button/button2/button2.comp
 import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
-import { Button4Component } from './component/common/button/button4/button4.component';
+import { SocialButtonComponent } from './component/common/button/social-button/social-button.component';
 import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
 import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
+import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
 
 @NgModule({
   declarations: [
@@ -57,9 +58,10 @@ import { LinkedinCallbackComponent } from './component/page/callback/linkedin-ca
     GithubCallbackComponent,
     SplashLayoutComponent,
     FacebookCallbackComponent,
-    Button4Component,
+    SocialButtonComponent,
     DribbbleCallbackComponent,
-    LinkedinCallbackComponent
+    LinkedinCallbackComponent,
+    RedditCallbackComponent
   ],
   imports: [
     BrowserModule,

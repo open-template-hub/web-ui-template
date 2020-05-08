@@ -1,4 +1,4 @@
-.button4 {
+.social-button {
   padding-left: 1px;
   padding-top: 1px;
   border-radius: 0;
@@ -20,76 +20,76 @@
   box-sizing: content-box;
 }
 
-.button4.button4-with-text {
+.social-button.social-button-with-text {
   width: auto;
   padding: 0 1.1rem;
 }
 
-.button4.button4-with-text i {
+.social-button.social-button-with-text i {
   margin-right: 0.7rem;
 }
 
-.button4 i {
+.social-button i {
   font-weight: 300;
   font-size: 42px;
 }
 
-.button4:disabled {
+.social-button:disabled {
   pointer-events: none;
   filter: opacity(60%);
 }
 
 // Social
 
-.twitter.button4 {
+.twitter.social-button {
   --social: var(--twitter);
 }
 
-.google.button4 {
+.google.social-button {
   --social: var(--google);
 }
 
-.facebook-f.button4 {
+.facebook-f.social-button {
   --social: var(--facebook);
 }
 
-.linkedin-in.button4 {
+.linkedin-in.social-button {
   --social: var(--linkedin);
 }
 
-.vk.button4 {
+.vk.social-button {
   --social: var(--vk);
 }
 
-.gitlab.button4 {
+.gitlab.social-button {
   --social: var(--gitlab);
 }
 
-.twitch.button4 {
+.twitch.social-button {
   --social: var(--twitch);
 }
 
-.dribbble.button4 {
+.dribbble.social-button {
   --social: var(--dribbble);
 }
 
-.reddit-alien.button4 {
+.reddit-alien.social-button {
   --social: var(--reddit);
 }
 
-.pinterest.button4 {
+.pinterest.social-button {
   --social: var(--pinterest);
 }
 
-.yandex.button4 {
+.yandex.social-button {
   --social: var(--yandex);
 }
 
-.github.button4 {
+.github.social-button {
   --social: var(--github);
 }
 
-.button4-checked.button4 {
+.social-button-checked.social-button {
   box-shadow:0 4px 7px 0 var(--social);
   border-bottom-color: var(--social);
   background: whitesmoke;
@@ -98,7 +98,7 @@
 
 @media (hover:hover) {
 
-  .button4:hover {
+  .social-button:hover {
     box-shadow:0 4px 7px 0 var(--social);
     background: whitesmoke;
     border-bottom-color: var(--social);
