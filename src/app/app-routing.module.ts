@@ -17,6 +17,7 @@ import { FacebookCallbackComponent } from './component/page/callback/facebook-ca
 import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
 import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
 import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
+import { TwitchCallbackComponent } from './component/page/callback/twitch-callback/twitch-callback.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
       {path: 'facebook', component: FacebookCallbackComponent},
       {path: 'dribbble', component: DribbbleCallbackComponent},
       {path: 'linkedin', component: LinkedinCallbackComponent},
-      {path: 'reddit', component: RedditCallbackComponent}
+      {path: 'reddit', component: RedditCallbackComponent},
+      {path: 'twitch', component: TwitchCallbackComponent}
     ]
   },
   {

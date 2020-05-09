@@ -9,6 +9,7 @@ export const environment = {
   facebookTag: 'FACEBOOK',
   dribbbleTag: 'DRIBBBLE_LOCAL',
   redditTag: 'REDDIT_LOCAL',
+  twitchTag: 'TWITCH_LOCAL',
   linkedinTag: 'LINKEDIN_LOCAL',
   authServerUrl: 'http://localhost:4000'
 /*
@@ -16,6 +17,7 @@ export const environment = {
   facebookTag: 'FACEBOOK',
   dribbbleTag: 'DRIBBBLE',
   redditTag: 'REDDIT',
+  twitchTag: 'TWITCH',
   linkedinTag: 'LINKEDIN',
   authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 */

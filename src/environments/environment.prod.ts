@@ -4,6 +4,7 @@ export const environment = {
   facebookTag: 'FACEBOOK',
   dribbbleTag: 'DRIBBBLE',
   redditTag: 'REDDIT',
+  twitchTag: 'TWITCH',
   linkedinTag: 'LINKEDIN',
   authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 };

@@ -34,6 +34,7 @@ import { SocialButtonComponent } from './component/common/button/social-button/s
 import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
 import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
 import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
+import { TwitchCallbackComponent } from './component/page/callback/twitch-callback/twitch-callback.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { RedditCallbackComponent } from './component/page/callback/reddit-callba
     SocialButtonComponent,
     DribbbleCallbackComponent,
     LinkedinCallbackComponent,
-    RedditCallbackComponent
+    RedditCallbackComponent,
+    TwitchCallbackComponent
   ],
   imports: [
     BrowserModule,
