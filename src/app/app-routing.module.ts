@@ -18,6 +18,7 @@ import { DribbbleCallbackComponent } from './component/page/callback/dribbble-ca
 import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
 import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
 import { TwitchCallbackComponent } from './component/page/callback/twitch-callback/twitch-callback.component';
+import { TwitterCallbackComponent } from './component/page/callback/twitter-callback/twitter-callback.component';
 
 const routes: Routes = [
   {
@@ -37,12 +38,13 @@ const routes: Routes = [
     path: 'callback',
     component: SplashLayoutComponent,
     children: [
-      {path: 'github', component: GithubCallbackComponent},
+      {path: 'twitter', component: TwitterCallbackComponent},
       {path: 'facebook', component: FacebookCallbackComponent},
-      {path: 'dribbble', component: DribbbleCallbackComponent},
       {path: 'linkedin', component: LinkedinCallbackComponent},
+      {path: 'twitch', component: TwitchCallbackComponent},
+      {path: 'dribbble', component: DribbbleCallbackComponent},
       {path: 'reddit', component: RedditCallbackComponent},
-      {path: 'twitch', component: TwitchCallbackComponent}
+      {path: 'github', component: GithubCallbackComponent}
     ]
   },
   {

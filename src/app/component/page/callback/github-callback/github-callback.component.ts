@@ -40,7 +40,7 @@ export class GithubCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin(environment.githubTag, code, state)
+    this.authenticationService.socialLoginOAuthV2(environment.githubTag, code, state)
       .pipe(first())
       .subscribe(
         () => {

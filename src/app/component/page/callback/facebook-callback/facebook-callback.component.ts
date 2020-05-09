@@ -40,7 +40,7 @@ export class FacebookCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin(environment.facebookTag, code, state)
+    this.authenticationService.socialLoginOAuthV2(environment.facebookTag, code, state)
       .pipe(first())
       .subscribe(
         () => {

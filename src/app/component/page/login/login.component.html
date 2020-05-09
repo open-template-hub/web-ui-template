@@ -1,6 +1,7 @@
 <div class="login-page">
   <app-card1 [title]="'Log in'">
     <div fxLayout="row" fxLayoutAlign="center center">
+      <app-social-button [brand]="'twitter'" (click)="socialLogin(environment.twitterTag)"></app-social-button>
       <app-social-button [brand]="'facebook-f'" (click)="socialLogin(environment.facebookTag)"></app-social-button>
       <app-social-button [brand]="'linkedin-in'" (click)="socialLogin(environment.linkedinTag)"></app-social-button>
       <app-social-button [brand]="'twitch'" (click)="socialLogin(environment.twitchTag)"></app-social-button>

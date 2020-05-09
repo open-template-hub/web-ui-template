@@ -82,7 +82,21 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key, state});
   }
 
-  socialLogin(key: string, code: string, state: string) {
+  socialLoginOAuthV1(key: string, oauth_token: string, oauth_verifier: string) {
+    return this.http.post<any>(`${environment.authServerUrl}/social/login`, {key, oauth_token, oauth_verifier})
+      .pipe(map(currentUser => {
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        this.currentUserSubject.next(currentUser);
+
+        // TODO: get second parameter from basic info db
+        this.themeService.initTheme(false);
+        this.themeService.initSideNavClosed(false);
+
+        return currentUser;
+      }));
+  }
+
+  socialLoginOAuthV2(key: string, code: string, state: string) {
     if (state) {
       if (localStorage.getItem('loginSessionID') !== state) {
         return throwError({error: 'Bad Credentials'});

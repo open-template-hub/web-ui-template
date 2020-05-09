@@ -5,20 +5,22 @@
 export const environment = {
   production: false,
 
-  githubTag: 'GITHUB_LOCAL',
+  twitterTag: 'TWITTER_LOCAL',
   facebookTag: 'FACEBOOK',
+  linkedinTag: 'LINKEDIN_LOCAL',
+  twitchTag: 'TWITCH_LOCAL',
   dribbbleTag: 'DRIBBBLE_LOCAL',
   redditTag: 'REDDIT_LOCAL',
-  twitchTag: 'TWITCH_LOCAL',
-  linkedinTag: 'LINKEDIN_LOCAL',
+  githubTag: 'GITHUB_LOCAL',
   authServerUrl: 'http://localhost:4000'
 /*
-  githubTag: 'GITHUB',
+  twitterTag: 'TWITTER',
   facebookTag: 'FACEBOOK',
+  linkedinTag: 'LINKEDIN',
+  twitchTag: 'TWITCH',
   dribbbleTag: 'DRIBBBLE',
   redditTag: 'REDDIT',
-  twitchTag: 'TWITCH',
-  linkedinTag: 'LINKEDIN',
+  githubTag: 'GITHUB',
   authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 */
 };

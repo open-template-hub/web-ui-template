@@ -40,7 +40,7 @@ export class TwitchCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin(environment.twitchTag, code, state)
+    this.authenticationService.socialLoginOAuthV2(environment.twitchTag, code, state)
       .pipe(first())
       .subscribe(
         () => {

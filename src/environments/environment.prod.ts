@@ -1,10 +1,11 @@
 export const environment = {
   production: true,
-  githubTag: 'GITHUB',
+  twitterTag: 'TWITTER',
   facebookTag: 'FACEBOOK',
+  linkedinTag: 'LINKEDIN',
+  twitchTag: 'TWITCH',
   dribbbleTag: 'DRIBBBLE',
   redditTag: 'REDDIT',
-  twitchTag: 'TWITCH',
-  linkedinTag: 'LINKEDIN',
+  githubTag: 'GITHUB',
   authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
 };

@@ -40,7 +40,7 @@ export class RedditCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin(environment.redditTag, code, state)
+    this.authenticationService.socialLoginOAuthV2(environment.redditTag, code, state)
       .pipe(first())
       .subscribe(
         () => {

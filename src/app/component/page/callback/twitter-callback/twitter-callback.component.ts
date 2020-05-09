@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
+import { ThemeService } from '../../../../service/theme/theme.service';
 import { environment } from '../../../../../environments/environment';
 import { first } from 'rxjs/operators';
-import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component({
-  selector: 'app-linkedin-callback',
-  templateUrl: './linkedin-callback.component.html',
-  styleUrls: ['./linkedin-callback.component.scss']
+  selector: 'app-twitter-callback',
+  templateUrl: './twitter-callback.component.html',
+  styleUrls: ['./twitter-callback.component.scss']
 })
-export class LinkedinCallbackComponent implements OnInit {
+export class TwitterCallbackComponent implements OnInit {
 
   returnUrl: string;
   error = '';
@@ -32,15 +32,15 @@ export class LinkedinCallbackComponent implements OnInit {
     // get return url from route parameters or default to '/dashboard'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
-    const code = this.route.snapshot.queryParamMap.get('code');
-    const state = this.route.snapshot.queryParamMap.get('state');
+    const oauth_token = this.route.snapshot.queryParamMap.get('oauth_token');
+    const oauth_verifier = this.route.snapshot.queryParamMap.get('oauth_verifier');
 
-    if (!code || !state) {
+    if (!oauth_token || !oauth_verifier) {
       this.error = 'Please try again later';
       return;
     }
 
-    this.authenticationService.socialLoginOAuthV2(environment.linkedinTag, code, state)
+    this.authenticationService.socialLoginOAuthV1(environment.twitterTag, oauth_token, oauth_verifier)
       .pipe(first())
       .subscribe(
         () => {

@@ -40,7 +40,7 @@ export class DribbbleCallbackComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.socialLogin(environment.dribbbleTag, code, state)
+    this.authenticationService.socialLoginOAuthV2(environment.dribbbleTag, code, state)
       .pipe(first())
       .subscribe(
         () => {
