@@ -12,7 +12,10 @@ import { ThemeService } from '../../../service/theme/theme.service';
 export class LandingLayoutTopNavComponent implements OnInit {
 
   currentUser: AuthToken;
-  brandLogo: string;
+
+  brand = {
+    brandLogo: '',
+  };
 
   constructor(
     private router: Router,
@@ -23,7 +26,7 @@ export class LandingLayoutTopNavComponent implements OnInit {
       this.currentUser = currentUser;
     });
 
-    this.brandLogo = this.themeService.brandLogo;
+    this.brand = this.themeService.brand;
   }
 
   ngOnInit(): void {

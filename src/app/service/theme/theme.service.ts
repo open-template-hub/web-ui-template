@@ -13,7 +13,9 @@ export class ThemeService {
   private sideNavClosedSubject: BehaviorSubject<string>;
   public sideNavClosed: Observable<string>;
 
-  public brandLogo: string;
+  public brand = {
+    brandLogo: '',
+  };
 
   constructor() {
     let darkThemeStorageItem = localStorage.getItem('darkTheme') ? localStorage.getItem('darkTheme') : sessionStorage.getItem('darkTheme');
@@ -27,9 +29,9 @@ export class ThemeService {
     this.sideNavClosed = this.sideNavClosedSubject.asObservable();
 
     if (environment.production) {
-      this.brandLogo = './assets/brand-logo.png';
+      this.brand.brandLogo = './assets/brand-logo.png';
     } else {
-      this.brandLogo = './assets/brand-logo-blue.png'
+      this.brand.brandLogo = './assets/brand-logo-blue.png'
     }
   }
 

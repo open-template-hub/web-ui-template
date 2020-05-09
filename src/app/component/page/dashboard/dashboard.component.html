@@ -4,5 +4,11 @@
     <p>{{currentUser.accessToken}}</p>
     <h3>Refresh Token</h3>
     <p>{{currentUser.refreshToken}}</p>
+    <div class="error-text alert-with-icon" *ngIf="error">
+      <p>
+        {{error}}
+      </p>
+      <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+    </div>
   </app-card1>
 </div>

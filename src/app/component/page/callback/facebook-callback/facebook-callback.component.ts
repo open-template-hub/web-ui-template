@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
+import { ErrorService } from '../../../../service/error/error.service';
 
 @Component({
   selector: 'app-facebook-callback',
@@ -14,20 +15,23 @@ import { ThemeService } from '../../../../service/theme/theme.service';
 export class FacebookCallbackComponent implements OnInit {
 
   returnUrl: string;
-  error = '';
-  brandLogo: string;
+
+  brand = {
+    brandLogo: '',
+  };
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
     private loadingService: LoadingService,
+    private errorService: ErrorService,
     private themeService: ThemeService
   ) {
   }
 
   ngOnInit(): void {
-    this.brandLogo = this.themeService.brandLogo;
+    this.brand = this.themeService.brand;
 
     // get return url from route parameters or default to '/dashboard'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
@@ -36,7 +40,7 @@ export class FacebookCallbackComponent implements OnInit {
     const state = this.route.snapshot.queryParamMap.get('state');
 
     if (!code || !state) {
-      this.error = 'Please try again later';
+      this.errorService.setError('Please try again later');
       return;
     }
 
@@ -48,10 +52,10 @@ export class FacebookCallbackComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
-            this.error = errorResponse.error;
+          if (typeof errorResponse.error === 'string') {
+            this.errorService.setError(errorResponse.error);
           } else if (errorResponse.statusText) {
-            this.error = errorResponse.statusText;
+            this.errorService.setError(errorResponse.statusText);
           }
         });
   }

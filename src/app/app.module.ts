@@ -36,6 +36,7 @@ import { LinkedinCallbackComponent } from './component/page/callback/linkedin-ca
 import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
 import { TwitchCallbackComponent } from './component/page/callback/twitch-callback/twitch-callback.component';
 import { TwitterCallbackComponent } from './component/page/callback/twitter-callback/twitter-callback.component';
+import { CallbackComponent } from './component/page/callback/callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { TwitterCallbackComponent } from './component/page/callback/twitter-call
     LinkedinCallbackComponent,
     RedditCallbackComponent,
     TwitchCallbackComponent,
-    TwitterCallbackComponent
+    TwitterCallbackComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,

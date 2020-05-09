@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 export class DashboardLayoutComponent implements OnInit {
 
   darkTheme: string;
-  brandLogo: string;
+
+  brand = {
+    brandLogo: '',
+  };
 
   sideNavClosed = 'false';
 
@@ -26,7 +29,7 @@ export class DashboardLayoutComponent implements OnInit {
       this.sideNavClosed = sideNavClosed;
     });
 
-    this.brandLogo = this.themeService.brandLogo;
+    this.brand = this.themeService.brand;
   }
 
   ngOnInit(): void {
