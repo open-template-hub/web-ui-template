@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
@@ -76,10 +76,21 @@ export class AuthenticationService {
   }
 
   socialLoginRedirect(key: string) {
-    return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key});
+    const state = Math.random().toString(36);
+    localStorage.setItem('loginSessionID', state);
+
+    return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key, state});
   }
 
   socialLogin(key: string, code: string, state: string) {
+    if (state) {
+      if (localStorage.getItem('loginSessionID') !== state) {
+        return throwError({error: 'Bad Credentials'});
+      } else {
+        localStorage.removeItem('loginSessionID');
+      }
+    }
+
     return this.http.post<any>(`${environment.authServerUrl}/social/login`, {key, code, state})
       .pipe(map(currentUser => {
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
