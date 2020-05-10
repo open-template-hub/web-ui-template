@@ -14,6 +14,12 @@ export const environment = {
       logo: './assets/social/twitter-logo.png',
       cssClass: 'twitter'
     },
+    google: {
+      tag: 'GOOGLE_LOCAL',
+      callbackParams: ['code', 'state'],
+      logo: './assets/social/google-logo.png',
+      cssClass: 'google'
+    },
     facebook: {
       tag: 'FACEBOOK',
       callbackParams: ['code', 'state'],

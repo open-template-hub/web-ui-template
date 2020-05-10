@@ -34,6 +34,7 @@ const routes: Routes = [
     component: SplashLayoutComponent,
     children: [
       {path: 'twitter', component: CallbackComponent, data : { social: environment.social.twitter}},
+      {path: 'google', component: CallbackComponent, data : { social: environment.social.google}},
       {path: 'facebook', component: CallbackComponent, data : { social: environment.social.facebook}},
       {path: 'linkedin', component: CallbackComponent, data : { social: environment.social.linkedin}},
       {path: 'twitch', component: CallbackComponent, data : { social: environment.social.twitch}},

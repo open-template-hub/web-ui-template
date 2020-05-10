@@ -1,15 +1,16 @@
 <div class="login-page">
   <app-card1 [title]="'Log in'">
     <div fxLayout="row" fxLayoutAlign="center center">
-      <app-social-button [brand]="'twitter'" (click)="socialLogin(environment.social.twitter.tag)"></app-social-button>
-      <app-social-button [brand]="'facebook-f'" (click)="socialLogin(environment.social.facebook.tag)"></app-social-button>
-      <app-social-button [brand]="'linkedin-in'" (click)="socialLogin(environment.social.linkedin.tag)"></app-social-button>
-      <app-social-button [brand]="'twitch'" (click)="socialLogin(environment.social.twitch.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.twitter.cssClass" (click)="socialLogin(environment.social.twitter.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.google.cssClass" (click)="socialLogin(environment.social.google.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.facebook.cssClass" (click)="socialLogin(environment.social.facebook.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.linkedin.cssClass" (click)="socialLogin(environment.social.linkedin.tag)"></app-social-button>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <app-social-button [brand]="'dribbble'" (click)="socialLogin(environment.social.dribbble.tag)"></app-social-button>
-      <app-social-button [brand]="'reddit-alien'" (click)="socialLogin(environment.social.reddit.tag)"></app-social-button>
-      <app-social-button [brand]="'github'" (click)="socialLogin(environment.social.github.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.twitch.cssClass" (click)="socialLogin(environment.social.twitch.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.dribbble.cssClass" (click)="socialLogin(environment.social.dribbble.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.reddit.cssClass" (click)="socialLogin(environment.social.reddit.tag)"></app-social-button>
+      <app-social-button [brand]="environment.social.github.cssClass" (click)="socialLogin(environment.social.github.tag)"></app-social-button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
       <p>or</p>
