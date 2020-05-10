@@ -1,8 +1,8 @@
 <div class="sign-up-page">
   <app-card1 [title]="'Register'">
     <div fxLayout="row" fxLayoutAlign="center center">
-      <app-social-button [brand]="'facebook-f'" (click)="socialLogin(environment.facebookTag)"></app-social-button>
-      <app-social-button [brand]="'dribbble'" (click)="socialLogin(environment.dribbbleTag)"></app-social-button>
+      <app-social-button [brand]="'facebook-f'" (click)="socialLogin(environment.social.facebook.tag)"></app-social-button>
+      <app-social-button [brand]="'dribbble'" (click)="socialLogin(environment.social.dribbble.tag)"></app-social-button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
       <p>or</p>

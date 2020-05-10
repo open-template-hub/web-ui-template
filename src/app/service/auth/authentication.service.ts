@@ -82,31 +82,18 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key, state});
   }
 
-  socialLoginOAuthV1(key: string, oauth_token: string, oauth_verifier: string) {
-    return this.http.post<any>(`${environment.authServerUrl}/social/login`, {key, oauth_token, oauth_verifier})
-      .pipe(map(currentUser => {
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        this.currentUserSubject.next(currentUser);
-
-        // TODO: get second parameter from basic info db
-        this.themeService.initTheme(false);
-        this.themeService.initSideNavClosed(false);
-
-        return currentUser;
-      }));
-  }
-
-  socialLoginOAuthV2(key: string, code: string, state: string) {
-    if (state) {
-      if (localStorage.getItem('loginSessionID') !== state) {
+  socialLogin(key: string, params: {code?, state?, oauth_token?, oauth_verifier?}) {
+    if (params.state) {
+      if (localStorage.getItem('loginSessionID') !== params.state) {
         return throwError({error: 'Bad Credentials'});
       } else {
         localStorage.removeItem('loginSessionID');
       }
     }
 
-    return this.http.post<any>(`${environment.authServerUrl}/social/login`, {key, code, state})
-      .pipe(map(currentUser => {
+    return this.http.post<any>(`${environment.authServerUrl}/social/login`,
+      {key, code: params.code, state: params.state, oauth_token: params.oauth_token, oauth_verifier: params.oauth_verifier}
+      ).pipe(map(currentUser => {
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         this.currentUserSubject.next(currentUser);
 

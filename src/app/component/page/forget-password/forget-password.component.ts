@@ -16,6 +16,7 @@ export class ForgetPasswordComponent implements OnInit {
   submitted = false;
   error = '';
   success = false;
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +29,8 @@ export class ForgetPasswordComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/dashboard']);
     }
+
+    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
   }
 
   ngOnInit() {
@@ -42,9 +45,12 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.loading) {
+      return;
+    }
+
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.forgetPasswordForm.invalid) {
       return;
     }

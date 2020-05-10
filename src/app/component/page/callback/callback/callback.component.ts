@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemeService } from '../../../../service/theme/theme.service';
 import { ErrorService } from '../../../../service/error/error.service';
+import { first } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../../../../service/auth/authentication.service';
+import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-callback',
@@ -9,9 +13,9 @@ import { ErrorService } from '../../../../service/error/error.service';
 })
 export class CallbackComponent implements OnInit {
 
-  @Input() social: string = '';
-  @Input() socialLogo: string = '';
+  @Input() social: any;
 
+  returnUrl: string;
   error: string = '';
 
   brand = {
@@ -19,13 +23,72 @@ export class CallbackComponent implements OnInit {
   };
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private themeService: ThemeService,
-    private errorService: ErrorService
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService
   ) {
-    this.errorService.sharedError.subscribe(error => this.error = error);
   }
 
   ngOnInit(): void {
     this.brand = this.themeService.brand;
+
+    // get return url from route parameters or default to '/dashboard'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+
+    let callbackParams = {
+      code: undefined,
+      state: undefined,
+      oauth_token: undefined,
+      oauth_verifier: undefined
+    }
+
+    if (this.social.callbackParams.includes('code')) {
+      if (!this.route.snapshot.queryParamMap.has('code')) {
+        this.error = 'Please try again later';
+        return;
+      }
+      callbackParams.code = this.route.snapshot.queryParamMap.get('code');
+    }
+
+    if (this.social.callbackParams.includes('state')) {
+      if (!this.route.snapshot.queryParamMap.has('state')) {
+        this.error = 'Please try again later';
+        return;
+      }
+      callbackParams.state = this.route.snapshot.queryParamMap.get('state');
+    }
+
+    if (this.social.callbackParams.includes('oauth_token')) {
+      if (!this.route.snapshot.queryParamMap.has('oauth_token')) {
+        this.error = 'Please try again later';
+        return;
+      }
+      callbackParams.oauth_token = this.route.snapshot.queryParamMap.get('oauth_token');
+    }
+
+    if (this.social.callbackParams.includes('oauth_verifier')) {
+      if (!this.route.snapshot.queryParamMap.has('oauth_verifier')) {
+        this.error = 'Please try again later';
+        return;
+      }
+      callbackParams.oauth_verifier = this.route.snapshot.queryParamMap.get('oauth_verifier');
+    }
+
+    this.authenticationService.socialLogin(this.social.tag, callbackParams)
+      .pipe(first())
+      .subscribe(
+        () => {
+          this.loadingService.setLoading(false);
+          this.router.navigate([this.returnUrl]);
+        },
+        errorResponse => {
+          if (typeof errorResponse.error === 'string') {
+            this.error = errorResponse.error;
+          } else if (errorResponse.statusText) {
+            this.error = errorResponse.statusText;
+          }
+        });
   }
 }

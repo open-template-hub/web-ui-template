@@ -18,6 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   token = '';
   username = '';
   success = false;
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +31,8 @@ export class ResetPasswordComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/dashboard']);
     }
+
+    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
   }
 
   ngOnInit() {
@@ -71,9 +74,12 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.loading) {
+      return;
+    }
+
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.resetPasswordForm.invalid) {
       return;
     }

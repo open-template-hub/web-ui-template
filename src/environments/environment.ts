@@ -5,24 +5,52 @@
 export const environment = {
   production: false,
 
-  twitterTag: 'TWITTER_LOCAL',
-  facebookTag: 'FACEBOOK',
-  linkedinTag: 'LINKEDIN_LOCAL',
-  twitchTag: 'TWITCH_LOCAL',
-  dribbbleTag: 'DRIBBBLE_LOCAL',
-  redditTag: 'REDDIT_LOCAL',
-  githubTag: 'GITHUB_LOCAL',
-  authServerUrl: 'http://localhost:4000'
-/*
-  twitterTag: 'TWITTER',
-  facebookTag: 'FACEBOOK',
-  linkedinTag: 'LINKEDIN',
-  twitchTag: 'TWITCH',
-  dribbbleTag: 'DRIBBBLE',
-  redditTag: 'REDDIT',
-  githubTag: 'GITHUB',
-  authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com'
-*/
+  authServerUrl: 'http://localhost:4000',
+
+  social: {
+    twitter: {
+      tag: 'TWITTER_LOCAL',
+      callbackParams: ['oauth_token', 'oauth_verifier'],
+      logo: './assets/social/twitter-logo.png',
+      cssClass: 'twitter'
+    },
+    facebook: {
+      tag: 'FACEBOOK',
+      callbackParams: ['code', 'state'],
+      logo: './assets/social/facebook-logo.png',
+      cssClass: 'facebook-f'
+    },
+    linkedin: {
+      tag: 'LINKEDIN_LOCAL',
+      callbackParams: ['code', 'state'],
+      logo: './assets/social/linkedin-logo.png',
+      cssClass: 'linkedin-in'
+    },
+    twitch: {
+      tag: 'TWITCH_LOCAL',
+      callbackParams: ['code'],
+      logo: './assets/social/twitch-logo.png',
+      cssClass: 'twitch'
+    },
+    dribbble: {
+      tag: 'DRIBBBLE_LOCAL',
+      callbackParams: ['code', 'state'],
+      logo: './assets/social/dribbble-logo.png',
+      cssClass: 'dribbble'
+    },
+    reddit: {
+      tag: 'REDDIT_LOCAL',
+      callbackParams: ['code', 'state'],
+      logo: './assets/social/reddit-logo.png',
+      cssClass: 'reddit-alien'
+    },
+    github: {
+      tag: 'GITHUB_LOCAL',
+      callbackParams: ['code', 'state'],
+      logo: './assets/social/github-logo.png',
+      cssClass: 'github'
+    },
+  }
 };
 
 /*

@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error = '';
   environment = environment;
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,8 @@ export class LoginComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/dashboard']);
     }
+
+    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
   }
 
   ngOnInit() {
@@ -46,6 +49,10 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
+    if (this.loading) {
+      return;
+    }
+
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -71,6 +78,10 @@ export class LoginComponent implements OnInit {
   }
 
   socialLogin(key: string) {
+    if (this.loading) {
+      return;
+    }
+
     this.loadingService.setLoading(true);
 
     this.authenticationService.socialLoginRedirect(key)
