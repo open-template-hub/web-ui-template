@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ThemeService } from '../../../../service/theme/theme.service';
-import { ErrorService } from '../../../../service/error/error.service';
+import { Component, OnInit } from '@angular/core';
+import { ThemeService } from '../../../service/theme/theme.service';
 import { first } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../../../../service/auth/authentication.service';
-import { LoadingService } from '../../../../service/loading/loading.service';
+import { AuthenticationService } from '../../../service/auth/authentication.service';
+import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
   selector: 'app-callback',
@@ -13,8 +12,7 @@ import { LoadingService } from '../../../../service/loading/loading.service';
 })
 export class CallbackComponent implements OnInit {
 
-  @Input() social: any;
-
+  social: any;
   returnUrl: string;
   error: string = '';
 
@@ -33,6 +31,8 @@ export class CallbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.brand = this.themeService.brand;
+
+    this.social = this.route.snapshot.data['social'];
 
     // get return url from route parameters or default to '/dashboard'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';

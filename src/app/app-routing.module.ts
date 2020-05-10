@@ -11,14 +11,9 @@ import { LandingLayoutComponent } from './component/layout/landing-layout/landin
 import { DashboardLayoutComponent } from './component/layout/dashboard-layout/dashboard-layout.component';
 import { ResetPasswordComponent } from './component/page/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './component/page/forget-password/forget-password.component';
-import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
-import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
-import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
-import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
-import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
-import { TwitchCallbackComponent } from './component/page/callback/twitch-callback/twitch-callback.component';
-import { TwitterCallbackComponent } from './component/page/callback/twitter-callback/twitter-callback.component';
+import { CallbackComponent } from './component/page/callback/callback.component';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   {
@@ -38,13 +33,13 @@ const routes: Routes = [
     path: 'callback',
     component: SplashLayoutComponent,
     children: [
-      {path: 'twitter', component: TwitterCallbackComponent},
-      {path: 'facebook', component: FacebookCallbackComponent},
-      {path: 'linkedin', component: LinkedinCallbackComponent},
-      {path: 'twitch', component: TwitchCallbackComponent},
-      {path: 'dribbble', component: DribbbleCallbackComponent},
-      {path: 'reddit', component: RedditCallbackComponent},
-      {path: 'github', component: GithubCallbackComponent}
+      {path: 'twitter', component: CallbackComponent, data : { social: environment.social.twitter}},
+      {path: 'facebook', component: CallbackComponent, data : { social: environment.social.facebook}},
+      {path: 'linkedin', component: CallbackComponent, data : { social: environment.social.linkedin}},
+      {path: 'twitch', component: CallbackComponent, data : { social: environment.social.twitch}},
+      {path: 'dribbble', component: CallbackComponent, data : { social: environment.social.dribbble}},
+      {path: 'reddit', component: CallbackComponent, data : { social: environment.social.reddit}},
+      {path: 'github', component: CallbackComponent, data : { social: environment.social.github}}
     ]
   },
   {

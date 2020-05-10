@@ -27,16 +27,9 @@ import { FooterComponent } from './component/nav/footer/footer.component';
 import { Card1Component } from './component/common/card/card1/card1.component';
 import { Button1Component } from './component/common/button/button1/button1.component';
 import { Button2Component } from './component/common/button/button2/button2.component';
-import { GithubCallbackComponent } from './component/page/callback/github-callback/github-callback.component';
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
-import { FacebookCallbackComponent } from './component/page/callback/facebook-callback/facebook-callback.component';
+import { CallbackComponent } from './component/page/callback/callback.component';
 import { SocialButtonComponent } from './component/common/button/social-button/social-button.component';
-import { DribbbleCallbackComponent } from './component/page/callback/dribbble-callback/dribbble-callback.component';
-import { LinkedinCallbackComponent } from './component/page/callback/linkedin-callback/linkedin-callback.component';
-import { RedditCallbackComponent } from './component/page/callback/reddit-callback/reddit-callback.component';
-import { TwitchCallbackComponent } from './component/page/callback/twitch-callback/twitch-callback.component';
-import { TwitterCallbackComponent } from './component/page/callback/twitter-callback/twitter-callback.component';
-import { CallbackComponent } from './component/page/callback/callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -58,16 +51,9 @@ import { CallbackComponent } from './component/page/callback/callback/callback.c
     Card1Component,
     Button1Component,
     Button2Component,
-    GithubCallbackComponent,
     SplashLayoutComponent,
-    FacebookCallbackComponent,
-    SocialButtonComponent,
-    DribbbleCallbackComponent,
-    LinkedinCallbackComponent,
-    RedditCallbackComponent,
-    TwitchCallbackComponent,
-    TwitterCallbackComponent,
-    CallbackComponent
+    CallbackComponent,
+    SocialButtonComponent
   ],
   imports: [
     BrowserModule,
