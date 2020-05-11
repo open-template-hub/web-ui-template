@@ -75,11 +75,14 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.authServerUrl}/auth/forget-password`, {username});
   }
 
-  socialLoginRedirect(key: string) {
-    const state = Math.random().toString(36);
-    localStorage.setItem('loginSessionID', state);
+  socialLoginRedirect(social: any) {
+    let state;
+    if (social.callbackParams.includes('state')) {
+      state = Math.random().toString(36);
+      localStorage.setItem('loginSessionID', state);
+    }
 
-    return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key, state});
+    return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key: social.tag, state});
   }
 
   socialLogin(key: string, params: {code?, state?, oauth_token?, oauth_verifier?}) {

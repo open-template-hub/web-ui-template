@@ -30,7 +30,7 @@ export const environment = {
     },
     twitch: {
       tag: 'TWITCH',
-      callbackParams: ['code'],
+      callbackParams: ['code', 'state'],
       logo: './assets/social/twitch-logo.png',
       cssClass: 'twitch'
     },

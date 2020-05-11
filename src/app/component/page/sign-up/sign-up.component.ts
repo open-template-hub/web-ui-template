@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   submitted = false;
   error = '';
   environment = environment;
-  loading: boolean = false;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -98,22 +98,21 @@ export class SignUpComponent implements OnInit {
         });
   }
 
-
-  socialLogin(key: string) {
+  socialLogin(social: any) {
     if (this.loading) {
       return;
     }
 
     this.loadingService.setLoading(true);
 
-    this.authenticationService.socialLoginRedirect(key)
+    this.authenticationService.socialLoginRedirect(social)
       .pipe(first())
       .subscribe(
         data => {
           window.location.href = data.loginUrl;
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
+          if (typeof errorResponse.error === 'string')  {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;

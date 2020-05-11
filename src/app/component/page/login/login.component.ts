@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
+          if (typeof errorResponse.error === 'string')  {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;
@@ -77,21 +77,21 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  socialLogin(key: string) {
+  socialLogin(social: any) {
     if (this.loading) {
       return;
     }
 
     this.loadingService.setLoading(true);
 
-    this.authenticationService.socialLoginRedirect(key)
+    this.authenticationService.socialLoginRedirect(social)
       .pipe(first())
       .subscribe(
         data => {
           window.location.href = data.loginUrl;
         },
         errorResponse => {
-          if (typeof errorResponse.error === "string")  {
+          if (typeof errorResponse.error === 'string')  {
             this.error = errorResponse.error;
           } else if (errorResponse.statusText) {
             this.error = errorResponse.statusText;
