@@ -18,7 +18,7 @@ export const environment = {
     },
     facebook: {
       tag: 'FACEBOOK',
-      callbackParams: ['code', 'state'],
+      callbackParams: ['code'],
       logo: './assets/social/facebook-logo.png',
       cssClass: 'facebook-f'
     },
