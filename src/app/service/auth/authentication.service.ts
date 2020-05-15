@@ -15,7 +15,8 @@ export class AuthenticationService {
   public currentUser: Observable<AuthToken>;
 
   constructor(private http: HttpClient,
-              private themeService: ThemeService) {
+              private themeService: ThemeService
+  ) {
     const currentUserStorageItem = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : sessionStorage.getItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<AuthToken>(JSON.parse(currentUserStorageItem));
     this.currentUser = this.currentUserSubject.asObservable();

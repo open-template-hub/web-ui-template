@@ -6,6 +6,7 @@ export const environment = {
   production: false,
 
   authServerUrl: 'http://localhost:4000',
+  basicInfoServerUrl: 'http://localhost:4001',
 
   social: {
     twitter: {

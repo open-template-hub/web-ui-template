@@ -1,14 +1,20 @@
 <div class="dashboard-page">
   <app-card1 [title]="'Dashboard'">
-    <h3>Access Token</h3>
-    <p>{{currentUser.accessToken}}</p>
-    <h3>Refresh Token</h3>
-    <p>{{currentUser.refreshToken}}</p>
-    <div class="error-text alert-with-icon" *ngIf="error">
-      <p>
-        {{error}}
-      </p>
-      <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <h3>Id</h3>
+      <h3>{{userInfo.id}}</h3>
+      <br>
+      <h3>Username</h3>
+      <h3>{{userInfo.username}}</h3>
+      <br>
+      <h3>Email</h3>
+      <h3>{{userInfo.email}}</h3>
+      <div class="error-text alert-with-icon" *ngIf="error">
+        <p>
+          {{error}}
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
     </div>
   </app-card1>
 </div>
