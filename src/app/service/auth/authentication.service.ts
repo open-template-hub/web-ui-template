@@ -54,11 +54,8 @@ export class AuthenticationService {
 
     const refreshToken = this.currentUserValue.refreshToken;
 
-    if (localStorage.getItem('currentUser')) {
-      localStorage.removeItem('currentUser');
-    } else {
-      sessionStorage.removeItem('currentUser');
-    }
+    localStorage.clear();
+    sessionStorage.clear();
     this.currentUserSubject.next(null);
 
     return this.http.post<any>(`${environment.authServerUrl}/auth/logout`, {token: refreshToken});
@@ -74,6 +71,20 @@ export class AuthenticationService {
 
   forgetPassword(username: any) {
     return this.http.post<any>(`${environment.authServerUrl}/auth/forget-password`, {username});
+  }
+
+  refreshToken(token: string) {
+    return this.http.post<any>(`${environment.authServerUrl}/auth/token`, {token})
+      .pipe(map(currentUser => {
+        if (localStorage.getItem('currentUser')) {
+          localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        } else {
+          sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+        this.currentUserSubject.next(currentUser);
+
+        return currentUser;
+      }));
   }
 
   socialLoginRedirect(social: any) {

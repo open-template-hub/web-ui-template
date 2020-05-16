@@ -12,7 +12,7 @@ import { BasicInfoService } from '../../../service/basic-info/basic-info.service
 export class DashboardComponent implements OnInit {
 
   currentUser: AuthToken;
-  userInfo: any;
+  userInfo: any = {};
   error: string = '';
 
   constructor(
@@ -20,17 +20,17 @@ export class DashboardComponent implements OnInit {
     private basicInfoService: BasicInfoService,
     private errorService: ErrorService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
     this.errorService.sharedError.subscribe(error => this.error = error);
   }
 
   ngOnInit(): void {
     this.basicInfoService.getUserInfo(this.authenticationService.currentUserValue)
       .subscribe( userInfo => {
-        console.log('here');
-        this.userInfo = userInfo;
-      }
-    );
-    this.basicInfoService.userInfo.subscribe(x => this.userInfo = x);
+          this.userInfo = userInfo;
+        }
+      );
+
+    this.basicInfoService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
   }
 }
