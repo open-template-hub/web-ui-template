@@ -13,6 +13,7 @@ export class DashboardLayoutSideNavComponent implements OnInit {
 
   darkTheme: string;
   sideNavClosed = 'false';
+  userInfo: any = {};
 
   brand = {
     brandLogo: '',
@@ -38,6 +39,8 @@ export class DashboardLayoutSideNavComponent implements OnInit {
     });
 
     this.brand = this.themeService.brand;
+
+    this.authenticationService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
   }
 
   ngOnInit(): void {

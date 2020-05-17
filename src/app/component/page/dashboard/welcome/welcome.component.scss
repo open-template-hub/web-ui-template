@@ -1,0 +1,13 @@
+@import "src/themes";
+
+.dashboard-welcome-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15vh;
+}
+
+.dashboard-welcome-page app-card1 {
+  display: flex;
+  justify-content: center;
+}

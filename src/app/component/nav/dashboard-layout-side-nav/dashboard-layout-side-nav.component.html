@@ -3,6 +3,12 @@
     <img class="brand-logo" height="40" alt="logo" [src]="brand.brandLogo"/>
     <h2>UI Template</h2>
   </a>
+  <a routerLink="/dashboard" *ngIf="userInfo">
+    <i class="material-icons">person</i>
+    <span>
+        {{userInfo.username}}
+    </span>
+  </a>
   <a routerLink="/dashboard">
     <i class="material-icons">dashboard</i>
     <span>

@@ -35,9 +35,8 @@ import { SplashLayoutComponent } from './component/layout/splash-layout/splash-l
 import { CallbackComponent } from './component/page/callback/callback.component';
 import { SocialButtonComponent } from './component/common/button/social-button/social-button.component';
 import { environment } from '../environments/environment';
-import { ApolloLink, concat } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { AuthToken } from './model/AuthToken';
+import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +60,8 @@ import { AuthToken } from './model/AuthToken';
     Button2Component,
     SplashLayoutComponent,
     CallbackComponent,
-    SocialButtonComponent
+    SocialButtonComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

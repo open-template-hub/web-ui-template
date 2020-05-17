@@ -6,7 +6,10 @@ export const environment = {
   production: false,
 
   authServerUrl: 'http://localhost:4000',
+//  authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com',
+
   basicInfoServerUrl: 'http://localhost:4001',
+//  basicInfoServerUrl: 'https://basic-info-server-nodejs-st.herokuapp.com',
 
   social: {
     twitter: {

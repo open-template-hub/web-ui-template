@@ -1,0 +1,41 @@
+<div class="dashboard-welcome-page">
+  <app-card1 [title]="'Welcome'">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <h3 *ngIf="userInfo.email">Username</h3>
+      <h3 *ngIf="userInfo.email">{{userInfo.username}}</h3>
+      <br>
+      <h3 *ngIf="userInfo.email">Email</h3>
+      <h3 *ngIf="userInfo.email">{{userInfo.email}}</h3>
+      <br>
+    </div>
+    <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
+      <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
+        <input type="text" placeholder="First name..." formControlName="firstName" required>
+        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+      <div class="input-with-icon" [class.input-error]="submitted && f.lastName.invalid">
+        <input type="text" placeholder="Last name..." formControlName="lastName" required>
+        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+      <div class="error-text alert-with-icon" *ngIf="submitted && f.firstName.invalid">
+        <p>
+          Please provide a first name
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+      <div class="error-text alert-with-icon" *ngIf="submitted && f.lastName.invalid">
+        <p>
+          Please provide a last name
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+      <div class="error-text alert-with-icon" *ngIf="error">
+        <p>
+          {{error}}
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+      <app-button1 [text]="'Done'"></app-button1>
+    </form>
+  </app-card1>
+</div>

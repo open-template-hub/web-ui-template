@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
-import { first, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ThemeService } from '../theme/theme.service';
 
 @Injectable({
@@ -14,12 +14,19 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<AuthToken>;
   public currentUser: Observable<AuthToken>;
 
+  private userInfoSubject: BehaviorSubject<any>;
+  public userInfo: Observable<any>;
+
   constructor(private http: HttpClient,
               private themeService: ThemeService
   ) {
     const currentUserStorageItem = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : sessionStorage.getItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<AuthToken>(JSON.parse(currentUserStorageItem));
     this.currentUser = this.currentUserSubject.asObservable();
+
+    const userInfoStorageItem = localStorage.getItem('userInfo') ? localStorage.getItem('userInfo') : sessionStorage.getItem('userInfo');
+    this.userInfoSubject = new BehaviorSubject<any>(JSON.parse(userInfoStorageItem));
+    this.userInfo = this.userInfoSubject.asObservable();
   }
 
   public get currentUserValue(): AuthToken {
@@ -117,6 +124,21 @@ export class AuthenticationService {
         this.themeService.initSideNavClosed(false);
 
         return currentUser;
+      }));
+  }
+
+  me() {
+    return this.http.get<any>(`${environment.authServerUrl}/info/me`)
+      .pipe(map(userInfo => {
+          this.userInfoSubject.next(userInfo);
+
+          if (localStorage.getItem('currentUser')) {
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          } else {
+            sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+          }
+
+          return userInfo;
       }));
   }
 }

@@ -14,6 +14,7 @@ import { ForgetPasswordComponent } from './component/page/forget-password/forget
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { CallbackComponent } from './component/page/callback/callback.component';
 import { environment } from '../environments/environment';
+import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
-      {path: '', component: DashboardComponent, canActivate: [AuthGuard]}
+      {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]}
     ]
   },
 
