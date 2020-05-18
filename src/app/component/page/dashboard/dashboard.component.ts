@@ -43,8 +43,16 @@ export class DashboardComponent implements OnInit {
                 } else {
                   this.basicInfo = basicInfo;
                 }
+              },
+              error => {
+                this.loadingService.setLoading(false);
+                this.errorService.setError(error);
               }
             );
+        },
+        error => {
+          this.loadingService.setLoading(false);
+          this.errorService.setError(error.message);
         }
       );
   }

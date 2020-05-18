@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/page/home/home.component';
 import { LoginComponent } from './component/page/login/login.component';
 
-import { HTTP_INTERCEPTORS, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthRequestInterceptor } from './interceptor/auth/auth-request.interceptor';
 import { AuthResponseInterceptor } from './interceptor/auth/auth-response.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
