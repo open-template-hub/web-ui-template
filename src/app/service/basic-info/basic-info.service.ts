@@ -1,11 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { throwError } from 'rxjs';
 import { AuthToken } from '../../model/AuthToken';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { LoadingService } from '../loading/loading.service';
-import { AuthenticationService } from '../auth/authentication.service';
+
+const InitUser = gql
+  `mutation {
+  initUser {
+    username
+  }
+}
+`
+
+const CreateUser = gql
+  `mutation CreateUser($username: String!) {
+  createUser(input: {username: $username}) {
+    username
+  }
+}
+`
 
 const GetUserInfo = gql`
 query {
@@ -23,23 +37,21 @@ export class BasicInfoService {
 
   constructor(
     private apollo: Apollo,
-    private loadingService: LoadingService,
-    private authenticationService: AuthenticationService) {
+    private loadingService: LoadingService) {
   }
 
-  createUserInfo(currentUser: AuthToken, retry: boolean = false) {
-
+  initUserInfo() {
     this.loadingService.setLoading(true);
-    return this.apollo.query<any>(
+    return this.apollo.mutate(
       {
-        query: GetUserInfo,
-        fetchPolicy: 'network-only',
+        mutation: InitUser,
         errorPolicy: 'all'
       }
     ).pipe(map(response => {
       this.loadingService.setLoading(false);
       if (response.data) {
-        return response.data.me;
+        const responseData: any = response.data;
+        return responseData.initUser;
       }
 
       return null;
@@ -47,7 +59,30 @@ export class BasicInfoService {
     );
   }
 
-  getUserInfo(currentUser: AuthToken, retry: boolean = false) {
+  createUserInfo(username: string) {
+
+    this.loadingService.setLoading(true);
+    return this.apollo.mutate(
+      {
+        mutation: CreateUser,
+        variables: {
+          username
+        },
+        errorPolicy: 'all'
+      }
+    ).pipe(map(response => {
+      this.loadingService.setLoading(false);
+      if (response.data) {
+        const responseData: any = response.data;
+        return responseData.createUser;
+      }
+
+      return null;
+    })
+    );
+  }
+
+  getUserInfo(currentUser: AuthToken) {
 
     this.loadingService.setLoading(true);
     return this.apollo.query<any>(
@@ -63,20 +98,6 @@ export class BasicInfoService {
       }
 
       return null;
-    }),
-    catchError(err => {
-      this.loadingService.setLoading(false);
-      if (err.networkError?.error?.errors[0]?.extensions?.code === 'TOKEN_EXPIRED') {
-        this.authenticationService.refreshToken(currentUser.refreshToken).subscribe(
-          currentUser => {
-            if (!retry) {
-              this.getUserInfo(currentUser, true).subscribe( userInfo => {
-              });
-            }
-          }
-        )
-      }
-      return throwError(err);
     })
     );
   }

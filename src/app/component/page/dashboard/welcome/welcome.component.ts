@@ -53,11 +53,5 @@ export class WelcomeComponent implements OnInit {
     }
 
     this.loadingService.setLoading(true);
-    this.basicInfoService.createUserInfo(this.authenticationService.currentUserValue)
-      .subscribe(() => {
-          this.loadingService.setLoading(false);
-          this.router.navigate(['/dashboard']);
-        }
-      );
   }
 }

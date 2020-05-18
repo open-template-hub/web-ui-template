@@ -4,8 +4,8 @@
       <h3>Username</h3>
       <h3>{{userInfo.username}}</h3>
       <br>
-      <h3>Email</h3>
-      <h3>{{userInfo.email}}</h3>
+      <h3 *ngIf="userInfo.email">Email</h3>
+      <h3 *ngIf="userInfo.email">{{userInfo.email}}</h3>
       <div class="error-text alert-with-icon" *ngIf="error">
         <p>
           {{error}}
