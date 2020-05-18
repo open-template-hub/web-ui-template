@@ -43,20 +43,6 @@ export class BasicInfoService {
       }
 
       return null;
-    }),
-    catchError(err => {
-      this.loadingService.setLoading(false);
-      if (err.networkError?.error?.errors[0]?.extensions?.code === 'TOKEN_EXPIRED') {
-        this.authenticationService.refreshToken(currentUser.refreshToken).subscribe(
-          currentUser => {
-            if (!retry) {
-              this.getUserInfo(currentUser, true).subscribe( userInfo => {
-              });
-            }
-          }
-        )
-      }
-      return throwError(err);
     })
     );
   }

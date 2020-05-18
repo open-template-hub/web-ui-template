@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpRequest} from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
 import { map } from 'rxjs/operators';
@@ -92,6 +92,18 @@ export class AuthenticationService {
 
         return currentUser;
       }));
+  }
+
+  addAuthorizationHeader(request: HttpRequest<unknown>) {
+    const currentUser = this.currentUserSubject.value;
+    if (currentUser && currentUser.accessToken) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.accessToken}`
+        }
+      });
+    }
+    return request;
   }
 
   socialLoginRedirect(social: any) {
