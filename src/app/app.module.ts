@@ -37,6 +37,7 @@ import { SocialButtonComponent } from './component/common/button/social-button/s
 import { environment } from '../environments/environment';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
+import { LabelDataComponent } from './component/common/block/label-data/label-data.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.com
     SplashLayoutComponent,
     CallbackComponent,
     SocialButtonComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    LabelDataComponent
   ],
   imports: [
     BrowserModule,

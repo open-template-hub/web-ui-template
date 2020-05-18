@@ -1,11 +1,10 @@
 <div class="dashboard-page">
   <app-card1 [title]="'Dashboard'">
-    <div fxLayout="column" fxLayoutAlign="center center" *ngIf="basicInfo">
-      <h3>Username</h3>
-      <h3>{{userInfo.username}}</h3>
-      <br>
-      <h3 *ngIf="userInfo.email">Email</h3>
-      <h3 *ngIf="userInfo.email">{{userInfo.email}}</h3>
+    <div fxLayout="column" *ngIf="basicInfo">
+      <app-label-data [label]="'Username'" [data]="userInfo.username"></app-label-data>
+      <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>
+      <app-label-data *ngIf="basicInfo.firstName" [label]="'First Name'" [data]="basicInfo.firstName"></app-label-data>
+      <app-label-data *ngIf="basicInfo.lastName" [label]="'Last Name'" [data]="basicInfo.lastName"></app-label-data>
       <div class="error-text alert-with-icon" *ngIf="error">
         <p>
           {{error}}

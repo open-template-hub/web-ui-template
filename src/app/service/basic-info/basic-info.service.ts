@@ -4,11 +4,22 @@ import gql from 'graphql-tag';
 import { AuthToken } from '../../model/AuthToken';
 import { map } from 'rxjs/operators';
 import { LoadingService } from '../loading/loading.service';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 const InitUser = gql
   `mutation {
-  initUser {
+  initCurrentUser {
     username
+  }
+}
+`
+
+const UpdateUser = gql
+  `mutation UpdateCurrentUser($firstName: String, $lastName: String) {
+  updateCurrentUser(input: {firstName: $firstName, lastName: $lastName}) {
+    username,
+    firstName,
+    lastName
   }
 }
 `
@@ -26,6 +37,8 @@ query {
   me {
     id
     username
+    firstName
+    lastName
   }
 }
 `;
@@ -35,9 +48,16 @@ query {
 })
 export class BasicInfoService {
 
+  private basicInfoSubject: BehaviorSubject<any>;
+  public basicInfo: Observable<any>;
+
   constructor(
     private apollo: Apollo,
     private loadingService: LoadingService) {
+
+    const basicInfoStorageItem = localStorage.getItem('basicInfo') ? localStorage.getItem('basicInfo') : sessionStorage.getItem('basicInfo');
+    this.basicInfoSubject = new BehaviorSubject<any>(JSON.parse(basicInfoStorageItem));
+    this.basicInfo = this.basicInfoSubject.asObservable();
   }
 
   initUserInfo() {
@@ -52,6 +72,30 @@ export class BasicInfoService {
       if (response.data) {
         const responseData: any = response.data;
         return responseData.initUser;
+      }
+
+      return null;
+    })
+    );
+  }
+
+  updateUserInfo(firstName: string, lastName: string) {
+
+    this.loadingService.setLoading(true);
+    return this.apollo.mutate(
+      {
+        mutation: UpdateUser,
+        variables: {
+          firstName,
+          lastName
+        },
+        errorPolicy: 'all'
+      }
+    ).pipe(map(response => {
+      this.loadingService.setLoading(false);
+      if (response.data) {
+        const responseData: any = response.data;
+        return responseData.createUser;
       }
 
       return null;
@@ -82,7 +126,7 @@ export class BasicInfoService {
     );
   }
 
-  getUserInfo(currentUser: AuthToken) {
+  getUserInfo() {
 
     this.loadingService.setLoading(true);
     return this.apollo.query<any>(
@@ -93,8 +137,18 @@ export class BasicInfoService {
       }
     ).pipe(map(response => {
       this.loadingService.setLoading(false);
+
       if (response.data) {
-        return response.data.me;
+        const basicInfo = response.data.me;
+        this.basicInfoSubject.next(basicInfo);
+
+        if (localStorage.getItem('currentUser')) {
+          localStorage.setItem('basicInfo', JSON.stringify(basicInfo));
+        } else {
+          sessionStorage.setItem('basicInfo', JSON.stringify(basicInfo));
+        }
+
+        return basicInfo;
       }
 
       return null;

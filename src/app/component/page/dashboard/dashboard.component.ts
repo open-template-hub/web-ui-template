@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     private errorService: ErrorService
   ) {
     this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
+    this.basicInfoService.basicInfo.subscribe(basicInfo => this.basicInfo = basicInfo);
     this.errorService.sharedError.subscribe(error => this.error = error);
   }
 
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(userInfo => {
           this.userInfo = userInfo;
 
-          this.basicInfoService.getUserInfo(this.authenticationService.currentUserValue)
+          this.basicInfoService.getUserInfo()
             .subscribe(basicInfo => {
                 if (!basicInfo) {
                   this.basicInfoService.initUserInfo()

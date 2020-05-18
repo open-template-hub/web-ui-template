@@ -1,12 +1,10 @@
 <div class="dashboard-welcome-page">
-  <app-card1 [title]="'Welcome'">
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <h3 *ngIf="userInfo.email">Username</h3>
-      <h3 *ngIf="userInfo.email">{{userInfo.username}}</h3>
-      <br>
-      <h3 *ngIf="userInfo.email">Email</h3>
-      <h3 *ngIf="userInfo.email">{{userInfo.email}}</h3>
-      <br>
+  <app-card1 [title]="'Dashboard'">
+    <div fxLayout="column" fxLayoutAlign="center"
+         style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: scroll; text-align: center">
+      <p *ngIf="userInfo.email">{{'Welcome '}} <span style="font-weight: bold"> {{userInfo.username + '!'}} </span></p>
+      <p *ngIf="!userInfo.email">{{'Welcome!'}}</p>
+      <p>you can enter your profile details below</p>
     </div>
     <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
@@ -35,7 +33,10 @@
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
-      <app-button1 [text]="'Done'"></app-button1>
+      <app-button1 [text]="'DONE'"></app-button1>
+      <a href="" routerLink="/dashboard">
+        skip for now
+      </a>
     </form>
   </app-card1>
 </div>

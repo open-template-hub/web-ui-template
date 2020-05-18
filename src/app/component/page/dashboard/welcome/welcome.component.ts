@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
+import {ErrorService} from '../../../../service/error/error.service';
 
 @Component({
   selector: 'app-welcome',
@@ -23,7 +24,8 @@ export class WelcomeComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private basicInfoService: BasicInfoService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private errorService: ErrorService
   ) {
     this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
     this.authenticationService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
@@ -53,5 +55,16 @@ export class WelcomeComponent implements OnInit {
     }
 
     this.loadingService.setLoading(true);
+
+    this.basicInfoService.updateUserInfo(this.f.firstName.value, this.f.lastName.value)
+      .subscribe(() => {
+          this.loadingService.setLoading(false);
+          this.router.navigate(['/dashboard']);
+        },
+        error => {
+          this.loadingService.setLoading(false);
+          this.errorService.setError(error);
+        }
+      );
   }
 }

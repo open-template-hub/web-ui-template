@@ -30,6 +30,8 @@
 
 .card1-content {
   padding: 1.25rem;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 799px) {
