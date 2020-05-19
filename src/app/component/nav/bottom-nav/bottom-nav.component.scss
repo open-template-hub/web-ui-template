@@ -9,6 +9,7 @@
   overflow-x: auto;
   background-color: var(--background);
   box-shadow: 0 0 5px var(--shadow);
+  z-index: 10;
 }
 
 .bottom-nav a {

@@ -16,6 +16,7 @@
 @media only screen and (max-width: 799px) {
   .dashboard-layout-page {
     min-height: 200vh;
+    margin-top: 55px;
   }
 
   .dashboard-layout-page, .footer-wrap {
@@ -26,6 +27,7 @@
 @media only screen and (min-width: 800px) {
   .dashboard-layout-page {
     min-height: 100vh;
+    margin-top: 0;
   }
 
   .dashboard-layout-page, .footer-wrap {

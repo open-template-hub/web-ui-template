@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import {HttpClient, HttpRequest} from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
 import { map } from 'rxjs/operators';
@@ -69,7 +69,7 @@ export class AuthenticationService {
   }
 
   verify(token: string) {
-    return this.http.get<any>(`${environment.authServerUrl}/auth/verify`, {params: {token: token}});
+    return this.http.get<any>(`${environment.authServerUrl}/auth/verify`, {params: {token}});
   }
 
   resetPassword(username: string, token: string, password: string) {
@@ -116,7 +116,7 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key: social.tag, state});
   }
 
-  socialLogin(key: string, params: {code?, state?, oauth_token?, oauth_verifier?}) {
+  socialLogin(key: string, params: { code?, state?, oauth_token?, oauth_verifier? }) {
     if (params.state) {
       if (localStorage.getItem('loginSessionID') !== params.state) {
         return throwError({error: 'Bad Credentials'});
@@ -127,30 +127,30 @@ export class AuthenticationService {
 
     return this.http.post<any>(`${environment.authServerUrl}/social/login`,
       {key, code: params.code, state: params.state, oauth_token: params.oauth_token, oauth_verifier: params.oauth_verifier}
-      ).pipe(map(currentUser => {
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        this.currentUserSubject.next(currentUser);
+    ).pipe(map(currentUser => {
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      this.currentUserSubject.next(currentUser);
 
-        // TODO: get second parameter from basic info db
-        this.themeService.initTheme(false);
-        this.themeService.initSideNavClosed(false);
+      // TODO: get second parameter from basic info db
+      this.themeService.initTheme(false);
+      this.themeService.initSideNavClosed(false);
 
-        return currentUser;
-      }));
+      return currentUser;
+    }));
   }
 
   me() {
     return this.http.get<any>(`${environment.authServerUrl}/info/me`)
       .pipe(map(userInfo => {
-          this.userInfoSubject.next(userInfo);
+        this.userInfoSubject.next(userInfo);
 
-          if (localStorage.getItem('currentUser')) {
-            localStorage.setItem('userInfo', JSON.stringify(userInfo));
-          } else {
-            sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-          }
+        if (localStorage.getItem('currentUser')) {
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        } else {
+          sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+        }
 
-          return userInfo;
+        return userInfo;
       }));
   }
 }

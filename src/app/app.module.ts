@@ -38,6 +38,7 @@ import { environment } from '../environments/environment';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
 import { LabelDataComponent } from './component/common/block/label-data/label-data.component';
+import { DashboardTopNavComponent } from './component/nav/dashboard-top-nav/dashboard-top-nav.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { LabelDataComponent } from './component/common/block/label-data/label-da
     CallbackComponent,
     SocialButtonComponent,
     WelcomeComponent,
-    LabelDataComponent
+    LabelDataComponent,
+    DashboardTopNavComponent
   ],
   imports: [
     BrowserModule,
