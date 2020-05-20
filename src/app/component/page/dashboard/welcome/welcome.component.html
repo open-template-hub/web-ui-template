@@ -2,8 +2,10 @@
   <app-card1 [title]="'Welcome!'">
     <div fxLayout="column" fxLayoutAlign="center center"
          style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: scroll; text-align: center">
-      <div class="shine welcome-profile-img-wrapper">
-        <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
+      <div class="welcome-profile-img-wrapper">
+        <div class="shine circle">
+          <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
+        </div>
       </div>
       <p>upload a profile picture</p>
       <p>or</p>
