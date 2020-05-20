@@ -1,27 +1,33 @@
 .footer {
   display: flex;
-  padding: 15px 35px;
-  justify-content: space-evenly;
+  flex-direction: row;
   box-shadow: 5px 0 30px var(--shadow);
-  background-color: var(--background)
+  background-color: var(--background);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 15px 35px env(safe-area-inset-bottom);
 }
 
 .footer a {
-  max-width: 33vw;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding: 5px;
+  min-width: 32%;
 }
 
 .footer a i {
   margin-right: 10px;
+  margin-left: 25%;
 }
 
 @media only screen and (max-width: 799px) {
   .footer {
     margin-bottom: 55px;
-    flex-direction: column;
     font-size: 15px;
+  }
+  .footer a {
+    min-width: 45%;
   }
 }
 
