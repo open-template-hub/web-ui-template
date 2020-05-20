@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
 import {ErrorService} from '../../../../service/error/error.service';
+import { AuthToken } from '../../../../model/AuthToken';
 
 @Component({
   selector: 'app-welcome',
@@ -13,11 +14,13 @@ import {ErrorService} from '../../../../service/error/error.service';
 })
 export class WelcomeComponent implements OnInit {
 
+  currentUser: AuthToken;
   basicInfoForm: FormGroup;
-  userInfo: any = {};
   submitted = false;
   error = '';
   loading = false;
+  basicInfo: any = {};
+  profileImg = './assets/profile-img.png';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,7 +31,17 @@ export class WelcomeComponent implements OnInit {
     private errorService: ErrorService
   ) {
     this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
-    this.authenticationService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
+    this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
+    this.errorService.sharedError.subscribe(error => this.error = error);
+
+    this.basicInfoService.basicInfo.subscribe(basicInfo =>
+      {
+        this.basicInfo = basicInfo;
+        if (basicInfo.profileImg) {
+          this.profileImg = basicInfo.profileImg;
+        }
+      }
+    );
   }
 
   ngOnInit() {

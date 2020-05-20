@@ -1,10 +1,13 @@
 <div class="dashboard-welcome-page">
-  <app-card1 [title]="'Dashboard'">
-    <div fxLayout="column" fxLayoutAlign="center"
+  <app-card1 [title]="'Welcome!'">
+    <div fxLayout="column" fxLayoutAlign="center center"
          style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: scroll; text-align: center">
-      <p *ngIf="userInfo.email">{{'Welcome '}} <span style="font-weight: bold"> {{userInfo.username + '!'}} </span></p>
-      <p *ngIf="!userInfo.email">{{'Welcome!'}}</p>
-      <p>you can enter your profile details below</p>
+      <div class="shine welcome-profile-img-wrapper">
+        <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
+      </div>
+      <p>upload a profile picture</p>
+      <p>or</p>
+      <p>you can update your profile details below</p>
     </div>
     <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
