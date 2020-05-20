@@ -8,10 +8,11 @@
 .bottom-nav-loading {
   width: 100%;
   height: 5px;
-  position: absolute;
+  position: fixed;
   bottom:50px;
   left: 0;
   overflow: hidden;
+  z-index: 11;
 }
 
 .card-bottom-loading::after {
