@@ -1,7 +1,7 @@
 <div [class.bottom-nav-loading]="loading">
 </div>
 <nav class="bottom-nav">
-  <a routerLink="/dashboard">
+  <a routerLink="/dashboard" *ngIf="currentUser">
     <i class="material-icons">person</i>
     <span>
         MY PROFILE
