@@ -6,39 +6,39 @@ import { ThemeService } from '../../../service/theme/theme.service';
 import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
-  selector: 'app-bottom-nav',
-  templateUrl: './bottom-nav.component.html',
-  styleUrls: ['./bottom-nav.component.scss']
+ selector: 'app-bottom-nav',
+ templateUrl: './bottom-nav.component.html',
+ styleUrls: ['./bottom-nav.component.scss']
 })
 export class BottomNavComponent implements OnInit {
 
-  currentUser: AuthToken;
-  loading: boolean = false;
+ currentUser: AuthToken;
+ loading: boolean = false;
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private themeService: ThemeService,
-    private loadingService: LoadingService
-  ) {
-    this.authenticationService.currentUser.subscribe(currentUser => {
-      this.currentUser = currentUser;
-    });
+ constructor(
+  private router: Router,
+  private authenticationService: AuthenticationService,
+  private themeService: ThemeService,
+  private loadingService: LoadingService
+ ) {
+  this.authenticationService.currentUser.subscribe(currentUser => {
+   this.currentUser = currentUser;
+  });
 
-    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
-  }
+  this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
+ }
 
-  ngOnInit(): void {
-  }
+ ngOnInit(): void {
+ }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/']).then(() => {
-      return true;
-    });
-  }
+ logout() {
+  this.authenticationService.logout();
+  this.router.navigate(['/']).then(() => {
+   return true;
+  });
+ }
 
-  switchTheme() {
-    this.themeService.switchDarkTheme();
-  }
+ switchTheme() {
+  this.themeService.switchDarkTheme();
+ }
 }

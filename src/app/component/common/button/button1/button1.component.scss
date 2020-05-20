@@ -1,25 +1,25 @@
 .button1 {
-  border: none;
-  border-radius: 3px;
-  padding: 1.2rem 2.2rem;
-  font-weight: 300;
-  font-size: 14px;
-  background-color: var(--color);
-  color: var(--contrast);
-  cursor:pointer;
-  transition: 200ms ease;
-  margin: 2rem 0.25rem 1rem;
+ border: none;
+ border-radius: 3px;
+ padding: 1.2rem 2.2rem;
+ font-weight: 300;
+ font-size: 14px;
+ background-color: var(--color);
+ color: var(--contrast);
+ cursor: pointer;
+ transition: 200ms ease;
+ margin: 2rem 0.25rem 1rem;
 }
 
 .button1:disabled {
-  pointer-events: none;
-  filter: opacity(60%);
+ pointer-events: none;
+ filter: opacity(60%);
 }
 
-@media (hover:hover) {
+@media (hover: hover) {
 
-  .button1:hover {
-    box-shadow:0 4px 5px 0 var(--shadow);
-    color: var(--darker-contrast);
-  }
+ .button1:hover {
+  box-shadow: 0 4px 5px 0 var(--shadow);
+  color: var(--darker-contrast);
+ }
 }

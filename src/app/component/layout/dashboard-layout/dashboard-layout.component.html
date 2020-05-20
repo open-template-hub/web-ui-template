@@ -1,19 +1,19 @@
 <div [class.side-nav-closed]="sideNavClosed === 'true'" [class.dark-theme]="darkTheme === 'true'">
-  <app-dashboard-layout-top-nav></app-dashboard-layout-top-nav>
-  <app-dashboard-layout-side-nav></app-dashboard-layout-side-nav>
-  <div class="dashboard-layout-page">
-    <div class="dashboard-layout-page-content">
-      <div class="brand-in-page">
-        <a routerLink="/" class="brand">
-          <img class="brand-logo" height="40" [src]="brand.brandLogo"/>
-          <h2>UI Template</h2>
-        </a>
-      </div>
-      <router-outlet></router-outlet>
-    </div>
+ <app-dashboard-layout-top-nav></app-dashboard-layout-top-nav>
+ <app-dashboard-layout-side-nav></app-dashboard-layout-side-nav>
+ <div class="dashboard-layout-page">
+  <div class="dashboard-layout-page-content">
+   <div class="brand-in-page">
+    <a routerLink="/" class="brand">
+     <img class="brand-logo" height="40" [src]="brand.brandLogo"/>
+     <h2>UI Template</h2>
+    </a>
+   </div>
+   <router-outlet></router-outlet>
   </div>
-  <div class="footer-wrap">
-    <app-footer></app-footer>
-  </div>
-  <app-bottom-nav></app-bottom-nav>
+ </div>
+ <div class="footer-wrap">
+  <app-footer></app-footer>
+ </div>
+ <app-bottom-nav></app-bottom-nav>
 </div>

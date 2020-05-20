@@ -6,68 +6,67 @@ import { ThemeService } from '../../../service/theme/theme.service';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 
 @Component({
-  selector: 'app-dashboard-layout-side-nav',
-  templateUrl: './dashboard-layout-side-nav.component.html',
-  styleUrls: ['./dashboard-layout-side-nav.component.scss']
+ selector: 'app-dashboard-layout-side-nav',
+ templateUrl: './dashboard-layout-side-nav.component.html',
+ styleUrls: ['./dashboard-layout-side-nav.component.scss']
 })
 export class DashboardLayoutSideNavComponent implements OnInit {
 
-  darkTheme: string;
-  sideNavClosed = 'false';
-  basicInfo: any = {};
-  profileImg = './assets/profile-img.png';
+ darkTheme: string;
+ sideNavClosed = 'false';
+ basicInfo: any = {};
+ profileImg = './assets/profile-img.png';
 
-  brand = {
-    brandLogo: '',
-  };
+ brand = {
+  brandLogo: '',
+ };
 
-  currentUser: AuthToken;
+ currentUser: AuthToken;
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private basicInfoService: BasicInfoService,
-    private themeService: ThemeService
-  ) {
-    this.authenticationService.currentUser.subscribe(currentUser => {
-      this.currentUser = currentUser;
-    });
+ constructor(
+  private router: Router,
+  private authenticationService: AuthenticationService,
+  private basicInfoService: BasicInfoService,
+  private themeService: ThemeService
+ ) {
+  this.authenticationService.currentUser.subscribe(currentUser => {
+   this.currentUser = currentUser;
+  });
 
-    this.themeService.darkTheme.subscribe(darkTheme => {
-      this.darkTheme = darkTheme;
-    });
+  this.themeService.darkTheme.subscribe(darkTheme => {
+   this.darkTheme = darkTheme;
+  });
 
-    this.themeService.sideNavClosed.subscribe(sideNavClosed => {
-      this.sideNavClosed = sideNavClosed;
-    });
+  this.themeService.sideNavClosed.subscribe(sideNavClosed => {
+   this.sideNavClosed = sideNavClosed;
+  });
 
-    this.brand = this.themeService.brand;
+  this.brand = this.themeService.brand;
 
-    this.basicInfoService.basicInfo.subscribe(basicInfo =>
-    {
-      this.basicInfo = basicInfo;
-      if (basicInfo.profileImg) {
-        this.profileImg = basicInfo.profileImg;
-      }
+  this.basicInfoService.basicInfo.subscribe(basicInfo => {
+    this.basicInfo = basicInfo;
+    if (basicInfo.profileImg) {
+     this.profileImg = basicInfo.profileImg;
     }
-    );
-  }
+   }
+  );
+ }
 
-  ngOnInit(): void {
-  }
+ ngOnInit(): void {
+ }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/']).then(() => {
-      return true;
-    });
-  }
+ logout() {
+  this.authenticationService.logout();
+  this.router.navigate(['/']).then(() => {
+   return true;
+  });
+ }
 
-  switchTheme() {
-    this.themeService.switchDarkTheme();
-  }
+ switchTheme() {
+  this.themeService.switchDarkTheme();
+ }
 
-  toggleSideNav() {
-    this.themeService.toggleSideNav();
-  }
+ toggleSideNav() {
+  this.themeService.toggleSideNav();
+ }
 }

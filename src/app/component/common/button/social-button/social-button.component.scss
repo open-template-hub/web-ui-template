@@ -1,103 +1,103 @@
 .social-button {
-  padding-left: 1px;
-  padding-top: 1px;
-  border-radius: 0;
-  font-weight: 300;
-  font-size: 20px;
-  width: 60px;
-  height: 60px;
-  background: var(--social);
-  border: 0;
-  border-bottom: 2px solid;
-  border-bottom-color: var(--card);
-  color: whitesmoke;
-  cursor:pointer;
-  transition: 400ms ease-out;
-  margin: 0.5rem 0.75rem 1rem;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: content-box;
+ padding-left: 1px;
+ padding-top: 1px;
+ border-radius: 0;
+ font-weight: 300;
+ font-size: 20px;
+ width: 60px;
+ height: 60px;
+ background: var(--social);
+ border: 0;
+ border-bottom: 2px solid;
+ border-bottom-color: var(--card);
+ color: whitesmoke;
+ cursor: pointer;
+ transition: 400ms ease-out;
+ margin: 0.5rem 0.75rem 1rem;
+ display: inline-flex;
+ justify-content: center;
+ align-items: center;
+ box-sizing: content-box;
 }
 
 .social-button.social-button-with-text {
-  width: auto;
-  padding: 0 1.1rem;
+ width: auto;
+ padding: 0 1.1rem;
 }
 
 .social-button.social-button-with-text i {
-  margin-right: 0.7rem;
+ margin-right: 0.7rem;
 }
 
 .social-button i {
-  font-weight: 300;
-  font-size: 42px;
+ font-weight: 300;
+ font-size: 42px;
 }
 
 .social-button:disabled {
-  pointer-events: none;
-  filter: opacity(60%);
+ pointer-events: none;
+ filter: opacity(60%);
 }
 
 // Social
 
 .twitter.social-button {
-  --social: var(--twitter);
+ --social: var(--twitter);
 }
 
 .google.social-button {
-  --social: var(--google);
+ --social: var(--google);
 }
 
 .facebook-f.social-button {
-  --social: var(--facebook);
+ --social: var(--facebook);
 }
 
 .linkedin-in.social-button {
-  --social: var(--linkedin);
+ --social: var(--linkedin);
 }
 
 .vk.social-button {
-  --social: var(--vk);
+ --social: var(--vk);
 }
 
 .twitch.social-button {
-  --social: var(--twitch);
+ --social: var(--twitch);
 }
 
 .dribbble.social-button {
-  --social: var(--dribbble);
+ --social: var(--dribbble);
 }
 
 .reddit-alien.social-button {
-  --social: var(--reddit);
+ --social: var(--reddit);
 }
 
 .pinterest.social-button {
-  --social: var(--pinterest);
+ --social: var(--pinterest);
 }
 
 .yandex.social-button {
-  --social: var(--yandex);
+ --social: var(--yandex);
 }
 
 .github.social-button {
-  --social: var(--github);
+ --social: var(--github);
 }
 
 .social-button-checked.social-button {
-  box-shadow:0 4px 7px 0 var(--social);
-  border-bottom-color: var(--social);
-  background: whitesmoke;
-  color: var(--social);
+ box-shadow: 0 4px 7px 0 var(--social);
+ border-bottom-color: var(--social);
+ background: whitesmoke;
+ color: var(--social);
 }
 
-@media (hover:hover) {
+@media (hover: hover) {
 
-  .social-button:hover {
-    box-shadow:0 4px 7px 0 var(--social);
-    background: whitesmoke;
-    border-bottom-color: var(--social);
-    color: var(--social);
-  }
+ .social-button:hover {
+  box-shadow: 0 4px 7px 0 var(--social);
+  background: whitesmoke;
+  border-bottom-color: var(--social);
+  color: var(--social);
+ }
 }

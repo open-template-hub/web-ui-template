@@ -4,25 +4,25 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+ selector: 'app-home',
+ templateUrl: './home.component.html',
+ styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private formBuilder: FormBuilder,
-    public router: Router,
-    private authenticationService: AuthenticationService
-  ) {
-    // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/dashboard']);
-    }
+ constructor(
+  private formBuilder: FormBuilder,
+  public router: Router,
+  private authenticationService: AuthenticationService
+ ) {
+  // redirect to home if already logged in
+  if (this.authenticationService.currentUserValue) {
+   this.router.navigate(['/dashboard']);
   }
+ }
 
-  ngOnInit(): void {
+ ngOnInit(): void {
 
-  }
+ }
 
 }

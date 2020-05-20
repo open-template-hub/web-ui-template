@@ -1,47 +1,47 @@
 <div class="dashboard-welcome-page">
-  <app-card1 [title]="'Welcome!'">
-    <div fxLayout="column" fxLayoutAlign="center center"
-         style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: scroll; text-align: center">
-      <div class="welcome-profile-img-wrapper">
-        <div class="shine circle">
-          <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
-        </div>
-      </div>
-      <p>upload a profile picture</p>
-      <p>or</p>
-      <p>update your profile details below</p>
+ <app-card1 [title]="'Welcome!'">
+  <div fxLayout="column" fxLayoutAlign="center center"
+       style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: scroll; text-align: center">
+   <div class="welcome-profile-img-wrapper">
+    <div class="shine circle">
+     <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
     </div>
-    <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
-      <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
-        <input type="text" placeholder="First name..." formControlName="firstName" required>
-        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
-      </div>
-      <div class="input-with-icon" [class.input-error]="submitted && f.lastName.invalid">
-        <input type="text" placeholder="Last name..." formControlName="lastName" required>
-        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
-      </div>
-      <div class="error-text alert-with-icon" *ngIf="submitted && f.firstName.invalid">
-        <p>
-          Please provide a first name
-        </p>
-        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
-      </div>
-      <div class="error-text alert-with-icon" *ngIf="submitted && f.lastName.invalid">
-        <p>
-          Please provide a last name
-        </p>
-        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
-      </div>
-      <div class="error-text alert-with-icon" *ngIf="error">
-        <p>
-          {{error}}
-        </p>
-        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
-      </div>
-      <app-button1 [text]="'DONE'"></app-button1>
-      <a href="" routerLink="/dashboard">
-        skip for now
-      </a>
-    </form>
-  </app-card1>
+   </div>
+   <p>upload a profile picture</p>
+   <p>or</p>
+   <p>update your profile details below</p>
+  </div>
+  <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
+   <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
+    <input type="text" placeholder="First name..." formControlName="firstName" required>
+    <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
+   </div>
+   <div class="input-with-icon" [class.input-error]="submitted && f.lastName.invalid">
+    <input type="text" placeholder="Last name..." formControlName="lastName" required>
+    <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
+   </div>
+   <div class="error-text alert-with-icon" *ngIf="submitted && f.firstName.invalid">
+    <p>
+     Please provide a first name
+    </p>
+    <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+   </div>
+   <div class="error-text alert-with-icon" *ngIf="submitted && f.lastName.invalid">
+    <p>
+     Please provide a last name
+    </p>
+    <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+   </div>
+   <div class="error-text alert-with-icon" *ngIf="error">
+    <p>
+     {{error}}
+    </p>
+    <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+   </div>
+   <app-button1 [text]="'DONE'"></app-button1>
+   <a href="" routerLink="/dashboard">
+    skip for now
+   </a>
+  </form>
+ </app-card1>
 </div>

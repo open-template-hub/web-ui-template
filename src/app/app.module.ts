@@ -41,66 +41,66 @@ import { LabelDataComponent } from './component/common/block/label-data/label-da
 import { DashboardLayoutTopNavComponent } from './component/nav/dashboard-layout-top-nav/dashboard-layout-top-nav.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    DashboardComponent,
-    SignUpComponent,
-    SignUpSuccessComponent,
-    VerifyAccountComponent,
-    LandingLayoutComponent,
-    DashboardLayoutComponent,
-    ResetPasswordComponent,
-    ForgetPasswordComponent,
-    LandingLayoutTopNavComponent,
-    DashboardLayoutSideNavComponent,
-    BottomNavComponent,
-    FooterComponent,
-    Card1Component,
-    Button1Component,
-    Button2Component,
-    SplashLayoutComponent,
-    CallbackComponent,
-    SocialButtonComponent,
-    WelcomeComponent,
-    LabelDataComponent,
-    DashboardLayoutTopNavComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ApolloModule,
-    HttpLinkModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    FlexLayoutModule
-  ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthRequestInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthResponseInterceptor, multi: true},
-  ],
-  bootstrap: [AppComponent]
+ declarations: [
+  AppComponent,
+  HomeComponent,
+  LoginComponent,
+  DashboardComponent,
+  SignUpComponent,
+  SignUpSuccessComponent,
+  VerifyAccountComponent,
+  LandingLayoutComponent,
+  DashboardLayoutComponent,
+  ResetPasswordComponent,
+  ForgetPasswordComponent,
+  LandingLayoutTopNavComponent,
+  DashboardLayoutSideNavComponent,
+  BottomNavComponent,
+  FooterComponent,
+  Card1Component,
+  Button1Component,
+  Button2Component,
+  SplashLayoutComponent,
+  CallbackComponent,
+  SocialButtonComponent,
+  WelcomeComponent,
+  LabelDataComponent,
+  DashboardLayoutTopNavComponent
+ ],
+ imports: [
+  BrowserModule,
+  AppRoutingModule,
+  ReactiveFormsModule,
+  HttpClientModule,
+  ApolloModule,
+  HttpLinkModule,
+  BrowserAnimationsModule,
+  LayoutModule,
+  FlexLayoutModule
+ ],
+ providers: [
+  {provide: HTTP_INTERCEPTORS, useClass: AuthRequestInterceptor, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: AuthResponseInterceptor, multi: true},
+ ],
+ bootstrap: [AppComponent]
 })
 export class AppModule {
 
-  constructor(
-    private apollo: Apollo,
-    private httpLink: HttpLink,
-  ) {
+ constructor(
+  private apollo: Apollo,
+  private httpLink: HttpLink,
+ ) {
 
-    const http = httpLink.create(
-      {
-        uri: `${environment.basicInfoServerUrl}/graphql`
-      });
+  const http = httpLink.create(
+   {
+    uri: `${environment.basicInfoServerUrl}/graphql`
+   });
 
-    const cache = new InMemoryCache();
-    apollo.create({
-      link: http,
-      cache
-    });
-  }
+  const cache = new InMemoryCache();
+  apollo.create({
+   link: http,
+   cache
+  });
+ }
 
 }

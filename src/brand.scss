@@ -1,39 +1,39 @@
 :root {
-  --brand-color: #e23237;
+ --brand-color: #e23237;
 }
 
 .brand-in-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
 .brand-in-page a {
-  justify-content: center;
-  align-items: center;
-  padding: 10px 17px;
-  display: inline-flex;
+ justify-content: center;
+ align-items: center;
+ padding: 10px 17px;
+ display: inline-flex;
 }
 
 .brand-in-page a > * {
-  margin: 0.2rem;
+ margin: 0.2rem;
 }
 
 @media only screen and (max-width: 799px) {
-  .brand-in-page {
-    display: flex;
-  }
+ .brand-in-page {
+  display: flex;
+ }
 }
 
 @media only screen and (min-width: 800px) {
-  .brand-in-page {
-    display: none;
-  }
+ .brand-in-page {
+  display: none;
+ }
 }
 
-@media (hover:hover) {
+@media (hover: hover) {
 
-  .brand-in-page a:hover {
-    background: none;
-  }
+ .brand-in-page a:hover {
+  background: none;
+ }
 }

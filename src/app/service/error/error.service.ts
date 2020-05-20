@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+ providedIn: 'root'
 })
 export class ErrorService {
 
-  private error = new BehaviorSubject('');
-  sharedError = this.error.asObservable();
+ private error = new BehaviorSubject('');
+ sharedError = this.error.asObservable();
 
-  constructor() { }
+ constructor() {
+ }
 
-  setError(error: string) {
-    this.error.next(error)
-  }
+ setError(error: string) {
+  this.error.next(error)
+ }
 }

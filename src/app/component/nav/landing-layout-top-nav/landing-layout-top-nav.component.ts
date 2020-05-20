@@ -5,41 +5,41 @@ import { AuthenticationService } from '../../../service/auth/authentication.serv
 import { ThemeService } from '../../../service/theme/theme.service';
 
 @Component({
-  selector: 'app-landing-layout-top-nav',
-  templateUrl: './landing-layout-top-nav.component.html',
-  styleUrls: ['./landing-layout-top-nav.component.scss']
+ selector: 'app-landing-layout-top-nav',
+ templateUrl: './landing-layout-top-nav.component.html',
+ styleUrls: ['./landing-layout-top-nav.component.scss']
 })
 export class LandingLayoutTopNavComponent implements OnInit {
 
-  currentUser: AuthToken;
+ currentUser: AuthToken;
 
-  brand = {
-    brandLogo: '',
-  };
+ brand = {
+  brandLogo: '',
+ };
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private themeService: ThemeService
-  ) {
-    this.authenticationService.currentUser.subscribe(currentUser => {
-      this.currentUser = currentUser;
-    });
+ constructor(
+  private router: Router,
+  private authenticationService: AuthenticationService,
+  private themeService: ThemeService
+ ) {
+  this.authenticationService.currentUser.subscribe(currentUser => {
+   this.currentUser = currentUser;
+  });
 
-    this.brand = this.themeService.brand;
-  }
+  this.brand = this.themeService.brand;
+ }
 
-  ngOnInit(): void {
-  }
+ ngOnInit(): void {
+ }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/']).then(() => {
-      return true;
-    });
-  }
+ logout() {
+  this.authenticationService.logout();
+  this.router.navigate(['/']).then(() => {
+   return true;
+  });
+ }
 
-  switchTheme() {
-    this.themeService.switchDarkTheme();
-  }
+ switchTheme() {
+  this.themeService.switchDarkTheme();
+ }
 }

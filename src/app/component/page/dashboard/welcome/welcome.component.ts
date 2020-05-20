@@ -4,80 +4,79 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
-import {ErrorService} from '../../../../service/error/error.service';
+import { ErrorService } from '../../../../service/error/error.service';
 import { AuthToken } from '../../../../model/AuthToken';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss']
+ selector: 'app-welcome',
+ templateUrl: './welcome.component.html',
+ styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
 
-  currentUser: AuthToken;
-  basicInfoForm: FormGroup;
-  submitted = false;
-  error = '';
-  loading = false;
-  basicInfo: any = {};
-  profileImg = './assets/profile-img.png';
+ currentUser: AuthToken;
+ basicInfoForm: FormGroup;
+ submitted = false;
+ error = '';
+ loading = false;
+ basicInfo: any = {};
+ profileImg = './assets/profile-img.png';
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private basicInfoService: BasicInfoService,
-    private loadingService: LoadingService,
-    private errorService: ErrorService
-  ) {
-    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
-    this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
-    this.errorService.sharedError.subscribe(error => this.error = error);
+ constructor(
+  private formBuilder: FormBuilder,
+  private router: Router,
+  private authenticationService: AuthenticationService,
+  private basicInfoService: BasicInfoService,
+  private loadingService: LoadingService,
+  private errorService: ErrorService
+ ) {
+  this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
+  this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
+  this.errorService.sharedError.subscribe(error => this.error = error);
 
-    this.basicInfoService.basicInfo.subscribe(basicInfo =>
-      {
-        this.basicInfo = basicInfo;
-        if (basicInfo.profileImg) {
-          this.profileImg = basicInfo.profileImg;
-        }
-      }
-    );
-  }
-
-  ngOnInit() {
-    this.basicInfoForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
-    });
-  }
-
-  get f() {
-    return this.basicInfoForm.controls;
-  }
-
-  onSubmit() {
-    if (this.loading) {
-      return;
+  this.basicInfoService.basicInfo.subscribe(basicInfo => {
+    this.basicInfo = basicInfo;
+    if (basicInfo.profileImg) {
+     this.profileImg = basicInfo.profileImg;
     }
+   }
+  );
+ }
 
-    this.submitted = true;
+ ngOnInit() {
+  this.basicInfoForm = this.formBuilder.group({
+   firstName: ['', Validators.required],
+   lastName: ['', Validators.required]
+  });
+ }
 
-    // stop here if form is invalid
-    if (this.basicInfoForm.invalid) {
-      return;
-    }
+ get f() {
+  return this.basicInfoForm.controls;
+ }
 
-    this.loadingService.setLoading(true);
-
-    this.basicInfoService.updateUserInfo(this.f.firstName.value, this.f.lastName.value)
-      .subscribe(() => {
-          this.loadingService.setLoading(false);
-          this.router.navigate(['/dashboard']);
-        },
-        error => {
-          this.loadingService.setLoading(false);
-          this.errorService.setError(error);
-        }
-      );
+ onSubmit() {
+  if (this.loading) {
+   return;
   }
+
+  this.submitted = true;
+
+  // stop here if form is invalid
+  if (this.basicInfoForm.invalid) {
+   return;
+  }
+
+  this.loadingService.setLoading(true);
+
+  this.basicInfoService.updateUserInfo(this.f.firstName.value, this.f.lastName.value)
+   .subscribe(() => {
+     this.loadingService.setLoading(false);
+     this.router.navigate(['/dashboard']);
+    },
+    error => {
+     this.loadingService.setLoading(false);
+     this.errorService.setError(error);
+    }
+   );
+ }
 }
