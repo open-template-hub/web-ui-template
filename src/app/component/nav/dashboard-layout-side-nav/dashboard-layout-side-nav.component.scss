@@ -57,21 +57,9 @@
   width: 80px;
 }
 
-.profile-img {
+.side-nav a .profile-img-badge {
   margin-left: 20px;
   margin-right: 20px;
-  display: block;
-  width: 36px;
-  height: 36px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-border-radius: 99em;
-  -moz-border-radius: 99em;
-  border-radius: 99em;
-  border: 2px solid var(--contrast);
-  box-shadow: 0 3px 2px var(--shadow);
-  background-image: url("src/assets/profile-img.png");
 }
 
 @media only screen and (max-width: 799px) {

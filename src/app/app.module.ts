@@ -38,7 +38,7 @@ import { environment } from '../environments/environment';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
 import { LabelDataComponent } from './component/common/block/label-data/label-data.component';
-import { DashboardTopNavComponent } from './component/nav/dashboard-top-nav/dashboard-top-nav.component';
+import { DashboardLayoutTopNavComponent } from './component/nav/dashboard-layout-top-nav/dashboard-layout-top-nav.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { DashboardTopNavComponent } from './component/nav/dashboard-top-nav/dash
     SocialButtonComponent,
     WelcomeComponent,
     LabelDataComponent,
-    DashboardTopNavComponent
+    DashboardLayoutTopNavComponent
   ],
   imports: [
     BrowserModule,

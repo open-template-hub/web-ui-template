@@ -1,11 +1,10 @@
 <nav class="side-nav" [class.side-nav-closed]="sideNavClosed === 'true'" [class.dark-theme]="darkTheme === 'true'">
-  <a href="javascript:void(0)" (click)="toggleSideNav()" class="brand">
-    <img class="brand-logo" height="40" alt="logo" [src]="brand.brandLogo"/>
+  <a href="javascript:void(0)" (click)="toggleSideNav()" class="brand" *ngIf="currentUser">
+    <img class="brand-logo" width="40" height="logo" alt="" [src]="brand.brandLogo"/>
     <h2>UI Template</h2>
   </a>
-  <a routerLink="/dashboard" *ngIf="userInfo">
-    <div class="profile-img">
-    </div>
+  <a routerLink="/dashboard" *ngIf="currentUser">
+    <img class="profile-img-badge" alt="profile img" [src]="profileImg"/>
     <span>
         MY PROFILE
     </span>

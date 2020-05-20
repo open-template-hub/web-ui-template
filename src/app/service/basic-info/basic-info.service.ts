@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { AuthToken } from '../../model/AuthToken';
 import { map } from 'rxjs/operators';
 import { LoadingService } from '../loading/loading.service';
 import {BehaviorSubject, Observable} from 'rxjs';
@@ -154,5 +153,10 @@ export class BasicInfoService {
       return null;
     })
     );
+  }
+
+  logout() {
+    this.basicInfoSubject.next(null);
+
   }
 }

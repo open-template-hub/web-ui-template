@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
 import { map } from 'rxjs/operators';
 import { ThemeService } from '../theme/theme.service';
+import { BasicInfoService } from '../basic-info/basic-info.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class AuthenticationService {
   public userInfo: Observable<any>;
 
   constructor(private http: HttpClient,
-              private themeService: ThemeService
+              private themeService: ThemeService,
+              private basicInfoService: BasicInfoService
   ) {
     const currentUserStorageItem = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : sessionStorage.getItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<AuthToken>(JSON.parse(currentUserStorageItem));
@@ -58,12 +60,14 @@ export class AuthenticationService {
   // https://stackoverflow.com/questions/48853678/what-happens-if-we-does-not-subscribe-to-httpclient-request-which-return-observa
   logout() {
     this.themeService.clearThemes();
+    this.basicInfoService.logout();
 
     const refreshToken = this.currentUserValue.refreshToken;
 
     localStorage.clear();
     sessionStorage.clear();
     this.currentUserSubject.next(null);
+    this.userInfoSubject.next(null);
 
     return this.http.post<any>(`${environment.authServerUrl}/auth/logout`, {token: refreshToken});
   }

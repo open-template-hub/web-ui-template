@@ -3,6 +3,7 @@ import { AuthToken } from '../../../model/AuthToken';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { ThemeService } from '../../../service/theme/theme.service';
+import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 
 @Component({
   selector: 'app-dashboard-layout-side-nav',
@@ -13,7 +14,8 @@ export class DashboardLayoutSideNavComponent implements OnInit {
 
   darkTheme: string;
   sideNavClosed = 'false';
-  userInfo: any = {};
+  basicInfo: any = {};
+  profileImg = './assets/profile-img.png';
 
   brand = {
     brandLogo: '',
@@ -24,6 +26,7 @@ export class DashboardLayoutSideNavComponent implements OnInit {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
+    private basicInfoService: BasicInfoService,
     private themeService: ThemeService
   ) {
     this.authenticationService.currentUser.subscribe(currentUser => {
@@ -40,7 +43,14 @@ export class DashboardLayoutSideNavComponent implements OnInit {
 
     this.brand = this.themeService.brand;
 
-    this.authenticationService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
+    this.basicInfoService.basicInfo.subscribe(basicInfo =>
+    {
+      this.basicInfo = basicInfo;
+      if (basicInfo.profileImg) {
+        this.profileImg = basicInfo.profileImg;
+      }
+    }
+    );
   }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-.dashboard-top-nav {
+.dashboard-layout-top-nav {
   position: absolute;
   top: 0;
   left: 0;
@@ -13,8 +13,7 @@
   z-index: 10;
 }
 
-.dashboard-top-nav a {
-  flex: 3;
+.dashboard-layout-top-nav a {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -26,42 +25,30 @@
   transition: background-color 0.1s ease-in-out;
 }
 
-.dashboard-top-nav a:first-child {
+.dashboard-layout-top-nav div {
+  flex: 3;
+  flex-direction: row;
+  min-width: 20vw;
+  font-size: 13px;
+}
+
+.dashboard-layout-top-nav a {
   flex: 1;
 }
 
-.dashboard-top-nav a:last-child {
-  flex: 1;
-}
-
-.profile-img {
-  display: block;
-  width: 35px;
-  height: 35px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-border-radius: 99em;
-  -moz-border-radius: 99em;
-  border-radius: 99em;
-  border: 2px solid var(--contrast);
-  box-shadow: 0 3px 2px var(--shadow);
-  background-image: url("src/assets/profile-img.png");
-}
-
-.dashboard-top-nav a i {
+.dashboard-layout-top-nav a i {
   margin: 0.2rem;
   font-size: 25px;
 }
 
 @media only screen and (max-width: 799px) {
-  .dashboard-top-nav {
+  .dashboard-layout-top-nav {
     visibility: visible;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .dashboard-top-nav {
+  .dashboard-layout-top-nav {
     visibility: hidden;
   }
 }
