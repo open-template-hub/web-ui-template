@@ -1,6 +1,7 @@
 .shine {
   overflow: hidden;
   position: relative;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .shine:after {
