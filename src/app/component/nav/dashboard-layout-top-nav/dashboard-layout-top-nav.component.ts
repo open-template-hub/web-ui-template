@@ -15,8 +15,11 @@ export class DashboardLayoutTopNavComponent implements OnInit {
   private basicInfoService: BasicInfoService
  ) {
   this.basicInfoService.basicInfo.subscribe(basicInfo => {
-    this.basicInfo = basicInfo;
-    if (basicInfo.profileImg) {
+    if (basicInfo) {
+      this.basicInfo = basicInfo;
+    }
+
+    if (this.basicInfo.profileImg) {
      this.profileImg = basicInfo.profileImg;
     }
    }

@@ -8,8 +8,8 @@ export const environment = {
  serverUrl: 'http://localhost:4000',
 // serverUrl: 'https://orchestration-server-template.herokuapp.com',
 
-// basicInfoServerUrl: 'http://localhost:4001',
-  basicInfoServerUrl: 'https://basic-info-server-nodejs-st.herokuapp.com',
+ basicInfoServerUrl: 'http://localhost:4002',
+//  basicInfoServerUrl: 'https://basic-info-server-nodejs-st.herokuapp.com',
 
  social: {
   twitter: {

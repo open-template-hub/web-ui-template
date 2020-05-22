@@ -44,9 +44,12 @@ export class DashboardLayoutSideNavComponent implements OnInit {
   this.brand = this.themeService.brand;
 
   this.basicInfoService.basicInfo.subscribe(basicInfo => {
-    this.basicInfo = basicInfo;
-    if (basicInfo.profileImg) {
-     this.profileImg = basicInfo.profileImg;
+    if (basicInfo) {
+      this.basicInfo = basicInfo;
+    }
+
+    if (this.basicInfo.profileImg) {
+      this.profileImg = basicInfo.profileImg;
     }
    }
   );
