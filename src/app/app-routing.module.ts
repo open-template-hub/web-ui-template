@@ -15,6 +15,7 @@ import { SplashLayoutComponent } from './component/layout/splash-layout/splash-l
 import { CallbackComponent } from './component/page/callback/callback.component';
 import { environment } from '../environments/environment';
 import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
+import { ProfileComponent } from './component/page/dashboard/profile/profile.component';
 
 const routes: Routes = [
  {
@@ -49,7 +50,8 @@ const routes: Routes = [
   component: DashboardLayoutComponent,
   children: [
    {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
-   {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]}
+   {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]},
+   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
   ]
  },
 
