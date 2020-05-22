@@ -1,7 +1,8 @@
 export const environment = {
  production: true,
 
- authServerUrl: 'https://auth-server-nodejs-template-st.herokuapp.com',
+ serverUrl: 'https://orchestration-server-template.herokuapp.com',
+
  basicInfoServerUrl: 'https://basic-info-server-nodejs-st.herokuapp.com',
 
  social: {

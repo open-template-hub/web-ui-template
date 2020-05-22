@@ -36,11 +36,11 @@ export class AuthenticationService {
  }
 
  signUp(username: string, email: string, password: string) {
-  return this.http.post<any>(`${environment.authServerUrl}/auth/signup`, {username, email, password});
+  return this.http.post<any>(`${environment.serverUrl}/auth/signup`, {username, email, password});
  }
 
  login(username: string, password: string, rememberMe: boolean) {
-  return this.http.post<any>(`${environment.authServerUrl}/auth/login`, {username, password})
+  return this.http.post<any>(`${environment.serverUrl}/auth/login`, {username, password})
    .pipe(map(currentUser => {
     if (rememberMe) {
      localStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -69,23 +69,23 @@ export class AuthenticationService {
   this.currentUserSubject.next(null);
   this.userInfoSubject.next(null);
 
-  return this.http.post<any>(`${environment.authServerUrl}/auth/logout`, {token: refreshToken});
+  return this.http.post<any>(`${environment.serverUrl}/auth/logout`, {token: refreshToken});
  }
 
  verify(token: string) {
-  return this.http.get<any>(`${environment.authServerUrl}/auth/verify`, {params: {token}});
+  return this.http.get<any>(`${environment.serverUrl}/auth/verify`, {params: {token}});
  }
 
  resetPassword(username: string, token: string, password: string) {
-  return this.http.post<any>(`${environment.authServerUrl}/auth/reset-password`, {username, token, password});
+  return this.http.post<any>(`${environment.serverUrl}/auth/reset-password`, {username, token, password});
  }
 
  forgetPassword(username: any) {
-  return this.http.post<any>(`${environment.authServerUrl}/auth/forget-password`, {username});
+  return this.http.post<any>(`${environment.serverUrl}/auth/forget-password`, {username});
  }
 
  refreshToken(token: string) {
-  return this.http.post<any>(`${environment.authServerUrl}/auth/token`, {token})
+  return this.http.post<any>(`${environment.serverUrl}/auth/token`, {token})
    .pipe(map(currentUser => {
     if (localStorage.getItem('currentUser')) {
      localStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -117,7 +117,7 @@ export class AuthenticationService {
    localStorage.setItem('loginSessionID', state);
   }
 
-  return this.http.post<any>(`${environment.authServerUrl}/social/login-url`, {key: social.tag, state});
+  return this.http.post<any>(`${environment.serverUrl}/social/login-url`, {key: social.tag, state});
  }
 
  socialLogin(key: string, params: { code?, state?, oauth_token?, oauth_verifier? }) {
@@ -129,7 +129,7 @@ export class AuthenticationService {
    }
   }
 
-  return this.http.post<any>(`${environment.authServerUrl}/social/login`,
+  return this.http.post<any>(`${environment.serverUrl}/social/login`,
    {key, code: params.code, state: params.state, oauth_token: params.oauth_token, oauth_verifier: params.oauth_verifier}
   ).pipe(map(currentUser => {
    localStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -144,7 +144,7 @@ export class AuthenticationService {
  }
 
  me() {
-  return this.http.get<any>(`${environment.authServerUrl}/info/me`)
+  return this.http.get<any>(`${environment.serverUrl}/info/me`)
    .pipe(map(userInfo => {
     this.userInfoSubject.next(userInfo);
 
