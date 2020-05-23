@@ -20,12 +20,14 @@ export class AuthResponseInterceptor implements HttpInterceptor {
       catchError((errorResponse: HttpErrorResponse) => {
           if (errorResponse.error instanceof ErrorEvent) {
             // client-side error or network error
+            console.error('network error');
           } else {
             let tokenExpired = false;
 
             if (errorResponse.error === 'jwt expired') {
               tokenExpired = true;
             } else if (errorResponse.error.errors instanceof Array) {
+              // TODO: this part will be removed with basic info server changes
               const errorCodes = [];
               errorResponse.error.errors.forEach(error => {
                 if (error.extensions) {

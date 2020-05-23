@@ -69,7 +69,7 @@ export class AuthenticationService {
     this.currentUserSubject.next(null);
     this.userInfoSubject.next(null);
 
-    return this.http.post<any>(`${environment.serverUrl}/auth/logout`, {token: refreshToken});
+    return this.http.post<any>(`${environment.serverUrl}/auth/logout`, {token: refreshToken}).subscribe();
   }
 
   verify(token: string) {
