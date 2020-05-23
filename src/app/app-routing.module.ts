@@ -18,50 +18,50 @@ import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.com
 import { ProfileComponent } from './component/page/dashboard/profile/profile.component';
 
 const routes: Routes = [
- {
-  path: '',
-  component: LandingLayoutComponent,
-  children: [
-   {path: '', component: HomeComponent},
-   {path: 'signup', component: SignUpComponent},
-   {path: 'signup-success', component: SignUpSuccessComponent},
-   {path: 'verify-account', component: VerifyAccountComponent},
-   {path: 'login', component: LoginComponent},
-   {path: 'forget-password', component: ForgetPasswordComponent},
-   {path: 'reset-password', component: ResetPasswordComponent}
-  ]
- },
- {
-  path: 'callback',
-  component: SplashLayoutComponent,
-  children: [
-   {path: 'twitter', component: CallbackComponent, data: {social: environment.social.twitter}},
-   {path: 'google', component: CallbackComponent, data: {social: environment.social.google}},
-   {path: 'facebook', component: CallbackComponent, data: {social: environment.social.facebook}},
-   {path: 'linkedin', component: CallbackComponent, data: {social: environment.social.linkedin}},
-   {path: 'twitch', component: CallbackComponent, data: {social: environment.social.twitch}},
-   {path: 'dribbble', component: CallbackComponent, data: {social: environment.social.dribbble}},
-   {path: 'reddit', component: CallbackComponent, data: {social: environment.social.reddit}},
-   {path: 'github', component: CallbackComponent, data: {social: environment.social.github}}
-  ]
- },
- {
-  path: 'dashboard',
-  component: DashboardLayoutComponent,
-  children: [
-   {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
-   {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]},
-   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
-  ]
- },
+  {
+    path: '',
+    component: LandingLayoutComponent,
+    children: [
+      {path: '', component: HomeComponent},
+      {path: 'signup', component: SignUpComponent},
+      {path: 'signup-success', component: SignUpSuccessComponent},
+      {path: 'verify-account', component: VerifyAccountComponent},
+      {path: 'login', component: LoginComponent},
+      {path: 'forget-password', component: ForgetPasswordComponent},
+      {path: 'reset-password', component: ResetPasswordComponent}
+    ]
+  },
+  {
+    path: 'callback',
+    component: SplashLayoutComponent,
+    children: [
+      {path: 'twitter', component: CallbackComponent, data: {social: environment.social.twitter}},
+      {path: 'google', component: CallbackComponent, data: {social: environment.social.google}},
+      {path: 'facebook', component: CallbackComponent, data: {social: environment.social.facebook}},
+      {path: 'linkedin', component: CallbackComponent, data: {social: environment.social.linkedin}},
+      {path: 'twitch', component: CallbackComponent, data: {social: environment.social.twitch}},
+      {path: 'dribbble', component: CallbackComponent, data: {social: environment.social.dribbble}},
+      {path: 'reddit', component: CallbackComponent, data: {social: environment.social.reddit}},
+      {path: 'github', component: CallbackComponent, data: {social: environment.social.github}}
+    ]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardLayoutComponent,
+    children: [
+      {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]},
+      {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
+    ]
+  },
 
- // otherwise redirect to home
- {path: '**', redirectTo: ''}
+  // otherwise redirect to home
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
- imports: [RouterModule.forRoot(routes)],
- exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

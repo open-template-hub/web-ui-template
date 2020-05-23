@@ -1,20 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
- selector: 'app-label-data',
- templateUrl: './label-data.component.html',
- styleUrls: ['./label-data.component.scss']
+  selector: 'app-label-data',
+  templateUrl: './label-data.component.html',
+  styleUrls: ['./label-data.component.scss']
 })
 export class LabelDataComponent implements OnInit {
 
- @Input() label = '';
+  @Input() label = '';
 
- @Input() data = '';
+  @Input() data = '';
 
- constructor() {
- }
+  constructor() {
+  }
 
- ngOnInit(): void {
- }
+  ngOnInit(): void {
+  }
 
 }

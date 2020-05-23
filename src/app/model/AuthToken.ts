@@ -1,4 +1,4 @@
 export class AuthToken {
- accessToken: any;
- refreshToken: any;
+  accessToken: any;
+  refreshToken: any;
 }

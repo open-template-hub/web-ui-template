@@ -1,16 +1,16 @@
 <div class="dashboard-page">
- <app-card1 [title]="'Dashboard'">
-  <div fxLayout="column" *ngIf="basicInfo">
-   <app-label-data [label]="'Username'" [data]="userInfo.username"></app-label-data>
-   <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>
-   <app-label-data *ngIf="basicInfo.firstName" [label]="'First Name'" [data]="basicInfo.firstName"></app-label-data>
-   <app-label-data *ngIf="basicInfo.lastName" [label]="'Last Name'" [data]="basicInfo.lastName"></app-label-data>
-   <div class="error-text alert-with-icon" *ngIf="error">
-    <p>
-     {{error}}
-    </p>
-    <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
-   </div>
-  </div>
- </app-card1>
+  <app-card1 [title]="'Dashboard'">
+    <div fxLayout="column" *ngIf="basicInfo">
+      <app-label-data [label]="'Username'" [data]="userInfo.username"></app-label-data>
+      <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>
+      <app-label-data *ngIf="basicInfo.firstName" [label]="'First Name'" [data]="basicInfo.firstName"></app-label-data>
+      <app-label-data *ngIf="basicInfo.lastName" [label]="'Last Name'" [data]="basicInfo.lastName"></app-label-data>
+      <div class="error-text alert-with-icon" *ngIf="error">
+        <p>
+          {{error}}
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+    </div>
+  </app-card1>
 </div>

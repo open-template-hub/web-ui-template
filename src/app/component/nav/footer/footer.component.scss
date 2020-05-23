@@ -1,45 +1,45 @@
 .footer {
- display: flex;
- flex-direction: row;
- box-shadow: 5px 0 30px var(--shadow);
- background-color: var(--background);
- flex-wrap: wrap;
- justify-content: flex-start;
- padding: 15px 35px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 5px 0 30px var(--shadow);
+  background-color: var(--background);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 15px 35px;
 }
 
 .footer a {
- display: flex;
- align-items: center;
- justify-content: flex-start;
- padding: 5px;
- min-width: 32%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+  min-width: 32%;
 }
 
 .footer a i {
- margin-right: 10px;
- margin-left: 25%;
+  margin-right: 10px;
+  margin-left: 25%;
 }
 
 @media only screen and (max-width: 799px) {
- .footer {
-  margin-bottom: calc(55px + env(safe-area-inset-bottom));
-  font-size: 15px;
- }
- .footer a {
-  min-width: 45%;
- }
+  .footer {
+    margin-bottom: calc(55px + env(safe-area-inset-bottom));
+    font-size: 15px;
+  }
+  .footer a {
+    min-width: 45%;
+  }
 }
 
 @media only screen and (min-width: 800px) {
- .footer {
-  margin-bottom: 0;
- }
+  .footer {
+    margin-bottom: 0;
+  }
 }
 
 @media (hover: hover) {
 
- .footer a:hover {
-  background: none;
- }
+  .footer a:hover {
+    background: none;
+  }
 }

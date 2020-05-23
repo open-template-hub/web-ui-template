@@ -1,44 +1,44 @@
 .top-nav {
- height: 50px;
- margin: 20px 55px;
- display: flex;
- border-radius: 3px;
+  height: 50px;
+  margin: 20px 55px;
+  display: flex;
+  border-radius: 3px;
 }
 
 .top-nav a {
- border-radius: 3px;
- padding: 10px 17px;
- display: inline-flex;
- align-items: center;
- font-size: 14px;
- font-weight: 500;
+  border-radius: 3px;
+  padding: 10px 17px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .top-nav a:first-child {
- margin-right: auto;
+  margin-right: auto;
 }
 
 .top-nav a:first-child:hover {
- background: none;
+  background: none;
 }
 
 .top-nav .brand > * {
- margin: 0.2rem;
+  margin: 0.2rem;
 }
 
 .top-nav a i {
- margin: 0.35rem;
- font-size: 22px;
+  margin: 0.35rem;
+  font-size: 22px;
 }
 
 @media only screen and (max-width: 799px) {
- .top-nav {
-  display: none;
- }
+  .top-nav {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 800px) {
- .top-nav a {
-  display: inline-flex;
- }
+  .top-nav a {
+    display: inline-flex;
+  }
 }

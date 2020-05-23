@@ -1,44 +1,44 @@
 .bottom-nav {
- position: fixed;
- bottom: 0;
- left: 0;
- height: 55px;
- width: 100vw;
- display: flex;
- justify-content: flex-start;
- overflow-x: auto;
- background-color: var(--background);
- box-shadow: 0 0 5px var(--shadow);
- z-index: 10;
- padding-bottom: env(safe-area-inset-bottom);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 55px;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  background-color: var(--background);
+  box-shadow: 0 0 5px var(--shadow);
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bottom-nav a {
- flex: 1;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- min-width: 25vw;
- overflow: hidden;
- white-space: nowrap;
- font-size: 13px;
- transition: background-color 0.1s ease-in-out;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 25vw;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  transition: background-color 0.1s ease-in-out;
 }
 
 .bottom-nav a i {
- margin: 0.2rem;
- font-size: 19px;
+  margin: 0.2rem;
+  font-size: 19px;
 }
 
 @media only screen and (max-width: 799px) {
- .bottom-nav {
-  visibility: visible;
- }
+  .bottom-nav {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 800px) {
- .bottom-nav {
-  visibility: hidden;
- }
+  .bottom-nav {
+    visibility: hidden;
+  }
 }

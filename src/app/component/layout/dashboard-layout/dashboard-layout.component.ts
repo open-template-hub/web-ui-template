@@ -3,35 +3,35 @@ import { ThemeService } from '../../../service/theme/theme.service';
 import { Router } from '@angular/router';
 
 @Component({
- selector: 'app-dashboard-layout',
- templateUrl: './dashboard-layout.component.html',
- styleUrls: ['./dashboard-layout.component.scss']
+  selector: 'app-dashboard-layout',
+  templateUrl: './dashboard-layout.component.html',
+  styleUrls: ['./dashboard-layout.component.scss']
 })
 export class DashboardLayoutComponent implements OnInit {
 
- darkTheme: string;
+  darkTheme: string;
 
- brand = {
-  brandLogo: '',
- };
+  brand = {
+    brandLogo: '',
+  };
 
- sideNavClosed = 'false';
+  sideNavClosed = 'false';
 
- constructor(
-  private router: Router,
-  private themeService: ThemeService
- ) {
-  this.themeService.darkTheme.subscribe(darkTheme => {
-   this.darkTheme = darkTheme;
-  });
+  constructor(
+    private router: Router,
+    private themeService: ThemeService
+  ) {
+    this.themeService.darkTheme.subscribe(darkTheme => {
+      this.darkTheme = darkTheme;
+    });
 
-  this.themeService.sideNavClosed.subscribe(sideNavClosed => {
-   this.sideNavClosed = sideNavClosed;
-  });
+    this.themeService.sideNavClosed.subscribe(sideNavClosed => {
+      this.sideNavClosed = sideNavClosed;
+    });
 
-  this.brand = this.themeService.brand;
- }
+    this.brand = this.themeService.brand;
+  }
 
- ngOnInit(): void {
- }
+  ngOnInit(): void {
+  }
 }

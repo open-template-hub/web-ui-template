@@ -1,22 +1,22 @@
 @import "src/themes";
 
 .dashboard-welcome-page {
- display: flex;
- justify-content: center;
- align-items: center;
- padding-top: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15vh;
 }
 
 .dashboard-welcome-page app-card1 {
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .welcome-page-profile-img-wrapper {
- -webkit-border-radius: 99em;
- -moz-border-radius: 99em;
- border-radius: 99em;
- margin-bottom: 2rem;
- box-shadow: 0 3px 2px var(--shadow);
- border: none;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  margin-bottom: 2rem;
+  box-shadow: 0 3px 2px var(--shadow);
+  border: none;
 }

@@ -7,58 +7,58 @@ import { Router } from '@angular/router';
 import { LoadingService } from '../../../service/loading/loading.service';
 
 @Component({
- selector: 'app-dashboard',
- templateUrl: './dashboard.component.html',
- styleUrls: ['./dashboard.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
- currentUser: AuthToken;
- userInfo: any = {};
- basicInfo: any;
- error = '';
+  currentUser: AuthToken;
+  userInfo: any = {};
+  basicInfo: any;
+  error = '';
 
- constructor(
-  private router: Router,
-  private authenticationService: AuthenticationService,
-  private loadingService: LoadingService,
-  private basicInfoService: BasicInfoService,
-  private errorService: ErrorService
- ) {
-  this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
-  this.basicInfoService.basicInfo.subscribe(basicInfo => this.basicInfo = basicInfo);
-  this.errorService.sharedError.subscribe(error => this.error = error);
- }
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService,
+    private basicInfoService: BasicInfoService,
+    private errorService: ErrorService
+  ) {
+    this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
+    this.basicInfoService.basicInfo.subscribe(basicInfo => this.basicInfo = basicInfo);
+    this.errorService.sharedError.subscribe(error => this.error = error);
+  }
 
- ngOnInit(): void {
-  this.loadingService.setLoading(true);
-  this.authenticationService.me()
-   .subscribe(userInfo => {
-     this.userInfo = userInfo;
+  ngOnInit(): void {
+    this.loadingService.setLoading(true);
+    this.authenticationService.me()
+      .subscribe(userInfo => {
+          this.userInfo = userInfo;
 
-     this.basicInfoService.getUserInfo()
-      .subscribe(basicInfo => {
-        if (!basicInfo) {
-         this.basicInfoService.initUserInfo()
-          .subscribe(() => {
-            this.loadingService.setLoading(false);
-            this.router.navigate(['/dashboard/welcome']);
-           }
-          );
-        } else {
-         this.basicInfo = basicInfo;
+          this.basicInfoService.getUserInfo()
+            .subscribe(basicInfo => {
+                if (!basicInfo) {
+                  this.basicInfoService.initUserInfo()
+                    .subscribe(() => {
+                        this.loadingService.setLoading(false);
+                        this.router.navigate(['/dashboard/welcome']);
+                      }
+                    );
+                } else {
+                  this.basicInfo = basicInfo;
+                }
+              },
+              error => {
+                this.loadingService.setLoading(false);
+                this.errorService.setError(error);
+              }
+            );
+        },
+        error => {
+          this.loadingService.setLoading(false);
+          this.errorService.setError(error.message);
         }
-       },
-       error => {
-        this.loadingService.setLoading(false);
-        this.errorService.setError(error);
-       }
       );
-    },
-    error => {
-     this.loadingService.setLoading(false);
-     this.errorService.setError(error.message);
-    }
-   );
- }
+  }
 }

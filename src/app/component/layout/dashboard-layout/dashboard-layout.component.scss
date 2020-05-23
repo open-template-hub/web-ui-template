@@ -1,44 +1,44 @@
 .dashboard-layout-page {
- background-position: center center;
- background-repeat: no-repeat;
- background-attachment: fixed;
- background-size: cover;
- background-color: var(--background);
- padding: 0.5rem 0 0 env(safe-area-inset-left);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: var(--background);
+  padding: 0.5rem 0 0 env(safe-area-inset-left);
 }
 
 .dashboard-layout-page-content {
- padding: 0 2rem 0;
- min-height: 120vh;
+  padding: 0 2rem 0;
+  min-height: 120vh;
 }
 
 @media only screen and (max-width: 799px) {
- .dashboard-layout-page {
-  min-height: 200vh;
-  margin-top: 55px;
- }
+  .dashboard-layout-page {
+    min-height: 200vh;
+    margin-top: 55px;
+  }
 
- .dashboard-layout-page, .footer-wrap {
-  margin-left: 0;
- }
+  .dashboard-layout-page, .footer-wrap {
+    margin-left: 0;
+  }
 }
 
 @media only screen and (min-width: 800px) {
- .dashboard-layout-page {
-  margin-top: 0;
- }
+  .dashboard-layout-page {
+    margin-top: 0;
+  }
 
- .dashboard-layout-page, .footer-wrap {
-  margin-left: 256px;
- }
+  .dashboard-layout-page, .footer-wrap {
+    margin-left: 256px;
+  }
 
- .side-nav-closed .dashboard-layout-page, .side-nav-closed .footer-wrap {
-  margin-left: 80px;
- }
+  .side-nav-closed .dashboard-layout-page, .side-nav-closed .footer-wrap {
+    margin-left: 80px;
+  }
 }
 
 @media screen and (min-aspect-ratio: 4/3) {
- .dashboard-layout-page-content {
-  min-height: 200vh;
- }
+  .dashboard-layout-page-content {
+    min-height: 200vh;
+  }
 }
