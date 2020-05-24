@@ -1,162 +1,52 @@
 import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
-import { LoadingService } from '../loading/loading.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-
-const InitUser = gql
-  `mutation {
-  initCurrentUser {
-    username
-  }
-}
-`
-
-const UpdateUser = gql
-  `mutation UpdateCurrentUser($firstName: String, $lastName: String) {
-  updateCurrentUser(input: {firstName: $firstName, lastName: $lastName}) {
-    username,
-    firstName,
-    lastName
-  }
-}
-`
-
-const CreateUser = gql
-  `mutation CreateUser($username: String!) {
-  createUser(input: {username: $username}) {
-    username
-  }
-}
-`
-
-const GetUserInfo = gql`
-query {
-  me {
-    id
-    username
-    firstName
-    lastName
-  }
-}
-`;
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasicInfoService {
 
-  private basicInfoSubject: BehaviorSubject<any>;
-  public basicInfo: Observable<any>;
+  private userInfoSubject: BehaviorSubject<any>;
+  public userInfo: Observable<any>;
 
-  constructor(
-    private apollo: Apollo,
-    private loadingService: LoadingService) {
+  constructor(private http: HttpClient) {
 
-    const basicInfoStorageItem = localStorage.getItem('basicInfo') ? localStorage.getItem('basicInfo') : sessionStorage.getItem('basicInfo');
-    this.basicInfoSubject = new BehaviorSubject<any>(JSON.parse(basicInfoStorageItem));
-    this.basicInfo = this.basicInfoSubject.asObservable();
+    const userInfoStorageItem = localStorage.getItem('userInfo') ? localStorage.getItem('userInfo') : sessionStorage.getItem('userInfo');
+    this.userInfoSubject = new BehaviorSubject<any>(JSON.parse(userInfoStorageItem));
+    this.userInfo = this.userInfoSubject.asObservable();
   }
 
-  initUserInfo() {
-    this.loadingService.setLoading(true);
-    return this.apollo.mutate(
-      {
-        mutation: InitUser,
-        errorPolicy: 'all'
-      }
-    ).pipe(map(response => {
-        this.loadingService.setLoading(false);
-        if (response.data) {
-          const responseData: any = response.data;
-          return responseData.initUser;
-        }
-
-        return null;
-      })
-    );
+  public get userInfoValue(): any {
+    return this.userInfoSubject.value;
   }
 
-  updateUserInfo(firstName: string, lastName: string) {
+  me() {
+    return this.http.get<any>(`${environment.serverUrl}/user/me`)
+      .pipe(map(userInfo => {
+        this.userInfoSubject.next(userInfo);
 
-    this.loadingService.setLoading(true);
-    return this.apollo.mutate(
-      {
-        mutation: UpdateUser,
-        variables: {
-          firstName,
-          lastName
-        },
-        errorPolicy: 'all'
-      }
-    ).pipe(map(response => {
-        this.loadingService.setLoading(false);
-        if (response.data) {
-          const responseData: any = response.data;
-          return responseData.createUser;
+        if (localStorage.getItem('currentUser')) {
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        } else {
+          sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
         }
 
-        return null;
-      })
-    );
+        return userInfo;
+      }));
   }
 
-  createUserInfo(username: string) {
-
-    this.loadingService.setLoading(true);
-    return this.apollo.mutate(
-      {
-        mutation: CreateUser,
-        variables: {
-          username
-        },
-        errorPolicy: 'all'
-      }
-    ).pipe(map(response => {
-        this.loadingService.setLoading(false);
-        if (response.data) {
-          const responseData: any = response.data;
-          return responseData.createUser;
-        }
-
-        return null;
-      })
-    );
+  createMyInfo() {
+    return this.http.post<any>(`${environment.serverUrl}/user/me`, {payload: {}});
   }
 
-  getUserInfo() {
-
-    this.loadingService.setLoading(true);
-    return this.apollo.query<any>(
-      {
-        query: GetUserInfo,
-        fetchPolicy: 'network-only',
-        errorPolicy: 'all'
-      }
-    ).pipe(map(response => {
-        this.loadingService.setLoading(false);
-
-        if (response.data) {
-          const basicInfo = response.data.me;
-          this.basicInfoSubject.next(basicInfo);
-
-          if (localStorage.getItem('currentUser')) {
-            localStorage.setItem('basicInfo', JSON.stringify(basicInfo));
-          } else {
-            sessionStorage.setItem('basicInfo', JSON.stringify(basicInfo));
-          }
-
-          return basicInfo;
-        }
-
-        return null;
-      })
-    );
+  updateMyInfo(payload: any) {
+    return this.http.put<any>(`${environment.serverUrl}/user/me`, {payload});
   }
 
   logout() {
-    this.basicInfoSubject.next(null);
-
+    this.userInfoSubject.next(null);
   }
 }

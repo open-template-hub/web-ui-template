@@ -15,11 +15,11 @@ import { ErrorService } from '../../../../service/error/error.service';
 export class ProfileComponent implements OnInit {
 
   currentUser: AuthToken;
-  basicInfoForm: FormGroup;
+  userInfoForm: FormGroup;
   submitted = false;
   error = '';
   loading = false;
-  basicInfo: any = {};
+  userInfo: any = {};
   profileImg = './assets/profile-img.png';
 
   constructor(
@@ -34,24 +34,24 @@ export class ProfileComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
     this.errorService.sharedError.subscribe(error => this.error = error);
 
-    this.basicInfoService.basicInfo.subscribe(basicInfo => {
-        this.basicInfo = basicInfo;
-        if (basicInfo.profileImg) {
-          this.profileImg = basicInfo.profileImg;
+    this.basicInfoService.userInfo.subscribe(userInfo => {
+        this.userInfo = userInfo;
+        if (userInfo?.profileImg) {
+          this.profileImg = userInfo.profileImg;
         }
       }
     );
   }
 
   ngOnInit() {
-    this.basicInfoForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+    this.userInfoForm = this.formBuilder.group({
+      firstName: [this.basicInfoService.userInfoValue?.payload?.firstName, Validators.required],
+      lastName: [this.basicInfoService.userInfoValue?.payload?.lastName, Validators.required]
     });
   }
 
   get f() {
-    return this.basicInfoForm.controls;
+    return this.userInfoForm.controls;
   }
 
   onSubmit() {
@@ -62,13 +62,18 @@ export class ProfileComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.basicInfoForm.invalid) {
+    if (this.userInfoForm.invalid) {
       return;
     }
 
     this.loadingService.setLoading(true);
 
-    this.basicInfoService.updateUserInfo(this.f.firstName.value, this.f.lastName.value)
+    const payload = {
+      firstName: this.f.firstName.value,
+      lastName: this.f.lastName.value
+    }
+
+    this.basicInfoService.updateMyInfo(payload)
       .subscribe(() => {
           this.loadingService.setLoading(false);
           this.router.navigate(['/dashboard']);

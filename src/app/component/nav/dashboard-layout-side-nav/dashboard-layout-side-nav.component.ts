@@ -14,7 +14,7 @@ export class DashboardLayoutSideNavComponent implements OnInit {
 
   darkTheme: string;
   sideNavClosed = 'false';
-  basicInfo: any = {};
+  userInfo: any = {};
   profileImg = './assets/profile-img.png';
 
   brand = {
@@ -43,13 +43,13 @@ export class DashboardLayoutSideNavComponent implements OnInit {
 
     this.brand = this.themeService.brand;
 
-    this.basicInfoService.basicInfo.subscribe(basicInfo => {
-        if (basicInfo) {
-          this.basicInfo = basicInfo;
+    this.basicInfoService.userInfo.subscribe(userInfo => {
+        if (userInfo) {
+          this.userInfo = userInfo;
         }
 
-        if (this.basicInfo.profileImg) {
-          this.profileImg = basicInfo.profileImg;
+        if (this.userInfo.profileImg) {
+          this.profileImg = userInfo.profileImg;
         }
       }
     );

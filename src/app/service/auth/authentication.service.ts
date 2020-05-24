@@ -15,9 +15,6 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<AuthToken>;
   public currentUser: Observable<AuthToken>;
 
-  private userInfoSubject: BehaviorSubject<any>;
-  public userInfo: Observable<any>;
-
   constructor(private http: HttpClient,
               private themeService: ThemeService,
               private basicInfoService: BasicInfoService
@@ -25,10 +22,6 @@ export class AuthenticationService {
     const currentUserStorageItem = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : sessionStorage.getItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<AuthToken>(JSON.parse(currentUserStorageItem));
     this.currentUser = this.currentUserSubject.asObservable();
-
-    const userInfoStorageItem = localStorage.getItem('userInfo') ? localStorage.getItem('userInfo') : sessionStorage.getItem('userInfo');
-    this.userInfoSubject = new BehaviorSubject<any>(JSON.parse(userInfoStorageItem));
-    this.userInfo = this.userInfoSubject.asObservable();
   }
 
   public get currentUserValue(): AuthToken {
@@ -67,7 +60,6 @@ export class AuthenticationService {
     localStorage.clear();
     sessionStorage.clear();
     this.currentUserSubject.next(null);
-    this.userInfoSubject.next(null);
 
     return this.http.post<any>(`${environment.serverUrl}/auth/logout`, {token: refreshToken}).subscribe();
   }
@@ -100,6 +92,7 @@ export class AuthenticationService {
 
   addAuthorizationHeader(request: HttpRequest<unknown>) {
     const currentUser = this.currentUserSubject.value;
+
     if (currentUser && currentUser.accessToken) {
       request = request.clone({
         setHeaders: {
@@ -147,20 +140,5 @@ export class AuthenticationService {
 
       return currentUser;
     }));
-  }
-
-  me() {
-    return this.http.get<any>(`${environment.serverUrl}/info/me`)
-      .pipe(map(userInfo => {
-        this.userInfoSubject.next(userInfo);
-
-        if (localStorage.getItem('currentUser')) {
-          localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        } else {
-          sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-        }
-
-        return userInfo;
-      }));
   }
 }

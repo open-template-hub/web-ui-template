@@ -3,8 +3,6 @@ export const environment = {
 
   serverUrl: 'https://orchestration-server-template.herokuapp.com',
 
-  basicInfoServerUrl: 'https://basic-info-server-nodejs-st.herokuapp.com',
-
   social: {
     twitter: {
       tag: 'TWITTER',

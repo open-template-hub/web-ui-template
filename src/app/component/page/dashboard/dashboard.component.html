@@ -1,10 +1,10 @@
 <div class="dashboard-page">
   <app-card1 [title]="'Dashboard'">
-    <div fxLayout="column" *ngIf="basicInfo">
+    <div fxLayout="column" *ngIf="userInfo">
       <app-label-data [label]="'Username'" [data]="userInfo.username"></app-label-data>
       <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>
-      <app-label-data *ngIf="basicInfo.firstName" [label]="'First Name'" [data]="basicInfo.firstName"></app-label-data>
-      <app-label-data *ngIf="basicInfo.lastName" [label]="'Last Name'" [data]="basicInfo.lastName"></app-label-data>
+      <app-label-data *ngIf="userInfo?.payload?.firstName" [label]="'First Name'" [data]="userInfo.payload.firstName"></app-label-data>
+      <app-label-data *ngIf="userInfo?.payload?.lastName" [label]="'Last Name'" [data]="userInfo.payload.lastName"></app-label-data>
       <div class="error-text alert-with-icon" *ngIf="error">
         <p>
           {{error}}

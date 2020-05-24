@@ -13,8 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Apollo, ApolloModule } from 'apollo-angular';
-import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 
 import { DashboardComponent } from './component/page/dashboard/dashboard.component';
 import { SignUpComponent } from './component/page/sign-up/sign-up.component';
@@ -34,8 +32,6 @@ import { Button2Component } from './component/common/button/button2/button2.comp
 import { SplashLayoutComponent } from './component/layout/splash-layout/splash-layout.component';
 import { CallbackComponent } from './component/page/callback/callback.component';
 import { SocialButtonComponent } from './component/common/button/social-button/social-button.component';
-import { environment } from '../environments/environment';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.component';
 import { LabelDataComponent } from './component/common/block/label-data/label-data.component';
 import { DashboardLayoutTopNavComponent } from './component/nav/dashboard-layout-top-nav/dashboard-layout-top-nav.component';
@@ -74,8 +70,6 @@ import { ProfileComponent } from './component/page/dashboard/profile/profile.com
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ApolloModule,
-    HttpLinkModule,
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule
@@ -88,21 +82,5 @@ import { ProfileComponent } from './component/page/dashboard/profile/profile.com
 })
 export class AppModule {
 
-  constructor(
-    private apollo: Apollo,
-    private httpLink: HttpLink,
-  ) {
-
-    const http = httpLink.create(
-      {
-        uri: `${environment.basicInfoServerUrl}/graphql`
-      });
-
-    const cache = new InMemoryCache();
-    apollo.create({
-      link: http,
-      cache
-    });
-  }
-
+  constructor() {}
 }

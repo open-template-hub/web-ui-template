@@ -15,7 +15,6 @@ export class DashboardComponent implements OnInit {
 
   currentUser: AuthToken;
   userInfo: any = {};
-  basicInfo: any;
   error = '';
 
   constructor(
@@ -26,34 +25,30 @@ export class DashboardComponent implements OnInit {
     private errorService: ErrorService
   ) {
     this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
-    this.basicInfoService.basicInfo.subscribe(basicInfo => this.basicInfo = basicInfo);
+    this.basicInfoService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
     this.errorService.sharedError.subscribe(error => this.error = error);
   }
 
   ngOnInit(): void {
     this.loadingService.setLoading(true);
-    this.authenticationService.me()
+    this.basicInfoService.me()
       .subscribe(userInfo => {
           this.userInfo = userInfo;
 
-          this.basicInfoService.getUserInfo()
-            .subscribe(basicInfo => {
-                if (!basicInfo) {
-                  this.basicInfoService.initUserInfo()
-                    .subscribe(() => {
-                        this.loadingService.setLoading(false);
-                        this.router.navigate(['/dashboard/welcome']);
-                      }
-                    );
-                } else {
-                  this.basicInfo = basicInfo;
+          if (!this.userInfo.payload) {
+            this.basicInfoService.createMyInfo()
+              .subscribe(() => {
+                  this.loadingService.setLoading(false);
+                  this.router.navigate(['/dashboard/welcome']);
+                },
+                error => {
+                  this.loadingService.setLoading(false);
+                  this.errorService.setError(error.message);
                 }
-              },
-              error => {
-                this.loadingService.setLoading(false);
-                this.errorService.setError(error);
-              }
-            );
+              );
+          } else {
+            this.loadingService.setLoading(false);
+          }
         },
         error => {
           this.loadingService.setLoading(false);

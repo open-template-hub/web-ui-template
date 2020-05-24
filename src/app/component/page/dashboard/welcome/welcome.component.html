@@ -11,7 +11,7 @@
       <p>or</p>
       <p>update your profile details below</p>
     </div>
-    <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
         <input type="text" placeholder="First name..." formControlName="firstName" required>
         <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
