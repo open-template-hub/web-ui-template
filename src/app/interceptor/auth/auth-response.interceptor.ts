@@ -22,24 +22,7 @@ export class AuthResponseInterceptor implements HttpInterceptor {
             // client-side error or network error
             console.error('network error');
           } else {
-            let tokenExpired = false;
-
-            if (errorResponse.error === 'jwt expired') {
-              tokenExpired = true;
-            } else if (errorResponse.error.errors instanceof Array) {
-              // TODO: this part will be removed with basic info server changes
-              const errorCodes = [];
-              errorResponse.error.errors.forEach(error => {
-                if (error.extensions) {
-                  errorCodes.push(error.extensions.code);
-                }
-              });
-              if (errorCodes.includes('jwt expired')) {
-                tokenExpired = true;
-              }
-            }
-
-            if (tokenExpired) {
+            if (errorResponse.error?.message === 'jwt expired') {
               if (!this.refreshingToken) {
                 console.log('token refreshing attempt');
                 this.refreshingToken = true;
