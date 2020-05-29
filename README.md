@@ -5,8 +5,8 @@
 [![License](https://img.shields.io/github/license/open-template-hub/basic-angular-ui-template?color=2F7488&style=plastic)]()
 [![Issues](https://img.shields.io/github/issues/open-template-hub/basic-angular-ui-template?color=2F7488&style=plastic)]()
 [![PRCLosed](https://img.shields.io/github/issues-pr-closed-raw/open-template-hub/basic-angular-ui-template?color=2F7488&style=plastic)]()
-[![LAstCommit](https://img.shields.io/github/last-commit/open-template-hub/basic-angular-ui-template?color=2F7488&style=plastic)]()
-[![Release](https://img.shields.io/github/release/open-template-hub/basic-angular-ui-template?color=2F7488&style=plastic)]()
+[![LastCommit](https://img.shields.io/github/last-commit/open-template-hub/basic-angular-ui-template?color=2F7488&style=plastic)]()
+[![Release](https://img.shields.io/github/release/open-template-hub/basic-angular-ui-template?include_prereleases&color=2F7488&style=plastic)]()
 
 Basic UI Template in Angular
 
