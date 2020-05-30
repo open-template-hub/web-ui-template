@@ -58,6 +58,9 @@ export const environment = {
     stripe: {
       tag: 'STRIPE',
       publishableKey: 'pk_test_LZDfXm3C2xYHGP7VBihlh10s00aOC1FSz8'
+    },
+    coinbase: {
+      tag: 'COINBASE_LOCAL'
     }
   }
 };
