@@ -5,6 +5,8 @@ import { ErrorService } from '../../../service/error/error.service';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { Router } from '@angular/router';
 import { LoadingService } from '../../../service/loading/loading.service';
+import { PaymentService } from '../../../service/payment/payment.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +24,7 @@ export class DashboardComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private loadingService: LoadingService,
     private basicInfoService: BasicInfoService,
+    private paymentService: PaymentService,
     private errorService: ErrorService
   ) {
     this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
@@ -53,6 +56,15 @@ export class DashboardComponent implements OnInit {
         error => {
           this.loadingService.setLoading(false);
           this.errorService.setError(error.message);
+        }
+      );
+  }
+
+  buy() {
+    this.loadingService.setLoading(true);
+    this.paymentService.initPayment(environment.payment.stripe.tag, 'Product Template', 1)
+      .subscribe(response => {
+          this.loadingService.setLoading(false);
         }
       );
   }

@@ -52,5 +52,11 @@ export const environment = {
       logo: './assets/social/github-logo.png',
       cssClass: 'github'
     },
+  },
+
+  payment: {
+    stripe: {
+      tag: 'STRIPE'
+    }
   }
 };
