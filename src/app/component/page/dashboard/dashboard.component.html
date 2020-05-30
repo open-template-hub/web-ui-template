@@ -5,7 +5,7 @@
       <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>
       <app-label-data *ngIf="userInfo?.payload?.firstName" [label]="'First Name'" [data]="userInfo.payload.firstName"></app-label-data>
       <app-label-data *ngIf="userInfo?.payload?.lastName" [label]="'Last Name'" [data]="userInfo.payload.lastName"></app-label-data>
-      <app-button1 (click)="buy()" [text]="'BUY'"></app-button1>
+      <app-button1 (click)="buy()" [text]="'BUY WITH STRIPE'"></app-button1>
 
       <div class="error-text alert-with-icon" *ngIf="error">
         <p>

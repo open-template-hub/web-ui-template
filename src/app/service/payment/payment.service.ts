@@ -12,20 +12,20 @@ export class PaymentService {
   constructor(private http: HttpClient) {
   }
 
-  initPayment(paymentConfigKey: string, productId: string, quantity: number) {
+  initPayment(paymentConfig: any, productId: string, quantity: number) {
     return this.http.post<any>(`${environment.serverUrl}/payment`, {
-      paymentConfigKey,
+      paymentConfigKey: paymentConfig.tag,
       productId,
       quantity
-    }).pipe(map(async (response) => {
+    }).subscribe(async (response) => {
 
-      const stripe = await loadStripe('pk_test_LZDfXm3C2xYHGP7VBihlh10s00aOC1FSz8');
+      const stripe = await loadStripe(paymentConfig.publishableKey);
 
       const {error} = await stripe.redirectToCheckout({
         sessionId: response.id
       });
 
       console.error(error);
-    }));
+    });
   }
 }

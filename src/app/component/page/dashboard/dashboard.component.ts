@@ -62,10 +62,6 @@ export class DashboardComponent implements OnInit {
 
   buy() {
     this.loadingService.setLoading(true);
-    this.paymentService.initPayment(environment.payment.stripe.tag, 'Product Template', 1)
-      .subscribe(response => {
-          this.loadingService.setLoading(false);
-        }
-      );
+    this.paymentService.initPayment(environment.payment.stripe, 'Product Template', 1);
   }
 }
