@@ -85,6 +85,14 @@
   --social: var(--github);
 }
 
+.stripe-s.social-button {
+  --social: var(--stripe);
+}
+
+.coinbase.social-button {
+  --social: var(--coinbase);
+}
+
 .social-button-checked.social-button {
   box-shadow: 0 4px 7px 0 var(--social);
   border-bottom-color: var(--social);

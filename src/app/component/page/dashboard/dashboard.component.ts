@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   currentUser: AuthToken;
   userInfo: any = {};
   error = '';
+  environment = environment;
 
   constructor(
     private router: Router,
@@ -60,12 +61,13 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  buy() {
+  buyWithStripe() {
     this.loadingService.setLoading(true);
-    this.paymentService.initPayment(environment.payment.stripe.tag, 'Product Template', 1)
-      .subscribe(response => {
-          this.loadingService.setLoading(false);
-        }
-      );
+    this.paymentService.initPayment(environment.payment.stripe, 'Product Template', 2);
+  }
+
+  buyWithCoinbase() {
+    this.loadingService.setLoading(true);
+    this.paymentService.initPayment(environment.payment.coinbase, 'Product Template', 2);
   }
 }
