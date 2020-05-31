@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   currentUser: AuthToken;
   userInfo: any = {};
   error = '';
+  environment = environment;
 
   constructor(
     private router: Router,

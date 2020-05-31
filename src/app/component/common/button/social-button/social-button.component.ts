@@ -10,6 +10,7 @@ export class SocialButtonComponent implements OnInit {
 
   @Input() text: string = '';
   @Input() brand: string = 'angular';
+  @Input() placeholderIcon: string = undefined;
 
   selected: boolean = false;
   loading: boolean = false;

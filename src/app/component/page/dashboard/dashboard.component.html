@@ -3,11 +3,20 @@
     <div fxLayout="column" *ngIf="userInfo">
       <app-label-data [label]="'Username'" [data]="userInfo.username"></app-label-data>
       <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>
-      <app-label-data *ngIf="userInfo?.payload?.firstName" [label]="'First Name'" [data]="userInfo.payload.firstName"></app-label-data>
-      <app-label-data *ngIf="userInfo?.payload?.lastName" [label]="'Last Name'" [data]="userInfo.payload.lastName"></app-label-data>
-      <app-button1 (click)="buyWithStripe()" [text]="'BUY WITH STRIPE'"></app-button1>
-      <app-button1 (click)="buyWithCoinbase()" [text]="'BUY WITH COINBASE'"></app-button1>
+      <app-label-data *ngIf="userInfo?.payload?.firstName" [label]="'First Name'"
+                      [data]="userInfo.payload.firstName"></app-label-data>
+      <app-label-data *ngIf="userInfo?.payload?.lastName" [label]="'Last Name'"
+                      [data]="userInfo.payload.lastName"></app-label-data>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <app-social-button [brand]="environment.social.stripe.cssClass" [text]="'Pay with Stripe'"
+                         (click)="buyWithStripe()"></app-social-button>
+      <app-social-button [brand]="environment.social.coinbase.cssClass" [text]="'Pay with Coinbase'"
+                         [placeholderIcon]="'bitcoin'"
+                         (click)="buyWithCoinbase()"></app-social-button>
+    </div>
 
+    <div fxLayout="column">
       <div class="error-text alert-with-icon" *ngIf="error">
         <p>
           {{error}}
