@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error = '';
   environment = environment;
-  loading: boolean = false;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/dashboard'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
   }
 
   // convenience getter for easy access to form fields
@@ -90,6 +90,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.loadingService.setLoading(false);
           window.location.href = data.loginUrl;
         },
         errorResponse => {

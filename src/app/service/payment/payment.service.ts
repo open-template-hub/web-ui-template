@@ -22,6 +22,7 @@ export class PaymentService {
     }).subscribe(async (response) => {
 
       if (response.method === 'stripe') {
+        this.loadingService.setLoading(false);
         const stripe = await loadStripe(paymentConfig.publishableKey);
 
         const {error} = await stripe.redirectToCheckout({
@@ -31,7 +32,6 @@ export class PaymentService {
         console.error(error);
       } else if (response.method === 'coinbase') {
         this.loadingService.setLoading(false);
-        console.log(response);
         window.location.href = `https://commerce.coinbase.com/charges/${response.payload.id}`;
       }
     });
