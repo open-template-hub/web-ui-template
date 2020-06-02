@@ -61,13 +61,8 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  buyWithStripe() {
+  pay(paymentMethod) {
     this.loadingService.setLoading(true);
-    this.paymentService.initPayment(environment.payment.stripe, 'Product Template', 2);
-  }
-
-  buyWithCoinbase() {
-    this.loadingService.setLoading(true);
-    this.paymentService.initPayment(environment.payment.coinbase, 'Product Template', 2);
+    this.paymentService.initPayment(paymentMethod, 'Product Template', 2);
   }
 }

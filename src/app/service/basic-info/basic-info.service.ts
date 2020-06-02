@@ -39,9 +39,11 @@ export class BasicInfoService {
   }
 
   createMyInfo() {
-    return this.http.post<any>(`${environment.serverUrl}/user/me`, {payload: {
-      firstName: ''
-      }});
+    return this.http.post<any>(`${environment.serverUrl}/user/me`, {
+      payload: {
+        firstName: ''
+      }
+    });
   }
 
   updateMyInfo(payload: any) {

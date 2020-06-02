@@ -10,10 +10,10 @@
     </div>
     <div fxLayout="column" fxLayoutAlign="center center">
       <app-social-button [brand]="environment.social.stripe.cssClass" [text]="'Pay with Stripe'"
-                         (click)="buyWithStripe()"></app-social-button>
+                         (click)="pay(environment.payment.stripe)"></app-social-button>
       <app-social-button [brand]="environment.social.coinbase.cssClass" [text]="'Pay with Coinbase'"
                          [placeholderIcon]="'bitcoin'"
-                         (click)="buyWithCoinbase()"></app-social-button>
+                         (click)="pay(environment.payment.coinbase)"></app-social-button>
     </div>
 
     <div fxLayout="column">
