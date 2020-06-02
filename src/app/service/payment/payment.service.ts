@@ -33,6 +33,9 @@ export class PaymentService {
       } else if (response.method === 'coinbase') {
         this.loadingService.setLoading(false);
         window.location.href = `https://commerce.coinbase.com/charges/${response.payload.id}`;
+      } else if (response.method === 'paypal') {
+        this.loadingService.setLoading(false);
+        window.location.href = `https://www.sandbox.paypal.com/checkoutnow?version=${paymentConfig.version}&fundingSource=paypal&env=${paymentConfig.env}&clientID=${paymentConfig.clientId}&token=${response.payload.id}`;
       }
     });
   }

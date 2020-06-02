@@ -25,6 +25,10 @@
   padding: 0 1.1rem;
 }
 
+.social-button.full-width, .social-button.full-width.social-button-with-text {
+  width: 80%;
+}
+
 .social-button.social-button-with-text i {
   margin-right: 0.7rem;
 }
@@ -91,6 +95,9 @@
 
 .coinbase.social-button {
   --social: var(--coinbase);
+}
+.paypal.social-button {
+  --social: var(--paypal);
 }
 
 .social-button-checked.social-button {

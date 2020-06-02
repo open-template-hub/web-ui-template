@@ -14,6 +14,8 @@
       <app-social-button [brand]="environment.social.coinbase.cssClass" [text]="'Pay with Coinbase'"
                          [placeholderIcon]="'bitcoin'"
                          (click)="pay(environment.payment.coinbase)"></app-social-button>
+      <app-social-button [brand]="environment.social.paypal.cssClass" [text]="'Pay with PayPal'"
+                         (click)="pay(environment.payment.paypal)"></app-social-button>
     </div>
 
     <div fxLayout="column">

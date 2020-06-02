@@ -57,6 +57,9 @@ export const environment = {
     },
     coinbase: {
       cssClass: 'coinbase'
+    },
+    paypal: {
+      cssClass: 'paypal'
     }
   },
 
@@ -67,6 +70,12 @@ export const environment = {
     },
     coinbase: {
       tag: 'COINBASE'
+    },
+    paypal: {
+      tag: 'PAYPAL',
+      cliendId: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+      version: '5.0.128',
+      env: 'sandbox'
     }
   }
 };
