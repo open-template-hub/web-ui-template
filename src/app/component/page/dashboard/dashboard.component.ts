@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
   error = '';
   environment = environment;
 
+  premium = false;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -59,10 +61,24 @@ export class DashboardComponent implements OnInit {
           this.errorService.setError(error.message);
         }
       );
+    this.hasPremium();
   }
 
-  pay(paymentMethod) {
+  getPremium(paymentMethod) {
     this.loadingService.setLoading(true);
-    this.paymentService.initPayment(paymentMethod, 'Product Template', 2);
+    this.paymentService.initPayment(paymentMethod, 'Premium', 1);
+  }
+
+  hasPremium() {
+
+    // TODO: Of course fix me
+    const rand = Math.floor((Math.random() * 100) + 1);
+
+    if (rand %2 === 0) {
+      this.premium = false;
+    }
+    else {
+      this.premium = true;
+    }
   }
 }
