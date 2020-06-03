@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
   getPremium(paymentMethod) {
     this.loadingService.setLoading(true);
-    this.paymentService.initPayment(paymentMethod, 'Premium', 1);
+    this.paymentService.initPayment(paymentMethod, '0276d8d1-0945-412b-92d1-084a6e3f7554', 1);
   }
 
   hasPremium() {
