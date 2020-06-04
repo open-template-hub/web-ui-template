@@ -82,5 +82,6 @@ import { ProfileComponent } from './component/page/dashboard/profile/profile.com
 })
 export class AppModule {
 
-  constructor() {}
+  constructor() {
+  }
 }

@@ -5,6 +5,8 @@
   <div class="card1-content">
     <ng-content></ng-content>
   </div>
+  <div [class.card-bottom-loading-wrapper]="!loading">
+  </div>
   <div [class.card-bottom-loading]="loading">
   </div>
 </div>

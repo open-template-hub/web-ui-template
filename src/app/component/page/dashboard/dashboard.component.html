@@ -8,12 +8,25 @@
       <app-label-data *ngIf="userInfo?.payload?.lastName" [label]="'Last Name'"
                       [data]="userInfo.payload.lastName"></app-label-data>
     </div>
+
+    <div fxLayout="column">
+      <div class="error-text alert-with-icon" *ngIf="error">
+        <p>
+          {{error}}
+        </p>
+        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+      </div>
+    </div>
+  </app-card1>
+  <app-card1 [title]="'Get Premium'" *ngIf="!premium">
     <div fxLayout="column" fxLayoutAlign="center center">
       <app-social-button [brand]="environment.social.stripe.cssClass" [text]="'Pay with Stripe'"
-                         (click)="buyWithStripe()"></app-social-button>
+                         (click)="getPremium(environment.payment.stripe)"></app-social-button>
       <app-social-button [brand]="environment.social.coinbase.cssClass" [text]="'Pay with Coinbase'"
                          [placeholderIcon]="'bitcoin'"
-                         (click)="buyWithCoinbase()"></app-social-button>
+                         (click)="getPremium(environment.payment.coinbase)"></app-social-button>
+      <app-social-button [brand]="environment.social.paypal.cssClass" [text]="'Pay with PayPal'"
+                         (click)="getPremium(environment.payment.paypal)"></app-social-button>
     </div>
 
     <div fxLayout="column">
@@ -23,6 +36,11 @@
         </p>
         <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
       </div>
+    </div>
+  </app-card1>
+  <app-card1 [title]="'Premium'" *ngIf="premium">
+    <div fxLayout="column">
+      <label>Enjoy your premium!</label>
     </div>
   </app-card1>
 </div>

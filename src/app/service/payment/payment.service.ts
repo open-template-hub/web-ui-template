@@ -22,6 +22,7 @@ export class PaymentService {
     }).subscribe(async (response) => {
 
       if (response.method === 'stripe') {
+        this.loadingService.setLoading(false);
         const stripe = await loadStripe(paymentConfig.publishableKey);
 
         const {error} = await stripe.redirectToCheckout({
@@ -31,9 +32,15 @@ export class PaymentService {
         console.error(error);
       } else if (response.method === 'coinbase') {
         this.loadingService.setLoading(false);
-        console.log(response);
         window.location.href = `https://commerce.coinbase.com/charges/${response.payload.id}`;
+      } else if (response.method === 'paypal') {
+        this.loadingService.setLoading(false);
+        window.location.href = `https://www.sandbox.paypal.com/checkoutnow?version=${paymentConfig.version}&fundingSource=paypal&env=${paymentConfig.env}&clientID=${paymentConfig.clientId}&token=${response.payload.id}`;
       }
     });
+  }
+
+  checkReceipt(productId: string) {
+    return this.http.get<any>(`${environment.serverUrl}/receipt`, {params: {product_id: productId}});
   }
 }

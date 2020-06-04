@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
   error = '';
   environment = environment;
 
+  premium = undefined;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -59,15 +61,24 @@ export class DashboardComponent implements OnInit {
           this.errorService.setError(error.message);
         }
       );
+    this.hasPremium();
   }
 
-  buyWithStripe() {
+  getPremium(paymentMethod) {
     this.loadingService.setLoading(true);
-    this.paymentService.initPayment(environment.payment.stripe, 'Product Template', 2);
+    this.paymentService.initPayment(paymentMethod, '0276d8d1-0945-412b-92d1-084a6e3f7554', 1);
   }
 
-  buyWithCoinbase() {
-    this.loadingService.setLoading(true);
-    this.paymentService.initPayment(environment.payment.coinbase, 'Product Template', 2);
+  hasPremium() {
+
+    this.paymentService.checkReceipt('0276d8d1-0945-412b-92d1-084a6e3f7554').subscribe( response => {
+      if (response.successful_receipts.length > 0) {
+        response.successful_receipts.forEach(receipt => {
+          if (receipt.status === 'SUCCESS') {
+            this.premium = true;
+          }
+        })
+      }
+    });
   }
 }
