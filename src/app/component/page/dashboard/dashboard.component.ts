@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   error = '';
   environment = environment;
 
-  premium = false;
+  premium = undefined;
 
   constructor(
     private router: Router,
@@ -71,14 +71,14 @@ export class DashboardComponent implements OnInit {
 
   hasPremium() {
 
-    // TODO: Of course fix me
-    const rand = Math.floor((Math.random() * 100) + 1);
-
-    if (rand %2 === 0) {
-      this.premium = false;
-    }
-    else {
-      this.premium = true;
-    }
+    this.paymentService.checkReceipt('0276d8d1-0945-412b-92d1-084a6e3f7554').subscribe( response => {
+      if (response.successful_receipts.length > 0) {
+        response.successful_receipts.forEach(receipt => {
+          if (receipt.status === 'SUCCESS') {
+            this.premium = true;
+          }
+        })
+      }
+    });
   }
 }
