@@ -18,15 +18,15 @@
       </div>
     </div>
   </app-card1>
-  <app-card1 [title]="'Get Premium'" *ngIf="!premium">
+  <app-card1 [title]="'Get Premium'" *ngIf="!premium && responseProcessed">
     <div fxLayout="column" fxLayoutAlign="center center">
       <app-social-button [brand]="environment.social.stripe.cssClass" [text]="'Pay with Stripe'"
-                         (click)="getPremium(environment.payment.stripe)"></app-social-button>
+                         (click)="buyPremium(environment.payment.stripe)"></app-social-button>
       <app-social-button [brand]="environment.social.coinbase.cssClass" [text]="'Pay with Coinbase'"
                          [placeholderIcon]="'bitcoin'"
-                         (click)="getPremium(environment.payment.coinbase)"></app-social-button>
+                         (click)="buyPremium(environment.payment.coinbase)"></app-social-button>
       <app-social-button [brand]="environment.social.paypal.cssClass" [text]="'Pay with PayPal'"
-                         (click)="getPremium(environment.payment.paypal)"></app-social-button>
+                         (click)="buyPremium(environment.payment.paypal)"></app-social-button>
     </div>
 
     <div fxLayout="column">
