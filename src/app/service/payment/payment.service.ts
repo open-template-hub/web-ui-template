@@ -39,8 +39,4 @@ export class PaymentService {
       }
     });
   }
-
-  checkReceipt(productId: string) {
-    return this.http.get<any>(`${environment.serverUrl}/receipt`, {params: {product_id: productId}});
-  }
 }
