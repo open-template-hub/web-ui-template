@@ -1,6 +1,6 @@
 ![Logo](https://avatars2.githubusercontent.com/u/65504426?s=200&v=4)
 
-# Basic Angular UI Template
+# Angular UI Template
 
 [![License](https://img.shields.io/github/license/open-template-hub/basic-angular-ui-template?color=2F7488&style=for-the-badge)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/open-template-hub/basic-angular-ui-template?color=2F7488&style=for-the-badge)](https://github.com/open-template-hub/basic-angular-ui-template/issues)
@@ -10,7 +10,13 @@
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_basic-angular-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge)](https://sonarcloud.io/dashboard?id=open-template-hub_basic-angular-ui-template)
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
-Basic UI Template in Angular
+UI Template in Angular
+
+## Express Deploy
+
+Deploy this template to Heroku
+
+[![Deploy](https://img.shields.io/badge/↑_Deploy_to-Heroku-7056bf.svg?style=for-the-badge)](https://heroku.com/deploy?template=https://github.com/open-template-hub/basic-angular-ui-template)
 
 ## Contributors
 
@@ -27,6 +33,14 @@ Basic UI Template in Angular
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Contributing
+
+* Fork it
+* Create your update branch (git checkout -b my-feature-branch)
+* Commit your changes (git commit -am 'Add some features')
+* Push to the branch (git push origin my-feature-branch)
+* Create new Pull Request
 
 ## LICENSE
 
