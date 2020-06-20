@@ -1,6 +1,6 @@
 {
   "name": "basic-angular-ui-template",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
