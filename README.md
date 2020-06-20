@@ -18,11 +18,19 @@ Angular UI Template
 
 UI Template in Angular
 
-## Express Deploy
+## Ways to Begin
+
+### 1. Express Deploy
 
 Deploy this template to Heroku
 
 [![Deploy](https://img.shields.io/badge/Deploy_to-Heroku-7056bf.svg?style=for-the-badge&logo=heroku)](https://heroku.com/deploy?template=https://github.com/open-template-hub/basic-angular-ui-template)
+
+### 2. GitHub Template
+
+Use this repository as a Template
+
+[![GitHubTemplate](https://img.shields.io/badge/GitHub-Template-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/basic-angular-ui-template/generate)
 
 ## Contributors
 
