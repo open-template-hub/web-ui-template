@@ -58,4 +58,4 @@ Use this repository as a Template
 
 ## LICENSE
 
-[MIT](LICENSE)
+The source code for this project is released under the [MIT License](LICENSE).
