@@ -8,6 +8,7 @@ import { LoadingService } from '../../../service/loading/loading.service';
 import { PaymentService } from '../../../service/payment/payment.service';
 import { environment } from '../../../../environments/environment';
 import { ProductService } from '../../../service/product/product.service';
+import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private loadingService: LoadingService,
     private basicInfoService: BasicInfoService,
+    private fileStorageService: FileStorageService,
     private paymentService: PaymentService,
     private errorService: ErrorService,
     private productService: ProductService
@@ -56,7 +58,19 @@ export class DashboardComponent implements OnInit {
                 }
               );
           } else {
-            this.loadingService.setLoading(false);
+            if (this.userInfo.payload.profileImageId) {
+              this.fileStorageService.downloadProfileImage(this.userInfo.payload.profileImageId)
+                .subscribe(() => {
+                    this.loadingService.setLoading(false);
+                  },
+                  error => {
+                    this.loadingService.setLoading(false);
+                    this.errorService.setError(error.message);
+                  }
+                );
+            } else {
+              this.loadingService.setLoading(false);
+            }
           }
         },
         error => {

@@ -36,6 +36,7 @@ import { WelcomeComponent } from './component/page/dashboard/welcome/welcome.com
 import { LabelDataComponent } from './component/common/block/label-data/label-data.component';
 import { DashboardLayoutTopNavComponent } from './component/nav/dashboard-layout-top-nav/dashboard-layout-top-nav.component';
 import { ProfileComponent } from './component/page/dashboard/profile/profile.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { ProfileComponent } from './component/page/dashboard/profile/profile.com
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ImageCropperModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthRequestInterceptor, multi: true},

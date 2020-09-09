@@ -15,6 +15,8 @@
   --success: #228b22;
   --error: #E23237;
   --warn: #d28f29;
+  --cropper-overlay-color: #f7fdff;
+  --cropper-outline-color: rgba(255, 255, 255, 0.7);
 }
 
 .dark-theme {
@@ -34,6 +36,8 @@
   --success: #398039;
   --error: #e04e52;
   --warn: #cda05c;
+  --cropper-overlay-color: #0b252b;
+  --cropper-outline-color: rgba(11, 37, 43, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,6 +58,8 @@
     --success: #398039;
     --error: #e04e52;
     --warn: #cda05c;
+    --cropper-overlay-color: #0b252b;
+    --cropper-outline-color: rgba(11, 37, 43, 0.5);
   }
 
   .dark-theme {
@@ -73,5 +79,7 @@
     --success: #228b22;
     --error: #E23237;
     --warn: #d28f29;
+    --cropper-overlay-color: #f7fdff;
+    --cropper-outline-color: rgba(255, 255, 255, 0.7);
   }
 }
