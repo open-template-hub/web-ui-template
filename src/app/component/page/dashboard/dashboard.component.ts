@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   userInfo: any = {};
   error = '';
   environment = environment;
+  profileImg = './assets/profile-img.png';
 
   premium = undefined;
   responseProcessed = false;
@@ -38,6 +39,14 @@ export class DashboardComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
     this.basicInfoService.userInfo.subscribe(userInfo => this.userInfo = userInfo);
     this.errorService.sharedError.subscribe(error => this.error = error);
+
+    this.fileStorageService.profileImage.subscribe(profileImg => {
+        if (profileImg?.file?.data) {
+          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+        }
+      }
+    );
+
   }
 
   ngOnInit(): void {
