@@ -5,11 +5,11 @@
 
       <input hidden type="file" accept="image/*" (change)="fileChangeEvent($event)" #fileInput/>
 
-      <image-cropper
+      <image-cropper style="max-width: 400px"
         [imageChangedEvent]="imageChangedEvent"
         [maintainAspectRatio]="true"
-        [aspectRatio]="1/1"
-        [resizeToWidth]="500"
+        [aspectRatio]="1"
+        [resizeToWidth]="400"
         format="png"
         outputType="file"
         (imageCropped)="imageCropped($event)"

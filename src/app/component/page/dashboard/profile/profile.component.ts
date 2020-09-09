@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   loading = false;
   userInfo: any = {};
   profileImg = './assets/profile-img.png';
-  profileImgFound = '';
 
   imageChangedEvent: any = '';
 
