@@ -25,7 +25,8 @@
       </div>
       <p>upload a profile picture</p>
       <p>or</p>
-      <p>update your profile details below</p>
+      <p>update your profile details below
+      </p>
     </div>
     <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
       <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">

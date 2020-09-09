@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   loading = false;
   userInfo: any = {};
   profileImg = './assets/profile-img.png';
+  profileImgFound = '';
 
   imageChangedEvent: any = '';
 
@@ -41,8 +42,12 @@ export class ProfileComponent implements OnInit {
 
     this.basicInfoService.userInfo.subscribe(userInfo => {
         this.userInfo = userInfo;
-        if (userInfo?.profileImg) {
-          this.profileImg = userInfo.profileImg;
+      }
+    );
+
+    this.fileStorageService.profileImage.subscribe(profileImg => {
+        if (profileImg?.file?.data) {
+          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
         }
       }
     );
@@ -73,15 +78,15 @@ export class ProfileComponent implements OnInit {
 
     this.loadingService.setLoading(true);
 
-    const payload = {
-      firstName: this.f.firstName.value,
-      lastName: this.f.lastName.value
-    }
+    this.fileStorageService.createFile(this.profileImg, this.userInfo.username + '/profile_img', 'profile image', 'image/png')
+      .subscribe(response => {
+          const payload = {
+            firstName: this.f.firstName.value,
+            lastName: this.f.lastName.value,
+            profileImageId: response.id
+          }
 
-    this.basicInfoService.updateMyInfo(payload)
-      .subscribe(() => {
-          this.loadingService.setLoading(false);
-          this.fileStorageService.createFile(this.profileImg, this.userInfo.username + '/profile_img', 'profile image', 'image/png')
+          this.basicInfoService.updateMyInfo(payload)
             .subscribe(() => {
                 this.loadingService.setLoading(false);
                 this.router.navigate(['/dashboard']);

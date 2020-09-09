@@ -9,32 +9,31 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FileStorageService {
 
-  private userInfoSubject: BehaviorSubject<any>;
-  public userInfo: Observable<any>;
+  private profileImageSubject: BehaviorSubject<any>;
+  public profileImage: Observable<any>;
 
   constructor(private http: HttpClient) {
-
-    const userInfoStorageItem = localStorage.getItem('userInfo') ? localStorage.getItem('userInfo') : sessionStorage.getItem('userInfo');
-    this.userInfoSubject = new BehaviorSubject<any>(JSON.parse(userInfoStorageItem));
-    this.userInfo = this.userInfoSubject.asObservable();
+    const profileImageStorageItem = localStorage.getItem('profileImage') ? localStorage.getItem('profileImage') : sessionStorage.getItem('profileImage');
+    this.profileImageSubject = new BehaviorSubject<any>(JSON.parse(profileImageStorageItem));
+    this.profileImage = this.profileImageSubject.asObservable();
   }
 
-  public get userInfoValue(): any {
-    return this.userInfoSubject.value;
+  public get profileImageValue(): any {
+    return this.profileImageSubject.value;
   }
 
-  me() {
-    return this.http.get<any>(`${environment.serverUrl}/user/me`)
-      .pipe(map(userInfo => {
-        this.userInfoSubject.next(userInfo);
+  downloadProfileImage(id: any) {
+    return this.http.get<any>(`${environment.serverUrl}/file`, {params: {id}})
+      .pipe(map(profileImage => {
+        this.profileImageSubject.next(profileImage);
 
         if (localStorage.getItem('currentUser')) {
-          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          localStorage.setItem('profileImage', JSON.stringify(profileImage));
         } else {
-          sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+          sessionStorage.setItem('profileImage', JSON.stringify(profileImage));
         }
 
-        return userInfo;
+        return profileImage;
       }));
   }
 
@@ -46,11 +45,11 @@ export class FileStorageService {
         description,
         content_type: contentType,
         data: file
-    }
+      }
     });
   }
 
   logout() {
-    this.userInfoSubject.next(null);
+    this.profileImageSubject.next(null);
   }
 }
