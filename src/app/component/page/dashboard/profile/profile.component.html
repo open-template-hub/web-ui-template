@@ -2,7 +2,23 @@
   <app-card1 [title]="'My Profile'">
     <div fxLayout="column" fxLayoutAlign="center center"
          style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: auto; text-align: center">
-      <div class="profile-page-profile-img-wrapper">
+
+      <input hidden type="file" accept="image/*" (change)="fileChangeEvent($event)" #fileInput/>
+
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1/1"
+        [resizeToWidth]="500"
+        format="png"
+        outputType="file"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"
+      ></image-cropper>
+
+      <div class="profile-page-profile-img-wrapper" (click)="fileInput.click()" style="cursor: pointer">
         <div class="shine circle">
           <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
         </div>

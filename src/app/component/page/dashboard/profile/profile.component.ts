@@ -6,6 +6,8 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ErrorService } from '../../../../service/error/error.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,11 +24,14 @@ export class ProfileComponent implements OnInit {
   userInfo: any = {};
   profileImg = './assets/profile-img.png';
 
+  imageChangedEvent: any = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
     private basicInfoService: BasicInfoService,
+    private fileStorageService: FileStorageService,
     private loadingService: LoadingService,
     private errorService: ErrorService
   ) {
@@ -76,12 +81,42 @@ export class ProfileComponent implements OnInit {
     this.basicInfoService.updateMyInfo(payload)
       .subscribe(() => {
           this.loadingService.setLoading(false);
-          this.router.navigate(['/dashboard']);
+          this.fileStorageService.createFile(this.profileImg, this.userInfo.username + '/profile_img', 'profile image', 'image/png')
+            .subscribe(() => {
+                this.loadingService.setLoading(false);
+                this.router.navigate(['/dashboard']);
+              },
+              error => {
+                this.loadingService.setLoading(false);
+                this.errorService.setError(error);
+              }
+            );
         },
         error => {
           this.loadingService.setLoading(false);
           this.errorService.setError(error);
         }
       );
+
+  }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.profileImg = event.base64;
+  }
+
+  imageLoaded() {
+    // show cropper
+  }
+
+  cropperReady() {
+    // cropper ready
+  }
+
+  loadImageFailed() {
+    // show message
   }
 }
