@@ -32,6 +32,19 @@ Use this repository as a Template
 
 [![GitHubTemplate](https://img.shields.io/badge/GitHub-Template-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/basic-angular-ui-template/generate)
 
+## Installations
+
+Install **nodejs** and **npm** via **[nodejs.org](https://nodejs.org)**.
+
+Check installed versions of **nodejs** and **npm** via running following commands:
+
+```
+node -v
+npm -v
+```
+
+Check project's current **nodejs** and **npm** version from **[package.json](package.json)**.
+
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
