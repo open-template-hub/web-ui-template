@@ -1,6 +1,12 @@
-![Logo](https://avatars2.githubusercontent.com/u/65504426?s=200&v=4)
+<p align="center">
+  <a href="https://www.linkedin.com/company/open-template-hub">
+    <img src="https://avatars2.githubusercontent.com/u/65504426?s=200&v=4" alt="Logo">
+  </a>
+</p>
 
-# Angular UI Template
+<h1 align="center">
+Angular UI Template
+</h1>
 
 [![License](https://img.shields.io/github/license/open-template-hub/basic-angular-ui-template?color=2F7488&style=for-the-badge)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/open-template-hub/basic-angular-ui-template?color=2F7488&style=for-the-badge)](https://github.com/open-template-hub/basic-angular-ui-template/issues)
@@ -12,11 +18,32 @@
 
 UI Template in Angular
 
-## Express Deploy
+## Ways to Begin
+
+### 1. Express Deploy
 
 Deploy this template to Heroku
 
 [![Deploy](https://img.shields.io/badge/Deploy_to-Heroku-7056bf.svg?style=for-the-badge&logo=heroku)](https://heroku.com/deploy?template=https://github.com/open-template-hub/basic-angular-ui-template)
+
+### 2. GitHub Template
+
+Use this repository as a Template
+
+[![GitHubTemplate](https://img.shields.io/badge/GitHub-Template-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/basic-angular-ui-template/generate)
+
+## Installations
+
+Install **nodejs** and **npm** via **[nodejs.org](https://nodejs.org)**.
+
+Check installed versions of **nodejs** and **npm** via running following commands:
+
+```
+node -v
+npm -v
+```
+
+Check project's current **nodejs** and **npm** version from **[package.json](package.json)**.
 
 ## Contributors
 
@@ -44,4 +71,4 @@ Deploy this template to Heroku
 
 ## LICENSE
 
-[MIT](LICENSE)
+The source code for this project is released under the [MIT License](LICENSE).

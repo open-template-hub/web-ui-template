@@ -1,5 +1,12 @@
 <div class="dashboard-page">
   <app-card1 [title]="'Dashboard'">
+    <div fxLayout="column" fxLayoutAlign="center center"
+         style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: auto; text-align: center">
+      <div class="profile-page-profile-img-wrapper">
+          <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
+      </div>
+    </div>
+
     <div fxLayout="column" *ngIf="userInfo">
       <app-label-data [label]="'Username'" [data]="userInfo.username"></app-label-data>
       <app-label-data *ngIf="userInfo.email" [label]="'Email'" [data]="userInfo.email"></app-label-data>

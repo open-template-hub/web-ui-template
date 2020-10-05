@@ -12,7 +12,13 @@ export class ErrorService {
   constructor() {
   }
 
-  setError(error: string) {
-    this.error.next(error)
+  setError(error: any) {
+    if (typeof error === 'string') {
+      this.error.next(error)
+    } else if (error?.error?.message) {
+      this.error.next(error.error.message);
+    } else {
+      this.error.next(JSON.stringify(error));
+    }
   }
 }

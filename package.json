@@ -1,6 +1,6 @@
 {
   "name": "basic-angular-ui-template",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -29,6 +29,7 @@
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
+    "ngx-image-cropper": "^3.2.1",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.1",

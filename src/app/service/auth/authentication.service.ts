@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { ThemeService } from '../theme/theme.service';
 import { BasicInfoService } from '../basic-info/basic-info.service';
 import { LoadingService } from '../loading/loading.service';
+import { FileStorageService } from '../file-storage/file-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient,
               private themeService: ThemeService,
               private basicInfoService: BasicInfoService,
+              private fileStorageService: FileStorageService,
               private loadingService: LoadingService
   ) {
     const currentUserStorageItem = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : sessionStorage.getItem('currentUser');
@@ -56,6 +58,7 @@ export class AuthenticationService {
   logout() {
     this.themeService.clearThemes();
     this.basicInfoService.logout();
+    this.fileStorageService.logout();
 
     const refreshToken = this.currentUserValue.refreshToken;
 
