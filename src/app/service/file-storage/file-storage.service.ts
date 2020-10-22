@@ -23,7 +23,7 @@ export class FileStorageService {
   }
 
   downloadProfileImage(id: any) {
-    return this.http.get<any>(`${environment.serverUrl}/file`, {params: {id}})
+    return this.http.get<any>(`${environment.serverUrl}/file/me`, {params: {id}})
       .pipe(map(profileImage => {
         this.profileImageSubject.next(profileImage);
 
@@ -38,7 +38,7 @@ export class FileStorageService {
   }
 
   createFile(file: any, title: string, description: string, contentType: string) {
-    return this.http.post<any>(`${environment.serverUrl}/file`, {
+    return this.http.post<any>(`${environment.serverUrl}/file/me`, {
       key: 'S3',
       payload: {
         title,
