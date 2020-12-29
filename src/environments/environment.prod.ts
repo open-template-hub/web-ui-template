@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
 
-  serverUrl: 'https://orchestration-server-template.herokuapp.com',
+  serverUrl: 'https://oth-orchestration.herokuapp.com',
 
   social: {
     twitter: {
