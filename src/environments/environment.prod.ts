@@ -66,7 +66,7 @@ export const environment = {
   payment: {
     stripe: {
       tag: 'STRIPE',
-      publishableKey: 'pk_test_LZDfXm3C2xYHGP7VBihlh10s00aOC1FSz8'
+      publishableKey: 'pk_test_51I4pFdJslj2vUcp7AkRtYwCPiZJbSvGK7lNFggSbLp9LQopdnUJU44mBKlREonmvszmASnyv4FMxQztzFedllxJO00wg7mHS85'
     },
     coinbase: {
       tag: 'COINBASE'
