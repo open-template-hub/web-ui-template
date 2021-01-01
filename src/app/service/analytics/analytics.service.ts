@@ -13,7 +13,7 @@ export class AnalyticsService {
   ) {}
 
   logRegisteredUser(userData: any) {
-    return this.http.post<any>(`${environment.serverUrl}/event`, {
+    return this.http.post<any>(`${environment.serverUrl}/analytics/event`, {
       name: "USER_REGISTERED",
       payload: userData,
     });

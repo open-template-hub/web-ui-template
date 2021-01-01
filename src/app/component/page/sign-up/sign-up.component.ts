@@ -87,11 +87,10 @@ export class SignUpComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          try {
-            this.analyticsService.logRegisteredUser(data);
-          } catch(e) {
-            console.error("Error while logging event: ", e);
-          }
+          this.analyticsService.logRegisteredUser(data).subscribe(response => {
+            console.info("Register Event successfully logged.");
+          });
+
           this.loadingService.setLoading(false);
           this.router.navigate(['/signup-success'], {queryParams: {email: data.email}});
         },
