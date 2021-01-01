@@ -14,10 +14,10 @@ export class PaymentService {
     private loadingService: LoadingService) {
   }
 
-  initPayment(paymentConfig: any, productId: string, quantity: number) {
+  initPayment(paymentConfig: any, product_id: string, quantity: number) {
     return this.http.post<any>(`${environment.serverUrl}/payment`, {
-      paymentConfigKey: paymentConfig.tag,
-      productId,
+      payment_config_key: paymentConfig.tag,
+      product_id,
       quantity
     }).subscribe(async (response) => {
 
