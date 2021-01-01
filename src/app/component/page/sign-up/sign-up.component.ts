@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../service/auth/authentication.serv
 import { first } from 'rxjs/operators';
 import { LoadingService } from '../../../service/loading/loading.service';
 import { environment } from '../../../../environments/environment';
+import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +24,8 @@ export class SignUpComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private analyticsService: AnalyticsService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -85,6 +87,10 @@ export class SignUpComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.analyticsService.logRegisteredUser(data).subscribe(response => {
+            console.info("Register Event successfully logged.");
+          });
+
           this.loadingService.setLoading(false);
           this.router.navigate(['/signup-success'], {queryParams: {email: data.email}});
         },

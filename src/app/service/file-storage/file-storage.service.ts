@@ -44,7 +44,8 @@ export class FileStorageService {
         title,
         description,
         content_type: contentType,
-        data: file
+        data: file,
+        is_public: true
       }
     });
   }
