@@ -1,6 +1,6 @@
 {
   "name": "web-ui-template",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
