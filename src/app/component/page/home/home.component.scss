@@ -6,34 +6,123 @@
   font-size: 36px;
 }
 
-.hero {
-  text-align: center;
-  margin-bottom: 25vh;
+.register-wrapper {
+  margin-top: 20px;
 }
 
-.hero h1 {
-  margin-bottom: 3vh;
+.register-wrapper a {
+  border-radius: 3px;
+  padding: 10px 17px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color);
+  border: 1px solid var(--color);
+}
+
+.register-wrapper a i {
+  margin-right: 0.5rem;
 }
 
 .features {
   display: flex;
   flex-direction: column;
-  max-width: 90vw;
-  padding-left: 10vw;
 }
 
-.features h2 {
-  margin-bottom: 1vh;
+.feature {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-@media only screen and (max-width: 799px) {
+.features > * {
+  padding-left: 7vw;
+  padding-right: 7vw;
+}
+
+.feature svg {
+  max-width: 100%;
+  min-width: 40%;
+  height: auto;
+}
+
+.feature-reverse {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  background-color: var(--lighter-contrast);
+}
+
+.feature-notes {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 999px) {
   .home-page {
-    font-size: 25px;
+    font-size: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .feature {
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+
+  .feature svg {
+    max-width: 360px;
+    max-height: 270px;
+    padding-bottom: 15px;
+  }
+
+  .features {
+    padding-bottom: 100px;
+  }
+
+  .features > * {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .register-wrapper {
+    margin-top: 20px;
+  }
+
+  .register-wrapper a {
+    font-size: 0.8em;
+  }
+
+  .register-wrapper a i {
+    font-size: 1.2em;
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 1000px) {
   .home-page {
-    font-size: 36px;
+    font-size: 35px;
+  }
+
+  .features {
+    padding-bottom: 300px;
+  }
+
+  .register-wrapper {
+    margin-top: 50px;
+  }
+
+  .register-wrapper a {
+    font-size: 0.7em;
+  }
+
+  .register-wrapper a i {
+    font-size: 1em;
+  }
+}
+
+@media (hover: hover) {
+  .register-wrapper a:hover {
+    background: transparent;
+    box-shadow: 0 3px 15px 1px var(--shadow);
   }
 }

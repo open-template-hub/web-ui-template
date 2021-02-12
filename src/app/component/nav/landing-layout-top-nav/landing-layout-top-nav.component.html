@@ -1,4 +1,4 @@
-<nav class="top-nav">
+<nav class="top-nav rounded-box">
   <a routerLink="/" class="brand">
     <img class="brand-logo" height="40" [src]="brand.brandLogo"/>
     <h2>UI Template</h2>
@@ -21,7 +21,7 @@
         REGISTER
     </span>
   </a>
-  <a routerLink="/login" *ngIf="!currentUser">
+  <a class="login" routerLink="/login" *ngIf="!currentUser">
     <i class="material-icons">fingerprint</i>
     <span>
         LOGIN

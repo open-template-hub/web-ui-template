@@ -1,8 +1,9 @@
 .top-nav {
   height: 50px;
-  margin: 20px 105px;
+  padding: 20px 110px 20px 46px;
   display: flex;
-  border-radius: 3px;
+  background-color: var(--background);
+  box-shadow: 5px 0 10px var(--shadow);
 }
 
 .top-nav a {
@@ -18,8 +19,16 @@
   margin-right: auto;
 }
 
-.top-nav a:first-child:hover {
-  background: none;
+.top-nav .login {
+  color: var(--success);
+  border-radius: 0;
+  border-bottom: var(--success) 1px solid;
+}
+
+.top-nav .login:hover {
+  color: white;
+  border-radius: 3px;
+  background: var(--success);
 }
 
 .top-nav .brand > * {
@@ -40,5 +49,11 @@
 @media only screen and (min-width: 800px) {
   .top-nav a {
     display: inline-flex;
+  }
+}
+
+@media (hover: hover) {
+  .top-nav a:first-child:hover {
+    background: none;
   }
 }
