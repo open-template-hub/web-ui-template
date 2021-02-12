@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Angular UI Template
+Open Template Hub - Web UI Template
 </h1>
 
 [![License](https://img.shields.io/github/license/open-template-hub/basic-angular-ui-template?color=2F7488&style=for-the-badge)](LICENSE)
@@ -25,8 +25,6 @@ Angular UI Template
     <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/products/web-ui/screenshot.png" alt="Screenshot" width="800px">
   </a>
 </p>
-
-UI Template in Angular
 
 ## Ways to Begin
 
