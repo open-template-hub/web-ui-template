@@ -3,6 +3,13 @@ export const environment = {
 
   serverUrl: 'https://oth-orchestration.herokuapp.com',
 
+  oth: {
+    social: {
+      linkedin: 'open-template-hub',
+      github: 'open-template-hub'
+    }
+  },
+
   social: {
     twitter: {
       tag: 'TWITTER',
