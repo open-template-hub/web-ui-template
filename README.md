@@ -17,7 +17,9 @@ Angular UI Template
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/products/web-ui/screenshot.png" alt="Screenshot" width="800px">
+  <a href="https://oth-web-app.herokuapp.com">
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/products/web-ui/screenshot.png" alt="Screenshot" width="800px">
+  </a>
 </p>
 
 UI Template in Angular
