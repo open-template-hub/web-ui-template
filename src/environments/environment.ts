@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
 
-  serverUrl: 'http://localhost:4000',
-//  serverUrl: 'https://orchestration-server-template.herokuapp.com',
+//  serverUrl: 'http://localhost:4000',
+  serverUrl: 'https://oth-orchestration.herokuapp.com',
 
   social: {
     twitter: {
