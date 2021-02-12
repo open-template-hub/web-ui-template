@@ -16,6 +16,10 @@ Angular UI Template
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_basic-angular-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_basic-angular-ui-template)
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/products/web-ui/screenshot.png" alt="Screenshot" width="800px">
+</p>
+
 UI Template in Angular
 
 ## Ways to Begin
