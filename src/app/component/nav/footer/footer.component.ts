@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { URLS } from '../../../util/constant';
+import { environment } from '../../../../environments/environment';
+import { ThemeService } from '../../../service/theme/theme.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +11,22 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private router: Router,) {
+  @Input()
+  hideShadow = false;
+  @Input()
+  popupPadding = false;
+
+  brand = {
+    brandLogo: '',
+  };
+
+  environment = environment;
+  URLS = URLS;
+
+  constructor(private router: Router,
+              private themeService: ThemeService
+  ) {
+    this.brand = this.themeService.brand;
   }
 
   ngOnInit(): void {
