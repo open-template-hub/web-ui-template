@@ -10,16 +10,13 @@ input, input::-webkit-input-placeholder {
   font-weight: 300;
 }
 
-input {
-  color: var(--color);
-  background: transparent;
-}
-
 input::-webkit-input-placeholder {
   color: var(--contrast);
 }
 
 input {
+  color: var(--color);
+  background: transparent;
   border: 0;
   width: 100%;
   border-bottom: 1px solid var(--contrast);
@@ -125,17 +122,14 @@ input[type=checkbox]:checked + label:before {
   background-color: var(--color);
 }
 
-.input-checkbox-label span:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
 .input-checkbox-label input:checked ~ span:after {
   display: block;
 }
 
 .input-checkbox-label span:after {
+  content: "";
+  position: absolute;
+  display: none;
   left: 16px;
   top: 11px;
   width: 6px;

@@ -23,6 +23,7 @@
   white-space: nowrap;
   font-size: 13px;
   transition: background-color 0.1s ease-in-out;
+  flex: 1;
 }
 
 .dashboard-layout-top-nav div {
@@ -30,10 +31,6 @@
   flex-direction: row;
   min-width: 20vw;
   font-size: 13px;
-}
-
-.dashboard-layout-top-nav a {
-  flex: 1;
 }
 
 .dashboard-layout-top-nav a i {
