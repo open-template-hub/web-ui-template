@@ -11,7 +11,8 @@ export const environment = {
   oth: {
     social: {
       linkedin: 'open-template-hub',
-      github: 'open-template-hub'
+      github: 'open-template-hub',
+      productHunt: '@open_template_hub'
     }
   },
 
@@ -72,6 +73,9 @@ export const environment = {
     },
     paypal: {
       cssClass: 'paypal'
+    },
+    productHunt: {
+      cssClass: 'product-hunt'
     }
   },
 
