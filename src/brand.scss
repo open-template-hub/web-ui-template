@@ -19,7 +19,22 @@
   margin: 0.2rem;
 }
 
+.brand-logo-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-logo-wrapper > * {
+  margin: 0.4em;
+}
+
 @media only screen and (max-width: 799px) {
+  .brand-logo-wrapper > * {
+    margin: 0.2em;
+  }
+
   .brand-in-page {
     display: flex;
   }
