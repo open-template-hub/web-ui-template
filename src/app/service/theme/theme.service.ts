@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,15 +27,11 @@ export class ThemeService {
     this.sideNavClosedSubject = new BehaviorSubject<string>(sideNavClosedStorageItem);
     this.sideNavClosed = this.sideNavClosedSubject.asObservable();
 
-    if (environment.production) {
-      this.brand.brandLogo = './assets/brand-logo.png';
-    } else {
-      this.brand.brandLogo = './assets/brand-logo-blue.png'
-    }
+    this.brand.brandLogo = './assets/brand-logo-blue.png'
   }
 
   initTheme(darkThemePreferred: boolean) {
-    let darkThemePreferredStorageItem = darkThemePreferred ? 'true' : 'false';
+    const darkThemePreferredStorageItem = darkThemePreferred ? 'true' : 'false';
 
     if (localStorage.getItem('currentUser')) {
       sessionStorage.removeItem('darkTheme');
@@ -48,7 +43,7 @@ export class ThemeService {
   }
 
   initSideNavClosed(sideNavClosePreferred: boolean) {
-    let sideNavClosedStorageItem = sideNavClosePreferred ? 'true' : 'false';
+    const sideNavClosedStorageItem = sideNavClosePreferred ? 'true' : 'false';
 
     if (localStorage.getItem('currentUser')) {
       sessionStorage.removeItem('sideNavClosed');
@@ -60,8 +55,8 @@ export class ThemeService {
   }
 
   switchDarkTheme() {
-    let darkThemeStorageItem = localStorage.getItem('darkTheme') ? localStorage.getItem('darkTheme') : sessionStorage.getItem('darkTheme');
-    let switchedTheme = darkThemeStorageItem === 'true' ? 'false' : 'true';
+    const darkThemeStorageItem = localStorage.getItem('darkTheme') ? localStorage.getItem('darkTheme') : sessionStorage.getItem('darkTheme');
+    const switchedTheme = darkThemeStorageItem === 'true' ? 'false' : 'true';
 
     if (localStorage.getItem('currentUser')) {
       sessionStorage.removeItem('darkTheme');
@@ -74,8 +69,8 @@ export class ThemeService {
   }
 
   toggleSideNav() {
-    let sideNavClosedStorageItem = localStorage.getItem('sideNavClosed') ? localStorage.getItem('sideNavClosed') : sessionStorage.getItem('sideNavClosed');
-    let toggledSideNavClosed = sideNavClosedStorageItem === 'true' ? 'false' : 'true';
+    const sideNavClosedStorageItem = localStorage.getItem('sideNavClosed') ? localStorage.getItem('sideNavClosed') : sessionStorage.getItem('sideNavClosed');
+    const toggledSideNavClosed = sideNavClosedStorageItem === 'true' ? 'false' : 'true';
 
     if (localStorage.getItem('currentUser')) {
       sessionStorage.removeItem('sideNavClosed');

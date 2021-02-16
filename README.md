@@ -16,13 +16,15 @@ Open Template Hub - Web UI Template
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_web-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_web-ui-template)
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
+Responsive Web UI template with sign-up, login and social login functionality
+
 <h3 align="center">
   For demo click the image below ⬇️
 </p>
 
 <p align="center">
   <a href="https://oth-web-app.herokuapp.com">
-    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/products/web-ui/screenshot.png" alt="Screenshot" width="800px">
+    <img src="https://github.com/open-template-hub/open-template-hub.github.io/blob/master/assets/products/web-ui/demonstration.png?raw=true" alt="Screenshot" width="800px">
   </a>
 </p>
 
