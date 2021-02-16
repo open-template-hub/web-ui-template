@@ -1,5 +1,5 @@
 @import "themes";
-@import "input";
+@import "styles/other/input";
 @import "alert";
 @import "loading";
 @import "brand";
@@ -7,6 +7,7 @@
 @import "profile";
 @import "animation";
 @import "styles/other/util";
+@import "styles/other/page";
 
 html, body {
   min-height: 100vh;
