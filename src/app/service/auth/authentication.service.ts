@@ -111,7 +111,7 @@ export class AuthenticationService {
   socialLoginRedirect(social: any) {
     let state;
     if (social.callbackParams.includes('state')) {
-      state = Math.random().toString(36);
+      state = this.generateUID(20);
       localStorage.setItem('loginSessionID', state);
     }
 
@@ -145,5 +145,10 @@ export class AuthenticationService {
 
       return currentUser;
     }));
+  }
+
+  generateUID(length) {
+    return window.btoa(Array.from(window.crypto.getRandomValues(new Uint8Array(length * 2)))
+      .map((b) => String.fromCharCode(b)).join('')).replace(/[+/]/g, '').substring(0, length);
   }
 }
