@@ -1,10 +1,10 @@
-<nav class="side-nav" [class.side-nav-closed]="sideNavClosed === 'true'" [class.dark-theme]="darkTheme === 'true'">
-  <a href="javascript:void(0)" (click)="toggleSideNav()" class="brand" *ngIf="currentUser">
-    <img class="brand-logo" width="40" height="logo" alt="" [src]="brand.brandLogo"/>
+<nav [class.dark-theme]="darkTheme === 'true'" [class.side-nav-closed]="sideNavClosed === 'true'" class="side-nav">
+  <a (click)="toggleSideNav()" *ngIf="currentUser" class="brand" href="javascript:void(0)">
+    <img [src]="brand.brandLogo" alt="" class="brand-logo" height="logo" width="40"/>
     <h2>UI Template</h2>
   </a>
-  <a routerLink="/dashboard/profile" *ngIf="currentUser">
-    <img class="profile-img-badge" alt="profile img" [src]="profileImg"/>
+  <a *ngIf="currentUser" routerLink="/dashboard/profile">
+    <img [src]="profileImg" alt="profile img" class="profile-img-badge"/>
     <span>
         MY PROFILE
     </span>
@@ -15,25 +15,25 @@
         DASHBOARD
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="switchTheme()" *ngIf="currentUser">
+  <a (click)="switchTheme()" *ngIf="currentUser" href="javascript:void(0)">
     <i class="material-icons">invert_colors</i>
     <span>
         THEME
     </span>
   </a>
-  <a routerLink="/signup" *ngIf="!currentUser">
+  <a *ngIf="!currentUser" routerLink="/signup">
     <i class="material-icons">person_add</i>
     <span>
         REGISTER
     </span>
   </a>
-  <a routerLink="/login" *ngIf="!currentUser">
+  <a *ngIf="!currentUser" routerLink="/login">
     <i class="material-icons">fingerprint</i>
     <span>
         LOGIN
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="logout()" *ngIf="currentUser">
+  <a (click)="logout()" *ngIf="currentUser" href="javascript:void(0)">
     <i class="material-icons">exit_to_app</i>
     <span>
         LOGOUT

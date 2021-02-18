@@ -15,7 +15,7 @@ export const ResponseCode = {
   INVALID_TOKEN: 498,
   INTERNAL_SERVER_ERROR: 500,
   SERVICE_UNAVAILABLE: 503,
-}
+};
 
 export const PROFILE_IMG = './assets/common/profile-img.png';
 
@@ -59,4 +59,4 @@ export const URLS = {
     linkedin: callback + '/linkedin',
     github: callback + '/github'
   }
-}
+};

@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 export class FileStorageService {
 
-  private profileImageSubject: BehaviorSubject<any>;
   public profileImage: Observable<any>;
+  private profileImageSubject: BehaviorSubject<any>;
 
-  constructor(private http: HttpClient) {
-    const profileImageStorageItem = localStorage.getItem('profileImage') ? localStorage.getItem('profileImage') : sessionStorage.getItem('profileImage');
-    this.profileImageSubject = new BehaviorSubject<any>(JSON.parse(profileImageStorageItem));
+  constructor( private http: HttpClient ) {
+    const profileImageStorageItem = localStorage.getItem( 'profileImage' ) ? localStorage.getItem( 'profileImage' ) : sessionStorage.getItem( 'profileImage' );
+    this.profileImageSubject = new BehaviorSubject<any>( JSON.parse( profileImageStorageItem ) );
     this.profileImage = this.profileImageSubject.asObservable();
   }
 
@@ -22,23 +22,23 @@ export class FileStorageService {
     return this.profileImageSubject.value;
   }
 
-  downloadProfileImage(id: any) {
-    return this.http.get<any>(`${environment.serverUrl}/file/me`, {params: {id}})
-      .pipe(map(profileImage => {
-        this.profileImageSubject.next(profileImage);
+  downloadProfileImage( id: any ) {
+    return this.http.get<any>( `${ environment.serverUrl }/file/me`, { params: { id } } )
+    .pipe( map( profileImage => {
+      this.profileImageSubject.next( profileImage );
 
-        if (localStorage.getItem('currentUser')) {
-          localStorage.setItem('profileImage', JSON.stringify(profileImage));
-        } else {
-          sessionStorage.setItem('profileImage', JSON.stringify(profileImage));
-        }
+      if ( localStorage.getItem( 'currentUser' ) ) {
+        localStorage.setItem( 'profileImage', JSON.stringify( profileImage ) );
+      } else {
+        sessionStorage.setItem( 'profileImage', JSON.stringify( profileImage ) );
+      }
 
-        return profileImage;
-      }));
+      return profileImage;
+    } ) );
   }
 
-  createFile(file: any, title: string, description: string, contentType: string) {
-    return this.http.post<any>(`${environment.serverUrl}/file/me`, {
+  createFile( file: any, title: string, description: string, contentType: string ) {
+    return this.http.post<any>( `${ environment.serverUrl }/file/me`, {
       key: 'S3',
       payload: {
         title,
@@ -47,10 +47,10 @@ export class FileStorageService {
         data: file,
         is_public: true
       }
-    });
+    } );
   }
 
   logout() {
-    this.profileImageSubject.next(null);
+    this.profileImageSubject.next( null );
   }
 }

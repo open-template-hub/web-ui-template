@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthToken } from '../../../model/AuthToken';
 import { Router } from '@angular/router';
+import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { ThemeService } from '../../../service/theme/theme.service';
 
-@Component({
+@Component( {
   selector: 'app-landing-layout-top-nav',
   templateUrl: './landing-layout-top-nav.component.html',
-  styleUrls: ['./landing-layout-top-nav.component.scss']
-})
+  styleUrls: [ './landing-layout-top-nav.component.scss' ]
+} )
 export class LandingLayoutTopNavComponent implements OnInit {
 
   currentUser: AuthToken;
@@ -18,13 +18,13 @@ export class LandingLayoutTopNavComponent implements OnInit {
   };
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private themeService: ThemeService
+      private router: Router,
+      private authenticationService: AuthenticationService,
+      private themeService: ThemeService
   ) {
-    this.authenticationService.currentUser.subscribe(currentUser => {
+    this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
-    });
+    } );
 
     this.brand = this.themeService.brand;
   }
@@ -34,9 +34,9 @@ export class LandingLayoutTopNavComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/']).then(() => {
+    this.router.navigate( [ '/' ] ).then( () => {
       return true;
-    });
+    } );
   }
 
   switchTheme() {

@@ -1,6 +1,6 @@
 <nav class="top-nav rounded-box">
-  <a routerLink="/" class="brand">
-    <img class="brand-logo" height="40" [src]="brand.brandLogo" alt="brand-logo"/>
+  <a class="brand" routerLink="/">
+    <img [src]="brand.brandLogo" alt="brand-logo" class="brand-logo" height="40"/>
     <h2>UI Template</h2>
   </a>
   <a routerLink="/dashboard">
@@ -9,25 +9,25 @@
         DASHBOARD
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="switchTheme()" *ngIf="currentUser">
+  <a (click)="switchTheme()" *ngIf="currentUser" href="javascript:void(0)">
     <i class="material-icons">invert_colors</i>
     <span>
         THEME
     </span>
   </a>
-  <a routerLink="/signup" *ngIf="!currentUser">
+  <a *ngIf="!currentUser" routerLink="/signup">
     <i class="material-icons">person_add</i>
     <span>
         REGISTER
     </span>
   </a>
-  <a class="login" routerLink="/login" *ngIf="!currentUser">
+  <a *ngIf="!currentUser" class="login" routerLink="/login">
     <i class="material-icons">fingerprint</i>
     <span>
         LOGIN
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="logout()" *ngIf="currentUser">
+  <a (click)="logout()" *ngIf="currentUser" href="javascript:void(0)">
     <i class="material-icons">exit_to_app</i>
     <span>
         LOGOUT

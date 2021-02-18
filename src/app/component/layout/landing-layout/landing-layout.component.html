@@ -1,5 +1,5 @@
-<a class="github-fork-ribbon" href="https://github.com/open-template-hub/web-ui-template"
-   data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork
+<a class="github-fork-ribbon" data-ribbon="Fork me on GitHub"
+   href="https://github.com/open-template-hub/web-ui-template" title="Fork me on GitHub">Fork
   me on GitHub</a>
 <div [class.dark-theme]="darkTheme === 'true'">
   <div class="landing-layout-page">
@@ -10,7 +10,7 @@
     <div class="landing-layout-page-content">
       <div class="brand-in-page">
         <a class="brand" routerLink="/">
-          <img class="brand-logo" height="40" [src]="brand.brandLogo" alt="brand-logo"/>
+          <img [src]="brand.brandLogo" alt="brand-logo" class="brand-logo" height="40"/>
           <h2>UI Template</h2>
         </a>
       </div>

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { LoadingService } from '../../../service/loading/loading.service';
-import { environment } from '../../../../environments/environment';
 
-@Component({
+@Component( {
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
+  styleUrls: [ './login.component.scss' ]
+} )
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
@@ -21,28 +21,17 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private loadingService: LoadingService
+      private formBuilder: FormBuilder,
+      private route: ActivatedRoute,
+      private router: Router,
+      private authenticationService: AuthenticationService,
+      private loadingService: LoadingService
   ) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/dashboard']);
+    if ( this.authenticationService.currentUserValue ) {
+      this.router.navigate( [ '/dashboard' ] );
     }
 
-    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
-  }
-
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      rememberMe: [false, Validators.required]
-    });
-
-    // get return url from route parameters or default to '/dashboard'
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
+    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
   }
 
   // convenience getter for easy access to form fields
@@ -50,56 +39,67 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group( {
+      username: [ '', Validators.required ],
+      password: [ '', Validators.required ],
+      rememberMe: [ false, Validators.required ]
+    } );
+
+    // get return url from route parameters or default to '/dashboard'
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/dashboard';
+  }
+
   onSubmit() {
-    if (this.loading) {
+    if ( this.loading ) {
       return;
     }
 
     this.submitted = true;
 
-    if (this.loginForm.invalid) {
+    if ( this.loginForm.invalid ) {
       return;
     }
 
-    this.loadingService.setLoading(true);
-    this.authenticationService.login(this.f.username.value, this.f.password.value, this.f.rememberMe.value)
-      .pipe(first())
-      .subscribe(
+    this.loadingService.setLoading( true );
+    this.authenticationService.login( this.f.username.value, this.f.password.value, this.f.rememberMe.value )
+    .pipe( first() )
+    .subscribe(
         () => {
-          this.loadingService.setLoading(false);
-          this.router.navigate([this.returnUrl]);
+          this.loadingService.setLoading( false );
+          this.router.navigate( [ this.returnUrl ] );
         },
         errorResponse => {
-          if (typeof errorResponse.error === 'string') {
+          if ( typeof errorResponse.error === 'string' ) {
             this.error = errorResponse.error;
-          } else if (errorResponse.statusText) {
+          } else if ( errorResponse.statusText ) {
             this.error = errorResponse.statusText;
           }
-          this.loadingService.setLoading(false);
-        });
+          this.loadingService.setLoading( false );
+        } );
   }
 
-  socialLogin(social: any) {
-    if (this.loading) {
+  socialLogin( social: any ) {
+    if ( this.loading ) {
       return;
     }
 
-    this.loadingService.setLoading(true);
+    this.loadingService.setLoading( true );
 
-    this.authenticationService.socialLoginRedirect(social)
-      .pipe(first())
-      .subscribe(
+    this.authenticationService.socialLoginRedirect( social )
+    .pipe( first() )
+    .subscribe(
         data => {
-          this.loadingService.setLoading(false);
+          this.loadingService.setLoading( false );
           window.location.href = data.loginUrl;
         },
         errorResponse => {
-          if (typeof errorResponse.error === 'string') {
+          if ( typeof errorResponse.error === 'string' ) {
             this.error = errorResponse.error;
-          } else if (errorResponse.statusText) {
+          } else if ( errorResponse.statusText ) {
             this.error = errorResponse.statusText;
           }
-          this.loadingService.setLoading(false);
-        });
+          this.loadingService.setLoading( false );
+        } );
   }
 }

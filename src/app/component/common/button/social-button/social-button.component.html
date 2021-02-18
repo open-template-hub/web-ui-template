@@ -1,5 +1,6 @@
-<button class="social-button" [disabled]="loading" [class.social-button-with-text]="text" [ngClass]="brand"
-        [class.social-button-checked]="selected && loading" (click)="selected = !selected">
+<button (click)="selected = !selected" [class.social-button-checked]="selected && loading"
+        [class.social-button-with-text]="text" [disabled]="loading"
+        [ngClass]="brand" class="social-button">
   <i [classList]="'fab fa-' + (placeholderIcon ? placeholderIcon : brand)"></i>
   {{text}}
 </button>

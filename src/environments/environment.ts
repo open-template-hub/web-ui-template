@@ -18,49 +18,49 @@ export const environment = {
   social: {
     twitter: {
       tag: 'TWITTER_LOCAL',
-      callbackParams: ['oauth_token', 'oauth_verifier'],
+      callbackParams: [ 'oauth_token', 'oauth_verifier' ],
       logo: './assets/social/twitter-logo.png',
       cssClass: 'twitter'
     },
     google: {
       tag: 'GOOGLE_LOCAL',
-      callbackParams: ['code', 'state'],
+      callbackParams: [ 'code', 'state' ],
       logo: './assets/social/google-logo.png',
       cssClass: 'google'
     },
     facebook: {
       tag: 'FACEBOOK',
-      callbackParams: ['code'],
+      callbackParams: [ 'code' ],
       logo: './assets/social/facebook-logo.png',
       cssClass: 'facebook-f'
     },
     linkedin: {
       tag: 'LINKEDIN_LOCAL',
-      callbackParams: ['code', 'state'],
+      callbackParams: [ 'code', 'state' ],
       logo: './assets/social/linkedin-logo.png',
       cssClass: 'linkedin-in'
     },
     twitch: {
       tag: 'TWITCH_LOCAL',
-      callbackParams: ['code', 'state'],
+      callbackParams: [ 'code', 'state' ],
       logo: './assets/social/twitch-logo.png',
       cssClass: 'twitch'
     },
     dribbble: {
       tag: 'DRIBBBLE_LOCAL',
-      callbackParams: ['code', 'state'],
+      callbackParams: [ 'code', 'state' ],
       logo: './assets/social/dribbble-logo.png',
       cssClass: 'dribbble'
     },
     reddit: {
       tag: 'REDDIT_LOCAL',
-      callbackParams: ['code', 'state'],
+      callbackParams: [ 'code', 'state' ],
       logo: './assets/social/reddit-logo.png',
       cssClass: 'reddit-alien'
     },
     github: {
       tag: 'GITHUB_LOCAL',
-      callbackParams: ['code', 'state'],
+      callbackParams: [ 'code', 'state' ],
       logo: './assets/social/github-logo.png',
       cssClass: 'github'
     },

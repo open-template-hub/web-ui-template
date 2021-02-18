@@ -1,23 +1,23 @@
-import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
+import { AppPage } from './app.po';
 
-describe('workspace-project App', () => {
+describe( 'workspace-project App', () => {
   let page: AppPage;
 
-  beforeEach(() => {
+  beforeEach( () => {
     page = new AppPage();
-  });
+  } );
 
-  it('should display welcome message', () => {
+  it( 'should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('web-ui-template app is running!');
-  });
+    expect( page.getTitleText() ).toEqual( 'web-ui-template app is running!' );
+  } );
 
-  afterEach(async () => {
+  afterEach( async () => {
     // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
+    const logs = await browser.manage().logs().get( logging.Type.BROWSER );
+    expect( logs ).not.toContain( jasmine.objectContaining( {
       level: logging.Level.SEVERE,
-    } as logging.Entry));
-  });
-});
+    } as logging.Entry ) );
+  } );
+} );

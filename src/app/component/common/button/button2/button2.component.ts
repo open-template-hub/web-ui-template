@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoadingService } from '../../../../service/loading/loading.service';
 
-@Component({
+@Component( {
   selector: 'app-button2',
   templateUrl: './button2.component.html',
-  styleUrls: ['./button2.component.scss']
-})
+  styleUrls: [ './button2.component.scss' ]
+} )
 export class Button2Component implements OnInit {
 
   @Input() text: string = '';
@@ -14,8 +14,8 @@ export class Button2Component implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private loadingService: LoadingService) {
-    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
+  constructor( private loadingService: LoadingService ) {
+    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
   }
 
   ngOnInit(): void {

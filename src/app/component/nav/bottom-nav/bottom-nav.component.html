@@ -1,7 +1,7 @@
 <div [class.bottom-nav-loading]="loading">
 </div>
 <nav class="bottom-nav">
-  <a routerLink="/dashboard/profile" *ngIf="currentUser">
+  <a *ngIf="currentUser" routerLink="/dashboard/profile">
     <i class="material-icons">person</i>
     <span>
         MY PROFILE
@@ -13,25 +13,25 @@
         DASHBOARD
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="switchTheme()" *ngIf="currentUser">
+  <a (click)="switchTheme()" *ngIf="currentUser" href="javascript:void(0)">
     <i class="material-icons">invert_colors</i>
     <span>
         THEME
     </span>
   </a>
-  <a routerLink="/signup" *ngIf="!currentUser">
+  <a *ngIf="!currentUser" routerLink="/signup">
     <i class="material-icons">person_add</i>
     <span>
         REGISTER
     </span>
   </a>
-  <a routerLink="/login" *ngIf="!currentUser">
+  <a *ngIf="!currentUser" routerLink="/login">
     <i class="material-icons">fingerprint</i>
     <span>
         LOGIN
     </span>
   </a>
-  <a href="javascript:void(0)" (click)="logout()" *ngIf="currentUser">
+  <a (click)="logout()" *ngIf="currentUser" href="javascript:void(0)">
     <i class="material-icons">exit_to_app</i>
     <span>
         LOGOUT

@@ -3,24 +3,24 @@
     <div fxLayout="column" fxLayoutAlign="center center"
          style="margin-bottom: 1.5rem; margin-top: 0.5rem; overflow-x: auto; text-align: center">
 
-      <input hidden type="file" accept="image/*" (change)="fileChangeEvent($event)" #fileInput/>
+      <input #fileInput (change)="fileChangeEvent($event)" accept="image/*" hidden type="file"/>
 
-      <image-cropper style="max-width: 400px"
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="true"
-        [aspectRatio]="1"
-        [resizeToWidth]="400"
-        format="png"
-        outputType="file"
-        (imageCropped)="imageCropped($event)"
-        (imageLoaded)="imageLoaded()"
-        (cropperReady)="cropperReady()"
-        (loadImageFailed)="loadImageFailed()"
+      <image-cropper (cropperReady)="cropperReady()"
+                     (imageCropped)="imageCropped($event)"
+                     (imageLoaded)="imageLoaded()"
+                     (loadImageFailed)="loadImageFailed()"
+                     [aspectRatio]="1"
+                     [imageChangedEvent]="imageChangedEvent"
+                     [maintainAspectRatio]="true"
+                     [resizeToWidth]="400"
+                     format="png"
+                     outputType="file"
+                     style="max-width: 400px"
       ></image-cropper>
 
-      <div class="profile-page-profile-img-wrapper" (click)="fileInput.click()" style="cursor: pointer">
+      <div (click)="fileInput.click()" class="profile-page-profile-img-wrapper" style="cursor: pointer">
         <div class="shine circle">
-          <img class="profile-img-full" alt="profile img" [src]="profileImg"/>
+          <img [src]="profileImg" alt="profile img" class="profile-img-full"/>
         </div>
       </div>
       <p>upload a profile picture</p>
@@ -28,32 +28,32 @@
       <p>update your profile details below
       </p>
     </div>
-    <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
-      <div class="input-with-icon" [class.input-error]="submitted && f.firstName.invalid">
-        <input type="text" placeholder="First name..." formControlName="firstName" required>
-        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
+    <form (ngSubmit)="onSubmit()" [formGroup]="userInfoForm">
+      <div [class.input-error]="submitted && f.firstName.invalid" class="input-with-icon">
+        <input formControlName="firstName" placeholder="First name..." required type="text">
+        <i area-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
       </div>
-      <div class="input-with-icon" [class.input-error]="submitted && f.lastName.invalid">
-        <input type="text" placeholder="Last name..." formControlName="lastName" required>
-        <i class="fas fa-user fa-lg fa-fw" area-hidden="true"></i>
+      <div [class.input-error]="submitted && f.lastName.invalid" class="input-with-icon">
+        <input formControlName="lastName" placeholder="Last name..." required type="text">
+        <i area-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="submitted && f.firstName.invalid">
+      <div *ngIf="submitted && f.firstName.invalid" class="error-text alert-with-icon">
         <p>
           Please provide a first name
         </p>
-        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+        <i area-hidden="true" class="fas fa-exclamation-triangle fa-lg fa-fw"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="submitted && f.lastName.invalid">
+      <div *ngIf="submitted && f.lastName.invalid" class="error-text alert-with-icon">
         <p>
           Please provide a last name
         </p>
-        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+        <i area-hidden="true" class="fas fa-exclamation-triangle fa-lg fa-fw"></i>
       </div>
-      <div class="error-text alert-with-icon" *ngIf="error">
+      <div *ngIf="error" class="error-text alert-with-icon">
         <p>
           {{error}}
         </p>
-        <i class="fas fa-exclamation-triangle fa-lg fa-fw" area-hidden="true"></i>
+        <i area-hidden="true" class="fas fa-exclamation-triangle fa-lg fa-fw"></i>
       </div>
       <app-button1 [text]="'DONE'"></app-button1>
       <a href="" routerLink="/dashboard">

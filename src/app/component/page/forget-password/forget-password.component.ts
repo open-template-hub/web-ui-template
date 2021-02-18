@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { LoadingService } from '../../../service/loading/loading.service';
 
-@Component({
+@Component( {
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
-  styleUrls: ['./forget-password.component.scss']
-})
+  styleUrls: [ './forget-password.component.scss' ]
+} )
 export class ForgetPasswordComponent implements OnInit {
 
   forgetPasswordForm: FormGroup;
@@ -19,24 +19,18 @@ export class ForgetPasswordComponent implements OnInit {
   loading: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    public router: Router,
-    private authenticationService: AuthenticationService,
-    private loadingService: LoadingService
+      private formBuilder: FormBuilder,
+      private route: ActivatedRoute,
+      public router: Router,
+      private authenticationService: AuthenticationService,
+      private loadingService: LoadingService
   ) {
     // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/dashboard']);
+    if ( this.authenticationService.currentUserValue ) {
+      this.router.navigate( [ '/dashboard' ] );
     }
 
-    this.loadingService.sharedLoading.subscribe(loading => this.loading = loading);
-  }
-
-  ngOnInit() {
-    this.forgetPasswordForm = this.formBuilder.group({
-      username: ['', Validators.required]
-    });
+    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
   }
 
   // convenience getter for easy access to form fields
@@ -44,33 +38,39 @@ export class ForgetPasswordComponent implements OnInit {
     return this.forgetPasswordForm.controls;
   }
 
+  ngOnInit() {
+    this.forgetPasswordForm = this.formBuilder.group( {
+      username: [ '', Validators.required ]
+    } );
+  }
+
   onSubmit() {
-    if (this.loading) {
+    if ( this.loading ) {
       return;
     }
 
     this.submitted = true;
 
-    if (this.forgetPasswordForm.invalid) {
+    if ( this.forgetPasswordForm.invalid ) {
       return;
     }
 
-    this.loadingService.setLoading(true);
-    this.authenticationService.forgetPassword(this.f.username.value)
-      .pipe(first())
-      .subscribe(
+    this.loadingService.setLoading( true );
+    this.authenticationService.forgetPassword( this.f.username.value )
+    .pipe( first() )
+    .subscribe(
         () => {
           this.success = true;
-          this.loadingService.setLoading(false);
+          this.loadingService.setLoading( false );
         },
         errorResponse => {
-          if (typeof errorResponse.error === 'string') {
+          if ( typeof errorResponse.error === 'string' ) {
             this.error = errorResponse.error;
-          } else if (errorResponse.statusText) {
+          } else if ( errorResponse.statusText ) {
             this.error = errorResponse.statusText;
           }
           this.success = false;
-          this.loadingService.setLoading(false);
-        });
+          this.loadingService.setLoading( false );
+        } );
   }
 }
