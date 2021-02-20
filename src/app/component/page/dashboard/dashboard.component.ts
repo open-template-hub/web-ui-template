@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
           this.userInfo = userInfo;
 
           if ( !this.userInfo.payload ) {
+/*
             this.basicInfoService.createMyInfo()
             .subscribe( () => {
                   this.loadingService.setLoading( false );
@@ -66,6 +67,7 @@ export class DashboardComponent implements OnInit {
                   this.errorService.setError( error.message );
                 }
             );
+*/
           } else {
             if ( this.userInfo.payload.profileImageId ) {
               this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId )
