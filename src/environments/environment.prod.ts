@@ -7,7 +7,8 @@ export const environment = {
     social: {
       linkedin: 'open-template-hub',
       github: 'open-template-hub',
-      productHunt: '@open_template_hub'
+      productHunt: '@open_template_hub',
+      twitter: 'opentemplatehub'
     }
   },
 
