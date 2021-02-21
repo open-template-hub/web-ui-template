@@ -81,7 +81,7 @@ export const environment = {
   payment: {
     stripe: {
       tag: 'STRIPE_LOCAL',
-      publishableKey: 'pk_test_LZDfXm3C2xYHGP7VBihlh10s00aOC1FSz8'
+      publishableKey: 'pk_test_51I4pFdJslj2vUcp7AkRtYwCPiZJbSvGK7lNFggSbLp9LQopdnUJU44mBKlREonmvszmASnyv4FMxQztzFedllxJO00wg7mHS85'
     },
     coinbase: {
       tag: 'COINBASE_LOCAL'
@@ -91,6 +91,7 @@ export const environment = {
       cliendId: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
       version: '5.0.128',
       env: 'sandbox'
+      // env: 'live'
     }
   }
 };
