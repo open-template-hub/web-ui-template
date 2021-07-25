@@ -8,13 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LabelDataComponent implements OnInit {
 
   @Input() label = '';
-
   @Input() data = '';
+  @Input() isClickable = false;
+  @Input() noMargin = '';
+  @Input() contrast = false;
+  @Input() leftTopMargin = false;
+  @Input() dim = false;
+  @Input() highlight = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
   }
-
 }

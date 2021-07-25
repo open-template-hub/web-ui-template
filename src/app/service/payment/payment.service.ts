@@ -14,10 +14,10 @@ export class PaymentService {
       private loadingService: LoadingService ) {
   }
 
-  initPayment( paymentConfig: any, product_id: string, quantity: number ) {
+  initPayment( paymentConfig: any, productId: string, quantity: number ) {
     return this.http.post<any>( `${ environment.serverUrl }/payment`, {
       payment_config_key: paymentConfig.tag,
-      product_id,
+      product_id : productId,
       quantity
     } ).subscribe( async ( response ) => {
 
@@ -38,5 +38,13 @@ export class PaymentService {
         window.location.href = `https://www.sandbox.paypal.com/checkoutnow?version=${ paymentConfig.version }&fundingSource=paypal&env=${ paymentConfig.env }&clientID=${ paymentConfig.clientId }&token=${ response.payload.id }`;
       }
     } );
+  }
+
+  verify( paymentConfig: any, transactionHistoryId: string, productId: string ) {
+    return this.http.post<any>( `${ environment.serverUrl }/payment/verify`, {
+      payment_config_key: paymentConfig.tag,
+      transaction_history_id : transactionHistoryId,
+      product_id: productId
+    } )
   }
 }

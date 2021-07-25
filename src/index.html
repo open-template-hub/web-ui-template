@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136224529-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push( arguments );
+    }
+
+    gtag( "js", new Date() );
+
+    gtag( "config", "UA-136224529-3" );
+  </script>
+
   <base href="/"/>
-  <title>Open Template Hub - Web UI Template</title>
+  <title>OpenTemplateHub</title>
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content='width=device-width, initial-scale=1, viewport-fit=cover' name='viewport'>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
-        rel="stylesheet"/>
+
+  <link href="assets/production/favicons/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/production/favicons/favicon.png" rel="icon" type="image/x-icon">
+  <link href="assets/production/favicons/site.webmanifest" rel="manifest">
+  <link color="#55db5d" href="assets/production/favicons/safari-pinned-tab.svg" rel="mask-icon">
+
+  <meta content="assets/favicons/browserconfig.xml" name="msapplication-config"/>
+  <meta content="#55db5d" name="msapplication-TileColor">
 
   <style type="text/css">
     * {
@@ -27,7 +46,7 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: #f5f5f5;
+      background: var(--background-color);
       display: flex;
       align-items: center;
       text-align: center;
@@ -48,8 +67,12 @@
     }
 
     .index-splash-animation h2 {
-      color: #2c2c2c;
+      color: var(--color);
       margin-top: 20px;
+    }
+
+    .index-splash-animation h3 {
+      color: #228822;
     }
 
     .index-splash-bar {
@@ -57,6 +80,7 @@
       height: 2px;
       background: #cfcfcf;
       margin-top: 22px;
+      margin-bottom: 50px;
       position: relative;
       overflow: hidden;
     }
@@ -65,7 +89,7 @@
       content: "";
       width: 68px;
       height: 2px;
-      background: #0060B3;
+      background: #43B043;
       position: absolute;
       left: -34px;
       animation: index-splash-bar 1.5s infinite ease;
@@ -74,16 +98,20 @@
     @keyframes index-splash-bar {
       50% {
         left: 96px;
-        background: #005298;
+        background: #228822;
       }
     }
 
-    .github-fork-ribbon:before {
-      background-color: #090;
+    @media only screen and (max-width: 999px) {
+      .index-splash-animation {
+        max-width: 90%;
+      }
     }
 
-    .github-fork-ribbon {
-      position: fixed;
+    @media only screen and (min-width: 1000px) {
+      .index-splash-animation {
+        max-width: 50%;
+      }
     }
   </style>
 </head>
@@ -91,10 +119,12 @@
 <app-root>
   <div class="index-splash-page">
     <div class="index-splash-animation">
-      <img alt="logo" src="./assets/brand-logo-blue.png"/>
-      <h2>UI Template</h2>
+      <img alt="logo" src="./assets/production/brand-logo.png"/>
+      <h2>OpenTemplateHub</h2>
       <div class="index-splash-bar">
       </div>
+      <h2 id="quote"></h2>
+      <h3 id="author"></h3>
     </div>
   </div>
 </app-root>

@@ -1,0 +1,11 @@
+<div class="showroom-page">
+  <div class="landing-title">
+    <h1>Upcoming Contributions</h1>
+  </div>
+
+  <div class="showroom-items">
+    <app-contribution-card *ngFor="let contribution of contributions"
+                           [contribution]="contribution" [isPublicPage]="true"></app-contribution-card>
+    <app-cookies></app-cookies>
+  </div>
+</div>

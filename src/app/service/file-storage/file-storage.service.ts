@@ -9,20 +9,28 @@ import { environment } from '../../../environments/environment';
 } )
 export class FileStorageService {
 
-  public profileImage: Observable<any>;
+  public sharedProfileImage: Observable<any>;
   private profileImageSubject: BehaviorSubject<any>;
 
   constructor( private http: HttpClient ) {
     const profileImageStorageItem = localStorage.getItem( 'profileImage' ) ? localStorage.getItem( 'profileImage' ) : sessionStorage.getItem( 'profileImage' );
     this.profileImageSubject = new BehaviorSubject<any>( JSON.parse( profileImageStorageItem ) );
-    this.profileImage = this.profileImageSubject.asObservable();
+    this.sharedProfileImage = this.profileImageSubject.asObservable();
   }
 
-  public get profileImageValue(): any {
-    return this.profileImageSubject.value;
+  public setProfileImageFileData( profileImg: any ) {
+    if ( !this.profileImageSubject.value ) {
+      this.profileImageSubject.next( { file: {} } );
+    }
+    this.profileImageSubject.value.file.data = profileImg.substring( 'data:image/png;base64,'.length );
+    this.profileImageSubject.next( this.profileImageSubject.value );
   }
 
   downloadProfileImage( id: any ) {
+    if ( !id ) {
+      this.profileImageSubject.next( { file: {} } );
+      return this.profileImageSubject.value;
+    }
     return this.http.get<any>( `${ environment.serverUrl }/file/me`, { params: { id } } )
     .pipe( map( profileImage => {
       this.profileImageSubject.next( profileImage );
@@ -35,6 +43,10 @@ export class FileStorageService {
 
       return profileImage;
     } ) );
+  }
+
+  downloadVisitedProfileImage( id: any ) {
+    return this.http.get<any>( `${ environment.serverUrl }/file/public`, { params: { id } } );
   }
 
   createFile( file: any, title: string, description: string, contentType: string ) {

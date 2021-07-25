@@ -8,9 +8,23 @@ import { LoadingService } from '../../../../service/loading/loading.service';
 } )
 export class Button1Component implements OnInit {
 
-  @Input() text: string = 'Button';
+  @Input() text = 'Button';
+  @Input() circle = false;
+  @Input() brandColor = false;
+  @Input() brandLightColor = false;
+  @Input() transparent = false;
+  @Input() success = false;
+  @Input() isContribute = false;
+  @Input() icon;
+  @Input() lighterContrast = false;
+  @Input() hoverWithColor = true;
+  @Input() mobileView = false;
+  @Input() fixedWidth = false;
+  @Input() isAttendee = false;
+  @Input() isSleekButton = false;
+  @Input() cursor = 'pointer'
 
-  loading: boolean = false;
+  loading = false;
 
   constructor( private loadingService: LoadingService ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );

@@ -8,9 +8,31 @@ import { LoadingService } from '../../../../service/loading/loading.service';
 } )
 export class Card1Component implements OnInit {
 
-  @Input() title: string = 'Title';
+  @Input() title = 'Title';
+  @Input() isSmall = false;
+  @Input() isScrollable = false;
+  @Input() headerProfileImg;
+  @Input() subHeaderProfileImg;
+  @Input() underHeaderProfileImg;
+  @Input() enableHeader = true;
+  @Input() enableHeaderFullImg = false;
+  @Input() paddingContent = true;
+  @Input() paddingTopContent = true;
+  @Input() margin = true;
+  @Input() shadow = true;
+  @Input() isBackgroundColor = false;
+  @Input() bottomWrapper = true;
+  @Input() bottomWrapperInBrandColor = false;
+  @Input() topWrapper = false;
+  @Input() topWrapperInBrandColor = false;
+  @Input() height = undefined;
+  @Input() width = undefined;
+  @Input() maxHeight = false;
+  @Input() containsVideo = false;
+  @Input() ribbon = { text: '', type: '' };
+  @Input() isCardContentOverflowVisible = false;
 
-  loading: boolean = false;
+  loading = false;
 
   constructor( private loadingService: LoadingService ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );

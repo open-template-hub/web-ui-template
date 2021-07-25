@@ -10,10 +10,9 @@ import { environment } from '../../../environments/environment';
 export class BasicInfoService {
 
   public userInfo: Observable<any>;
-  private userInfoSubject: BehaviorSubject<any>;
+  public userInfoSubject: BehaviorSubject<any>;
 
   constructor( private http: HttpClient ) {
-
     const userInfoStorageItem = localStorage.getItem( 'userInfo' ) ? localStorage.getItem( 'userInfo' ) : sessionStorage.getItem( 'userInfo' );
     this.userInfoSubject = new BehaviorSubject<any>( JSON.parse( userInfoStorageItem ) );
     this.userInfo = this.userInfoSubject.asObservable();
@@ -36,6 +35,14 @@ export class BasicInfoService {
 
       return userInfo;
     } ) );
+  }
+
+  getUser( username: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/user/public?username=${ username }` );
+  }
+
+  search( q: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/user/search/?q=${ q }` );
   }
 
   createMyInfo() {

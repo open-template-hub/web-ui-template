@@ -5,8 +5,8 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
 import { BasicInfoService } from '../basic-info/basic-info.service';
+import { ContributionService } from '../contribution/contribution.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
-import { LoadingService } from '../loading/loading.service';
 import { ThemeService } from '../theme/theme.service';
 
 @Injectable( {
@@ -18,10 +18,10 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<AuthToken>;
 
   constructor( private http: HttpClient,
-      private themeService: ThemeService,
-      private basicInfoService: BasicInfoService,
-      private fileStorageService: FileStorageService,
-      private loadingService: LoadingService
+    private themeService: ThemeService,
+    private basicInfoService: BasicInfoService,
+    private contributionService: ContributionService,
+    private fileStorageService: FileStorageService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' ) ? localStorage.getItem( 'currentUser' ) : sessionStorage.getItem( 'currentUser' );
     this.currentUserSubject = new BehaviorSubject<AuthToken>( JSON.parse( currentUserStorageItem ) );
@@ -54,21 +54,6 @@ export class AuthenticationService {
     } ) );
   }
 
-  // https://stackoverflow.com/questions/48853678/what-happens-if-we-does-not-subscribe-to-httpclient-request-which-return-observa
-  logout() {
-    this.themeService.clearThemes();
-    this.basicInfoService.logout();
-    this.fileStorageService.logout();
-
-    const refreshToken = this.currentUserValue.refreshToken;
-
-    localStorage.clear();
-    sessionStorage.clear();
-    this.currentUserSubject.next( null );
-
-    return this.http.post<any>( `${ environment.serverUrl }/auth/logout`, { token: refreshToken } ).subscribe();
-  }
-
   verify( token: string ) {
     return this.http.get<any>( `${ environment.serverUrl }/auth/verify`, { params: { token } } );
   }
@@ -97,7 +82,6 @@ export class AuthenticationService {
 
   addAuthorizationHeader( request: HttpRequest<unknown> ) {
     const currentUser = this.currentUserSubject.value;
-
     if ( currentUser && currentUser.accessToken ) {
       request = request.clone( {
         setHeaders: {
@@ -110,6 +94,7 @@ export class AuthenticationService {
 
   socialLoginRedirect( social: any ) {
     let state;
+
     if ( social.callbackParams.includes( 'state' ) ) {
       state = this.generateUID( 20 );
       localStorage.setItem( 'loginSessionID', state );
@@ -121,6 +106,7 @@ export class AuthenticationService {
   socialLogin( key: string, params: { code?, state?, oauth_token?, oauth_verifier? } ) {
     if ( params.state ) {
       if ( localStorage.getItem( 'loginSessionID' ) !== params.state ) {
+        console.error( 'session id mismatch!' );
         return throwError( { error: 'Bad Credentials' } );
       } else {
         localStorage.removeItem( 'loginSessionID' );
@@ -128,13 +114,13 @@ export class AuthenticationService {
     }
 
     return this.http.post<any>( `${ environment.serverUrl }/social/login`,
-        {
-          key,
-          code: params.code,
-          state: params.state,
-          oauth_token: params.oauth_token,
-          oauth_verifier: params.oauth_verifier
-        }
+      {
+        key,
+        code: params.code,
+        state: params.state,
+        oauth_token: params.oauth_token,
+        oauth_verifier: params.oauth_verifier
+      }
     ).pipe( map( currentUser => {
       localStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
       this.currentUserSubject.next( currentUser );
@@ -145,6 +131,27 @@ export class AuthenticationService {
 
       return currentUser;
     } ) );
+  }
+
+  // https://stackoverflow.com/questions/48853678/what-happens-if-we-does-not-subscribe-to-httpclient-request-which-return-observa
+  logout() {
+    this.themeService.logout();
+
+    const refreshToken = this.currentUserValue.refreshToken;
+
+    localStorage.clear();
+    sessionStorage.clear();
+    this.currentUserSubject.next( null );
+
+    this.currentUser.subscribe( () => {
+      this.basicInfoService.logout();
+      this.contributionService.logout();
+      this.basicInfoService.userInfo.subscribe( basicInfo => {
+        this.fileStorageService.logout();
+      } );
+    } );
+
+    return this.http.post<any>( `${ environment.serverUrl }/auth/logout`, { token: refreshToken } ).subscribe();
   }
 
   generateUID( length ) {

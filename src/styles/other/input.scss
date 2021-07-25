@@ -1,22 +1,56 @@
 form {
+}
+
+.section, .section-submit {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 1.5em;
 }
 
-input, input::-webkit-input-placeholder {
+.section-submit hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-bottom: 0;
+}
+
+.section-submit p {
+  margin-top: 7px;
+}
+
+.section-header > * {
+  margin: 0.4em;
+}
+
+.section-output {
+  margin: 0.7rem 0.4em;
+}
+
+textarea, textarea::-webkit-input-placeholder, input, input::-webkit-input-placeholder {
   font-size: 16px;
   font-weight: 300;
 }
 
-input::-webkit-input-placeholder {
+textarea, input {
+  color: var(--color);
+  background: transparent;
+}
+
+.input-with-icon textarea {
+  height: 57px;
+}
+
+.input-with-icon.with-svg input {
+  height: 38px;
+}
+
+textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
   color: var(--contrast);
 }
 
-input {
-  color: var(--color);
-  background: transparent;
+textarea, input {
   border: 0;
   width: 100%;
   border-bottom: 1px solid var(--contrast);
@@ -27,7 +61,7 @@ input {
   transition: border-bottom-color 400ms ease-out;
 }
 
-input:focus {
+textarea:focus, input:focus {
   border-color: var(--color);
   border-bottom-width: 2px;
 }
@@ -68,10 +102,9 @@ input[type=checkbox]:checked + label:before {
 .input-with-icon, .input-checkbox {
   width: 100%;
   position: relative;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
-
 
 .input-with-icon {
   display: flex;
@@ -80,15 +113,29 @@ input[type=checkbox]:checked + label:before {
   align-items: center;
 }
 
-.input-with-icon input:focus + i {
+.input-with-icon textarea:focus + i, .input-with-icon input:focus + i {
   color: var(--color);
 }
 
-.input-with-icon i {
+.input-with-icon input:focus + svg {
+  fill: var(--color);
+}
+
+.input-with-icon i, .input-with-icon img {
   padding: 11px 8px;
   color: var(--contrast);
   border-radius: 3px 0 0 3px;
   transition: 200ms;
+}
+
+.input-with-icon svg {
+  fill: var(--contrast);
+  border-radius: 3px 0 0 3px;
+  transition: 200ms;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 32px;
+  height: 32px;
 }
 
 .input-checkbox-label {
@@ -122,14 +169,17 @@ input[type=checkbox]:checked + label:before {
   background-color: var(--color);
 }
 
+.input-checkbox-label span:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
 .input-checkbox-label input:checked ~ span:after {
   display: block;
 }
 
 .input-checkbox-label span:after {
-  content: "";
-  position: absolute;
-  display: none;
   left: 16px;
   top: 11px;
   width: 6px;
@@ -139,6 +189,10 @@ input[type=checkbox]:checked + label:before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.tooltip {
+  width: fit-content;
 }
 
 @media (hover: hover) {

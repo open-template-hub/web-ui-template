@@ -53,6 +53,76 @@ node -v
 npm -v
 ```
 
+## WebStorm Configurations
+
+If you imported project into **WebStorm** you will see following run configurations:
+
+### 1. Install
+
+**[install.run.xml](.run/install.run.xml)**
+
+### 2. Build
+
+**[buildLocal.run.xml](.run/buildLocal.run.xml)**
+
+**[buildLocalToStagingApi.run.xml](.run/buildLocalToStagingApi.run.xml)**
+
+**[buildStaging.run.xml](.run/buildStaging.run.xml)**
+
+**[buildProd.run.xml](.run/buildProd.run.xml)**
+
+### 3. Start
+
+**[startLocal.run.xml](.run/startLocal.run.xml)**
+
+**[startLocalFromIPhone.run.xml](.run/startLocalFromIPhone.run.xml)**
+
+**[startLocalToStagingApi.run.xml](.run/startLocalToStagingApi.run.xml)**
+
+**[startLocalFromIPhoneToStagingApi.run.xml](.run/startLocalFromIPhoneToStagingApi.run.xml)**
+
+**[startStaging.run.xml](.run/startStaging.run.xml)**
+
+**[start.run.xml](.run/start.run.xml)**
+
+### 4. Debug
+
+**[debug.run.xml](.run/debug.run.xml)**
+
+### 5. Dependency Management
+
+**[outdated.run.xml](.run/outdated.run.xml)**
+
+**[update.run.xml](.run/update.run.xml)**
+
+<br/>
+
+## Local Deployment and Debug
+
+In order to deploy and debug locally, run following configurations in order:
+
+1. **[install.run.xml](.run/install.run.xml)**
+2. **[buildLocal.run.xml](.run/buildLocal.run.xml)**
+3. **startLocal**
+    1. **[startLocal.run.xml](.run/startLocal.run.xml) (uses local api)**
+    2. **[startLocalFromIPhone.run.xml](.run/startLocalFromIPhone.run.xml) (uses local api - accessible from iphone)**
+    3. **[startLocalToStagingApi.run.xml](.run/startLocalToStagingApi.run.xml) (uses staging api)**
+    4. **[startLocalFromIPhoneToStagingApi.run.xml](.run/startLocalFromIPhoneToStagingApi.run.xml) (uses staging api - accessible from iphone)**
+4. **[debug.run.xml](.run/debug.run.xml)**
+
+<br/>
+
+## Environment Variables
+
+If you run **WebStorm**'s **[env.run.xml](.run/env.run.xml)** configuration you will see following variables generated in **.env** file. Set them appropriately.
+
+```applescript
+PORT=4200
+```
+
+<br/>
+
+
 Check project's current **nodejs** and **npm** version from **[package.json](package.json)**.
 
 ## Contributors

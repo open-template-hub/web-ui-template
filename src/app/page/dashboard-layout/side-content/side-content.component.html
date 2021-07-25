@@ -1,0 +1,103 @@
+<div class="side-content-wrapper">
+  <div class="side-content">
+    <!--
+    <div class="search-area">
+      <i class="material-icons">search</i>
+      <input #searchArea (keyup)="search($event)" placeholder="Search..." type="text">
+      <div
+          *ngIf="(userSearchResults.length > 0 || categorySearchResults.length > 0 || contributionSearchResults.length > 0) && searchEnabled"
+          class="search-results">
+        <a (click)="userSearchResults = []" *ngFor="let result of userSearchResults"
+           routerLink="{{URLS.user.root + '/' + result.username}}">
+          <app-label-with-icon-data [data]="result.username" [isClickableWithinApp]="true" [noMargin]="'true'"
+                                    [solid]="'user'" [urlPrefix]="URLS.user.root + '/'">
+          </app-label-with-icon-data>
+        </a>
+        <hr *ngIf="userSearchResults.length > 0 && categorySearchResults.length > 0">
+        <a (click)="categorySearchResults = []"
+           *ngFor="let result of categorySearchResults"
+           [queryParams]="{category: result.category.id, 'sub-category': result.subCategory?.id, 'leaf-category': result.leafCategory?.id}"
+           routerLink="{{URLS.dashboard.learn}}">
+          <app-label-with-icon-data [data]="(result.category ? result.category.name : '') +
+          (result.subCategory ? ' - ' + result.subCategory.name : '') + (result.leafCategory ? ' - ' + result.leafCategory.name : '')"
+                                    [noMarginIcon]="true" [noMargin]="true" [solid]="'book-open'">
+          </app-label-with-icon-data>
+        </a>
+        <hr
+            *ngIf="contributionSearchResults.length > 0 && (categorySearchResults.length > 0 || userSearchResults.length > 0)">
+        <a (click)="contributionSearchResults = []"
+           *ngFor="let result of contributionSearchResults"
+           [queryParams]="{contribution_id: result._id}"
+           routerLink="{{URLS.dashboard.contribution}}">
+          <app-label-with-icon-data [data]="(result.payload.leafCategory ? result.payload.leafCategory.name :
+          result.payload.subCategory ? result.payload.subCategory.name : result.payload.category.name) + ': ' + result.title"
+                                    [noMarginIcon]="true" [noMargin]="true" [solid]="'chalkboard-teacher'">
+          </app-label-with-icon-data>
+        </a>
+      </div>
+    </div>
+    -->
+    <app-search></app-search>
+    <app-card1 [bottomWrapper]="recommendedContributions?.length > 0" [enableHeader]="false" [isBackgroundColor]="true"
+               [isScrollable]="true"
+               [margin]="false"
+               [paddingContent]="false" [shadow]="false" class="upcoming-card">
+      <div body class="section">
+        <p *ngIf="recommendedContributions?.length > 0">Explore Contributions</p>
+        <hr *ngIf="recommendedContributions?.length > 0" style="width: 100%; border: 1px solid var(--brand-color); margin-top: 5px;"/>
+        <a *ngFor="let contribution of recommendedContributions">
+          <app-contribution-data (titleClicked)="openContributionDetails($event)"
+                                 [attendeeButton]="false"
+                                 [category]="contribution.payload?.category"
+                                 [centeredTitle]="true"
+                                 [contributor]="contribution.contributor"
+                                 [count]="contribution.count"
+                                 [date]="contribution.date"
+                                 [description]="contribution.payload?.description"
+                                 [dropButton]="false"
+                                 [duration]="contribution.duration"
+                                 [id]="contribution._id"
+                                 [isBackgroundColor]="true"
+                                 [isLastItem]="recommendedContributions.indexOf(contribution) === recommendedContributions.length - 1"
+                                 [isPremium]="contribution.isPremium"
+                                 [isSmallTitle]="true"
+                                 [leafCategory]="contribution.payload?.leafCategory"
+                                 [link]="contribution.payload?.link"
+                                 [notFixedHeight]="true"
+                                 [price]="contribution.payload?.price"
+                                 [showCalendar]="false"
+                                 [subCategory]="contribution.payload?.subCategory"
+                                 [title]="contribution.title" [showHamburgerMenu]="false">
+          </app-contribution-data>
+        </a>
+        <p *ngIf="recommendedContributionsByFollowingList?.length > 0">Followed Contributors</p>
+        <hr *ngIf="recommendedContributionsByFollowingList?.length > 0" style="width: 100%; border: 1px solid var(--brand-color); margin-top: 5px;"/>
+        <a *ngFor="let contribution of recommendedContributionsByFollowingList">
+          <app-contribution-data (titleClicked)="openContributionDetails($event)"
+                                 [attendeeButton]="false"
+                                 [category]="contribution.payload?.category"
+                                 [centeredTitle]="true"
+                                 [contributor]="contribution.contributor"
+                                 [count]="contribution.count"
+                                 [date]="contribution.date"
+                                 [description]="contribution.payload?.description"
+                                 [dropButton]="false"
+                                 [duration]="contribution.duration"
+                                 [id]="contribution._id"
+                                 [isBackgroundColor]="true"
+                                 [isLastItem]="recommendedContributionsByFollowingList.indexOf(contribution) === recommendedContributionsByFollowingList.length - 1"
+                                 [isPremium]="contribution.isPremium"
+                                 [isSmallTitle]="true"
+                                 [leafCategory]="contribution.payload?.leafCategory"
+                                 [link]="contribution.payload?.link"
+                                 [notFixedHeight]="true"
+                                 [price]="contribution.payload?.price"
+                                 [showCalendar]="false"
+                                 [subCategory]="contribution.payload?.subCategory"
+                                 [title]="contribution.title" [inProgress]="contribution.inProgress" [showHamburgerMenu]="false">
+          </app-contribution-data>
+        </a>
+      </div>
+    </app-card1>
+  </div>
+</div>
