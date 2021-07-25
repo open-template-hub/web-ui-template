@@ -31,7 +31,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   imageChangedEvent: any = '';
 
   URLS = URLS;
-  icon: SimpleIcon = undefined;
+  icon: any = undefined;
 
   categorySearchResults = [];
   searchEnabled = true;
