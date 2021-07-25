@@ -12,6 +12,11 @@
   text-indent: -999999px;
 }
 
+.ribbon.ribbon-top {
+  z-index: 10000;
+  position: fixed;
+}
+
 .ribbon.fixed {
   position: fixed;
 }
