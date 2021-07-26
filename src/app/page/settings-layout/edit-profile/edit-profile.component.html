@@ -101,35 +101,6 @@
             </app-label-with-icon-data>
           </div>
         </div>
-        <div class="section-header">
-          <p class="dim">Contributor</p>
-          <hr/>
-        </div>
-        <div class="section" style="align-items: initial">
-          <label class="input-checkbox-label" style="margin-bottom: 20px">
-            <input formControlName="contributorProfileActivated" type="checkbox">
-            <span></span>
-            <p>Activate contributor profile</p>
-          </label>
-        </div>
-        <div class="section-header" *ngIf="f.contributorProfileActivated.value">
-          <p class="dim">Donation Accounts</p>
-          <hr/>
-        </div>
-        <div class="section" *ngIf="f.contributorProfileActivated.value">
-          <!-- donation fields -->
-          <div [class.input-error]="submitted && f.buymeacoffee.invalid" class="input-with-icon with-svg">
-            <input formControlName="buymeacoffee" placeholder="BuyMeACoffee..." type="text">
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <title>BuyMeACoffee icon</title>
-              <path [attr.d]="icon.path"/>
-            </svg>
-          </div>-
-          <div [class.input-error]="submitted && f.patreon.invalid" class="input-with-icon">
-            <input formControlName="patreon" placeholder="Patreon..." type="text">
-            <i area-hidden="true" class="fab fa-patreon fa-lg fa-fw"></i>
-          </div>
-        </div>
         <div class="section-submit">
           <app-button1 [text]="'DONE'"></app-button1>
           <a href="" routerLink="{{URLS.dashboard.root}}">

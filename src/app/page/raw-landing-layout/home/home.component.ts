@@ -61,19 +61,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
     };
     options.duration = this.contributionCounter < this.KILO ? 2 : this.contributionCounter < this.MILLION ? 3 : 4;
 
-    const contributionCountUp = new CountUp( 'contributionCounterElem', this.contributionCounter, options );
+    const contributionCountUp = new CountUp( 'npmCounterElement', this.contributionCounter, options );
 
     options.formattingFn = ( n: number ) => {
       return this.countUpFormatter( n, this.studentCounter );
     };
     options.duration = this.studentCounter < this.KILO ? 2 : this.studentCounter < this.MILLION ? 3 : 4;
-    const studentCountUp = new CountUp( 'studentCounterElem', this.studentCounter, options );
+    const studentCountUp = new CountUp( 'githubStarCounterElement', this.studentCounter, options );
 
     options.formattingFn = ( n: number ) => {
       return this.countUpFormatter( n, this.contributorCounter );
     };
     options.duration = this.contributorCounter < this.KILO ? 2 : this.contributorCounter < this.MILLION ? 3 : 4;
-    const contributorCountUp = new CountUp( 'contributorCounterElem', this.contributorCounter, options );
+    const contributorCountUp = new CountUp( 'serverTypesCounterElement', this.contributorCounter, options );
 
     if ( !contributionCountUp.error ) {
       contributionCountUp.start();

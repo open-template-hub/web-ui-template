@@ -92,9 +92,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       twitter: [ this.basicInfoService.userInfoValue?.payload?.social?.twitter, Validators.pattern( '^[^/]+$' ) ],
       facebook: [ this.basicInfoService.userInfoValue?.payload?.social?.facebook, Validators.pattern( '^[^/]+$' ) ],
       youtube: [ this.basicInfoService.userInfoValue?.payload?.social?.youtube, Validators.pattern( '^[^/]+$' ) ],
-      contributorProfileActivated: [ this.basicInfoService.userInfoValue?.payload?.contributorProfileActivated ],
-      buymeacoffee: [ this.basicInfoService.userInfoValue?.payload?.donationAccounts?.buymeacoffee ],
-      patreon: [ this.basicInfoService.userInfoValue?.payload?.donationAccounts?.patreon ]
     } );
 
     this.categoryService.getCategoriesFromId( this.basicInfoService.userInfoValue?.payload?.interests ).subscribe( result => {
@@ -231,11 +228,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
           twitter: this.f.twitter.value,
           facebook: this.f.facebook.value,
           youtube: this.f.youtube.value
-        },
-        contributorProfileActivated: this.f.contributorProfileActivated.value,
-        donationAccounts: {
-          buymeacoffee: this.fixUrl( 'https://www.buymeacoffee.com/', this.f.buymeacoffee.value ),
-          patreon: this.fixUrl( 'https://www.patreon.com/', this.f.patreon.value )
         },
         interests: interestIdList,
         profileImageId

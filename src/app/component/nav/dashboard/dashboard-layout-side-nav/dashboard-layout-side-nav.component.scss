@@ -50,7 +50,7 @@
 
 .side-nav a .brand-logo {
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .side-nav .brand h2 {
@@ -72,6 +72,11 @@
   min-height: 240px;
   flex-direction: column;
   box-shadow: 0 0 14px 0 var(--shadow);
+}
+
+.side-nav-brand-text {
+  text-align: center;
+  font-size: 19px;
 }
 
 .dashboard-layout-side-nav-search {
