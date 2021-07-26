@@ -14,9 +14,9 @@ import { URLS } from '../../../util/constant';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   // TODO: Will be initialized by apis
-  contributionCounter = 1120000;
-  studentCounter = 12781;
-  contributorCounter = 763;
+  contributionCounter = 2700;
+  studentCounter = 7;
+  contributorCounter = 5;
 
   brand = {
     brandLogo: '',
