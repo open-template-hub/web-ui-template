@@ -1,6 +1,6 @@
 //TODO: Remove unnecessary styles
 
-.contribution {
+.event {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -8,39 +8,39 @@
   padding: 0 1em 0;
 }
 
-.contribution.video {
+.event.video {
   height: 320px;
 }
 
-.contribution.not-fixed-height {
+.event.not-fixed-height {
   height: auto;
 }
 
-.contribution.max-height {
+.event.max-height {
   height: 600px;
 }
 
-.contribution.rate-height {
+.event.rate-height {
   height: 270px;
 }
 
-.contribution-description.add-margin-to-description {
+.event-description.add-margin-to-description {
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 50px;
 }
 
-.contribution-content {
+.event-content {
   padding-left: 0.25em;
   padding-right: 0.25em;
 }
 
-.contribution-calendar {
+.event-calendar {
   text-align: center;
   margin-bottom: 1em;
 }
 
-.contribution-calendar.min-margin {
+.event-calendar.min-margin {
   margin-bottom: 0.1em;
 }
 
@@ -48,11 +48,11 @@
   margin-right: 1em;
 }
 
-.contribution.background-color {
+.event.background-color {
   background-color: var(--background-color);
 }
 
-.contribution-bottom-wrapper {
+.event-bottom-wrapper {
   width: 100%;
   height: 2px;
   position: relative;
@@ -60,7 +60,7 @@
   background-color: var(--darker-contrast);
 }
 
-.contribution-header {
+.event-header {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -74,12 +74,12 @@
   text-align: center;
 }
 
-.is-small-title.contribution h3 {
+.is-small-title.event h3 {
   font-size: 1.2em;
   padding-bottom: 2px;
 }
 
-.contribution-description {
+.event-description {
   color: var(--color);
   font-size: 0.9em;
   font-weight: 300;
@@ -92,24 +92,24 @@
   -webkit-box-orient: vertical;
 }
 
-.contribution-description.video {
+.event-description.video {
   -webkit-line-clamp: 3;
 }
 
-.contribution-description.remove-line-clamp, .show-calendar .contribution-description.remove-line-clamp {
+.event-description.remove-line-clamp, .show-calendar .event-description.remove-line-clamp {
   -webkit-line-clamp: initial;
 }
 
-.show-calendar .contribution-description {
+.show-calendar .event-description {
   -webkit-line-clamp: 3; /* number of lines to show */
 }
 
-.show-calendar .contribution-description.video {
+.show-calendar .event-description.video {
   -webkit-line-clamp: 1;
 
 }
 
-.contribution-categories {
+.event-categories {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -117,11 +117,11 @@
   width: 100%;
 }
 
-.contribution-categories p {
+.event-categories p {
   margin-right: 5px;
 }
 
-.centered-title .contribution-header {
+.centered-title .event-header {
   width: 75%;
 }
 
@@ -155,7 +155,7 @@
   font-size: 1.1em;
 }
 
-.contribution.editable .contribution-header-title {
+.event.editable .event-header-title {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -163,12 +163,12 @@
   justify-content: space-between;
 }
 
-.contribution-header-title {
+.event-header-title {
   display: flex;
   justify-content: space-between;
 }
 
-.contribution-header-title h3 {
+.event-header-title h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-line;
@@ -177,15 +177,15 @@
   -webkit-box-orient: vertical;
 }
 
-.contribution-header-title.remove-line-clamp h3 {
+.event-header-title.remove-line-clamp h3 {
   -webkit-line-clamp: initial;
 }
 
-.contribution-header-title i {
+.event-header-title i {
   color: var(--color);
 }
 
-.contribution-last-item {
+.event-last-item {
   display: flex;
   flex-direction: column;
   margin-top: auto;
@@ -193,31 +193,31 @@
   padding-top: 5px;
 }
 
-.contribution.editable i {
+.event.editable i {
   font-size: 1em;
 }
 
-.contribution-sub-header-title {
+.event-sub-header-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.contribution-sub-header-title-date, .contribution-sub-header-title-contributor {
+.event-sub-header-title-date, .event-sub-header-title-user {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.contribution-sub-header-title-date {
+.event-sub-header-title-date {
   align-items: center;
 }
 
-.contribution-header-title {
+.event-header-title {
   cursor: pointer;
 }
 
-.contribution h3 {
+.event h3 {
   font-size: 1.4em;
   font-weight: 500;
 }
@@ -233,7 +233,7 @@
 
 @media only screen and (max-width: 999px) {
 
-  .contribution-header {
+  .event-header {
     max-width: 92%;
     margin-left: auto;
     margin-right: auto;
@@ -241,21 +241,21 @@
 }
 
 @media only screen and (min-width: 1000px) {
-  .contribution app-button1 {
+  .event app-button1 {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .contribution {
+  .event {
     width: -webkit-fill-available;
   }
 
-  .contribution-header {
+  .event-header {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .contribution-content .section-output {
+  .event-content .section-output {
     max-width: 50%;
   }
 }

@@ -24,24 +24,24 @@
 <!--END OF SEARCH AREA-->
 <div class="learn-page">
   <div class="in-page-title">
-    <h2>Contributions</h2>
+    <h2>Events</h2>
   </div>
-  <div *ngIf="!isSearchedWithCategory && !searchedContributions && recommendedContributions?.length > 0">
-    <div class="learn-page-contributions">
-      <app-contribution-card *ngFor="let contribution of recommendedContributions"
-                             [contribution]="contribution" [inProgress]="contribution.inProgress">
-      </app-contribution-card>
+  <div *ngIf="!isSearchedWithCategory && !searchedEvents && recommendedEvents?.length > 0">
+    <div class="learn-page-events">
+      <app-event-card *ngFor="let event of recommendedEvents"
+                             [event]="event" [inProgress]="event.inProgress">
+      </app-event-card>
     </div>
   </div>
 
-  <div *ngIf="searchedContributions?.length > 0">
-    <div class="learn-page-contributions">
-      <app-contribution-card *ngFor="let contribution of searchedContributions" [contribution]="contribution"
-      ></app-contribution-card>
+  <div *ngIf="searchedEvents?.length > 0">
+    <div class="learn-page-events">
+      <app-event-card *ngFor="let event of searchedEvents" [event]="event"
+      ></app-event-card>
     </div>
   </div>
 
-  <div *ngIf="!loading && searchedContributions?.length === 0" class="in-page-title">
+  <div *ngIf="!loading && searchedEvents?.length === 0" class="in-page-title">
     <h3 class="dim">No results were found</h3>
   </div>
 </div>

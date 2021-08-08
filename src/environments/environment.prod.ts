@@ -6,7 +6,9 @@ export const environment = {
 
   clientUrl: 'https://oth-web-app.herokuapp.com',
 
-  contributionImageUrl: 'https://oth-web-app.herokuapp.com/assets/brand-logo-blue.png',
+  eventImageUrl: 'https://oth-web-app.herokuapp.com/assets/brand-logo-blue.png',
+
+  mockDataEnabled: true,
 
   oth: {
     social: {

@@ -17,7 +17,7 @@ export const ResponseCode = {
   SERVICE_UNAVAILABLE: 503,
 };
 
-export const enum ContributionTypes { Recommended, Searched, Attended, RecommendedByFollowingList, Other };
+export const enum EventTypes { Recommended, Searched, Attended, RecommendedByFollowingList, Other };
 
 export const PROFILE_IMG = './assets/common/profile-img.png';
 
@@ -43,9 +43,9 @@ export const URLS = {
   showroom: '/showroom',
   dashboard: {
     root: dashboard,
-    contribute: dashboard + '/contribute',
+    contribute: dashboard + '/createEvent',
     learn: dashboard + '/learn',
-    contribution: dashboard + '/contribution',
+    event: dashboard + '/event',
     privacy: dashboard + '/privacy',
     myProfile: dashboard + '/my-profile'
   },

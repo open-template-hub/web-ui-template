@@ -1,28 +1,28 @@
 <div [class.background-color]="isBackgroundColor" [class.centered-title]="centeredTitle" [class.editable]="isEditable"
      [class.is-small-title]="isSmallTitle" [class.not-fixed-height]="notFixedHeight" [class.max-height]="maxHeight"
-     [class.show-calendar]="(showCalendar || isEditable) && !notFixedHeight" [class.video]="containsVideo" [class.rate-height]="rateHeight" class="contribution">
-  <div *ngIf="title" class="contribution-header">
-    <div class="contribution-header-title" [class.remove-line-clamp]="removeLineClamp">
+     [class.show-calendar]="(showCalendar || isEditable) && !notFixedHeight" [class.video]="containsVideo" [class.rate-height]="rateHeight" class="event">
+  <div *ngIf="title" class="event-header">
+    <div class="event-header-title" [class.remove-line-clamp]="removeLineClamp">
       <h3 (click)="onClick()" >{{title}}</h3>
-      <app-contribution-hamburger-menu *ngIf="showHamburgerMenu" (shareViaClicked)="shareVia( $event )" [showCalendar]=" showCalendar || isEditable "
-                                       (calendarClicked)="createCalendarEvent()"></app-contribution-hamburger-menu>
+      <app-event-hamburger-menu *ngIf="showHamburgerMenu" (shareViaClicked)="shareVia( $event )" [showCalendar]=" showCalendar || isEditable "
+                                       (calendarClicked)="createCalendarEvent()"></app-event-hamburger-menu>
     </div>
-    <div class="contribution-sub-header-title dim">
-      <div class="contribution-sub-header-title-contributor">
-        <h4 *ngIf="contributor?.username">by <a
-            [routerLink]="(isPublicPage ? URLS.u : URLS.user.root) + '/' + contributor.username"
-            class="inline-a">{{isEditable ? 'you' : ( contributor.username.length > 12 ? contributor.username.slice( 0, 12 ) + '...' : contributor.username )}}</a>
+    <div class="event-sub-header-title dim">
+      <div class="event-sub-header-title-user">
+        <h4 *ngIf="user?.username">by <a
+            [routerLink]="(isPublicPage ? URLS.u : URLS.user.root) + '/' + user.username"
+            class="inline-a">{{isEditable ? 'you' : ( user.username.length > 12 ? user.username.slice( 0, 12 ) + '...' : user.username )}}</a>
         </h4>
         <h4 *ngIf="link && showCalendar"><a [href]="link" class="inline-a"><i [classList]="'fas fa-link fa-fw'"></i>join
           meeting</a></h4>
       </div>
-      <div class="contribution-sub-header-title-date">
+      <div class="event-sub-header-title-date">
         <h4 *ngIf="date">{{dateItem}}</h4>
         <h4 *ngIf="date">{{timeItem}}</h4>
       </div>
     </div>
   </div>
-  <div class="contribution-content">
+  <div class="event-content">
     <div *ngIf="count !== undefined || duration !== undefined" class="content-information-row dim">
       <div *ngIf="duration !== undefined" class="content-information-row-inner-row">
         <i [classList]="'far fa-clock fa-lg fa-fw'"></i>
@@ -49,12 +49,12 @@
       <label class="far fa-sm fa-star" [for]="'star1' + id"></label>
     </div>
     <!--END OF RATE-->
-    <div class="contribution-description" [class.remove-line-clamp]="removeLineClamp" [class.video]="containsVideo"
+    <div class="event-description" [class.remove-line-clamp]="removeLineClamp" [class.video]="containsVideo"
          [class.add-margin-to-description]="addMarginToDescription">
       {{description}}
     </div>
   </div>
-  <div class="contribution-last-item">
+  <div class="event-last-item">
     <app-button1 (click)="onEditClick()" *ngIf="isEditable && !inProgress && !showRateBar && !completed"
                  [brandColor]="true" [icon]="'pen'" [isSleekButton]="true" [text]="'Edit'">
     </app-button1>
@@ -81,13 +81,13 @@
     <app-button1 *ngIf="inProgress" [cursor]="'not-allowed'"
                  [brandLightColor]="true" [isSleekButton]="true" [text]="'In Progress'" [icon]="'hourglass'">
     </app-button1>
-    <div (click)="onCategoryClick()" class="contribution-categories">
+    <div (click)="onCategoryClick()" class="event-categories">
       <p *ngIf="category && !subCategory && !leafCategory"><a class="inline-a">{{'#' + category.name}}</a></p>
       <p *ngIf="subCategory && !leafCategory"><a class="inline-a">{{'#' + subCategory.name}}</a></p>
       <p *ngIf="leafCategory"><a class="inline-a">{{'#' + leafCategory.name}}</a></p>
     </div>
   </div>
-  <div *ngIf="!isLastItem" class="contribution-bottom-wrapper">
+  <div *ngIf="!isLastItem" class="event-bottom-wrapper">
   </div>
   <span *ngIf="ribbon.type" [attr.data-ribbon]="ribbon.text" [classList]="'ribbon ribbon-' + ribbon.type"></span>
 </div>

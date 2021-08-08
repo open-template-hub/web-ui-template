@@ -23,9 +23,9 @@
             <span *ngIf="topContributor === 1">🥈</span>
             <span *ngIf="topContributor === 2">🥉</span>
           </i>
-          <i *ngIf="numberOfContributionsTaken !== undefined && numberOfContributionsTaken > 10"
+          <i *ngIf="numberOfEventsTaken !== undefined && numberOfEventsTaken > 10"
              show-delay="500" tooltip="Curious" style="margin-right: 5px;">📚</i>
-          <i *ngIf="numberOfContributionsMade != undefined && numberOfContributionsMade < 5" show-delay="500" tooltip="New" style="margin-right: 5px;">👋</i>
+          <i *ngIf="numberOfEventsMade != undefined && numberOfEventsMade < 5" show-delay="500" tooltip="New" style="margin-right: 5px;">👋</i>
           <i *ngIf="userInfo?.isAcademical" show-delay="500" tooltip="Joined with .edu mail">🎓</i>
         </p>
       </div>
@@ -55,7 +55,7 @@
           <div *ngIf="followerCount !== undefined && followeeCount !== undefined" class="follower-following-count-area">
             <div class="follower-count-area"><i class="follower-count">{{followerCount}}</i> Following</div>
             <div class="following-count-area"><i class="following-count">{{followeeCount}}</i> Followers</div>
-            <div *ngIf="numberOfContributionsMade !== undefined" class="contributions-count-area"><i class="contribution-count">{{ numberOfContributionsMade }}</i> Contributions</div>
+            <div *ngIf="numberOfEventsMade !== undefined" class="events-count-area"><i class="event-count">{{ numberOfEventsMade }}</i> Events</div>
           </div>
         </div>
         <div *ngIf="userInterests.length > 0"
@@ -102,7 +102,7 @@
           </app-label-with-icon-data>
         </div>
       </div>
-      <div *ngIf="userInfo?.payload?.contributorProfileActivated &&
+      <div *ngIf="userInfo?.payload?.userProfileActivated &&
       (userInfo?.payload?.donationAccounts?.buymeacoffee || userInfo?.payload?.donationAccounts?.patreon)"
            class="column-second">
         <div class="section-header">
@@ -126,7 +126,7 @@
   </app-card1>
   <!--END OF DASHBOARD CARD-->
   <!--LESSONS TAKEN CARD-->
-  <app-card1 *ngIf="lessonsInfo.length > 0" [title]="'Lessons Taken'">
+  <app-card1 *ngIf="lessonsInfo.length > 0" [title]="'Events Taken'">
     <div *ngIf="!loadingLessonsTaken" [ngStyle]="{'height' : lessonsInfo.length * 50 + 'px'}" body class="chart-wrapper">
       <br/>
       <ngx-charts-bar-horizontal
@@ -137,7 +137,7 @@
           [results]="lessonsInfo"
           [showXAxisLabel]="showXAxisLabel"
           [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="lessonsTakenXAxisLabel"
+          [xAxisLabel]="eventsTakenXAxisLabel"
           [xAxis]="showXAxis"
           [yAxis]="showYAxis">
       </ngx-charts-bar-horizontal>
@@ -166,7 +166,7 @@
       </div>
     </div>
   </app-card1>
-  <app-card1 *ngIf="lessonsInfo.length === 0" [title]="'Lessons Taken'">
+  <app-card1 *ngIf="eventsInfo.length === 0" [title]="'Events Taken'">
     <div body style="margin-left: 10px; padding-bottom: 20px;">
       <h3 class="dim">No results found</h3>
     </div>
@@ -174,19 +174,19 @@
   <!--END OF LESSONS TAKEN CARD-->
 
   <!--CONTRIBUTIONS CARD-->
-  <app-card1 *ngIf="userInfo?.payload?.contributorProfileActivated && contributionsInfo.length > 0" [title]="'Contributions'">
+  <app-card1 *ngIf="userInfo?.payload?.userProfileActivated && eventsInfo.length > 0" [title]="'Events'">
     <div *ngIf="!loadingCount"
-         [ngStyle]="{'height' : contributionsInfo.length * 50 + 'px'}" body class="chart-wrapper">
+         [ngStyle]="{'height' : eventsInfo.length * 50 + 'px'}" body class="chart-wrapper">
       <br/>
       <ngx-charts-bar-horizontal
         [gradient]="gradient"
-        [customColors]="barCustomColors(contributionsInfo)"
+        [customColors]="barCustomColors(eventsInfo)"
         [animations]="false"
         [legend]="showLegend"
-        [results]="contributionsInfo"
+        [results]="eventsInfo"
         [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="contributionsXAxisLabel"
+        [xAxisLabel]="eventsXAxisLabel"
         [xAxis]="showXAxis"
         [yAxis]="showYAxis">
       </ngx-charts-bar-horizontal>
@@ -215,7 +215,7 @@
       </div>
     </div>
   </app-card1>
-  <app-card1 *ngIf="userInfo?.payload?.contributorProfileActivated && contributionsInfo.length === 0" [title]="'Contributions'">
+  <app-card1 *ngIf="userInfo?.payload?.userProfileActivated && eventsInfo.length === 0" [title]="'Events'">
     <div body style="margin-left: 10px; padding-bottom: 20px;">
       <h3 class="dim">No results found</h3>
     </div>

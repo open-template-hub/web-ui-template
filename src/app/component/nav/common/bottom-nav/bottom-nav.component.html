@@ -11,16 +11,16 @@
         DASHBOARD
     </span>
   </a>
-  <a *ngIf="currentUser && userInfo.payload?.contributorProfileActivated && !openSettings" routerLink="{{URLS.dashboard.contribute}}">
+  <a *ngIf="currentUser && userInfo.payload?.userProfileActivated && !openSettings" routerLink="{{URLS.dashboard.contribute}}">
     <i class="material-icons">public</i>
     <span>
         CONTRIBUTE
     </span>
   </a>
   <a *ngIf="!openSettings" routerLink="{{currentUser ? URLS.dashboard.learn : URLS.showroom}}">
-    <i class="material-icons">school</i>
+    <i class="material-icons">event</i>
     <span>
-        LEARN
+        EVENTS
     </span>
   </a>
   <a (click)="openSettings = !openSettings" *ngIf="currentUser  && !openSettings" href="javascript:void(0)">

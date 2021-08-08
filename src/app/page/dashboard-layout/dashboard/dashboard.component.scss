@@ -37,12 +37,12 @@
   margin-right: 20px;
 }
 
-.follower-count, .following-count, .contribution-count {
+.follower-count, .following-count, .event-count {
   font-style: normal;
   color: var(--brand-color);
 }
 
-.dashboard-page-contributions {
+.dashboard-page-events {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -50,7 +50,7 @@
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-/*
+
 .rate-badge-wrapper {
   position: absolute;
   top: 45px;
@@ -67,7 +67,7 @@
 .rate-wrapper {
   display: flex;
   margin-right: 30px;
-}*/
+}
 
 @media only screen and (min-width: 1300px) {
   app-card1 .content-column-wrapper {

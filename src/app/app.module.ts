@@ -15,19 +15,21 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContributionDataComponent } from './component/common/block/contribution-data/contribution-data.component';
+import { EventHamburgerMenuComponent } from './component/common/block/event-hamburger-menu/event-hamburger-menu.component';
+import { EventDataComponent } from './component/common/block/event-data/event-data.component';
 import { LabelDataComponent } from './component/common/block/label-data/label-data.component';
 import { LabelWithIconDataComponent } from './component/common/block/label-with-icon-data/label-with-icon-data.component';
 import { Button1Component } from './component/common/button/button1/button1.component';
 import { SocialButtonComponent } from './component/common/button/social-button/social-button.component';
 import { Card1Component } from './component/common/card/card1/card1.component';
-import { ContributionCardComponent } from './component/common/card/contribution-card/contribution-card.component';
+import { EventCardComponent } from './component/common/card/event-card/event-card.component';
 import { BottomNavComponent } from './component/nav/common/bottom-nav/bottom-nav.component';
 import { FooterComponent } from './component/nav/common/footer/footer.component';
 import { DashboardLayoutSideNavComponent } from './component/nav/dashboard/dashboard-layout-side-nav/dashboard-layout-side-nav.component';
 import { DashboardLayoutTopNavComponent } from './component/nav/dashboard/dashboard-layout-top-nav/dashboard-layout-top-nav.component';
 import { LandingLayoutTopNavComponent } from './component/nav/landing/landing-layout-top-nav/landing-layout-top-nav.component';
-import { ContributeComponent } from './page/dashboard-layout/contribute/contribute.component';
+import { EventComponent } from './page/dashboard-layout/event/event.component';
+import { CreateEventComponent } from './page/dashboard-layout/createEvent/create-event.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 
 import { DashboardComponent } from './page/dashboard-layout/dashboard/dashboard.component';
@@ -59,8 +61,6 @@ import { CookiePopupComponent } from './component/popup/cookie-popup/cookie-popu
 import { RequestInterceptor } from './interceptor/request/request.interceptor';
 import { ResponseInterceptor } from './interceptor/response/response.interceptor';
 import { MyProfileComponent } from './page/dashboard-layout/my-profile/my-profile.component';
-import { ContributionComponent } from './page/dashboard-layout/contribution/contribution.component';
-import { ContributionHamburgerMenuComponent } from './component/common/block/contribution-hamburger-menu/contribution-hamburger-menu.component';
 
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
@@ -107,20 +107,20 @@ FullCalendarModule.registerPlugins( [
     LearnComponent,
     MaintenanceComponent,
     CookiePopupComponent,
-    ContributeComponent,
+    CreateEventComponent,
+    EventCardComponent,
     CookiePolicyComponent,
     PrivacyPolicyComponent,
     TermsComponent,
     PublicProfileComponent,
     LoadingComponent,
-    ContributionDataComponent,
+    EventDataComponent,
     SettingsLayoutComponent,
     SideContentComponent,
     ShowroomComponent,
-    ContributionCardComponent,
     MyProfileComponent,
-    ContributionComponent,
-    ContributionHamburgerMenuComponent,
+    EventComponent,
+    EventHamburgerMenuComponent,
     CalendarComponent,
     SearchComponent,
     RateBarComponent
@@ -142,8 +142,7 @@ FullCalendarModule.registerPlugins( [
     BrowserModule,
     FullCalendarModule
     /*HttpClientInMemoryWebApiModule.forRoot(
-     InMemoryDataService, { dataEncapsulation: false }
-     )*/
+     InMemoryDataService, { dataEncapsulation: false } )*/
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },

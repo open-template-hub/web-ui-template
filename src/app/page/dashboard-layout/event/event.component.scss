@@ -31,7 +31,7 @@ h2, h3 {
 }
 
 @media only screen and (max-width: 999px) {
-  .contribution-page {
+  .event-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,7 @@ h2, h3 {
 }
 
 @media only screen and (min-width: 1000px) {
-  .contribution-page {
+  .event-page {
     display: block;
     padding-top: 110px;
     min-height: 100vh;

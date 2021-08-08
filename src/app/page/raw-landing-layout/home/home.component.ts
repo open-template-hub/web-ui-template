@@ -14,9 +14,9 @@ import { URLS } from '../../../util/constant';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   // TODO: Will be initialized by apis
-  contributionCounter = 2700;
+  eventCounter = 2700;
   studentCounter = 7;
-  contributorCounter = 5;
+  userCounter = 5;
 
   brand = {
     brandLogo: '',
@@ -57,11 +57,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     };
 
     options.formattingFn = ( n: number ) => {
-      return this.countUpFormatter( n, this.contributionCounter );
+      return this.countUpFormatter( n, this.eventCounter );
     };
-    options.duration = this.contributionCounter < this.KILO ? 2 : this.contributionCounter < this.MILLION ? 3 : 4;
+    options.duration = this.eventCounter < this.KILO ? 2 : this.eventCounter < this.MILLION ? 3 : 4;
 
-    const contributionCountUp = new CountUp( 'npmCounterElement', this.contributionCounter, options );
+    const eventCountUp = new CountUp( 'npmCounterElement', this.eventCounter, options );
 
     options.formattingFn = ( n: number ) => {
       return this.countUpFormatter( n, this.studentCounter );
@@ -70,25 +70,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const studentCountUp = new CountUp( 'githubStarCounterElement', this.studentCounter, options );
 
     options.formattingFn = ( n: number ) => {
-      return this.countUpFormatter( n, this.contributorCounter );
+      return this.countUpFormatter( n, this.userCounter );
     };
-    options.duration = this.contributorCounter < this.KILO ? 2 : this.contributorCounter < this.MILLION ? 3 : 4;
-    const contributorCountUp = new CountUp( 'serverTypesCounterElement', this.contributorCounter, options );
+    options.duration = this.userCounter < this.KILO ? 2 : this.userCounter < this.MILLION ? 3 : 4;
+    const userCountUp = new CountUp( 'serverTypesCounterElement', this.userCounter, options );
 
-    if ( !contributionCountUp.error ) {
-      contributionCountUp.start();
+    if ( !eventCountUp.error ) {
+      eventCountUp.start();
     } else {
-      console.error( contributionCountUp.error );
+      console.error( eventCountUp.error );
     }
     if ( !studentCountUp.error ) {
       studentCountUp.start();
     } else {
       console.error( studentCountUp.error );
     }
-    if ( !contributorCountUp.error ) {
-      contributorCountUp.start();
+    if ( !userCountUp.error ) {
+      userCountUp.start();
     } else {
-      console.error( contributorCountUp.error );
+      console.error( userCountUp.error );
     }
   }
 

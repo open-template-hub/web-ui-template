@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable( {
@@ -13,6 +14,10 @@ export class FolloweeService {
   }
 
   count( username: string ) {
-    return this.http.get<any>( `${ environment.serverUrl }/followee/count?username=${ username }` );
+    if ( environment.mockDataEnabled ) {
+      return of( [ { count: 1 } ] )
+    } else {
+      return this.http.get<any>( `${ environment.serverUrl }/followee/count?username=${ username }` );
+    }
   }
 }

@@ -2,11 +2,11 @@ import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Outpu
 import { environment } from '../../../../../environments/environment';
 
 @Component({
-  selector: 'app-contribution-hamburger-menu',
-  templateUrl: './contribution-hamburger-menu.component.html',
-  styleUrls: ['./contribution-hamburger-menu.component.scss']
+  selector: 'app-event-hamburger-menu',
+  templateUrl: './event-hamburger-menu.component.html',
+  styleUrls: ['./event-hamburger-menu.component.scss']
 })
-export class ContributionHamburgerMenuComponent implements OnInit {
+export class EventHamburgerMenuComponent implements OnInit {
 
   display = false
   environment = environment

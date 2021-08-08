@@ -1,18 +1,18 @@
-<div id=contribution-card [class.no-hover]="( inProgress || completed )">
+<div id=event-card [class.no-hover]="( inProgress || completed )">
   <app-card1 [enableHeaderFullImg]=true [height]="(fillLayout || showRateBar) ? '-webkit-fit-content' : '500px'"
              [paddingContent]="false" [underHeaderProfileImg]="profileImg"
-             [ribbon]="contribution.isPremium ? RIBBONS.premium : contribution.isFeatured ? RIBBONS.featured : contribution.isNew ? RIBBONS.new : RIBBONS.default"
+             [ribbon]="event.isPremium ? RIBBONS.premium : event.isFeatured ? RIBBONS.featured : event.isNew ? RIBBONS.new : RIBBONS.default"
              [width]="fillLayout ? '-webkit-fill-available' : '400px'" [maxHeight]="maxHeight"
-             [containsVideo]="contribution.payload?.trailerVideoLink" [enableHeader]="!showRateBar">
+             [containsVideo]="event.payload?.trailerVideoLink" [enableHeader]="!showRateBar">
 
-    <div *ngIf="contribution.payload?.trailerVideoLink" headerFullImg id=trailer-video>
+    <div *ngIf="event.payload?.trailerVideoLink" headerFullImg id=trailer-video>
       <iframe width="100%" style="height: -webkit-fill-available" [src]="safeYoutubeUrl" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
     </div>
 
-    <div *ngIf="!contribution.payload?.trailerVideoLink && !showRateBar"
-         (click)="routeToContribution()" [ngSwitch]="contribution.payload?.category?.name" headerFullImg id=header-img [class.no-hover]="( inProgress || completed )">
+    <div *ngIf="!event.payload?.trailerVideoLink && !showRateBar"
+         (click)="routeToEvent()" [ngSwitch]="event.payload?.category?.name" headerFullImg id=header-img [class.no-hover]="( inProgress || completed )">
       <svg *ngSwitchCase="'Development'" class="gridItem__media" fill="none" id="Layer_1"
            preserveAspectRatio="xMidYMid slice"
            style="enable-background:new 0 0 1600 1200;" version="1.1" viewBox="0 0 1600 1200" width="100%"
@@ -10895,34 +10895,34 @@
     </div>
 
     <div body class="showroom-item-content">
-      <app-contribution-data (editButtonClicked)="emitIdForFillingForm($event)"
-                             (titleClicked)="routeToContribution()"
+      <app-event-data (editButtonClicked)="emitIdForFillingForm($event)"
+                             (titleClicked)="routeToEvent()"
                              (markAsCompletedButtonClicked)="emitIdForCompletedButton($event)"
-                             [attendeeButton]="!contribution.attended && contribution.contributor.username !== username"
-                             [category]="contribution.payload?.category"
-                             [contributor]="contribution.contributor"
-                             [count]="contribution.count"
-                             [date]="contribution.date"
-                             [description]="contribution.payload?.description"
-                             [dropButton]="contribution.attended && contribution.contributor.username !== username && !inProgress"
-                             [duration]="contribution.duration"
-                             [id]="contribution._id"
+                             [attendeeButton]="!event.attended && event.user.username !== username"
+                             [category]="event.payload?.category"
+                             [user]="event.user"
+                             [count]="event.count"
+                             [date]="event.date"
+                             [description]="event.payload?.description"
+                             [dropButton]="event.attended && event.user.username !== username && !inProgress"
+                             [duration]="event.duration"
+                             [id]="event._id"
                              [isEditable]="isEditable"
                              [markAsCompleted]="markAsCompleted"
                              [isLastItem]="true"
-                             [isPremium]="contribution.isPremium"
+                             [isPremium]="event.isPremium"
                              [isPublicPage]="isPublicPage"
                              [removeLineClamp]="fillLayout"
-                             [leafCategory]="contribution.payload?.leafCategory"
-                             [link]="contribution.link"
-                             [price]="contribution.payload?.price"
-                             [showCalendar]="showCalendar && (contribution.attended || contribution.contributor.username === username)"
-                             [subCategory]="contribution.payload?.subCategory" [title]="contribution.title"
+                             [leafCategory]="event.payload?.leafCategory"
+                             [link]="event.link"
+                             [price]="event.payload?.price"
+                             [showCalendar]="showCalendar && (event.attended || event.user.username === username)"
+                             [subCategory]="event.payload?.subCategory" [title]="event.title"
                              [notFixedHeight]="fillLayout" [maxHeight]="maxHeight" [addMarginToDescription]="addMarginToDescription"
-                             [centeredTitle]="centeredTitle" [containsVideo]="contribution.payload?.trailerVideoLink"
+                             [centeredTitle]="centeredTitle" [containsVideo]="event.payload?.trailerVideoLink"
                              [inProgress]="inProgress" [showHamburgerMenu]="showHamburgerMenu" [showRateBar]="showRateBar"
                              (rateButtonClicked)="rateButtonClicked.emit()" [rateHeight]="showRateBar" [completed]="completed">
-      </app-contribution-data>
+      </app-event-data>
     </div>
   </app-card1>
 </div>

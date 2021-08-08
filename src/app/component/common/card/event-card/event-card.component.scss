@@ -28,18 +28,18 @@
     filter: initial;
   }
 
-  #contribution-card.no-hover:hover, #contribution-card.no-hover:hover #header-img {
+  #event-card.no-hover:hover, #event-card.no-hover:hover #header-img {
     transform: initial;
     transition: initial;
     filter: initial;
   }
 
-  #contribution-card:hover {
+  #event-card:hover {
     transform: scale(1.03);
     transition: transform .5s;
   }
 
-  #contribution-card:hover #header-img {
+  #event-card:hover #header-img {
     filter: opacity(75%);
   }
 }

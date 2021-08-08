@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatePickerComponent, IDayCalendarConfig } from 'ng2-date-picker';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
 import { ToastService } from '../../../service/toast/toast.service';
@@ -14,10 +14,10 @@ import { environment } from '../../../../environments/environment';
 
 @Component( {
   selector: 'app-contribute',
-  templateUrl: './contribute.component.html',
-  styleUrls: [ './contribute.component.scss' ]
+  templateUrl: './create-event.html',
+  styleUrls: [ './create-event.component.scss' ]
 } )
-export class ContributeComponent implements OnInit, OnDestroy {
+export class CreateEventComponent implements OnInit, OnDestroy {
 
   contributeForm: FormGroup;
   submitted = false;
@@ -27,9 +27,9 @@ export class ContributeComponent implements OnInit, OnDestroy {
 
   isSticky = false;
 
-  cardTitle = 'Add Contribution';
+  cardTitle = 'Create Event';
 
-  searchedContributions = [];
+  searchedEvents = [];
 
   defaultCategory: any = {
     category: { name: 'Teaching & Academics', id: 13 },
@@ -54,9 +54,9 @@ export class ContributeComponent implements OnInit, OnDestroy {
     min: this.todayDateTime
   } as unknown as IDayCalendarConfig;
 
-  myUpcomingContributions = [];
-  myRecentlyCompletedContributions = [];
-  myPassedContributions = [];
+  myUpcomingEvents = [];
+  myRecentlyCompletedEvents = [];
+  myPassedEvents = [];
 
   defaultFormValues = {
     _id: null,
@@ -88,7 +88,7 @@ export class ContributeComponent implements OnInit, OnDestroy {
       private route: ActivatedRoute,
       private router: Router,
       private informationService: InformationService,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private categoryService: CategoryService,
       private activatedRoute: ActivatedRoute,
       private basicInfoService: BasicInfoService
@@ -96,9 +96,9 @@ export class ContributeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const userInfo = this.basicInfoService.userInfoSubject.getValue()
-    if( !userInfo?.payload?.contributorProfileActivated ) {
+    if( !userInfo?.payload?.userProfileActivated ) {
       this.router.navigate( [ URLS.dashboard.root ]).then( () => {
-        this.informationService.setInformation( `Enable contributor profile to view this page`, 'info' );
+        this.informationService.setInformation( `Enable user profile to view this page`, 'info' );
       } );
     }
 
@@ -119,24 +119,24 @@ export class ContributeComponent implements OnInit, OnDestroy {
       category: [ this.defaultFormValues.category ]
     } );
 
-    this.contributionService.me( 'true' )
-    .subscribe( myUpcomingContributions => {
-      this.myUpcomingContributions = myUpcomingContributions;
+    this.eventService.me( 'true' )
+    .subscribe( myUpcomingEvents => {
+      this.myUpcomingEvents = myUpcomingEvents;
 
-      if ( this.activatedRoute.snapshot.queryParams.editable && this.activatedRoute.snapshot.queryParams.contribution_id ) {
-        this.fillForm( this.activatedRoute.snapshot.queryParams.contribution_id )
+      if ( this.activatedRoute.snapshot.queryParams.editable && this.activatedRoute.snapshot.queryParams.event_id ) {
+        this.fillForm( this.activatedRoute.snapshot.queryParams.event_id )
       }
     } );
 
-    this.contributionService.me('false' )
-    .subscribe( myRecentlyCompletedContributions => {
-      this.myRecentlyCompletedContributions = myRecentlyCompletedContributions
+    this.eventService.me('false' )
+    .subscribe( myRecentlyCompletedEvents => {
+      this.myRecentlyCompletedEvents = myRecentlyCompletedEvents
     })
 
-    this.contributionService.me('false', 'true' )
-    .subscribe( myPassedContributions => {
-      this.myPassedContributions = myPassedContributions
-      this.searchedContributions = [...myPassedContributions]
+    this.eventService.me('false', 'true' )
+    .subscribe( myPassedEvents => {
+      this.myPassedEvents = myPassedEvents
+      this.searchedEvents = [...myPassedEvents]
     })
 
     this.dayPickerConfig = {
@@ -230,64 +230,64 @@ export class ContributeComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.addEditContribution();
+    this.addEditEvent();
 
   }
 
   ngOnDestroy() {
   }
 
-  resetContributionForm() {
-    this.cardTitle = 'Add Contribution';
+  resetEventForm() {
+    this.cardTitle = 'Add Event';
     this.submitted = false;
     this.contributeForm.reset( this.defaultFormValues );
     this.selectedCategory = { ...this.defaultCategory };
   }
 
-  getUserContributions() {
-    this.contributionService.me( 'true' )
-    .subscribe( myContributions => {
-      this.myUpcomingContributions = myContributions;
+  getUserEvents() {
+    this.eventService.me( 'true' )
+    .subscribe( myEvents => {
+      this.myUpcomingEvents = myEvents;
     } );
   }
 
   fillForm( id: string ): void {
-    for ( const contribution of this.myUpcomingContributions ) {
-      if ( contribution._id === id ) {
+    for ( const event of this.myUpcomingEvents ) {
+      if ( event._id === id ) {
         this.contributeForm = this.formBuilder.group( {
-          _id: [ contribution._id ],
-          title: [ contribution.title, Validators.required ],
-          description: [ contribution.payload.description, Validators.maxLength( 500 ) ],
-          link: [ contribution.link, Validators.pattern( '^.+:\\/\\/.*$' ) ],
-          trailerVideoLink: [ contribution.payload.trailerVideoLink ?
-              'https://www.youtube.com/watch?v=' + contribution.payload.trailerVideoLink : '', Validators.pattern( '^(https:\\/\\/www.)?youtube.com/watch\\?v=.{11}$' ) ],
-          isTrailerVideoLinkActive: [ !!contribution.payload.trailerVideoLink ],
-          date: [ formatDate( new Date( contribution.date ), 'yyyy/MM/dd HH:mm', 'en-US' ), Validators.required ],
-          durationHour: [ Math.floor( contribution.duration / 60 ).toString(), Validators.pattern( '^([0-1]?[0-9]|2[0-3])$' ) ],
-          durationMin: [ ( contribution.duration % 60 ).toString(), Validators.pattern( '^([0-9]|([0-5][0-9]))$' ) ],
+          _id: [ event._id ],
+          title: [ event.title, Validators.required ],
+          description: [ event.payload.description, Validators.maxLength( 500 ) ],
+          link: [ event.link, Validators.pattern( '^.+:\\/\\/.*$' ) ],
+          trailerVideoLink: [ event.payload.trailerVideoLink ?
+              'https://www.youtube.com/watch?v=' + event.payload.trailerVideoLink : '', Validators.pattern( '^(https:\\/\\/www.)?youtube.com/watch\\?v=.{11}$' ) ],
+          isTrailerVideoLinkActive: [ !!event.payload.trailerVideoLink ],
+          date: [ formatDate( new Date( event.date ), 'yyyy/MM/dd HH:mm', 'en-US' ), Validators.required ],
+          durationHour: [ Math.floor( event.duration / 60 ).toString(), Validators.pattern( '^([0-1]?[0-9]|2[0-3])$' ) ],
+          durationMin: [ ( event.duration % 60 ).toString(), Validators.pattern( '^([0-9]|([0-5][0-9]))$' ) ],
           isDurationActive: [ true ],
-          isEmailAllowed: [ !!contribution.contributor.email ],
-          isPremium: [ contribution.isPremium ],
-          price: [ contribution.payload.price ? contribution.payload.price : this.defaultFormValues.price, Validators.pattern( '^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$' ) ],
-          category: [ contribution.category ]
+          isEmailAllowed: [ !!event.user.email ],
+          isPremium: [ event.isPremium ],
+          price: [ event.payload.price ? event.payload.price : this.defaultFormValues.price, Validators.pattern( '^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$' ) ],
+          category: [ event.category ]
         } );
 
         this.contributeForm.controls.category.markAsTouched();
 
         this.selectedCategory = {
-          category: contribution.payload.category,
-          subCategory: contribution.payload.subCategory,
-          leafCategory: contribution.payload.leafCategory
+          category: event.payload.category,
+          subCategory: event.payload.subCategory,
+          leafCategory: event.payload.leafCategory
         };
 
         window.scroll( 0, 0 );
-        this.cardTitle = 'Edit Contribution';
+        this.cardTitle = 'Edit Event';
         return;
       }
     }
   }
 
-  private addEditContribution() {
+  private addEditEvent() {
     const payload: any = {
       description: this.f.description.value,
       category: this.selectedCategory.category.id,
@@ -305,7 +305,7 @@ export class ContributeComponent implements OnInit, OnDestroy {
 
     const date = new Date( this.f.date.value );
 
-    const contribution = {
+    const event = {
       _id: this.f._id.value,
       title: this.f.title.value,
       isPremium: this.f.isPremium.value,
@@ -315,28 +315,28 @@ export class ContributeComponent implements OnInit, OnDestroy {
       link: this.f.link.value,
       payload,
       paymentConfigKey: environment.payment.stripe.tag,
-      imageUrl: environment.contributionImageUrl
+      imageUrl: environment.eventImageUrl
     };
 
-    // if contribution._id is not null, update, else create
-    if ( contribution._id ) {
-      this.contributionService.update( contribution )
+    // if event._id is not null, update, else create
+    if ( event._id ) {
+      this.eventService.update( event )
       .subscribe( () => {
-        this.toastService.info( 'Contribution updated' );
-        this.resetContributionForm();
-        this.getUserContributions();
+        this.toastService.info( 'Event updated' );
+        this.resetEventForm();
+        this.getUserEvents();
         this.router.navigate( [ URLS.dashboard.contribute ] );
       }, ( error ) => {
-        if ( error.error.message.startsWith( "Premium content cannot be changed to free") ) {
+        if ( error.error.message.startsWith( 'Premium content cannot be changed to free' ) ) {
           this.f.isPremium.setValue( true )
           this.f.price.setValue( this.previousPrice )
         }
       } );
     } else {
-      this.contributionService.create( contribution )
+      this.eventService.create( event )
       .subscribe( () => {
-            this.resetContributionForm();
-            this.getUserContributions();
+            this.resetEventForm();
+            this.getUserEvents();
           }
       );
     }
@@ -355,7 +355,7 @@ export class ContributeComponent implements OnInit, OnDestroy {
     } );
   }
 
-  searchInAllContributions( event: any ) {
+  searchInAllEvents( event: any ) {
     let q = '';
 
     if (!event) {
@@ -366,29 +366,29 @@ export class ContributeComponent implements OnInit, OnDestroy {
     }
 
     if ( !q || q.length < 3 ) {
-      this.searchedContributions = [...this.myPassedContributions]
+      this.searchedEvents = [...this.myPassedEvents]
       return;
     }
 
-    this.contributionService.me( 'false', 'true', q )
-    .subscribe( searchedContributions => {
-        this.searchedContributions = searchedContributions
+    this.eventService.me( 'false', 'true', q )
+    .subscribe( searchedEvents => {
+        this.searchedEvents = searchedEvents
     });
   }
 
   markAsCompletedButtonClicked( event: string ) {
-    // remove the item from recentlyPassedContributions
-    this.myRecentlyCompletedContributions.forEach( ( item, index ) => {
+    // remove the item from recentlyPassedEvents
+    this.myRecentlyCompletedEvents.forEach( ( item, index ) => {
       if ( item._id === event ) {
-        this.myRecentlyCompletedContributions.splice( index, 1 )
+        this.myRecentlyCompletedEvents.splice( index, 1 )
       }
     } )
 
-    // refresh passedContributions
-    this.contributionService.me('false', 'true' )
-    .subscribe( myPassedContributions => {
-      this.myPassedContributions = myPassedContributions
-      this.searchedContributions = [...myPassedContributions]
+    // refresh passedEvents
+    this.eventService.me('false', 'true' )
+    .subscribe( myPassedEvents => {
+      this.myPassedEvents = myPassedEvents
+      this.searchedEvents = [...myPassedEvents]
     })
   }
 }
