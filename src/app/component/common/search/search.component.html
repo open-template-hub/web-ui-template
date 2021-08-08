@@ -2,7 +2,7 @@
   <i class="material-icons">search</i>
   <input #searchArea (keyup)="search($event)" placeholder="Search..." type="text">
   <div
-    *ngIf="(userSearchResults.length > 0 || categorySearchResults.length > 0 || contributionSearchResults.length > 0) && searchEnabled"
+    *ngIf="(userSearchResults.length > 0 || categorySearchResults.length > 0 || eventSearchResults.length > 0) && searchEnabled"
     class="search-results">
     <a (click)="userSearchResults = []" *ngFor="let result of userSearchResults"
        routerLink="{{URLS.user.root + '/' + result.username}}">
@@ -21,11 +21,11 @@
       </app-label-with-icon-data>
     </a>
     <hr
-      *ngIf="contributionSearchResults.length > 0 && (categorySearchResults.length > 0 || userSearchResults.length > 0)">
-    <a (click)="contributionSearchResults = []"
-       *ngFor="let result of contributionSearchResults"
-       [queryParams]="{contribution_id: result._id}"
-       routerLink="{{URLS.dashboard.contribution}}">
+      *ngIf="eventSearchResults.length > 0 && (categorySearchResults.length > 0 || userSearchResults.length > 0)">
+    <a (click)="eventSearchResults = []"
+       *ngFor="let result of eventSearchResults"
+       [queryParams]="{event_id: result._id}"
+       routerLink="{{URLS.dashboard.event}}">
       <app-label-with-icon-data [data]="(result.payload.leafCategory ? result.payload.leafCategory.name :
           result.payload.subCategory ? result.payload.subCategory.name : result.payload.category.name) + ': ' + result.title"
                                 [noMarginIcon]="true" [noMargin]="true" [solid]="'chalkboard-teacher'">

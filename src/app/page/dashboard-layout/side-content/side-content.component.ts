@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { InformationService } from '../../../service/information/information.service';
 import { ThemeService } from '../../../service/theme/theme.service';
 import { URLS } from '../../../util/constant';
@@ -20,14 +20,14 @@ export class SideContentComponent implements OnInit {
   /*
   userSearchResults = [];
   categorySearchResults = [];
-  contributionSearchResults = [];
+  eventSearchResults = [];
   searchEnabled = true;*/
   URLS = URLS;
-  recommendedContributions: any = [];
-  recommendedContributionsByFollowingList: any = [];
+  recommendedEvents: any = [];
+  recommendedEventsByFollowingList: any = [];
   environment = environment;
 
-  numberOfAttemptedRetrieveInitSearchContributions = 0;
+  numberOfAttemptedRetrieveInitSearchEvents = 0;
   maxNumberOfServiceCall = 1;
 
   /*
@@ -38,7 +38,7 @@ export class SideContentComponent implements OnInit {
       private themeService: ThemeService,
       private categoryService: CategoryService,
       private basicInfoService: BasicInfoService,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private informationService: InformationService,
       private router: Router
   ) {
@@ -49,10 +49,10 @@ export class SideContentComponent implements OnInit {
     this.basicInfoService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
-      this.contributionService.recommendedContributions.subscribe( recommendedContributions => {
-        if ( recommendedContributions ) {
-          this.recommendedContributions = recommendedContributions;
-        } else if ( this.numberOfAttemptedRetrieveInitSearchContributions < this.maxNumberOfServiceCall) {
+      this.eventService.recommendedEvents.subscribe( recommendedEvents => {
+        if ( recommendedEvents ) {
+          this.recommendedEvents = recommendedEvents;
+        } else if ( this.numberOfAttemptedRetrieveInitSearchEvents < this.maxNumberOfServiceCall) {
           // purpose of this control is to fix side content is null when user refreshed the page outside of the dasboard page
           const userInterests = userInfo?.payload?.interests;
           const categories: any[] = [];
@@ -69,13 +69,13 @@ export class SideContentComponent implements OnInit {
             }
           }
 
-          this.contributionService.initSearchContributions( categories )
-          this.numberOfAttemptedRetrieveInitSearchContributions += 1
+          this.eventService.initSearchEvents( categories )
+          this.numberOfAttemptedRetrieveInitSearchEvents += 1
         }
       } );
 
-      this.contributionService.recommendedContributionsByFollowingList.subscribe( recommendedContributions => {
-        this.recommendedContributionsByFollowingList = recommendedContributions
+      this.eventService.recommendedEventsByFollowingList.subscribe( recommendedEvents => {
+        this.recommendedEventsByFollowingList = recommendedEvents
       } )
     } );
 
@@ -112,13 +112,13 @@ export class SideContentComponent implements OnInit {
       this.categorySearchResults = results.slice( 0, 10 );
     } );
 
-    this.contributionService.search( undefined, undefined, new Date().toISOString(), q, [] )
+    this.eventService.search( undefined, undefined, new Date().toISOString(), q, [] )
     .subscribe( results => {
-      this.contributionSearchResults = results;
+      this.eventSearchResults = results;
     } );
   }*/
 
-  openContributionDetails( event ) {
-    this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: event } } );
+  openEventDetails( event ) {
+    this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: event } } );
   }
 }

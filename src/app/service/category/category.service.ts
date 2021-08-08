@@ -96,20 +96,20 @@ export class CategoryService {
     const categories: any = {};
 
     categories.category = {
-      name: CATEGORIES_MAP.get( categoryId ).name,
+      name: CATEGORIES_MAP.get( categoryId )?.name,
       id: categoryId
     };
 
     if ( subCategoryId ) {
       categories.subCategory = {
-        name: CATEGORIES_MAP.get( categoryId ).subCategories.get( subCategoryId ).name,
+        name: CATEGORIES_MAP.get( categoryId ).subCategories.get( subCategoryId )?.name,
         id: subCategoryId
       };
     }
 
     if ( leafCategoryId ) {
       categories.leafCategory = {
-        name: CATEGORIES_MAP.get( categoryId ).subCategories.get( subCategoryId ).leafCategories.get( leafCategoryId ).name,
+        name: CATEGORIES_MAP.get( categoryId ).subCategories.get( subCategoryId ).leafCategories?.get( leafCategoryId ).name,
         id: leafCategoryId
       };
     }

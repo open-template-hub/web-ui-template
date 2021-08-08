@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { createEvent, DateArray, EventAttributes } from 'ics';
 import { environment } from 'src/environments/environment';
-import { ContributionService } from '../../../../service/contribution/contribution.service';
+import { EventService } from '../../../../service/event/event.service';
 import { InformationService } from '../../../../service/information/information.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
@@ -11,16 +11,16 @@ import { UserActivityService } from '../../../../service/user-activity/user-acti
 import { URLS } from '../../../../util/constant';
 
 @Component( {
-  selector: 'app-contribution-data',
-  templateUrl: './contribution-data.component.html',
-  styleUrls: [ './contribution-data.component.scss' ]
+  selector: 'app-event-data',
+  templateUrl: './event-data.component.html',
+  styleUrls: [ './event-data.component.scss' ]
 } )
-export class ContributionDataComponent implements OnInit {
+export class EventDataComponent implements OnInit {
   selectedRate = 0;
   environment = environment;
 
   @Input() title: string = undefined;
-  @Input() contributor: any = undefined;
+  @Input() user: any = undefined;
   @Input() date: string = undefined;
   @Input() description: string = undefined;
   @Input() link: string = undefined;
@@ -71,7 +71,7 @@ export class ContributionDataComponent implements OnInit {
       private loadingService: LoadingService,
       private paymentService: PaymentService,
       private router: Router,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private informationService: InformationService,
       private userActivityService: UserActivityService
   ) {
@@ -103,10 +103,10 @@ export class ContributionDataComponent implements OnInit {
     if ( this.subCategory ) categories.push( this.subCategory.name );
     if ( this.leafCategory ) categories.push( this.leafCategory.name );
 
-    const organizer = { name: this.contributor.username };
+    const organizer = { name: this.user.username };
     let description = this.description;
-    if ( this.contributor.email ) {
-      description += ` <${ this.contributor.email }>`;
+    if ( this.user.email ) {
+      description += ` <${ this.user.email }>`;
     }
 
     const event: EventAttributes = {
@@ -145,7 +145,7 @@ export class ContributionDataComponent implements OnInit {
 
   onBuyNowClick() {
     if ( this.isPublicPage ) {
-      this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: this.id } } );
+      this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: this.id } } );
     } else {
       this.buy();
     }
@@ -153,9 +153,9 @@ export class ContributionDataComponent implements OnInit {
 
   onAttendClick() {
     if ( this.isPublicPage ) {
-      this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: this.id } } );
+      this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: this.id } } );
     } else {
-      this.contributionService.attend( this.id ).subscribe( () => {
+      this.eventService.attend( this.id ).subscribe( () => {
         this.informationService.setInformation( `Attended to ${ this.title }`, 'info' );
       } );
     }
@@ -163,14 +163,14 @@ export class ContributionDataComponent implements OnInit {
 
   onDropClick() {
     if ( !this.isPublicPage ) {
-      this.contributionService.drop( this.id ).subscribe( () => {
+      this.eventService.drop( this.id ).subscribe( () => {
         this.informationService.setInformation( `Drop ${ this.title }`, 'info' );
       } );
     }
   }
 
   onMarkAsCompletedClick() {
-    this.contributionService.markAsCompleted( this.id ).subscribe( () => {
+    this.eventService.markAsCompleted( this.id ).subscribe( () => {
       this.informationService.setInformation( `Completed ${ this.title }`, 'info' )
       this.markAsCompletedButtonClicked.emit( this.id )
     } )
@@ -201,23 +201,23 @@ export class ContributionDataComponent implements OnInit {
   }
 
   shareVia( brand: string ) {
-    let contributionUrl: string
+    let eventUrl: string
 
     switch ( brand ) {
       case 'twitter':
         const related = this.category.name + ( this.subCategory ? ',' + this.subCategory.name : '' ) +
             ( this.leafCategory ? ',' + this.leafCategory.name : '' )
         console.log( environment.clientUrl )
-        contributionUrl = environment.social.twitter.shareUrl + environment.clientUrl
-          + URLS.dashboard.contribution + '?contribution_id=' + this.id + '&text=' + this.title + '&via=wecontribute_io'
+        eventUrl = environment.social.twitter.shareUrl + environment.clientUrl
+          + URLS.dashboard.event + '?event_id=' + this.id + '&text=' + this.title + '&via=wecontribute_io'
           + '&related=' + related
         break
       case 'linkedin':
-        contributionUrl = environment.social.linkedin.shareUrl + encodeURIComponent(  environment.clientUrl + URLS.dashboard.contribution
-          + '?contribution_id=' + this.id )
+        eventUrl = environment.social.linkedin.shareUrl + encodeURIComponent(  environment.clientUrl + URLS.dashboard.event
+          + '?event_id=' + this.id )
     }
 
-    window.open( contributionUrl, '_blank' );
+    window.open( eventUrl, '_blank' );
   }
 
   onStarClick( rate: number ) {

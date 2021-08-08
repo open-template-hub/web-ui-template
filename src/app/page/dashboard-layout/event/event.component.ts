@@ -1,19 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
-import { ContributionTypes, PROFILE_IMG, URLS } from '../../../util/constant';
+import { EventTypes, PROFILE_IMG, URLS } from '../../../util/constant';
 
 @Component({
-  selector: 'app-contribution',
-  templateUrl: './contribution.component.html',
-  styleUrls: ['./contribution.component.scss']
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.scss']
 })
-export class ContributionComponent implements OnInit, OnDestroy {
+export class EventComponent implements OnInit, OnDestroy {
 
-  contribution;
+  event;
 
   profileImg = PROFILE_IMG;
   PROFILE_IMG = PROFILE_IMG;
@@ -24,7 +24,7 @@ export class ContributionComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private contributionService: ContributionService,
+    private eventService: EventService,
     private basicInfoService: BasicInfoService,
     private fileStorageService: FileStorageService,
     private router: Router,
@@ -32,17 +32,17 @@ export class ContributionComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.contributionService.searchedContributions.subscribe( searchedContribution => {
+    this.eventService.searchedEvents.subscribe( searchedEvent => {
       this.isProfileImageLoading = true;
-      if ( searchedContribution && searchedContribution.length > 0 ) {
-        this.contribution = searchedContribution[0];
-        if ( new Date() > new Date( new Date( this.contribution.date ).getTime() + this.contribution.duration * 60000 ) ) {
+      if ( searchedEvent && searchedEvent.length > 0 ) {
+        this.event = searchedEvent[0];
+        if ( new Date() > new Date( new Date( this.event.date ).getTime() + this.event.duration * 60000 ) ) {
           this.completed = true;
         } else {
           this.completed = false;
         }
 
-        this.basicInfoService.getUser( this.contribution.contributor.username )
+        this.basicInfoService.getUser( this.event.user.username )
         .subscribe( visitedUserInfo => {
           if ( visitedUserInfo.payload?.profileImageId ) {
             this.fileStorageService.downloadVisitedProfileImage( visitedUserInfo.payload?.profileImageId ).subscribe( profileImg => {
@@ -55,8 +55,8 @@ export class ContributionComponent implements OnInit, OnDestroy {
     } );
 
     this.route.queryParams.subscribe( params => {
-      this.contributionService.search( params.contribution_id, undefined, undefined,
-        undefined, [], ContributionTypes.Searched ).subscribe( response => {
+      this.eventService.search( params.event_id, undefined, undefined,
+        undefined, [], EventTypes.Searched ).subscribe( response => {
       }, error => {
         this.router.navigate( [ URLS.dashboard.learn ] );
       } );
@@ -64,14 +64,14 @@ export class ContributionComponent implements OnInit, OnDestroy {
   };
 
   ngOnDestroy() {
-    this.contributionService.resetContributions( ContributionTypes.Searched );
+    this.eventService.resetEvents( EventTypes.Searched );
   }
 
-  updateSearchedContributions( updatedContribution ) {
-    this.contribution = updatedContribution;
+  updateSearchedEvents( updatedEvent ) {
+    this.event = updatedEvent;
   }
 
   fillForm() {
-    this.router.navigate( [ URLS.dashboard.contribute ], { queryParams: { contribution_id: this.contribution._id, editable: true } } );
+    this.router.navigate( [ URLS.dashboard.contribute ], { queryParams: { event_id: this.event._id, editable: true } } );
   }
 }

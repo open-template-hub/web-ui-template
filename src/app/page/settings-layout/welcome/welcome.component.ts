@@ -91,7 +91,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       location: [ this.basicInfoService.userInfoValue?.payload?.location ],
       phone: [ this.basicInfoService.userInfoValue?.payload?.phone, Validators.pattern( '[+]?[0-9]+' ) ],
       website: [ this.basicInfoService.userInfoValue?.payload?.website ],
-      contributorProfileActivated: [ this.basicInfoService.userInfoValue?.payload?.contributorProfileActivated ]
+      userProfileActivated: [ this.basicInfoService.userInfoValue?.payload?.userProfileActivated ]
     } );
   }
 
@@ -139,7 +139,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       location: this.f.location.value,
       phone: this.f.phone.value,
       website: this.f.website.value,
-      contributorProfileActivated: this.f.contributorProfileActivated.value,
+      userProfileActivated: this.f.userProfileActivated.value,
       interests: interestIdList
     };
 

@@ -6,7 +6,7 @@ import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { FolloweeService } from '../../../service/followee/followee.service';
 import { FollowerService } from '../../../service/follower/follower.service';
@@ -31,9 +31,9 @@ export class MyProfileComponent implements OnInit, OnDestroy {
   loadingCount = false;
   loadingLessonsTaken = false;
   userInterests = [];
-  attendedContributions;
-  numberOfContributionsMade: number;
-  numberOfContributionsTaken: number;
+  attendedEvents;
+  numberOfEventsMade: number;
+  numberOfEventsTaken: number;
   topContributor: number;
 
   rate = 0;
@@ -45,8 +45,8 @@ export class MyProfileComponent implements OnInit, OnDestroy {
   followerCount: number;
   followeeCount: number;
 
+  eventsInfo: any[] = [];
   lessonsInfo: any[] = [];
-  contributionsInfo: any[] = [];
 
   showXAxis = true;
   showYAxis = true;
@@ -61,9 +61,9 @@ export class MyProfileComponent implements OnInit, OnDestroy {
     ]
   };
 
-  lessonsTakenXAxisLabel = '# of lessons taken';
+  eventsTakenXAxisLabel = '# of events taken';
 
-  contributionsXAxisLabel = '# of contributions.ts';
+  eventsXAxisLabel = '# of events.ts';
 
   eduMailPattern = '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+\.edu\.[a-z]{2}$'
 
@@ -80,7 +80,7 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       private categoryService: CategoryService,
       private followerService: FollowerService,
       private followeeService: FolloweeService,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private themeService: ThemeService,
       private userActivityService: UserActivityService) {
     this.loadingCount = true;
@@ -102,13 +102,13 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       }
 
       if ( userInfo?.username ) {
-        this.contributionService.countUserContributions( userInfo.username ).subscribe( contributionList => {
-          this.contributionsInfo = contributionList
+        this.eventService.countUserEvents( userInfo.username ).subscribe( eventList => {
+          this.eventsInfo = eventList
           this.loadingCount = false;
         } )
 
-        this.userActivityService.getContributionsTaken( userInfo.username ).subscribe( contributionList => {
-          this.lessonsInfo = contributionList
+        this.userActivityService.getEventsTaken( userInfo.username ).subscribe( eventList => {
+          this.lessonsInfo = eventList
           this.loadingLessonsTaken = false
         } )
 
@@ -120,13 +120,13 @@ export class MyProfileComponent implements OnInit, OnDestroy {
           this.followeeCount = followeeCount[ 0 ].count;
         } );
 
-        this.userActivityService.getNumberOfContributionsTaken( userInfo.username ).subscribe( result => {
-          this.numberOfContributionsTaken = result[0].numberOfContributionsTaken
+        this.userActivityService.getNumberOfEventsTaken( userInfo.username ).subscribe( result => {
+          this.numberOfEventsTaken = result[0].numberOfEventsTaken
         })
 
-        if ( userInfo.payload?.contributorProfileActivated ) {
-          this.userActivityService.getNumberOfContributionsMade( userInfo.username ).subscribe( result => {
-            this.numberOfContributionsMade = result.numberOfContributionsMade
+        if ( userInfo.payload?.userProfileActivated ) {
+          this.userActivityService.getNumberOfEventsMade( userInfo.username ).subscribe( result => {
+            this.numberOfEventsMade = result.numberOfEventsMade
           } )
 
           this.userActivityService.getContributorRate( userInfo.username ).subscribe( rate => {
@@ -147,7 +147,7 @@ export class MyProfileComponent implements OnInit, OnDestroy {
             } );
           })
         } else {
-          this.numberOfContributionsMade = undefined
+          this.numberOfEventsMade = undefined
           /*this.rate = 0
           this.numberOfRate = undefined
           this.formattedRateNumber = undefined*/

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 
 @Component( {
   selector: 'app-showroom',
@@ -8,17 +8,17 @@ import { ContributionService } from '../../../service/contribution/contribution.
 } )
 export class ShowroomComponent implements OnInit {
 
-  contributions: any;
+  events: any;
 
   constructor(
-      private contributionService: ContributionService
+      private eventService: EventService
   ) {
   }
 
   ngOnInit(): void {
-    this.contributionService.search( undefined, undefined, new Date().toISOString(), undefined,
+    this.eventService.search( undefined, undefined, new Date().toISOString(), undefined,
         [] ).subscribe( results => {
-      this.contributions = results;
+      this.events = results;
     } );
   }
 }

@@ -42,27 +42,27 @@ export class CallbackComponent implements OnInit {
 
     if (this.payment) {
       const status = this.route.snapshot.queryParamMap.get( 'status' );
-      const contributionId = this.route.snapshot.queryParamMap.get( 'id' );
+      const eventId = this.route.snapshot.queryParamMap.get( 'id' );
       const transactionId = this.route.snapshot.queryParamMap.get( 'transaction_id' )
-      this.paymentCallback( this.payment , status, contributionId, transactionId );
+      this.paymentCallback( this.payment , status, eventId, transactionId );
     } else {
       this.socialLoginCallback();
     }
   }
 
-  private paymentCallback( paymentConfig: string, status: string, contributionId: string, transactionId: string ) {
+  private paymentCallback( paymentConfig: string, status: string, eventId: string, transactionId: string ) {
     switch ( status ) {
       case 'success':
-        this.paymentService.verify( paymentConfig, transactionId, contributionId ).subscribe( response => {
+        this.paymentService.verify( paymentConfig, transactionId, eventId ).subscribe( response => {
           this.informationService.setInformation( `Payment succeeded`, 'success' );
-          this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: contributionId } } );
+          this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: eventId } } );
         }, error => {
           this.router.navigate( [ URLS.dashboard.learn ] );
         } );
         break;
       default:
         this.informationService.setInformation( `Payment canceled`, 'error' );
-        this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: contributionId } } );
+        this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: eventId } } );
         break;
     }
   }

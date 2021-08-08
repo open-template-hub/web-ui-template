@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthToken } from '../../model/AuthToken';
 import { BasicInfoService } from '../basic-info/basic-info.service';
-import { ContributionService } from '../contribution/contribution.service';
+import { EventService } from '../event/event.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
 import { ThemeService } from '../theme/theme.service';
 
@@ -20,7 +20,7 @@ export class AuthenticationService {
   constructor( private http: HttpClient,
     private themeService: ThemeService,
     private basicInfoService: BasicInfoService,
-    private contributionService: ContributionService,
+    private eventService: EventService,
     private fileStorageService: FileStorageService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' ) ? localStorage.getItem( 'currentUser' ) : sessionStorage.getItem( 'currentUser' );
@@ -145,7 +145,7 @@ export class AuthenticationService {
 
     this.currentUser.subscribe( () => {
       this.basicInfoService.logout();
-      this.contributionService.logout();
+      this.eventService.logout();
       this.basicInfoService.userInfo.subscribe( basicInfo => {
         this.fileStorageService.logout();
       } );

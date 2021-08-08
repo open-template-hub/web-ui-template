@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { URLS } from '../../../util/constant';
 
 @Component({
@@ -12,7 +12,7 @@ import { URLS } from '../../../util/constant';
 export class SearchComponent implements OnInit {
   userSearchResults = [];
   categorySearchResults = [];
-  contributionSearchResults = [];
+  eventSearchResults = [];
   searchEnabled = true;
   URLS = URLS;
 
@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
   searchArea: ElementRef;
 
   constructor(
-    private contributionService: ContributionService,
+    private eventService: EventService,
     private basicInfoService: BasicInfoService,
     private categoryService: CategoryService
   ) { }
@@ -54,9 +54,9 @@ export class SearchComponent implements OnInit {
       this.categorySearchResults = results.slice( 0, 10 );
     } );
 
-    this.contributionService.search( undefined, undefined, new Date().toISOString(), q, [] )
+    this.eventService.search( undefined, undefined, new Date().toISOString(), q, [] )
     .subscribe( results => {
-      this.contributionSearchResults = results;
+      this.eventSearchResults = results;
     } );
   }
 

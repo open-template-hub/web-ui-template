@@ -23,9 +23,9 @@
             <span *ngIf="topContributor === 1">🥈</span>
             <span *ngIf="topContributor === 2">🥉</span>
           </i>
-          <i *ngIf="numberOfContributionsTaken !== undefined && numberOfContributionsTaken > 10"
+          <i *ngIf="numberOfEventsTaken !== undefined && numberOfEventsTaken > 10"
              show-delay="500" tooltip="Curious" style="margin-right: 5px;">📚</i>
-          <i *ngIf="numberOfContributionsMade != undefined && numberOfContributionsMade < 5" show-delay="500" tooltip="New" style="margin-right: 5px;">👋</i>
+          <i *ngIf="numberOfEventsMade != undefined && numberOfEventsMade < 5" show-delay="500" tooltip="New" style="margin-right: 5px;">👋</i>
           <i *ngIf="userInfo?.isAcademical" show-delay="500" tooltip="Joined with .edu mail">🎓</i>
         </p>
       </div>
@@ -43,7 +43,7 @@
           <div *ngIf="followerCount !== undefined && followeeCount !== undefined" class="follower-following-count-area">
             <div class="follower-count-area"><i class="follower-count">{{followerCount}}</i> Following</div>
             <div class="following-count-area"><i class="following-count">{{followeeCount}}</i> Followers</div>
-            <div *ngIf="numberOfContributionsMade !== undefined" class="contributions-count-area"><i class="contribution-count">{{ numberOfContributionsMade }}</i> Contributions</div>
+            <div *ngIf="numberOfEventsMade !== undefined" class="events-count-area"><i class="event-count">{{ numberOfEventsMade }}</i> Events</div>
           </div>
         </div>
       </div>
@@ -67,58 +67,58 @@
   </app-card1>
   <!--END OF DASHBOARD CARD-->
   <!--RECENTLY PASSED CONTRIBUTIONS-->
-  <div class="in-page-title" *ngIf="userInfo?.payload?.contributorProfileActivated && myRecentlyCompletedContributions.length > 0">
-    <h2>Recently Passed Contributions</h2>
+  <div class="in-page-title" *ngIf="userInfo?.payload?.userProfileActivated && myRecentlyCompletedEvents.length > 0">
+    <h2>Recently Passed Events</h2>
   </div>
 
-  <div *ngIf="userInfo?.payload?.contributorProfileActivated && myRecentlyCompletedContributions.length > 0" class="dashboard-page-contributions">
-    <app-contribution-card *ngFor="let contribution of myRecentlyCompletedContributions"
-                           [contribution]="contribution" [showCalendar]="false"
+  <div *ngIf="userInfo?.payload?.userProfileActivated && myRecentlyCompletedEvents.length > 0" class="dashboard-page-events">
+    <app-event-card *ngFor="let event of myRecentlyCompletedEvents"
+                           [event]="event" [showCalendar]="false"
                            (markAsCompletedButtonClicked)="markAsCompletedButtonClicked($event)"
                            [markAsCompleted]="true">
-    </app-contribution-card>
+    </app-event-card>
   </div>
   <!--END OF RECENTLY PASSED CONTRIBUTIONS-->
   <!--YOUR UPCOMING CONTRIBUTIONS-->
-  <div class="your-upcoming-contributions-area" *ngIf="userInfo?.payload?.contributorProfileActivated && myUpcomingContributions.length > 0">
+  <div class="your-upcoming-events-area" *ngIf="userInfo?.payload?.userProfileActivated && myUpcomingEvents.length > 0">
     <div class="in-page-title">
-      <h2>Your Upcoming Contributions</h2>
+      <h2>Your Upcoming Events</h2>
     </div>
 
-    <div *ngIf="myUpcomingContributions.length <= 0" class="in-page-title">
+    <div *ngIf="myUpcomingEvents.length <= 0" class="in-page-title">
       <h3 class="dim">Nothing in here..</h3>
     </div>
 
-    <div *ngIf="myUpcomingContributions.length > 0" class="dashboard-page-contributions">
-      <app-contribution-card *ngFor="let contribution of myUpcomingContributions"
-                             [contribution]="contribution" [inProgress]="contribution.inProgress" [isEditable]="true" (itemIdForFillingForm)="fillForm($event)">
-      </app-contribution-card>
+    <div *ngIf="myUpcomingEvents.length > 0" class="dashboard-page-events">
+      <app-event-card *ngFor="let event of myUpcomingEvents"
+                             [event]="event" [inProgress]="event.inProgress" [isEditable]="true" (itemIdForFillingForm)="fillForm($event)">
+      </app-event-card>
     </div>
   </div>
   <!--END OF YOUR UPCOMING CONTRIBUTIONS-->
   <!--ATTENDED CONTRIBUTIONS-->
   <div class="in-page-title">
-    <h2>Attended Contributions</h2>
+    <h2>Attended Events</h2>
   </div>
 
-  <div *ngIf="attendedContributions?.length <= 0" class="in-page-title">
+  <div *ngIf="attendedEvents?.length <= 0" class="in-page-title">
     <h3 class="dim">Nothing in here..</h3>
   </div>
 
-  <div *ngIf="attendedContributions?.length > 0" class="dashboard-page-contributions">
-    <app-contribution-card *ngFor="let contribution of attendedContributions"
-                           [contribution]="contribution" [inProgress]="contribution.inProgress"></app-contribution-card>
+  <div *ngIf="attendedEvents?.length > 0" class="dashboard-page-events">
+    <app-event-card *ngFor="let event of attendedEvents"
+                           [event]="event" [inProgress]="event.inProgress"></app-event-card>
   </div>
   <!--END OF ATTENDED CONTRIBUTIONS-->
   <!--UNRATED CONTRIBUTIONS-->
-  <div class="in-page-title" *ngIf="unratedContributions.length > 0">
-    <h2>Completed Contributions</h2>
+  <div class="in-page-title" *ngIf="unratedEvents.length > 0">
+    <h2>Completed Events</h2>
   </div>
-  <div *ngIf="unratedContributions?.length > 0" class="dashboard-page-contributions">
-    <app-contribution-card *ngFor="let contribution of unratedContributions" [contribution]="contribution"
+  <div *ngIf="unratedEvents?.length > 0" class="dashboard-page-events">
+    <app-event-card *ngFor="let event of unratedEvents" [event]="event"
                            [showHamburgerMenu]="false" [showRateBar]="true"
-                           (rateButtonClicked)="fetchUnratedCompletedContributions()">
-    </app-contribution-card>
+                           (rateButtonClicked)="fetchUnratedCompletedEvents()">
+    </app-event-card>
   </div>
   <!--END OF UNRATED CONTRIBUTIONS-->
   <!--<full-calendar [options]="calendarOptions"></full-calendar>-->

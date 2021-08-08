@@ -6,10 +6,10 @@ import { IDayCalendarConfig } from 'ng2-date-picker';
 import { ToastrService } from 'ngx-toastr';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
-import { ContributionTypes, URLS } from '../../../util/constant';
+import { EventTypes, URLS } from '../../../util/constant';
 
 @Component( {
   selector: 'app-learn',
@@ -18,14 +18,14 @@ import { ContributionTypes, URLS } from '../../../util/constant';
 } )
 export class LearnComponent implements OnInit, OnDestroy {
 
-  searchedContributions: any;
-  recommendedContributions = [];
+  searchedEvents: any;
+  recommendedEvents = [];
   submitted = false;
   loading = false;
 
   userSearchResults = [];
   categorySearchResults = [];
-  contributionSearchResults = [];
+  eventSearchResults = [];
   searchEnabled = true;
 
   isSearchedWithCategory = false;
@@ -52,7 +52,7 @@ export class LearnComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private contributionService: ContributionService,
+    private eventService: EventService,
     private categoryService: CategoryService,
     private loadingService: LoadingService,
     private toastService: ToastrService,
@@ -62,11 +62,11 @@ export class LearnComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private basicInfoService: BasicInfoService
   ) {
-    this.contributionService.recommendedContributions.subscribe( recommendedContributions => {
-      this.recommendedContributions = recommendedContributions;
+    this.eventService.recommendedEvents.subscribe( recommendedEvents => {
+      this.recommendedEvents = recommendedEvents;
     } );
-    this.contributionService.searchedContributions.subscribe( searchedContributions => {
-      this.searchedContributions = searchedContributions;
+    this.eventService.searchedEvents.subscribe( searchedEvents => {
+      this.searchedEvents = searchedEvents;
     } );
   }
 
@@ -79,8 +79,8 @@ export class LearnComponent implements OnInit, OnDestroy {
         this.userInterests = [];
         if ( params.category ) {
           this.isSearchedWithCategory = true;
-          // reset search contributions.ts before search calling
-          this.searchedContributions = [];
+          // reset search events.ts before search calling
+          this.searchedEvents = [];
           const categories = [
             {
               category: +params.category,
@@ -88,8 +88,8 @@ export class LearnComponent implements OnInit, OnDestroy {
               leafCategory: +params[ 'leaf-category' ]
             }
           ];
-          this.contributionService.search( undefined, undefined, new Date().toISOString(),
-            undefined, categories, ContributionTypes.Searched ).subscribe();
+          this.eventService.search( undefined, undefined, new Date().toISOString(),
+            undefined, categories, EventTypes.Searched ).subscribe();
         }
       } );
     } );
@@ -123,7 +123,7 @@ export class LearnComponent implements OnInit, OnDestroy {
 
     if ( !q || q.length < 3 ) {
       this.categorySearchResults = [];
-      this.contributionService.resetContributions( ContributionTypes.Searched );
+      this.eventService.resetEvents( EventTypes.Searched );
       return;
     }
 
@@ -131,18 +131,18 @@ export class LearnComponent implements OnInit, OnDestroy {
       this.categorySearchResults = results.slice( 0, 10 );
     } );
 
-    this.contributionService.search( undefined, undefined, new Date().toISOString(), q, [] )
+    this.eventService.search( undefined, undefined, new Date().toISOString(), q, [] )
     .subscribe( titleResults => {
-      this.contributionService.search(undefined, q, new Date().toISOString(), undefined, [])
-      .subscribe(contributorResults => {
-        this.searchedContributions = [...titleResults, ...contributorResults]
+      this.eventService.search(undefined, q, new Date().toISOString(), undefined, [])
+      .subscribe(userResults => {
+        this.searchedEvents = [...titleResults, ...userResults]
       });
     });
   }
 
   ngOnDestroy() {
     this.informationService.clearInformation();
-    this.contributionService.resetContributions( ContributionTypes.Searched );
+    this.eventService.resetEvents( EventTypes.Searched );
   }
 }
 

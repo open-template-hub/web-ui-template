@@ -6,14 +6,14 @@ import { UserActivityService } from '../../../../service/user-activity/user-acti
 import { RIBBONS, URLS } from '../../../../util/constant';
 
 @Component( {
-  selector: 'app-contribution-card',
-  templateUrl: './contribution-card.component.html',
-  styleUrls: [ './contribution-card.component.scss' ]
+  selector: 'app-event-card',
+  templateUrl: './event-card.component.html',
+  styleUrls: [ './event-card.component.scss' ]
 } )
-export class ContributionCardComponent implements OnInit {
+export class EventCardComponent implements OnInit {
 
   username: string;
-  @Input() contribution: any;
+  @Input() event: any;
   @Input() isPublicPage = false;
   @Input() isEditable = false;
   @Input() fillLayout = false;
@@ -51,11 +51,11 @@ export class ContributionCardComponent implements OnInit {
   }
 
   onClickHeader() {
-    this.emitIdForFillingForm( this.contribution._id );
+    this.emitIdForFillingForm( this.event._id );
   }
 
-  routeToContribution() {
-    this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: this.contribution._id } } );
+  routeToEvent() {
+    this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: this.event._id } } );
   }
 
   emitIdForFillingForm( event ): void {
@@ -68,6 +68,6 @@ export class ContributionCardComponent implements OnInit {
 
   getUrl() {
     this.safeYoutubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'https://www.youtube.com/embed/' + this.contribution.payload?.trailerVideoLink );
+      'https://www.youtube.com/embed/' + this.event.payload?.trailerVideoLink );
   }
 }

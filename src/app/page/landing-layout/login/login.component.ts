@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       private basicInfoService: BasicInfoService,
       private informationService: InformationService,
       private fileStorageService: FileStorageService,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private loadingService: LoadingService,
       private toastService: ToastService
   ) {
@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                       }
                     }
 
-                    this.contributionService.initSearchContributions(categories);
+                    this.eventService.initSearchEvents(categories);
                   }
                 }
             );

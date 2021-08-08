@@ -6,7 +6,7 @@ import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { FolloweeService } from '../../../service/followee/followee.service';
 import { FollowerService } from '../../../service/follower/follower.service';
@@ -35,8 +35,8 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
   followerCount: number;
   followeeCount: number;
 
-  numberOfContributionsMade: number;
-  numberOfContributionsTaken: number;
+  numberOfEventsMade: number;
+  numberOfEventsTaken: number;
   topContributor: number;
 
   loading = false;
@@ -46,8 +46,8 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
   isPublic = false;
   URLS = URLS;
 
+  eventsInfo: any[] = [];
   lessonsInfo: any[] = [];
-  contributionsInfo: any[] = [];
 
   showXAxis = true;
   showYAxis = true;
@@ -66,9 +66,9 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
     ]
   };
 
-  lessonsTakenXAxisLabel = '# of lessons taken';
+  eventsTakenXAxisLabel = '# of events taken';
 
-  contributionsXAxisLabel = '# of contributions.ts';
+  eventsXAxisLabel = '# of events.ts';
 
   constructor(
       private router: Router,
@@ -81,7 +81,7 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
       private categoryService: CategoryService,
       private followerService: FollowerService,
       private followeeService: FolloweeService,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private userActivityService: UserActivityService,
       private themeService: ThemeService
   ) {
@@ -109,13 +109,13 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
         }
 
         // check badges
-        this.userActivityService.getNumberOfContributionsTaken( visitedUserInfo.username ).subscribe( result => {
-          this.numberOfContributionsTaken = result[0].numberOfContributionsTaken
+        this.userActivityService.getNumberOfEventsTaken( visitedUserInfo.username ).subscribe( result => {
+          this.numberOfEventsTaken = result[0].numberOfEventsTaken
         })
 
-        if ( visitedUserInfo.payload?.contributorProfileActivated ) {
-          this.userActivityService.getNumberOfContributionsMade( visitedUserInfo.username ).subscribe( result => {
-            this.numberOfContributionsMade = result.numberOfContributionsMade
+        if ( visitedUserInfo.payload?.userProfileActivated ) {
+          this.userActivityService.getNumberOfEventsMade( visitedUserInfo.username ).subscribe( result => {
+            this.numberOfEventsMade = result.numberOfEventsMade
           } )
 
           this.userActivityService.getContributorRate( visitedUserInfo.username ).subscribe( rate => {
@@ -137,7 +137,7 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
             } );
           })
         } else {
-          this.numberOfContributionsMade = undefined
+          this.numberOfEventsMade = undefined
           /*this.rate = 0
           this.numberOfRate = undefined
           this.formattedRateNumber = undefined*/
@@ -171,13 +171,13 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
           this.pageLoading = false;
         }
 
-        this.contributionService.countUserContributions( visitedUserInfo.username ).subscribe( contributionList => {
-          this.contributionsInfo = contributionList
+        this.eventService.countUserEvents( visitedUserInfo.username ).subscribe( eventList => {
+          this.eventsInfo = eventList
           this.loadingCount = false;
         } )
 
-        this.userActivityService.getContributionsTaken( visitedUserInfo.username ).subscribe( contributionList => {
-          this.lessonsInfo = contributionList
+        this.userActivityService.getEventsTaken( visitedUserInfo.username ).subscribe( eventList => {
+          this.lessonsInfo = eventList
           this.loadingLessonsTaken = false
         } )
       } );

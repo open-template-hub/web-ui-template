@@ -9,14 +9,14 @@ import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
-import { ContributionService } from '../../../service/contribution/contribution.service';
+import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { FolloweeService } from '../../../service/followee/followee.service';
 import { FollowerService } from '../../../service/follower/follower.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
 import { UserActivityService } from '../../../service/user-activity/user-activity.service';
-import { ContributionTypes, PROFILE_IMG, URLS } from '../../../util/constant';
+import { EventTypes, PROFILE_IMG, URLS } from '../../../util/constant';
 
 @Component( {
   selector: 'app-dashboard',
@@ -31,10 +31,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   profileImg = PROFILE_IMG;
   loading = false;
   userInterests = [];
-  attendedContributions = [];
-  myRecentlyCompletedContributions = [];
-  myUpcomingContributions = [];
-  unratedContributions = [];
+  attendedEvents = [];
+  myRecentlyCompletedEvents = [];
+  myUpcomingEvents = [];
+  unratedEvents = [];
 
   URLS = URLS;
 
@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   rateObject: Rate;
 
-  numberOfContributionsMade: number;
-  numberOfContributionsTaken: number;
+  numberOfEventsMade: number;
+  numberOfEventsTaken: number;
   topContributor: number;
 
   calendarEvents: CalendarEvent[] = []
@@ -67,8 +67,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     datesSet: ( data => {
       const startDate = data.start.toDateString()
       const endDate = data.end.toDateString()
-      this.getUserContributionsWithDate( startDate, endDate )
-      this.getAttendedContributionsWithDate( startDate, endDate )
+      this.getUserEventsWithDate( startDate, endDate )
+      this.getAttendedEventsWithDate( startDate, endDate )
     } )
   }*/
 
@@ -82,13 +82,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       private categoryService: CategoryService,
       private followerService: FollowerService,
       private followeeService: FolloweeService,
-      private contributionService: ContributionService,
+      private eventService: EventService,
       private userActivityService: UserActivityService
   ) {
-
-    this.contributionService.getContributions().subscribe( contributions => {
-      console.log(contributions)
-    })
     this.authenticationService.currentUser.subscribe( currentUser => {
           this.currentUser = currentUser;
         }
@@ -99,19 +95,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
       // check interests area defined before service calling.
       if ( this.userInfo?.payload?.interests ) {
-        this.categoryService.getCategoriesFromId( this.userInfo?.payload?.interests ).subscribe( result => {
-          this.userInterests = result;
-        } );
+        // this.categoryService.getCategoriesFromId( this.userInfo?.payload?.interests ).subscribe( result => {
+        //  this.userInterests = result;
+        // } );
       }
 
       if ( userInfo?.username ) {
-        this.userActivityService.getNumberOfContributionsTaken( userInfo.username ).subscribe( result => {
-          this.numberOfContributionsTaken = result[0].numberOfContributionsTaken
+        this.userActivityService.getNumberOfEventsTaken( userInfo.username ).subscribe( result => {
+          this.numberOfEventsTaken = result[0].numberOfEventsTaken
         })
 
-        if ( userInfo.payload?.contributorProfileActivated ) {
-          this.userActivityService.getNumberOfContributionsMade( userInfo.username ).subscribe( result => {
-            this.numberOfContributionsMade = result.numberOfContributionsMade
+        if ( userInfo.payload?.userProfileActivated ) {
+          this.userActivityService.getNumberOfEventsMade( userInfo.username ).subscribe( result => {
+            this.numberOfEventsMade = result.numberOfEventsMade
           } )
 
           this.userActivityService.getContributorRate( userInfo.username ).subscribe( rate => {
@@ -119,7 +115,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.rate = Math.round(rate.userRating / rate.numberOfRates * 2) / 2;
             this.numberOfRate = rate.numberOfRates
             this.formattedRateNumber = this.userActivityService.formatNumberOfRates( rate.numberOfRates );*/
-            console.log(rate)
             this.rateObject = {
               userRating: rate.userRating,
               numberOfRates: rate.numberOfRates
@@ -134,7 +129,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             } );
           })
         } else {
-          this.numberOfContributionsMade = undefined
+          this.numberOfEventsMade = undefined
           /*
           this.rate = 0
           this.numberOfRate = undefined
@@ -166,7 +161,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
               this.followeeCount = followeeCount[ 0 ].count;
             } );
 
-            this.fetchUnratedCompletedContributions()
+            this.fetchUnratedCompletedEvents()
 
             this.categoryService.getCategoriesFromId( this.userInfo?.payload?.interests ).subscribe( result => {
               this.userInterests = result;
@@ -191,16 +186,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
               }
             }
 
-            this.contributionService.initSearchContributions( categories );
+            this.eventService.initSearchEvents( categories );
           }
         }
     );
 
-    this.contributionService.attendedContributions.subscribe( attendedContributions => {
-      this.attendedContributions = attendedContributions;
+    this.eventService.attendedEvents.subscribe( attendedEvents => {
+      this.attendedEvents = attendedEvents;
     } );
 
-    //this.contributionService.getAttendedContributions().subscribe();
+    this.eventService.getAttendedEvents().subscribe();
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
       if ( profileImg?.file?.data ) {
@@ -209,13 +204,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     } );
   }
 
-  updateCalendar( contributions: any[], backgroundColor: 'red' | 'blue' ) {
-    if ( contributions === null ) { return }
+  updateCalendar( events: any[], backgroundColor: 'red' | 'blue' ) {
+    if ( events === null ) { return }
 
-    contributions.forEach( (contribution, index) => {
-      const start = formatDate( new Date( contribution.date ), 'yyyy-MM-dd HH:mm', 'en-US' );
-      const end = formatDate( new Date( new Date( contribution.date ).getTime() + contribution.duration * 60000 ), 'yyyy-MM-dd HH:mm', 'en-US' );
-      this.calendarEvents.push( { id: contribution._id, title: contribution.title, start, end, backgroundColor } )
+    events.forEach( (event, index) => {
+      const start = formatDate( new Date( event.date ), 'yyyy-MM-dd HH:mm', 'en-US' );
+      const end = formatDate( new Date( new Date( event.date ).getTime() + event.duration * 60000 ), 'yyyy-MM-dd HH:mm', 'en-US' );
+      this.calendarEvents.push( { id: event._id, title: event.title, start, end, backgroundColor } )
       this.events = [...this.calendarEvents]
     });
 
@@ -232,8 +227,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.calendarEvents = []
           const startDate = data.start.toDateString()
           const endDate = data.end.toDateString()
-          this.getUserContributionsWithDate( startDate, endDate )
-          this.getAttendedContributionsWithDate( startDate, endDate )
+          this.getUserEventsWithDate( startDate, endDate )
+          this.getAttendedEventsWithDate( startDate, endDate )
         } )
       }*/
   }
@@ -242,41 +237,41 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.calendarEvents = []
     const startDate = data.start.toDateString()
     const endDate = data.end.toDateString()
-    this.getUserContributionsWithDate( startDate, endDate )
-    this.getAttendedContributionsWithDate( startDate, endDate )
+    this.getUserEventsWithDate( startDate, endDate )
+    this.getAttendedEventsWithDate( startDate, endDate )
   }
 
   ngOnInit(): void {
-    this.getUserContributions();
+    this.getUserEvents();
   }
 
-  getUserContributions() {
-    this.contributionService.me( 'true' )
-    .subscribe( myContributions => {
-      this.myUpcomingContributions = myContributions;
+  getUserEvents() {
+    this.eventService.me( 'true' )
+    .subscribe( myEvents => {
+      this.myUpcomingEvents = myEvents;
     } );
 
-    this.contributionService.me('false')
-    .subscribe( myRecentlyCompletedContributions => {
-      this.myRecentlyCompletedContributions = myRecentlyCompletedContributions
+    this.eventService.me('false')
+    .subscribe( myRecentlyCompletedEvents => {
+      this.myRecentlyCompletedEvents = myRecentlyCompletedEvents
     } )
   }
 
-  getUserContributionsWithDate( startDate: string, endDate: string ) {
-    this.contributionService.me( 'false', 'false', startDate, endDate ).subscribe( contributions => {
-      this.updateCalendar( contributions, 'red' )
+  getUserEventsWithDate( startDate: string, endDate: string ) {
+    this.eventService.me( 'false', 'false', startDate, endDate ).subscribe( events => {
+      this.updateCalendar( events, 'red' )
     } )
   }
 
-  getAttendedContributionsWithDate( startDate: string, endDate: string ) {
-    this.contributionService.getAttendedContributions( startDate, endDate ).subscribe( contributions => {
-      this.updateCalendar( contributions, 'blue' )
+  getAttendedEventsWithDate( startDate: string, endDate: string ) {
+    this.eventService.getAttendedEvents( startDate, endDate ).subscribe( events => {
+      this.updateCalendar( events, 'blue' )
     } )
   }
 
   ngOnDestroy() {
     this.informationService.clearInformation();
-    this.contributionService.resetContributions( ContributionTypes.Attended );
+    this.eventService.resetEvents( EventTypes.Attended );
   }
 
   handleDateClick(arg) {
@@ -284,7 +279,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   handleEventClick(arg) {
-    this.router.navigate( [ URLS.dashboard.contribution ], { queryParams: { contribution_id: arg.event.id } } );
+    this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: arg.event.id } } );
   }
 
   goToUrl( url: string ) {
@@ -292,27 +287,27 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   fillForm(id: string) {
-    this.router.navigate( [ URLS.dashboard.contribute ], { queryParams: { contribution_id: id, editable: true } } );
+    this.router.navigate( [ URLS.dashboard.contribute ], { queryParams: { event_id: id, editable: true } } );
   }
 
   markAsCompletedButtonClicked( event: string ) {
-    // remove the item from recentlyPassedContributions
-    this.myRecentlyCompletedContributions.forEach( ( item, index ) => {
+    // remove the item from recentlyPassedEvents
+    this.myRecentlyCompletedEvents.forEach( ( item, index ) => {
       if ( item._id === event ) {
-        this.myRecentlyCompletedContributions.splice( index, 1 )
+        this.myRecentlyCompletedEvents.splice( index, 1 )
       }
     } )
 
-    // refresh passedContributions
-    this.contributionService.me('false', 'true' )
-    .subscribe( myPassedContributions => {
-      this.myUpcomingContributions = myPassedContributions
+    // refresh passedEvents
+    this.eventService.me('false', 'true' )
+    .subscribe( myPassedEvents => {
+      this.myUpcomingEvents = myPassedEvents
     })
   }
 
-  fetchUnratedCompletedContributions() {
-    this.userActivityService.getUnratedCompletedContributions().subscribe( unratedContributions => {
-      this.unratedContributions = unratedContributions[0].completedContributions
+  fetchUnratedCompletedEvents() {
+    this.userActivityService.getUnratedCompletedEvents().subscribe( unratedEvents => {
+      this.unratedEvents = unratedEvents[0].completedEvents
     } )
   }
 }
