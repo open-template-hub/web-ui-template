@@ -274,9 +274,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.eventService.resetEvents( EventTypes.Attended );
   }
 
-  handleDateClick(arg) {
-    alert('date click! ' + arg.dateStr);
-  }
+  handleDateClick(arg) {}
 
   handleEventClick(arg) {
     this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: arg.event.id } } );
