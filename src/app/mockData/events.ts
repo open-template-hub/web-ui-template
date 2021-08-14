@@ -315,7 +315,42 @@ export const unratedCompletedEventsData = [
     {
       _id:'gollum',
       completedEvents:[
-        {_id:'60e08389fdc012001e1ad181',user:'gandalf',title:'Programming Languages Fundamentals',category:{category:1,subCategory:4,leafCategory:null}},
-        {_id:'60e1855f14c710001efecfb5',user:'gandalf',title:'Mobile Development Fundamentals',category:{category:1,subCategory:3,leafCategory:null}},
-        {_id:'60e184f414c710001efecfa0',user:'gandalf',title:'Data Science 101',category:{category:1,subCategory:2,leafCategory:null}} ]
+        {
+          _id:'60e08389fdc012001e1ad181',
+          user:{
+            username:'gandalf',email:null
+          },
+          title:'Programming Languages Fundamentals',
+          payload:{
+            category:1,
+            subCategory:4,
+            leafCategory:null
+          }
+        },
+        {
+          _id:'60e1855f14c710001efecfb5',
+          user:{
+            username:'gandalf',email:null
+          },
+          title:'Mobile Development Fundamentals',
+          payload:
+            {
+              category:1,
+              subCategory:3,
+              leafCategory:null
+            }
+          },
+        {
+          _id:'60e184f414c710001efecfa0',
+          user:{
+            username:'gandalf',email:null
+          },
+          title:'Data Science 101',
+          payload:
+            {
+              category:1,
+              subCategory:2,
+              leafCategory:null
+            }
+        } ]
     } ] as any
