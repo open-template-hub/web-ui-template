@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { URLS } from '../../../util/constant';
 
 @Component( {
@@ -6,14 +6,6 @@ import { URLS } from '../../../util/constant';
   templateUrl: './terms.component.html',
   styleUrls: [ './terms.component.scss', '../raw-landing-layout.component.scss' ]
 } )
-export class TermsComponent implements OnInit {
-
+export class TermsComponent {
   URLS = URLS;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }

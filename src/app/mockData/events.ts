@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import { EventModel } from '../model/EventModel';
 
 export const showroomEvents = [

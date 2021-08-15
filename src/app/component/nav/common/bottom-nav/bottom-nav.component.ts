@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthToken } from '../../../../model/AuthToken';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
@@ -12,7 +12,7 @@ import { URLS } from '../../../../util/constant';
   templateUrl: './bottom-nav.component.html',
   styleUrls: [ './bottom-nav.component.scss' ]
 } )
-export class BottomNavComponent implements OnInit {
+export class BottomNavComponent {
 
   currentUser: AuthToken;
   userInfo: any = {};
@@ -41,9 +41,6 @@ export class BottomNavComponent implements OnInit {
           }
         }
     );
-  }
-
-  ngOnInit(): void {
   }
 
   logout() {

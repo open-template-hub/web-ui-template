@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -6,7 +6,7 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './event-hamburger-menu.component.html',
   styleUrls: ['./event-hamburger-menu.component.scss']
 })
-export class EventHamburgerMenuComponent implements OnInit {
+export class EventHamburgerMenuComponent {
 
   display = false
   environment = environment
@@ -22,9 +22,6 @@ export class EventHamburgerMenuComponent implements OnInit {
   constructor(
     private _eref: ElementRef
   ) { }
-
-  ngOnInit(): void {
-  }
 
   @HostListener( 'document:click', [ '$event' ] )
   onDocumentClick( event ) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../service/theme/theme.service';
 
@@ -7,7 +7,7 @@ import { ThemeService } from '../../service/theme/theme.service';
   templateUrl: './raw-landing-layout.component.html',
   styleUrls: [ './raw-landing-layout.component.scss' ]
 } )
-export class RawLandingLayoutComponent implements OnInit {
+export class RawLandingLayoutComponent {
 
   darkTheme: string;
 
@@ -18,8 +18,5 @@ export class RawLandingLayoutComponent implements OnInit {
     this.themeService.darkTheme.subscribe( darkTheme => {
       this.darkTheme = darkTheme;
     } );
-  }
-
-  ngOnInit(): void {
   }
 }

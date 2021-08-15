@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { URLS } from '../../../util/constant';
 
 @Component( {
@@ -6,14 +6,6 @@ import { URLS } from '../../../util/constant';
   templateUrl: './privacy-policy.component.html',
   styleUrls: [ './privacy-policy.component.scss', '../raw-landing-layout.component.scss' ]
 } )
-export class PrivacyPolicyComponent implements OnInit {
-
+export class PrivacyPolicyComponent {
   URLS = URLS;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }

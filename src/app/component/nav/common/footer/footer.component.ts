@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { ThemeService } from '../../../../service/theme/theme.service';
@@ -9,7 +9,7 @@ import { URLS } from '../../../../util/constant';
   templateUrl: './footer.component.html',
   styleUrls: [ './footer.component.scss' ]
 } )
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
   @Input()
   hideShadow = false;
@@ -30,8 +30,5 @@ export class FooterComponent implements OnInit {
   ) {
     this.brand = this.themeService.brand;
     this.appVersion = this.themeService.appVersion;
-  }
-
-  ngOnInit(): void {
   }
 }

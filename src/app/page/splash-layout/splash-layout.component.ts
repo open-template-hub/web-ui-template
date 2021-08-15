@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../service/theme/theme.service';
 
@@ -7,7 +7,7 @@ import { ThemeService } from '../../service/theme/theme.service';
   templateUrl: './splash-layout.component.html',
   styleUrls: [ './splash-layout.component.scss' ]
 } )
-export class SplashLayoutComponent implements OnInit {
+export class SplashLayoutComponent {
 
   darkTheme: string;
 
@@ -18,8 +18,5 @@ export class SplashLayoutComponent implements OnInit {
     this.themeService.darkTheme.subscribe( darkTheme => {
       this.darkTheme = darkTheme;
     } );
-  }
-
-  ngOnInit(): void {
   }
 }

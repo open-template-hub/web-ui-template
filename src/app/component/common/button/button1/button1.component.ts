@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component( {
@@ -6,7 +6,7 @@ import { LoadingService } from '../../../../service/loading/loading.service';
   templateUrl: './button1.component.html',
   styleUrls: [ './button1.component.scss' ]
 } )
-export class Button1Component implements OnInit {
+export class Button1Component {
 
   @Input() text = 'Button';
   @Input() circle = false;
@@ -28,8 +28,5 @@ export class Button1Component implements OnInit {
 
   constructor( private loadingService: LoadingService ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-  }
-
-  ngOnInit(): void {
   }
 }

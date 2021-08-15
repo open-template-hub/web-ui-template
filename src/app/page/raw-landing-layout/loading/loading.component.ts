@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoadingService } from '../../../service/loading/loading.service';
 import { ThemeService } from '../../../service/theme/theme.service';
 
@@ -7,7 +7,7 @@ import { ThemeService } from '../../../service/theme/theme.service';
   templateUrl: './loading.component.html',
   styleUrls: [ './loading.component.scss' ]
 } )
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
   darkTheme: string;
 
   brand = {
@@ -22,8 +22,5 @@ export class LoadingComponent implements OnInit {
     } );
 
     this.brand = this.themeService.brand;
-  }
-
-  ngOnInit(): void {
   }
 }

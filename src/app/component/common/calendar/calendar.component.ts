@@ -1,6 +1,5 @@
-import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { EventEmitter } from '@angular/core';
 
 export interface CalendarEvent {
   id: string,
@@ -15,7 +14,7 @@ export interface CalendarEvent {
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit, OnChanges {
+export class CalendarComponent implements OnChanges {
   @Output() handleEventClick = new EventEmitter<any>();
   @Output() handleDateClick = new EventEmitter<any>();
 
@@ -25,11 +24,6 @@ export class CalendarComponent implements OnInit, OnChanges {
   @Input() calendarEvents: CalendarEvent[] = []
 
   calendarOptions: CalendarOptions
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngOnChanges( changes: SimpleChanges ): void {
     this.createCalendar()

@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthToken } from '../../../../model/AuthToken';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
@@ -13,7 +13,7 @@ import { PROFILE_IMG, URLS } from '../../../../util/constant';
   templateUrl: './dashboard-layout-side-nav.component.html',
   styleUrls: [ './dashboard-layout-side-nav.component.scss' ]
 } )
-export class DashboardLayoutSideNavComponent implements OnInit {
+export class DashboardLayoutSideNavComponent {
 
   darkTheme: string;
   sideNavClosed = 'false';
@@ -85,9 +85,6 @@ export class DashboardLayoutSideNavComponent implements OnInit {
     } else {
       this.searchEnabled = false;
     }
-  }
-
-  ngOnInit(): void {
   }
 
   logout() {

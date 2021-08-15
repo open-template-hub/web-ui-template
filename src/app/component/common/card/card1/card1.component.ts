@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoadingService } from '../../../../service/loading/loading.service';
 
 @Component( {
@@ -6,7 +6,7 @@ import { LoadingService } from '../../../../service/loading/loading.service';
   templateUrl: './card1.component.html',
   styleUrls: [ './card1.component.scss' ]
 } )
-export class Card1Component implements OnInit {
+export class Card1Component {
 
   @Input() title = 'Title';
   @Input() isSmall = false;
@@ -36,8 +36,5 @@ export class Card1Component implements OnInit {
 
   constructor( private loadingService: LoadingService ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-  }
-
-  ngOnInit(): void {
   }
 }

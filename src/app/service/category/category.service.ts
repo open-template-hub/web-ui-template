@@ -6,9 +6,6 @@ import { CATEGORIES, CATEGORIES_MAP } from '../../util/constant';
   providedIn: 'root'
 } )
 export class CategoryService {
-  constructor() {
-  }
-
   search( q: string ) {
     const categories = [];
     q = '^' + q;

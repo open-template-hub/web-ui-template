@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthToken } from '../../../../model/AuthToken';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
@@ -11,7 +11,7 @@ import { URLS } from '../../../../util/constant';
   templateUrl: './landing-layout-top-nav.component.html',
   styleUrls: [ './landing-layout-top-nav.component.scss' ]
 } )
-export class LandingLayoutTopNavComponent implements OnInit {
+export class LandingLayoutTopNavComponent {
 
   currentUser: AuthToken;
   loading = false;
@@ -35,9 +35,6 @@ export class LandingLayoutTopNavComponent implements OnInit {
     this.brand = this.themeService.brand;
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-  }
-
-  ngOnInit(): void {
   }
 
   logout() {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/common/rate-bar/rate-bar.component';
@@ -21,7 +21,7 @@ import { PROFILE_IMG, URLS } from '../../../util/constant';
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.scss']
 })
-export class MyProfileComponent implements OnInit, OnDestroy {
+export class MyProfileComponent implements OnDestroy {
 
   currentUser: AuthToken;
   userInfo: any = {};
@@ -130,9 +130,6 @@ export class MyProfileComponent implements OnInit, OnDestroy {
           } )
 
           this.userActivityService.getContributorRate( userInfo.username ).subscribe( rate => {
-            /*this.rate = Math.round(rate.userRating / rate.numberOfRates * 2) / 2;
-            this.numberOfRate = rate.numberOfRates
-            this.formattedRateNumber = this.userActivityService.formatNumberOfRates( rate.numberOfRates );*/
             this.rateObject = {
               userRating: rate.userRating,
               numberOfRates: rate.numberOfRates
@@ -148,9 +145,6 @@ export class MyProfileComponent implements OnInit, OnDestroy {
           })
         } else {
           this.numberOfEventsMade = undefined
-          /*this.rate = 0
-          this.numberOfRate = undefined
-          this.formattedRateNumber = undefined*/
           this.rateObject = undefined
           this.topContributor = undefined
         }
@@ -168,9 +162,6 @@ export class MyProfileComponent implements OnInit, OnDestroy {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
     } );
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy() {
@@ -191,8 +182,5 @@ export class MyProfileComponent implements OnInit, OnDestroy {
     }
 
     return result;
-  }
-
-  onRateClick( value: number ) {
   }
 }

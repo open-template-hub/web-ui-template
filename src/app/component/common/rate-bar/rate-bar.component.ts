@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export type Rate = {
   userRating: number,
@@ -11,7 +11,7 @@ export type Rate = {
   styleUrls: ['./rate-bar.component.scss']
 })
 
-export class RateBarComponent implements OnInit {
+export class RateBarComponent {
   private _rate: Rate;
   formattedRateNumber: string;
   value: number
@@ -19,20 +19,14 @@ export class RateBarComponent implements OnInit {
   @Input() set rate(rate: Rate) {
     if ( rate ) {
       this._rate = rate;
-      this.value = Math.round(rate.userRating / rate.numberOfRates * 2) / 2,
-        this.formattedRateNumber = this.formatNumberOfRates( rate.numberOfRates )
+      this.value = Math.round(rate.userRating / rate.numberOfRates * 2) / 2
+      this.formattedRateNumber = this.formatNumberOfRates( rate.numberOfRates )
     }
   }
 
   get rate(): Rate {
     return this._rate;
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 
   formatNumberOfRates( rateNumber: number ): string {
     let fractionDigits = 1

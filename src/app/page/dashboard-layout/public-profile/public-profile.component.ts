@@ -119,10 +119,6 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
           } )
 
           this.userActivityService.getContributorRate( visitedUserInfo.username ).subscribe( rate => {
-            /*this.rate = Math.round(rate.userRating / rate.numberOfRates * 2) / 2;
-            this.numberOfRate = rate.numberOfRates
-            this.formattedRateNumber = this.userActivityService.formatNumberOfRates( rate.numberOfRates );*/
-
             this.rateObject = {
               userRating: rate.userRating,
               numberOfRates: rate.numberOfRates
@@ -138,9 +134,6 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
           })
         } else {
           this.numberOfEventsMade = undefined
-          /*this.rate = 0
-          this.numberOfRate = undefined
-          this.formattedRateNumber = undefined*/
           this.rateObject = undefined
           this.topContributor = undefined
         }

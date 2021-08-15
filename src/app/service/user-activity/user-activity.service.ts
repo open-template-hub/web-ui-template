@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { attendedEventsData, showroomEvents, unratedCompletedEventsData } from '../../mockData/events';
+import { unratedCompletedEventsData } from '../../mockData/events';
 import { CategoryService } from '../category/category.service';
 
 @Injectable({
@@ -42,8 +42,15 @@ export class UserActivityService {
 
     const newEventsList = []
     eventsTaken.map( category => {
-      const categoryName = category._id.leafCategory ? category._id.leafCategory.name :
-        category._id.subCategory ? category._id.subCategory.name : category._id.category.name
+      let categoryName: string
+
+      if ( category._id.leafCategory ) {
+        categoryName = category._id.leafCategory.name
+      } else if ( category._id.subCategory ) {
+        categoryName = category._id.subCategory.name
+      } else {
+        categoryName = category._id.category.name
+      }
 
       // if there is duplicated category then do not push to array, just add value to the existing category
       let duplicatedNameIndex = -1

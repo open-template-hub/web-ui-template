@@ -12,9 +12,6 @@ export class CookiePopupComponent implements OnInit {
 
   public URLS = URLS;
 
-  constructor() {
-  }
-
   ngOnInit(): void {
     if ( localStorage.getItem( 'cookiesAccepted' ) ) {
       this.accepted = true;
