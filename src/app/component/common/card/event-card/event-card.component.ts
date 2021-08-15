@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
-import { UserActivityService } from '../../../../service/user-activity/user-activity.service';
 import { RIBBONS, URLS } from '../../../../util/constant';
 
 @Component( {

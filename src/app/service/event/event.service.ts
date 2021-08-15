@@ -45,12 +45,10 @@ export class EventService {
   }
 
   create( event: any ) {
-    // return this.http.post<any>( `${ environment.serverUrl }/event/me`, event );
     return of([])
   }
 
   update( event: any ) {
-    // return this.http.put<any>( `${ environment.serverUrl }/event/me`, event );
     return of([])
   }
 
@@ -81,8 +79,15 @@ export class EventService {
     const newEventsList = []
 
     countData.map( category => {
-      const categoryName = category._id.leafCategory ? category._id.leafCategory.name :
-        category._id.subCategory ? category._id.subCategory.name : category._id.category.name
+      let categoryName: string
+
+      if ( category._id.leafCategory ) {
+        categoryName = category._id.leafCategory.name
+      } else if ( category._id.subCategory ) {
+        categoryName = category._id.subCategory.name
+      } else {
+        categoryName = category._id.category.name
+      }
 
       // if there is duplicated category then do not push to array, just add value to the existing category
       let duplicatedNameIndex = -1
@@ -415,12 +420,10 @@ export class EventService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return of(result);
     };
   }
 

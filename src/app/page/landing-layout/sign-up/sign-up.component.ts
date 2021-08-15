@@ -99,8 +99,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     .pipe( first() )
     .subscribe(
         data => {
-          this.analyticsService.logRegisteredUser( data ).subscribe( () => {
-          } );
+          this.analyticsService.logRegisteredUser( data ).subscribe();
 
           this.router.navigate( [ '/signup-success' ], { queryParams: { email: data.email } } );
         }

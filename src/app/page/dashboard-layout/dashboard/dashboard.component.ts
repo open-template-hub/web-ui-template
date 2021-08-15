@@ -1,7 +1,6 @@
 import { formatDate } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { environment } from '../../../../environments/environment';
 import { CalendarEvent } from '../../../component/common/calendar/calendar.component';
 import { Rate } from '../../../component/common/rate-bar/rate-bar.component';
@@ -54,24 +53,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   calendarEvents: CalendarEvent[] = []
   events: CalendarEvent[] = []
 
-  /*
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    events: [],
-    //dateClick: this.handleDateClick.bind(this),
-    eventClick: this.handleEventClick.bind(this),
-    expandRows: false,
-    forceEventDuration: true,
-    defaultTimedEventDuration: '01.00',
-    displayEventTime: true,
-    datesSet: ( data => {
-      const startDate = data.start.toDateString()
-      const endDate = data.end.toDateString()
-      this.getUserEventsWithDate( startDate, endDate )
-      this.getAttendedEventsWithDate( startDate, endDate )
-    } )
-  }*/
-
   constructor(
       private router: Router,
       private authenticationService: AuthenticationService,
@@ -111,10 +92,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
           } )
 
           this.userActivityService.getContributorRate( userInfo.username ).subscribe( rate => {
-            /*
-            this.rate = Math.round(rate.userRating / rate.numberOfRates * 2) / 2;
-            this.numberOfRate = rate.numberOfRates
-            this.formattedRateNumber = this.userActivityService.formatNumberOfRates( rate.numberOfRates );*/
             this.rateObject = {
               userRating: rate.userRating,
               numberOfRates: rate.numberOfRates
@@ -130,10 +107,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
           })
         } else {
           this.numberOfEventsMade = undefined
-          /*
-          this.rate = 0
-          this.numberOfRate = undefined
-          this.formattedRateNumber = undefined*/
           this.rateObject = undefined
           this.topContributor = undefined
         }
@@ -213,24 +186,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.calendarEvents.push( { id: event._id, title: event.title, start, end, backgroundColor } )
       this.events = [...this.calendarEvents]
     });
-
-    /*this.calendarOptions = {
-        initialView: 'dayGridMonth',
-        events: [...this.calendarEvents],
-        forceEventDuration: true,
-        defaultTimedEventDuration: '01.00',
-        //dateClick: this.handleDateClick.bind(this),
-        displayEventTime: true,
-        expandRows: false,
-        eventClick: this.handleEventClick.bind(this),
-        datesSet: ( data => {
-          this.calendarEvents = []
-          const startDate = data.start.toDateString()
-          const endDate = data.end.toDateString()
-          this.getUserEventsWithDate( startDate, endDate )
-          this.getAttendedEventsWithDate( startDate, endDate )
-        } )
-      }*/
   }
 
   datesSet( data ) {
@@ -274,9 +229,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.eventService.resetEvents( EventTypes.Attended );
   }
 
-  handleDateClick(arg) {
-    alert('date click! ' + arg.dateStr);
-  }
+  // handleDateClick(arg) {}
 
   handleEventClick(arg) {
     this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: arg.event.id } } );
@@ -304,6 +257,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.myUpcomingEvents = myPassedEvents
     })
   }
+
+  handleDateClick(arg) { console.log(arg +  ' clicked') }
 
   fetchUnratedCompletedEvents() {
     this.userActivityService.getUnratedCompletedEvents().subscribe( unratedEvents => {

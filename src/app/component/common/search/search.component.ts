@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
@@ -9,7 +9,7 @@ import { URLS } from '../../../util/constant';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
   userSearchResults = [];
   categorySearchResults = [];
   eventSearchResults = [];
@@ -24,9 +24,6 @@ export class SearchComponent implements OnInit {
     private basicInfoService: BasicInfoService,
     private categoryService: CategoryService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   @HostListener( 'document:click', [ '$event' ] )
   onDocumentClick( event ) {

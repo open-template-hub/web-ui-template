@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
 import { CategoryService } from '../../../../service/category/category.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
@@ -11,7 +11,7 @@ import { PROFILE_IMG, URLS } from '../../../../util/constant';
   templateUrl: './dashboard-layout-top-nav.component.html',
   styleUrls: [ './dashboard-layout-top-nav.component.scss' ]
 } )
-export class DashboardLayoutTopNavComponent implements OnInit {
+export class DashboardLayoutTopNavComponent {
 
   userInfo: any = {};
   loading = false;
@@ -67,10 +67,6 @@ export class DashboardLayoutTopNavComponent implements OnInit {
     } else {
       this.searchEnabled = false;
     }
-  }
-
-
-  ngOnInit(): void {
   }
 
   search( event: any ) {

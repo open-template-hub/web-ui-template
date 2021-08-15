@@ -159,13 +159,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  display: flex;
   justify-content: space-between;
 }
 
 .event-header-title {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .event-header-title h3 {
@@ -211,10 +211,6 @@
 
 .event-sub-header-title-date {
   align-items: center;
-}
-
-.event-header-title {
-  cursor: pointer;
 }
 
 .event h3 {

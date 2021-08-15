@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
@@ -13,15 +13,10 @@ import { URLS } from '../../../util/constant';
   templateUrl: './side-content.component.html',
   styleUrls: [ './side-content.component.scss' ]
 } )
-export class SideContentComponent implements OnInit {
+export class SideContentComponent {
 
   darkTheme: string;
   userInfo: any = {};
-  /*
-  userSearchResults = [];
-  categorySearchResults = [];
-  eventSearchResults = [];
-  searchEnabled = true;*/
   URLS = URLS;
   recommendedEvents: any = [];
   recommendedEventsByFollowingList: any = [];
@@ -29,10 +24,6 @@ export class SideContentComponent implements OnInit {
 
   numberOfAttemptedRetrieveInitSearchEvents = 0;
   maxNumberOfServiceCall = 1;
-
-  /*
-  @ViewChild( 'searchArea' )
-  searchArea: ElementRef;*/
 
   constructor(
       private themeService: ThemeService,
@@ -80,9 +71,6 @@ export class SideContentComponent implements OnInit {
     } );
 
 
-  }
-
-  ngOnInit(): void {
   }
 
   /*

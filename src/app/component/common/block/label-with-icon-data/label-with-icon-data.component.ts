@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { URLS } from '../../../../util/constant';
 
 @Component( {
@@ -6,7 +6,7 @@ import { URLS } from '../../../../util/constant';
   templateUrl: './label-with-icon-data.component.html',
   styleUrls: [ './label-with-icon-data.component.scss' ]
 } )
-export class LabelWithIconDataComponent implements OnInit {
+export class LabelWithIconDataComponent {
   @Input() data = '';
   @Input() brand = '';
   @Input() user = '';
@@ -23,11 +23,5 @@ export class LabelWithIconDataComponent implements OnInit {
   @Input() fixWidth = false;
 
   URLS = URLS;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }

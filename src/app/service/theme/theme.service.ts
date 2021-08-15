@@ -37,7 +37,12 @@ export class ThemeService {
     this.maxAspectRatioMedia = window.matchMedia( 'screen and (max-aspect-ratio: 1/1)' );
     this.maxHeightMedia = window.matchMedia( 'screen and (max-height: 999px)' );
 
-    const sideNavClosedStorageItem = this.maxAspectRatioMedia.matches ? 'true' : ( this.maxHeightMedia.matches ? 'true' : 'false' );
+    let sideNavClosedStorageItem: string
+    if ( this.maxAspectRatioMedia || this.maxHeightMedia.matches ) {
+      sideNavClosedStorageItem = 'true'
+    } else {
+      sideNavClosedStorageItem = 'false'
+    }
 
     if ( localStorage.getItem( 'currentUser' ) ) {
       sessionStorage.removeItem( 'sideNavClosed' );

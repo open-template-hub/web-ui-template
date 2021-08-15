@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingService } from '../../service/loading/loading.service';
 import { ThemeService } from '../../service/theme/theme.service';
@@ -9,7 +9,7 @@ import { URLS } from '../../util/constant';
   templateUrl: './landing-layout.component.html',
   styleUrls: [ './landing-layout.component.scss' ]
 } )
-export class LandingLayoutComponent implements OnInit {
+export class LandingLayoutComponent {
 
   darkTheme: string;
   loading = false;
@@ -32,8 +32,5 @@ export class LandingLayoutComponent implements OnInit {
     this.brand = this.themeService.brand;
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-  }
-
-  ngOnInit(): void {
   }
 }

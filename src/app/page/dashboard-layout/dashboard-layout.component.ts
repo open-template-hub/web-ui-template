@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingService } from '../../service/loading/loading.service';
 import { ThemeService } from '../../service/theme/theme.service';
@@ -8,7 +8,7 @@ import { ThemeService } from '../../service/theme/theme.service';
   templateUrl: './dashboard-layout.component.html',
   styleUrls: [ './dashboard-layout.component.scss' ]
 } )
-export class DashboardLayoutComponent implements OnInit {
+export class DashboardLayoutComponent {
 
   darkTheme: string;
   loading = false;
@@ -35,8 +35,5 @@ export class DashboardLayoutComponent implements OnInit {
     this.brand = this.themeService.brand;
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-  }
-
-  ngOnInit(): void {
   }
 }

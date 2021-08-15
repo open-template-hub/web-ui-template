@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountUp } from 'countup.js';
@@ -11,7 +11,7 @@ import { URLS } from '../../../util/constant';
   templateUrl: './home.component.html',
   styleUrls: [ './home.component.scss', '../raw-landing-layout.component.scss' ]
 } )
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements AfterViewInit {
 
   // TODO: Will be initialized by apis
   eventCounter = 2700;
@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   KILO = 1000;
   MILLION = this.KILO * this.KILO;
 
-
   constructor(
       private formBuilder: FormBuilder,
       public router: Router,
@@ -40,9 +39,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     this.brand = this.themeService.brand;
-  }
-
-  ngOnInit(): void {
   }
 
   ngAfterViewInit() {
@@ -59,20 +55,41 @@ export class HomeComponent implements OnInit, AfterViewInit {
     options.formattingFn = ( n: number ) => {
       return this.countUpFormatter( n, this.eventCounter );
     };
-    options.duration = this.eventCounter < this.KILO ? 2 : this.eventCounter < this.MILLION ? 3 : 4;
+
+    if ( this.eventCounter < this.KILO ) {
+      options.duration = 2
+    } else if ( this.eventCounter < this.MILLION ) {
+      options.duration = 3
+    } else {
+      options.duration = 4
+    }
 
     const eventCountUp = new CountUp( 'npmCounterElement', this.eventCounter, options );
 
     options.formattingFn = ( n: number ) => {
       return this.countUpFormatter( n, this.studentCounter );
     };
-    options.duration = this.studentCounter < this.KILO ? 2 : this.studentCounter < this.MILLION ? 3 : 4;
+    if ( this.studentCounter < this.KILO ) {
+      options.duration = 2
+    } else if ( this.studentCounter < this.MILLION ) {
+      options.duration = 3
+    } else {
+      options.duration = 4
+    }
+
     const studentCountUp = new CountUp( 'githubStarCounterElement', this.studentCounter, options );
 
     options.formattingFn = ( n: number ) => {
       return this.countUpFormatter( n, this.userCounter );
     };
-    options.duration = this.userCounter < this.KILO ? 2 : this.userCounter < this.MILLION ? 3 : 4;
+    if ( this.userCounter < this.KILO ) {
+      options.duration = 2
+    } else if ( this.userCounter < this.MILLION ) {
+      options.duration = 3
+    } else {
+      options.duration = 4
+    }
+
     const userCountUp = new CountUp( 'serverTypesCounterElement', this.userCounter, options );
 
     if ( !eventCountUp.error ) {
@@ -93,8 +110,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   countUpFormatter( n: number, lastNumber: number ) {
-    return n < this.KILO ? n + '' :
-        ( n < this.MILLION ? Math.round( n / this.KILO * 10 ) / 10 + 'k' :
-            Math.round( n / this.MILLION * 10 ) / 10 + 'M' );
+    if ( n < this.KILO ) {
+      return n + ''
+    } else {
+      if ( n < this.MILLION ) {
+        return Math.round( n / this.KILO * 10 ) / 10 + 'k'
+      } else {
+        return Math.round( n / this.MILLION * 10 ) / 10 + 'M'
+      }
+    }
   }
 }

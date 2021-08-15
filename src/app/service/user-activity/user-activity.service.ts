@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { attendedEventsData, unratedCompletedEventsData } from '../../mockData/events';
+import { unratedCompletedEventsData } from '../../mockData/events';
 import { CategoryService } from '../category/category.service';
 
 @Injectable({
@@ -42,8 +42,15 @@ export class UserActivityService {
 
     const newEventsList = []
     eventsTaken.map( category => {
-      const categoryName = category._id.leafCategory ? category._id.leafCategory.name :
-        category._id.subCategory ? category._id.subCategory.name : category._id.category.name
+      let categoryName: string
+
+      if ( category._id.leafCategory ) {
+        categoryName = category._id.leafCategory.name
+      } else if ( category._id.subCategory ) {
+        categoryName = category._id.subCategory.name
+      } else {
+        categoryName = category._id.category.name
+      }
 
       // if there is duplicated category then do not push to array, just add value to the existing category
       let duplicatedNameIndex = -1
@@ -88,12 +95,11 @@ export class UserActivityService {
 
   getUnratedCompletedEvents () {
     if ( environment.mockDataEnabled ) {
-      const getUnratedCompletedEventsData = []
-      unratedCompletedEventsData.forEach((val, index) => {
-        getUnratedCompletedEventsData.push(Object.assign({}, val))
-        getUnratedCompletedEventsData[index].category = Object.assign( {}, val.category )
+      const getUnratedCompletedEventsData = [{completedEvents: []}]
+      unratedCompletedEventsData[0].completedEvents.forEach((val, index) => {
+        getUnratedCompletedEventsData[0].completedEvents.push(Object.assign({}, val))
+        getUnratedCompletedEventsData[0].completedEvents[index].payload = Object.assign( {}, val.payload )
       })
-
       return of( this.getUnratedCompletedEventsProcess( getUnratedCompletedEventsData ) )
     } else {
       return this.http.get<any>( `${ environment.serverUrl }/user-activity/event` ).pipe( map( response => {
@@ -104,20 +110,20 @@ export class UserActivityService {
 
   getUnratedCompletedEventsProcess(getUnratedCompletedEventsData: any) {
     getUnratedCompletedEventsData[0].completedEvents.map( event => {
-      const categoryResult = this.categoryService.getCategoryFromId( event.category?.category,
-        event.category?.subCategory, event.category?.leafCategory );
+      const categoryResult = this.categoryService.getCategoryFromId( event.payload?.category,
+        event.payload?.subCategory, event.payload?.leafCategory );
 
-      // to make similar to event json
-      const user = event.user
-      event.user = {
-        username : event.user
+      if ( categoryResult.category ) {
+        event.payload.category = categoryResult.category;
       }
-      event.payload = {
-        category: categoryResult.category,
-        subCategory: categoryResult.subCategory,
-        leafCategory: categoryResult.leafCategory
+
+      if ( categoryResult.subCategory ) {
+        event.payload.subCategory = categoryResult.subCategor;
       }
-      event.category = undefined
+
+      if ( categoryResult.leafCategory ) {
+        event.payload.leafCategory = categoryResult.leafCategory;
+      }
     } );
     return getUnratedCompletedEventsData
   }

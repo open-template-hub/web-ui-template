@@ -17,7 +17,7 @@ export const ResponseCode = {
   SERVICE_UNAVAILABLE: 503,
 };
 
-export const enum EventTypes { Recommended, Searched, Attended, RecommendedByFollowingList, Other };
+export const enum EventTypes { Recommended, Searched, Attended, RecommendedByFollowingList, Other }
 
 export const PROFILE_IMG = './assets/common/profile-img.png';
 

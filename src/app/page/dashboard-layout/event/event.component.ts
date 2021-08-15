@@ -56,12 +56,11 @@ export class EventComponent implements OnInit, OnDestroy {
 
     this.route.queryParams.subscribe( params => {
       this.eventService.search( params.event_id, undefined, undefined,
-        undefined, [], EventTypes.Searched ).subscribe( response => {
-      }, error => {
+        undefined, [], EventTypes.Searched ).subscribe( () => {}, () => {
         this.router.navigate( [ URLS.dashboard.learn ] );
       } );
     } );
-  };
+  }
 
   ngOnDestroy() {
     this.eventService.resetEvents( EventTypes.Searched );

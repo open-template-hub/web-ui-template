@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePickerComponent, IDayCalendarConfig } from 'ng2-date-picker';
@@ -17,7 +17,7 @@ import { environment } from '../../../../environments/environment';
   templateUrl: './create-event.html',
   styleUrls: [ './create-event.component.scss' ]
 } )
-export class CreateEventComponent implements OnInit, OnDestroy {
+export class CreateEventComponent implements OnInit {
 
   contributeForm: FormGroup;
   submitted = false;
@@ -232,9 +232,6 @@ export class CreateEventComponent implements OnInit, OnDestroy {
 
     this.addEditEvent();
 
-  }
-
-  ngOnDestroy() {
   }
 
   resetEventForm() {

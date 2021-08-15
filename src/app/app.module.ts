@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
@@ -68,7 +67,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarComponent } from './component/common/calendar/calendar.component';
 import { SearchComponent } from './component/common/search/search.component';
 import { RateBarComponent } from './component/common/rate-bar/rate-bar.component';
-import { InMemoryDataService } from './service/in-memory-data-service/in-memory-data.service'; // a plugin!
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -151,7 +149,4 @@ FullCalendarModule.registerPlugins( [
   bootstrap: [ AppComponent ]
 } )
 export class AppModule {
-
-  constructor() {
-  }
 }

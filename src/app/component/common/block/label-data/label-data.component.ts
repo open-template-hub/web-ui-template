@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component( {
   selector: 'app-label-data',
   templateUrl: './label-data.component.html',
   styleUrls: [ './label-data.component.scss' ]
 } )
-export class LabelDataComponent implements OnInit {
+export class LabelDataComponent {
 
   @Input() label = '';
   @Input() data = '';
@@ -15,10 +15,4 @@ export class LabelDataComponent implements OnInit {
   @Input() leftTopMargin = false;
   @Input() dim = false;
   @Input() highlight = false;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 }
