@@ -24,7 +24,7 @@ Responsive Web UI template with sign-up, login and social login functionality
 
 <p align="center">
   <a href="https://oth-web-app.herokuapp.com">
-    <img src="https://github.com/open-template-hub/open-template-hub.github.io/blob/master/assets/products/web-ui/demonstration.png?raw=true" alt="Screenshot" width="800px">
+    <img src="https://github.com/open-template-hub/web-ui-template/blob/develop/src/assets/common/demonstration.png" alt="Screenshot" width="800px">
   </a>
 </p>
 
