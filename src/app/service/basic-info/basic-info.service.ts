@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 export class BasicInfoService {
 
-  private userInfoSubject: BehaviorSubject<any>;
   public userInfo: Observable<any>;
+  public userInfoSubject: BehaviorSubject<any>;
 
-  constructor(private http: HttpClient) {
-
-    const userInfoStorageItem = localStorage.getItem('userInfo') ? localStorage.getItem('userInfo') : sessionStorage.getItem('userInfo');
-    this.userInfoSubject = new BehaviorSubject<any>(JSON.parse(userInfoStorageItem));
+  constructor( private http: HttpClient ) {
+    const userInfoStorageItem = localStorage.getItem( 'userInfo' ) ? localStorage.getItem( 'userInfo' ) : sessionStorage.getItem( 'userInfo' );
+    this.userInfoSubject = new BehaviorSubject<any>( JSON.parse( userInfoStorageItem ) );
     this.userInfo = this.userInfoSubject.asObservable();
   }
 
@@ -24,33 +23,41 @@ export class BasicInfoService {
   }
 
   me() {
-    return this.http.get<any>(`${environment.serverUrl}/user/me`)
-      .pipe(map(userInfo => {
-        this.userInfoSubject.next(userInfo);
+    return this.http.get<any>( `${ environment.serverUrl }/user/me` )
+    .pipe( map( userInfo => {
+      this.userInfoSubject.next( userInfo );
 
-        if (localStorage.getItem('currentUser')) {
-          localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        } else {
-          sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-        }
+      if ( localStorage.getItem( 'currentUser' ) ) {
+        localStorage.setItem( 'userInfo', JSON.stringify( userInfo ) );
+      } else {
+        sessionStorage.setItem( 'userInfo', JSON.stringify( userInfo ) );
+      }
 
-        return userInfo;
-      }));
+      return userInfo;
+    } ) );
+  }
+
+  getUser( username: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/user/public?username=${ username }` );
+  }
+
+  search( q: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/user/search/?q=${ q }` );
   }
 
   createMyInfo() {
-    return this.http.post<any>(`${environment.serverUrl}/user/me`, {
+    return this.http.post<any>( `${ environment.serverUrl }/user/me`, {
       payload: {
         firstName: ''
       }
-    });
+    } );
   }
 
-  updateMyInfo(payload: any) {
-    return this.http.put<any>(`${environment.serverUrl}/user/me`, {payload});
+  updateMyInfo( payload: any ) {
+    return this.http.put<any>( `${ environment.serverUrl }/user/me`, { payload } );
   }
 
   logout() {
-    this.userInfoSubject.next(null);
+    this.userInfoSubject.next( null );
   }
 }

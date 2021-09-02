@@ -25,10 +25,11 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/common",
+              "src/assets/production"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -43,7 +44,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -52,7 +52,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumError": "7mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -60,6 +60,60 @@
                   "maximumError": "200kb"
                 }
               ]
+            },
+            "staging": {
+              "assets": [
+                "src/favicon.ico",
+                "src/assets/common",
+                "src/assets/staging"
+              ],
+              "styles": [
+                "src/styles/styles.staging.scss"
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ],
+              "index": {
+                "input": "src/index.staging.html",
+                "output": "index.html"
+              }
+            },
+            "local": {
+              "assets": [
+                "src/favicon.ico",
+                "src/assets/common",
+                "src/assets/local"
+              ],
+              "styles": [
+                "src/styles/styles.local.scss"
+              ],
+              "index": {
+                "input": "src/index.local.html",
+                "output": "index.html"
+              }
+            },
+            "local-to-staging-api": {
+              "assets": [
+                "src/favicon.ico",
+                "src/assets/common",
+                "src/assets/local"
+              ],
+              "styles": [
+                "src/styles/styles.local.scss"
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local-to-staging-api.ts"
+                }
+              ],
+              "index": {
+                "input": "src/index.local.html",
+                "output": "index.html"
+              }
             }
           }
         },
@@ -71,6 +125,15 @@
           "configurations": {
             "production": {
               "browserTarget": "web-ui-template:build:production"
+            },
+            "staging": {
+              "browserTarget": "web-ui-template:build:staging"
+            },
+            "local": {
+              "browserTarget": "web-ui-template:build:local"
+            },
+            "local-to-staging-api": {
+              "browserTarget": "web-ui-template:build:local-to-staging-api"
             }
           }
         },
@@ -93,7 +156,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           }

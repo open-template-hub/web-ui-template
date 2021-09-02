@@ -2,24 +2,24 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LabelDataComponent } from './label-data.component';
 
-describe('LabelDataComponent', () => {
+describe( 'LabelDataComponent', () => {
   let component: LabelDataComponent;
   let fixture: ComponentFixture<LabelDataComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LabelDataComponent]
-    })
-      .compileComponents();
-  }));
+  beforeEach( async( () => {
+    TestBed.configureTestingModule( {
+      declarations: [ LabelDataComponent ]
+    } )
+    .compileComponents();
+  } ) );
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LabelDataComponent);
+  beforeEach( () => {
+    fixture = TestBed.createComponent( LabelDataComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  } );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it( 'should create', () => {
+    expect( component ).toBeTruthy();
+  } );
+} );

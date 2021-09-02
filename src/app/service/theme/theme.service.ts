@@ -1,96 +1,128 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { version } from '../../../environments/version';
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 export class ThemeService {
 
-  private darkThemeSubject: BehaviorSubject<string>;
   public darkTheme: Observable<string>;
-
-  private sideNavClosedSubject: BehaviorSubject<string>;
   public sideNavClosed: Observable<string>;
-
   public brand = {
-    brandLogo: '',
+    brandLogo: ''
   };
+  public appVersion = '1.0.0';
+  private darkThemeSubject: BehaviorSubject<string>;
+  private sideNavClosedSubject: BehaviorSubject<string>;
+  private maxAspectRatioMedia;
+  private maxHeightMedia;
+
+  colors = [
+    '--brand-color',
+    '--brand-color-v1',
+    '--brand-color-v2',
+    '--brand-color-v3',
+    '--brand-color-v4'
+  ]
 
   constructor() {
-    let darkThemeStorageItem = localStorage.getItem('darkTheme') ? localStorage.getItem('darkTheme') : sessionStorage.getItem('darkTheme');
+    let darkThemeStorageItem = localStorage.getItem( 'darkTheme' ) ? localStorage.getItem( 'darkTheme' ) : sessionStorage.getItem( 'darkTheme' );
     darkThemeStorageItem = darkThemeStorageItem ? darkThemeStorageItem : 'false';
-    this.darkThemeSubject = new BehaviorSubject<string>(darkThemeStorageItem);
+
+    this.darkThemeSubject = new BehaviorSubject<string>( darkThemeStorageItem );
     this.darkTheme = this.darkThemeSubject.asObservable();
 
-    let sideNavClosedStorageItem = localStorage.getItem('sideNavClosed') ? localStorage.getItem('sideNavClosed') : sessionStorage.getItem('sideNavClosed');
-    sideNavClosedStorageItem = sideNavClosedStorageItem ? sideNavClosedStorageItem : 'false';
-    this.sideNavClosedSubject = new BehaviorSubject<string>(sideNavClosedStorageItem);
-    this.sideNavClosed = this.sideNavClosedSubject.asObservable();
+    this.maxAspectRatioMedia = window.matchMedia( 'screen and (max-aspect-ratio: 1/1)' );
+    this.maxHeightMedia = window.matchMedia( 'screen and (max-height: 999px)' );
 
-    this.brand.brandLogo = './assets/brand-logo-blue.png'
+    let sideNavClosedStorageItem: string
+    if ( this.maxAspectRatioMedia || this.maxHeightMedia.matches ) {
+      sideNavClosedStorageItem = 'true'
+    } else {
+      sideNavClosedStorageItem = 'false'
+    }
+
+    if ( localStorage.getItem( 'currentUser' ) ) {
+      sessionStorage.removeItem( 'sideNavClosed' );
+      localStorage.setItem( 'sideNavClosed', sideNavClosedStorageItem );
+    } else {
+      sessionStorage.setItem( 'sideNavClosed', sideNavClosedStorageItem );
+    }
+
+    this.sideNavClosedSubject = new BehaviorSubject<string>( sideNavClosedStorageItem );
+    this.sideNavClosed = this.sideNavClosedSubject.asObservable();
+    this.brand.brandLogo = './assets/' + environment.identity + '/brand-logo.png';
+
+    if ( version ) {
+      this.appVersion = version;
+    }
   }
 
-  initTheme(darkThemePreferred: boolean) {
+  initTheme( darkThemePreferred: boolean ) {
     const darkThemePreferredStorageItem = darkThemePreferred ? 'true' : 'false';
 
-    if (localStorage.getItem('currentUser')) {
-      sessionStorage.removeItem('darkTheme');
-      localStorage.setItem('darkTheme', darkThemePreferredStorageItem);
+    if ( localStorage.getItem( 'currentUser' ) ) {
+      sessionStorage.removeItem( 'darkTheme' );
+      localStorage.setItem( 'darkTheme', darkThemePreferredStorageItem );
     } else {
-      sessionStorage.setItem('darkTheme', darkThemePreferredStorageItem);
+      sessionStorage.setItem( 'darkTheme', darkThemePreferredStorageItem );
     }
-    this.darkThemeSubject.next(darkThemePreferredStorageItem);
+    this.darkThemeSubject.next( darkThemePreferredStorageItem );
   }
 
-  initSideNavClosed(sideNavClosePreferred: boolean) {
+  initSideNavClosed( sideNavClosePreferred: boolean ) {
     const sideNavClosedStorageItem = sideNavClosePreferred ? 'true' : 'false';
 
-    if (localStorage.getItem('currentUser')) {
-      sessionStorage.removeItem('sideNavClosed');
-      localStorage.setItem('sideNavClosed', sideNavClosedStorageItem);
+    if ( localStorage.getItem( 'currentUser' ) ) {
+      sessionStorage.removeItem( 'sideNavClosed' );
+      localStorage.setItem( 'sideNavClosed', sideNavClosedStorageItem );
     } else {
-      sessionStorage.setItem('sideNavClosed', sideNavClosedStorageItem);
+      sessionStorage.setItem( 'sideNavClosed', sideNavClosedStorageItem );
     }
-    this.darkThemeSubject.next(sideNavClosedStorageItem);
+    this.darkThemeSubject.next( sideNavClosedStorageItem );
   }
 
   switchDarkTheme() {
-    const darkThemeStorageItem = localStorage.getItem('darkTheme') ? localStorage.getItem('darkTheme') : sessionStorage.getItem('darkTheme');
+    const darkThemeStorageItem = localStorage.getItem( 'darkTheme' ) ?
+      localStorage.getItem( 'darkTheme' ) : sessionStorage.getItem( 'darkTheme' );
     const switchedTheme = darkThemeStorageItem === 'true' ? 'false' : 'true';
 
-    if (localStorage.getItem('currentUser')) {
-      sessionStorage.removeItem('darkTheme');
-      localStorage.setItem('darkTheme', switchedTheme);
+    if ( localStorage.getItem( 'currentUser' ) ) {
+      sessionStorage.removeItem( 'darkTheme' );
+      localStorage.setItem( 'darkTheme', switchedTheme );
     } else {
-      sessionStorage.setItem('darkTheme', switchedTheme);
+      sessionStorage.setItem( 'darkTheme', switchedTheme );
     }
 
-    this.darkThemeSubject.next(switchedTheme);
+    this.darkThemeSubject.next( switchedTheme );
   }
 
   toggleSideNav() {
-    const sideNavClosedStorageItem = localStorage.getItem('sideNavClosed') ? localStorage.getItem('sideNavClosed') : sessionStorage.getItem('sideNavClosed');
+    const sideNavClosedStorageItem = localStorage.getItem( 'sideNavClosed' ) ? localStorage.getItem( 'sideNavClosed' ) : sessionStorage.getItem( 'sideNavClosed' );
     const toggledSideNavClosed = sideNavClosedStorageItem === 'true' ? 'false' : 'true';
 
-    if (localStorage.getItem('currentUser')) {
-      sessionStorage.removeItem('sideNavClosed');
-      localStorage.setItem('sideNavClosed', toggledSideNavClosed);
+    if ( localStorage.getItem( 'currentUser' ) ) {
+      sessionStorage.removeItem( 'sideNavClosed' );
+      localStorage.setItem( 'sideNavClosed', toggledSideNavClosed );
     } else {
-      sessionStorage.setItem('sideNavClosed', toggledSideNavClosed);
+      sessionStorage.setItem( 'sideNavClosed', toggledSideNavClosed );
     }
 
-    this.sideNavClosedSubject.next(toggledSideNavClosed);
+    this.sideNavClosedSubject.next( toggledSideNavClosed );
+
   }
 
-  clearThemes() {
-    if (localStorage.getItem('currentUser')) {
-      localStorage.removeItem('darkTheme');
-      localStorage.removeItem('sideNavClosed');
+  logout() {
+    if ( localStorage.getItem( 'currentUser' ) ) {
+      localStorage.removeItem( 'darkTheme' );
+      localStorage.removeItem( 'sideNavClosed' );
     }
-    sessionStorage.removeItem('darkTheme');
-    sessionStorage.removeItem('sideNavClosed');
+    sessionStorage.removeItem( 'darkTheme' );
+    sessionStorage.removeItem( 'sideNavClosed' );
 
-    this.darkThemeSubject.next('false');
-    this.sideNavClosedSubject.next('false');
+    this.darkThemeSubject.next( 'false' );
+    this.sideNavClosedSubject.next( 'false' );
   }
 }
