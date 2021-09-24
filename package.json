@@ -35,7 +35,7 @@
     "@fullcalendar/daygrid": "^5.8.0",
     "@fullcalendar/interaction": "^5.8.0",
     "@stripe/stripe-js": "^1.15.1",
-    "@swimlane/ngx-charts": "^18.0.1",
+    "@swimlane/ngx-charts": "^19.0.1",
     "@types/simple-icons": "^5.0.0",
     "angular-in-memory-web-api": "^0.11.0",
     "countup.js": "^2.0.7",
