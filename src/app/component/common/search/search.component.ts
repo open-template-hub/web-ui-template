@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { URLS } from '../../../util/constant';
@@ -21,7 +21,7 @@ export class SearchComponent {
 
   constructor(
     private eventService: EventService,
-    private basicInfoService: BasicInfoService,
+    private businessLogicService: BusinessLogicService,
     private categoryService: CategoryService
   ) { }
 
@@ -43,7 +43,7 @@ export class SearchComponent {
       return;
     }
 
-    this.basicInfoService.search( q ).subscribe( results => {
+    this.businessLogicService.search( q ).subscribe( results => {
       this.userSearchResults = results.slice( 0, 10 );
     } );
 

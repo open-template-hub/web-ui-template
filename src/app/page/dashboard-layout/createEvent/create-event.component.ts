@@ -3,7 +3,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePickerComponent, IDayCalendarConfig } from 'ng2-date-picker';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { InformationService } from '../../../service/information/information.service';
@@ -91,11 +91,11 @@ export class CreateEventComponent implements OnInit {
       private eventService: EventService,
       private categoryService: CategoryService,
       private activatedRoute: ActivatedRoute,
-      private basicInfoService: BasicInfoService
+      private businessLogicService: BusinessLogicService
   ) {}
 
   ngOnInit(): void {
-    const userInfo = this.basicInfoService.userInfoSubject.getValue()
+    const userInfo = this.businessLogicService.userInfoSubject.getValue()
     if( !userInfo?.payload?.userProfileActivated ) {
       this.router.navigate( [ URLS.dashboard.root ]).then( () => {
         this.informationService.setInformation( `Enable user profile to view this page`, 'info' );

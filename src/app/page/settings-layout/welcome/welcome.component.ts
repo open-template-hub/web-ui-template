@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
@@ -41,7 +41,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       private router: Router,
       private route: ActivatedRoute,
       private authenticationService: AuthenticationService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private loadingService: LoadingService,
       private informationService: InformationService,
       private fileStorageService: FileStorageService,
@@ -51,12 +51,12 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
     this.authenticationService.currentUser.subscribe( currentUser => this.currentUser = currentUser );
 
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
           this.userInfo = userInfo;
           if ( userInfo?.profileImg ) {
             this.profileImg = userInfo.profileImg;
           }
-          this.categoryService.getCategoriesFromId( this.basicInfoService.userInfoValue?.payload?.interests ).subscribe( result => {
+          this.categoryService.getCategoriesFromId( this.businessLogicService.userInfoValue?.payload?.interests ).subscribe( result => {
             this.interests = result;
           } );
         }
@@ -85,13 +85,13 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group( {
-      firstName: [ this.basicInfoService.userInfoValue?.payload?.firstName, Validators.required ],
-      lastName: [ this.basicInfoService.userInfoValue?.payload?.lastName, Validators.required ],
-      bio: [ this.basicInfoService.userInfoValue?.payload?.bio, Validators.maxLength( 500 ) ],
-      location: [ this.basicInfoService.userInfoValue?.payload?.location ],
-      phone: [ this.basicInfoService.userInfoValue?.payload?.phone, Validators.pattern( '[+]?[0-9]+' ) ],
-      website: [ this.basicInfoService.userInfoValue?.payload?.website ],
-      userProfileActivated: [ this.basicInfoService.userInfoValue?.payload?.userProfileActivated ]
+      firstName: [ this.businessLogicService.userInfoValue?.payload?.firstName, Validators.required ],
+      lastName: [ this.businessLogicService.userInfoValue?.payload?.lastName, Validators.required ],
+      bio: [ this.businessLogicService.userInfoValue?.payload?.bio, Validators.maxLength( 500 ) ],
+      location: [ this.businessLogicService.userInfoValue?.payload?.location ],
+      phone: [ this.businessLogicService.userInfoValue?.payload?.phone, Validators.pattern( '[+]?[0-9]+' ) ],
+      website: [ this.businessLogicService.userInfoValue?.payload?.website ],
+      userProfileActivated: [ this.businessLogicService.userInfoValue?.payload?.userProfileActivated ]
     } );
   }
 
@@ -147,7 +147,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       this.fileStorageService.createFile( this.profileImg, this.userInfo.username + '/profile_img', 'profile image', 'image/png' )
       .subscribe( response => {
             payload = { ...payload, ...{ profileImageId: response.id } };
-            this.basicInfoService.updateMyInfo( payload )
+            this.businessLogicService.updateMyInfo( payload )
             .subscribe( () => {
               this.router.navigate( [ URLS.dashboard.root ] );
             } );
@@ -155,7 +155,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       );
     } else {
       payload = { ...payload, ...{ profileImageId: null } };
-      this.basicInfoService.updateMyInfo( payload )
+      this.businessLogicService.updateMyInfo( payload )
       .subscribe( () => {
         this.router.navigate( [ URLS.dashboard.root ] );
       } );

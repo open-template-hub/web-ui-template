@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDayCalendarConfig } from 'ng2-date-picker';
 import { ToastrService } from 'ngx-toastr';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { InformationService } from '../../../service/information/information.service';
@@ -60,7 +60,7 @@ export class LearnComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private informationService: InformationService,
     private formBuilder: FormBuilder,
-    private basicInfoService: BasicInfoService
+    private businessLogicService: BusinessLogicService
   ) {
     this.eventService.recommendedEvents.subscribe( recommendedEvents => {
       this.recommendedEvents = recommendedEvents;
@@ -73,7 +73,7 @@ export class LearnComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
     this.route.queryParams.subscribe( params => {
-      this.basicInfoService.userInfo.subscribe( userInfo => {
+      this.businessLogicService.userInfo.subscribe( userInfo => {
         this.userInfo = userInfo;
         // if params given
         this.userInterests = [];

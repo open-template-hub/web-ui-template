@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { RIBBONS, URLS } from '../../../../util/constant';
 
 @Component( {
@@ -37,13 +37,13 @@ export class EventCardComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private sanitizer: DomSanitizer
   ) {
   }
 
   ngOnInit(): void {
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
       this.username = userInfo?.username;
     } );
     this.getUrl()

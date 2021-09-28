@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthToken } from '../../../../model/AuthToken';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../../service/category/category.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
@@ -39,7 +39,7 @@ export class DashboardLayoutSideNavComponent {
   constructor(
       private router: Router,
       private authenticationService: AuthenticationService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
       private _eref: ElementRef,
@@ -59,7 +59,7 @@ export class DashboardLayoutSideNavComponent {
 
     this.brand = this.themeService.brand;
 
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
           if ( userInfo ) {
             this.userInfo = userInfo;
           }
@@ -111,7 +111,7 @@ export class DashboardLayoutSideNavComponent {
       return;
     }
 
-    this.basicInfoService.search( q ).subscribe( results => {
+    this.businessLogicService.search( q ).subscribe( results => {
       this.userSearchResults = results.slice( 0, 10 );
     } );
 

@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 @Injectable( {
   providedIn: 'root'
 } )
-export class BasicInfoService {
+export class BusinessLogicService {
 
   public userInfo: Observable<any>;
   public userInfoSubject: BehaviorSubject<any>;
