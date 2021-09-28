@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/common/rate-bar/rate-bar.component';
 import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
@@ -75,7 +75,7 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
       private route: ActivatedRoute,
       private authenticationService: AuthenticationService,
       private loadingService: LoadingService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
       private categoryService: CategoryService,
@@ -94,7 +94,7 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
       this.profileImg = PROFILE_IMG;
       this.username = params.username;
 
-      this.basicInfoService.getUser( this.username )
+      this.businessLogicService.getUser( this.username )
       .subscribe( visitedUserInfo => {
         this.userInfo = visitedUserInfo;
         this.categoryService.getCategoriesFromId( this.userInfo?.payload?.interests ).subscribe( result => {
@@ -138,7 +138,7 @@ export class PublicProfileComponent implements OnInit, OnDestroy {
           this.topContributor = undefined
         }
         // check if currentUser follows publicProfile
-        this.basicInfoService.userInfo.subscribe( currentUserInfo => {
+        this.businessLogicService.userInfo.subscribe( currentUserInfo => {
           this.currentUserInfo = currentUserInfo;
           if ( currentUserInfo && this.username !== currentUserInfo?.username )
             this.followerService.isFollowing( this.username ).subscribe( result => {

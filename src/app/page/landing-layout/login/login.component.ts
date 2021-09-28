@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private informationService: InformationService,
       private fileStorageService: FileStorageService,
       private eventService: EventService,
@@ -93,11 +93,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         () => {
           if ( this.returnUrl !== URLS.dashboard.root ) {
             // Special case for initialization (if return url is else than dashboard)
-            this.basicInfoService.me()
+            this.businessLogicService.me()
             .subscribe( userInfo => {
                   this.router.navigateByUrl( this.returnUrl );
                   if ( !userInfo.payload ) {
-                    this.basicInfoService.createMyInfo()
+                    this.businessLogicService.createMyInfo()
                     .subscribe( () => {
                           this.router.navigate( [ URLS.settings.welcome ] );
                         }

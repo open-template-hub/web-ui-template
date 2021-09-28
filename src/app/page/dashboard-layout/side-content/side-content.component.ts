@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { InformationService } from '../../../service/information/information.service';
@@ -28,7 +28,7 @@ export class SideContentComponent {
   constructor(
       private themeService: ThemeService,
       private categoryService: CategoryService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private eventService: EventService,
       private informationService: InformationService,
       private router: Router
@@ -37,7 +37,7 @@ export class SideContentComponent {
       this.darkTheme = darkTheme;
     } );
 
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
       this.eventService.recommendedEvents.subscribe( recommendedEvents => {
@@ -92,7 +92,7 @@ export class SideContentComponent {
       return;
     }
 
-    this.basicInfoService.search( q ).subscribe( results => {
+    this.businessLogicService.search( q ).subscribe( results => {
       this.userSearchResults = results.slice( 0, 10 );
     } );
 

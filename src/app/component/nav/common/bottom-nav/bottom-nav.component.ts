@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthToken } from '../../../../model/AuthToken';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 import { URLS } from '../../../../util/constant';
@@ -27,7 +27,7 @@ export class BottomNavComponent {
       private authenticationService: AuthenticationService,
       private themeService: ThemeService,
       private loadingService: LoadingService,
-      private basicInfoService: BasicInfoService
+      private businessLogicService: BusinessLogicService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -35,7 +35,7 @@ export class BottomNavComponent {
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
           if ( userInfo ) {
             this.userInfo = userInfo;
           }

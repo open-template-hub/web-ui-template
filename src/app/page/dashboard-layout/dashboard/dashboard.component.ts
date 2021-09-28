@@ -6,7 +6,7 @@ import { CalendarEvent } from '../../../component/common/calendar/calendar.compo
 import { Rate } from '../../../component/common/rate-bar/rate-bar.component';
 import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       private router: Router,
       private authenticationService: AuthenticationService,
       private loadingService: LoadingService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
       private categoryService: CategoryService,
@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
     );
 
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
       // check interests area defined before service calling.
@@ -115,12 +115,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
-    this.basicInfoService.me()
+    this.businessLogicService.me()
     .subscribe( userInfo => {
           this.userInfo = userInfo;
 
           if ( !this.userInfo.payload ) {
-            this.basicInfoService.createMyInfo()
+            this.businessLogicService.createMyInfo()
             .subscribe( () => {
                   this.router.navigate( [ URLS.settings.welcome ] );
                 }

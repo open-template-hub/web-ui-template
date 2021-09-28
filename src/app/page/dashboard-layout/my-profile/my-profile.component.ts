@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/common/rate-bar/rate-bar.component';
 import { AuthToken } from '../../../model/AuthToken';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
-import { BasicInfoService } from '../../../service/basic-info/basic-info.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { EventService } from '../../../service/event/event.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
@@ -74,7 +74,7 @@ export class MyProfileComponent implements OnDestroy {
       private router: Router,
       private authenticationService: AuthenticationService,
       private loadingService: LoadingService,
-      private basicInfoService: BasicInfoService,
+      private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
       private categoryService: CategoryService,
@@ -91,7 +91,7 @@ export class MyProfileComponent implements OnDestroy {
         }
     );
 
-    this.basicInfoService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
       // check interests area defined before service calling.
