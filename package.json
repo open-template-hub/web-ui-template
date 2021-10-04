@@ -16,7 +16,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "bash heroku.sh"
+    "heroku-postbuild": "bash heroku.sh",
+    "outdated": "node src/dependency-checker.ts > docs/OUTDATED.md"
   },
   "private": true,
   "dependencies": {
