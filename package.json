@@ -1,6 +1,6 @@
 {
   "name": "web-ui-template",
-  "version": "4.0.0",
+  "version": "3.0.0",
   "scripts": {
     "ng": "ng",
     "startLocal": "ng serve --configuration=local",
