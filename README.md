@@ -20,11 +20,11 @@ Responsive Web UI template with sign-up, login and social login functionality
 
 <h3 align="center">
   For demo click the image below ⬇️
-</p>
+</h3>
 
 <p align="center">
-  <a href="https://oth-web-app.herokuapp.com">
-    <img src="https://github.com/open-template-hub/web-ui-template/blob/develop/src/assets/common/demonstration.png" alt="Screenshot" width="800px">
+  <a href="https://opentemplatehub.com">
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/company-profile-ui-demo-light.png" alt="Screenshot" width="800px">
   </a>
 </p>
 
@@ -144,11 +144,15 @@ Check project's current **nodejs** and **npm** version from **[package.json](pac
 
 ## Contributing
 
-* Fork it
-* Create your update branch (git checkout -b my-feature-branch)
-* Commit your changes (git commit -am 'Add some features')
-* Push to the branch (git push origin my-feature-branch)
-* Create new Pull Request
+Refer to **[CONTRIBUTING.md](https://github.com/open-template-hub/.github/blob/master/docs/CONTRIBUTING.md)** to see how to contribute to Open Template Hub.
+
+<br/>
+
+## Code of Conduct
+
+Refer to **[CODE_OF_CONDUCT.md](https://github.com/open-template-hub/.github/blob/master/docs/CODE_OF_CONDUCT.md)** to see contributor covenant code of conduct.
+
+<br/>
 
 ## LICENSE
 

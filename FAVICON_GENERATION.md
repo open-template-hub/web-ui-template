@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://opentemplatehub.com">
+  <a href="https://opentemplatehub.com">
     <img src="https://github.com/furknyavuz/wecontribute-ui/blob/develop/icon.png" width=200 height=200 alt="logo">
   </a>
 </p>
