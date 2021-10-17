@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Open Template Hub - Web UI Template
+Open Template Hub - Web UI Template v3
 </h1>
 
 [![License](https://img.shields.io/github/license/open-template-hub/web-ui-template?color=2F7488&style=for-the-badge)](LICENSE)
