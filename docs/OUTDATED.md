@@ -15,10 +15,10 @@ Following packages are not updated in the develop branch yet. So, if you want to
 
 | Package           | Current   | Wanted   | Latest   | Location |
 | --- | --- | --- | --- | --- |
-| jasmine-core      |   3.9.0   |  3.9.0   | 3.10.0   | web-ui-template |
+| jasmine-core      |   3.9.0   |  3.9.0   | 3.10.1   | web-ui-template |
 | ng2-date-picker   |  11.0.0   | 11.0.0   | 12.0.3   | web-ui-template |
 | rxjs              |   6.6.7   |  6.6.7   |  7.4.0   | web-ui-template |
-| ts-node           |  10.0.0   | 10.0.0   | 10.3.0   | web-ui-template |
+| ts-node           |  10.0.0   | 10.0.0   | 10.4.0   | web-ui-template |
 | typescript        |   4.2.4   |  4.2.4   |  4.4.4   | web-ui-template |
 
 <table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2021</b></td></tr></table>
