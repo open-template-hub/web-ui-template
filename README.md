@@ -16,7 +16,7 @@ Open Template Hub - Web UI Template v3
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_web-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_web-ui-template)
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
-Responsive Web UI template with sign-up, login and social login functionality
+Web UI Template is modern, responsive and customisable company profile ui template for your business. It contains reusable components, theme color and design support along with dark theme support.
 
 <h3 align="center">
   For demo click the image below ⬇️
