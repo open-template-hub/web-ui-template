@@ -1,7 +1,7 @@
 {
   "name": "web-ui-template",
   "description": "Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "license": "MIT",
   "scripts": {
     "buildLocal": "ng build --configuration=local --localize",
