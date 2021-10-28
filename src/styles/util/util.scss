@@ -1,0 +1,141 @@
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+@mixin before-background-opacity($opacity, $color) {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+
+  opacity: $opacity;
+  background-color: $color;
+}
+
+@mixin default-padding-line {
+  @include prefix(padding, var(--padding-line), moz webkit);
+}
+
+@mixin default-border-radius {
+  @include prefix(border-radius, var(--border-radius), moz webkit);
+}
+
+@mixin default-border-radius-image {
+  @include prefix(border-radius, var(--border-radius-image), moz webkit);
+}
+
+@mixin default-height-bottom-line {
+  @include prefix(height, var(--height-bottom-line), moz webkit);
+}
+
+@mixin default-border-radius-product-line {
+  @include prefix(border-radius, var(--border-radius-product-line), moz webkit);
+}
+
+@mixin no-padding-no-margin {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin margin-x-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin min-full-screen {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+@mixin default-fonts {
+  font-family: Roboto, sans-serif;
+}
+
+@mixin default-shadow {
+  box-shadow: 0 3px 15px 0 var(--shadow);
+}
+
+@mixin dim {
+  color: var(--lighter-contrast);
+  border-color: var(--lighter-contrast);
+}
+
+@mixin shine {
+  color: var(--darker);
+  border-color: var(--darker);
+}
+
+@mixin flex-center-center {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-space-evenly {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin flex-layout-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-layout-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@mixin flex-layout-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-width-sm {
+  max-width: 94vw;
+  min-width: 94vw;
+  width: 94vw;
+}
+
+@mixin font-awesome {
+  font: {
+    family: 'Font Awesome 5 Free', sans-serif;
+    weight: 900;
+  }
+}
+
+@mixin circle {
+  @include prefix(border-radius, 99em, moz webkit);
+}
+
+.rounded-box {
+  @include prefix(border-radius, 5px, moz webkit);
+}
+
+.flex-center-center {
+  @include flex-center-center;
+}
+
+.flex-center-space-evenly {
+  @include flex-center-space-evenly;
+}
+
+.flex-layout-row {
+  @include flex-layout-row;
+}
+
+.flex-layout-row-reverse {
+  @include flex-layout-row-reverse;
+}
+
+.flex-layout-column {
+  @include flex-layout-column;
+}

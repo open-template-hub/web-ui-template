@@ -1,12 +1,14 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthToken } from '../../../../model/AuthToken';
+import { BRAND } from '../../../../data/brand/brand.data';
+import { URLS } from '../../../../data/navigation/navigation.data';
+import { PROFILE_IMG } from '../../../../data/profile/profile.data';
+import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../../service/category/category.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
-import { PROFILE_IMG, URLS } from '../../../../util/constant';
 
 @Component( {
   selector: 'app-dashboard-layout-side-nav',
@@ -15,7 +17,6 @@ import { PROFILE_IMG, URLS } from '../../../../util/constant';
 } )
 export class DashboardLayoutSideNavComponent {
 
-  darkTheme: string;
   sideNavClosed = 'false';
   userInfo: any = {};
   profileImg = PROFILE_IMG;
@@ -23,11 +24,8 @@ export class DashboardLayoutSideNavComponent {
   categorySearchResults = [];
   searchEnabled = true;
 
-  brand = {
-    brandLogo: '',
-  };
-
   URLS = URLS;
+  BRAND = BRAND;
 
   currentUser: AuthToken;
   openSettings = false;
@@ -42,22 +40,15 @@ export class DashboardLayoutSideNavComponent {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
-      private _eref: ElementRef,
       private categoryService: CategoryService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
     } );
 
-    this.themeService.darkTheme.subscribe( darkTheme => {
-      this.darkTheme = darkTheme;
-    } );
-
     this.themeService.sideNavClosed.subscribe( sideNavClosed => {
       this.sideNavClosed = sideNavClosed;
     } );
-
-    this.brand = this.themeService.brand;
 
     this.businessLogicService.userInfo.subscribe( userInfo => {
           if ( userInfo ) {
@@ -92,10 +83,6 @@ export class DashboardLayoutSideNavComponent {
     this.router.navigate( [ '/' ] ).then( () => {
       return true;
     } );
-  }
-
-  switchTheme() {
-    this.themeService.switchDarkTheme();
   }
 
   toggleSideNav() {

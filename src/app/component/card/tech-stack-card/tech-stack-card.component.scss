@@ -1,0 +1,76 @@
+@use '../../../../styles/util/util';
+@use '../../card/card.component';
+
+.tech-stack-card {
+  & .body {
+    @include card.default-body;
+    @include util.flex-layout-row;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-start;
+
+    padding: 20px 30px;
+
+    font-size: 17px;
+
+    & .row {
+      @include util.flex-center-center;
+      @include util.default-border-radius-image;
+
+      box-sizing: border-box;
+
+      background-color: var(--theme-color-lighter-9);
+      border: 1px solid var(--theme-color-lighter-7);
+      box-shadow: 0 3px 12px -4px var(--hover);
+      margin: 5px;
+
+      justify-content: flex-start;
+
+      & p {
+        width: 100%;
+        color: var(--theme-color-darker-3);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .tech-stack-card {
+    & .body {
+      width: 94vw;
+
+      & .row {
+        @include util.flex-layout-column;
+
+        width: 100%;
+        padding: 20px;
+
+        & img {
+          margin: 5px 0 15px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .tech-stack-card {
+    & .body {
+      width: 920px;
+
+      & .row {
+        @include util.flex-layout-row;
+
+        width: 32%;
+        padding: 9px;
+
+        & img {
+          margin-left: 45px;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+

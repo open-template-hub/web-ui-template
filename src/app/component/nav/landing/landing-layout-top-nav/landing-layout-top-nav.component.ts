@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthToken } from '../../../../model/AuthToken';
-import { AuthenticationService } from '../../../../service/auth/authentication.service';
+import { PRODUCT_LINES, SERVICES } from 'src/app/data/product/product.data';
+import { BRAND } from '../../../../data/brand/brand.data';
+import { URLS } from '../../../../data/navigation/navigation.data';
+import { ProductLine } from '../../../../model/product/product.model';
 import { LoadingService } from '../../../../service/loading/loading.service';
-import { ThemeService } from '../../../../service/theme/theme.service';
-import { URLS } from '../../../../util/constant';
 
 @Component( {
   selector: 'app-landing-layout-top-nav',
@@ -12,39 +12,19 @@ import { URLS } from '../../../../util/constant';
   styleUrls: [ './landing-layout-top-nav.component.scss' ]
 } )
 export class LandingLayoutTopNavComponent {
-
-  currentUser: AuthToken;
   loading = false;
 
-  brand = {
-    brandLogo: '',
-  };
-
   URLS = URLS;
+  BRAND = BRAND;
 
-  constructor(
-      private router: Router,
-      private authenticationService: AuthenticationService,
-      private themeService: ThemeService,
-      private loadingService: LoadingService
-  ) {
-    this.authenticationService.currentUser.subscribe( currentUser => {
-      this.currentUser = currentUser;
-    } );
+  PRODUCT_LINES: ProductLine[] = PRODUCT_LINES;
+  SERVICES: ProductLine[] = SERVICES;
 
-    this.brand = this.themeService.brand;
+  @ViewChild( 'dropdownMenuProducts' ) dropdownMenuProducts: ElementRef;
+  @ViewChild( 'dropdownMenuServices' ) dropdownMenuServices: ElementRef;
+  @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
+  constructor( private router: Router, private loadingService: LoadingService ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate( [ '/' ] ).then( () => {
-      return true;
-    } );
-  }
-
-  switchTheme() {
-    this.themeService.switchDarkTheme();
   }
 }

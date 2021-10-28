@@ -1,0 +1,50 @@
+<app-card *ngIf="pricingOption" [bodyTemplate]="bodyTemplate" [footerTemplate]="footerTemplate"
+          [headerTemplate]="headerTemplate" [ribbon]="pricingOption.ribbon || undefined"
+          class="pricing-card">
+  <!-- Header -->
+  <ng-template #headerTemplate>
+    <div class="header">
+      <h4>{{ pricingOption.title | uppercase }}</h4>
+      <div class="price-area">
+        <ng-container *ngIf="!pricingOption.contactRequired">
+          <p class="currency">{{ pricingOption.price.currency }}</p>
+          <p class="price-value">{{ pricingOption.price.value }}</p>
+          <p class="subscription-time">{{ pricingOption.price.subscriptionTime }}</p>
+        </ng-container>
+        <ng-container *ngIf="pricingOption.contactRequired">
+          <p class="contact-required">Let's Talk</p>
+        </ng-container>
+      </div>
+      <hr>
+    </div>
+  </ng-template>
+
+  <!-- Body -->
+  <ng-template #bodyTemplate>
+    <div class="body">
+      <ng-container *ngFor="let features of pricingOption.features; index as i">
+        <ng-container *ngFor="let feature of features; index as j">
+          <p *ngIf="feature && feature === 'true'">
+            <i aria-hidden="true" class="fas fa-check success-text"></i>
+            <span>{{ pricingFeatures[ i ].details[ j ].name }}</span>
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-template>
+
+  <!-- Footer -->
+  <ng-template #footerTemplate>
+    <div class="footer">
+      <ng-container *ngIf="pricingOption.contactRequired">
+        <app-button (click)="callToAction(URLS.contactUs)" [text]="'Contact Us'"></app-button>
+      </ng-container>
+      <ng-container *ngIf="!pricingOption.contactRequired">
+        <app-button (click)="callToAction(demoLink)" *ngIf="pricingOption.price.value === '0'"
+                    [text]="'Get Started'"></app-button>
+        <app-button (click)="callToAction()" *ngIf="pricingOption.price.value !== '0'" [icon]="'shopping-cart'"
+                    [text]="'Buy Now'"></app-button>
+      </ng-container>
+    </div>
+  </ng-template>
+</app-card>

@@ -1,0 +1,252 @@
+@use '../../../../styles/util/util';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 0 30px var(--shadow);
+  background-color: var(--background-color);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links-wrapper {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-top: 25px;
+  justify-content: flex-start;
+
+  & a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+  }
+
+  & .brand-logo {
+    margin: 0 5px;
+  }
+
+  & .footer-language {
+    @include util.flex-layout-row;
+    @include util.flex-center-center;
+    font-size: 22px;
+
+    & a {
+      font-size: 28px;
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+.footer-hr-row {
+  width: 100%;
+  margin-top: 35px;
+  justify-content: center;
+  padding: 0;
+  display: flex;
+
+  & hr {
+    width: 90%;
+    border: 1px solid var(--theme-color-lighter-5);
+  }
+}
+
+.footer-link-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  & .footer-link-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  & p, & a, & span {
+    font-weight: 500;
+  }
+
+  & p {
+    box-sizing: border-box;
+    font-weight: bold;
+    border-bottom: 1px solid var(--theme-color);
+  }
+}
+
+.footer-social {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-right-element {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--lighter);
+}
+
+.footer-social i {
+  color: var(--theme-color);
+}
+
+.footer.footer-hide-shadow {
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 999px) {
+  .footer {
+    padding: 20px 0;
+    margin-bottom: calc(55px + env(safe-area-inset-bottom));
+  }
+
+  .footer-link-column {
+    max-width: 50%;
+    width: 50%;
+
+    & p, & a, & app-ext-link {
+      margin-left: 10px;
+      width: 95%;
+    }
+
+    & p, a {
+      @include util.flex-layout-column;
+
+      justify-content: center;
+      align-items: flex-start;
+
+      min-height: 48px;
+    }
+  }
+
+  .footer-link-inner-column {
+    width: 100%;
+  }
+
+  .footer-brand-row {
+    flex-direction: column;
+    font-size: 13px;
+  }
+
+  .footer-brand-row a {
+    width: 100%;
+  }
+
+  .footer-brand-row .brand-logo {
+    height: 40px;
+  }
+
+  .footer-social, .footer-right-element {
+    margin-top: 20px;
+  }
+
+  .footer-right-element {
+    @include util.flex-layout-column;
+
+    & > * {
+      margin: 10px 0;
+    }
+  }
+
+  .footer-social a {
+    width: auto;
+  }
+
+  .footer.footer-popup-padding {
+    padding-bottom: 80px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .footer {
+    padding: 30px 0;
+    margin-bottom: 0;
+  }
+
+  .footer-link-column {
+    width: 33%;
+
+    & p, & a, & app-ext-link {
+      width: 200px;
+    }
+
+    & a, & app-ext-link {
+      margin: 4px 0;
+    }
+
+    & p {
+      margin: 20px 0 4px;
+    }
+
+    &.double {
+      width: 66%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+    }
+  }
+
+  .footer-link-inner-column {
+    width: 50%;
+  }
+
+  .footer-social {
+    margin-left: 10px;
+  }
+
+  .footer-social a {
+    width: auto;
+  }
+
+  .footer-brand-row {
+    font-size: 14px;
+  }
+
+  .footer-brand-row .brand {
+    border-right: 1px solid var(--theme-color);
+    padding: 0 10px;
+  }
+
+  .footer-right-element {
+    margin-left: auto;
+    padding: 0 10px;
+
+    & > * {
+      margin: 0 5px;
+    }
+  }
+
+  .footer-brand-row .brand-logo {
+    height: 40px;
+  }
+
+  .footer.footer-popup-padding {
+    padding-bottom: 90px;
+  }
+}
+
+@media (hover: hover) {
+
+  .footer-link-item {
+
+    &:hover {
+      background: none;
+      color: var(--theme-color);
+    }
+  }
+}

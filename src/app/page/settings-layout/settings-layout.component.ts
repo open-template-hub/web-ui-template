@@ -10,12 +10,7 @@ import { ThemeService } from '../../service/theme/theme.service';
 } )
 export class SettingsLayoutComponent {
 
-  darkTheme: string;
   loading = false;
-
-  brand = {
-    brandLogo: '',
-  };
 
   sideNavClosed = 'false';
 
@@ -24,16 +19,7 @@ export class SettingsLayoutComponent {
       private themeService: ThemeService,
       private loadingService: LoadingService
   ) {
-    this.themeService.darkTheme.subscribe( darkTheme => {
-      this.darkTheme = darkTheme;
-    } );
-
-    this.themeService.sideNavClosed.subscribe( sideNavClosed => {
-      this.sideNavClosed = sideNavClosed;
-    } );
-
-    this.brand = this.themeService.brand;
-
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+    this.themeService.sideNavClosed.subscribe( sideNavClosed => this.sideNavClosed = sideNavClosed );
   }
 }

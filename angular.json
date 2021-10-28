@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -13,6 +16,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": "src/locale/messages.fr.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -24,16 +33,46 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets/common",
-              "src/assets/production"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src/assets/favicons/",
+                "output": "/"
+              },
+              {
+                "glob": "manifest.webmanifest",
+                "input": "src/",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "seo/",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "seo/",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json",
+            "localize": true
           },
           "configurations": {
+            "fr": {
+              "localize": [
+                "fr"
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -43,7 +82,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,58 +101,34 @@
               ]
             },
             "staging": {
-              "assets": [
-                "src/favicon.ico",
-                "src/assets/common",
-                "src/assets/staging"
-              ],
-              "styles": [
-                "src/styles/styles.staging.scss"
-              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.staging.ts"
                 }
-              ],
-              "index": {
-                "input": "src/index.staging.html",
-                "output": "index.html"
-              }
+              ]
             },
             "local": {
-              "assets": [
-                "src/favicon.ico",
-                "src/assets/common",
-                "src/assets/local"
-              ],
-              "styles": [
-                "src/styles/styles.local.scss"
-              ],
-              "index": {
-                "input": "src/index.local.html",
-                "output": "index.html"
-              }
+              "optimization": false,
+              "sourceMap": true,
+              "buildOptimizer": false,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "localize": false
             },
             "local-to-staging-api": {
-              "assets": [
-                "src/favicon.ico",
-                "src/assets/common",
-                "src/assets/local"
-              ],
-              "styles": [
-                "src/styles/styles.local.scss"
-              ],
+              "optimization": false,
+              "sourceMap": true,
+              "buildOptimizer": false,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "localize": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.local-to-staging-api.ts"
                 }
-              ],
-              "index": {
-                "input": "src/index.local.html",
-                "output": "index.html"
-              }
+              ]
             }
           }
         },
@@ -123,6 +138,9 @@
             "browserTarget": "web-ui-template:build"
           },
           "configurations": {
+            "fr": {
+              "browserTarget": "web-ui-template:build:fr"
+            },
             "production": {
               "browserTarget": "web-ui-template:build:production"
             },
@@ -151,11 +169,33 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src/assets/favicons/",
+                "output": "/"
+              },
+              {
+                "glob": "manifest.webmanifest",
+                "input": "src/",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "seo/",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "seo/",
+                "output": "/"
+              }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles/styles.scss"
             ],
             "scripts": []

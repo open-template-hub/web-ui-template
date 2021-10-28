@@ -5,9 +5,15 @@ console.info( env.parsed );
 
 const path = require( "path" );
 const express = require( "express" );
+const compression = require( "compression" );
 
 // express init
 const app = express();
+
+// compression
+app.use( compression() );
+
+app.disable( "x-powered-by" );
 
 // directory that we will serve
 app.use( express.static( __dirname + "/dist/web-ui-template" ) );
@@ -25,7 +31,13 @@ app.get( "*", function ( req, res, next ) {
 
 // redirect all requests to index.html
 app.get( "/*", function ( req, res ) {
-  res.sendFile( path.join( __dirname + "/dist/web-ui-template/index.html" ) );
+  let selectedLanguage = "en-US";
+
+  if ( req.acceptsLanguages( "fr" ) || req.url.startsWith( "/fr/" ) ) {
+    selectedLanguage = "fr";
+  }
+
+  res.sendFile( path.join( __dirname + "/dist/web-ui-template/" + selectedLanguage + "/index.html" ) );
 } );
 
 // listen port

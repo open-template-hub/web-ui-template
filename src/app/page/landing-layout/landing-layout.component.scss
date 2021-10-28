@@ -1,23 +1,89 @@
-.landing-form-page {
+@use '../../../styles/util/util';
+@use '../../../styles/page/page';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  height: 90px;
+  z-index: 11;
+}
+
+.header-filler {
+  height: 90px;
+}
+
+.raw-content-page-layout, .form-page-layout {
+  @include util.flex-layout-column;
+
+  justify-content: flex-start;
   align-items: center;
 }
 
-.landing-form-page app-social-button {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+.form-page-layout {
+  & .body {
+    box-sizing: border-box;
+    padding: 25px;
+    font-size: 17px;
+
+    & .social-login-wrapper {
+      & > * {
+        width: 100%;
+        margin: 0 0 10px;
+      }
+    }
+  }
+}
+
+.raw-content-page-layout {
+  padding: 0 0 7vh;
+
+  & .logo-wrapper {
+    padding-top: 5vh;
+  }
 }
 
 @media only screen and (max-width: 999px) {
-  .landing-form-page {
-    padding-top: 130px;
+
+  .header, .header-filler {
+    display: none;
+  }
+
+  .raw-content-page-layout, .form-page-layout {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    min-height: 80vh;
+  }
+
+  .form-page-layout {
+    & .body {
+      width: 94vw;
+    }
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .landing-form-page {
-    padding-top: 165px;
+
+  .header, .header-filler {
+    display: block;
+  }
+
+  .raw-content-page-layout, .form-page-layout {
+    padding-left: 90px;
+    padding-right: 90px;
+    min-height: 50vh;
+  }
+
+  .raw-content-page-layout {
+    & app-information-button {
+      margin-top: 30px;
+    }
+  }
+
+  .form-page-layout {
+    & .body {
+      width: 400px;
+    }
   }
 }

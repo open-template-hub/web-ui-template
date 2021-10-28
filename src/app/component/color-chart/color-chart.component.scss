@@ -1,0 +1,53 @@
+@use '../../../styles/util/util';
+
+@mixin default-chart-item {
+  box-sizing: border-box;
+  margin: 1px;
+
+  border-radius: var(--border-radius);
+
+  width: 18px;
+  height: 18px;
+
+  background-color: var(--darker-contrast);
+  border: 1px solid var(--shadow-lighter);
+
+  &.level-4 {
+    background-color: var(--theme-color-lighter-3);
+    border-color: var(--theme-color);
+  }
+
+  &.level-3 {
+    background-color: var(--theme-color-lighter-5);
+    border-color: var(--theme-color-lighter-3);
+  }
+
+  &.level-2 {
+    background-color: var(--theme-color-lighter-7);
+    border-color: var(--theme-color-lighter-6);
+  }
+
+  &.level-1 {
+    background-color: var(--theme-color-lighter-8);
+    border-color: var(--theme-color-lighter-7);
+  }
+}
+
+.color-chart {
+  @include util.flex-layout-row;
+  @include util.flex-center-center;
+
+  font-size: 17px;
+  font-weight: lighter;
+  float: right;
+  color: var(--color);
+
+  & p {
+    margin: 0 5px;
+  }
+
+  & .chart-item {
+    @include default-chart-item;
+  }
+}
+

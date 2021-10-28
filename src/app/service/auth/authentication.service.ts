@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { AuthToken } from '../../model/AuthToken';
+import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
+import { AuthToken } from '../../model/auth/auth-token.model';
 import { BusinessLogicService } from '../business-logic/business-logic.service';
 import { EventService } from '../event/event.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
@@ -18,10 +19,10 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<AuthToken>;
 
   constructor( private http: HttpClient,
-    private themeService: ThemeService,
-    private businessLogicService: BusinessLogicService,
-    private eventService: EventService,
-    private fileStorageService: FileStorageService
+      private themeService: ThemeService,
+      private businessLogicService: BusinessLogicService,
+      private eventService: EventService,
+      private fileStorageService: FileStorageService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' ) ? localStorage.getItem( 'currentUser' ) : sessionStorage.getItem( 'currentUser' );
     this.currentUserSubject = new BehaviorSubject<AuthToken>( JSON.parse( currentUserStorageItem ) );
@@ -46,8 +47,9 @@ export class AuthenticationService {
       }
       this.currentUserSubject.next( currentUser );
 
-      // TODO: get second parameter from business logic db
-      this.themeService.initTheme( false );
+      this.themeService.setDarkLightSetting( DarkLightSettings.auto );
+      this.themeService.setThemeColorSetting( DEFAULT_THEME );
+      this.themeService.setThemeDesignSetting( DEFAULT_THEME );
       this.themeService.initSideNavClosed( false );
 
       return currentUser;
@@ -88,19 +90,25 @@ export class AuthenticationService {
           Authorization: `Bearer ${ currentUser.accessToken }`
         }
       } );
+    } else {
+      request = request.clone( {
+        setHeaders: {
+          Authorization: 'Bearer '
+        }
+      } );
     }
     return request;
   }
 
-  socialLoginRedirect( social: any ) {
+  socialLoginRedirect( oauth: any ) {
     let state;
 
-    if ( social.callbackParams.includes( 'state' ) ) {
+    if ( oauth.callbackParams.includes( 'state' ) ) {
       state = this.generateUID( 20 );
       localStorage.setItem( 'loginSessionID', state );
     }
 
-    return this.http.post<any>( `${ environment.serverUrl }/social/login-url`, { key: social.tag, state } );
+    return this.http.post<any>( `${ environment.serverUrl }/social/login-url`, { key: oauth.tag, state } );
   }
 
   socialLogin( key: string, params: { code?, state?, oauth_token?, oauth_verifier? } ) {
@@ -114,19 +122,20 @@ export class AuthenticationService {
     }
 
     return this.http.post<any>( `${ environment.serverUrl }/social/login`,
-      {
-        key,
-        code: params.code,
-        state: params.state,
-        oauth_token: params.oauth_token,
-        oauth_verifier: params.oauth_verifier
-      }
+        {
+          key,
+          code: params.code,
+          state: params.state,
+          oauth_token: params.oauth_token,
+          oauth_verifier: params.oauth_verifier
+        }
     ).pipe( map( currentUser => {
       localStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
       this.currentUserSubject.next( currentUser );
 
-      // TODO: get second parameter from business logic db
-      this.themeService.initTheme( false );
+      this.themeService.setDarkLightSetting( DarkLightSettings.auto );
+      this.themeService.setThemeColorSetting( DEFAULT_THEME );
+      this.themeService.setThemeDesignSetting( DEFAULT_THEME );
       this.themeService.initSideNavClosed( false );
 
       return currentUser;
@@ -146,7 +155,7 @@ export class AuthenticationService {
     this.currentUser.subscribe( () => {
       this.businessLogicService.logout();
       this.eventService.logout();
-      this.businessLogicService.userInfo.subscribe( businessLogic => {
+      this.businessLogicService.userInfo.subscribe( () => {
         this.fileStorageService.logout();
       } );
     } );

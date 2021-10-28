@@ -1,0 +1,17 @@
+@use '../../util/util';
+
+:root {
+  --border-radius-counter-borders: 0 1em 0 1em;
+  --border-radius-image-counter-borders: 0 1em 0 1em;
+  --border-radius-product-line-counter-borders: var(--border-radius-counter-borders);
+  --height-bottom-line-counter-borders: 0;
+  --padding-line-counter-borders: 1.1em;
+}
+
+.counter-borders-theme {
+  --border-radius: var(--border-radius-counter-borders);
+  --border-radius-image: var(--border-radius-image-counter-borders);
+  --border-radius-product-line: var(--border-radius-product-line-counter-borders);
+  --height-bottom-line: var(--height-bottom-line-counter-borders);
+  --padding-line: var(--padding-line-counter-borders);
+}
