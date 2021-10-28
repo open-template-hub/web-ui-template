@@ -1,0 +1,54 @@
+@use '../util/util';
+
+.page {
+  background: {
+    position: center center;
+    repeat: no-repeat;
+    attachment: fixed;
+    size: cover;
+    color: var(--background-color);
+  };
+
+  padding: 0 0 env(safe-area-inset-left);
+
+  & .page-content {
+    overflow: initial;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.top-svg {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+
+  & svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100%;
+    min-height: 250px;
+    max-height: 450px;
+  }
+
+  position: absolute;
+}
+
+@media only screen and (max-width: 999px) {
+  .page {
+    font-size: 18px;
+  }
+
+  .top-svg {
+    top: 0;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .page {
+    font-size: 25px;
+    padding-bottom: 100px;
+  }
+}

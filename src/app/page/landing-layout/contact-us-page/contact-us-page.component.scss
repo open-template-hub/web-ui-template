@@ -1,0 +1,249 @@
+@use '../../../../styles/util/util';
+@use '../../../../styles/page/page';
+
+.input-with-label {
+  white-space: nowrap;
+  min-height: 42px;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  align-items: center;
+
+  & h4 {
+    font-weight: 500;
+    white-space: break-spaces;
+    text-align: left;
+    padding-right: 10px;
+  }
+
+  & input,
+  textarea,
+  select {
+    width: 60%;
+    min-width: 60%;
+    height: -webkit-fit-content;
+    @include util.default-fonts;
+  }
+}
+
+.contact-us-page-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & .body {
+    @include util.flex-layout-column;
+
+    justify-content: center;
+    padding: 50px 30px;
+
+    & label {
+      color: var(--success);
+    }
+  }
+
+  & > * {
+    margin: 0 15px;
+    text-align: center;
+  }
+}
+
+.form-span-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-top: 12px;
+}
+
+.input-with-label .span-description {
+  white-space: break-spaces;
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: var(--lighter-contrast);
+}
+
+select:focus {
+  color: var(--color);
+}
+
+select {
+  color: var(--lighter-contrast);
+}
+
+.button-area {
+  text-align: right;
+  float: right;
+  width: 45%;
+  margin-top: 70px;
+
+  & app-brand-button {
+    bottom: 2em;
+    width: -webkit-fit-content;
+
+    & span {
+      margin-left: 5px;
+      letter-spacing: 0.1em;
+    }
+
+    & i {
+      font-size: 15px;
+    }
+  }
+}
+
+textarea,
+input,
+select {
+  transition: initial;
+}
+
+.features-area {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 12em;
+
+  & h3 {
+    font-weight: 500;
+  }
+
+  & div {
+    @include util.flex-layout-row;
+
+    & i {
+      color: var(--theme-color);
+      margin-right: 8px;
+      font-weight: bold;
+    }
+
+    & h4 {
+      text-align: left;
+    }
+  }
+}
+
+.footer {
+  @include util.flex-layout-row;
+
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 40px;
+
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.footer-card-wrapper {
+  display: flex;
+}
+
+.footer-card-wrapper i {
+  font-size: 28px;
+  color: var(--theme-color);
+}
+
+.footer-card-right-column {
+  text-align: left;
+  margin-left: 12px;
+
+  & h4 {
+    color: var(--lighter-contrast);
+
+    &:first-child {
+      color: var(--lighter);
+      font-weight: 500;
+    }
+
+    &:last-child {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .contact-us-page-content {
+    flex-direction: column;
+
+    & > * {
+      width: 94vw;
+      margin: 50px 0;
+    }
+  }
+
+  .features-area {
+    width: 90%;
+    align-items: center;
+    justify-content: flex-start;
+
+    & div {
+      @include util.flex-layout-column;
+
+      & h4 {
+        text-align: center;
+      }
+
+      & i {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .footer {
+    flex-direction: column;
+    margin-top: 70px;
+  }
+
+  .footer-card-wrapper {
+    margin-bottom: 40px;
+    width: 94%;
+  }
+
+  .input-with-label {
+    flex-direction: column-reverse;
+
+    & input,
+    select,
+    textarea {
+      width: 90%;
+      margin-top: 5px;
+      align-items: center;
+    }
+
+    & textarea {
+      height: 100px;
+    }
+  }
+
+  .input-with-label:not(:first-child) {
+    margin-top: 35px;
+  }
+
+  .input-with-label select,
+  .input-with-label textarea {
+    width: 90%;
+  }
+
+  .button-area {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .contact-us-page-content {
+    & .body {
+      width: 600px;
+    }
+  }
+
+  .contact-us-page-content,
+  .footer {
+    font-size: 19px;
+  }
+
+  .footer-card-wrapper {
+    width: 45%;
+  }
+}

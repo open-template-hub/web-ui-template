@@ -1,0 +1,132 @@
+@use '../../../../styles/util/util';
+@use '../../card/card.component';
+
+.testimonial-card {
+
+  & .header {
+    text-align: left;
+    padding: 1em 1em 0.1em;
+
+    & i {
+      color: var(--theme-color);
+    }
+  }
+
+  & .body {
+    @include card.default-body;
+
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    // Design
+    padding: 25px;
+    text-align: center;
+
+    & .review {
+      @include util.flex-layout-column;
+
+      justify-content: flex-start;
+      margin-bottom: auto;
+
+      & p {
+        color: var(--lighter);
+        text-overflow: ellipsis;
+        overflow: auto;
+      }
+    }
+
+    & .reviewer {
+      @include util.flex-layout-column;
+
+      position: relative;
+
+      align-items: flex-start;
+
+      width: 100%;
+
+      z-index: 1;
+
+      & > * {
+        margin-left: 20%;
+      }
+
+      & svg {
+        position: absolute;
+        top: 25px;
+        left: -60px;
+        z-index: 1;
+
+        & .svg-path {
+          fill: var(--theme-color);
+        }
+      }
+
+      & img {
+        @include util.default-border-radius;
+
+        box-shadow: 0 3px 15px -5px var(--theme-color);
+
+        background-color: var(--card);
+
+        height: 100px;
+        margin-top: 30px;
+        border-bottom: 2px solid var(--theme-color);
+        z-index: 2;
+      }
+
+      & .social {
+        @include util.flex-layout-row;
+        @include util.flex-center-center;
+
+        font-size: 1rem;
+        margin-top: 7px;
+        z-index: 2;
+
+        & i {
+          color: var(--theme-color);
+        }
+      }
+    }
+
+    & .reviewer-info {
+      @include util.flex-layout-column;
+      @include util.flex-center-center;
+
+      align-items: flex-start;
+
+      z-index: 2;
+
+      padding-top: 35px;
+
+      max-width: 80%;
+
+      text-align: left;
+
+      & .name {
+        font-weight: bold;
+      }
+
+      & .title {
+        color: var(--lighter);
+      }
+
+      & > * {
+        color: var(--lighter);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .testimonial-card {
+    & .body {
+      height: 500px;
+
+      & p {
+        height: 210px;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,12 @@
+<app-content-loader [contentTemplate]="contentTemplate">
+  <ng-template #contentTemplate>
+    <div
+        [class]="
+        'box' + (boxContentLoaderClass ? ' ' + boxContentLoaderClass : '')
+      "
+        [style]="
+        (width ? 'width:' + width + 'px;' : '') +
+        (height ? 'height:' + height + 'px;' : '')
+      "></div>
+  </ng-template>
+</app-content-loader>

@@ -1,0 +1,113 @@
+@use '../../../../styles/util/util';
+@use '../../card/card.component';
+
+.pricing-card {
+
+  font-size: 0.85rem;
+
+  & .header {
+    // Design
+    padding-top: 35px;
+
+    & h4 {
+      letter-spacing: 0.6em;
+
+      // Design
+      text-align: center;
+    }
+
+    & .price-area {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+
+      & .currency {
+        font: {
+          size: 1.2em;
+          weight: lighter;
+        }
+
+        margin-top: 0.4em;
+      }
+
+      & .subscription-time {
+        margin-top: 2.5em;
+      }
+
+      & .currency, & .subscription-time {
+        color: var(--lighter-contrast)
+      }
+
+      & .price-value {
+        font-size: 4em;
+        letter-spacing: 0.1em;
+      }
+
+      & .contact-required {
+        font-size: 2.5em;
+      }
+
+      & .price-value, & .contact-required {
+        height: 63px;
+      }
+    }
+
+    & hr {
+      @include util.margin-x-auto;
+
+      border-color: var(--theme-color-lighter-7);
+      width: 70%;
+
+      margin-top: 2em;
+    }
+  }
+
+  & .body {
+    @include card.default-body;
+
+    // Design
+    min-height: 140px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    & p {
+      @include util.flex-layout-row;
+
+      align-items: center;
+      height: 22px;
+
+      & span {
+        padding-left: 1em;
+      }
+    }
+  }
+
+  & .footer {
+    @include card.default-footer;
+
+    border: 0;
+    padding-bottom: 35px;
+
+    & app-brand-button {
+      @include util.flex-layout-column;
+      @include util.flex-center-center;
+
+      & span {
+        margin-left: 5px;
+        letter-spacing: 0.1em;
+      }
+
+      & i {
+        font-size: 15px;
+      }
+
+      &:hover {
+        & i, & span {
+          color: var(--darker-contrast);
+        }
+      }
+    }
+  }
+}

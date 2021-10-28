@@ -1,0 +1,88 @@
+<ng-container *ngIf="product">
+  <div class="product-presentation" [ngSwitch]="getPresentationModel()">
+    <!-- Command Line Presentation -->
+    <ng-container *ngSwitchCase="'command-line'">
+      <app-animated-code-editor
+          [commandLines]="product.commandLines"></app-animated-code-editor>
+      <hr class="command-line-hr"/>
+      <p class="command-line-title">Generate your project in couple of seconds.</p>
+    </ng-container>
+
+    <!-- Video Presentation -->
+    <app-card *ngSwitchCase="'video'" [bodyTemplate]="bodyTemplate" [cardClass]="'transparent-card'" class="video-card">
+      <ng-template #bodyTemplate>
+        <div class=" body">
+          <video [src]="product.video.url" autoplay loop muted>
+            <track label="English" kind="captions" srclang="en" src="" default>
+            Your browser does not support HTML5 video.
+          </video>
+          <hr/>
+          <p class="feature-title">{{ product.video.description }}</p>
+        </div>
+      </ng-template>
+    </app-card>
+
+    <!-- Integration Swiper Presentation -->
+    <app-card *ngSwitchCase="'integrations'" [bodyTemplate]="bodyTemplate" [cardClass]="'transparent-card'"
+              [footerTemplate]="footerTemplate"
+              class="presentation-card">
+      <ng-template #bodyTemplate>
+        <div class="body">
+          <div class="social-login-wrapper">
+            <img [src]="product.logo" alt="logo" class="brand-logo" width="90"/>
+            <i aria-hidden="true" class="fa fa-check-circle"></i>
+            <app-presentation-swiper [items]="getPresentationSwiperItems()"
+                                     [height]="product.key === 'orchestration-server-template' ? 90 : 75">
+            </app-presentation-swiper>
+          </div>
+          <p class="feature-title">{{ presentationText }}</p>
+        </div>
+      </ng-template>
+      <ng-template #footerTemplate>
+        <div class="footer theme-color-lighter-3-border">
+          <p i18n="@@productPresentation.footer">Some of the preconfigured systems:</p>
+          <p>
+                <span *ngFor="let partner of presentationPartners; last as isLast">
+                  {{ partnerNameFormat( partner.name, isLast ) | titlecase }}
+                </span>
+          </p>
+          <small i18n="@@productPresentation.description">*configuration still requires some level of developer
+            experience</small>
+        </div>
+      </ng-template>
+    </app-card>
+
+    <!-- Demonstration Image Presentation -->
+    <app-card *ngSwitchCase="'demonstration-image'" [bodyTemplate]="bodyTemplate" [cardClass]="'transparent-card'"
+              class="demonstration-image-card">
+      <ng-template #bodyTemplate>
+        <div class=" body">
+          <a [href]="product.demonstrationImg.src.replace('min/', '').replace('.min', '')" target="_blank"
+             rel="noopener">
+            <img [src]="product.demonstrationImg.src" [alt]="product.demonstrationImg.description"/>
+          </a>
+          <hr/>
+          <p class="feature-title">{{ product.demonstrationImg.description }}</p>
+        </div>
+      </ng-template>
+    </app-card>
+
+    <!-- Features Presentation -->
+    <ng-container *ngSwitchDefault>
+      <app-card *ngIf="product.features" [bodyTemplate]="bodyTemplate" [cardClass]="'transparent-card'" class="features-card">
+        <ng-template #bodyTemplate>
+          <div class="body">
+            <ng-container *ngFor="let feature of product.features">
+              <p class="feature-title">{{ feature.name }}</p>
+
+              <div *ngFor="let detail of feature.details" class="details">
+                <p>{{ detail.name + ':' }}</p>
+                <p>{{ detail.description}}</p>
+              </div>
+            </ng-container>
+          </div>
+        </ng-template>
+      </app-card>
+    </ng-container>
+  </div>
+</ng-container>

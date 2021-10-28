@@ -1,0 +1,8 @@
+<app-content-loader [contentTemplate]="contentTemplate">
+  <ng-template #contentTemplate>
+    <div
+        [class]="
+        'image' + (imageContentLoaderClass ? ' ' + imageContentLoaderClass : '')
+      "></div>
+  </ng-template>
+</app-content-loader>

@@ -1,0 +1,11 @@
+<div class="raw-content-page-layout">
+  <div class="logo-wrapper">
+    <img [src]="BRAND.logo.error" alt="logo" class="brand-logo" height="150"/>
+  </div>
+
+  <!-- 404 Page not found -->
+  <app-hero [contents]="appHeroContents"
+            [heroClass]="'no-padding'"></app-hero>
+  <app-information-button (click)="router.navigate([URLS.root])" [informationType]="INFORMATION_TYPES.error"
+                          i18n-text="@@notFound.home.button" text="HOME"></app-information-button>
+</div>

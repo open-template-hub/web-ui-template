@@ -1,115 +1,41 @@
-export const environment = {
-  production: true,
+import { EnvironmentModel } from '../app/model/environment/environment.model';
+
+export const environment: EnvironmentModel = {
   identity: 'production',
 
-  serverUrl: 'https://oth-orchestration.herokuapp.com',
+  production: true,
 
-  clientUrl: 'https://oth-web-app.herokuapp.com',
+  serverUrl: 'https://oth-server-orchestra-live.herokuapp.com',
 
-  eventImageUrl: 'https://oth-web-app.herokuapp.com/assets/brand-logo-blue.png',
+  clientUrl: 'https://opentemplatehub.com',
 
-  mockDataEnabled: true,
+  mockDataEnabled: false,
 
-  oth: {
-    social: {
-      twitter: 'opentemplatehub',
-      linkedin: 'open-template-hub',
-      github: 'open-template-hub',
-      productHunt: '@open_template_hub'
-    }
-  },
-
-  social: {
+  oauth: {
     twitter: {
-      tag: 'TWITTER',
-      callbackParams: [ 'oauth_token', 'oauth_verifier' ],
-      logo: './assets/common/social/twitter-logo.png',
-      cssClass: 'twitter',
-      url: 'https://twitter.com',
-      shareUrl: 'https://twitter.com/intent/tweet?url='
+      tag: 'TWITTER'
     },
     google: {
-      tag: 'GOOGLE',
-      callbackParams: [ 'code', 'state' ],
-      logo: './assets/common/social/google-logo.png',
-      cssClass: 'google'
+      tag: 'GOOGLE'
     },
     facebook: {
-      tag: 'FACEBOOK',
-      callbackParams: [ 'code' ],
-      logo: './assets/common/social/facebook-logo.png',
-      cssClass: 'facebook-f',
-      url: 'https://facebook.com'
-    },
-    instagram: {
-      cssClass: 'instagram',
-      url: 'https://www.instagram.com'
-    },
-    youtube: {
-      cssClass: 'youtube',
-      url: 'https://youtube.com'
+      // Facebook does not allow testing social login at localhost. This configuration will redirect you to development env.
+      tag: 'FACEBOOK'
     },
     linkedin: {
-      tag: 'LINKEDIN',
-      callbackParams: [ 'code', 'state' ],
-      logo: './assets/common/social/linkedin-logo.png',
-      cssClass: 'linkedin-in',
-      url: 'https://www.linkedin.com',
-      shareUrl: 'https://www.linkedin.com/sharing/share-offsite/?url='
+      tag: 'LINKEDIN'
     },
     twitch: {
-      tag: 'TWITCH',
-      callbackParams: [ 'code', 'state' ],
-      logo: './assets/social/twitch-logo.png',
-      cssClass: 'twitch'
+      tag: 'TWITCH'
     },
     github: {
-      tag: 'GITHUB',
-      callbackParams: [ 'code', 'state' ],
-      logo: './assets/common/social/github-logo.png',
-      cssClass: 'github'
+      tag: 'GITHUB'
     },
     dribbble: {
-      tag: 'DRIBBBLE',
-      callbackParams: [ 'code', 'state' ],
-      logo: './assets/social/dribbble-logo.png',
-      cssClass: 'dribbble'
+      tag: 'DRIBBBLE'
     },
     reddit: {
-      tag: 'REDDIT',
-      callbackParams: [ 'code', 'state' ],
-      logo: './assets/social/reddit-logo.png',
-      cssClass: 'reddit-alien'
-    },
-    stripe: {
-      cssClass: 'stripe-s'
-    },
-    coinbase: {
-      cssClass: 'coinbase'
-    },
-    paypal: {
-      cssClass: 'paypal'
-    },
-    productHunt: {
-      cssClass: 'product-hunt'
-    },
-    appleCalendar: {
-      logo: './assets/common/social/apple-calendar-logo.png',
-      cssClass: 'apple-calendar'
-    },
-    googleCalendar: {
-      logo: './assets/common/social/google-calendar-logo.png',
-      cssClass: 'google-calendar'
-    }
-  },
-
-  donation: {
-    buymeacoffee: {
-      cssClass: 'buymeacoffee',
-      logo: './assets/common/social/buymeacoffee-logo.png'
-    },
-    patreon: {
-      cssClass: 'patreon'
+      tag: 'REDDIT'
     }
   },
 
@@ -117,18 +43,44 @@ export const environment = {
     stripe: {
       tag: 'STRIPE',
       publishableKey: 'pk_test_51I4pFdJslj2vUcp7AkRtYwCPiZJbSvGK7lNFggSbLp9LQopdnUJU44mBKlREonmvszmASnyv4FMxQztzFedllxJO00wg7mHS85',
-      logo: './assets/common/social/stripe-logo.png',
-      cssClass: 'stripe-s'
     },
     coinbase: {
       tag: 'COINBASE'
     },
     paypal: {
       tag: 'PAYPAL',
-      cliendId: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-      version: '5.0.128',
-      env: 'sandbox'
-      // env: 'live'
+      clientId: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+      env: 'live'
+    }
+  },
+
+  fileStorage: {
+    aws: {
+      tag: 'AWS'
+    },
+    googleCloud: {
+      tag: 'GOOGLE_CLOUD'
+    }
+  },
+
+  mail: {
+    gmail: {
+      tag: 'GMAIL'
+    },
+    yahoo: {
+      tag: 'YAHOO'
+    },
+    outlook: {
+      tag: 'OUTLOOK'
+    }
+  },
+
+  analytics: {
+    googleAnalytics: {
+      tag: 'GTM-NNRF845'
+    },
+    matomo: {
+      tag: ''
     }
   }
 };

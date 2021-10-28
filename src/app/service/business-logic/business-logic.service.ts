@@ -13,7 +13,9 @@ export class BusinessLogicService {
   public userInfoSubject: BehaviorSubject<any>;
 
   constructor( private http: HttpClient ) {
-    const userInfoStorageItem = localStorage.getItem( 'userInfo' ) ? localStorage.getItem( 'userInfo' ) : sessionStorage.getItem( 'userInfo' );
+    const userInfoStorageItem = localStorage.getItem( 'userInfo' ) ?
+        localStorage.getItem( 'userInfo' ) :
+        sessionStorage.getItem( 'userInfo' );
     this.userInfoSubject = new BehaviorSubject<any>( JSON.parse( userInfoStorageItem ) );
     this.userInfo = this.userInfoSubject.asObservable();
   }

@@ -1,0 +1,123 @@
+@use '../../../../styles/util/util';
+@use '../card.component';
+
+.presentation-card {
+  cursor: pointer;
+
+  & .header {
+    margin-top: -41px;
+    padding-bottom: 10px;
+  }
+
+  & .body {
+    @include card.default-body;
+    @include util.flex-layout-column;
+
+    overflow: hidden;
+    position: relative;
+
+    width: 100%;
+
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 15px 15px 12px;
+
+    & .presentation-item-content {
+      @include util.default-border-radius;
+      @include util.flex-layout-column;
+      @include util.flex-center-center;
+      @include util.default-shadow;
+
+      overflow: hidden;
+      margin-bottom: 20px;
+
+      height: 150px;
+      box-shadow: none;
+    }
+
+    & p, & a {
+      font-size: 18px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    & .presentation-description {
+      font-size: 15px;
+      color: var(--lighter-contrast);
+      font-weight: lighter;
+      padding: 0 10px;
+    }
+
+    & > * {
+      transform: translateY(0);
+      transition: transform 1s cubic-bezier(.31, 1.21, .64, 1.02);
+      margin-bottom: 12px;
+    }
+  }
+
+  & .footer {
+    @include card.default-footer;
+
+    border-top: none;
+
+    & p {
+      margin-top: auto;
+      margin-left: auto;
+      font-size: 14px;
+      font-weight: lighter;
+      padding: 0 20px 15px;
+      color: var(--theme-color-lighter-4);
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .presentation-card {
+    & .body {
+      width: 94vw;
+
+      justify-content: space-between;
+
+      & .button {
+        position: relative;
+        visibility: visible;
+      }
+
+      & .presentation-item-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .presentation-card {
+    & .body {
+      height: 180px;
+      justify-content: flex-start;
+
+      & .button {
+        position: absolute;
+        top: 300px;
+        visibility: hidden;
+        transition: all 1s cubic-bezier(.31, 1.21, .64, 1.02);
+      }
+    }
+
+    &:hover {
+      & .body {
+        & .presentation-description {
+          transform: translateY(-250px);
+        }
+
+        & .button {
+          top: 80px;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

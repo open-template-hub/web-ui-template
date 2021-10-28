@@ -1,0 +1,50 @@
+@use '../landing-layout.component';
+@use '../../../../styles/util/util';
+@use '../../../component/card/policy-card/policy-card.component';
+
+.raw-content-page-layout {
+  & .policy-content {
+    text-align: left;
+  }
+
+  & .branding-resources-wrapper {
+    @include util.flex-center-center;
+
+    padding-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .raw-content-page-layout {
+
+    & .branding-resources-wrapper {
+      @include util.flex-layout-column;
+
+      padding-bottom: 50px;
+
+      & > * {
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .raw-content-page-layout {
+    & .branding-resources-wrapper {
+      @include util.flex-layout-row;
+      @include util.flex-center-center;
+      @include util.margin-x-auto;
+
+      justify-content: center;
+
+      width: 800px;
+
+      flex-wrap: wrap;
+
+      & > * {
+        margin: 15px;
+      }
+    }
+  }
+}

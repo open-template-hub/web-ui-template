@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
 import { ThemeService } from '../theme/theme.service';
 
 @Injectable( {
@@ -8,41 +7,40 @@ import { ThemeService } from '../theme/theme.service';
 } )
 export class ToastService {
 
-  darkTheme: string;
+  darkLightSetting: string;
 
-  constructor(
-      private toastrService: ToastrService,
-      private themeService: ThemeService ) {
+  constructor( private toastrService: ToastrService, private themeService: ThemeService ) {
 
-    this.themeService.darkTheme.subscribe( darkTheme => {
-      this.darkTheme = darkTheme;
+    this.themeService.darkLightSetting.subscribe( darkLightSetting => {
+      this.darkLightSetting = darkLightSetting;
     } );
   }
 
-  error( message?: string, title?: string, override?: Partial<IndividualConfig> ) {
-    override = this.applyTheme( override );
-    this.toastrService.error( message, title, override );
+  error( message?: string, title?: string ) {
+    this.toastrService.error( message, title, this.applyTheme() );
   }
 
-  warning( message?: string, title?: string, override?: Partial<IndividualConfig> ) {
-    override = this.applyTheme( override );
-    this.toastrService.warning( message, title, override );
+  warning( message?: string, title?: string ) {
+    this.toastrService.warning( message, title, this.applyTheme() );
   }
 
-  success( message?: string, title?: string, override?: Partial<IndividualConfig> ) {
-    override = this.applyTheme( override );
-    this.toastrService.success( message, title, override );
+  success( message?: string, title?: string ) {
+    this.toastrService.success( message, title, this.applyTheme() );
   }
 
-  info( message?: string, title?: string, override?: Partial<IndividualConfig> ) {
-    override = this.applyTheme( override );
-    this.toastrService.info( message, title, override );
+  info( message?: string, title?: string ) {
+    this.toastrService.info( message, title, this.applyTheme() );
   }
 
-  private applyTheme( override?: Partial<IndividualConfig> ) {
-    if ( override && this.darkTheme === 'true' ) {
-      override.toastClass = 'ngx-toastr-dark-mode';
+  private applyTheme() {
+    const config: any = {};
+    if ( this.darkLightSetting === 'dark' ) {
+      config.toastClass = 'ngx-toastr-dark-mode';
     }
-    return override;
+    if ( this.darkLightSetting === 'light' ) {
+      config.toastClass = 'ngx-toastr-light-mode';
+    }
+
+    return config;
   }
 }

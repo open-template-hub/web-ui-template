@@ -8,15 +8,16 @@
 Open Template Hub - Web UI Template v3
 </h1>
 
-[![License](https://img.shields.io/github/license/open-template-hub/web-ui-template?color=2F7488&style=for-the-badge)](LICENSE)
-[![Issues](https://img.shields.io/github/issues/open-template-hub/web-ui-template?color=2F7488&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/issues)
-[![PRCLosed](https://img.shields.io/github/issues-pr-closed-raw/open-template-hub/web-ui-template?color=2F7488&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/pulls?q=is%3Apr+is%3Aclosed)
-[![LastCommit](https://img.shields.io/github/last-commit/open-template-hub/web-ui-template?color=2F7488&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/commits/master)
-[![Release](https://img.shields.io/github/release/open-template-hub/web-ui-template?include_prereleases&color=2F7488&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/releases)
+[![License](https://img.shields.io/github/license/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/issues)
+[![PRCLosed](https://img.shields.io/github/issues-pr-closed-raw/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/pulls?q=is%3Apr+is%3Aclosed)
+[![LastCommit](https://img.shields.io/github/last-commit/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/commits/master)
+[![Release](https://img.shields.io/github/release/open-template-hub/web-ui-template?include_prereleases&color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/releases)
+[![Lighthouse](https://img.shields.io/badge/LIGHTHOUSE-report-43b043.svg?style=for-the-badge&logo=lighthouse)](docs/lighthouse-report-desktop.html)
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_web-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_web-ui-template)
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
-Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.
+Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support. (generated from [Web UI Template](https://github.com/open-template-hub/web-ui-template))
 
 <h3 align="center">
   For demo click the image below ⬇️
@@ -24,7 +25,7 @@ Web UI Template is modern, responsive and customisable web ui template for your 
 
 <p align="center">
   <a href="https://opentemplatehub.com">
-    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/company-profile-ui-demo-light.png" alt="Screenshot" width="800px">
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/web-ui-demo-light.png" alt="Screenshot" width="800px">
   </a>
 </p>
 
@@ -36,7 +37,13 @@ Deploy this template to Heroku
 
 [![Deploy](https://img.shields.io/badge/Deploy_to-Heroku-7056bf.svg?style=for-the-badge&logo=heroku)](https://heroku.com/deploy?template=https://github.com/open-template-hub/web-ui-template)
 
-### 2. GitHub Template
+### 2. Start with UI Generator
+
+Create your UI with UI Generator Package
+
+[![NPM](https://img.shields.io/badge/NPM-ui_generator-cb3837.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@open-template-hub/app-generator)
+
+### 3. GitHub Template
 
 Use this repository as a Template
 
@@ -122,8 +129,37 @@ PORT=4200
 
 <br/>
 
-
 Check project's current **nodejs** and **npm** version from **[package.json](package.json)**.
+
+## Brand Color Scale Generator
+
+To be able to generate brand color scales, we are using **[Colllor](http://colllor.com)**.
+
+<br/>
+
+## Favicon Generation
+
+To be able to generate favicon, refer to **[FAVICON_GENERATION.md](docs/FAVICON_GENERATION.md)** file.
+
+<br/>
+
+## Cookie Policy Generation
+
+To be able to generate cookie policy, use **[cookiepolicygenerator](https://www.cookiepolicygenerator.com)** site.
+
+<br/>
+
+## Localization
+
+To be able to generate or update localization, use [updateMessages.run.xml](.run/updateMessages.run.xml).
+
+<br/>
+
+## Outdated
+
+Refer to **[OUTDATED.md](docs/OUTDATED.md)** to see outdated npm packages and update them with your own risk.
+
+<br/>
 
 ## Contributors
 
@@ -157,3 +193,6 @@ Refer to **[CODE_OF_CONDUCT.md](https://github.com/open-template-hub/.github/blo
 ## LICENSE
 
 The source code for this project is released under the [MIT License](LICENSE).
+
+
+<table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2021</b></td></tr></table>

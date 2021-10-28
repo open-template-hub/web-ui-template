@@ -1,0 +1,174 @@
+@use '../../../../styles/util/util';
+@use '../../card/card.component';
+
+@mixin arrow {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+@mixin marker {
+  @include util.default-border-radius;
+
+  position: absolute;
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: var(--theme-color);
+}
+
+.timeline-card {
+
+  & .header {
+    @include util.flex-layout-column;
+    @include util.flex-center-center;
+
+    z-index: 2;
+
+    // Design
+    height: 80px;
+    font-size: 22px;
+
+    // Color
+    background-color: var(--theme-color);
+    border-bottom: 1px solid var(--theme-color-darker-2);
+
+    & p {
+      font-size: 19px;
+      color: var(--darker-contrast);
+
+      &:first-child {
+        font-size: 21px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  & .body {
+    @include card.default-body;
+    @include util.default-padding-line;
+
+    padding: 0;
+
+    justify-content: flex-start;
+
+    & .img-wrapper {
+      display: block;
+
+      width: 100%;
+    }
+
+    & p {
+      padding: 20px;
+      font-size: 17px;
+      color: var(--color);
+    }
+
+    & > * {
+      max-width: 100%;
+    }
+  }
+
+  & .footer {
+    @include card.default-footer;
+    @include card.default-footer-border-color;
+    @include util.flex-layout-row;
+
+    justify-content: flex-end;
+
+    & small {
+      font-size: 17px;
+      color: var(--lighter-contrast);
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+
+  .timeline-card {
+
+    & .body {
+      font-size: 16px;
+
+      & .img-wrapper {
+        width: 100%;
+
+        & > * {
+          width: 100%;
+        }
+      }
+    }
+
+    & .footer {
+      padding: 15px 20px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .timeline-card {
+
+    & .header {
+      &::before {
+        @include marker;
+      }
+
+      &.left::before {
+        left: calc(100% + 44px);
+      }
+
+      &.right::before {
+        right: calc(100% + 35px);
+      }
+
+      &::after {
+        @include arrow;
+        color: var(--theme-color);
+        top: 25px;
+      }
+
+      &.left::after {
+        border-left: {
+          width: 15px;
+          style: solid;
+        }
+
+        left: 100%;
+      }
+
+      &.right::after {
+        border-right: {
+          width: 15px;
+          style: solid;
+        }
+
+        right: 100%;
+      }
+    }
+
+    & .body {
+      font-size: 18px;
+
+      & > * {
+        max-height: 250px;
+      }
+
+      & .img-wrapper {
+        & > * {
+          max-width: 100%;
+        }
+      }
+
+      // Design
+      height: 350px;
+    }
+
+    & .footer {
+      padding: 15px 20px;
+    }
+  }
+}

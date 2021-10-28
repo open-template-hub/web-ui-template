@@ -1,0 +1,138 @@
+@use '../../../styles/util/util';
+@use '../../../styles/social/social';
+@use '../../../styles/information/information';
+
+@mixin default-button {
+  @include util.flex-layout-row;
+  @include util.flex-center-center;
+  @include util.default-border-radius;
+
+  padding: 12px;
+
+  background-color: var(--theme-color);
+
+  width: 100%;
+  min-width: 150px;
+}
+
+@mixin default-icon {
+  margin-right: 5px;
+}
+
+@mixin default-content {
+  color: var(--darker-contrast);
+  font-weight: 400;
+}
+
+@mixin selected-button-shadow {
+  box-shadow: 0 0 3px 3px var(--theme-color-lighter-1);
+}
+
+.button {
+  // Include
+  @include default-button;
+
+  // Position
+  position: relative;
+
+  // Design
+  border: none;
+  cursor: pointer;
+
+  // Aligning
+  vertical-align: text-bottom;
+
+  // Font
+  font-weight: 300;
+  font-size: 14px;
+
+  & .content {
+    @include default-content;
+
+    & .icon {
+      @include default-icon;
+    }
+  }
+
+  &:hover {
+    @include util.default-shadow;
+  }
+
+  &.information-button {
+    background-color: var(--info);
+  }
+
+  &.brand-button {
+    background-color: var(--social);
+
+    &.just-icon {
+      min-width: 50px;
+    }
+
+    & .content {
+      color: white;
+    }
+  }
+
+  &.transparent-button {
+    background-color: transparent;
+  }
+
+  // Borders
+  $border-colors: (
+      "theme-color": var(--theme-color),
+      "lighter-contrast": var(--lighter-contrast)
+  );
+  @each $border-color-name, $border-color in $border-colors {
+    &.#{$border-color-name}-border-color {
+      border: 1px solid #{$border-color};
+    }
+  }
+
+  // Font Colors
+  $font-colors: (
+      "theme-color": var(--theme-color),
+      "lighter-contrast": var(--lighter-contrast),
+      "whitesmoke": whitesmoke
+  );
+  @each $font-color-name, $font-color in $font-colors {
+    &.#{$font-color-name}-font-color .content {
+      color: #{$font-color};
+    }
+  }
+
+  // Background Colors
+  $background-colors: (
+      "theme-color-lighter-4": var(--theme-color-lighter-4)
+  );
+  @each $background-color-name, $background-color in $background-colors {
+    &.#{$background-color-name}-background-color {
+      background-color: #{$background-color};
+    }
+  }
+
+  // Shadows
+  &.selected-button-shadow {
+    @include selected-button-shadow;
+  }
+
+  &.no-shadow-box {
+    box-shadow: initial;
+  }
+
+  // Cursor
+  &.cursor-not-allowed {
+    cursor: not-allowed;
+  }
+
+  // Dark Light Themes
+  &.disable-dark-mode {
+    color: var(--contrast-light-mode);
+    background-color: var(--color-light-mode);
+  }
+
+  &.disable-light-mode {
+    color: var(--contrast-dark-mode);
+    background-color: var(--color-dark-mode);
+  }
+}
