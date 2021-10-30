@@ -3,7 +3,6 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountUp } from 'countup.js';
 import { FEATURES } from 'src/app/data/feature/feature.data';
-import { PARTNERS } from 'src/app/data/partner/partner.data';
 import { TESTIMONIALS } from 'src/app/data/testimonial/testimonial.data';
 import { Feature } from 'src/app/model/feature/feature.model';
 import { Testimonial } from 'src/app/model/testimonial/testimonial.model';
@@ -31,9 +30,6 @@ export class HomePageComponent implements AfterViewInit {
   BRAND = BRAND;
   URLS = URLS;
   PRODUCT_LINES = PRODUCT_LINES;
-
-  // Todo: Change this with customers
-  PARTNERS: Partner[] = PARTNERS;
 
   TESTIMONIALS: Testimonial[] = TESTIMONIALS.slice( 0, TESTIMONIALS.length < 3 ? TESTIMONIALS.length : 3 );
   FEATURES: Feature[] = FEATURES;
