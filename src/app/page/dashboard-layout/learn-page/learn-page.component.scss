@@ -15,12 +15,11 @@
   color: var(--color);
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
+  padding-top: 100px;
   width: -webkit-fill-available;
   max-width: 800px;
   height: 120px;
   z-index: 10;
-  background-color: var(--background-color);
   padding-bottom: 10px;
 }
 
@@ -53,7 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  top: 50px;
+  top: 145px;
   background-color: var(--background-color);
   box-shadow: 0 0 5px var(--shadow);
   z-index: 12;
