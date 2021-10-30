@@ -33,9 +33,7 @@ import { EventCardComponent } from './component/card/event-card/event-card.compo
 import { FeatureCardComponent } from './component/card/feature-card/feature-card.component';
 import { PolicyCardComponent } from './component/card/policy-card/policy-card.component';
 import { PresentationCardComponent } from './component/card/presentation-card/presentation-card.component';
-import { PricingCardComponent } from './component/card/pricing-card/pricing-card.component';
 import { StatusCardComponent } from './component/card/status-card/status-card.component';
-import { TestimonialCardComponent } from './component/card/testimonial-card/testimonial-card.component';
 import { TimelineCardComponent } from './component/card/timeline-card/timeline-card.component';
 import { ColorChartComponent } from './component/color-chart/color-chart.component';
 import { BoxContentLoaderComponent } from './component/content-loader/box-content-loader/box-content-loader.component';
@@ -154,8 +152,6 @@ FullCalendarModule.registerPlugins( [
     SearchComponent,
     RateBarComponent,
     EditThemePageComponent,
-    PricingCardComponent,
-    TestimonialCardComponent,
     DropdownMenuComponent,
     EditThemePageComponent,
     ColorChartComponent,
