@@ -21,7 +21,6 @@ import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AnimatedCodeEditorComponent } from './component/animated-code-editor/animated-code-editor.component';
 import { BrandButtonComponent } from './component/button/brand-button/brand-button.component';
 import { ButtonComponent } from './component/button/button.component';
 import { EventButtonComponent } from './component/button/event-button/event-button.component';
@@ -39,7 +38,6 @@ import { StatusCardComponent } from './component/card/status-card/status-card.co
 import { TestimonialCardComponent } from './component/card/testimonial-card/testimonial-card.component';
 import { TimelineCardComponent } from './component/card/timeline-card/timeline-card.component';
 import { ColorChartComponent } from './component/color-chart/color-chart.component';
-import { CommandLineComponent } from './component/command-line/command-line.component';
 import { BoxContentLoaderComponent } from './component/content-loader/box-content-loader/box-content-loader.component';
 import { ContentLoaderComponent } from './component/content-loader/content-loader.component';
 import { ImageContentLoaderComponent } from './component/content-loader/image-content-loader/image-content-loader.component';
@@ -63,8 +61,6 @@ import { DashboardLayoutTopNavComponent } from './component/nav/dashboard/dashbo
 import { FooterComponent } from './component/nav/footer/footer.component';
 import { LandingLayoutTopNavComponent } from './component/nav/landing/landing-layout-top-nav/landing-layout-top-nav.component';
 import { CookiePopupComponent } from './component/popup/cookie-popup/cookie-popup.component';
-import { PricePlanComponent } from './component/price-plan/price-plan.component';
-import { ProductPresentationComponent } from './component/product-represantation/product-presentation.component';
 import { RateBarComponent } from './component/rate-bar/rate-bar.component';
 import { SearchComponent } from './component/search/search.component';
 import { SideContentComponent } from './component/side-content/side-content.component';
@@ -83,7 +79,6 @@ import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/
 import { PublicProfilePageComponent } from './page/dashboard-layout/public-profile-page/public-profile-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import { BrandingPageComponent } from './page/landing-layout/branding-page/branding-page.component';
-import { ContactUsPageComponent } from './page/landing-layout/contact-us-page/contact-us-page.component';
 import { ForgetPasswordPageComponent } from './page/landing-layout/form-pages/forget-password-page/forget-password-page.component';
 import { LoginPageComponent } from './page/landing-layout/form-pages/login-page/login-page.component';
 import { ResetPasswordPageComponent } from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
@@ -93,8 +88,6 @@ import { LandingLayoutComponent } from './page/landing-layout/landing-layout.com
 import { CookiePolicyPageComponent } from './page/landing-layout/policy-pages/cookie-policy-page/cookie-policy-page.component';
 import { PrivacyPolicyPageComponent } from './page/landing-layout/policy-pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsPageComponent } from './page/landing-layout/policy-pages/terms-page/terms-page.component';
-import { PricingPageComponent } from './page/landing-layout/pricing-page/pricing-page.component';
-import { ProductPageComponent } from './page/landing-layout/product-page/product-page.component';
 import { MaintenancePageComponent } from './page/landing-layout/raw-content-pages/maintenance-page/maintenance-page.component';
 import { NotFoundPageComponent } from './page/landing-layout/raw-content-pages/not-found-page/not-found-page.component';
 import { SignUpSuccessPageComponent } from './page/landing-layout/raw-content-pages/sign-up-success-page/sign-up-success-page.component';
@@ -106,19 +99,13 @@ import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.
 import { CallbackPageComponent } from './page/splash-layout/callback-page/callback-page.component';
 import { ExternalRedirectPageComponent } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
-import { CustomersPageComponent } from './page/landing-layout/customers-page/customers-page.component';
 import { AssetCardComponent } from './component/card/asset-card/asset-card.component';
-import { BlogPageComponent } from './page/landing-layout/blog-page/blog-page.component';
 import { BlogCardComponent } from './component/card/blog-card/blog-card.component';
-import { DocsPageComponent } from './page/landing-layout/docs-page/docs-page.component';
 import { DocCardComponent } from './component/card/doc-card/doc-card.component';
-import { PartnersPageComponent } from './page/landing-layout/partners-page/partners-page.component';
 import { BlogHolderCardComponent } from './component/card/blog-holder-card/blog-holder-card.component';
-import { BlogContentPageComponent } from './page/landing-layout/blog-page/blog-content-page/blog-content-page.component';
 import { ScreenshotSwiperComponent } from './component/swiper/screenshot-swiper/screenshot-swiper.component';
 import { TechStackCardComponent } from './component/card/tech-stack-card/tech-stack-card.component';
 import { DocHolderCardComponent } from './component/card/doc-holder-card/doc-holder-cardcomponent';
-import { DocsContentPageComponent } from './page/landing-layout/docs-page/docs-content-page/docs-content-page.component';
 import { StepTimelineCardComponent } from './component/card/timeline-card/step-timeline-card/step-timeline-card.component';
 
 FullCalendarModule.registerPlugins( [
@@ -167,25 +154,17 @@ FullCalendarModule.registerPlugins( [
     SearchComponent,
     RateBarComponent,
     EditThemePageComponent,
-    PricingPageComponent,
     PricingCardComponent,
     TestimonialCardComponent,
     DropdownMenuComponent,
     EditThemePageComponent,
     ColorChartComponent,
-    ProductPageComponent,
     ExtLinkComponent,
     ExternalRedirectPageComponent,
     AboutUsPageComponent,
-    PricePlanComponent,
-    ContactUsPageComponent,
-    AnimatedCodeEditorComponent,
-    CommandLineComponent,
     StatusPageComponent,
-    ProductPresentationComponent,
     CardComponent,
     EmployeeCardComponent,
-    ProductPresentationComponent,
     StatusCardComponent,
     PolicyCardComponent,
     TimelineCardComponent,
@@ -212,19 +191,13 @@ FullCalendarModule.registerPlugins( [
     CounterBordersTopSvgComponent,
     TopSvgComponent,
     LeafTopSvgComponent,
-    CustomersPageComponent,
     AssetCardComponent,
-    BlogPageComponent,
     BlogCardComponent,
-    DocsPageComponent,
     DocCardComponent,
-    PartnersPageComponent,
     BlogHolderCardComponent,
-    BlogContentPageComponent,
     ScreenshotSwiperComponent,
     TechStackCardComponent,
     DocHolderCardComponent,
-    DocsContentPageComponent,
     StepTimelineCardComponent,
   ],
   imports: [
