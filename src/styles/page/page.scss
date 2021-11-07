@@ -28,9 +28,9 @@
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 100%;
+    height: calc(100% + 7vh);
     min-height: 250px;
-    max-height: 450px;
+    max-height: 500px;
   }
 
   position: absolute;
@@ -43,6 +43,10 @@
 
   .top-svg {
     top: 0;
+
+    & svg {
+      min-height: 450px;
+    }
   }
 }
 

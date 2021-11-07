@@ -1,12 +1,12 @@
 <div class="hero">
   <div class="hero-left">
-    <h1>Open Template Hub</h1>
+    <h2>Open Template Hub</h2>
     <p>
       {{ BRAND.bio }}
     </p>
+    <app-button i18n-text="@@homePage.getStartedButton" text="Get Started" [routerLink]="URLS.signup"></app-button>
   </div>
-
-  <div class="hero-right">
+  <!--<div class="hero-right">
     <app-image-content-loader
         *ngIf="!brandLogoLoaded"
         [imageContentLoaderClass]="'brand-logo-main'"></app-image-content-loader>
@@ -17,7 +17,7 @@
         [alt]="BRAND.heroImage.description"
         height="450"
         width="800"/>
-  </div>
+  </div>-->
 </div>
 
 <div class="counters">

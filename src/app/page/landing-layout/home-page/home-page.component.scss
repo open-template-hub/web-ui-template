@@ -22,8 +22,14 @@
     @include util.flex-center-center;
   }
 
-  & .hero-left p {
-    font-size: 24px;
+  & .hero-left {
+    & p {
+      font-size: 24px;
+    }
+
+    & app-button {
+      padding: 25px;
+    }
   }
 
   & .hero-right img {
@@ -128,12 +134,16 @@
     font-size: 25px;
 
     & .hero-left {
-      & h1 {
+      & h2 {
         padding: 30px 0;
       }
 
       & p {
         font-size: 18px;
+      }
+
+      & app-button {
+        padding: 25px;
       }
     }
 
@@ -203,7 +213,7 @@
 
       padding-bottom: 50px;
 
-      & h1 {
+      & h2 {
         padding: 40px 0;
       }
     }
