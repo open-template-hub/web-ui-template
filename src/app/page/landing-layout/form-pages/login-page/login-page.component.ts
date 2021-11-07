@@ -12,6 +12,7 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { InformationService } from '../../../../service/information/information.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ToastService } from '../../../../service/toast/toast.service';
+import { WebsiteModel } from '../../../../model/website/website.model'
 
 @Component( {
   selector: 'app-login-page',
@@ -32,7 +33,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   URLS = URLS;
 
-  appHeroContents = [ {text: $localize `:@@loginPage.appHero:Welcome`, level: 1} ]
+  appHeroContents = [ {text: $localize `:@@loginPage.appHero:Welcome`, level: 1} ];
+
+  websites: WebsiteModel[] = [];
 
   constructor(
       private formBuilder: FormBuilder,
@@ -50,6 +53,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       this.router.navigate( [ URLS.dashboard.root ] );
     }
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+
+    for ( const website in environmentCommon.website ) {
+      if ( ( environmentCommon.website[ website ] as WebsiteModel )?.websiteType === 'oauth' ) {
+        this.websites.push( environmentCommon.website[ website ] )
+      }
+    }
   }
 
   ngOnInit() {
