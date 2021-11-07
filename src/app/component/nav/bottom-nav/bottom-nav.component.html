@@ -13,24 +13,12 @@
     <span> Home </span>
   </a>
   <a [routerLink]="URLS.login" *ngIf="!openSettings">
-    <i [class]="'fas fa-sign-in-alt fa-fw'" aria-hidden="true"></i>
+    <i [class]="'fas fa-fingerprint fa-fw'" aria-hidden="true"></i>
     <span> Login </span>
   </a>
   <a [routerLink]="URLS.signup" *ngIf="!openSettings">
     <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
     <span> Sign Up </span>
-  </a>
-  <a
-      (click)="openSettings = !openSettings"
-      *ngIf="!openSettings"
-      href="javascript:void(0)">
-    <i aria-hidden="true" class="material-icons">arrow_forward_ios</i>
-    <span> More </span>
-  </a>
-  <a *ngIf="openSettings && !openOtherSettings"
-     [routerLink]="URLS.about">
-    <i [class]="'fas fa-address-card fa-fw'" aria-hidden="true"></i>
-    <span> About </span>
   </a>
   <a
     *ngIf="openSettings && !openOtherSettings"

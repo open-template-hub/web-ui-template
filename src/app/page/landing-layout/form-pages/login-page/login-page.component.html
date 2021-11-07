@@ -6,10 +6,11 @@
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="flex-layout-column flex-center-space-evenly social-login-wrapper">
-          <app-brand-button (click)="socialLogin(environmentCommon.website.facebook)"
-                            [icon]="environmentCommon.website.facebook.cssClass"></app-brand-button>
-          <app-brand-button (click)="socialLogin(environmentCommon.website.google)"
-                            [icon]="environmentCommon.website.google.cssClass"></app-brand-button>
+          <ng-container *ngFor="let website of websites">
+            <app-brand-button (click)="socialLogin( website )" [icon]="website.cssClass"
+                              [text]="website.name">
+            </app-brand-button>
+          </ng-container>
         </div>
         <div class="flex-layout-column flex-center-center" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
           <p i18n="@@loginPage.or.separator">or</p>
