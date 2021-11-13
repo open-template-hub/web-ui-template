@@ -13,6 +13,7 @@ import { environmentCommon } from '../../../../environments/environment-common';
 import { BRAND } from '../../../data/brand/brand.data';
 import { URLS } from '../../../data/navigation/navigation.data';
 import { PRODUCT_LINES } from '../../../data/product/product.data';
+import { DEFAULT_SYSTEM_STATUS } from '../../../data/status/status.data';
 import { Partner } from '../../../model/partner/partner.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 
@@ -43,6 +44,7 @@ export class HomePageComponent implements AfterViewInit {
 
   environment = environment;
   environmentCommon = environmentCommon;
+  overallSystemStatus = DEFAULT_SYSTEM_STATUS;
 
   testimonialsTitle = [
     { text: $localize`:@@homePage.testimonialsTitle.1:Customer testimonials`, level: 1 },
@@ -62,6 +64,10 @@ export class HomePageComponent implements AfterViewInit {
   exploreTitle = [
     { text: $localize`:@@homePage.exploreTitle.1:Explore our Products`, level: 2 },
     { text: $localize`:@@homePage.exploreTitle.2:Explore our open source and premium products to get started today.` }
+  ];
+
+  statusTitle = [
+    {text: $localize `:@@status.appHero:System Status`, level: 1}
   ];
 
   constructor(
