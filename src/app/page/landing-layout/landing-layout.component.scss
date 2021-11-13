@@ -33,6 +33,14 @@
         margin: 0 0 10px;
       }
     }
+
+    & .auth-social-login-wrapper {
+      & > * {
+        flex: 1 0 21%;
+        margin: 5px;
+        max-width: 21%;
+      }
+    }
   }
 }
 

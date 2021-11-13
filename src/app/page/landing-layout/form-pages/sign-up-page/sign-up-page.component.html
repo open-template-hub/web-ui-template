@@ -5,16 +5,20 @@
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
-        <div class="flex-layout-column flex-center-center social-login-wrapper">
-          <ng-container *ngFor="let website of websites">
-            <app-brand-button (click)="socialLogin( website )" [icon]="website.cssClass"
-                              [text]="website.name">
+        <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
+          <ng-container *ngFor="let website of websites.slice(0, 4)">
+            <app-brand-button (click)="socialLogin( website )" [icon]="website.cssClass">
+            </app-brand-button>
+          </ng-container>
+          <ng-container *ngIf="showMoreToggle">
+            <app-brand-button *ngFor="let website of websites.slice(4)" (click)="socialLogin( website )" [icon]="website.cssClass">
             </app-brand-button>
           </ng-container>
         </div>
-        <div class="flex-layout-column flex-center-center">
-          <p i18n="@@signUp.or.separator">or</p>
-        </div>
+        <a *ngIf="!showMoreToggle" (click)="showMoreToggle = !showMoreToggle" class="flex-layout-column flex-center-center theme-color-link">
+          <p i18n="@@signUp.more.text">More</p>
+          <i aria-hidden="true" class="fas fa-caret-down fa-lg fa-fw"></i>
+        </a>
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
           <div class="section">
 

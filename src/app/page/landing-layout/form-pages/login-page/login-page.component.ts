@@ -37,6 +37,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   websites: WebsiteModel[] = [];
 
+  showMoreToggle = false;
+
   constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
