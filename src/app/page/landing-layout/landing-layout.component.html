@@ -5,8 +5,9 @@
     </div>
     <div class="header-filler"></div>
     <app-top-svg></app-top-svg>
+    <app-bottom-svg *ngIf="isBottomSvgActive"></app-bottom-svg>
     <div class="page-content">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
     </div>
   </div>
   <app-footer [popupPadding]="true"></app-footer>

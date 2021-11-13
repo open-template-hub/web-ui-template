@@ -18,7 +18,7 @@
   }
 }
 
-.top-svg {
+.top-svg, .bottom-svg {
   width: 100%;
   overflow: hidden;
   line-height: 0;
@@ -36,12 +36,18 @@
   position: absolute;
 }
 
+.bottom-svg {
+  & svg {
+    max-height: 650px;
+  }
+}
+
 @media only screen and (max-width: 999px) {
   .page {
     font-size: 18px;
   }
 
-  .top-svg {
+  .top-svg, .bottom-svg {
     top: 0;
 
     & svg {

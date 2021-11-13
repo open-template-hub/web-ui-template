@@ -120,6 +120,8 @@ import { TechStackCardComponent } from './component/card/tech-stack-card/tech-st
 import { DocHolderCardComponent } from './component/card/doc-holder-card/doc-holder-cardcomponent';
 import { DocsContentPageComponent } from './page/landing-layout/docs-page/docs-content-page/docs-content-page.component';
 import { StepTimelineCardComponent } from './component/card/timeline-card/step-timeline-card/step-timeline-card.component';
+import { DefaultBottomSvgComponent } from './component/design/bottom-svg/default-bottom-svg/default-bottom-svg.component';
+import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -226,6 +228,8 @@ FullCalendarModule.registerPlugins( [
     DocHolderCardComponent,
     DocsContentPageComponent,
     StepTimelineCardComponent,
+    DefaultBottomSvgComponent,
+    BottomSvgComponent,
   ],
   imports: [
     BrowserModule,
