@@ -122,6 +122,7 @@ import { DocsContentPageComponent } from './page/landing-layout/docs-page/docs-c
 import { StepTimelineCardComponent } from './component/card/timeline-card/step-timeline-card/step-timeline-card.component';
 import { DefaultBottomSvgComponent } from './component/design/bottom-svg/default-bottom-svg/default-bottom-svg.component';
 import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.component';
+import { ActivityCardComponent } from './component/card/activity-card/activity-card.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -230,6 +231,7 @@ FullCalendarModule.registerPlugins( [
     StepTimelineCardComponent,
     DefaultBottomSvgComponent,
     BottomSvgComponent,
+    ActivityCardComponent,
   ],
   imports: [
     BrowserModule,
