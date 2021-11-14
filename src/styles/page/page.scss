@@ -28,9 +28,6 @@
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: calc(100% + 7vh);
-    min-height: 250px;
-    max-height: 500px;
   }
 
   position: absolute;
@@ -38,7 +35,7 @@
 
 .bottom-svg {
   & svg {
-    max-height: 650px;
+    height: 660px;
   }
 }
 
@@ -47,12 +44,8 @@
     font-size: 18px;
   }
 
-  .top-svg, .bottom-svg {
-    top: 0;
-
-    & svg {
-      min-height: 450px;
-    }
+  .bottom-svg {
+    display: none;
   }
 }
 
