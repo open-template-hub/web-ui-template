@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from '../../../service/theme/theme.service';
 import { ThemeDesignSettings } from '../../../data/theme/theme.data';
 

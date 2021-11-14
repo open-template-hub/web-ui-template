@@ -28,9 +28,6 @@
   font-weight: 500;
 }
 
-.search-area input:focus {
-}
-
 .search-area i {
   cursor: pointer;
   align-items: center;
@@ -43,7 +40,6 @@
   top: 90px;
   min-height: 55px;
   width: 380px;
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   overflow-x: auto;

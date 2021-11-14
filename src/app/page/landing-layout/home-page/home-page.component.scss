@@ -19,9 +19,6 @@
   & .hero-left {
     @include util.flex-layout-column;
     @include util.flex-center-center;
-  }
-
-  & .hero-left {
     & p {
       font-size: 24px;
     }
@@ -126,13 +123,9 @@
     padding-right: 100px;
 
     & .hero-left {
-      min-width: 450px;
-    }
-
-    & .hero-left {
       font-size: 38px;
       max-width: 50%;
-
+      min-width: 450px;
       padding-bottom: 50px;
 
       & h2 {
