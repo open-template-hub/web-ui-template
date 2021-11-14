@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { ThemeDesignSettings } from '../../../data/theme/theme.data';
 import { ThemeService } from '../../../service/theme/theme.service';
+import { ThemeDesignSettings } from '../../../data/theme/theme.data';
 
-@Component( {
-  selector: 'app-top-svg',
-  templateUrl: './top-svg.component.html',
-  styleUrls: [ './top-svg.component.scss' ]
-} )
-export class TopSvgComponent {
+@Component({
+  selector: 'app-bottom-svg',
+  templateUrl: './bottom-svg.component.html',
+  styleUrls: ['./bottom-svg.component.scss']
+})
+export class BottomSvgComponent {
 
   themeDesignSetting;
 
   ThemeDesignSettings = ThemeDesignSettings;
 
   constructor(
-      private themeService: ThemeService
+    private themeService: ThemeService
   ) {
     this.themeService.themeDesignSetting.subscribe( themeDesignSetting => this.themeDesignSetting = themeDesignSetting );
   }

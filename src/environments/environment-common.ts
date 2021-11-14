@@ -8,23 +8,14 @@ export const environmentCommon: EnvironmentCommonModel = {
       linkedin: 'open-template-hub',
       github: 'open-template-hub',
       productHunt: '@open_template_hub',
-      npm: '@open-template-hub'
+      npm: '@open-template-hub',
+      discord: 'NcZsA3k3xn'
     },
     email: 'info@opentemplatehub.com'
   },
 
   website: {
     // oauth
-    twitter: {
-      name: 'Twitter',
-      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/twitter.png',
-      cssClass: 'twitter',
-      url: 'https://twitter.com',
-      shareUrl: 'https://twitter.com/intent/tweet?url=',
-      callbackParams: [ 'oauth_token', 'oauth_verifier' ],
-      tag: environment.oauth.twitter.tag,
-      websiteType: 'oauth',
-    },
     google: {
       name: 'Google',
       logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/google.png',
@@ -32,15 +23,6 @@ export const environmentCommon: EnvironmentCommonModel = {
       url: 'https://google.com',
       callbackParams: [ 'code', 'state' ],
       tag: environment.oauth.google.tag,
-      websiteType: 'oauth'
-    },
-    facebook: {
-      name: 'Facebook',
-      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/facebook.png',
-      cssClass: 'facebook-f',
-      url: 'https://facebook.com',
-      callbackParams: [ 'code' ],
-      tag: environment.oauth.facebook.tag,
       websiteType: 'oauth'
     },
     linkedin: {
@@ -52,14 +34,6 @@ export const environmentCommon: EnvironmentCommonModel = {
       shareUrl: 'https://www.linkedin.com/sharing/share-offsite/?url=',
       callbackParams: [ 'code', 'state' ],
       tag: environment.oauth.linkedin.tag,
-      websiteType: 'oauth'
-    },
-    twitch: {
-      name: 'Twitch',
-      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/twitch.png',
-      cssClass: 'twitch',
-      callbackParams: [ 'code', 'state' ],
-      tag: environment.oauth.twitch.tag,
       websiteType: 'oauth'
     },
     github: {
@@ -74,6 +48,33 @@ export const environmentCommon: EnvironmentCommonModel = {
       },
       websiteType: 'oauth'
     },
+    facebook: {
+      name: 'Facebook',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/facebook.png',
+      cssClass: 'facebook-f',
+      url: 'https://facebook.com',
+      callbackParams: [ 'code' ],
+      tag: environment.oauth.facebook.tag,
+      websiteType: 'oauth'
+    },
+    twitter: {
+      name: 'Twitter',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/twitter.png',
+      cssClass: 'twitter',
+      url: 'https://twitter.com',
+      shareUrl: 'https://twitter.com/intent/tweet?url=',
+      callbackParams: [ 'oauth_token', 'oauth_verifier' ],
+      tag: environment.oauth.twitter.tag,
+      websiteType: 'oauth',
+    },
+    twitch: {
+      name: 'Twitch',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/twitch.png',
+      cssClass: 'twitch',
+      callbackParams: [ 'code', 'state' ],
+      tag: environment.oauth.twitch.tag,
+      websiteType: 'oauth'
+    },
     dribbble: {
       name: 'Dribbble',
       logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/dribbble.png',
@@ -85,7 +86,7 @@ export const environmentCommon: EnvironmentCommonModel = {
     reddit: {
       name: 'Reddit',
       logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/reddit.png',
-      cssClass: 'reddit-alien',
+      cssClass: 'reddit',
       callbackParams: [ 'code', 'state' ],
       tag: environment.oauth.reddit.tag,
       websiteType: 'oauth'
@@ -210,6 +211,13 @@ export const environmentCommon: EnvironmentCommonModel = {
       logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/google-calendar.png',
       cssClass: 'google-calendar',
       websiteType: 'other'
+    },
+    discord: {
+      name: 'Discord',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/discord.png',
+      cssClass: 'discord',
+      websiteType: 'other',
+      companyUrl: 'https://discord.gg'
     },
     npm: {
       name: 'Npm',

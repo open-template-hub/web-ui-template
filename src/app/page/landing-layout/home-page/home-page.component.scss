@@ -16,13 +16,9 @@
 
   text-align: center;
 
-  & .hero-left,
-  & .hero-right {
+  & .hero-left {
     @include util.flex-layout-column;
     @include util.flex-center-center;
-  }
-
-  & .hero-left {
     & p {
       font-size: 24px;
     }
@@ -30,11 +26,6 @@
     & app-button {
       padding: 25px;
     }
-  }
-
-  & .hero-right img {
-    width: 100%;
-    height: auto;
   }
 }
 
@@ -70,58 +61,6 @@
       margin: 5px 30px 0;
       padding-bottom: 12px;
       border-bottom: 2px solid var(--theme-color-darker-1);
-    }
-  }
-}
-
-.customers-wrapper {
-  @include util.flex-layout-column;
-  @include util.flex-center-center;
-
-  box-sizing: border-box;
-
-  width: 100%;
-
-  padding-left: 3vw;
-  padding-right: 3vw;
-
-  padding-bottom: 100px;
-}
-
-.features-section-wrapper {
-  @include util.flex-layout-column;
-  @include util.flex-center-center;
-
-  box-sizing: border-box;
-
-  width: 100%;
-
-  padding: 50px;
-
-  & .section-header {
-    color: var(--darker);
-    text-align: center;
-  }
-
-  & .section-description {
-    color: var(--lighter);
-    padding: 30px;
-    text-align: center;
-  }
-
-  & .section-content {
-    @include util.flex-layout-row;
-    @include util.flex-center-center;
-
-    width: 100%;
-    padding-left: 3vw;
-    padding-right: 4.5vw;
-    margin-top: 50px;
-
-    & app-feature-card {
-      margin-left: 15px;
-      margin-right: 15px;
-      width: 300px;
     }
   }
 }
@@ -171,25 +110,6 @@
       }
     }
   }
-
-  .features-section-wrapper {
-    & .section-content {
-      @include util.flex-layout-column;
-      @include util.flex-center-center;
-
-      padding: 0 3vw 0 3vw;
-
-      & app-feature-card {
-        margin-top: 20px;
-        margin-left: 0px;
-        width: 94vw;
-      }
-    }
-  }
-
-  app-swiper-wrapper {
-    margin-bottom: 80px;
-  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -202,15 +122,10 @@
     padding-left: 100px;
     padding-right: 100px;
 
-    & .hero-left,
-    &.hero-right {
-      min-width: 450px;
-    }
-
     & .hero-left {
       font-size: 38px;
       max-width: 50%;
-
+      min-width: 450px;
       padding-bottom: 50px;
 
       & h2 {
@@ -233,9 +148,5 @@
         font-size: 21px;
       }
     }
-  }
-
-  app-swiper-wrapper {
-    margin: 80px 0 50px;
   }
 }

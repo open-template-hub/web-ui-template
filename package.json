@@ -36,7 +36,7 @@
     "@angular/platform-browser-dynamic": "^12.2.5",
     "@angular/router": "^12.2.5",
     "@angular/service-worker": "^12.2.5",
-    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@fullcalendar/angular": "^5.8.0",
     "@fullcalendar/daygrid": "^5.8.0",
     "@fullcalendar/interaction": "^5.8.0",

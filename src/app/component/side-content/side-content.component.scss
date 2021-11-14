@@ -3,44 +3,34 @@
   margin: 0;
   position: fixed;
   right: 0;
-  background-color: var(--background-color);
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.side-content {
   width: 400px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
+  background-color: transparent;
+  z-index: 2;
 
-.side-content app-card a {
-  width: 95%;
-}
+  & app-search {
+    display: flex;
+    color: var(--color);
+    align-items: center;
+    position: fixed;
+    z-index: 12;
+    background-color: transparent;
+    height: 70px;
+    justify-content: center;
+  }
 
-app-search {
-  display: flex;
-  color: var(--color);
-  align-items: center;
-  position: fixed;
-  width: 400px;
-  z-index: 12;
-  background-color: var(--background-color);
-  height: 70px;
-  padding-bottom: 10px;
-}
+  & app-activity-card {
+    width: 95%;
+  }
 
-.upcoming-card {
-  position: fixed;
-  margin-top: 108px;
-  width: 400px;
-  height: calc(100% - 120px);
-  overflow: auto;
-  padding: 10px calc(10px + env(safe-area-inset-right)) 0 10px;
+  & .recent-activity {
+    margin-top: 105px;
+  }
 }
 
 #more-settings {
@@ -57,11 +47,4 @@ app-search {
   .side-content-wrapper {
     visibility: visible;
   }
-}
-
-@media (hover: hover) {
-  /*
-  .search-results a:hover {
-    background-color: var(--hover);
-  }*/
 }

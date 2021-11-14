@@ -34,6 +34,8 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
 
   websites: WebsiteModel[] = [];
 
+  showMoreToggle = false;
+
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,

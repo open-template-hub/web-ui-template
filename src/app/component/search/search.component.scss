@@ -1,13 +1,17 @@
+@use '../../../styles/util/util';
+
 .search-area {
+  @include util.default-shadow;
   display: flex;
   color: var(--color);
   align-items: center;
   position: fixed;
-  width: 400px;
+  width: 380px;
   z-index: 12;
-  background-color: var(--background-color);
-  height: 70px;
-  padding-bottom: 10px;
+  background-color: var(--card);
+  height: 55px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
 .search-area ::placeholder {
@@ -15,8 +19,8 @@
 }
 
 .search-area input {
-  border-bottom: 1px solid var(--lighter);
   margin-right: 20px;
+  border-bottom: initial;
 }
 
 .search-area input, .search-area ::placeholder {
@@ -24,23 +28,18 @@
   font-weight: 500;
 }
 
-.search-area input:focus {
-  border-bottom: 1px solid var(--color);
-}
-
 .search-area i {
   cursor: pointer;
   align-items: center;
   margin-right: 20px;
-  margin-left: 10px;
+  margin-left: 25px;
 }
 
 .search-results {
   position: fixed;
-  top: 80px;
+  top: 82px;
   min-height: 55px;
-  width: 400px;
-  display: flex;
+  width: 380px;
   flex-direction: column;
   justify-content: flex-start;
   overflow-x: auto;
