@@ -3,22 +3,18 @@
   margin: 0;
   position: fixed;
   right: 0;
-  background-color: var(--background-color);
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.side-content {
   width: 400px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  background-color: transparent;
+  z-index: 2;
 }
 
-.side-content app-card a {
+.side-content-wrapper app-card a {
   width: 95%;
 }
 
@@ -29,7 +25,7 @@ app-search {
   position: fixed;
   width: 400px;
   z-index: 12;
-  background-color: var(--background-color);
+  background-color: transparent;
   height: 70px;
   padding-bottom: 10px;
 }
@@ -57,11 +53,4 @@ app-search {
   .side-content-wrapper {
     visibility: visible;
   }
-}
-
-@media (hover: hover) {
-  /*
-  .search-results a:hover {
-    background-color: var(--hover);
-  }*/
 }

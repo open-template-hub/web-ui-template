@@ -1,6 +1,10 @@
 @use '../../../styles/util/util';
 @use '../../../styles/page/page';
 
+.wrapper {
+  background-color: var(--background-color);
+}
+
 .page-content {
   padding: 0 2rem 2em;
 }
