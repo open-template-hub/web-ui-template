@@ -7,7 +7,8 @@ export interface EnvironmentCommonModel {
       linkedin: string,
       github: string,
       productHunt: string,
-      npm: string
+      npm: string,
+      discord: string
     },
     email: string
   },
@@ -47,6 +48,7 @@ export interface EnvironmentCommonModel {
     productHunt: WebsiteModel
     appleCalendar: WebsiteModel
     googleCalendar: WebsiteModel
+    discord: WebsiteModel
     npm: WebsiteModel
   },
 

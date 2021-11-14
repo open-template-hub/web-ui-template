@@ -8,7 +8,8 @@ export const environmentCommon: EnvironmentCommonModel = {
       linkedin: 'open-template-hub',
       github: 'open-template-hub',
       productHunt: '@open_template_hub',
-      npm: '@open-template-hub'
+      npm: '@open-template-hub',
+      discord: 'NcZsA3k3xn'
     },
     email: 'info@opentemplatehub.com'
   },
@@ -210,6 +211,13 @@ export const environmentCommon: EnvironmentCommonModel = {
       logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/google-calendar.png',
       cssClass: 'google-calendar',
       websiteType: 'other'
+    },
+    discord: {
+      name: 'Discord',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/discord.png',
+      cssClass: 'discord',
+      websiteType: 'other',
+      companyUrl: 'https://discord.gg'
     },
     npm: {
       name: 'Npm',
