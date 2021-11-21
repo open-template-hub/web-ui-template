@@ -105,7 +105,7 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
     .pipe( first() )
     .subscribe(
         data => {
-          this.analyticsService.logRegisteredUser( data ).subscribe();
+          this.analyticsService.logRegisteredUser( { name: 'SIGNUP', payload: data}  ).subscribe();
 
           this.router.navigate( [ '/signup-success' ], { queryParams: { email: data.email } } );
         }
