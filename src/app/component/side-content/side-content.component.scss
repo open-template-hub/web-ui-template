@@ -1,35 +1,32 @@
+app-search {
+  display: flex;
+  color: var(--color);
+  align-items: center;
+  position: fixed;
+  z-index: 12;
+  background-color: transparent;
+  height: 70px;
+  justify-content: center;
+  rignt: 10px;
+}
+
 .side-content-wrapper {
-  height: 100vh;
-  margin: 0;
+  height: calc(100% - 105px);
   position: fixed;
   right: 0;
   overflow-x: hidden;
   overflow-y: auto;
   width: 400px;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: transparent;
   z-index: 2;
-
-  & app-search {
-    display: flex;
-    color: var(--color);
-    align-items: center;
-    position: fixed;
-    z-index: 12;
-    background-color: transparent;
-    height: 70px;
-    justify-content: center;
-  }
+  margin: 100px 0 0;
 
   & app-activity-card {
     width: 95%;
-  }
-
-  & .recent-activity {
-    margin-top: 105px;
+    margin-bottom: 20px;
   }
 }
 
