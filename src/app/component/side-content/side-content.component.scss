@@ -34,13 +34,13 @@ app-search {
 }
 
 @media only screen and (max-width: 999px) {
-  .side-content-wrapper {
+  .side-content-wrapper, app-search {
     visibility: hidden;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .side-content-wrapper {
+  .side-content-wrapper, app-search {
     visibility: visible;
   }
 }
