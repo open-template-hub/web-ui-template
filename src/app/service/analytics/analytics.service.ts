@@ -12,6 +12,7 @@ export class AnalyticsService {
   }
 
   logRegisteredUser( data: any ) {
+    data.name = environment.clientUrl
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
   }
 }

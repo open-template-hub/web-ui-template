@@ -130,12 +130,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     .subscribe(
         () => {
           const data = {
-            name: environment.serverUrl,
             payload: {
-              category: 'LOGIN',
-              reporter: this.form.controls.username.value,
-              message: 'LoginAttemptSuccessful'
-            }
+              message: 'Login Attempt Successful'
+            },
+            category: 'LOGIN'
           }
 
           this.analyticsService.logRegisteredUser( data ).subscribe();
