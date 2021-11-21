@@ -19,6 +19,8 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-left: 65px;
+  margin-right: auto;
   align-items: flex-start;
   flex-wrap: wrap;
 }
@@ -73,6 +75,8 @@ p {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-left: 65px;
+  margin-right: auto;
 
   & .footer-link-group {
     width: 100%;
@@ -118,6 +122,10 @@ p {
   .footer {
     padding: 20px 0;
     margin-bottom: calc(55px + env(safe-area-inset-bottom));
+  }
+
+  .footer-links-wrapper {
+    margin-left: 0;
   }
 
   .footer-link-column {

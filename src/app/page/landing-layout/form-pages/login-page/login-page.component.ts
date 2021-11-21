@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { environmentCommon } from 'src/environments/environment-common';
 import { environment } from '../../../../../environments/environment';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { AnalyticsService } from '../../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { EventService } from '../../../../service/event/event.service';
@@ -49,7 +50,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       private fileStorageService: FileStorageService,
       private eventService: EventService,
       private loadingService: LoadingService,
-      private toastService: ToastService
+      private toastService: ToastService,
+      private analyticsService: AnalyticsService
   ) {
     if ( this.authenticationService.currentUserValue ) {
       this.router.navigate( [ URLS.dashboard.root ] );
@@ -127,6 +129,15 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     ).pipe( first() )
     .subscribe(
         () => {
+          const data = {
+            payload: {
+              message: 'Login Attempt Successful'
+            },
+            category: 'LOGIN'
+          }
+
+          this.analyticsService.logRegisteredUser( data ).subscribe();
+
           if ( this.returnUrl !== URLS.dashboard.root ) {
             this.loginWithoutOpeningDashboard();
           } else {
