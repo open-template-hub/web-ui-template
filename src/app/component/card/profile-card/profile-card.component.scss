@@ -102,10 +102,6 @@
 
 @media only screen and (max-width: 999px) {
   .profile-card {
-    & .header {
-
-    }
-
     & .body {
       & .key-value-area {
         flex-direction: column;
@@ -129,7 +125,4 @@
       }
     }
   }
-}
-
-@media only screen and (min-width: 1000px) {
 }

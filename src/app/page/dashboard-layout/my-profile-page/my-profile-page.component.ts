@@ -42,7 +42,6 @@ export class MyProfilePageComponent implements OnDestroy {
 
     this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
-      console.log(userInfo)
     } );
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
