@@ -19,7 +19,9 @@
 
       & .profile-image-wrapper {
         margin-top: 30px;
-        margin-left: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        width: -webkit-fit-content;
 
         & .profile-image {
           @include util.margin-x-auto;
@@ -38,8 +40,8 @@
 
         & i {
           position: absolute;
-          top: 129px;
-          left: 121px;
+          top: 125px;
+          left: 580px;
         }
       }
     }
@@ -67,12 +69,10 @@
     & .employee-card {
       & .header {
         & .profile-image-wrapper {
-          margin-left: 0;
-          text-align: center;
 
           & i {
-            top: 136px;
-            left: 193px;
+            top: 134px;
+            left: 188px;
           }
         }
 
