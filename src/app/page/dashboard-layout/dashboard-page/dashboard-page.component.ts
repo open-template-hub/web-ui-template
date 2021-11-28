@@ -53,7 +53,7 @@ export class DashboardPageComponent implements OnDestroy {
           if ( !this.userInfo.payload ) {
             this.businessLogicService.createMyInfo()
             .subscribe( () => {
-                  this.router.navigate( [ URLS.maintenance ] );
+                  this.router.navigate( [ URLS.settings.editProfile ] );
                 }
             );
           } else {
