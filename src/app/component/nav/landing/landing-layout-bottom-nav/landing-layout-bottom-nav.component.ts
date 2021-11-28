@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';

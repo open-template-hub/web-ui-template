@@ -141,16 +141,9 @@ export class EventDataComponent implements OnInit {
     );
   }
 
-  buy() {
-    /*this.loadingService.setLoading( true );
-    this.paymentService.initPayment( environment.payment.stripe, this.id, 1 );*/
-  }
-
   onBuyNowClick() {
     if ( this.isPublicPage ) {
       this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: this.id } } );
-    } else {
-      this.buy();
     }
   }
 

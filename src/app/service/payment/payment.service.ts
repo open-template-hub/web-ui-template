@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AuthToken } from '../../model/auth/auth-token.model';
 import { LoadingService } from '../loading/loading.service';
 
 @Injectable( {
