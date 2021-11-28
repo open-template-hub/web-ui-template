@@ -57,7 +57,7 @@ import { EventHamburgerMenuComponent } from './component/label/deprecated/event-
 import { LabelDataComponent } from './component/label/deprecated/label-data/label-data.component';
 import { LabelWithIconDataComponent } from './component/label/deprecated/label-with-icon-data/label-with-icon-data.component';
 import { LedComponent } from './component/led/led.component';
-import { BottomNavComponent } from './component/nav/bottom-nav/bottom-nav.component';
+import { LandingLayoutBottomNavComponent } from './component/nav/landing/landing-layout-bottom-nav/landing-layout-bottom-nav.component';
 import { DashboardLayoutSideNavComponent } from './component/nav/dashboard/dashboard-layout-side-nav/dashboard-layout-side-nav.component';
 import { DashboardLayoutTopNavComponent } from './component/nav/dashboard/dashboard-layout-top-nav/dashboard-layout-top-nav.component';
 import { FooterComponent } from './component/nav/footer/footer.component';
@@ -125,6 +125,7 @@ import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.com
 import { ActivityCardComponent } from './component/card/activity-card/activity-card.component';
 import { ProfileCardComponent } from './component/card/profile-card/profile-card.component';
 import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
+import { DashboardLayoutBottomNavComponent } from './component/nav/dashboard/dashboard-layout-bottom-nav/dashboard-layout-bottom-nav.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -146,7 +147,7 @@ FullCalendarModule.registerPlugins( [
     ForgetPasswordPageComponent,
     LandingLayoutTopNavComponent,
     DashboardLayoutSideNavComponent,
-    BottomNavComponent,
+    LandingLayoutBottomNavComponent,
     FooterComponent,
     SplashLayoutComponent,
     CallbackPageComponent,
@@ -236,6 +237,7 @@ FullCalendarModule.registerPlugins( [
     ActivityCardComponent,
     ProfileCardComponent,
     EditProfilePageComponent,
+    DashboardLayoutBottomNavComponent,
   ],
   imports: [
     BrowserModule,

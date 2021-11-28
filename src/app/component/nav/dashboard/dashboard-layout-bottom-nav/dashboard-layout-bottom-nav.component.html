@@ -1,0 +1,31 @@
+<nav class="bottom-nav">
+  <a (click)="closeSettings()" *ngIf="openSettings" href="javascript:void(0)">
+    <i aria-hidden="true" class="material-icons">arrow_back_ios</i>
+    <span> BACK </span>
+  </a>
+  <a *ngIf="!openSettings"
+     [routerLink]="URLS.dashboard">
+    <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
+    <span> DASHBOARD </span>
+  </a>
+  <a [routerLink]="URLS.privacyPolicy" *ngIf="!openSettings">
+    <i [class]="'fas fa-info-circle fa-fw'" aria-hidden="true"></i>
+    <span> PRIVACY </span>
+  </a>
+  <a (click)="openSettings = !openSettings" *ngIf="!openSettings" href="javascript:void(0)">
+    <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
+    <span> SETTINGS </span>
+  </a>
+  <a [routerLink]="URLS.settings.editProfile" *ngIf="openSettings">
+    <i [class]="'fas fa-user fa-fw'" aria-hidden="true"></i>
+    <span> EDIT PROFILE </span>
+  </a>
+  <a [routerLink]="URLS.settings.editTheme" *ngIf="openSettings" href="javascript:void(0)">
+    <i [class]="'fas fa-tint fa-fw'" aria-hidden="true"></i>
+    <span> EDIT THEME </span>
+  </a>
+  <a (click)="logout()" *ngIf="openSettings" href="javascript:void(0)" id=logout>
+    <i [class]="'fas fa-sign-out-alt fa-fw'" aria-hidden="true"></i>
+    <span> LOGOUT </span>
+  </a>
+</nav>
