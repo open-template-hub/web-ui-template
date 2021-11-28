@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
@@ -8,6 +9,7 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { CategoryService } from '../../../../service/category/category.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
+import { PaymentService } from '../../../../service/payment/payment.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component( {
@@ -16,7 +18,7 @@ import { ThemeService } from '../../../../service/theme/theme.service';
   styleUrls: [ './dashboard-layout-side-nav.component.scss' ]
 } )
 export class DashboardLayoutSideNavComponent {
-
+  userIsPremium = false;
   sideNavClosed = 'false';
   userInfo: any = {};
   profileImg = PROFILE_IMG;
@@ -40,7 +42,8 @@ export class DashboardLayoutSideNavComponent {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
-      private categoryService: CategoryService
+      private categoryService: CategoryService,
+      private paymentService: PaymentService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -61,12 +64,16 @@ export class DashboardLayoutSideNavComponent {
         }
     );
 
-    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
+    this.fileStorageService.sharedProfileImage?.subscribe( profileImg => {
           if ( profileImg?.file?.data ) {
             this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
           }
         }
     );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.successful_receipts?.length > 0
+    })
   }
 
   @HostListener( 'document:click', [ '$event' ] )
@@ -105,5 +112,9 @@ export class DashboardLayoutSideNavComponent {
     this.categoryService.search( q ).subscribe( results => {
       this.categorySearchResults = results.slice( 0, 10 );
     } );
+  }
+
+  buy() {
+    this.paymentService.initPayment( environment.payment.stripe, '0276d8d1-0945-412b-92d1-084a6e3f7554', 1 );
   }
 }

@@ -142,8 +142,8 @@ export class EventDataComponent implements OnInit {
   }
 
   buy() {
-    this.loadingService.setLoading( true );
-    this.paymentService.initPayment( environment.payment.stripe, this.id, 1 );
+    /*this.loadingService.setLoading( true );
+    this.paymentService.initPayment( environment.payment.stripe, this.id, 1 );*/
   }
 
   onBuyNowClick() {

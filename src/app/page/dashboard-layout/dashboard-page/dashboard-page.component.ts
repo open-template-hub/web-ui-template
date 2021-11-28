@@ -10,6 +10,7 @@ import { BusinessLogicService } from '../../../service/business-logic/business-l
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
+import { PaymentService } from '../../../service/payment/payment.service';
 
 @Component( {
   selector: 'app-dashboard-page',
@@ -34,7 +35,8 @@ export class DashboardPageComponent implements OnDestroy {
       private loadingService: LoadingService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
-      private informationService: InformationService
+      private informationService: InformationService,
+      private paymentService: PaymentService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -48,21 +50,20 @@ export class DashboardPageComponent implements OnDestroy {
 
     this.businessLogicService.me()
     .subscribe( userInfo => {
-          this.userInfo = userInfo;
-
-          if ( !this.userInfo.payload ) {
-            this.businessLogicService.createMyInfo()
-            .subscribe( () => {
-                  this.router.navigate( [ URLS.settings.editProfile ] );
-                }
-            );
-          } else {
-            if ( this.userInfo?.payload?.profileImageId ) {
-              this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
-            }
-          }
+      this.userInfo = userInfo;
+      if ( !this.userInfo.payload ) {
+        this.businessLogicService.createMyInfo()
+        .subscribe( () => {
+              this.router.navigate( [ URLS.settings.editProfile ] );
+            } );
+      } else {
+        if ( this.userInfo?.payload?.profileImageId ) {
+          this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
         }
-    );
+
+        this.paymentService.check( '0276d8d1-0945-412b-92d1-084a6e3f7554' )
+      }
+    } );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
       if ( profileImg?.file?.data ) {
