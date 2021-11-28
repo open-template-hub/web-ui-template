@@ -32,6 +32,7 @@
 @media only screen and (min-width: 1000px) {
   .page {
     margin-top: 0;
+    min-height: calc(100vh - 480px);
   }
 
   .page, .footer-wrap {

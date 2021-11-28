@@ -8,10 +8,19 @@
        routerLink="{{URLS.dashboard.myProfile}}"
        show-delay="500"
        tooltip="my profile">
-      <img [src]="profileImg" alt="profile img" class="profile-img-small"/>
+      <img [src]="profileImg" alt="profile img" class="profile-img-small" [class.premium-user]="userIsPremium"/>
       <span *ngIf="sideNavClosed === 'false'">
         MY PROFILE
     </span>
+    </a>
+    <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
+       (click)="buy()"
+       show-delay="500"
+       tooltip="my profile">
+      <i aria-hidden="true" class="material-icons" style="color: var(--theme-color)">star</i>
+      <span *ngIf="sideNavClosed === 'false'">
+        PREMIUM
+      </span>
     </a>
     <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
        routerLink="{{URLS.dashboard.root}}"

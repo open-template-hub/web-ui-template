@@ -5,13 +5,13 @@
     </div>
     <div class="header-filler"></div>
     <app-top-svg></app-top-svg>
-    <app-bottom-svg *ngIf="isBottomSvgActive"></app-bottom-svg>
+    <app-landing-layout-bottom-nav *ngIf="isBottomSvgActive"></app-landing-layout-bottom-nav>
     <div class="page-content">
       <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
     </div>
   </div>
   <app-footer [popupPadding]="true"></app-footer>
-  <app-bottom-nav></app-bottom-nav>
+  <app-landing-layout-bottom-nav></app-landing-layout-bottom-nav>
   <div [class.landing-layout-page-top-loading-bar]="loading">
   </div>
 </div>

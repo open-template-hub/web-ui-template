@@ -58,7 +58,7 @@
 
   <!-- Footer -->
   <ng-template #footerTemplate>
-    <div class="footer">
+    <div class="footer" *ngIf="user.payload?.social?.linkedin || user.payload?.social?.twitter || user.payload?.social?.github">
       <div class="social-area" *ngIf="user.payload?.social?.twitter">
         <app-ext-link
           [href]="user.payload.social.twitter">
@@ -79,10 +79,8 @@
         </app-ext-link>
         <p>{{ parseSocialUrl( user.payload.social.linkedin ) }}</p>
       </div>
-      <div class="social-area">
-        <app-ext-link
-          *ngIf="user.payload?.social?.github"
-          [href]="user.payload.social.github">
+      <div class="social-area" *ngIf="user.payload?.social?.github">
+        <app-ext-link [href]="user.payload.social.github">
           <i [class]="'fab fa-' + environmentCommon.website.github.cssClass + ' fa-fw'"
              aria-hidden="true"
              body>
