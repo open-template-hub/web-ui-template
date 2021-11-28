@@ -14,6 +14,15 @@
     </span>
     </a>
     <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
+       routerLink="{{URLS.dashboard.myProfile}}"
+       show-delay="500"
+       tooltip="my profile">
+      <i aria-hidden="true" class="material-icons" style="color: var(--theme-color)">star</i>
+      <span *ngIf="sideNavClosed === 'false'">
+        PREMIUM
+      </span>
+    </a>
+    <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
        routerLink="{{URLS.dashboard.root}}"
        show-delay="500" tooltip="dashboard">
       <i aria-hidden="true" class="material-icons">dashboard</i>
