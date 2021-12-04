@@ -15,16 +15,16 @@
     margin-top: 55px;
   }
 
-  .page, .footer-wrap {
+  .page {
     margin-left: 0;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .side-nav-closed .page, .side-nav-closed .footer-wrap, .page, .footer-wrap {
+  .side-nav-closed .page, .side-nav-closed .footer-wrap, .page {
     margin-left: 80px;
   }
-  .page, .footer-wrap {
+  .page {
     margin-right: 320px;
   }
 }
@@ -32,15 +32,15 @@
 @media only screen and (min-width: 1000px) {
   .page {
     margin-top: 0;
-    min-height: calc(100vh - 480px);
+    min-height: 100vh;
   }
 
-  .page, .footer-wrap {
+  .page {
     margin-left: 256px;
     margin-right: 400px;
   }
 
-  .side-nav-closed .page, .side-nav-closed .footer-wrap {
+  .side-nav-closed .page {
     margin-left: 80px;
   }
 }
