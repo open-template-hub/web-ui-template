@@ -9,10 +9,10 @@
   </ng-template>
   <ng-template #bodyTemplate>
     <div class="body">
-      <p>Test Activity</p>
-      <p>Test Activity</p>
-      <p>Test Activity</p>
-      <p>Test Activity</p>
+      <div *ngFor="let event of events">
+        <p>{{ event.payload.message }}</p>
+        <p>{{ timestampToString( event.timestamp ) }}</p>
+      </div>
     </div>
   </ng-template>
 </app-card>
