@@ -47,15 +47,7 @@
         EDIT PROFILE
       </span>
       </a>
-      <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
-         routerLink="{{URLS.dashboard.privacy}}"
-         show-delay="500" tooltip="privacy">
-        <i aria-hidden="true" class="material-icons">privacy_tip</i>
-        <span *ngIf="sideNavClosed === 'false'">
-        PRIVACY
-    </span>
-      </a>
-      <a *ngIf="currentUser && openOtherSettings" [display]="sideNavClosed==='true'"
+      <a *ngIf="currentUser" [display]="sideNavClosed==='true'"
          placement="right"
          routerLink="{{URLS.settings.editTheme}}" show-delay="500" tooltip="theme">
         <i aria-hidden="true" class="material-icons">invert_colors</i>
