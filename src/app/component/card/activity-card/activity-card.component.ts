@@ -9,6 +9,6 @@ export class ActivityCardComponent {
   @Input() events: any[] = []
 
   timestampToString( timestamp: any ): string {
-    return new Date( timestamp ).toDateString()
+    return new Date( timestamp ).toLocaleString()
   }
 }

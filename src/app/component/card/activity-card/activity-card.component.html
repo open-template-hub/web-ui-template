@@ -9,9 +9,10 @@
   </ng-template>
   <ng-template #bodyTemplate>
     <div class="body">
-      <div *ngFor="let event of events">
-        <p>{{ event.payload.message }}</p>
-        <p>{{ timestampToString( event.timestamp ) }}</p>
+      <div class="row" *ngFor="let event of events; let last = last">
+        <p class="message">{{ event.payload.message }}</p>
+        <p class="date">{{ timestampToString( event.timestamp ) }}</p>
+        <hr *ngIf="!last">
       </div>
     </div>
   </ng-template>
