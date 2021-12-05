@@ -15,7 +15,8 @@
         [src]="photoUri"
         [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
         alt="profile-img"
-        class="profile-image"
+        class="profile-image yellow-theme"
+        [class.premium-user]="userIsPremium"
         onerror="this.src='./assets/common/profile-img.png'"/>
       <p>@{{ user.username }}</p>
     </div>

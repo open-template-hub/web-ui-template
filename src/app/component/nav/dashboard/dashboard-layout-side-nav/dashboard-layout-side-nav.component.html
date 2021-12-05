@@ -8,7 +8,7 @@
        routerLink="{{URLS.dashboard.myProfile}}"
        show-delay="500"
        tooltip="my profile">
-      <img [src]="profileImg" alt="profile img" class="profile-img-small" [class.premium-user]="userIsPremium"/>
+      <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme" [class.premium-user]="userIsPremium"/>
       <span *ngIf="sideNavClosed === 'false'">
         MY PROFILE
     </span>
@@ -17,7 +17,7 @@
        (click)="buy()"
        show-delay="500"
        tooltip="my profile">
-      <i aria-hidden="true" class="material-icons" style="color: var(--theme-color)">star</i>
+      <i aria-hidden="true" class="material-icons yellow-theme" style="color: var(--theme-color)">star</i>
       <span *ngIf="sideNavClosed === 'false'">
         PREMIUM
       </span>

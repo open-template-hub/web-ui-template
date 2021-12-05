@@ -18,7 +18,7 @@ import { ThemeService } from '../../../../service/theme/theme.service';
   styleUrls: [ './dashboard-layout-side-nav.component.scss' ]
 } )
 export class DashboardLayoutSideNavComponent {
-  userIsPremium = false;
+  userIsPremium;
   sideNavClosed = 'false';
   userInfo: any = {};
   profileImg = PROFILE_IMG;

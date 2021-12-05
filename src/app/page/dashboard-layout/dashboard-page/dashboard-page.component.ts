@@ -24,7 +24,7 @@ export class DashboardPageComponent implements OnDestroy {
   environment = environment;
   profileImg = PROFILE_IMG;
   loading = false;
-
+  userIsPremium;
   URLS = URLS;
 
   rateObject: Rate;
@@ -69,6 +69,10 @@ export class DashboardPageComponent implements OnDestroy {
       if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
+    } );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.successful_receipts?.length > 0
     } );
   }
 
