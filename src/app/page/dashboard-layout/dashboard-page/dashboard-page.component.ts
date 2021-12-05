@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/rate-bar/rate-bar.component';
 import { URLS } from '../../../data/navigation/navigation.data';
+import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../data/profile/profile.data';
 import { AuthToken } from '../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
@@ -24,7 +25,7 @@ export class DashboardPageComponent implements OnDestroy {
   environment = environment;
   profileImg = PROFILE_IMG;
   loading = false;
-
+  userIsPremium;
   URLS = URLS;
 
   rateObject: Rate;
@@ -61,7 +62,7 @@ export class DashboardPageComponent implements OnDestroy {
           this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
         }
 
-        this.paymentService.check( '0276d8d1-0945-412b-92d1-084a6e3f7554' )
+        this.paymentService.getProduct( PremiumProducts.premiumAccount )
       }
     } );
 
@@ -69,6 +70,10 @@ export class DashboardPageComponent implements OnDestroy {
       if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
+    } );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.name !== undefined;
     } );
   }
 

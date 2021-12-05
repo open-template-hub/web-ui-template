@@ -18,6 +18,7 @@
       // Design
 
       & .profile-image-wrapper {
+        position: relative;
         margin-top: 30px;
         margin-left: auto;
         margin-right: auto;
@@ -31,6 +32,7 @@
           background-color: var(--card);
 
           // Design
+          position: relative;
           border: 2px solid var(--shadow-lighter);
           box-shadow: 0 -6px 15px -7px var(--shadow);
           width: 120px;
@@ -40,8 +42,8 @@
 
         & i {
           position: absolute;
-          top: 125px;
-          left: 580px;
+          top: 100px;
+          right: 2px;
         }
       }
     }
@@ -69,10 +71,9 @@
     & .employee-card {
       & .header {
         & .profile-image-wrapper {
-
           & i {
-            top: 134px;
-            left: 188px;
+            top: 100px;
+            right: 5px;
           }
         }
 

@@ -15,4 +15,8 @@ export class AnalyticsService {
     data.name = environment.clientUrl
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
   }
+
+  getEvents( start: any ) {
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }`)
+  }
 }

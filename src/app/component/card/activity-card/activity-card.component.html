@@ -9,10 +9,11 @@
   </ng-template>
   <ng-template #bodyTemplate>
     <div class="body">
-      <p>Test Activity</p>
-      <p>Test Activity</p>
-      <p>Test Activity</p>
-      <p>Test Activity</p>
+      <div class="row" *ngFor="let event of events; let last = last">
+        <p class="message">{{ event.payload.message }}</p>
+        <p class="date">{{ timestampToString( event.timestamp ) }}</p>
+        <hr *ngIf="!last">
+      </div>
     </div>
   </ng-template>
 </app-card>

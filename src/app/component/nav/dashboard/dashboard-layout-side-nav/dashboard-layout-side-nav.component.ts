@@ -18,7 +18,7 @@ import { ThemeService } from '../../../../service/theme/theme.service';
   styleUrls: [ './dashboard-layout-side-nav.component.scss' ]
 } )
 export class DashboardLayoutSideNavComponent {
-  userIsPremium = false;
+  userIsPremium;
   sideNavClosed = 'false';
   userInfo: any = {};
   profileImg = PROFILE_IMG;
@@ -72,7 +72,7 @@ export class DashboardLayoutSideNavComponent {
     );
 
     this.paymentService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.successful_receipts?.length > 0
+      this.userIsPremium = response?.name !== undefined;
     })
   }
 
