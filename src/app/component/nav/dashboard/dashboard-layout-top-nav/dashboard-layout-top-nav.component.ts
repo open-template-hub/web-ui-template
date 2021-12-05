@@ -59,7 +59,7 @@ export class DashboardLayoutTopNavComponent {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
     this.paymentService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.successful_receipts?.length > 0
+      this.userIsPremium = response?.name !== undefined;
     })
   }
 

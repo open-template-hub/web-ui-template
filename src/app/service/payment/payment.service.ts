@@ -54,11 +54,10 @@ export class PaymentService {
     } );
   }
 
-  check( productId: string ) {
-    return this.http.post<any>( `${ environment.serverUrl }/receipt`, {
-      product_id: productId
-    } ).subscribe( async ( response ) => {
-      this.premiumProductsSubject.next( response );
-    } );
+  getProduct( productId: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/product?product_id=${ productId }` )
+      .subscribe( ( response ) => {
+        this.premiumProductsSubject.next( response )
+      } );
   }
 }

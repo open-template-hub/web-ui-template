@@ -72,7 +72,7 @@ export class DashboardLayoutSideNavComponent {
     );
 
     this.paymentService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.successful_receipts?.length > 0
+      this.userIsPremium = response?.name !== undefined;
     })
   }
 
