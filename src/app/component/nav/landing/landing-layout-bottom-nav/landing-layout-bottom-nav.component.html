@@ -1,0 +1,15 @@
+<nav class="bottom-nav">
+  <a *ngIf="!openSettings"
+      [routerLink]="URLS.root">
+    <i [class]="'fas fa-home fa-fw'" aria-hidden="true"></i>
+    <span> Home </span>
+  </a>
+  <a [routerLink]="URLS.login">
+    <i [class]="'fas fa-fingerprint fa-fw'" aria-hidden="true"></i>
+    <span> Login </span>
+  </a>
+  <a [routerLink]="URLS.signup">
+    <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
+    <span> Sign Up </span>
+  </a>
+</nav>

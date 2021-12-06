@@ -102,6 +102,10 @@
   cursor: pointer;
 }
 
+.premium-user {
+  border: 1px solid var(--theme-color);
+}
+
 #more-settings, #logout {
   color: var(--lighter);
 }

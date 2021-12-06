@@ -99,6 +99,12 @@
   flex-direction: column;
 }
 
+@mixin flex-layout-row-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 @mixin card-width-sm {
   max-width: 94vw;
   min-width: 94vw;
@@ -138,4 +144,8 @@
 
 .flex-layout-column {
   @include flex-layout-column;
+}
+
+.flex-layout-row-wrap {
+  @include flex-layout-row-wrap;
 }

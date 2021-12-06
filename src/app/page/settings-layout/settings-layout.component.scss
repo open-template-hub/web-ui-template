@@ -1,5 +1,9 @@
 @use '../../../styles/page/page';
 
+.page-content {
+  padding: 0 2rem 2em;
+}
+
 @media only screen and (max-width: 999px) {
   .page {
     margin-top: 55px;
@@ -25,7 +29,8 @@
 
   .page {
     margin-top: 0;
-
+    padding-top: 100px;
+    min-height: calc(100vh - 480px);
     & .page-content {
       padding: 0 2rem 2em;
     }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { BRAND } from '../../../data/brand/brand.data';
 import { URLS } from '../../../data/navigation/navigation.data';
+import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { InformationService } from '../../../service/information/information.service';
 import { PaymentService } from '../../../service/payment/payment.service';
@@ -54,13 +55,16 @@ export class CallbackPageComponent implements OnInit {
     if ( status === 'success' ) {
       this.paymentService.verify( paymentConfig, transactionId, eventId ).subscribe( response => {
         this.informationService.setInformation( $localize `:@@callback.information.success:Payment succeeded`, 'success' );
-        this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: eventId } } );
+        this.router.navigate( [ URLS.dashboard.root ] );
+        
+        this.paymentService.getProduct( PremiumProducts.premiumAccount )
       }, error => {
-        this.router.navigate( [ URLS.dashboard.learn ] );
+        this.informationService.setInformation( $localize `:@@callback.information.canceled:Payment canceled`, 'error' );
+        this.router.navigate( [ URLS.dashboard.root ] );
       } );
     } else {
-      this.informationService.setInformation( `:@@callback.information.canceled:Payment canceled`, 'error' );
-      this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: eventId } } );
+      this.informationService.setInformation( $localize `:@@callback.information.canceled:Payment canceled`, 'error' );
+      this.router.navigate( [ URLS.dashboard.root ] );
     }
   }
 

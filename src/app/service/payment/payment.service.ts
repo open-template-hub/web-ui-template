@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { LoadingService } from '../loading/loading.service';
 
@@ -9,9 +10,14 @@ import { LoadingService } from '../loading/loading.service';
 } )
 export class PaymentService {
 
+  public premiumProducts: Observable<any>;
+  private premiumProductsSubject: BehaviorSubject<any>;
+
   constructor(
       private http: HttpClient,
       private loadingService: LoadingService ) {
+    this.premiumProductsSubject = new BehaviorSubject<any>( { successful_receipts: [] } );
+    this.premiumProducts = this.premiumProductsSubject.asObservable();
   }
 
   initPayment( paymentConfig: any, productId: string, quantity: number ) {
@@ -46,5 +52,12 @@ export class PaymentService {
       transaction_history_id: transactionHistoryId,
       product_id: productId
     } );
+  }
+
+  getProduct( productId: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/product?product_id=${ productId }` )
+      .subscribe( ( response ) => {
+        this.premiumProductsSubject.next( response )
+      } );
   }
 }

@@ -6,6 +6,7 @@ import { BusinessLogicService } from '../../../../service/business-logic/busines
 import { CategoryService } from '../../../../service/category/category.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
+import { PaymentService } from '../../../../service/payment/payment.service';
 
 @Component( {
   selector: 'app-dashboard-layout-top-nav',
@@ -17,6 +18,7 @@ export class DashboardLayoutTopNavComponent {
   userInfo: any = {};
   loading = false;
   profileImg = PROFILE_IMG;
+  userIsPremium;
 
   userSearchResults = [];
   categorySearchResults = [];
@@ -33,7 +35,8 @@ export class DashboardLayoutTopNavComponent {
       private fileStorageService: FileStorageService,
       private loadingService: LoadingService,
       private _eref: ElementRef,
-      private categoryService: CategoryService
+      private categoryService: CategoryService,
+      private paymentService: PaymentService
   ) {
     this.businessLogicService.userInfo.subscribe( userInfo => {
           if ( userInfo ) {
@@ -54,6 +57,10 @@ export class DashboardLayoutTopNavComponent {
     );
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.name !== undefined;
+    })
   }
 
   @HostListener( 'document:click', [ '$event' ] )

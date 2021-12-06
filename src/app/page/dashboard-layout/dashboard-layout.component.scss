@@ -1,6 +1,10 @@
 @use '../../../styles/util/util';
 @use '../../../styles/page/page';
 
+.wrapper {
+  background-color: var(--background-color);
+}
+
 .page-content {
   padding: 0 2rem 2em;
 }
@@ -9,18 +13,15 @@
   .page {
     min-height: 200vh;
     margin-top: 55px;
-  }
-
-  .page, .footer-wrap {
     margin-left: 0;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .side-nav-closed .page, .side-nav-closed .footer-wrap, .page, .footer-wrap {
+  .side-nav-closed .page, .side-nav-closed .footer-wrap, .page {
     margin-left: 80px;
   }
-  .page, .footer-wrap {
+  .page {
     margin-right: 320px;
   }
 }
@@ -28,14 +29,12 @@
 @media only screen and (min-width: 1000px) {
   .page {
     margin-top: 0;
-  }
-
-  .page, .footer-wrap {
+    min-height: 100vh;
     margin-left: 256px;
     margin-right: 400px;
   }
 
-  .side-nav-closed .page, .side-nav-closed .footer-wrap {
+  .side-nav-closed .page {
     margin-left: 80px;
   }
 }

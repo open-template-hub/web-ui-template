@@ -1,6 +1,10 @@
 @use '../../../../styles/util/util';
 @use '../../../component/card/employee-card/employee-card.component';
 
+.wrapper {
+  background-color: var(--background-color);
+}
+
 .timeline-wrapper, .websites-wrapper {
   @include util.flex-center-center;
 
