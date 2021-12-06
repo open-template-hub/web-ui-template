@@ -32,7 +32,7 @@
     "@angular/compiler": "^13.0.3",
     "@angular/core": "^12.2.5",
     "@angular/forms": "^12.2.5",
-    "@angular/platform-browser": "^12.2.5",
+    "@angular/platform-browser": "^13.0.3",
     "@angular/platform-browser-dynamic": "^12.2.5",
     "@angular/router": "^12.2.5",
     "@angular/service-worker": "^12.2.5",
