@@ -26,7 +26,7 @@
     "serve:local:fr": "ng serve -c=fr"
   },
   "dependencies": {
-    "@angular/animations": "^12.2.5",
+    "@angular/animations": "^13.0.3",
     "@angular/cdk": "^13.0.3",
     "@angular/common": "^13.0.3",
     "@angular/compiler": "^13.0.3",
