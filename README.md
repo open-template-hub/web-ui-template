@@ -24,7 +24,7 @@ Web UI Template is a modern, responsive, and customizable web UI template for yo
 
 <p align="center">
   <a href="https://web.opentemplatehub.com">
-    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/web-ui-demo-light.png" alt="Screenshot" width="800px">
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/company-profile-ui-demo-light.png" alt="Screenshot" width="800px">
   </a>
 </p>
 
