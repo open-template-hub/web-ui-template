@@ -7,14 +7,26 @@
   <div class="left-item-wrapper">
   </div>
   <div class="right-item-wrapper">
-    <a [routerLink]="URLS.login">
+    <a [routerLink]="URLS.login" *ngIf="!currentUser">
       <i [class]="'fas fa-fingerprint fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.login">Login</span>
     </a>
-    <a [routerLink]="URLS.signup"
+    <a [routerLink]="URLS.signup" *ngIf="!currentUser"
        class="sign-up">
       <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.signUp">Sign Up</span>
+    </a>
+    <a (click)="buy()" *ngIf="currentUser">
+      <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true" style="color: var(--theme-color);"></i>
+      <span i18n="@@landingLayoutTopNav.premium">Premium</span>
+    </a>
+    <a [routerLink]="URLS.login" *ngIf="currentUser">
+      <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.settings">Settings</span>
+    </a>
+    <a [routerLink]="URLS.dashboard.myProfile" *ngIf="currentUser">
+      <img [src]="profileImg" [class.premium-user]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
+      <span i18n="@@landingLayoutTopNav.myProfile">My Profile</span>
     </a>
   </div>
 </nav>
