@@ -16,9 +16,9 @@
   }
 }
 
-@include define-toast(success, "\f071", "10px");
-@include define-toast(info, "\f00c", "10px");
-@include define-toast(warning, "\f05a", "8px");
+@include define-toast(success, "\f00c", "10px");
+@include define-toast(info, "\f05a", "10px");
+@include define-toast(warning, "\f071", "8px");
 @include define-toast(error, "\f057", "15px");
 
 .toast-container {
