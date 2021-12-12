@@ -26,10 +26,9 @@ export class SideContentComponent {
     this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
-      const timeStamp = new Date()
-      timeStamp.setDate( timeStamp.getDate()- 10 )
-      this.analyticsService.getEvents( timeStamp ).subscribe( events => {
-        console.log( events )
+      const timeStamp = new Date();
+      timeStamp.setDate( timeStamp.getDate()- 10 );
+      this.analyticsService.getEvents( timeStamp.getTime(), 50 ).subscribe( events => {
         this.events = events
       } );
     } );
