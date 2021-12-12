@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { DEFAULT_SYSTEM_STATUS } from '../../../data/status/status.data';
 import { MonitoringService } from '../../../service/monitoring/monitoring.service';
