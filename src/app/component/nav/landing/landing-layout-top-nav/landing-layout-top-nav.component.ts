@@ -35,6 +35,11 @@ export class LandingLayoutTopNavComponent {
   @ViewChild( 'dropdownMenuServices' ) dropdownMenuServices: ElementRef;
   @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
+  settings = [
+    { name: 'Edit Profile', icon: 'person', url: URLS.settings.editProfile },
+    { name: 'Logout', icon: 'exit_to_app', url: URLS.settings.editProfile }
+  ]
+
   constructor(
     private router: Router,
     private loadingService: LoadingService,

@@ -20,6 +20,7 @@ export class DropdownMenuComponent {
   calculatedRows;
 
   @Input() productLines: ProductLine[] = [];
+  @Input() items: any[] = []
 
   closeDropdownInternalClicked = false;
 
@@ -51,8 +52,8 @@ export class DropdownMenuComponent {
     }
   }
 
-  setImageLoaded = ( product: Product ) => {
-    product.imageLoaded = true;
+  setImageLoaded = ( item: any ) => {
+    item.imageLoaded = true;
   };
 
   toggleDropdown() {

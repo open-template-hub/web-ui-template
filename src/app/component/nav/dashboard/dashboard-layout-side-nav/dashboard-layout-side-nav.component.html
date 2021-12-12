@@ -47,14 +47,6 @@
         EDIT PROFILE
       </span>
       </a>
-      <a *ngIf="currentUser" [display]="sideNavClosed==='true'"
-         placement="right"
-         routerLink="{{URLS.settings.editTheme}}" show-delay="500" tooltip="theme">
-        <i aria-hidden="true" class="material-icons">invert_colors</i>
-        <span *ngIf="sideNavClosed === 'false'">
-          THEME
-        </span>
-      </a>
       <a (click)="logout()" *ngIf="currentUser && openOtherSettings" [display]="sideNavClosed==='true'"
          href="javascript:void(0)"
          id=logout placement="right" show-delay="500" tooltip="logout">
