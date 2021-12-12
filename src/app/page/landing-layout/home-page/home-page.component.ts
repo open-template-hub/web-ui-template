@@ -16,6 +16,7 @@ import { PRODUCT_LINES } from '../../../data/product/product.data';
 import { DEFAULT_SYSTEM_STATUS } from '../../../data/status/status.data';
 import { Partner } from '../../../model/partner/partner.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
+import { MonitoringService } from '../../../service/monitoring/monitoring.service';
 
 @Component( {
   selector: 'app-home-page',
@@ -74,12 +75,23 @@ export class HomePageComponent implements AfterViewInit {
       private formBuilder: FormBuilder,
       public router: Router,
       private authenticationService: AuthenticationService,
-      private npmProviderService: NpmProviderService
+      private npmProviderService: NpmProviderService,
+      private monitoringService: MonitoringService
   ) {
     // redirect to home if already logged in
     if ( this.authenticationService.currentUserValue ) {
       this.router.navigate( [ URLS.dashboard.root ] );
     }
+
+    this.monitoringService.alive()
+
+    this.monitoringService.systemStatuses.subscribe( systemStatuses => {
+      const overallSystemStatus = this.monitoringService.parseSystemStatuses( systemStatuses );
+
+      if ( overallSystemStatus ) {
+        this.overallSystemStatus = overallSystemStatus;
+      }
+    } );
   }
 
   ngAfterViewInit() {

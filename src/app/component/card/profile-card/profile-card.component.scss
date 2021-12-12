@@ -69,6 +69,10 @@
           size: 18px;
           style: italic;
         }
+
+        & .website {
+          color: var(--theme-color-lighter-7);
+        }
       }
     }
   }

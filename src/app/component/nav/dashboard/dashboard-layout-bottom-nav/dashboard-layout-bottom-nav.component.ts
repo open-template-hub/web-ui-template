@@ -1,10 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
+import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
+import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
+import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { PaymentService } from '../../../../service/payment/payment.service';
 
 @Component({
   selector: 'app-dashboard-layout-bottom-nav',
@@ -18,6 +23,8 @@ export class DashboardLayoutBottomNavComponent {
   loading = false;
   openSettings = false;
   openOtherSettings = false;
+  profileImg = PROFILE_IMG;
+  userIsPremium;
 
   URLS = URLS;
 
@@ -29,6 +36,8 @@ export class DashboardLayoutBottomNavComponent {
     private authenticationService: AuthenticationService,
     private loadingService: LoadingService,
     private businessLogicService: BusinessLogicService,
+    private paymentService: PaymentService,
+    private fileStorageService: FileStorageService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -40,8 +49,21 @@ export class DashboardLayoutBottomNavComponent {
         if ( userInfo ) {
           this.userInfo = userInfo;
         }
-      }
-    );
+
+        if ( this.userInfo.profileImg ) {
+          this.profileImg = userInfo.profileImg;
+        }
+      } );
+
+    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
+        if ( profileImg?.file?.data ) {
+          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+        }
+      } );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.name !== undefined;
+    } );
   }
 
   logout() {
@@ -57,5 +79,9 @@ export class DashboardLayoutBottomNavComponent {
     } else {
       this.openSettings = false;
     }
+  }
+
+  buy() {
+    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
   }
 }

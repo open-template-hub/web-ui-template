@@ -1,10 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PRODUCT_LINES, SERVICES } from 'src/app/data/product/product.data';
+import { environment } from '../../../../../environments/environment';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
+import { PROFILE_IMG } from '../../../../data/profile/profile.data';
+import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { ProductLine } from '../../../../model/product/product.model';
+import { AuthenticationService } from '../../../../service/auth/authentication.service';
+import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
+import { PaymentService } from '../../../../service/payment/payment.service';
 
 @Component( {
   selector: 'app-landing-layout-top-nav',
@@ -12,6 +19,10 @@ import { LoadingService } from '../../../../service/loading/loading.service';
   styleUrls: [ './landing-layout-top-nav.component.scss' ]
 } )
 export class LandingLayoutTopNavComponent {
+
+  profileImg = PROFILE_IMG;
+  userIsPremium;
+  currentUser: AuthToken;
   loading = false;
 
   URLS = URLS;
@@ -24,7 +35,36 @@ export class LandingLayoutTopNavComponent {
   @ViewChild( 'dropdownMenuServices' ) dropdownMenuServices: ElementRef;
   @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
-  constructor( private router: Router, private loadingService: LoadingService ) {
+  settings = [
+    { name: 'Edit Profile', icon: 'person', url: URLS.settings.editProfile },
+    { name: 'Logout', icon: 'exit_to_app', url: URLS.settings.editProfile }
+  ]
+
+  constructor(
+    private router: Router,
+    private loadingService: LoadingService,
+    private authenticationService: AuthenticationService,
+    private fileStorageService: FileStorageService,
+    private paymentService: PaymentService
+  ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+
+    this.authenticationService.currentUser.subscribe( currentUser => {
+      this.currentUser = currentUser;
+    } );
+
+    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
+        if ( profileImg?.file?.data ) {
+          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+        }
+      } );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.name !== undefined;
+    })
+  }
+
+  buy() {
+    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
   }
 }

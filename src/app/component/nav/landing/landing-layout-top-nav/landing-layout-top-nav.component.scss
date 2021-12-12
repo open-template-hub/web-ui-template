@@ -1,5 +1,9 @@
 @use '../../../../../styles/util/util';
 
+.premium-user {
+  border: 1px solid var(--theme-color);
+}
+
 .top-nav {
   height: 50px;
   padding: 20px 45px;
@@ -48,9 +52,17 @@ app-dropdown-menu i {
   margin-top: 0.5em;
 }
 
+.right-item-wrapper {
+  display: flex;
+}
+
 .top-nav a i {
   font-size: 24px;
   margin-right: 0.15em;
+}
+
+.profile-img-small {
+  margin-right: 10px;
 }
 
 @media only screen and (max-width: 999px) {

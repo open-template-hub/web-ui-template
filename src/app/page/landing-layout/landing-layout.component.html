@@ -11,7 +11,8 @@
     </div>
   </div>
   <app-footer [popupPadding]="true"></app-footer>
-  <app-landing-layout-bottom-nav></app-landing-layout-bottom-nav>
+  <app-dashboard-layout-bottom-nav *ngIf="currentUser"></app-dashboard-layout-bottom-nav>
+  <app-landing-layout-bottom-nav *ngIf="!currentUser"></app-landing-layout-bottom-nav>
   <div [class.landing-layout-page-top-loading-bar]="loading">
   </div>
 </div>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
@@ -115,6 +116,6 @@ export class DashboardLayoutSideNavComponent {
   }
 
   buy() {
-    this.paymentService.initPayment( environment.payment.stripe, '0276d8d1-0945-412b-92d1-084a6e3f7554', 1 );
+    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
   }
 }

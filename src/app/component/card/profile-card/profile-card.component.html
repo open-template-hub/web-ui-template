@@ -50,9 +50,11 @@
         <p class="value">{{ user.payload?.phone }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.website">
+      <div class="key-value-area" *ngIf="user.payload?.website" >
         <p class="key">Web Site</p>
-        <a class="value" [href]="user.payload?.website">{{ user.payload?.website }}</a>
+        <div class="value">
+          <a class="website" [href]="user.payload?.website">{{ user.payload?.website }}</a>
+        </div>
       </div>
     </div>
   </ng-template>
