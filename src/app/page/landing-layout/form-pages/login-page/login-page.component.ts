@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { environmentCommon } from 'src/environments/environment-common';
 import { environment } from '../../../../../environments/environment';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { AnalyticsService } from '../../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { EventService } from '../../../../service/event/event.service';
@@ -12,6 +13,7 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { InformationService } from '../../../../service/information/information.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ToastService } from '../../../../service/toast/toast.service';
+import { WebsiteModel } from '../../../../model/website/website.model'
 
 @Component( {
   selector: 'app-login-page',
@@ -32,7 +34,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   URLS = URLS;
 
-  appHeroContents = [ {text: $localize `:@@loginPage.appHero:Welcome`, level: 1} ]
+  appHeroContents = [ {text: $localize `:@@loginPage.appHero:Welcome`, level: 1} ];
+
+  websites: WebsiteModel[] = [];
+
+  showMoreToggle = false;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -44,12 +50,19 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       private fileStorageService: FileStorageService,
       private eventService: EventService,
       private loadingService: LoadingService,
-      private toastService: ToastService
+      private toastService: ToastService,
+      private analyticsService: AnalyticsService
   ) {
     if ( this.authenticationService.currentUserValue ) {
       this.router.navigate( [ URLS.dashboard.root ] );
     }
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+
+    for ( const website in environmentCommon.website ) {
+      if ( ( environmentCommon.website[ website ] as WebsiteModel )?.websiteType === 'oauth' ) {
+        this.websites.push( environmentCommon.website[ website ] )
+      }
+    }
   }
 
   ngOnInit() {
@@ -116,6 +129,15 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     ).pipe( first() )
     .subscribe(
         () => {
+          const data = {
+            payload: {
+              message: 'Login Attempt Successful'
+            },
+            category: 'LOGIN'
+          }
+
+          this.analyticsService.logRegisteredUser( data ).subscribe();
+
           if ( this.returnUrl !== URLS.dashboard.root ) {
             this.loginWithoutOpeningDashboard();
           } else {

@@ -1,0 +1,96 @@
+<app-card
+  *ngIf="user"
+  [bodyTemplate]="bodyTemplate"
+  [footerTemplate]="footerTemplate"
+  [headerTemplate]="headerTemplate"
+  class="profile-card">
+  <!-- Header -->
+  <ng-template #headerTemplate>
+    <div class="header">
+      <app-image-content-loader
+        *ngIf="!employeePhotoLoaded"
+        [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
+      <img
+        (load)="setEmployeePhotoLoaded()"
+        [src]="photoUri"
+        [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
+        alt="profile-img"
+        class="profile-image yellow-theme"
+        [class.premium-user]="userIsPremium"
+        onerror="this.src='./assets/common/profile-img.png'"/>
+      <p>@{{ user.username }}</p>
+    </div>
+  </ng-template>
+
+  <!-- Body -->
+  <ng-template #bodyTemplate>
+    <div class="body">
+      <div class="key-value-area" *ngIf="user.payload?.firstName">
+        <p class="key">First Name</p>
+        <p class="value">{{ user.payload?.firstName }}</p>
+      </div>
+
+      <div class="key-value-area" *ngIf="user.payload?.lastName">
+        <p class="key">Second Name</p>
+        <p class="value">{{ user.payload?.lastName }}</p>
+      </div>
+
+      <div class="key-value-area" *ngIf="user.payload?.bio">
+        <p class="key">Bio</p>
+        <p class="value">{{ user.payload?.bio }}</p>
+      </div>
+
+      <div class="key-value-area" *ngIf="user.payload?.location">
+        <p class="key">Location</p>
+        <p class="value">{{ user.payload?.location }}</p>
+      </div>
+
+      <div class="key-value-area" *ngIf="user.payload?.phone">
+        <p class="key">Phone</p>
+        <p class="value">{{ user.payload?.phone }}</p>
+      </div>
+
+      <div class="key-value-area" *ngIf="user.payload?.website" >
+        <p class="key">Web Site</p>
+        <div class="value">
+          <a class="website" [href]="user.payload?.website">{{ user.payload?.website }}</a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Footer -->
+  <ng-template #footerTemplate>
+    <div class="footer" *ngIf="user.payload?.social?.linkedin || user.payload?.social?.twitter || user.payload?.social?.github">
+      <div class="social-area" *ngIf="user.payload?.social?.twitter">
+        <app-ext-link
+          [href]="user.payload.social.twitter">
+          <i [class]="'fab fa-' + environmentCommon.website.twitter.cssClass + ' fa-fw'"
+             aria-hidden="true"
+             body>
+          </i>
+        </app-ext-link>
+        <p>{{ parseSocialUrl( user.payload.social.twitter ) }}</p>
+      </div>
+      <div class="social-area" *ngIf="user.payload?.social?.linkedin">
+        <app-ext-link
+          [href]="user.payload.social.linkedin">
+          <i [class]="'fab fa-' + environmentCommon.website.linkedin.cssClass + ' fa-fw'"
+             aria-hidden="true"
+             body>
+          </i>
+        </app-ext-link>
+        <p>{{ parseSocialUrl( user.payload.social.linkedin ) }}</p>
+      </div>
+      <div class="social-area" *ngIf="user.payload?.social?.github">
+        <app-ext-link [href]="user.payload.social.github">
+          <i [class]="'fab fa-' + environmentCommon.website.github.cssClass + ' fa-fw'"
+             aria-hidden="true"
+             body>
+          </i>
+        </app-ext-link>
+        <p>{{ parseSocialUrl( user.payload.social.github ) }}</p>
+      </div>
+    </div>
+  </ng-template>
+</app-card>

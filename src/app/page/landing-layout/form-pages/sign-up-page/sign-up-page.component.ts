@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
 import { environmentCommon } from '../../../../../environments/environment-common';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { WebsiteModel } from '../../../../model/website/website.model';
 import { AnalyticsService } from '../../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { InformationService } from '../../../../service/information/information.service';
@@ -31,6 +32,10 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
 
   appHeroContents = [{text: $localize `:@@signUp.appHero:Register`, level: 1}]
 
+  websites: WebsiteModel[] = [];
+
+  showMoreToggle = false;
+
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,
@@ -47,6 +52,12 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
     }
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+
+    for ( const website in environmentCommon.website ) {
+      if ( ( environmentCommon.website[ website ] as WebsiteModel )?.websiteType === 'oauth' ) {
+        this.websites.push( environmentCommon.website[ website ] )
+      }
+    }
   }
 
   ngOnInit() {
@@ -94,8 +105,6 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
     .pipe( first() )
     .subscribe(
         data => {
-          this.analyticsService.logRegisteredUser( data ).subscribe();
-
           this.router.navigate( [ '/signup-success' ], { queryParams: { email: data.email } } );
         }
     );

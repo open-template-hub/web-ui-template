@@ -18,7 +18,7 @@
   }
 }
 
-.top-svg {
+.top-svg, .bottom-svg {
   width: 100%;
   overflow: hidden;
   line-height: 0;
@@ -28,12 +28,15 @@
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 100%;
-    min-height: 250px;
-    max-height: 450px;
   }
 
   position: absolute;
+}
+
+.bottom-svg {
+  & svg {
+    height: 660px;
+  }
 }
 
 @media only screen and (max-width: 999px) {
@@ -41,8 +44,8 @@
     font-size: 18px;
   }
 
-  .top-svg {
-    top: 0;
+  .bottom-svg {
+    display: none;
   }
 }
 

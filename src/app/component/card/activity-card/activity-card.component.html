@@ -1,0 +1,19 @@
+<app-card
+  [bodyTemplate]="bodyTemplate"
+  [headerTemplate]="headerTemplate"
+  class="activity-card">
+  <ng-template #headerTemplate>
+    <div class="header">
+      <p>Recent Activities</p>
+    </div>
+  </ng-template>
+  <ng-template #bodyTemplate>
+    <div class="body">
+      <div class="row" *ngFor="let event of events; let last = last">
+        <p class="message">{{ event.payload.message }}</p>
+        <p class="date">{{ timestampToString( event.timestamp ) }}</p>
+        <hr *ngIf="!last">
+      </div>
+    </div>
+  </ng-template>
+</app-card>

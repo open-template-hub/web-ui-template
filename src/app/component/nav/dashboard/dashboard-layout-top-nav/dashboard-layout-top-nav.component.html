@@ -8,9 +8,6 @@
     <input (keyup)="search($event)" placeholder="Search..." type="text">
     <i aria-hidden="true" class="fas fa-search fa-lg fa-fw"></i>
   </div>
-  <a routerLink="{{URLS.dashboard.myProfile}}">
-    <img [src]="profileImg" alt="profile img" class="profile-img-small"/>
-  </a>
 </nav>
 <div #searchArea *ngIf="(userSearchResults.length > 0 || categorySearchResults.length > 0) && searchEnabled"
      class="dashboard-layout-top-nav-search-results">

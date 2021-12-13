@@ -1,0 +1,83 @@
+<div class="edit-profile-page">
+  <h2>Edit Profile</h2>
+  <app-card
+    [bodyTemplate]="bodyTemplate"
+    [headerTemplate]="headerTemplate"
+    class="employee-card">
+    <!-- Header -->
+    <ng-template #headerTemplate>
+      <div class="header" fxLayout="column">
+        <div (click)="fileInput.click()" class="profile-image-wrapper" style="cursor: pointer">
+            <img [src]="candidateProfileImg ? candidateProfileImg : profileImg" alt="profile img"
+                 class="profile-image"/>
+          <i aria-hidden="true" class="fas fa-plus fa-lg fa-fw"></i>
+        </div>
+
+        <input #fileInput (change)="fileChangeEvent($event)" accept="image/*" hidden style="height: 0" type="file"/>
+
+        <image-cropper (cropperReady)="cropperReady()"
+                       (imageCropped)="imageCropped($event)"
+                       (imageLoaded)="imageLoaded()"
+                       (loadImageFailed)="loadImageFailed()"
+                       [aspectRatio]="1"
+                       [imageChangedEvent]="imageChangedEvent"
+                       [maintainAspectRatio]="true"
+                       [resizeToWidth]="400"
+                       [style]="imageChangedEvent ? 'display:block' : 'display:none'"
+                       format="png"
+                       outputType="file"
+                       style="max-width: 400px; padding: 0"
+        ></image-cropper>
+      </div>
+    </ng-template>
+
+    <!-- Body -->
+    <ng-template #bodyTemplate>
+      <form (ngSubmit)="onSubmit()" [formGroup]="userInfoForm" class="body">
+        <div class="section">
+          <!-- primary info fields -->
+          <div [class.input-error]="submitted && f.firstName.invalid" class="input-with-icon">
+            <input formControlName="firstName" placeholder="First name..." required type="text">
+            <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.lastName.invalid" class="input-with-icon">
+            <input formControlName="lastName" placeholder="Last name..." required type="text">
+            <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.bio.invalid" class="input-with-icon">
+            <textarea formControlName="bio" maxlength="500" placeholder="Bio..." rows="2"></textarea>
+            <i aria-hidden="true" class="fas fa-address-book fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.location.invalid" class="input-with-icon">
+            <input formControlName="location" placeholder="Location..." type="text">
+            <i aria-hidden="true" class="fas fa-map-marked-alt fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.phone.invalid" class="input-with-icon">
+            <input formControlName="phone" placeholder="Phone..." type="text">
+            <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.website.invalid" class="input-with-icon">
+            <input formControlName="website" placeholder="Website..." type="text">
+            <i aria-hidden="true" class="fas fa-globe fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.twitter.invalid" class="input-with-icon">
+            <input formControlName="twitter" placeholder="Twitter..." type="text">
+            <i aria-hidden="true" class="fab fa-twitter fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.linkedin.invalid" class="input-with-icon">
+            <input formControlName="linkedin" placeholder="Linkedin..." type="text">
+            <i aria-hidden="true" class="fab fa-linkedin-in fa-lg fa-fw"></i>
+          </div>
+          <div [class.input-error]="submitted && f.github.invalid" class="input-with-icon">
+            <input formControlName="github" placeholder="Github..." type="text">
+            <i aria-hidden="true" class="fab fa-github fa-lg fa-fw"></i>
+          </div>
+          <div class="section-submit">
+            <app-button [icon]="'check'" text="Done">
+            </app-button>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </app-card>
+</div>

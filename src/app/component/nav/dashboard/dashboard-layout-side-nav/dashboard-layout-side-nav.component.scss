@@ -66,7 +66,7 @@
 .side-nav-sub {
   display: flex;
   width: 100%;
-  min-height: 240px;
+  min-height: 160px;
   flex-direction: column;
   box-shadow: 0 0 14px 0 var(--shadow);
 }
@@ -100,6 +100,10 @@
 
 .dashboard-layout-side-nav-search i {
   cursor: pointer;
+}
+
+.premium-user {
+  border: 1px solid var(--theme-color);
 }
 
 #more-settings, #logout {

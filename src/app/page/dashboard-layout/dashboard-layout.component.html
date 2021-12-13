@@ -1,4 +1,4 @@
-<div [class.side-nav-closed]="sideNavClosed === 'true'">
+<div class="wrapper" [class.side-nav-closed]="sideNavClosed === 'true'">
   <app-dashboard-layout-top-nav></app-dashboard-layout-top-nav>
   <app-dashboard-layout-side-nav></app-dashboard-layout-side-nav>
   <app-side-content></app-side-content>
@@ -12,5 +12,5 @@
   <div class="footer-wrap">
     <app-footer [hideShadow]="true"></app-footer>
   </div>
-  <app-bottom-nav></app-bottom-nav>
+  <app-dashboard-layout-bottom-nav></app-dashboard-layout-bottom-nav>
 </div>

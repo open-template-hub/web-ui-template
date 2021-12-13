@@ -1,0 +1,83 @@
+@use '../../../../styles/util/util';
+@use '../../../component/card/card.component';
+
+.edit-profile-page {
+  & h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  & app-hero {
+    & .section {
+      padding-top: 0;
+    }
+  }
+
+  .employee-card {
+    & .header {
+      // Design
+
+      & .profile-image-wrapper {
+        position: relative;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        width: -webkit-fit-content;
+
+        & .profile-image {
+          @include util.margin-x-auto;
+          @include util.default-border-radius-image;
+
+          // Color
+          background-color: var(--card);
+
+          // Design
+          position: relative;
+          border: 2px solid var(--shadow-lighter);
+          box-shadow: 0 -6px 15px -7px var(--shadow);
+          width: 120px;
+          height: 120px;
+          padding: 5px;
+        }
+
+        & i {
+          position: absolute;
+          top: 100px;
+          right: 2px;
+        }
+      }
+    }
+
+    & .body {
+      // Design
+      min-height: 265px;
+      padding: 10px 20px 20px;
+
+      & .section {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .edit-profile-page {
+    padding-top: 40px;
+
+    & h2 {
+      margin-top: 20px;
+    }
+
+    & .employee-card {
+      & .header {
+        & .profile-image-wrapper {
+          & i {
+            top: 100px;
+            right: 5px;
+          }
+        }
+
+      }
+    }
+  }
+}

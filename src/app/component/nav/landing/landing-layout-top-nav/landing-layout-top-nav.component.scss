@@ -1,5 +1,9 @@
 @use '../../../../../styles/util/util';
 
+.premium-user {
+  border: 1px solid var(--theme-color);
+}
+
 .top-nav {
   height: 50px;
   padding: 20px 45px;
@@ -23,7 +27,7 @@
   margin-right: 10px;
 }
 
-.top-nav .right-item-wrapper .contact {
+.top-nav .right-item-wrapper .sign-up {
 
   border-bottom: var(--theme-color) 2px solid;
 }
@@ -48,9 +52,17 @@ app-dropdown-menu i {
   margin-top: 0.5em;
 }
 
+.right-item-wrapper {
+  display: flex;
+}
+
 .top-nav a i {
   font-size: 24px;
-  margin-left: 0.05em;
+  margin-right: 0.15em;
+}
+
+.profile-img-small {
+  margin-right: 10px;
 }
 
 @media only screen and (max-width: 999px) {
@@ -70,7 +82,7 @@ app-dropdown-menu i {
     background: none;
   }
 
-  .top-nav .right-item-wrapper .contact:hover {
+  .top-nav .right-item-wrapper .sign-up:hover {
     @include util.default-border-radius;
 
     transition: 0.3s ease-in-out;
@@ -83,7 +95,7 @@ app-dropdown-menu i {
     background: var(--hover);
   }
 
-  .bottom-nav .right-item-wrapper .contact:hover {
+  .bottom-nav .right-item-wrapper .sign-up:hover {
     color: white;
     background: var(--theme-color);
   }

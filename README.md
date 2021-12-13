@@ -15,17 +15,16 @@ Open Template Hub - Web UI Template v3
 [![Release](https://img.shields.io/github/release/open-template-hub/web-ui-template?include_prereleases&color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/releases)
 [![Lighthouse](https://img.shields.io/badge/LIGHTHOUSE-report-43b043.svg?style=for-the-badge&logo=lighthouse)](docs/lighthouse-report-desktop.html)
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_web-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_web-ui-template)
-[![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
-Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support. (generated from [Web UI Template](https://github.com/open-template-hub/web-ui-template))
+Web UI Template is a modern, responsive, and customizable web UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.
 
 <h3 align="center">
   For demo click the image below ⬇️
 </h3>
 
 <p align="center">
-  <a href="https://opentemplatehub.com">
-    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/web-ui-demo-light.png" alt="Screenshot" width="800px">
+  <a href="https://web.opentemplatehub.com">
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/company-profile-ui-demo-light.png" alt="Screenshot" width="800px">
   </a>
 </p>
 

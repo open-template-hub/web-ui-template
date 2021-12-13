@@ -1,22 +1,10 @@
 <div class="hero">
   <div class="hero-left">
-    <h1>Open Template Hub</h1>
+    <h2>Open Template Hub</h2>
     <p>
       {{ BRAND.bio }}
     </p>
-  </div>
-
-  <div class="hero-right">
-    <app-image-content-loader
-        *ngIf="!brandLogoLoaded"
-        [imageContentLoaderClass]="'brand-logo-main'"></app-image-content-loader>
-    <img
-        (load)="setBrandLogoLoaded()"
-        [src]="BRAND.heroImage.src"
-        [style]="'display:' + (!brandLogoLoaded ? 'none;' : 'block;')"
-        [alt]="BRAND.heroImage.description"
-        height="450"
-        width="800"/>
+    <app-button i18n-text="@@homePage.getStartedButton" text="Get Started" [routerLink]="URLS.signup"></app-button>
   </div>
 </div>
 
@@ -39,34 +27,6 @@
   </a>
 </div>
 
-<!-- Testimonials -->
-<app-hero [contents]="testimonialsTitle"></app-hero>
-<div class="cards-wrapper">
-  <app-testimonial-card
-      *ngFor="let testimonial of TESTIMONIALS"
-      [testimonial]="testimonial">
-  </app-testimonial-card>
-  <app-button i18n-text="@@productPage.readMoreStories" text="Read More Stories" [routerLink]="URLS.customers"
-              [buttonClasses]="['lighter-contrast-border-color', 'lighter-contrast-font-color', 'transparent-button']">
-  </app-button>
-</div>
-
-<!-- Customers -->
-<app-hero [contents]="customersTitle"></app-hero>
-<div class="customers-wrapper">
-  <app-business-partner-swiper [partners]="PARTNERS">
-  </app-business-partner-swiper>
-</div>
-
-<!-- Why Us -->
-<app-hero [contents]="whyUsTitle"></app-hero>
-<div class="cards-wrapper">
-  <app-feature-card
-      *ngFor="let feature of FEATURES"
-      [feature]="feature">
-  </app-feature-card>
-</div>
-
 <!-- Explore -->
 <app-hero [contents]="exploreTitle"></app-hero>
 <ng-container *ngFor="let productLine of PRODUCT_LINES">
@@ -87,4 +47,11 @@
   </div>
 </ng-container>
 
+<!-- System status -->
+<div class="form-page-layout">
+  <app-hero [contents]="statusTitle"></app-hero>
+  <app-status-card [overallSystemStatus]="overallSystemStatus"></app-status-card>
+</div>
+
+<!-- Cookies -->
 <app-cookies></app-cookies>

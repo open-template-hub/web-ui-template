@@ -1,0 +1,136 @@
+@use '../../../../styles/util/util';
+@use '../../card/card.component';
+
+.profile-card {
+  & .header {
+    // Design
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    & .profile-image {
+      @include util.default-border-radius-image;
+
+      // Color
+      background-color: var(--card);
+
+      // Design
+      border: 2px solid var(--shadow-lighter);
+      box-shadow: 0 -6px 15px -7px var(--shadow);
+      width: 120px;
+      height: 120px;
+      padding: 5px;
+
+      &.profile-image {
+        border: 1px solid var(--theme-color);
+      }
+    }
+
+    & p {
+      margin-top: auto;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: var(--lighter-contrast);
+      font-size: 18px;
+    }
+  }
+
+  & .body {
+    // @include card.default-body;
+
+    justify-content: flex-start;
+
+    // Design
+    padding: 0px 20px 50px;
+
+    & .key-value-area {
+      display: flex;
+      margin-top: 30px;
+      & .key {
+        width: -webkit-fill-available;
+        text-align: right;
+        color: var(--lighter-contrast);
+        font: {
+          size: 20px;
+          style: italic;
+        }
+      }
+
+      & .value {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 30px;
+        width: 100%;
+        text-align: left;
+
+        // Design
+        font: {
+          size: 18px;
+          style: italic;
+        }
+
+        & .website {
+          color: var(--theme-color-lighter-7);
+        }
+      }
+    }
+  }
+
+  & .footer {
+    @include card.default-footer;
+    @include card.default-footer-border-color;
+    @include util.flex-layout-row;
+
+    & .social-area {
+      display: flex;
+      & i {
+        // Color
+        color: var(--theme-color-lighter-6);
+
+        // Design
+        margin: 0 3px;
+        font-size: 27px;
+
+        &:hover {
+          // Color
+          color: var(--theme-color);
+        }
+      }
+
+      & p {
+        color: var(--lighter-contrast);
+        margin-right: 20px;
+        font-size: 17px;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .profile-card {
+    & .body {
+      & .key-value-area {
+        flex-direction: column;
+
+        & .key {
+          text-align: center;
+        }
+
+        & .value {
+          text-align: center;
+          margin-left: 0;
+        }
+      }
+    }
+
+    & .footer {
+      & .social-area {
+        & p {
+          display: none;
+        }
+      }
+    }
+  }
+}

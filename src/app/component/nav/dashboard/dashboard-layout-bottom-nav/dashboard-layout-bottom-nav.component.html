@@ -1,0 +1,33 @@
+<nav class="bottom-nav">
+  <a (click)="closeSettings()" *ngIf="openSettings" href="javascript:void(0)">
+    <i aria-hidden="true" class="material-icons">arrow_back_ios</i>
+    <span> Back </span>
+  </a>
+  <a *ngIf="!openSettings"
+     [routerLink]="URLS.dashboard.root">
+    <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
+    <span> Dashboard </span>
+  </a>
+  <a *ngIf="!openSettings"
+     (click)="buy()">
+    <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true" style="color: var(--theme-color);"></i>
+    <span> Premium </span>
+  </a>
+  <a (click)="openSettings = !openSettings" *ngIf="!openSettings" href="javascript:void(0)">
+    <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
+    <span> Settings </span>
+  </a>
+  <a *ngIf="!openSettings"
+     [routerLink]="URLS.dashboard.myProfile">
+    <img [src]="profileImg" [class.premium-user]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
+    <span> My Profile </span>
+  </a>
+  <a [routerLink]="URLS.settings.editProfile" *ngIf="openSettings">
+    <i [class]="'fas fa-user fa-fw'" aria-hidden="true"></i>
+    <span> Edit Profile </span>
+  </a>
+  <a (click)="logout()" *ngIf="openSettings" href="javascript:void(0)" id=logout>
+    <i [class]="'fas fa-sign-out-alt fa-fw'" aria-hidden="true"></i>
+    <span> Logout </span>
+  </a>
+</nav>

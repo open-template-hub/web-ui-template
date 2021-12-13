@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { LoadingService } from '../loading/loading.service';
 
 @Injectable( {
   providedIn: 'root',
@@ -9,14 +8,15 @@ import { LoadingService } from '../loading/loading.service';
 export class AnalyticsService {
   constructor(
       private http: HttpClient,
-      private loadingService: LoadingService
   ) {
   }
 
-  logRegisteredUser( userData: any ) {
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, {
-      name: 'USER_REGISTERED',
-      payload: userData,
-    } );
+  logRegisteredUser( data: any ) {
+    data.name = environment.clientUrl
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+  }
+
+  getEvents( start: number, limit: number ) {
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }&limit=${ limit }`)
   }
 }

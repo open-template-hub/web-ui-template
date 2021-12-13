@@ -1,0 +1,16 @@
+{
+  "name": "web-ui-template",
+  "description": "Web UI Template is a modern, responsive, and customizable web UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.",
+  "website": "https://opentemplatehub.com/product/user-interface/web-ui-template",
+  "repository": "https://github.com/open-template-hub/web-ui-template",
+  "logo": "https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/ui/web-ui-logo.png",
+  "keywords": [
+    "angular",
+    "template",
+    "ui-components",
+    "angular-components",
+    "web",
+    "web-ui",
+    "open-template-hub"
+  ]
+}

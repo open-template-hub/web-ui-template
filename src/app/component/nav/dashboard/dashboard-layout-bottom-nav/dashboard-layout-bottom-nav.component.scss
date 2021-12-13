@@ -1,0 +1,22 @@
+@use '../../../../../styles/bottom-nav/bottom-nav';
+
+.premium-user {
+  border: 1px solid var(--theme-color);
+}
+
+.profile-img-small {
+  width: 33px;
+  height: 33px;
+}
+
+@media only screen and (max-width: 999px) {
+  .bottom-nav {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .bottom-nav {
+    visibility: hidden;
+  }
+}
