@@ -23,9 +23,6 @@ export class DashboardLayoutSideNavComponent {
   sideNavClosed = 'false';
   userInfo: any = {};
   profileImg = PROFILE_IMG;
-  userSearchResults = [];
-  categorySearchResults = [];
-  searchEnabled = true;
 
   URLS = URLS;
   BRAND = BRAND;
@@ -77,15 +74,6 @@ export class DashboardLayoutSideNavComponent {
     })
   }
 
-  @HostListener( 'document:click', [ '$event' ] )
-  onDocumentClick( event ) {
-    if ( this.searchArea?.nativeElement.contains( event.target ) ) {
-      this.searchEnabled = true;
-    } else {
-      this.searchEnabled = false;
-    }
-  }
-
   logout() {
     this.authenticationService.logout();
     this.router.navigate( [ '/' ] ).then( () => {
@@ -95,24 +83,6 @@ export class DashboardLayoutSideNavComponent {
 
   toggleSideNav() {
     this.themeService.toggleSideNav();
-  }
-
-  search( event: any ) {
-    const q = event.target.value;
-
-    if ( !q || q.length < 3 ) {
-      this.userSearchResults = [];
-      this.categorySearchResults = [];
-      return;
-    }
-
-    this.businessLogicService.search( q ).subscribe( results => {
-      this.userSearchResults = results.slice( 0, 10 );
-    } );
-
-    this.categoryService.search( q ).subscribe( results => {
-      this.categorySearchResults = results.slice( 0, 10 );
-    } );
   }
 
   buy() {

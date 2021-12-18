@@ -126,6 +126,7 @@ import { ActivityCardComponent } from './component/card/activity-card/activity-c
 import { ProfileCardComponent } from './component/card/profile-card/profile-card.component';
 import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
 import { DashboardLayoutBottomNavComponent } from './component/nav/dashboard/dashboard-layout-bottom-nav/dashboard-layout-bottom-nav.component';
+import { ContactInformationCardComponent } from './component/card/contact-information-card/contact-information-card.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -238,6 +239,7 @@ FullCalendarModule.registerPlugins( [
     ProfileCardComponent,
     EditProfilePageComponent,
     DashboardLayoutBottomNavComponent,
+    ContactInformationCardComponent,
   ],
   imports: [
     BrowserModule,

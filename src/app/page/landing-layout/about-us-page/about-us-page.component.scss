@@ -5,7 +5,8 @@
   background-color: var(--background-color);
 }
 
-.timeline-wrapper, .websites-wrapper {
+.timeline-wrapper, .websites-wrapper,
+.contact-information-wrapper {
   @include util.flex-center-center;
 
   flex-wrap: wrap;
@@ -38,6 +39,15 @@
       height: 120px;
     }
   }
+
+  .contact-information-wrapper {
+    @include util.flex-layout-column;
+
+    & app-contact-information-card {
+      width: 94vw;
+      padding-bottom: 60px;
+    }
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -54,6 +64,13 @@
 
     & .right {
       margin: 150px 41px 0;
+    }
+  }
+
+  .contact-information-wrapper {
+    @include util.flex-layout-column;
+    & app-contact-information-card {
+      width: 800px;
     }
   }
 
