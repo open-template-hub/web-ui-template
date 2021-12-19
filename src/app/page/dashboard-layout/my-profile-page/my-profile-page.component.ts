@@ -10,6 +10,7 @@ import { BusinessLogicService } from '../../../service/business-logic/business-l
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
+import { PaymentService } from '../../../service/payment/payment.service';
 
 @Component( {
   selector: 'app-my-profile-page',
@@ -23,6 +24,7 @@ export class MyProfilePageComponent implements OnDestroy {
   environment = environment;
   profileImg = PROFILE_IMG;
   loading = false;
+  userIsPremium;
 
   URLS = URLS;
 
@@ -34,7 +36,8 @@ export class MyProfilePageComponent implements OnDestroy {
     private loadingService: LoadingService,
     private businessLogicService: BusinessLogicService,
     private fileStorageService: FileStorageService,
-    private informationService: InformationService
+    private informationService: InformationService,
+    private paymentService: PaymentService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -68,6 +71,10 @@ export class MyProfilePageComponent implements OnDestroy {
       if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
+    } );
+
+    this.paymentService.premiumProducts.subscribe( response => {
+      this.userIsPremium = response?.name !== undefined;
     } );
   }
 

@@ -48,7 +48,7 @@ import { DefaultTopSvgComponent } from './component/design/top-svg/default-top-s
 import { LeafTopSvgComponent } from './component/design/top-svg/leaf-top-svg/leaf-top-svg.component';
 import { SharpTopSvgComponent } from './component/design/top-svg/sharp-top-svg/sharp-top-svg.component';
 import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
-import { DropdownMenuComponent } from './component/dropdown-menu/dropdown-menu.component';
+import { SettingsDropdownMenuComponent } from './component/settings-dropdown-menu/settings-dropdown-menu.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
 import { HeroComponent } from './component/hero/hero.component';
 import { LedComponent } from './component/led/led.component';
@@ -160,7 +160,7 @@ FullCalendarModule.registerPlugins( [
     PricingPageComponent,
     PricingCardComponent,
     TestimonialCardComponent,
-    DropdownMenuComponent,
+    SettingsDropdownMenuComponent,
     EditThemePageComponent,
     ColorChartComponent,
     ProductPageComponent,

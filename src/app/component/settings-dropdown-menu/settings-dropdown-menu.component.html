@@ -1,0 +1,42 @@
+<div class="dropdown">
+  <div #toggleButton class="ng-content-area">
+    <ng-content (click)="toggleDropdown()"></ng-content>
+  </div>
+
+  <div #dropdownContent
+      *ngIf="isDropdownOpen"
+      [class.dropdown-opened]="isDropdownOpen && closeDropdownInternalClicked"
+      class="dropdown-content">
+    <i aria-hidden="true"
+        class="dropdown-caret fas fa-caret-up fa-lg fa-fw"></i>
+    <div (click)="closeDropDownInternal()" class="dropdown-top-menu">
+      <i aria-hidden="true" class="fas fa-times fa-lg fa-fw"></i>
+    </div>
+
+    <div class="section-column-wrapper">
+      <div class="section-column">
+        <ng-container *ngFor="let item of items; last as isLast; first as isFirst">
+          <a *ngIf="item.url" (click)="closeDropDownInternal()"
+             [routerLink]="item.url"
+             class="dropdown-item">
+            <div class="dropdown-item-content">
+              <i aria-hidden="true" class="material-icons">{{ item.icon }}</i>
+              <h6>
+                {{ item.name }}
+              </h6>
+            </div>
+          </a>
+          <a *ngIf="item.logout" (click)="closeDropDownInternal(); logout()"
+             class="dropdown-item">
+            <div class="dropdown-item-content">
+              <i aria-hidden="true" class="material-icons">{{ item.icon }}</i>
+              <h6>
+                {{ item.name }}
+              </h6>
+            </div>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
