@@ -8,7 +8,6 @@ import { URLS } from '../../../../data/navigation/navigation.data';
 import { AnalyticsService } from '../../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
-import { EventService } from '../../../../service/event/event.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../../service/information/information.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
@@ -48,7 +47,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       private businessLogicService: BusinessLogicService,
       private informationService: InformationService,
       private fileStorageService: FileStorageService,
-      private eventService: EventService,
       private loadingService: LoadingService,
       private toastService: ToastService,
       private analyticsService: AnalyticsService
@@ -160,23 +158,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
             );
           } else {
             this.fileStorageService.downloadProfileImage( userInfo.payload.profileImageId ).subscribe();
-
-            const userInterests = userInfo?.payload?.interests;
-            const categories: any[] = [];
-
-            if ( userInterests && userInterests.length > 0 ) {
-              for ( const interest of userInterests ) {
-                categories.push(
-                    {
-                      category: interest.category,
-                      subCategory: interest.subCategory,
-                      leafCategory: interest.leafCategory
-                    }
-                );
-              }
-            }
-
-            this.eventService.initSearchEvents( categories );
           }
         }
     );

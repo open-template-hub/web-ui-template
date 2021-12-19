@@ -30,7 +30,6 @@ import { CalendarComponent } from './component/calendar/calendar.component';
 import { ActivityHistoryCardComponent } from './component/card/activity-history-card/activity-history-card.component';
 import { CardComponent } from './component/card/card.component';
 import { EmployeeCardComponent } from './component/card/employee-card/employee-card.component';
-import { EventCardComponent } from './component/card/event-card/event-card.component';
 import { FeatureCardComponent } from './component/card/feature-card/feature-card.component';
 import { PolicyCardComponent } from './component/card/policy-card/policy-card.component';
 import { PresentationCardComponent } from './component/card/presentation-card/presentation-card.component';
@@ -52,10 +51,6 @@ import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
 import { DropdownMenuComponent } from './component/dropdown-menu/dropdown-menu.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
 import { HeroComponent } from './component/hero/hero.component';
-import { EventDataComponent } from './component/label/deprecated/event-data/event-data.component';
-import { EventHamburgerMenuComponent } from './component/label/deprecated/event-hamburger-menu/event-hamburger-menu.component';
-import { LabelDataComponent } from './component/label/deprecated/label-data/label-data.component';
-import { LabelWithIconDataComponent } from './component/label/deprecated/label-with-icon-data/label-with-icon-data.component';
 import { LedComponent } from './component/led/led.component';
 import { LandingLayoutBottomNavComponent } from './component/nav/landing/landing-layout-bottom-nav/landing-layout-bottom-nav.component';
 import { DashboardLayoutSideNavComponent } from './component/nav/dashboard/dashboard-layout-side-nav/dashboard-layout-side-nav.component';
@@ -73,14 +68,10 @@ import { PresentationSwiperComponent } from './component/swiper/presentation-swi
 import { RequestInterceptor } from './interceptor/request/request.interceptor';
 import { ResponseInterceptor } from './interceptor/response/response.interceptor';
 import { OthComponent } from './oth/oth.component';
-import { CreateEventPageComponent } from './page/dashboard-layout/create-event-page/create-event-page.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
-import { EventPageComponent } from './page/dashboard-layout/event-page/event-page.component';
-import { LearnPageComponent } from './page/dashboard-layout/learn-page/learn-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
-import { PublicProfilePageComponent } from './page/dashboard-layout/public-profile-page/public-profile-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import { BrandingPageComponent } from './page/landing-layout/branding-page/branding-page.component';
 import { ContactUsPageComponent } from './page/landing-layout/contact-us-page/contact-us-page.component';
@@ -152,24 +143,16 @@ FullCalendarModule.registerPlugins( [
     FooterComponent,
     SplashLayoutComponent,
     CallbackPageComponent,
-    LabelDataComponent,
     DashboardLayoutTopNavComponent,
-    LabelWithIconDataComponent,
     NotFoundPageComponent,
-    LearnPageComponent,
     MaintenancePageComponent,
     CookiePopupComponent,
-    CreateEventPageComponent,
     CookiePolicyPageComponent,
     PrivacyPolicyPageComponent,
     TermsPageComponent,
-    PublicProfilePageComponent,
-    EventDataComponent,
     SettingsLayoutComponent,
     SideContentComponent,
     MyProfilePageComponent,
-    EventPageComponent,
-    EventHamburgerMenuComponent,
     CalendarComponent,
     SearchComponent,
     RateBarComponent,
@@ -203,7 +186,6 @@ FullCalendarModule.registerPlugins( [
     PresentationCardComponent,
     HeroComponent,
     EventButtonComponent,
-    EventCardComponent,
     ActivityHistoryCardComponent,
     ContentLoaderComponent,
     ImageContentLoaderComponent,

@@ -5,10 +5,6 @@
       *ngIf="searchResults.length > 0 && searchEnabled"
       class="search-results">
     <a (click)="searchResults = []" *ngFor="let result of searchResults"
-       [routerLink]="URLS.user.root + '/' + result.username">
-      <app-label-with-icon-data [data]="result.username" [isClickableWithinApp]="true" [noMargin]="true"
-                                [solid]="'user'" [urlPrefix]="URLS.user.root + '/'">
-      </app-label-with-icon-data>
-    </a>
+       [routerLink]="URLS.user.root + '/' + result.username"></a>
   </div>
 </div>
