@@ -72,6 +72,9 @@
 }
 
 @media only screen and (min-width: 1000px) {
+  .page {
+    min-height: calc(100vh - 480px);
+  }
 
   .header, .header-filler {
     display: block;
