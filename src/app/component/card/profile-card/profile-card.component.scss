@@ -21,14 +21,21 @@
       width: 120px;
       height: 120px;
       padding: 5px;
+      margin-left: auto;
+      margin-right: auto;
 
-      &.profile-image {
+      &.premium-user {
         border: 1px solid var(--theme-color);
+      }
+
+      & app-image-contennt-loader {
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
     & p {
-      margin-top: auto;
+      margin-top: 10px;
       margin-bottom: 20px;
       font-style: italic;
       color: var(--lighter-contrast);

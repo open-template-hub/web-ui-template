@@ -3,15 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { environmentCommon } from '../environments/environment-common';
 import { NAVIGATIONS } from './data/navigation/navigation.data';
 import { AuthGuard } from './guard/auth/auth.guard';
-import { PublicProfileGuard } from './guard/public-profile/public-profile.guard';
 import { NavigationInterceptor } from './interceptor/navigation/navigation.interceptor';
-import { CreateEventPageComponent } from './page/dashboard-layout/create-event-page/create-event-page.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
-import { EventPageComponent } from './page/dashboard-layout/event-page/event-page.component';
-import { LearnPageComponent } from './page/dashboard-layout/learn-page/learn-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
-import { PublicProfilePageComponent } from './page/dashboard-layout/public-profile-page/public-profile-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import { BlogContentPageComponent } from './page/landing-layout/blog-page/blog-content-page/blog-content-page.component';
 import { BlogPageComponent } from './page/landing-layout/blog-page/blog-page.component';
@@ -156,12 +151,6 @@ const routes: Routes = [
         canActivate: [ NavigationInterceptor ],
       },
       {
-        path: NAVIGATIONS.u.url + '/' + ':username',
-        component: PublicProfilePageComponent,
-        data: { isPublic: true },
-        canActivate: [ NavigationInterceptor ],
-      },
-      {
         path: NAVIGATIONS.pricing.url + '/' + ':productLine' + '/' + ':product',
         component: PricingPageComponent,
         canActivate: [ NavigationInterceptor ],
@@ -250,35 +239,9 @@ const routes: Routes = [
         canActivate: [ AuthGuard ],
       },
       {
-        path: NAVIGATIONS.createEvent.url,
-        component: CreateEventPageComponent,
-        canActivate: [ AuthGuard ],
-      },
-      {
-        path: NAVIGATIONS.learn.url,
-        component: LearnPageComponent,
-        canActivate: [ AuthGuard ],
-      },
-      {
-        path: NAVIGATIONS.event.url,
-        component: EventPageComponent,
-        canActivate: [ AuthGuard ],
-      },
-      {
         path: NAVIGATIONS.privacy.url,
         component: MaintenancePageComponent,
         canActivate: [ AuthGuard ],
-      },
-    ],
-  },
-  {
-    path: NAVIGATIONS.user.url,
-    component: DashboardLayoutComponent,
-    children: [
-      {
-        path: ':username',
-        component: PublicProfilePageComponent,
-        canActivate: [ PublicProfileGuard ],
       },
     ],
   },

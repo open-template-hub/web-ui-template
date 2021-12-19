@@ -13,7 +13,7 @@
         MY PROFILE
     </span>
     </a>
-    <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
+    <a *ngIf="currentUser && !userIsPremium" [display]="sideNavClosed==='true'" placement="right"
        (click)="buy()"
        show-delay="500"
        tooltip="my profile">

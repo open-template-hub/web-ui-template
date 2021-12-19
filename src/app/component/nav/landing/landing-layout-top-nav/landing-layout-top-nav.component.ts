@@ -1,13 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { PRODUCT_LINES, SERVICES } from 'src/app/data/product/product.data';
 import { environment } from '../../../../../environments/environment';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
-import { ProductLine } from '../../../../model/product/product.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
@@ -28,16 +26,11 @@ export class LandingLayoutTopNavComponent {
   URLS = URLS;
   BRAND = BRAND;
 
-  PRODUCT_LINES: ProductLine[] = PRODUCT_LINES;
-  SERVICES: ProductLine[] = SERVICES;
-
-  @ViewChild( 'dropdownMenuProducts' ) dropdownMenuProducts: ElementRef;
-  @ViewChild( 'dropdownMenuServices' ) dropdownMenuServices: ElementRef;
   @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
   settings = [
     { name: 'Edit Profile', icon: 'person', url: URLS.settings.editProfile },
-    { name: 'Logout', icon: 'exit_to_app', url: URLS.settings.editProfile }
+    { name: 'Logout', icon: 'exit_to_app', logout: true }
   ]
 
   constructor(
