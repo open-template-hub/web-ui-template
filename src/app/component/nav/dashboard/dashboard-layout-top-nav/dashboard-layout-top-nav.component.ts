@@ -3,7 +3,6 @@ import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
-import { CategoryService } from '../../../../service/category/category.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
@@ -20,8 +19,7 @@ export class DashboardLayoutTopNavComponent {
   profileImg = PROFILE_IMG;
   userIsPremium;
 
-  userSearchResults = [];
-  categorySearchResults = [];
+  searchResults = [];
 
   searchEnabled = true;
 
@@ -35,7 +33,6 @@ export class DashboardLayoutTopNavComponent {
       private fileStorageService: FileStorageService,
       private loadingService: LoadingService,
       private _eref: ElementRef,
-      private categoryService: CategoryService,
       private paymentService: PaymentService
   ) {
     this.businessLogicService.userInfo.subscribe( userInfo => {
@@ -72,17 +69,7 @@ export class DashboardLayoutTopNavComponent {
     const q = event.target.value;
 
     if ( !q || q.length < 3 ) {
-      this.userSearchResults = [];
-      this.categorySearchResults = [];
-      return;
+      this.searchResults = []
     }
-
-    this.businessLogicService.search( q ).subscribe( results => {
-      this.userSearchResults = results.slice( 0, 10 );
-    } );
-
-    this.categoryService.search( q ).subscribe( results => {
-      this.categorySearchResults = results.slice( 0, 10 );
-    } );
   }
 }

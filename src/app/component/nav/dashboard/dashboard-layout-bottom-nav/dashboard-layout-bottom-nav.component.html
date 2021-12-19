@@ -8,7 +8,7 @@
     <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
     <span> Dashboard </span>
   </a>
-  <a *ngIf="!openSettings"
+  <a *ngIf="!openSettings && !userIsPremium"
      (click)="buy()">
     <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true" style="color: var(--theme-color);"></i>
     <span> Premium </span>

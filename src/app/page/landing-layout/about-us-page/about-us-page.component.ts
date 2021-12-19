@@ -26,6 +26,12 @@ export class AboutUsPageComponent {
     {text: $localize `:@@aboutUs.historyOfUsAppHero.othText:History of the Open Template Hub`, level: 2},
     {text: $localize `:@@aboutUs.historyOfUsAppHero.othDescription:Minimizes your effort while building a new software business with our open source GitHub micro server templates and responsive web UI + mobile UI templates`}
   ]
+  contactInformationAppHeroContents = [
+    {
+      text: $localize`:@@aboutUs.contactInfoAppHero.contactInfoText:Contact Information`,
+      level: 2,
+    },
+  ];
 
   constructor() {
     for ( const website in environmentCommon.oth.social ) {

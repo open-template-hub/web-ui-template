@@ -7,7 +7,6 @@ import { URLS } from '../../../data/navigation/navigation.data';
 import { PROFILE_IMG } from '../../../data/profile/profile.data';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
-import { CategoryService } from '../../../service/category/category.service';
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
@@ -47,8 +46,7 @@ export class EditProfilePageComponent implements OnInit, OnDestroy {
     private fileStorageService: FileStorageService,
     private loadingService: LoadingService,
     private informationService: InformationService,
-    private toastService: ToastService,
-    private categoryService: CategoryService
+    private toastService: ToastService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
     this.authenticationService.currentUser.subscribe( currentUser => this.currentUser = currentUser );
