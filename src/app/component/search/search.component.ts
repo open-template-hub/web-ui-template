@@ -28,7 +28,6 @@ export class SearchComponent {
 
     if ( !q || q.length < 3 ) {
       this.searchResults = [];
-      return;
     }
   }
 }

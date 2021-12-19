@@ -70,7 +70,6 @@ export class DashboardLayoutTopNavComponent {
 
     if ( !q || q.length < 3 ) {
       this.searchResults = []
-      return;
     }
   }
 }
