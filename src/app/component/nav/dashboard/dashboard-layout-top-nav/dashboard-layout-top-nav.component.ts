@@ -5,7 +5,6 @@ import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
-import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
 
 @Component( {

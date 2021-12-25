@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { LoadingService } from '../loading/loading.service';
 
