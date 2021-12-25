@@ -10,7 +10,7 @@ import { BusinessLogicService } from '../../../service/business-logic/business-l
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
-import { PaymentService } from '../../../service/payment/payment.service';
+import { ProductService } from '../../../service/product/product.service';
 
 @Component( {
   selector: 'app-my-profile-page',
@@ -37,7 +37,7 @@ export class MyProfilePageComponent implements OnDestroy {
     private businessLogicService: BusinessLogicService,
     private fileStorageService: FileStorageService,
     private informationService: InformationService,
-    private paymentService: PaymentService
+    private productService: ProductService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -73,7 +73,7 @@ export class MyProfilePageComponent implements OnDestroy {
       }
     } );
 
-    this.paymentService.premiumProducts.subscribe( response => {
+    this.productService.premiumProducts.subscribe( response => {
       this.userIsPremium = response?.name !== undefined;
     } );
   }
