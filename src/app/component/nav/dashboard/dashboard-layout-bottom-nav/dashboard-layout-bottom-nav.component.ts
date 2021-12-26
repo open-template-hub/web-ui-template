@@ -10,6 +10,7 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { PaymentService } from '../../../../service/payment/payment.service';
+import { ProductService } from '../../../../service/product/product.service';
 
 @Component({
   selector: 'app-dashboard-layout-bottom-nav',
@@ -37,7 +38,8 @@ export class DashboardLayoutBottomNavComponent {
     private loadingService: LoadingService,
     private businessLogicService: BusinessLogicService,
     private paymentService: PaymentService,
-    private fileStorageService: FileStorageService
+    private fileStorageService: FileStorageService,
+    private productService: ProductService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -61,8 +63,8 @@ export class DashboardLayoutBottomNavComponent {
         }
       } );
 
-    this.paymentService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
+    this.productService.premiumProducts.subscribe( product => {
+      this.userIsPremium = product?.name !== undefined
     } );
   }
 

@@ -10,6 +10,7 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
+import { ProductService } from '../../../../service/product/product.service';
 
 @Component( {
   selector: 'app-landing-layout-top-nav',
@@ -38,7 +39,8 @@ export class LandingLayoutTopNavComponent {
     private loadingService: LoadingService,
     private authenticationService: AuthenticationService,
     private fileStorageService: FileStorageService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private productService: ProductService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
@@ -52,9 +54,9 @@ export class LandingLayoutTopNavComponent {
         }
       } );
 
-    this.paymentService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
-    })
+    this.productService.premiumProducts.subscribe( product => {
+      this.userIsPremium = product?.name !== undefined
+    } );
   }
 
   buy() {

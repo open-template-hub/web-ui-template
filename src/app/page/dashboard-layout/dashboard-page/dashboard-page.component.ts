@@ -12,6 +12,7 @@ import { FileStorageService } from '../../../service/file-storage/file-storage.s
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
 import { PaymentService } from '../../../service/payment/payment.service';
+import { ProductService } from '../../../service/product/product.service';
 
 @Component( {
   selector: 'app-dashboard-page',
@@ -37,7 +38,8 @@ export class DashboardPageComponent implements OnDestroy {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
-      private paymentService: PaymentService
+      private paymentService: PaymentService,
+      private productService: ProductService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -52,6 +54,7 @@ export class DashboardPageComponent implements OnDestroy {
     this.businessLogicService.me()
     .subscribe( userInfo => {
       this.userInfo = userInfo;
+      this.productService.checkProduct( PremiumProducts.premiumAccount )
       if ( !this.userInfo.payload ) {
         this.businessLogicService.createMyInfo()
         .subscribe( () => {
@@ -61,8 +64,6 @@ export class DashboardPageComponent implements OnDestroy {
         if ( this.userInfo?.payload?.profileImageId ) {
           this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
         }
-
-        this.paymentService.getProduct( PremiumProducts.premiumAccount )
       }
     } );
 
@@ -72,7 +73,7 @@ export class DashboardPageComponent implements OnDestroy {
       }
     } );
 
-    this.paymentService.premiumProducts.subscribe( response => {
+    this.productService.premiumProducts.subscribe( response => {
       this.userIsPremium = response?.name !== undefined;
     } );
   }

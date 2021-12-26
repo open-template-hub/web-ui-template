@@ -7,6 +7,7 @@ import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
 import { BusinessLogicService } from '../business-logic/business-logic.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
+import { ProductService } from '../product/product.service';
 import { ThemeService } from '../theme/theme.service';
 
 @Injectable( {
@@ -20,7 +21,8 @@ export class AuthenticationService {
   constructor( private http: HttpClient,
       private themeService: ThemeService,
       private businessLogicService: BusinessLogicService,
-      private fileStorageService: FileStorageService
+      private fileStorageService: FileStorageService,
+      private productService: ProductService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' ) ? localStorage.getItem( 'currentUser' ) : sessionStorage.getItem( 'currentUser' );
     this.currentUserSubject = new BehaviorSubject<AuthToken>( JSON.parse( currentUserStorageItem ) );
@@ -151,6 +153,7 @@ export class AuthenticationService {
     this.currentUserSubject.next( null );
 
     this.currentUser.subscribe( () => {
+      this.productService.logout()
       this.businessLogicService.logout();
       this.businessLogicService.userInfo.subscribe( () => {
         this.fileStorageService.logout();
