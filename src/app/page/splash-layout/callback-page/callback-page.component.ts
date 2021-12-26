@@ -4,9 +4,11 @@ import { first } from 'rxjs/operators';
 import { BRAND } from '../../../data/brand/brand.data';
 import { URLS } from '../../../data/navigation/navigation.data';
 import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
+import { AnalyticsService } from '../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { InformationService } from '../../../service/information/information.service';
 import { PaymentService } from '../../../service/payment/payment.service';
+import { ProductService } from '../../../service/product/product.service';
 
 @Component( {
   selector: 'app-callback-page',
@@ -30,7 +32,9 @@ export class CallbackPageComponent implements OnInit {
       private router: Router,
       private authenticationService: AuthenticationService,
       private informationService: InformationService,
-      private paymentService: PaymentService
+      private paymentService: PaymentService,
+      private productService: ProductService,
+      private analyticsService: AnalyticsService
   ) {
     // Intentionally blank
   }
@@ -56,8 +60,8 @@ export class CallbackPageComponent implements OnInit {
       this.paymentService.verify( paymentConfig, transactionId, eventId ).subscribe( response => {
         this.informationService.setInformation( $localize `:@@callback.information.success:Payment succeeded`, 'success' );
         this.router.navigate( [ URLS.dashboard.root ] );
-        
-        this.paymentService.getProduct( PremiumProducts.premiumAccount )
+
+        this.productService.checkProduct( PremiumProducts.premiumAccount )
       }, error => {
         this.informationService.setInformation( $localize `:@@callback.information.canceled:Payment canceled`, 'error' );
         this.router.navigate( [ URLS.dashboard.root ] );
@@ -112,6 +116,14 @@ export class CallbackPageComponent implements OnInit {
     .pipe( first() )
     .subscribe(
         () => {
+          const data = {
+            payload: {
+              message: 'Login Attempt Successful'
+            },
+            category: 'SOCIAL LOGIN'
+          }
+
+          this.analyticsService.logRegisteredUser( data ).subscribe();
           this.router.navigate( [ URLS.dashboard.root ] );
         },
         errorResponse => {

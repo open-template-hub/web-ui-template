@@ -10,6 +10,7 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
+import { ProductService } from '../../../../service/product/product.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component( {
@@ -39,7 +40,8 @@ export class DashboardLayoutSideNavComponent {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
-      private paymentService: PaymentService
+      private paymentService: PaymentService,
+      private productService: ProductService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -67,9 +69,9 @@ export class DashboardLayoutSideNavComponent {
         }
     );
 
-    this.paymentService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
-    })
+    this.productService.premiumProducts.subscribe( product => {
+      this.userIsPremium = product?.name !== undefined
+    } );
   }
 
   logout() {
