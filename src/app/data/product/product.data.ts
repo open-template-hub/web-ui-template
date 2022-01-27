@@ -225,11 +225,20 @@ export const PRODUCT_LINES: ProductLine[] = [
       {
         key: 'sms-server-template',
         name: 'Sms Server',
-        color: ThemeColorSettings.gray,
-        description: $localize`:@@productLinesData.smsServerTemplate.description:Coming soon..`,
-        url: URLS.maintenance,
-        logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/logo/product-logo-question.min.png',
-        openSource: true
+        description: $localize`:@@productLinesData.smsServerTemplate.description:SMS Server Template is a generic open source sms server that has simple yet powerful design to connect your business with third party sms service providers (like Twillio or AWS SNS).`,
+        url: environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'sms-server-template',
+        logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/logo/server/sms-server-logo.min.png',
+        openSource: true,
+        features: DEFAULT_OPEN_SOURCE_SERVER_FEATURES,
+        pricingOptions: DEFAULT_OPEN_SOURCE_SERVER_PRICING_OPTIONS,
+        integrations: environment.sms,
+        techStack: [
+          TECH_STACK.typeScript,
+          TECH_STACK.node,
+          TECH_STACK.express,
+          TECH_STACK.heroku,
+          TECH_STACK.npm
+        ]
       }
     ],
   },

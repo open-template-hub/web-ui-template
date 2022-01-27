@@ -74,6 +74,15 @@ export const environment: EnvironmentModel = {
       tag: 'OUTLOOK_DEVELOPMENT'
     }
   },
+  
+  sms: {
+    twillio: {
+      tag: 'TWILLIO_DEVELOPMENT'
+    },
+    awsSns: {
+      tag: 'AWS_SNS_DEVELOPMENT'
+    }
+  },
 
   analytics: {
     googleAnalytics: {
