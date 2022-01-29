@@ -40,10 +40,21 @@
           padding: 5px;
         }
 
-        & i {
+        & .edit-photo {
+          @include util.default-border-radius;
+
+          font-size: 15px;
+
+          // Color
+          color: var(--lighter);
+          background-color: var(--card);
+
+          // Design
           position: absolute;
-          top: 100px;
-          right: 2px;
+          bottom: 6px;
+          right: 0;
+          border: 2px solid var(--shadow-lighter);
+          padding: 5px 8px;
         }
       }
     }
