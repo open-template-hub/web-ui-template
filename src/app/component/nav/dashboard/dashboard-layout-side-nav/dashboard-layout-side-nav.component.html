@@ -17,7 +17,7 @@
        (click)="buy()"
        show-delay="500"
        tooltip="my profile">
-      <i aria-hidden="true" class="material-icons yellow-theme" style="color: var(--theme-color)">star</i>
+      <i [class]="'fas fa-star fa-fw fa-lg yellow-theme'" aria-hidden="true" style="color: var(--theme-color)"></i>
       <span *ngIf="sideNavClosed === 'false'">
         PREMIUM
       </span>
@@ -25,7 +25,7 @@
     <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
        routerLink="{{URLS.dashboard.root}}"
        show-delay="500" tooltip="dashboard">
-      <i aria-hidden="true" class="material-icons">dashboard</i>
+      <i [class]="'fas fa-clipboard-list fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         DASHBOARD
     </span>
@@ -33,7 +33,7 @@
     <a (click)="openSettings = !openSettings" *ngIf="currentUser" [display]="sideNavClosed==='true'"
        href="javascript:void(0)"
        placement="right" show-delay="500" tooltip="settings">
-      <i aria-hidden="true" class="material-icons">settings</i>
+      <i [class]="'fas fa-cog fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         SETTINGS
     </span>
@@ -42,41 +42,49 @@
       <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
          routerLink="{{URLS.settings.editProfile}}"
          show-delay="500" tooltip="edit profile">
-        <i aria-hidden="true" class="material-icons">person</i>
+        <i [class]="'fas fa-user fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
         EDIT PROFILE
+      </span>
+      </a>
+      <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
+         routerLink="{{URLS.settings.editSecurity}}"
+         show-delay="500" tooltip="edit security">
+        <i [class]="'fas fa-shield-alt fa-fw fa-lg'" aria-hidden="true"></i>
+        <span *ngIf="sideNavClosed === 'false'">
+        SECURITY
       </span>
       </a>
       <a (click)="logout()" *ngIf="currentUser && openOtherSettings" [display]="sideNavClosed==='true'"
          href="javascript:void(0)"
          id=logout placement="right" show-delay="500" tooltip="logout">
-        <i aria-hidden="true" class="material-icons">exit_to_app</i>
+        <i [class]="'fas fa-sign-out-alt fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           LOGOUT
         </span>
       </a>
       <a (click)="openOtherSettings = !openOtherSettings" *ngIf="currentUser" href="javascript:void(0)"
          id=more-settings>
-        <i aria-hidden="true" class="material-icons">{{!openOtherSettings ? 'expand_more' : 'expand_less'}}</i>
+        <i [class]="'fas fa-fw fa-lg ' + (!openOtherSettings ? 'fa-chevron-down' : 'fa-chevron-up')" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           {{!openOtherSettings ? 'MORE' : 'LESS'}}
         </span>
       </a>
     </div>
     <a *ngIf="!currentUser" routerLink="{{URLS.signup}}">
-      <i aria-hidden="true" class="material-icons">person_add</i>
+      <i [class]="'fas fa-user-plus fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
-        REGISTER
+        SIGN UP
       </span>
     </a>
     <a *ngIf="!currentUser" class="login" routerLink="{{URLS.login}}">
-      <i aria-hidden="true" class="material-icons">fingerprint</i>
+      <i [class]="'fas fa-fingerprint fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         LOG IN
       </span>
     </a>
     <a (click)="toggleSideNav()" href="javascript:void(0)" id=menu>
-      <i aria-hidden="true" class="material-icons">menu</i>
+      <i [class]="'fas fa-bars fa-fw fa-lg'" aria-hidden="true"></i>
       <span>
       </span>
     </a>

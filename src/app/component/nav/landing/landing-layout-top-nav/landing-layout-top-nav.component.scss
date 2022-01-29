@@ -57,8 +57,13 @@ app-dropdown-menu i {
 }
 
 .top-nav a i {
-  font-size: 24px;
+  font-size: 22px;
   margin-right: 0.15em;
+
+  &.caret {
+    font-size: 18px;
+    margin-left: 0.25em;
+  }
 }
 
 .profile-img-small {

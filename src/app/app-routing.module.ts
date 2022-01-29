@@ -34,6 +34,7 @@ import { VerifyAccountPageComponent } from './page/landing-layout/raw-content-pa
 import { SitemapPageComponent } from './page/landing-layout/sitemap-page/sitemap-page.component';
 import { StatusPageComponent } from './page/landing-layout/status-page/status-page.component';
 import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
+import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
 import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.component';
 import { CallbackPageComponent } from './page/splash-layout/callback-page/callback-page.component';
@@ -258,10 +259,15 @@ const routes: Routes = [
         path: NAVIGATIONS.editProfile.url,
         component: EditProfilePageComponent,
         canActivate: [ AuthGuard ]
+      },
+      {
+        path: NAVIGATIONS.editSecurity.url,
+        component: EditSecurityComponent,
+        canActivate: [ AuthGuard ]
       }
     ],
   },
-  // otherwise redirect to error
+  // otherwise, redirect to error
   { path: '**', redirectTo: NAVIGATIONS.notFound.url },
 ];
 
