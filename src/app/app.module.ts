@@ -10,9 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
-import { DpDatePickerModule } from 'ng2-date-picker';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
@@ -230,12 +228,10 @@ FullCalendarModule.registerPlugins( [
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxChartsModule,
     BrowserAnimationsModule,
     LayoutModule,
     ImageCropperModule,
     TooltipModule,
-    DpDatePickerModule,
     FormsModule,
     BrowserModule,
     FullCalendarModule,
