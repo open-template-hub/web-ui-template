@@ -15,7 +15,6 @@
 
   .employee-card {
     & .header {
-      // Design
 
       & .profile-image-wrapper {
         position: relative;
@@ -28,10 +27,8 @@
           @include util.margin-x-auto;
           @include util.default-border-radius-image;
 
-          // Color
           background-color: var(--card);
 
-          // Design
           position: relative;
           border: 2px solid var(--shadow-lighter);
           box-shadow: 0 -6px 15px -7px var(--shadow);
@@ -45,11 +42,9 @@
 
           font-size: 15px;
 
-          // Color
           color: var(--lighter);
           background-color: var(--card);
 
-          // Design
           position: absolute;
           bottom: 6px;
           right: 0;
@@ -60,7 +55,6 @@
     }
 
     & .body {
-      // Design
       min-height: 265px;
       padding: 10px 20px 20px;
 
