@@ -4,60 +4,44 @@
       <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" width="40"/>
       <h2 class="side-nav-brand-text">Open Template Hub</h2>
     </a>
-    <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
-       routerLink="{{URLS.dashboard.myProfile}}"
-       show-delay="500"
-       tooltip="my profile">
+    <a *ngIf="currentUser" routerLink="{{URLS.dashboard.myProfile}}">
       <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme" [class.premium-user]="userIsPremium"/>
       <span *ngIf="sideNavClosed === 'false'">
         MY PROFILE
     </span>
     </a>
-    <a *ngIf="currentUser && !userIsPremium" [display]="sideNavClosed==='true'" placement="right"
-       (click)="buy()"
-       show-delay="500"
-       tooltip="my profile">
+    <a *ngIf="currentUser && !userIsPremium" (click)="buy()">
       <i [class]="'fas fa-star fa-fw fa-lg yellow-theme'" aria-hidden="true" style="color: var(--theme-color)"></i>
       <span *ngIf="sideNavClosed === 'false'">
         PREMIUM
       </span>
     </a>
-    <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
-       routerLink="{{URLS.dashboard.root}}"
-       show-delay="500" tooltip="dashboard">
+    <a *ngIf="currentUser" routerLink="{{URLS.dashboard.root}}">
       <i [class]="'fas fa-clipboard-list fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         DASHBOARD
     </span>
     </a>
-    <a (click)="openSettings = !openSettings" *ngIf="currentUser" [display]="sideNavClosed==='true'"
-       href="javascript:void(0)"
-       placement="right" show-delay="500" tooltip="settings">
+    <a (click)="openSettings = !openSettings" *ngIf="currentUser" href="javascript:void(0)">
       <i [class]="'fas fa-cog fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         SETTINGS
     </span>
     </a>
     <div *ngIf="openSettings" class="side-nav-sub">
-      <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
-         routerLink="{{URLS.settings.editProfile}}"
-         show-delay="500" tooltip="edit profile">
+      <a *ngIf="currentUser" routerLink="{{URLS.settings.editProfile}}">
         <i [class]="'fas fa-user fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
         EDIT PROFILE
       </span>
       </a>
-      <a *ngIf="currentUser" [display]="sideNavClosed==='true'" placement="right"
-         routerLink="{{URLS.settings.editSecurity}}"
-         show-delay="500" tooltip="edit security">
+      <a *ngIf="currentUser" routerLink="{{URLS.settings.editSecurity}}">
         <i [class]="'fas fa-shield-alt fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
         SECURITY
       </span>
       </a>
-      <a (click)="logout()" *ngIf="currentUser && openOtherSettings" [display]="sideNavClosed==='true'"
-         href="javascript:void(0)"
-         id=logout placement="right" show-delay="500" tooltip="logout">
+      <a (click)="logout()" *ngIf="currentUser && openOtherSettings" href="javascript:void(0)" id=logout>
         <i [class]="'fas fa-sign-out-alt fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           LOGOUT
