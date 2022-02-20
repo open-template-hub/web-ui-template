@@ -6,19 +6,26 @@
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
-          <ng-container *ngFor="let website of websites.slice(0, 4)">
-            <app-brand-button (click)="socialLogin( website )" [icon]="website.cssClass">
-            </app-brand-button>
-          </ng-container>
-          <ng-container *ngIf="showMoreToggle">
-            <app-brand-button *ngFor="let website of websites.slice(4)" (click)="socialLogin( website )" [icon]="website.cssClass">
+          <ng-container>
+            <app-brand-button *ngFor="let website of websites.slice(0, 4)"
+                              (click)="socialLogin( website )" [icon]="website.cssClass">
             </app-brand-button>
           </ng-container>
         </div>
-        <a *ngIf="!showMoreToggle" (click)="showMoreToggle = !showMoreToggle" class="flex-layout-column flex-center-center theme-color-link">
-          <p i18n="@@signUp.more.text">More</p>
-          <i aria-hidden="true" class="fas fa-caret-down fa-lg fa-fw"></i>
+        <a *ngIf="!showMoreToggle" (click)="showMoreToggle = !showMoreToggle" class="more flex-layout-row flex-center-center theme-color-link">
+          <p i18n="@@signUp.more.text">more..</p>
+          <i aria-hidden="true" [class]="'fas fa-lg fa-fw fa-caret-down'"></i>
         </a>
+        <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
+          <ng-container>
+            <app-brand-button *ngFor="let website of websites.slice(4)"
+                              (click)="socialLogin( website )" [icon]="website.cssClass"
+                              [style.opacity]="showMoreToggle ? 1 : 0"
+                              [style.visibility]="showMoreToggle ? 'visible' : 'hidden'"
+                              [style.height]="showMoreToggle ? 'auto' : 0">
+            </app-brand-button>
+          </ng-container>
+        </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
           <div class="section">
             <div [class.error-input]="submitted && form.controls.username.invalid" class="input-with-icon">

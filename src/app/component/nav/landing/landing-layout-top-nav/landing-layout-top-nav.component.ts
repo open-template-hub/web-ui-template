@@ -30,8 +30,9 @@ export class LandingLayoutTopNavComponent {
   @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
   settings = [
-    { name: 'Edit Profile', icon: 'person', url: URLS.settings.editProfile },
-    { name: 'Logout', icon: 'exit_to_app', logout: true }
+    { name: 'Edit Profile', icon: 'user', url: URLS.settings.editProfile },
+    { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
+    { name: 'Logout', icon: 'sign-out-alt', logout: true }
   ]
 
   constructor(

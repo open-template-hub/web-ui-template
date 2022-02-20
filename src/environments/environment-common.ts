@@ -13,7 +13,7 @@ export const environmentCommon: EnvironmentCommonModel = {
     },
     email: 'info@opentemplatehub.com'
   },
-
+  
   website: {
     // oauth
     google: {
@@ -91,7 +91,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.oauth.reddit.tag,
       websiteType: 'oauth'
     },
-
+    
     // payment
     stripe: {
       name: 'Stripe',
@@ -118,7 +118,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       env: environment.payment.paypal.env,
       websiteType: 'payment'
     },
-
+    
     // file storage
     aws: {
       name: 'Aws',
@@ -136,7 +136,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.fileStorage.googleCloud.tag,
       websiteType: 'file-storage'
     },
-
+    
     // mail
     gmail: {
       name: 'Gmail',
@@ -162,7 +162,33 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.mail.outlook.tag,
       websiteType: 'mail'
     },
-
+    yandex: {
+      name: 'Yandex',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/yandex.png',
+      cssClass: 'yandex',
+      url: 'https://yandex.com',
+      tag: environment.mail.yandex.tag,
+      websiteType: 'mail'
+    },
+    
+    // sms
+    twillio: {
+      name: 'Twillio',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/twillio.png',
+      cssClass: 'twillio',
+      url: 'https://www.twilio.com',
+      tag: environment.sms.twillio.tag,
+      websiteType: 'sms'
+    },
+    awsSns: {
+      name: 'Aws Sns',
+      logo: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/third-parties/logo/aws-sns.png',
+      cssClass: 'aws',
+      url: 'https://aws.amazon.com',
+      tag: environment.sms.awsSns.tag,
+      websiteType: 'sms'
+    },
+    
     // analytics
     googleAnalytics: {
       name: 'Google Analytics',
@@ -180,7 +206,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.analytics.matomo.tag,
       websiteType: 'analytics'
     },
-
+    
     // other
     instagram: {
       name: 'Instagram',
@@ -229,7 +255,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       websiteType: 'other'
     }
   },
-
+  
   languages: [
     { name: 'English', code: 'en-US', emoji: '🇺🇸' },
     { name: 'French', code: 'fr', emoji: '🇫🇷' }

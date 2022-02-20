@@ -10,10 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
-import { DpDatePickerModule } from 'ng2-date-picker';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
@@ -118,6 +115,7 @@ import { ProfileCardComponent } from './component/card/profile-card/profile-card
 import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
 import { DashboardLayoutBottomNavComponent } from './component/nav/dashboard/dashboard-layout-bottom-nav/dashboard-layout-bottom-nav.component';
 import { ContactInformationCardComponent } from './component/card/contact-information-card/contact-information-card.component';
+import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -222,18 +220,16 @@ FullCalendarModule.registerPlugins( [
     EditProfilePageComponent,
     DashboardLayoutBottomNavComponent,
     ContactInformationCardComponent,
+    EditSecurityComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxChartsModule,
     BrowserAnimationsModule,
     LayoutModule,
     ImageCropperModule,
-    TooltipModule,
-    DpDatePickerModule,
     FormsModule,
     BrowserModule,
     FullCalendarModule,

@@ -37,6 +37,11 @@ export interface EnvironmentCommonModel {
     gmail: WebsiteModel
     yahoo: WebsiteModel
     outlook: WebsiteModel
+    yandex: WebsiteModel
+    
+    // sms
+    twillio: WebsiteModel
+    awsSns: WebsiteModel
 
     // analytics
     googleAnalytics: WebsiteModel

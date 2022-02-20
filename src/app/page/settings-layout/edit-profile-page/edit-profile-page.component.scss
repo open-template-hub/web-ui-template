@@ -15,7 +15,6 @@
 
   .employee-card {
     & .header {
-      // Design
 
       & .profile-image-wrapper {
         position: relative;
@@ -28,10 +27,8 @@
           @include util.margin-x-auto;
           @include util.default-border-radius-image;
 
-          // Color
           background-color: var(--card);
 
-          // Design
           position: relative;
           border: 2px solid var(--shadow-lighter);
           box-shadow: 0 -6px 15px -7px var(--shadow);
@@ -40,16 +37,24 @@
           padding: 5px;
         }
 
-        & i {
+        & .edit-photo {
+          @include util.default-border-radius;
+
+          font-size: 15px;
+
+          color: var(--lighter);
+          background-color: var(--card);
+
           position: absolute;
-          top: 100px;
-          right: 2px;
+          bottom: 6px;
+          right: 0;
+          border: 2px solid var(--shadow-lighter);
+          padding: 5px 8px;
         }
       }
     }
 
     & .body {
-      // Design
       min-height: 265px;
       padding: 10px 20px 20px;
 

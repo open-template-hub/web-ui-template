@@ -39,7 +39,13 @@
         flex: 1 0 21%;
         margin: 5px;
         max-width: 21%;
+        transition: opacity 800ms, visibility 800ms;
       }
+    }
+
+    & .more {
+      font-size: 16px;
+      height: 41px;
     }
   }
 }
