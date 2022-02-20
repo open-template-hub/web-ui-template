@@ -34,7 +34,7 @@
       </app-dropdown-menu>
     </a>
     <a [routerLink]="URLS.dashboard.myProfile" *ngIf="currentUser">
-      <img [src]="profileImg" [class.premium-user]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
+      <img [src]="profileImg" [class.premium-border]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
       <span i18n="@@landingLayoutTopNav.myProfile">My Profile</span>
     </a>
   </div>

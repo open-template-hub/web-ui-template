@@ -58,6 +58,10 @@ p, a, h1, h2, h3, h4, h5, h6, label, ul, li {
   font-weight: 300;
   word-break: break-word;
   text-decoration: none;
+
+  &.theme-color {
+    color: var(--theme-color);
+  }
 }
 
 hr {

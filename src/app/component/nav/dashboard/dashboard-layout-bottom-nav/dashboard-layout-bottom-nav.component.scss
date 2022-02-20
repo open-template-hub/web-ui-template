@@ -1,12 +1,11 @@
 @use '../../../../../styles/bottom-nav/bottom-nav';
 
-.premium-user {
-  border: 1px solid var(--theme-color);
-}
-
 .profile-img-small {
-  width: 33px;
-  height: 33px;
+  width: 24px;
+  height: 24px;
+  margin: 0.2em;
+  box-shadow: 0 2px 2px var(--shadow-dark-mode);
+  box-sizing: border-box;
 }
 
 @media only screen and (max-width: 999px) {
