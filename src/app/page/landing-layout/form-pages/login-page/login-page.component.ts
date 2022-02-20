@@ -127,14 +127,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     ).pipe( first() )
     .subscribe(
         () => {
-          const data = {
-            payload: {
-              message: 'Login Attempt Successful'
-            },
-            category: 'LOGIN'
-          }
-
-          this.analyticsService.logEvent( data ).subscribe();
+          this.analyticsService.logLoginEvent().subscribe();
 
           if ( this.returnUrl !== URLS.dashboard.root ) {
             this.loginWithoutOpeningDashboard();

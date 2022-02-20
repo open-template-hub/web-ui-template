@@ -23,20 +23,6 @@
         margin-right: auto;
         width: -webkit-fit-content;
 
-        & .profile-image {
-          @include util.margin-x-auto;
-          @include util.default-border-radius-image;
-
-          background-color: var(--card);
-
-          position: relative;
-          border: 2px solid var(--shadow-lighter);
-          box-shadow: 0 -6px 15px -7px var(--shadow);
-          width: 120px;
-          height: 120px;
-          padding: 5px;
-        }
-
         & .edit-photo {
           @include util.default-border-radius;
 
