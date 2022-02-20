@@ -116,14 +116,7 @@ export class CallbackPageComponent implements OnInit {
     .pipe( first() )
     .subscribe(
         () => {
-          const data = {
-            payload: {
-              message: 'Login Attempt Successful'
-            },
-            category: 'SOCIAL_LOGIN'
-          }
-
-          this.analyticsService.logRegisteredUser( data ).subscribe();
+          this.analyticsService.logSocialLoginEvent( this.oauth ).subscribe();
           this.router.navigate( [ URLS.dashboard.root ] );
         },
         errorResponse => {

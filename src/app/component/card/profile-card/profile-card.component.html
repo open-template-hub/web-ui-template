@@ -12,12 +12,9 @@
         [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
       <img
         (load)="setEmployeePhotoLoaded()"
-        [src]="photoUri"
+        [src]="photoUri ? photoUri : './assets/common/profile-img.png'"
         [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
-        alt="profile-img"
-        class="profile-img"
-        [class.premium-border]="userIsPremium"
-        onerror="this.src='./assets/common/profile-img.png'"/>
+        alt="profile-img" class="profile-img" [class.premium-border]="userIsPremium"/>
       <p *ngIf="userIsPremium" class="theme-color yellow-theme">(premium)</p>
       <p>@{{ user.username }}</p>
     </div>

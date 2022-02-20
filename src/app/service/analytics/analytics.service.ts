@@ -11,8 +11,30 @@ export class AnalyticsService {
   ) {
   }
 
-  logRegisteredUser( data: any ) {
-    data.source = environment.clientUrl
+  logLoginEvent() {
+    const data = {
+      payload: {
+        message: 'Login Activity',
+        icon: './assets/common/profile-img.png'
+      },
+      category: 'LOGIN',
+      source: environment.clientUrl
+    }
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+  }
+
+  logSocialLoginEvent( oauth: any ) {
+    const data = {
+      payload: {
+        message: 'Social Login Activity',
+        provider: oauth.name,
+        icon: oauth.logo
+      },
+      category: 'SOCIAL_LOGIN',
+      source: environment.clientUrl
+    }
+
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
   }
 
