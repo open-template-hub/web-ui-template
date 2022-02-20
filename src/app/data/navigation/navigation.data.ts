@@ -177,6 +177,12 @@ export const NAVIGATIONS = {
     description: BRAND.name + $localize`:@@navigationData.analyticsServerTemplate.description:: Analytics Server Template`,
     keywords: [ BRAND.name, 'oth', 'Analytics Server Template' ],
   },
+  smsServerTemplate: {
+    url: 'sms-server-template',
+    title: 'SMS Server Template - ' + BRAND.name,
+    description: BRAND.name + $localize`:@@navigationData.smsServerTemplate.description:: SMS Server Template`,
+    keywords: [ BRAND.name, 'oth', 'SMS Server Template' ],
+  },
   businessLogicServerTemplate: {
     url: 'business-logic-server-template',
     title: 'Business Logic Server Template - ' + BRAND.name,
@@ -381,6 +387,12 @@ export const NAVIGATIONS = {
     description: BRAND.name + $localize`:@@navigationData.root.description:: Minimizes your effort while building a new software business with our open source GitHub micro server templates and responsive web UI + mobile UI templates`,
     keywords: [ BRAND.name, 'oth', 'software business', 'open source' ],
   },
+  editSecurity: {
+    url: 'edit-security',
+    title: BRAND.name,
+    description: BRAND.name + $localize`:@@navigationData.root.description:: Minimizes your effort while building a new software business with our open source GitHub micro server templates and responsive web UI + mobile UI templates`,
+    keywords: [ BRAND.name, 'oth', 'software business', 'open source' ],
+  },
 
   // Localization
   english: {
@@ -456,7 +468,8 @@ export const URLS = {
   // Settings Layout
   settings: {
     editTheme: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editTheme.url,
-    editProfile: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editProfile.url
+    editProfile: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editProfile.url,
+    editSecurity: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editSecurity.url
   },
 
   // Languages

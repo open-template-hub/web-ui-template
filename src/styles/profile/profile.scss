@@ -1,13 +1,11 @@
 @use '../util/util';
 
 .profile-img-small, .profile-img-full, .profile-img-wrapper {
-  @include util.prefix(border-radius, 99em, moz webkit);
+  @include util.default-border-radius-image;
 }
 
 .profile-img-small, .profile-img-full {
   display: block;
-
-  @include util.prefix(border-radius, 99em, moz webkit);
 
   background: {
     size: cover;

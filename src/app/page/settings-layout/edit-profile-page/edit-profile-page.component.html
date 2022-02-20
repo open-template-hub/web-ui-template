@@ -10,7 +10,10 @@
         <div (click)="fileInput.click()" class="profile-image-wrapper" style="cursor: pointer">
             <img [src]="candidateProfileImg ? candidateProfileImg : profileImg" alt="profile img"
                  class="profile-image"/>
-          <i aria-hidden="true" class="fas fa-plus fa-lg fa-fw"></i>
+          <div class="edit-photo">
+            <i aria-hidden="true" class="fas fa-pencil-alt fa-fw"></i>
+            <span> Edit</span>
+          </div>
         </div>
 
         <input #fileInput (change)="fileChangeEvent($event)" accept="image/*" hidden style="height: 0" type="file"/>

@@ -20,7 +20,7 @@
              [routerLink]="item.url"
              class="dropdown-item">
             <div class="dropdown-item-content">
-              <i aria-hidden="true" class="material-icons">{{ item.icon }}</i>
+              <i [class]="'fas fa-fw fa-' + item.icon" aria-hidden="true"></i>
               <h6>
                 {{ item.name }}
               </h6>
@@ -29,7 +29,7 @@
           <a *ngIf="item.logout" (click)="closeDropDownInternal(); logout()"
              class="dropdown-item">
             <div class="dropdown-item-content">
-              <i aria-hidden="true" class="material-icons">{{ item.icon }}</i>
+              <i [class]="'fas fa-fw fa-' + item.icon" aria-hidden="true"></i>
               <h6>
                 {{ item.name }}
               </h6>

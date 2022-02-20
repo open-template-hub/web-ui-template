@@ -16,22 +16,21 @@
       <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.signUp">Sign Up</span>
     </a>
-    <a (click)="buy()" *ngIf="currentUser && !userIsPremium">
-      <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true" style="color: var(--theme-color);"></i>
+    <a (click)="buy()" *ngIf="currentUser && !userIsPremium" class="yellow-theme" style="color: var(--theme-color);">
+      <i [class]="'fas fa-star fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.premium">Premium</span>
     </a>
     <a *ngIf="currentUser"
        (mouseenter)="dropdownMenuProducts.openDropdown();"
        (click)="dropdownMenuProducts.toggleDropdown();">
-      <i aria-hidden="true" class="material-icons">settings</i>
+      <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
       <app-dropdown-menu
         #dropdownMenuProducts
         [items]="settings"
         [dropdownParent]="dropdownMenuParent">
         <span i18n="@@landingLayoutTopNav.settings">Settings</span>
-        <i aria-hidden="true" class="material-icons">{{
-          dropdownMenuProducts.isDropdownOpen ? "expand_less" : "expand_more"
-          }}</i>
+        <i [class]="'caret fas fa-fw ' + (!dropdownMenuProducts.isDropdownOpen ? 'fa-chevron-down' : 'fa-chevron-up')"
+           aria-hidden="true"></i>
       </app-dropdown-menu>
     </a>
     <a [routerLink]="URLS.dashboard.myProfile" *ngIf="currentUser">

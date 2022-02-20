@@ -12,5 +12,5 @@ export interface WebsiteModel {
   version?: string
   clientId?: string
   env?: string
-  websiteType: 'oauth' | 'payment' | 'file-storage' | 'mail' | 'analytics' | 'other'
+  websiteType: 'oauth' | 'payment' | 'file-storage' | 'mail' | 'sms' | 'analytics' | 'other'
 }

@@ -72,6 +72,18 @@ export const environment: EnvironmentModel = {
     },
     outlook: {
       tag: 'OUTLOOK_DEVELOPMENT'
+    },
+    yandex: {
+      tag: 'YANDEX_DEVELOPMENT'
+    }
+  },
+  
+  sms: {
+    twillio: {
+      tag: 'TWILLIO_DEVELOPMENT'
+    },
+    awsSns: {
+      tag: 'AWS_SNS_DEVELOPMENT'
     }
   },
 

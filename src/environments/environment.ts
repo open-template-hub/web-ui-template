@@ -72,9 +72,21 @@ export const environment: EnvironmentModel = {
     },
     outlook: {
       tag: 'OUTLOOK_LOCAL'
+    },
+    yandex: {
+      tag: 'YANDEX_LOCAL'
     }
   },
-
+  
+  sms: {
+    twillio: {
+      tag: 'TWILLIO_LOCAL'
+    },
+    awsSns: {
+      tag: 'AWS_SNS_LOCAL'
+    }
+  },
+  
   analytics: {
     googleAnalytics: {
       tag: 'GTM-P4FHG76'
