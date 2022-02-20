@@ -120,7 +120,7 @@ export class CallbackPageComponent implements OnInit {
             payload: {
               message: 'Login Attempt Successful'
             },
-            category: 'SOCIAL LOGIN'
+            category: 'SOCIAL_LOGIN'
           }
 
           this.analyticsService.logRegisteredUser( data ).subscribe();

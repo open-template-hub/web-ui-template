@@ -12,8 +12,7 @@ export class AnalyticsService {
   }
 
   logRegisteredUser( data: any ) {
-    // TODO: why we are setting name as client url?
-    data.name = environment.clientUrl
+    data.source = environment.clientUrl
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
   }
 
