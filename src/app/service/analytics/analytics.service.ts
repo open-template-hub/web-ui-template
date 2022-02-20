@@ -52,6 +52,18 @@ export class AnalyticsService {
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
   }
 
+  logSubmitPhoneNumberEvent() {
+    const data = {
+      payload: {
+        message: 'Submit Phone Number Activity'
+      },
+      category: 'TWO_FACTOR_AUTH',
+      source: environment.clientUrl
+    }
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+  }
+
   getEvents( start: number, limit: number ) {
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }&limit=${ limit }`)
   }
