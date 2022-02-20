@@ -57,12 +57,14 @@ export class CallbackPageComponent implements OnInit {
 
   private paymentCallback( paymentConfig: string, status: string, eventId: string, transactionId: string ) {
     if ( status === 'success' ) {
-      this.paymentService.verify( paymentConfig, transactionId, eventId ).subscribe( response => {
+      this.paymentService.verify( paymentConfig, transactionId, eventId ).subscribe( () => {
+        this.analyticsService.logPaymentEvent( this.payment ).subscribe();
+
         this.informationService.setInformation( $localize `:@@callback.information.success:Payment succeeded`, 'success' );
         this.router.navigate( [ URLS.dashboard.root ] );
 
         this.productService.checkProduct( PremiumProducts.premiumAccount )
-      }, error => {
+      }, () => {
         this.informationService.setInformation( $localize `:@@callback.information.canceled:Payment canceled`, 'error' );
         this.router.navigate( [ URLS.dashboard.root ] );
       } );

@@ -38,6 +38,20 @@ export class AnalyticsService {
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
   }
 
+  logPaymentEvent( payment: any ) {
+    const data = {
+      payload: {
+        message: 'Payment Activity',
+        provider: payment.name,
+        icon: payment.logo
+      },
+      category: 'PAYMENT',
+      source: environment.clientUrl
+    }
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+  }
+
   getEvents( start: number, limit: number ) {
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }&limit=${ limit }`)
   }

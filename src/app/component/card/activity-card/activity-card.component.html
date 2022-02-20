@@ -10,7 +10,7 @@
   <ng-template #bodyTemplate>
     <div class="body">
       <div class="row" *ngFor="let event of events; let last = last">
-        <img [src]="event.payload.icon ? event.payload.icon : './assets/common/activity.png'">
+        <img [src]="event.payload.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
         <div class="column">
           <p class="message">{{ event.payload.message }}</p>
           <p class="date">{{ timestampToString( event.timestamp ) }}</p>

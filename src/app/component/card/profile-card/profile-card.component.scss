@@ -2,10 +2,14 @@
 @use '../../card/card.component';
 
 .profile-card {
+
   & .header {
-    margin-top: 20px;
+
+    margin-top: -70px;
     margin-left: auto;
     margin-right: auto;
+    padding: 10px;
+
     text-align: center;
 
     & p {
