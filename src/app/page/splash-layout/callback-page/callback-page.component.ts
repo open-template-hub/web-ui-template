@@ -123,7 +123,7 @@ export class CallbackPageComponent implements OnInit {
             category: 'SOCIAL LOGIN'
           }
 
-          this.analyticsService.logRegisteredUser( data ).subscribe();
+          this.analyticsService.logEvent( data ).subscribe();
           this.router.navigate( [ URLS.dashboard.root ] );
         },
         errorResponse => {

@@ -1,1 +1,15 @@
-<p>edit-security works!</p>
+<div class="edit-security-page">
+    <form (ngSubmit)="onPhoneNumberSubmit()" [formGroup]="form" class="phone-number-form">
+        <div class="section">
+            <div [class.error-input]="submitted && form.controls.phoneNumber.invalid" class="input-with-icon phone-number-input-wrapper">
+            <input formControlName="phoneNumber" placeholder="Phone Number" required type="text">
+            <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
+            </div>
+            <p>*You can use this phone number to enable 2 Factor Authentication</p>
+        </div>
+        <div class="section-submit">
+            <app-button text="Submit"></app-button>
+        </div>
+    </form>
+</div>
+

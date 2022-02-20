@@ -134,7 +134,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
             category: 'LOGIN'
           }
 
-          this.analyticsService.logRegisteredUser( data ).subscribe();
+          this.analyticsService.logEvent( data ).subscribe();
 
           if ( this.returnUrl !== URLS.dashboard.root ) {
             this.loginWithoutOpeningDashboard();
