@@ -14,7 +14,8 @@ export class PresentationCardComponent {
   @Input() secondaryText: string;
   @Input() footerText: string;
   @Input() imgHeight: number;
-
+  @Input() maintenance = false;
+  
   constructor( private router: Router ) {
     // Intentionally blank
   }
