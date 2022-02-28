@@ -4,7 +4,7 @@
     <p>
       {{ BRAND.bio }}
     </p>
-    <app-button i18n-text="@@homePage.getStartedButton" text="Get Started" [routerLink]="URLS.signup"></app-button>
+    <app-button i18n-text="@@homePage.getStartedButton" text="Demo" [routerLink]="URLS.signup"></app-button>
   </div>
 </div>
 
@@ -27,16 +27,18 @@
   </a>
 </div>
 
+<!-- What Is Web UI Template -->
+<app-hero [contents]="whatIsWebUITemplateTitle"></app-hero>
+
 <!-- Explore -->
-<app-hero [contents]="exploreTitle"></app-hero>
+<app-hero [contents]="integratedWithTitle"></app-hero>
 <ng-container *ngFor="let productLine of PRODUCT_LINES">
-  <app-hero [contents]="[{ text: productLine.name, level: 3 }]" [heroClass]="'no-padding'"></app-hero>
   <div class="cards-wrapper">
     <ng-container *ngFor="let product of productLine.products">
       <app-presentation-card
           [class]="product.color ? product.color : ''"
           [footerText]=getPresentationCardFooter(product.openSource)
-          [href]="URLS.product + '/' + productLine.key + '/' + product.key"
+          [href]="'https://opentemplatehub.com/' + URLS.product + '/' + productLine.key + '/' + product.key"
           [imgHeight]="150"
           [secondaryText]="product.description"
           [src]="product.logo"

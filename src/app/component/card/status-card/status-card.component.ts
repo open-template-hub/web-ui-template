@@ -18,19 +18,6 @@ export class StatusCardComponent {
     // Intentionally blank
   }
 
-  navigate( overallStatusName: string, statusName: string ) {
-    for ( const product of PRODUCT_LINES ) {
-      if ( product.name.toLowerCase() === overallStatusName.toLowerCase() ) {
-        for ( const subProduct of product.products ) {
-          if ( statusName.toLowerCase() === subProduct.name.toLowerCase() ) {
-            this.router.navigate( [ URLS.product + '/' + product.key + '/' + subProduct.key ] );
-            break;
-          }
-        }
-      }
-    }
-  }
-
   setStatusLed( status: string ) {
     switch ( status ) {
       case 'UP': {

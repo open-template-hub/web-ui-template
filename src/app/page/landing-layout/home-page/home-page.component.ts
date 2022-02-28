@@ -47,28 +47,19 @@ export class HomePageComponent implements AfterViewInit {
   environmentCommon = environmentCommon;
   overallSystemStatus = DEFAULT_SYSTEM_STATUS;
 
-  testimonialsTitle = [
-    { text: $localize`:@@homePage.testimonialsTitle.1:Customer testimonials`, level: 1 },
-    { text: $localize`:@@homePage.testimonialsTitle.2:What our customers are saying...` }
+  whatIsWebUITemplateTitle = [
+    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.1:What is Web UI Template?`, level: 2 },
+    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.
+` }
   ];
 
-  customersTitle = [
-    { text: $localize`:@@homePage.customersTitle.1:From startups to the enterprise companies`, level: 1 },
-    { text: $localize`:@@homePage.customersTitle.2:Thousands of companies in over 50 countries use Open Template Hub to start, run, and scale their businesses.` }
-  ];
-
-  whyUsTitle = [
-    { text: $localize`:@@homePage.whyUsTitle.1:Why Open Template Hub?`, level: 1 },
-    { text: $localize`:@@homePage.whyUsTitle.2:Just focus on your business and leave us all others` }
-  ];
-
-  exploreTitle = [
-    { text: $localize`:@@homePage.exploreTitle.1:Explore our Products`, level: 2 },
-    { text: $localize`:@@homePage.exploreTitle.2:Explore our open source and premium products to get started today.` }
+  integratedWithTitle = [
+    { text: $localize`:@@homePage.integratedWithTitle.1:Integrated With`, level: 2 },
+    { text: $localize`:@@homePage.integratedWithTitle.2:Web UI Template is already integrated with our other open source products. Start using Web UI Template to interact with them.` }
   ];
 
   statusTitle = [
-    {text: $localize `:@@status.appHero:System Status`, level: 1}
+    {text: $localize `:@@status.appHero:System Status`, level: 2}
   ];
 
   constructor(
