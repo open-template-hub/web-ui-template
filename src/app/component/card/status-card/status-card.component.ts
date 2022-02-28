@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { URLS } from '../../../data/navigation/navigation.data';
 import { PRODUCT_LINES } from '../../../data/product/product.data';
 import { DEFAULT_SYSTEM_STATUS } from '../../../data/status/status.data';
 
@@ -14,7 +12,7 @@ export class StatusCardComponent {
 
   PRODUCT_LINES = PRODUCT_LINES;
 
-  constructor( private router: Router ) {
+  constructor() {
     // Intentionally blank
   }
 

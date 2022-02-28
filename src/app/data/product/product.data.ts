@@ -1,10 +1,8 @@
 import { environment } from '../../../environments/environment';
 import { environmentCommon } from '../../../environments/environment-common';
 import { ProductLine } from '../../model/product/product.model';
-import { URLS } from '../navigation/navigation.data';
 import { PRODUCT_RIBBONS } from '../ribbon/ribbon.data';
 import { TECH_STACK } from '../tech-stack/tech-stack.data';
-import { ThemeColorSettings } from '../theme/theme.data';
 
 const OPEN_SOURCE_FEATURE = {
   name: $localize`:@@productData.openSource.name:Open Source`,
