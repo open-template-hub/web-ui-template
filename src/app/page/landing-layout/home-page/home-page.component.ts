@@ -100,7 +100,6 @@ export class HomePageComponent {
     .then( counters => {
       this.isCountersLoading = false;
       this.counters = counters;
-      console.log(this.counters);
     } )
     .catch( error => {
       this.isCountersLoading = false;
