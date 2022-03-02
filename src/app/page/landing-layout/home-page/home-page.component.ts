@@ -1,12 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CountUp } from 'countup.js';
-import { FEATURES } from 'src/app/data/feature/feature.data';
-import { PARTNERS } from 'src/app/data/partner/partner.data';
-import { TESTIMONIALS } from 'src/app/data/testimonial/testimonial.data';
-import { Feature } from 'src/app/model/feature/feature.model';
-import { Testimonial } from 'src/app/model/testimonial/testimonial.model';
 import { NpmProviderService } from 'src/app/service/provider/npm-provider.service';
 import { environment } from '../../../../environments/environment';
 import { environmentCommon } from '../../../../environments/environment-common';
@@ -14,43 +8,60 @@ import { BRAND } from '../../../data/brand/brand.data';
 import { URLS } from '../../../data/navigation/navigation.data';
 import { PRODUCT_LINES } from '../../../data/product/product.data';
 import { DEFAULT_SYSTEM_STATUS } from '../../../data/status/status.data';
-import { Partner } from '../../../model/partner/partner.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { MonitoringService } from '../../../service/monitoring/monitoring.service';
+import { GithubProviderService } from '../../../service/provider/github-provider.service';
 
 @Component( {
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: [ './home-page.component.scss' ],
 } )
-export class HomePageComponent implements AfterViewInit {
-  npmDownloadCounter = { count: 0, id: 'npmDownloadCounterElement' };
-  productTypesCounter = { count: 0, id: 'productTypesCounterElement' };
-  openSourceRatioCounter = { count: 0, id: 'openSourceRatioCounterElement' };
-  npmCounterLoading = true;
-  brandLogoLoaded = false;
+export class HomePageComponent {
+
+  isCountersLoading = true;
 
   BRAND = BRAND;
   URLS = URLS;
   PRODUCT_LINES = PRODUCT_LINES;
 
-  // Todo: Change this with customers
-  PARTNERS: Partner[] = PARTNERS;
-
-  TESTIMONIALS: Testimonial[] = TESTIMONIALS.slice( 0, TESTIMONIALS.length < 3 ? TESTIMONIALS.length : 3 );
-  FEATURES: Feature[] = FEATURES;
-
-  KILO = 1000;
-  MILLION = this.KILO * this.KILO;
-
   environment = environment;
   environmentCommon = environmentCommon;
   overallSystemStatus = DEFAULT_SYSTEM_STATUS;
+  counters: any;
+
+  screenshots = [
+    {
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/web-ui-demo-light.min.png',
+      description: $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.1:Responsive Design`
+    },
+    {
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/web-ui-demo-dark.min.png',
+      description: $localize
+          `:@@userInterfaces.companyProfileUITemplate.screenshot.2:Dark Mode Support`
+    },
+    {
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/company-profile-ui-screenshot-1.min.png',
+      description:
+          $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.3:Reusable Components`
+    },
+    {
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/company-profile-ui-screenshot-2.min.png',
+      description:
+          $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.4:Customisable Theme Colors`
+    },
+    {
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/company-profile-ui-screenshot-3.min.png',
+      description: $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.5:Customisable Theme Design`
+    }
+  ];
 
   whatIsWebUITemplateTitle = [
     { text: $localize`:@@homePage.whatIsWebUITemplateTitle.1:What is Web UI Template?`, level: 2 },
-    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.
-` }
+    {
+      text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.
+`
+    }
   ];
 
   integratedWithTitle = [
@@ -59,7 +70,7 @@ export class HomePageComponent implements AfterViewInit {
   ];
 
   statusTitle = [
-    {text: $localize `:@@status.appHero:System Status`, level: 2}
+    { text: $localize`:@@status.appHero:System Status`, level: 2 }
   ];
 
   constructor(
@@ -67,14 +78,15 @@ export class HomePageComponent implements AfterViewInit {
       public router: Router,
       private authenticationService: AuthenticationService,
       private npmProviderService: NpmProviderService,
-      private monitoringService: MonitoringService
+      private monitoringService: MonitoringService,
+      private githubService: GithubProviderService,
   ) {
     // redirect to home if already logged in
     if ( this.authenticationService.currentUserValue ) {
       this.router.navigate( [ URLS.dashboard.root ] );
     }
 
-    this.monitoringService.alive()
+    this.monitoringService.alive();
 
     this.monitoringService.systemStatuses.subscribe( systemStatuses => {
       const overallSystemStatus = this.monitoringService.parseSystemStatuses( systemStatuses );
@@ -83,81 +95,17 @@ export class HomePageComponent implements AfterViewInit {
         this.overallSystemStatus = overallSystemStatus;
       }
     } );
-  }
 
-  ngAfterViewInit() {
-    this.initCountUps();
-  }
-
-  countUpFormatter( n: number ) {
-    if ( n < this.KILO ) {
-      return n + '';
-    } else {
-      if ( n < this.MILLION ) {
-        return Math.round( ( n / this.KILO ) * 10 ) / 10 + 'k';
-      } else {
-        return Math.round( ( n / this.MILLION ) * 10 ) / 10 + 'M';
-      }
-    }
-  }
-
-  setBrandLogoLoaded = () => {
-    this.brandLogoLoaded = true;
-  };
-
-  private initCountUps() {
-    const options = {
-      useGrouping: false,
-      duration: undefined,
-      formattingFn: undefined,
-      decimalPlaces: 0
-    };
-
-    this.npmProviderService.getNpmPackagesDownloadCount().then( ( count ) => {
-      this.npmDownloadCounter.count = count;
-      this.npmCounterLoading = false;
-      this.startCounter( options, this.npmDownloadCounter );
+    this.githubService.getGithubCounters( 'web-ui-template' )
+    .then( counters => {
+      this.isCountersLoading = false;
+      this.counters = counters;
+      console.log(this.counters);
+    } )
+    .catch( error => {
+      this.isCountersLoading = false;
+      console.error( 'Error while getting Github Counters for product: ', 'web-ui-template', error );
     } );
-
-    this.productTypesCounter.count = 0;
-    this.openSourceRatioCounter.count = 0;
-    for ( const productLine of PRODUCT_LINES ) {
-      if ( productLine.key === 'generator' ) {
-        continue;
-      }
-      this.productTypesCounter.count += productLine.products.length;
-
-      for ( const product of productLine.products ) {
-        if ( product.openSource ) {
-          this.openSourceRatioCounter.count++;
-        }
-      }
-    }
-    this.openSourceRatioCounter.count = ( this.openSourceRatioCounter.count / this.productTypesCounter.count ) * 100;
-
-    this.startCounter( options, this.productTypesCounter );
-    this.startCounter( options, this.openSourceRatioCounter );
-  }
-
-  private startCounter( options: { duration: number; useGrouping: boolean; formattingFn, decimalPlaces: number }, counter ) {
-    options.formattingFn = ( n: number ) => {
-      return this.countUpFormatter( n );
-    };
-
-    if ( counter.count < this.KILO ) {
-      options.duration = 2;
-    } else if ( counter.count < this.MILLION ) {
-      options.duration = 3;
-    } else {
-      options.duration = 4;
-    }
-
-    const eventCountUp = new CountUp( counter.id, counter.count, options );
-    if ( !eventCountUp.error ) {
-      eventCountUp.start();
-    } else {
-      console.error( eventCountUp.error );
-    }
   }
 
   getPresentationCardFooter( isOpenSource: boolean ): string {
