@@ -19,7 +19,7 @@
   </a>
   <a *ngIf="!openSettings"
      [routerLink]="URLS.dashboard.myProfile">
-    <img [src]="profileImg" [class.premium-user]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
+    <img [src]="profileImg" [class.premium-border]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
     <span> My Profile </span>
   </a>
   <a [routerLink]="URLS.settings.editProfile" *ngIf="openSettings">

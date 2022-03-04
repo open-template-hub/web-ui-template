@@ -1,0 +1,18 @@
+.edit-security-page {
+    & .phone-number-form {
+        & .section {
+            & .phone-number-input-wrapper {
+                width: 450px;
+            }
+
+            & p {
+                font-size: 15px;
+            }
+        }
+
+        & .section-submit {
+            align-items: flex-start;
+        }
+
+    }
+}

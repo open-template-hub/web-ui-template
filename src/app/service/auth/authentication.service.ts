@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
+import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 import { BusinessLogicService } from '../business-logic/business-logic.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
 import { ProductService } from '../product/product.service';
@@ -22,7 +23,8 @@ export class AuthenticationService {
       private themeService: ThemeService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
-      private productService: ProductService
+      private productService: ProductService,
+      private browserLocaleService: BrowserLocaleService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' ) ? localStorage.getItem( 'currentUser' ) : sessionStorage.getItem( 'currentUser' );
     this.currentUserSubject = new BehaviorSubject<AuthToken>( JSON.parse( currentUserStorageItem ) );
@@ -34,7 +36,8 @@ export class AuthenticationService {
   }
 
   signUp( username: string, email: string, password: string ) {
-    return this.http.post<any>( `${ environment.serverUrl }/auth/signup`, { username, email, password } );
+    const languageCode = this.browserLocaleService.getBrowserLocale();
+    return this.http.post<any>( `${ environment.serverUrl }/auth/signup`, { username, email, password, languageCode } );
   }
 
   login( username: string, password: string, rememberMe: boolean ) {
@@ -65,7 +68,8 @@ export class AuthenticationService {
   }
 
   forgetPassword( username: any ) {
-    return this.http.post<any>( `${ environment.serverUrl }/auth/forget-password`, { username } );
+    const languageCode = this.browserLocaleService.getBrowserLocale()
+    return this.http.post<any>( `${ environment.serverUrl }/auth/forget-password`, { username, languageCode } );
   }
 
   refreshToken( token: string ) {

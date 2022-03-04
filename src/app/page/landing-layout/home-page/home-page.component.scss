@@ -65,6 +65,40 @@
   }
 }
 
+.screenshots-wrapper {
+  @include util.margin-x-auto;
+  @include util.flex-layout-column;
+  @include util.flex-center-center;
+
+  box-sizing: border-box;
+
+  width: 90%;
+
+  padding: 50px 3vw 100px;
+
+  text-align: center;
+
+  .product-card {
+    & .header {
+      text-align: left;
+      font-size: 20px;
+    }
+
+    & .body {
+      justify-content: flex-start;
+      background-color: transparent;
+      box-shadow: none;
+
+      & app-screenshot-swiper {
+        margin-top: 50px;
+      }
+
+      height: 350px;
+      width: 84vw;
+    }
+  }
+}
+
 @media only screen and (max-width: 999px) {
   .hero {
     max-width: 94vw;
@@ -136,7 +170,7 @@
 
   .counters {
     box-sizing: border-box;
-    padding: 180px 50px 50px;
+    padding: 150px 50px 100px;
     width: 1000px;
 
     & .counter-wrapper {
