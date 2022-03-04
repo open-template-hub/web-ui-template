@@ -5,7 +5,7 @@
       <h2 class="side-nav-brand-text">Open Template Hub</h2>
     </a>
     <a *ngIf="currentUser" routerLink="{{URLS.dashboard.myProfile}}">
-      <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme" [class.premium-user]="userIsPremium"/>
+      <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme" [class.premium-border]="userIsPremium"/>
       <span *ngIf="sideNavClosed === 'false'">
         MY PROFILE
     </span>

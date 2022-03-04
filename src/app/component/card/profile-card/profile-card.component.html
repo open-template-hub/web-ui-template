@@ -6,18 +6,16 @@
   class="profile-card">
   <!-- Header -->
   <ng-template #headerTemplate>
-    <div class="header">
+    <div class="header yellow-theme">
       <app-image-content-loader
         *ngIf="!employeePhotoLoaded"
         [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
       <img
         (load)="setEmployeePhotoLoaded()"
-        [src]="photoUri"
+        [src]="photoUri ? photoUri : './assets/common/profile-img.png'"
         [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
-        alt="profile-img"
-        class="profile-image yellow-theme"
-        [class.premium-user]="userIsPremium"
-        onerror="this.src='./assets/common/profile-img.png'"/>
+        alt="profile-img" class="profile-img" [class.premium-border]="userIsPremium"/>
+      <p *ngIf="userIsPremium" class="theme-color yellow-theme">(premium)</p>
       <p>@{{ user.username }}</p>
     </div>
   </ng-template>
@@ -31,7 +29,7 @@
       </div>
 
       <div class="key-value-area" *ngIf="user.payload?.lastName">
-        <p class="key">Second Name</p>
+        <p class="key">Last Name</p>
         <p class="value">{{ user.payload?.lastName }}</p>
       </div>
 
