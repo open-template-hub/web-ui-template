@@ -33,35 +33,29 @@ export class HomePageComponent {
   screenshots = [
     {
       src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/web-ui-demo-light.min.png',
-      description: $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.1:Responsive Design`
+      description: $localize`:@@userInterfaces.webUITemplate.screenshot.1:Responsive Design`
     },
     {
       src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/web-ui-demo-dark.min.png',
-      description: $localize
-          `:@@userInterfaces.companyProfileUITemplate.screenshot.2:Dark Mode Support`
+      description: $localize`:@@userInterfaces.webUITemplate.screenshot.2:Dark Mode Support`
     },
     {
-      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/company-profile-ui-screenshot-1.min.png',
-      description:
-          $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.3:Reusable Components`
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/web-ui-screenshot-1.min.png',
+      description: $localize`:@@userInterfaces.webUITemplate.screenshot.3:Integrated With OTH Servers`
     },
     {
-      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/company-profile-ui-screenshot-2.min.png',
-      description:
-          $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.4:Customisable Theme Colors`
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/web-ui-screenshot-2.min.png',
+      description: $localize`:@@userInterfaces.webUITemplate.screenshot.4:Customisable Theme Colors`
     },
     {
-      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/company-profile-ui-screenshot-3.min.png',
-      description: $localize`:@@userInterfaces.companyProfileUITemplate.screenshot.5:Customisable Theme Design`
+      src: 'https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/min/demo/ui/screenshots/web-ui-screenshot-3.min.png',
+      description: $localize`:@@userInterfaces.webUITemplate.screenshot.5:Customisable Theme Design`
     }
   ];
 
   whatIsWebUITemplateTitle = [
     { text: $localize`:@@homePage.whatIsWebUITemplateTitle.1:What is Web UI Template?`, level: 2 },
-    {
-      text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.
-`
-    }
+    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.` }
   ];
 
   integratedWithTitle = [
