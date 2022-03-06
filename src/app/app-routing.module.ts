@@ -19,6 +19,7 @@ import { ForgetPasswordPageComponent } from './page/landing-layout/form-pages/fo
 import { LoginPageComponent } from './page/landing-layout/form-pages/login-page/login-page.component';
 import { ResetPasswordPageComponent } from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
 import { SignUpPageComponent } from './page/landing-layout/form-pages/sign-up-page/sign-up-page.component';
+import { TwoFactorVerificationPageComponent } from './page/landing-layout/form-pages/two-factor-verification-page/two-factor-verification-page.component';
 import { HomePageComponent } from './page/landing-layout/home-page/home-page.component';
 import { LandingLayoutComponent } from './page/landing-layout/landing-layout.component';
 import { PartnersPageComponent } from './page/landing-layout/partners-page/partners-page.component';
@@ -100,6 +101,11 @@ const routes: Routes = [
         path: NAVIGATIONS.login.url,
         component: LoginPageComponent,
         canActivate: [ NavigationInterceptor ],
+      },
+      {
+        path: NAVIGATIONS.twoFactorVerification.url,
+        component: TwoFactorVerificationPageComponent,
+        canActivate: [ NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.branding.url,

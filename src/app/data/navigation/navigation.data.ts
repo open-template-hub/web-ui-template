@@ -81,6 +81,12 @@ export const NAVIGATIONS = {
     description: BRAND.name + $localize`:@@navigationData.login.description:: Login`,
     keywords: [ BRAND.name, 'oth', 'Login' ],
   },
+  twoFactorVerification: {
+    url: '2fa',
+    titlw: 'Two Factor Verification - ' + BRAND.name,
+    description: BRAND.name + 'Two Factor Verification',
+    keywords: [ BRAND.name, 'oth', '2fa' ]
+  },
   branding: {
     url: 'branding',
     title: 'Branding - ' + BRAND.name,
@@ -424,6 +430,7 @@ export const URLS = {
   about: '/' + NAVIGATIONS.about.url,
   signup: '/' + NAVIGATIONS.signup.url,
   login: '/' + NAVIGATIONS.login.url,
+  twoFactorVerification: '/' + NAVIGATIONS.twoFactorVerification.url,
   branding: '/' + NAVIGATIONS.branding.url,
   blog: '/' + NAVIGATIONS.blog.url,
   docs: '/' + NAVIGATIONS.docs.url,

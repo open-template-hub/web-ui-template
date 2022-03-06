@@ -126,13 +126,19 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         this.form.controls.rememberMe.value
     ).pipe( first() )
     .subscribe(
-        () => {
-          this.analyticsService.logLoginEvent().subscribe();
-
-          if ( this.returnUrl !== URLS.dashboard.root ) {
-            this.loginWithoutOpeningDashboard();
-          } else {
-            this.router.navigate( [ this.returnUrl ] );
+        ( response ) => {
+          console.log('loginn response ', response);
+          // this.analyticsService.logLoginEvent().subscribe();
+          if( response.preAuthToken ) {
+            this.authenticationService.setPreauthToken( response );
+            this.router.navigate( [ URLS.twoFactorVerification ])
+          }
+          else {
+            if ( this.returnUrl !== URLS.dashboard.root ) {
+              this.loginWithoutOpeningDashboard();
+            } else {
+              this.router.navigate( [ this.returnUrl ] );
+            }
           }
         }
     );

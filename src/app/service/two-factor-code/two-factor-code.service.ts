@@ -1,5 +1,5 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 
@@ -7,14 +7,21 @@ import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
   providedIn: 'root'
 })
 export class TwoFactorCodeService {
-
   constructor(
     private http: HttpClient,
-    private browserLocaleService: BrowserLocaleService
+    private browserLocaleService: BrowserLocaleService,
   ) { }
 
   submitPhoneNumber( phoneNumber: string ) {
     const languageCode = this.browserLocaleService.getBrowserLocale();
     return this.http.post<any>( `${ environment.serverUrl }/2fa/request`, { phoneNumber } );
+  }
+
+  verify( code: string, isInitialVerification: boolean ) {
+    return this.http.post<any>( `${ environment.serverUrl }/2fa/verify`, { code, isInitialVerification } );
+  }
+
+  loginVerify( code: string, preAuthToken: string ) {
+    return this.http.post<any>( `${ environment.serverUrl }/2fa/loginVerify`, { code, preAuthToken } );
   }
 }
