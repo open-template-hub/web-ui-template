@@ -96,8 +96,6 @@ export class TwoFactorVerificationPageComponent implements OnInit {
   
       if( this.timeLeft <= 0 ) { 
         clearInterval( this.timerInterval );
-        this.toastService.error( 'Time has expired' );
-        this.router.navigate( [ URLS.login ] );
       }
     }, 1000);
   }
