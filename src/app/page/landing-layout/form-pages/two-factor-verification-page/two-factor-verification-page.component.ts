@@ -136,26 +136,6 @@ export class TwoFactorVerificationPageComponent implements OnInit {
     this.sendCode();
   }
 
-  private login() {
-    this.twoFactorCodeService.verify(
-      this.form.controls.twoFactorCode.value,
-      false
-    ).pipe( first() )
-    .subscribe(
-      () => {
-        () => {
-          this.analyticsService.logLoginEvent().subscribe();
-
-          if ( this.returnUrl !== URLS.dashboard.root ) {
-            this.loginWithoutOpeningDashboard();
-          } else {
-            this.router.navigate( [ this.returnUrl ] );
-          }
-        } 
-      }
-    )
-  }
-
   private loginWithoutOpeningDashboard() {
     // Special case for initialization (if return url is else than dashboard)
     this.businessLogicService.me()
