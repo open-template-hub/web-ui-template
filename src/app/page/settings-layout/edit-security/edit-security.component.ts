@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
