@@ -95,7 +95,8 @@
   }
 
   $background-colors: (
-      "theme-color-lighter-4": var(--theme-color-lighter-4)
+      "theme-color-lighter-4": var(--theme-color-lighter-4),
+      "error": var(--error)
   );
   @each $background-color-name, $background-color in $background-colors {
     &.#{$background-color-name}-background-color {

@@ -17,7 +17,9 @@ import { ThemeService } from '../theme/theme.service';
 export class AuthenticationService {
 
   public currentUser: Observable<AuthToken>;
+  public preAuthToken: Observable<any>;
   private currentUserSubject: BehaviorSubject<AuthToken>;
+  private preAuthTokenSubject: BehaviorSubject<any>;
 
   constructor( private http: HttpClient,
       private themeService: ThemeService,
@@ -29,10 +31,19 @@ export class AuthenticationService {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' ) ? localStorage.getItem( 'currentUser' ) : sessionStorage.getItem( 'currentUser' );
     this.currentUserSubject = new BehaviorSubject<AuthToken>( JSON.parse( currentUserStorageItem ) );
     this.currentUser = this.currentUserSubject.asObservable();
+
+    const currentPreAuthTokenStorageItem = localStorage.getItem( 'preAuthToken' ) ? localStorage.getItem( 'preAuthToken' ) : sessionStorage.getItem( 'preAuthToken' );
+    this.preAuthTokenSubject = new BehaviorSubject<any>( JSON.parse( currentPreAuthTokenStorageItem ) );
+    this.preAuthToken = this.preAuthTokenSubject.asObservable();
   }
 
   public get currentUserValue(): AuthToken {
     return this.currentUserSubject.value;
+  }
+
+  public get preAuthTokenValue(): any {
+    console.log( 'preAuthTokenValue', this.preAuthTokenSubject.value );
+    return this.preAuthTokenSubject.value
   }
 
   signUp( username: string, email: string, password: string ) {
@@ -42,21 +53,34 @@ export class AuthenticationService {
 
   login( username: string, password: string, rememberMe: boolean ) {
     return this.http.post<any>( `${ environment.serverUrl }/auth/login`, { username, password } )
-    .pipe( map( currentUser => {
-      if ( rememberMe ) {
-        localStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
-      } else {
-        sessionStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
+    .pipe( map( response => {
+      if( !response.preAuthToken ) {
+        this.setLoginParams( response, rememberMe );
       }
-      this.currentUserSubject.next( currentUser );
-
-      this.themeService.setDarkLightSetting( DarkLightSettings.auto );
-      this.themeService.setThemeColorSetting( DEFAULT_THEME );
-      this.themeService.setThemeDesignSetting( DEFAULT_THEME );
-      this.themeService.initSideNavClosed( false );
-
-      return currentUser;
+      
+      return response;
     } ) );
+  }
+
+  setLoginParams( currentUser: any, rememberMe: boolean ) {
+    if ( rememberMe ) {
+      localStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
+    } else {
+      sessionStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
+    }
+    this.currentUserSubject.next( currentUser );
+
+    this.themeService.setDarkLightSetting( DarkLightSettings.auto );
+    this.themeService.setThemeColorSetting( DEFAULT_THEME );
+    this.themeService.setThemeDesignSetting( DEFAULT_THEME );
+    this.themeService.initSideNavClosed( false );
+
+    console.log( 'currentUserLocalStorage', currentUser)
+  }
+
+  setPreauthToken( preAuthToken: any ) {
+    localStorage.setItem( 'preAuthToken', JSON.stringify( preAuthToken ) );
+    this.preAuthTokenSubject.next( preAuthToken );
   }
 
   verify( token: string ) {
@@ -170,5 +194,13 @@ export class AuthenticationService {
   generateUID( length ) {
     return window.btoa( Array.from( window.crypto.getRandomValues( new Uint8Array( length * 2 ) ) )
     .map( ( b ) => String.fromCharCode( b ) ).join( '' ) ).replace( /[+/]/g, '' ).substring( 0, length );
+  }
+
+  getSubmittedPhoneNumber() {
+    return this.http.get<any>( `${ environment.serverUrl }/auth/submitted-phone-number` )
+  }
+
+  deleteSubmittedPhoneNumber() {
+    return this.http.delete<any>( `${ environment.serverUrl }/auth/submitted-phone-number` )
   }
 }
