@@ -118,6 +118,7 @@ import { ContactInformationCardComponent } from './component/card/contact-inform
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { SecondCounterComponent } from './component/second-counter/second-counter.component';
 import { TwoFactorVerificationPageComponent } from './page/landing-layout/form-pages/two-factor-verification-page/two-factor-verification-page.component';
+import { AnalyticsEventCardComponent } from './component/card/analytics-event-card/analytics-event-card.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -225,6 +226,7 @@ FullCalendarModule.registerPlugins( [
     EditSecurityComponent,
     SecondCounterComponent,
     TwoFactorVerificationPageComponent,
+    AnalyticsEventCardComponent,
   ],
   imports: [
     BrowserModule,

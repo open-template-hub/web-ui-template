@@ -96,6 +96,8 @@
 
   $background-colors: (
       "theme-color-lighter-4": var(--theme-color-lighter-4),
+      "information": var(--info),
+      "lighter-contrast": var(--lighter-contrast),
       "error": var(--error)
   );
   @each $background-color-name, $background-color in $background-colors {
@@ -114,6 +116,11 @@
 
   &.cursor-not-allowed {
     cursor: not-allowed;
+  }
+
+  &.disabled-hover {
+    box-shadow: initial;
+    cursor: initial;
   }
 
   &.disable-dark-mode {

@@ -1,33 +1,39 @@
 <div class="edit-security-page">
-    <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate">
-        <!-- Body -->
-        <ng-template #bodyTemplate>
-            <form (ngSubmit)="onPhoneNumberSubmit()" [formGroup]="form" class="phone-number-form">
-                <div class="section">
-                    <div *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'" [class.error-input]="submitted && form.controls.phoneNumber.invalid" class="input-with-icon phone-number-request-input-wrapper">
-                        <input formControlName="phoneNumber" placeholder="Phone Number" type="text">
-                        <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i>
+    <h2>Edit Security</h2>
+    
+    <!--2FA section-->
+    <div class="two-factor-wrapper">
+        <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate">
+            <!-- Body -->
+            <ng-template #bodyTemplate>
+                <form (ngSubmit)="onPhoneNumberSubmit()" [formGroup]="form" class="phone-number-form">
+                    <div class="section">
+                        <div *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify' || twoFactorVerificationState === 'expired'" [class.error-input]="submitted && form.controls.phoneNumber.invalid" class="input-with-icon phone-number-request-input-wrapper">
+                            <input formControlName="phoneNumber" placeholder="Phone Number" type="text">
+                            <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i>
+                        </div>
+                        <div *ngIf="twoFactorVerificationState === 'verify' || twoFactorVerificationState === 'expired'" class="input-with-icon phone-number-verify-input-wrapper">
+                            <app-second-counter
+                                [timeLeft]="timeLeft < 0 ? 0 : timeLeft" 
+                                [totalTime]="totalTime">
+                            </app-second-counter>
+                            <input formControlName="verificationCode" placeholder="Verification Code" type="text">
+                            <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i> 
+                        </div>
+                        <div *ngIf="twoFactorVerificationState === 'verified'" class="input-with-icon verified-phone-number-wrapper">
+                            <p>{{ submittedPhoneNumber }}</p>
+                            <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i> 
+                        </div> 
                     </div>
-                    <div *ngIf="twoFactorVerificationState === 'verify'" class="input-with-icon phone-number-verify-input-wrapper">
-                        <app-second-counter 
-                            [timeLeft]="timeLeft" 
-                            [totalTime]="totalTime">
-                        </app-second-counter>
-                        <input formControlName="verificationCode" placeholder="Verification Code" type="text">
-                        <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i> 
+            
+                    <div class="section-submit">
+                        <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'" text="Submit"></app-button>
+                        <app-button *ngIf="twoFactorVerificationState === 'expired'" text="Retry" (click)="retry()" [buttonClasses]="['information-button']"></app-button>
+                        <app-button *ngIf="twoFactorVerificationState === 'verified'" (click)="deleteSubmittedPhoneNumber()" text="Delete" [buttonClasses]="['error-background-color']"></app-button>
                     </div>
-                    <div *ngIf="twoFactorVerificationState === 'verified'" class="input-with-icon phone-number-verify-input-wrapper">
-                        <input formControlName="submittedPhoneNumber" readonly type="text">
-                        <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i> 
-                    </div> 
-                </div>
-        
-                <div class="section-submit">
-                    <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'" text="Submit"></app-button>
-                    <app-button *ngIf="twoFactorVerificationState === 'verified'" (click)="deleteSubmittedPhoneNumber()" text="Delete" [buttonClasses]="['error-background-color']"></app-button>
-                </div>
-            </form>
-        </ng-template>
-    </app-card>
+                </form>
+            </ng-template>
+        </app-card>
+    </div>
 </div>
 

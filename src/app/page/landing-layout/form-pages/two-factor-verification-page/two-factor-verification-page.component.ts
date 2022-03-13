@@ -15,10 +15,9 @@ import { environmentCommon } from 'src/environments/environment-common';
 @Component({
   selector: 'app-two-factor-verification-page',
   templateUrl: './two-factor-verification-page.component.html',
-  styleUrls: ['./two-factor-verification-page.component.scss']
+  styleUrls: ['./two-factor-verification-page.component.scss'],
 })
 export class TwoFactorVerificationPageComponent implements OnInit {
-
   form: FormGroup;
   submitted = false;
   returnUrl: string;
@@ -36,7 +35,7 @@ export class TwoFactorVerificationPageComponent implements OnInit {
 
   URLS = URLS;
 
-  appHeroContents = [ {text: $localize `:@@loginPage.appHero:Welcome`, level: 1} ];
+  appHeroContents = [{ text: 'SMS Verification', level: 1 }];
 
   showMoreToggle = false;
 
@@ -44,77 +43,81 @@ export class TwoFactorVerificationPageComponent implements OnInit {
   expiry: string;
   maskedPhoneNumber: string;
 
+  socialLoginParams: any;
+
   constructor(
-      private formBuilder: FormBuilder,
-      private route: ActivatedRoute,
-      private router: Router,
-      private authenticationService: AuthenticationService,
-      private businessLogicService: BusinessLogicService,
-      private informationService: InformationService,
-      private fileStorageService: FileStorageService,
-      private toastService: ToastService,
-      private analyticsService: AnalyticsService,
-      private twoFactorCodeService: TwoFactorCodeService
-  ) {
-  }
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private businessLogicService: BusinessLogicService,
+    private informationService: InformationService,
+    private fileStorageService: FileStorageService,
+    private toastService: ToastService,
+    private analyticsService: AnalyticsService,
+    private twoFactorCodeService: TwoFactorCodeService
+  ) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group( {
-      verificationCode: [ '', Validators.required ]
-    } );
+    this.form = this.formBuilder.group({
+      verificationCode: ['', Validators.required],
+    });
 
     // get return url from route parameters or default to '/dashboard'
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || this.URLS.dashboard.root;
+    this.returnUrl =
+      this.route.snapshot.queryParams.returnUrl || this.URLS.dashboard.root;
 
     const preAuthToken = this.authenticationService.preAuthTokenValue;
     this.preAuthToken = preAuthToken.preAuthToken;
     this.expiry = preAuthToken.expiry;
     this.maskedPhoneNumber = preAuthToken.maskedPhoneNumber;
 
-    this.formatAndSetTime( this.expiry );
-    this.startTimer()
+    this.formatAndSetTime(this.expiry);
+    this.startTimer();
   }
 
-  formatAndSetTime( expiry: string ) {
-    const expireDate = new Date( +expiry );
+  formatAndSetTime(expiry: string) {
+    const expireDate = new Date(+expiry);
     const currentDate = new Date();
 
-    const diff =  Math.floor( ( expireDate.getTime() - currentDate.getTime() ) / 1000 );
+    const diff = Math.floor(
+      (expireDate.getTime() - currentDate.getTime()) / 1000
+    );
     this.totalTime = diff;
     this.timeLeft = diff;
   }
 
   ngOnDestroy() {
-    this.informationService.clearInformation();
+    clearInterval(this.timerInterval);
   }
 
   startTimer() {
     this.timerInterval = setInterval(() => {
       this.timePassed += 1;
       this.timeLeft = this.totalTime - this.timePassed;
-  
-      if( this.timeLeft <= 0 ) { 
-        clearInterval( this.timerInterval );
+
+      if (this.timeLeft <= 0) {
+        clearInterval(this.timerInterval);
+        this.toastService.error('Time has expired');
       }
     }, 1000);
   }
 
   sendCode() {
-    this.twoFactorCodeService.loginVerify(
-      this.form.controls.verificationCode.value,
-      this.preAuthToken
-    ).subscribe(
-      currentUser => {
-        // this.analyticsService.logSubmitPhoneNumberEvent().subscribe();
-        clearInterval( this.timerInterval ); 
-        this.authenticationService.setLoginParams( currentUser, false );
-        this.router.navigate( [ URLS.dashboard.root ] );
-      }
-    )
+    this.twoFactorCodeService
+      .loginVerify(this.form.controls.verificationCode.value, this.preAuthToken)
+      .subscribe((currentUser) => {
+        clearInterval(this.timerInterval);
+        this.authenticationService.setLoginParams(currentUser, false);
+        this.analyticsService.logLoginEvent().subscribe((response) => {
+          console.log(response);
+        });
+        this.router.navigate([URLS.dashboard.root]);
+      });
   }
 
   onSubmit() {
-    if ( this.loading ) {
+    if (this.loading || this.timeLeft <= 0) {
       return;
     }
 
@@ -124,10 +127,10 @@ export class TwoFactorVerificationPageComponent implements OnInit {
       twoFactorCode: `Please provide valid two factor code`,
     };
 
-    if ( this.form.invalid ) {
-      for ( const control in this.form.controls ) {
-        if ( this.form.controls[ control ].invalid ) {
-          this.toastService.error( errorMessages[ control ], '' );
+    if (this.form.invalid) {
+      for (const control in this.form.controls) {
+        if (this.form.controls[control].invalid) {
+          this.toastService.error(errorMessages[control], '');
         }
       }
       return;
@@ -137,19 +140,17 @@ export class TwoFactorVerificationPageComponent implements OnInit {
 
   private loginWithoutOpeningDashboard() {
     // Special case for initialization (if return url is else than dashboard)
-    this.businessLogicService.me()
-    .subscribe( userInfo => {
-          this.router.navigateByUrl( this.returnUrl );
-          if ( !userInfo.payload ) {
-            this.businessLogicService.createMyInfo()
-            .subscribe( () => {
-                  this.router.navigate( [ URLS.maintenance ] );
-                }
-            );
-          } else {
-            this.fileStorageService.downloadProfileImage( userInfo.payload.profileImageId ).subscribe();
-          }
-        }
-    );
+    this.businessLogicService.me().subscribe((userInfo) => {
+      this.router.navigateByUrl(this.returnUrl);
+      if (!userInfo.payload) {
+        this.businessLogicService.createMyInfo().subscribe(() => {
+          this.router.navigate([URLS.maintenance]);
+        });
+      } else {
+        this.fileStorageService
+          .downloadProfileImage(userInfo.payload.profileImageId)
+          .subscribe();
+      }
+    });
   }
 }

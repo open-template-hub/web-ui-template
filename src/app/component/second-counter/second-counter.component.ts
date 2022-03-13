@@ -8,8 +8,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 export class SecondCounterComponent implements OnChanges {
   FULL_DASH_ARRAY = 283;
 
-  @Input() warningThreshold = 85;
-  @Input() alertThreshold = 80;
+  @Input() warningThreshold;
+  @Input() alertThreshold;
   
   colorCodes = {
     info: {
@@ -29,19 +29,21 @@ export class SecondCounterComponent implements OnChanges {
   
   constructor() { /*intentionally blank*/ }
   
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(_: SimpleChanges): void {
+    if( !this.warningThreshold || !this.alertThreshold ) {
+      this.warningThreshold = this.totalTime * 2 / 3
+      this.alertThreshold = this.totalTime / 3
+    }
+    
     this.setCircleDasharray();
     this.setRemainingPathColor( this.timeLeft )
   }
 
   setRemainingPathColor(timeLeft) {
     const { alert, warning, info } = this.colorCodes;
-    console.log( 'Time Left: ', timeLeft );
     if (timeLeft <= this.alertThreshold) {
-      console.log( 'alert' )
       this.remainingPathColor = alert.color;
     } else if (timeLeft <= this.warningThreshold) {
-      console.log( 'warning' )
       this.remainingPathColor = warning.color;
     } else {
       this.remainingPathColor = info.color;
@@ -50,7 +52,7 @@ export class SecondCounterComponent implements OnChanges {
   
   calculateTimeFraction() {
     const rawTimeFraction = this.timeLeft / this.totalTime;
-    return rawTimeFraction - (1 / this.totalTime) * (1 - rawTimeFraction);
+    return rawTimeFraction === 0 ? 0 : rawTimeFraction - (1 / this.totalTime) * (1 - rawTimeFraction);
   }
   
   setCircleDasharray() {

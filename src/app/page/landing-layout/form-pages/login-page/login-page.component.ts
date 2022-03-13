@@ -127,13 +127,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     ).pipe( first() )
     .subscribe(
         ( response ) => {
-          console.log('loginn response ', response);
-          // this.analyticsService.logLoginEvent().subscribe();
           if( response.preAuthToken ) {
             this.authenticationService.setPreauthToken( response );
             this.router.navigate( [ URLS.twoFactorVerification ])
           }
           else {
+            this.analyticsService.logLoginEvent().subscribe();
             if ( this.returnUrl !== URLS.dashboard.root ) {
               this.loginWithoutOpeningDashboard();
             } else {

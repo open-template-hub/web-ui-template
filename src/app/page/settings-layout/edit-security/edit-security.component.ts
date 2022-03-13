@@ -25,7 +25,7 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
 
   expiry;
 
-  twoFactorVerificationState: 'request' | 'verify' | 'verified';
+  twoFactorVerificationState: 'request' | 'verify' | 'verified' | 'expired';
 
   submittedPhoneNumber: string;
   
@@ -47,14 +47,12 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = this.fromBuilder.group( {
       phoneNumber: [ '' ],
-      verificationCode: [ '' ],
-      submittedPhoneNumber: [ '' ]
+      verificationCode: [ '']
     } );
-
+    
     this.authenticationService.getSubmittedPhoneNumber().subscribe( response => {
       if( response.phoneNumber ) {
         this.submittedPhoneNumber = response.phoneNumber;
-        this.form.controls.submittedPhoneNumber.setValue( this.submittedPhoneNumber );
         this.twoFactorVerificationState = 'verified'
       }
       else {
@@ -75,7 +73,7 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
       if( this.timeLeft === 0 ) {
         clearInterval(this.timerInterval);
         this.toastService.error( 'Time has expired' );
-        this.router.navigate( [ URLS.dashboard.root ] );
+        this.twoFactorVerificationState = 'expired';
       }
     }, 1000);
   }
@@ -109,6 +107,10 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
         this.form.controls.phoneNumber.value
     ).subscribe(
         (response) => {
+          this.totalTime = undefined;
+          this.timePassed = 0;
+          this.timeLeft = undefined;
+          
           this.formatAndSetTime( response.expire )
           this.form.controls.phoneNumber.disable();
           this.twoFactorVerificationState = 'verify';
@@ -116,6 +118,10 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
           this.toastService.success( 'Code sent to your phone number' );
         }
     );
+  }
+
+  retry() {
+    this.submitPhoneNumber();
   }
 
   formatAndSetTime( expiry: string ) {
