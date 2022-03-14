@@ -1,0 +1,31 @@
+<div class="form-page-layout">
+    <!-- Welcome -->
+    <app-hero [contents]="appHeroContents"></app-hero>
+    <app-card [bodyTemplate]="bodyTemplate">
+      <!-- Body -->
+      <ng-template #bodyTemplate>
+        <div class="body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="form">
+            <div class="section">
+              <p>2FA code sent to {{ maskedPhoneNumber }}</p>
+              <div [class.error-input]="submitted && form.controls.verificationCode.invalid" class="input-with-icon">
+                <app-second-counter 
+                  [timeLeft]="timeLeft < 0 ? 0 : timeLeft" 
+                  [totalTime]="totalTime">
+                </app-second-counter>
+                <input formControlName="verificationCode" placeholder="Code" required type="text">
+                <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
+              </div>
+            </div>
+            <div class="section-submit">
+              <app-button i18n-text="@@loginPage.loginButton" text="SUBMIT" 
+                [buttonClasses]="timeLeft <= 0 ? ['lighter-contrast-background-color', 'disabled-hover'] : []"></app-button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+    </app-card>
+  </div>
+  <app-cookies></app-cookies>
+  
+  

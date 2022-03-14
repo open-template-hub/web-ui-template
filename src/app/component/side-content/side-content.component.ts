@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { URLS } from '../../data/navigation/navigation.data';
@@ -26,11 +26,13 @@ export class SideContentComponent {
     this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
-      const timeStamp = new Date();
-      timeStamp.setDate( timeStamp.getDate()- 10 );
-      this.analyticsService.getEvents( timeStamp.getTime(), 50 ).subscribe( events => {
-        this.events = events
-      } );
+      if( userInfo ) {
+        const timeStamp = new Date();
+        timeStamp.setDate( timeStamp.getDate()- 10 );
+        this.analyticsService.getEvents( timeStamp.getTime(), 50 ).subscribe( events => {
+          this.events = events
+        } );
+      }
     } );
   }
 
@@ -38,3 +40,5 @@ export class SideContentComponent {
     this.router.navigate( [ URLS.dashboard.event ], { queryParams: { event_id: event } } );
   }
 }
+
+

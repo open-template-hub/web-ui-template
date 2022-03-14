@@ -11,22 +11,22 @@
 <div class="counters">
   <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'" class="counter-wrapper" rel="noopener" target="_blank">
     <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
-    <p class="counter">{{ counters[ 0 ].value ? counters[ 0 ].value : 0 }}</p>
+    <p class="counter">{{ (counters?.length === 1 && counters[ 0 ].value ) ? counters[ 0 ].value : 0 }}</p>
     <p class="description">Current Version</p>
   </a>
   <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'" class="counter-wrapper" rel="noopener" target="_blank">
     <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
-    <p class="counter">{{ counters[ 1 ].value ? counters[ 1 ].value : 0 }}</p>
+    <p class="counter">{{ ( counters?.length === 2 && counters[ 1 ].value ) ? counters[ 1 ].value : 0 }}</p>
     <p class="description">Stars</p>
   </a>
   <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'" class="counter-wrapper" rel="noopener" target="_blank">
     <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
-    <p class="counter">{{ counters[ 2 ].value ? counters[ 2 ].value : 0 }}</p>
+    <p class="counter">{{ ( counters?.length === 3 && counters[ 2 ].value ) ? counters[ 2 ].value : 0 }}</p>
     <p class="description">Forks</p>
   </a>
   <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'" class="counter-wrapper" rel="noopener" target="_blank">
     <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
-    <p class="counter">{{ counters[ 3 ].value ? counters[ 3 ].value : 0 }}</p>
+    <p class="counter">{{ ( counters?.length === 4 && counters[ 3 ].value ) ? counters[ 3 ].value : 0 }}</p>
     <p class="description">Subscribers</p>
   </a>
 </div>
