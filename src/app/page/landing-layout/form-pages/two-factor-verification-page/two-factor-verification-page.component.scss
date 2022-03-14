@@ -1,0 +1,12 @@
+@use '../../landing-layout.component';
+
+.form-page-layout {
+    & .body {
+        & .section {
+            p {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
