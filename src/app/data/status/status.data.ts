@@ -10,6 +10,7 @@ export const DEFAULT_SYSTEM_STATUS = {
         { name: 'Payment Server', alive: '' },
         { name: 'Analytics Server', alive: '' },
         { name: 'Mail Server', alive: '' },
+        { name: 'Sms Server', alive: '' },
       ]
     }
   ],
