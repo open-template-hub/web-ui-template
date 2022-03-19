@@ -1,42 +1,52 @@
+@use '../../../../styles/util/util';
+@use '../../../component/card/card.component';
+
 .edit-security-page {
-    & h2 {
-        text-align: center;
-        margin-bottom: 30px;
-    };
 
-    & .two-factor-wrapper {
-        width: 500px;
-        margin-right: auto;
-        margin-left: auto;
+  & h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
 
-        & .phone-number-form {
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-bottom: 20px;
-            & .section {
-                & div {
-                    margin-right: 10px;
-                }
-    
-                & p {
-                    font-size: 15px;
-                }
-    
-                & .verified-phone-number-wrapper {
-                    width: -webkit-fit-content;
-    
-                    & p {
-                        font-size: 20px;
-                    }
-                }
-            }
-    
-    
-    
-            & .section-submit {
-                align-items: flex-start;
-            }
+  .two-factor-auth-wrapper {
+    @include util.margin-x-auto;
+    @include util.flex-center-center;
+
+    & .edit-two-factor-auth-card {
+      & .body {
+        padding: 40px 20px 20px;
+
+        & .section {
+          margin-top: 0;
         }
-
+      }
     }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .edit-security-page {
+    padding-top: 40px;
+
+    .two-factor-auth-wrapper {
+      @include util.flex-layout-column;
+
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .edit-security-page {
+
+    .two-factor-auth-wrapper {
+      @include util.flex-layout-row;
+
+      & > * {
+        width: 500px;
+      }
+    }
+  }
 }
