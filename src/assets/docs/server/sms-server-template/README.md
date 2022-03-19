@@ -82,7 +82,7 @@ RESPONSE_ENCRYPTION_SECRET={Response Encryption Secret}
           "messages": [
                 {
                       "language": "en", 
-                      "message": "Hello ${username}, here is your 2FA code ${twoFactorCode}"
+                      "message": "Hello ${username}, here is your two factor authentication code ${twoFactorCode}"
                 }
           ], 
           "payload": {

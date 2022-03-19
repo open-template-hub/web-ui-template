@@ -82,10 +82,10 @@ export const NAVIGATIONS = {
     keywords: [ BRAND.name, 'oth', 'Login' ],
   },
   twoFactorVerification: {
-    url: '2fa',
+    url: 'two-factor-authentication',
     titlw: 'Two Factor Verification - ' + BRAND.name,
     description: BRAND.name + 'Two Factor Verification',
-    keywords: [ BRAND.name, 'oth', '2fa' ]
+    keywords: [ BRAND.name, 'oth', 'Two Factor Authentication' ]
   },
   branding: {
     url: 'branding',
