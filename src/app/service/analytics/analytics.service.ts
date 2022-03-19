@@ -11,31 +11,44 @@ export class AnalyticsService {
   ) {
   }
 
-  logLoginEvent() {
-    const data = {
-      payload: {
-        message: 'Login Activity',
-        icon: './assets/common/profile-img.png'
-      },
-      category: 'LOGIN',
-      source: environment.clientUrl
-    }
+  logLoginEvent( oauth?: any ) {
+    if ( oauth ) {
+      return this.logSocialLoginEvent( oauth.name, oauth.logo );
+    } else {
+      const data = {
+        payload: {
+          message: 'Login Activity',
+          icon: './assets/common/profile-img.png'
+        },
+        category: 'LOGIN',
+        source: environment.clientUrl
+      };
 
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+      return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
+    }
   }
 
-  logSocialLoginEvent( oauth: any ) {
-    const data = {
+  private logSocialLoginEvent( provider: string, icon: string ) {
+
+    const data: any = {
       payload: {
-        message: 'Social Login Activity',
-        provider: oauth.name,
-        icon: oauth.logo
+        message: 'Social Login Activity'
       },
       category: 'SOCIAL_LOGIN',
       source: environment.clientUrl
+    };
+
+    if ( provider ) {
+      data.payload.provider = provider;
     }
 
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+    if ( icon ) {
+      data.payload.icon = icon;
+    }
+
+    console.log( 'logloginevent', data );
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
   logPaymentEvent( payment: any ) {
@@ -47,9 +60,9 @@ export class AnalyticsService {
       },
       category: 'PAYMENT',
       source: environment.clientUrl
-    }
+    };
 
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
   logSubmitPhoneNumberEvent() {
@@ -59,12 +72,12 @@ export class AnalyticsService {
       },
       category: 'TWO_FACTOR_AUTH',
       source: environment.clientUrl
-    }
+    };
 
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data);
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
   getEvents( start: number, limit: number ) {
-    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }&limit=${ limit }`)
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }&limit=${ limit }` );
   }
 }

@@ -117,7 +117,7 @@ import { DashboardLayoutBottomNavComponent } from './component/nav/dashboard/das
 import { ContactInformationCardComponent } from './component/card/contact-information-card/contact-information-card.component';
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { SecondCounterComponent } from './component/second-counter/second-counter.component';
-import { TwoFactorVerificationPageComponent } from './page/landing-layout/form-pages/two-factor-verification-page/two-factor-verification-page.component';
+import { TwoFactorAuthenticationPageComponent } from './page/landing-layout/form-pages/two-factor-authentication-page/two-factor-authentication-page.component';
 import { AnalyticsEventCardComponent } from './component/card/analytics-event-card/analytics-event-card.component';
 
 FullCalendarModule.registerPlugins( [
@@ -225,7 +225,7 @@ FullCalendarModule.registerPlugins( [
     ContactInformationCardComponent,
     EditSecurityComponent,
     SecondCounterComponent,
-    TwoFactorVerificationPageComponent,
+    TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
   ],
   imports: [
