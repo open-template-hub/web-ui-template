@@ -1,7 +1,7 @@
 <div class="edit-security-page">
     <h2>Edit Security</h2>
-    
-    <!--2FA section-->
+
+    <!--Two factor authentication section-->
     <div class="two-factor-wrapper">
         <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate">
             <!-- Body -->
@@ -14,18 +14,18 @@
                         </div>
                         <div *ngIf="twoFactorVerificationState === 'verify' || twoFactorVerificationState === 'expired'" class="input-with-icon phone-number-verify-input-wrapper">
                             <app-second-counter
-                                [timeLeft]="timeLeft < 0 ? 0 : timeLeft" 
+                                [timeLeft]="timeLeft < 0 ? 0 : timeLeft"
                                 [totalTime]="totalTime">
                             </app-second-counter>
-                            <input formControlName="verificationCode" placeholder="Verification Code" type="text">
-                            <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i> 
+                            <input formControlName="verificationCode" autocomplete="one-time-code" placeholder="Verification Code" type="text">
+                            <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
                         </div>
                         <div *ngIf="twoFactorVerificationState === 'verified'" class="input-with-icon verified-phone-number-wrapper">
                             <p>{{ submittedPhoneNumber }}</p>
-                            <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i> 
-                        </div> 
+                            <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i>
+                        </div>
                     </div>
-            
+
                     <div class="section-submit">
                         <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'" text="Submit"></app-button>
                         <app-button *ngIf="twoFactorVerificationState === 'expired'" text="Retry" (click)="retry()" [buttonClasses]="['information-button']"></app-button>
