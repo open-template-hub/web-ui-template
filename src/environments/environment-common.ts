@@ -3,6 +3,8 @@ import { environment } from './environment';
 
 export const environmentCommon: EnvironmentCommonModel = {
   oth: {
+    website: 'https://opentemplatehub.com',
+    email: 'info@opentemplatehub.com',
     social: {
       twitter: 'opentemplatehub',
       linkedin: 'open-template-hub',
@@ -10,10 +12,9 @@ export const environmentCommon: EnvironmentCommonModel = {
       productHunt: '@open_template_hub',
       npm: '@open-template-hub',
       discord: 'wa9hmmR'
-    },
-    email: 'info@opentemplatehub.com'
+    }
   },
-  
+
   website: {
     // oauth
     google: {
@@ -91,7 +92,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.oauth.reddit.tag,
       websiteType: 'oauth'
     },
-    
+
     // payment
     stripe: {
       name: 'Stripe',
@@ -118,7 +119,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       env: environment.payment.paypal.env,
       websiteType: 'payment'
     },
-    
+
     // file storage
     aws: {
       name: 'Aws',
@@ -136,7 +137,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.fileStorage.googleCloud.tag,
       websiteType: 'file-storage'
     },
-    
+
     // mail
     gmail: {
       name: 'Gmail',
@@ -162,7 +163,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.mail.outlook.tag,
       websiteType: 'mail'
     },
-    
+
     // sms
     twillio: {
       name: 'Twillio',
@@ -180,7 +181,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.sms.awsSns.tag,
       websiteType: 'sms'
     },
-    
+
     // analytics
     googleAnalytics: {
       name: 'Google Analytics',
@@ -198,7 +199,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       tag: environment.analytics.matomo.tag,
       websiteType: 'analytics'
     },
-    
+
     // other
     instagram: {
       name: 'Instagram',
@@ -247,7 +248,7 @@ export const environmentCommon: EnvironmentCommonModel = {
       websiteType: 'other'
     }
   },
-  
+
   languages: [
     { name: 'English', code: 'en-US', emoji: '🇺🇸' },
     { name: 'French', code: 'fr', emoji: '🇫🇷' }
