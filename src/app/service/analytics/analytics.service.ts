@@ -77,7 +77,11 @@ export class AnalyticsService {
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
-  getEvents( start: number, limit: number ) {
-    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?start=${ start }&limit=${ limit }` );
+  getEvents( category: string, start: number | undefined, skip: number, limit: number ) {
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?category=${ category }&start=${ start }&skip=${ skip }&limit=${ limit }`)
+  }
+
+  getConfig() {
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event/config`)
   }
 }

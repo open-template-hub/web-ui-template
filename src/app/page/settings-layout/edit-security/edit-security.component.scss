@@ -2,13 +2,12 @@
 @use '../../../component/card/card.component';
 
 .edit-security-page {
-
   & h2 {
     text-align: center;
     margin-bottom: 30px;
   }
 
-  .two-factor-auth-wrapper {
+  & .two-factor-auth-wrapper {
     @include util.margin-x-auto;
     @include util.flex-center-center;
 
@@ -22,13 +21,17 @@
       }
     }
   }
+  
+  & .analytics-event-wrapper {
+    margin-top: 50px;
+  }
 }
 
 @media only screen and (max-width: 999px) {
   .edit-security-page {
     padding-top: 40px;
 
-    .two-factor-auth-wrapper {
+    & .two-factor-auth-wrapper {
       @include util.flex-layout-column;
 
       & > * {
@@ -41,7 +44,7 @@
 @media only screen and (min-width: 1000px) {
   .edit-security-page {
 
-    .two-factor-auth-wrapper {
+    & .two-factor-auth-wrapper {
       @include util.flex-layout-row;
 
       & > * {
