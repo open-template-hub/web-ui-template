@@ -7,13 +7,7 @@
     margin-bottom: 30px;
   }
 
-  & app-hero {
-    & .section {
-      padding-top: 0;
-    }
-  }
-
-  .employee-card {
+  .edit-profile-card {
     & .header {
 
       & .profile-image-wrapper {
@@ -59,7 +53,7 @@
       margin-top: 20px;
     }
 
-    & .employee-card {
+    & .edit-profile-card {
       & .header {
         & .profile-image-wrapper {
           & i {
@@ -67,7 +61,6 @@
             right: 5px;
           }
         }
-
       }
     }
   }

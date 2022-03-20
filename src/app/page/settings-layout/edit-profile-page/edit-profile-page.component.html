@@ -3,10 +3,10 @@
   <app-card
     [bodyTemplate]="bodyTemplate"
     [headerTemplate]="headerTemplate"
-    class="employee-card">
+    class="edit-profile-card">
     <!-- Header -->
     <ng-template #headerTemplate>
-      <div class="header" fxLayout="column">
+      <div class="header">
         <div (click)="fileInput.click()" class="profile-image-wrapper" style="cursor: pointer">
             <img [src]="candidateProfileImg ? candidateProfileImg : profileImg" alt="profile img"
                  class="profile-img"/>

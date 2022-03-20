@@ -1,20 +1,20 @@
 <app-card
-  *ngIf="user"
-  [bodyTemplate]="bodyTemplate"
-  [footerTemplate]="footerTemplate"
-  [headerTemplate]="headerTemplate"
-  class="profile-card">
+    *ngIf="user"
+    [bodyTemplate]="bodyTemplate"
+    [footerTemplate]="footerTemplate"
+    [headerTemplate]="headerTemplate"
+    class="profile-card">
   <!-- Header -->
   <ng-template #headerTemplate>
-    <div class="header yellow-theme">
+    <div class="header" [class.yellow-theme]="userIsPremium">
       <app-image-content-loader
-        *ngIf="!employeePhotoLoaded"
-        [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
+          *ngIf="!employeePhotoLoaded"
+          [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
       <img
-        (load)="setEmployeePhotoLoaded()"
-        [src]="photoUri ? photoUri : './assets/common/profile-img.png'"
-        [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
-        alt="profile-img" class="profile-img" [class.premium-border]="userIsPremium"/>
+          (load)="setEmployeePhotoLoaded()"
+          [src]="photoUri ? photoUri : './assets/common/profile-img.png'"
+          [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
+          alt="profile-img" class="profile-img" [class.premium-border]="userIsPremium"/>
       <p *ngIf="userIsPremium" class="theme-color yellow-theme">(premium)</p>
       <p>@{{ user.username }}</p>
     </div>
@@ -48,7 +48,7 @@
         <p class="value">{{ user.payload?.phone }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.website" >
+      <div class="key-value-area" *ngIf="user.payload?.website">
         <p class="key">Website</p>
         <div class="value">
           <a class="website" [href]="user.payload?.website">{{ user.payload?.website }}</a>
@@ -59,10 +59,11 @@
 
   <!-- Footer -->
   <ng-template #footerTemplate>
-    <div class="footer" *ngIf="user.payload?.social?.linkedin || user.payload?.social?.twitter || user.payload?.social?.github">
+    <div class="footer"
+         *ngIf="user.payload?.social?.linkedin || user.payload?.social?.twitter || user.payload?.social?.github">
       <div class="social-area" *ngIf="user.payload?.social?.twitter">
         <app-ext-link
-          [href]="user.payload.social.twitter">
+            [href]="user.payload.social.twitter">
           <i [class]="'fab fa-' + environmentCommon.website.twitter.cssClass + ' fa-fw'"
              aria-hidden="true"
              body>
@@ -72,7 +73,7 @@
       </div>
       <div class="social-area" *ngIf="user.payload?.social?.linkedin">
         <app-ext-link
-          [href]="user.payload.social.linkedin">
+            [href]="user.payload.social.linkedin">
           <i [class]="'fab fa-' + environmentCommon.website.linkedin.cssClass + ' fa-fw'"
              aria-hidden="true"
              body>
