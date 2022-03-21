@@ -1,9 +1,15 @@
 <div class="edit-security-page">
 
-  <h2>Edit Security</h2>
-
   <div class="two-factor-auth-wrapper">
-    <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate" class="edit-two-factor-auth-card">
+    <app-card *ngIf="twoFactorVerificationState" [headerTemplate]="headerTemplate" [bodyTemplate]="bodyTemplate"
+              class="edit-two-factor-auth-card">
+      <!-- Header -->
+      <ng-template #headerTemplate>
+        <div class="header">
+          <h3>Two Factor Authentication</h3>
+        </div>
+      </ng-template>
+
       <!-- Body -->
       <ng-template #bodyTemplate>
         <form (ngSubmit)="onPhoneNumberSubmit()" [formGroup]="form" class="body">
@@ -44,9 +50,10 @@
       </ng-template>
     </app-card>
   </div>
+
   <div class="analytics-event-wrapper">
-      <app-analytics-event-card class="recent-activity">
-      </app-analytics-event-card>
+    <app-analytics-event-card class="recent-activity">
+    </app-analytics-event-card>
   </div>
 </div>
 

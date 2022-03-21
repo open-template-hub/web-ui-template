@@ -2,16 +2,35 @@
 @use '../../../component/card/card.component';
 
 .edit-security-page {
-  & h2 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
   & .two-factor-auth-wrapper {
     @include util.margin-x-auto;
     @include util.flex-center-center;
 
     & .edit-two-factor-auth-card {
+
+      & .header {
+        @include util.flex-layout-column;
+        @include util.flex-center-space-evenly;
+
+        text-align: left;
+        padding: 1em 1em 0;
+
+        & i {
+          color: var(--theme-color);
+        }
+
+        & h3 {
+          color: var(--lighter);
+          font-weight: 600;
+          font-size: 19px;
+          margin-top: 10px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid var(--theme-color-lighter-4);
+          text-align: center;
+          width: 100%;
+        }
+      }
+
       & .body {
         padding: 40px 20px 20px;
 
@@ -21,7 +40,7 @@
       }
     }
   }
-  
+
   & .analytics-event-wrapper {
     margin-top: 50px;
   }

@@ -1,6 +1,7 @@
 @use '../../../../styles/util/util';
 
 .analytics-event-card {
+
   font-size: 18px;
 
   & .header {
@@ -17,10 +18,11 @@
       & i {
         color: var(--theme-color);
       }
-  
-      & p {
+
+      & h3 {
         color: var(--lighter);
         font-weight: 600;
+        font-size: 19px;
         margin-top: 10px;
         padding-bottom: 10px;
         border-bottom: 2px solid var(--theme-color-lighter-4);
@@ -108,7 +110,7 @@
       & .column {
         @include util.flex-layout-column;
         margin-left: 5px;
-        margin-right: auto; 
+        margin-right: auto;
         padding: 0 10px;
 
         p {

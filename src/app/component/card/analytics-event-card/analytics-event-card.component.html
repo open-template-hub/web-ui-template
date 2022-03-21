@@ -6,7 +6,7 @@
   <ng-template #headerTemplate>
     <div class="header">
       <div class="upper-header-wrapper">
-        <p>Recent Activities</p>
+        <h3>Recent Activities</h3>
         <div class="page-routing-wrapper" *ngIf="shouldShowNext || shouldShowPrevious">
           <i *ngIf="shouldShowPrevious" (click)="goToPreviousPage()" aria-hidden="true" class="fas fa-angle-left"></i>
           <span class="page-count-span">{{ currentPageCount }}</span>
