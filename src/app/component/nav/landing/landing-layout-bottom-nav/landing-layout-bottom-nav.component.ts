@@ -16,8 +16,6 @@ export class LandingLayoutBottomNavComponent {
   currentUser: AuthToken;
   userInfo: any = {};
   loading = false;
-  openSettings = false;
-  openOtherSettings = false;
 
   URLS = URLS;
 
@@ -39,13 +37,5 @@ export class LandingLayoutBottomNavComponent {
           }
         }
     );
-  }
-
-  closeSettings() {
-    if ( this.openOtherSettings ) {
-      this.openOtherSettings = false;
-    } else {
-      this.openSettings = false;
-    }
   }
 }

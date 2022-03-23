@@ -64,7 +64,8 @@ export class HomePageComponent {
   ];
 
   statusTitle = [
-    { text: $localize`:@@status.appHero:System Status`, level: 2 }
+    { text: $localize`:@@status.appHero:System Status`, level: 2 },
+    { text: $localize`:@@status.statusTitle.2:Before testing Web UI, make sure other Open Template Hub products are up and running.` }
   ];
 
   constructor(
