@@ -33,7 +33,7 @@
 </div>
 
 <!-- What Is Web UI Template -->
-<app-hero [contents]="whatIsWebUITemplateTitle"></app-hero>
+<oth-hero [contents]="whatIsWebUITemplateTitle"></oth-hero>
 
 <div class="screenshots-wrapper" *ngIf="screenshots">
   <app-screenshot-swiper
@@ -41,7 +41,7 @@
 </div>
 
 <!-- Explore -->
-<app-hero [contents]="integratedWithTitle"></app-hero>
+<oth-hero [contents]="integratedWithTitle"></oth-hero>
 <ng-container *ngFor="let productLine of PRODUCT_LINES">
   <div class="cards-wrapper">
     <ng-container *ngFor="let product of productLine.products">
@@ -62,7 +62,7 @@
 
 <!-- System status -->
 <div class="form-page-layout">
-  <app-hero [contents]="statusTitle"></app-hero>
+  <oth-hero [contents]="statusTitle"></oth-hero>
   <app-status-card [overallSystemStatus]="overallSystemStatus"></app-status-card>
 </div>
 

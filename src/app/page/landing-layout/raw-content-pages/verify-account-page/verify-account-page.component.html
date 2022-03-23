@@ -5,20 +5,20 @@
   </div>
 
   <!-- Verifying account -->
-  <app-hero *ngIf="loading" [contents]="verifyingAccountAppHeroContents"
-            [heroClass]="'no-padding'"></app-hero>
+  <oth-hero *ngIf="loading" [contents]="verifyingAccountAppHeroContents"
+            [heroClass]="'no-padding'"></oth-hero>
 
   <!-- Account verification failed -->
-  <app-hero *ngIf="!loading && error"
+  <oth-hero *ngIf="!loading && error"
             [contents]="accountVerificationFailedAppHeroContents"
-            [heroClass]="'no-padding'"></app-hero>
+            [heroClass]="'no-padding'"></oth-hero>
   <app-information-button (click)="router.navigate([URLS.root])" *ngIf="!loading && error"
                           [informationType]="INFORMATION_TYPES.error" i18n-text="@@verifyAccount.home.button" text="HOME"></app-information-button>
 
   <!-- Account verified -->
-  <app-hero *ngIf="!loading && !error"
+  <oth-hero *ngIf="!loading && !error"
             [contents]="accountVerifiedAppHeroContents"
-            [heroClass]="'no-padding'"></app-hero>
+            [heroClass]="'no-padding'"></oth-hero>
   <app-information-button (click)="router.navigate([URLS.login])" *ngIf="!loading && !error"
                           [informationType]="INFORMATION_TYPES.success" i18n-text="@@verifyAccount.logIn.button" text="LOG IN"></app-information-button>
 </div>
