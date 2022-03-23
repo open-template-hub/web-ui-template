@@ -22,13 +22,13 @@
         DASHBOARD
     </span>
     </a>
-    <a (click)="openSettings = !openSettings" *ngIf="currentUser" href="javascript:void(0)">
+    <a (click)="settingsOpened = !settingsOpened" *ngIf="currentUser" href="javascript:void(0)">
       <i [class]="'fas fa-cog fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         SETTINGS
     </span>
     </a>
-    <div *ngIf="openSettings" class="side-nav-sub">
+    <div *ngIf="settingsOpened" class="side-nav-sub">
       <a *ngIf="currentUser" routerLink="{{URLS.settings.editProfile}}">
         <i [class]="'fas fa-user fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
@@ -41,20 +41,26 @@
         SECURITY
       </span>
       </a>
-      <a (click)="logout()" *ngIf="currentUser && openOtherSettings" href="javascript:void(0)" id=logout>
+      <a (click)="logout()" *ngIf="currentUser && settingsMoreOpened" href="javascript:void(0)" id=logout>
         <i [class]="'fas fa-sign-out-alt fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           LOGOUT
         </span>
       </a>
-      <a (click)="openOtherSettings = !openOtherSettings" *ngIf="currentUser" href="javascript:void(0)"
+      <a (click)="settingsMoreOpened = !settingsMoreOpened" *ngIf="currentUser" href="javascript:void(0)"
          id=more-settings>
-        <i [class]="'fas fa-fw fa-lg ' + (!openOtherSettings ? 'fa-chevron-down' : 'fa-chevron-up')" aria-hidden="true"></i>
+        <i [class]="'fas fa-fw fa-lg ' + (!settingsMoreOpened ? 'fa-chevron-down' : 'fa-chevron-up')" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
-          {{!openOtherSettings ? 'MORE' : 'LESS'}}
+          {{!settingsMoreOpened ? 'MORE' : 'LESS'}}
         </span>
       </a>
     </div>
+    <a *ngIf="currentUser" routerLink="{{URLS.contactUs}}">
+      <i [class]="'fas fa-envelope fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        CONTACT US
+    </span>
+    </a>
     <a *ngIf="!currentUser" routerLink="{{URLS.signup}}">
       <i [class]="'fas fa-user-plus fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
