@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
 import { AuthenticationService } from 'src/app/service/auth/authentication.service';
+import { BusinessLogicService } from 'src/app/service/business-logic/business-logic.service';
 import { ToastService } from 'src/app/service/toast/toast.service';
 import { TwoFactorCodeService } from 'src/app/service/two-factor-code/two-factor-code.service';
 
@@ -33,6 +34,10 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
     beginningLengthThreshold: 3,
     lastLengthThreshold: 2
   };
+
+  events: any[] = [];
+
+  skip = 0;
   
   constructor(
       private fromBuilder: FormBuilder,
@@ -58,7 +63,7 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
       else {
         this.twoFactorVerificationState = 'request'
       }
-    })
+    });
   }
 
   ngOnDestroy(): void {

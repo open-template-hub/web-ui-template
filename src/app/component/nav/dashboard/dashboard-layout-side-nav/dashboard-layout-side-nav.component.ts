@@ -28,8 +28,8 @@ export class DashboardLayoutSideNavComponent {
   BRAND = BRAND;
 
   currentUser: AuthToken;
-  openSettings = false;
-  openOtherSettings = false;
+  settingsOpened = false;
+  settingsMoreOpened = false;
 
   @ViewChild( 'searchArea' )
   searchArea: ElementRef;

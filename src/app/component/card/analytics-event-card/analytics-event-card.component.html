@@ -1,1 +1,53 @@
-<p>analytics-event-card works!</p>
+<app-card
+    [bodyTemplate]="bodyTemplate"
+    [headerTemplate]="headerTemplate"
+    [footerTemplate]="footerTemplate"
+    class="analytics-event-card">
+  <ng-template #headerTemplate>
+    <div class="header">
+      <div class="upper-header-wrapper">
+        <h3>Recent Activities</h3>
+        <div class="page-routing-wrapper" *ngIf="shouldShowNext || shouldShowPrevious">
+          <i *ngIf="shouldShowPrevious" (click)="goToPreviousPage()" aria-hidden="true" class="fas fa-angle-left"></i>
+          <span class="page-count-span">{{ currentPageCount }}</span>
+          <i *ngIf="shouldShowNext" (click)="goToNextPage()" aria-hidden="true" class="fas fa-angle-right"></i>
+        </div>
+      </div>
+      <div class="filters-wrapper">
+        <div class="category-filter-wrapper">
+          <p>Category</p>
+          <select (change)="changeCategory($event)">
+            <option *ngFor="let category of eventConfig.categories" [id]="category.id">
+              {{ category.message }}
+            </option>
+          </select>
+        </div>
+        <div class="date-filter-wrapper">
+          <p for="birthday">Start Date</p>
+          <input (change)="changeDate($event)" type="date" id="startDate" name="startDate">
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #bodyTemplate>
+    <div class="body" *ngIf="events">
+      <div class="row" *ngFor="let event of events; let last = last; let i = index" id="target{{ i + 1 }}">
+        <img [src]="event.payload.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
+        <div class="column">
+          <p class="message">{{ event.payload.message }}</p>
+          <p class="date">{{ timestampToString( event.timestamp ) }}</p>
+        </div>
+      </div>
+      <p *ngIf="events.length === 0" class="empty-body">
+        No results found.
+      </p>
+    </div>
+  </ng-template>
+  <ng-template #footerTemplate>
+    <div class="footer">
+      <ng-container *ngIf="skip !== undefined && totalEventCount !== undefined">
+        {{ events.length + skip }} / {{ totalEventCount }}
+      </ng-container>
+    </div>
+  </ng-template>
+</app-card>

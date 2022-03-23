@@ -27,10 +27,10 @@ export class SideContentComponent {
       this.userInfo = userInfo;
 
       if( userInfo ) {
-        const timeStamp = new Date();
-        timeStamp.setDate( timeStamp.getDate()- 10 );
-        this.analyticsService.getEvents( timeStamp.getTime(), 50 ).subscribe( events => {
-          this.events = events
+        this.analyticsService.getConfig().subscribe( configResponse => {
+          this.analyticsService.getEvents( undefined, undefined, 0, configResponse.limit ).subscribe( eventResponse => {
+            this.events = eventResponse.data
+          } );
         } );
       }
     } );

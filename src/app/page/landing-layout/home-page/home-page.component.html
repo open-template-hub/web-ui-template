@@ -8,6 +8,7 @@
   </div>
 </div>
 
+<!-- Counters -->
 <div class="counters">
   <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'" class="counter-wrapper" rel="noopener" target="_blank">
     <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
@@ -32,7 +33,7 @@
 </div>
 
 <!-- What Is Web UI Template -->
-<app-hero [contents]="whatIsWebUITemplateTitle"></app-hero>
+<oth-hero [contents]="whatIsWebUITemplateTitle"></oth-hero>
 
 <div class="screenshots-wrapper" *ngIf="screenshots">
   <app-screenshot-swiper
@@ -40,7 +41,7 @@
 </div>
 
 <!-- Explore -->
-<app-hero [contents]="integratedWithTitle"></app-hero>
+<oth-hero [contents]="integratedWithTitle"></oth-hero>
 <ng-container *ngFor="let productLine of PRODUCT_LINES">
   <div class="cards-wrapper">
     <ng-container *ngFor="let product of productLine.products">
@@ -61,7 +62,7 @@
 
 <!-- System status -->
 <div class="form-page-layout">
-  <app-hero [contents]="statusTitle"></app-hero>
+  <oth-hero [contents]="statusTitle"></oth-hero>
   <app-status-card [overallSystemStatus]="overallSystemStatus"></app-status-card>
 </div>
 

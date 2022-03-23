@@ -22,8 +22,7 @@ export class DashboardLayoutBottomNavComponent {
   currentUser: AuthToken;
   userInfo: any = {};
   loading = false;
-  openSettings = false;
-  openOtherSettings = false;
+  settingsOpened = false;
   profileImg = PROFILE_IMG;
   userIsPremium;
 
@@ -73,14 +72,6 @@ export class DashboardLayoutBottomNavComponent {
     this.router.navigate( [ '/' ] ).then( () => {
       return true;
     } );
-  }
-
-  closeSettings() {
-    if ( this.openOtherSettings ) {
-      this.openOtherSettings = false;
-    } else {
-      this.openSettings = false;
-    }
   }
 
   buy() {
