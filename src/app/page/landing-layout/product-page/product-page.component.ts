@@ -4,7 +4,7 @@ import { TESTIMONIALS } from 'src/app/data/testimonial/testimonial.data';
 import { GithubProviderService } from 'src/app/service/provider/github-provider.service';
 import { environmentCommon } from '../../../../environments/environment-common';
 import { URLS } from '../../../data/navigation/navigation.data';
-import { PRODUCT_LINES, SERVICES } from '../../../data/product/product.data';
+import { PRODUCT_LINES } from '../../../data/product/product.data';
 import { Activity } from '../../../model/activity/activity.model';
 import { Product, ProductLine } from '../../../model/product/product.model';
 import { Testimonial } from '../../../model/testimonial/testimonial.model';
@@ -65,20 +65,14 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
       this.productLineKey = params.productLine;
 
-      let productLine: ProductLine = PRODUCT_LINES.find( ( p ) => p.key === params.productLine );
+      const productLine: ProductLine = PRODUCT_LINES.find( ( p ) => p.key === params.productLine );
 
-      let isService = false;
       this.isOpenSource = false;
 
       if ( !productLine ) {
-        productLine = SERVICES.find( ( p ) => p.key === params.productLine );
-        isService = true;
-
-        if ( !productLine ) {
-          this.productService.setSelectedProduct( undefined );
-          this.router.navigate( [ URLS.notFound ] );
-          return;
-        }
+        this.productService.setSelectedProduct( undefined );
+        this.router.navigate( [ URLS.notFound ] );
+        return;
       }
 
       const product = productLine.products.find(
@@ -97,25 +91,23 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         return;
       }
 
-      if ( !isService ) {
-        this.isOpenSource = true;
-        this.githubService.getGithubCounters( product.key )
-        .then( counters => {
-          product.counters = counters;
-        } )
-        .catch( error => {
-          this.isOpenSource = false;
-          console.error( 'Error while getting Github Counters for product: ', product.key, error );
-        } );
+      this.isOpenSource = true;
+      this.githubService.getGithubCounters( product.key )
+      .then( counters => {
+        product.counters = counters;
+      } )
+      .catch( error => {
+        this.isOpenSource = false;
+        console.error( 'Error while getting Github Counters for product: ', product.key, error );
+      } );
 
-        this.githubService.getCommitHistory( product.key )
-        .then( commitActivities => {
-          this.commitActivities = commitActivities;
-        } )
-        .catch( error => {
-          console.error( 'Error while getting Github CommitHistory for product: ', product.key, error );
-        } );
-      }
+      this.githubService.getCommitHistory( product.key )
+      .then( commitActivities => {
+        this.commitActivities = commitActivities;
+      } )
+      .catch( error => {
+        console.error( 'Error while getting Github CommitHistory for product: ', product.key, error );
+      } );
 
       this.product = product;
       this.productService.setSelectedProduct( this.product );

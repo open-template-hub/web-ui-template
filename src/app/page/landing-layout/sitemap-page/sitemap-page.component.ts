@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PRODUCT_LINES, SERVICES } from 'src/app/data/product/product.data';
+import { PRODUCT_LINES } from 'src/app/data/product/product.data';
 import { COMPANY_PAGES } from '../../../data/company/company.data';
 import { DEVELOPERS_PAGES } from '../../../data/developers/developers.data';
 import { RESOURCES_PAGES } from '../../../data/resources/resources.data';
@@ -15,7 +15,6 @@ import { ProductLine } from '../../../model/product/product.model';
 export class SitemapPageComponent {
 
   PRODUCT_LINES: ProductLine[] = PRODUCT_LINES;
-  SERVICES: ProductLine[] = SERVICES;
   COMPANY_PAGES = COMPANY_PAGES;
   DEVELOPERS_PAGES = DEVELOPERS_PAGES;
   RESOURCES_PAGES = RESOURCES_PAGES;

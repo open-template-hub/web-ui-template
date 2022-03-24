@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { URLS } from '../../../data/navigation/navigation.data';
-import { PRODUCT_LINES, SERVICES } from '../../../data/product/product.data';
+import { PRODUCT_LINES } from '../../../data/product/product.data';
 import { PRODUCT_RIBBONS } from '../../../data/ribbon/ribbon.data';
 import { Product, ProductLine } from '../../../model/product/product.model';
 import { ProductService } from '../../../service/product/product.service';
@@ -30,16 +30,12 @@ export class PricingPageComponent {
         return;
       }
 
-      let productLine: ProductLine = PRODUCT_LINES.find( ( p ) => p.key === params.productLine );
+      const productLine: ProductLine = PRODUCT_LINES.find( ( p ) => p.key === params.productLine );
 
       if ( !productLine ) {
-        productLine = SERVICES.find( ( p ) => p.key === params.productLine );
-
-        if ( !productLine ) {
-          this.productService.setSelectedProduct( undefined );
-          this.router.navigate( [ URLS.notFound ] );
-          return;
-        }
+        this.productService.setSelectedProduct( undefined );
+        this.router.navigate( [ URLS.notFound ] );
+        return;
       }
 
       const product = productLine.products.find(
