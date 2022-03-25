@@ -1,4 +1,4 @@
-import { CommandType } from 'src/app/data/command-type/command-type.enum';
+import { CommandType } from '@open-template-hub/animated-code-editor';
 import { Image } from '../image/image.model';
 import { PricingOption } from '../pricing/pricing.model';
 import { StepTimeLineItem } from '../timeline/step-timeline.model';
