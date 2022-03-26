@@ -12,6 +12,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { AnimatedCodeEditorModule } from '@open-template-hub/animated-code-editor';
 import { HeroModule } from '@open-template-hub/hero';
+import { LedModule } from '@open-template-hub/led';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
@@ -71,7 +72,6 @@ import { LeafTopSvgComponent } from './component/design/top-svg/leaf-top-svg/lea
 import { SharpTopSvgComponent } from './component/design/top-svg/sharp-top-svg/sharp-top-svg.component';
 import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
-import { LedComponent } from './component/led/led.component';
 import {
   DashboardLayoutBottomNavComponent
 } from './component/nav/dashboard/dashboard-layout-bottom-nav/dashboard-layout-bottom-nav.component';
@@ -234,7 +234,6 @@ FullCalendarModule.registerPlugins( [
     ImageContentLoaderComponent,
     TextContentLoaderComponent,
     BoxContentLoaderComponent,
-    LedComponent,
     BusinessPartnerSwiperComponent,
     PresentationSwiperComponent,
     SitemapPageComponent,
@@ -283,6 +282,7 @@ FullCalendarModule.registerPlugins( [
     FullCalendarModule,
     SwiperModule,
     AnimatedCodeEditorModule,
+    LedModule,
     HeroModule,
     ToastrModule.forRoot( { preventDuplicates: true } ),
     MarkdownModule.forRoot( { loader: HttpClient } ),

@@ -16,7 +16,7 @@
       color: var(--color);
       padding: 15px;
 
-      & app-led {
+      & oth-led {
         margin-right: 12px;
       }
     }
@@ -57,7 +57,7 @@
           color: var(--lighter-contrast);
         }
 
-        & app-led {
+        & oth-led {
           margin-right: 14px;
         }
 
