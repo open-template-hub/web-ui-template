@@ -10,8 +10,10 @@ export class NpmProviderService {
 
   NPM_PACKAGES_LIST = [
     'server-generator',
-    'common',
     'app-generator',
+    'animated-code-editor',
+    'common',
+    'hero'
   ];
 
   constructor( private util: UtilService ) {
