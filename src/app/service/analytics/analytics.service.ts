@@ -1,14 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 
 @Injectable( {
   providedIn: 'root',
 } )
 export class AnalyticsService {
+  configs = {
+    sideContentLimit: 12,
+    editSecurityLimit: 12
+  }
+
   constructor(
       private http: HttpClient,
+      private browserLocaleService: BrowserLocaleService
   ) {
+    // intentionally blank
   }
 
   logLoginEvent( oauth?: any ) {
@@ -17,7 +25,6 @@ export class AnalyticsService {
     } else {
       const data = {
         payload: {
-          message: 'Login Activity',
           icon: './assets/common/profile-img.png'
         },
         category: 'LOGIN',
@@ -31,19 +38,16 @@ export class AnalyticsService {
   private logSocialLoginEvent( provider: string, icon: string ) {
 
     const data: any = {
-      payload: {
-        message: 'Social Login Activity'
-      },
       category: 'SOCIAL_LOGIN',
       source: environment.clientUrl
     };
 
     if ( provider ) {
-      data.payload.provider = provider;
+      data.payload = { provider };
     }
 
     if ( icon ) {
-      data.payload.icon = icon;
+      data.payload = { icon };
     }
 
     console.log( 'logloginevent', data );
@@ -54,7 +58,6 @@ export class AnalyticsService {
   logPaymentEvent( payment: any ) {
     const data = {
       payload: {
-        message: 'Payment Activity',
         provider: payment.name,
         icon: payment.logo
       },
@@ -67,9 +70,6 @@ export class AnalyticsService {
 
   logSubmitPhoneNumberEvent() {
     const data = {
-      payload: {
-        message: 'Submit Phone Number Activity'
-      },
       category: 'TWO_FACTOR_AUTH',
       source: environment.clientUrl
     };
@@ -77,11 +77,36 @@ export class AnalyticsService {
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
-  getEvents( category: string, start: number | undefined, skip: number, limit: number ) {
-    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?category=${ category }&start=${ start }&skip=${ skip }&limit=${ limit }`)
+  getEvents( category: string | undefined, start: number | undefined, end: number | undefined, skip: number, limit: number ) {
+    let queryParams = `skip=${skip}&limit=${limit}`;
+
+    if(category) {
+      queryParams += `&category=${category}`;
+    }
+
+    if(start) {
+      queryParams += `&start=${start}`;
+    }
+
+    if(end) {
+      queryParams += `&end=${end}`;
+    }
+
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?${queryParams}`);
   }
 
-  getConfig() {
-    return this.http.get<any>( `${ environment.serverUrl }/analytics/event/config`)
+  getCategories() {
+    let language = this.browserLocaleService.getBrowserLocale();
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event/categories?language=${ language }`);
+  }
+
+  convertCategoriesToMappedObject(categoriesResponse: any): any {
+    let categories: any = { }
+    for(let category of categoriesResponse) {
+      if(category.messages.length > 0) {
+        categories[category.key] = category.messages[0].text;
+      }
+    }
+    return categories;
   }
 }

@@ -7,62 +7,69 @@ import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
   styleUrls: ['./analytics-event-card.component.scss']
 })
 export class AnalyticsEventCardComponent implements OnInit {
-  skip = 0;
-  totalEventCount;
+  paginationConfig = {
+    skip: 0,
+    totalEventCount: undefined,
+    currentPageCount: 1,
+    limit: this.analyticsService.configs.editSecurityLimit,
+    shouldShowNavigationBars: false,
+    hasNextPage: false,
+    hasPreviousPage: false
+  };
+
+  selectedCategory: any;
+  selectedStartDate: Date;
+  selectedEndDate: Date;
+
+  categories: [];
+  mappedCategories: any = {};
+
+  currentDate = new Date();
+
   events: any[];
-  currentPageCount = 1;
-
-  eventConfig = {
-    categories: [],
-    limit: 12
-  }
-
-  shouldShowNext = false;
-  shouldShowPrevious = false;
-
-  selectedCategory;
 
   constructor(
     /*private scrollService: InfiniteScrollingService,*/
     private analyticsService: AnalyticsService
-  ) { }
+  ) { 
+    const startDate = new Date() 
+    startDate.setDate(startDate.getDate() - 7);
+
+    this.selectedStartDate = startDate;
+    this.selectedEndDate = new Date();
+  }
 
   ngOnInit(): void {
 
-    this.analyticsService.getConfig().subscribe( response => {
-      console.log(response);
+    this.analyticsService.getCategories().subscribe( response => {
+      this.categories = response;
+      this.mappedCategories = this.analyticsService.convertCategoriesToMappedObject(response);
 
-      this.eventConfig.categories = response.categories;
-      this.eventConfig.limit = response.limit;
-
-      this.selectedCategory = this.eventConfig.categories[0]
-
-      this.fetchAnalyticsEvent(this.skip, this.eventConfig.limit, undefined, () => { });
-    })
-
-
-    /*this.scrollService.getObservable().subscribe(status => {
-      console.log("scroll ", status);
-      if(status) {
-        this.endLimit += 10
-        this.fetchAnalyticsEvent(this.endLimit)
+      if(response?.length > 0) {
+        this.selectedCategory = response[0]
       }
-    })*/
+
+      this.fetchAnalyticsEvent(this.paginationConfig.skip, this.paginationConfig.limit, () => {/*intentionally blank*/});
+    })
   }
 
-  fetchAnalyticsEvent(skip: number, limit: number, timeStamp: Date | undefined, callback: (_ : void) => void) {
-    // const timeStamp = new Date();
-    // timeStamp.setDate( timeStamp.getDate() - 10 );
+  fetchAnalyticsEvent(skip: number, limit: number, callback: (_ : void) => void) {
     this.analyticsService.getEvents(
       this.selectedCategory.key, 
-      timeStamp?.getTime(), 
+      this.selectedStartDate?.getTime(), 
+      this.selectedEndDate?.getTime(),
       skip, 
       limit
     ).subscribe( response => {
-      this.totalEventCount = response.meta.count;
+      console.log("fetchAnalyticsEvent: ", response)
+      this.paginationConfig.totalEventCount = response.meta.count;
+      if(response.meta.limit) {
+        this.paginationConfig.limit = response.meta.limit;
+      } else {
+        this.paginationConfig.limit = this.analyticsService.configs.editSecurityLimit;
+      }
 
-      this.skip = skip;
-
+      this.paginationConfig.skip = skip;
       this.setShouldShowNextAndPrevious();
 
       this.events = response.data;
@@ -75,39 +82,49 @@ export class AnalyticsEventCardComponent implements OnInit {
   }
 
   goToNextPage() {
-    if( !this.shouldShowNext ) {
+    if( !this.paginationConfig.hasNextPage ) {
       return
     }
 
-    this.fetchAnalyticsEvent(this.skip + this.eventConfig.limit, this.eventConfig.limit, undefined, () => {
-      this.currentPageCount += 1;
+    this.fetchAnalyticsEvent(this.paginationConfig.skip + this.paginationConfig.limit, this.paginationConfig.limit, () => {
+      this.paginationConfig.currentPageCount += 1;
     });
   }
 
   goToPreviousPage() {
-    if( !this.shouldShowPrevious ) {
+    if( !this.paginationConfig.hasPreviousPage ) {
       return
     }
 
-    this.fetchAnalyticsEvent(this.skip - this.eventConfig.limit, this.eventConfig.limit, undefined, () => {
-      this.currentPageCount -= 1;
+    this.fetchAnalyticsEvent(this.paginationConfig.skip - this.paginationConfig.limit, this.paginationConfig.limit, () => {
+      this.paginationConfig.currentPageCount -= 1;
     });
   }
 
   setShouldShowNextAndPrevious(): void {
-    this.shouldShowNext = this.skip + this.eventConfig.limit < this.totalEventCount;
-    this.shouldShowPrevious = this.skip - this.eventConfig.limit >= 0
+    this.paginationConfig.hasNextPage = this.paginationConfig.skip + this.paginationConfig.limit < this.paginationConfig.totalEventCount;
+    this.paginationConfig.hasPreviousPage = this.paginationConfig.skip - this.paginationConfig.limit >= 0; 
+
+    this.paginationConfig.shouldShowNavigationBars = this.paginationConfig.hasNextPage || this.paginationConfig.hasPreviousPage;
   }
 
   changeCategory(event: any): void {
     const selectedIndex = event.srcElement.selectedIndex;
-    this.selectedCategory = this.eventConfig.categories[selectedIndex];
-    this.fetchAnalyticsEvent(0, this.eventConfig.limit, undefined, () => { });
+    this.selectedCategory = this.categories[selectedIndex];
+    this.fetchAnalyticsEvent(0, this.paginationConfig.limit, () => { this.paginationConfig.currentPageCount = 1 });
   }
 
-  changeDate(event: any): void {
+  changeStartDate(event: any): void {
     const selectedDate = event.srcElement.valueAsDate;
-    this.fetchAnalyticsEvent(0, this.eventConfig.limit, selectedDate, () => { });
+    console.log("startDate: ", selectedDate);
+    this.selectedStartDate = selectedDate;
+    this.fetchAnalyticsEvent(0, this.paginationConfig.limit, () => { this.paginationConfig.currentPageCount = 1 })
+  }
 
+  changeEndDate(event: any): void {
+    const selectedDate = event.srcElement.valueAsDate;
+    console.log("endDate: ", selectedDate);
+    this.selectedEndDate = selectedDate;
+    this.fetchAnalyticsEvent(0, this.paginationConfig.limit, () => { this.paginationConfig.currentPageCount = 1 });
   }
 }

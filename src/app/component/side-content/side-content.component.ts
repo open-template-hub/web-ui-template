@@ -17,6 +17,7 @@ export class SideContentComponent {
   environment = environment;
 
   events: any[] = []
+  categories: any = {};
 
   constructor(
       private businessLogicService: BusinessLogicService,
@@ -27,11 +28,12 @@ export class SideContentComponent {
       this.userInfo = userInfo;
 
       if( userInfo ) {
-        this.analyticsService.getConfig().subscribe( configResponse => {
-          this.analyticsService.getEvents( undefined, undefined, 0, configResponse.limit ).subscribe( eventResponse => {
-            this.events = eventResponse.data
+        this.analyticsService.getCategories().subscribe( getCategoriesResponse => {
+          this.categories = this.analyticsService.convertCategoriesToMappedObject(getCategoriesResponse);
+          this.analyticsService.getEvents( undefined, undefined, undefined, 0, analyticsService.configs.sideContentLimit).subscribe( getEventsResponse => {
+            this.events = getEventsResponse.data
           } );
-        } );
+        } )
       }
     } );
   }
