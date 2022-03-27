@@ -46,7 +46,13 @@
         }
 
         & i {
-          cursor: pointer;
+          cursor: initial;
+          color: var(--lighter-contrast);
+
+          &.active-routing-item {
+            color: var(--theme-color);
+            cursor: pointer;
+          }
         }
       }
     }
@@ -54,16 +60,38 @@
     & .filters-wrapper {
       padding: 15px;
       display: flex;
+      justify-content: space-around;
       height: 50px;
-      border-bottom: 1px solid var(--lighter-contrast);
+
+      & .category-filter-wrapper, & .date-filter-wrapper {
+        @include util.default-border-radius;
+        @include util.default-shadow;
+        // border: 1px solid var(--lighter-contrast);
+
+        & i {
+          color: var(--color);
+        }
+      }
 
       & .category-filter-wrapper {
         display: flex;
         align-items: center;
+        padding-left: 25px;
 
-        & p {
-          margin-right: 10px;
-          word-break: initial;
+        & select {
+          border: initial;
+          -webkit-appearance: borderless-attachment;
+          -moz-appearance: none;
+          -o-appearance: none;
+          appearance: none; 
+        }
+
+        & select::-ms-expand {
+          display: none;
+        }
+
+        & i {
+          padding-right: 7px;
         }
       }
 
@@ -71,7 +99,6 @@
         display: flex;
         align-items: center;
         margin-left: 25px;
-        border-left: 1px solid var(--lighter-contrast);
         padding-left: 25px;
 
         & p {
@@ -81,6 +108,7 @@
         & input {
           border-bottom: initial;
         }
+
       }
     }
   }
@@ -98,13 +126,13 @@
       width: 30%;
       padding: 10px 5px;
       border-bottom: 2px solid var(--theme-color-lighter-8);
+      align-items: center;
 
       & img {
         width: 40px;
         height: 40px;
         margin-top: auto;
         margin-bottom: auto;
-        margin-left: auto;
       }
 
       & .column {
@@ -143,4 +171,39 @@
     color: var(--lighter-contrast);
 
   }
+}
+
+@media only screen and (max-width: 999px) {
+  .analytics-event-card {
+    & .header {
+      & .filters-wrapper {
+        flex-direction: column;
+        height: -webkit-fit-content;
+        padding: 0;
+        margin-top: 20px;
+
+        & .category-filter-wrapper {
+          & select {
+            white-space: break-spaces;
+          }
+        }
+
+        & .date-filter-wrapper {
+          flex-wrap: wrap;
+          margin-top: 20px;
+          margin-left: 0;
+
+          & input {
+            width: -webkit-fit-content;
+          }
+        }
+      }
+    }
+
+    & .body {
+      & .row {
+        width: 100%;
+      }
+    }
+  } 
 }

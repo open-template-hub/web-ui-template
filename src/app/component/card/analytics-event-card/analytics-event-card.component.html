@@ -7,24 +7,28 @@
     <div class="header">
       <div class="upper-header-wrapper">
         <h3>Recent Activities</h3>
-        <div class="page-routing-wrapper" *ngIf="shouldShowNext || shouldShowPrevious">
-          <i *ngIf="shouldShowPrevious" (click)="goToPreviousPage()" aria-hidden="true" class="fas fa-angle-left"></i>
-          <span class="page-count-span">{{ currentPageCount }}</span>
-          <i *ngIf="shouldShowNext" (click)="goToNextPage()" aria-hidden="true" class="fas fa-angle-right"></i>
+        <div class="page-routing-wrapper" *ngIf="paginationConfig.shouldShowNavigationBars">
+          <i [class.active-routing-item]="paginationConfig.hasPreviousPage" (click)="goToPreviousPage()" aria-hidden="true" class="fas fa-angle-left"></i>
+          <span class="page-count-span">{{ paginationConfig.currentPageCount }}</span>
+          <i [class.active-routing-item]="paginationConfig.hasNextPage" (click)="goToNextPage()" aria-hidden="true" class="fas fa-angle-right"></i>
         </div>
       </div>
       <div class="filters-wrapper">
         <div class="category-filter-wrapper">
-          <p>Category</p>
+          <i aria-hidden="true" class="fas fa-bars fa-lg fa-fw"></i>
           <select (change)="changeCategory($event)">
-            <option *ngFor="let category of eventConfig.categories" [id]="category.id">
-              {{ category.message }}
+            <option *ngFor="let category of categories" [id]="category.id">
+              <ng-container *ngIf="category.messages.length > 0">
+                {{ category.messages[0].text }}
+              </ng-container>
             </option>
           </select>
         </div>
         <div class="date-filter-wrapper">
-          <p for="birthday">Start Date</p>
-          <input (change)="changeDate($event)" type="date" id="startDate" name="startDate">
+          <i aria-hidden="true" class="fas fa-calendar fa-lg fa-fw"></i>
+          <input type="date" (change)="changeStartDate($event)" [ngModel]="selectedStartDate | date:'yyyy-MM-dd'" [max]="selectedEndDate | date:'yyyy-MM-dd'">
+          <i aria-hidden="true" class="fas fa-arrow-right fa-lg fa-fw"></i>
+          <input (change)="changeEndDate($event)" type="date" [ngModel]="selectedEndDate | date:'yyyy-MM-dd'" [max]="currentDate | date:'yyyy-MM-dd'" [min]="selectedStartDate | date:'yyyy-MM-dd'">
         </div>
       </div>
     </div>
@@ -32,9 +36,9 @@
   <ng-template #bodyTemplate>
     <div class="body" *ngIf="events">
       <div class="row" *ngFor="let event of events; let last = last; let i = index" id="target{{ i + 1 }}">
-        <img [src]="event.payload.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
-        <div class="column">
-          <p class="message">{{ event.payload.message }}</p>
+        <img [src]="event.payload?.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
+        <div class="column" *ngIf="mappedCategories[event.category]">
+          <p class="message">{{ mappedCategories[event.category] }}</p>
           <p class="date">{{ timestampToString( event.timestamp ) }}</p>
         </div>
       </div>
@@ -45,8 +49,8 @@
   </ng-template>
   <ng-template #footerTemplate>
     <div class="footer">
-      <ng-container *ngIf="skip !== undefined && totalEventCount !== undefined">
-        {{ events.length + skip }} / {{ totalEventCount }}
+      <ng-container *ngIf="paginationConfig.skip !== undefined && paginationConfig.totalEventCount !== undefined">
+        {{ events.length + paginationConfig.skip }} / {{ paginationConfig.totalEventCount }}
       </ng-container>
     </div>
   </ng-template>

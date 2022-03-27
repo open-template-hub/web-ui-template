@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ActivityCardComponent {
   @Input() events: any[] = []
+  @Input() categories: any = {}
 
   timestampToString( timestamp: any ): string {
     return new Date( timestamp ).toLocaleString()
