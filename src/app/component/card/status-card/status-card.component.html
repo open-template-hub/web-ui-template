@@ -6,22 +6,22 @@
       <ng-container *ngFor="let systemStatus of overallSystemStatus.systemStatuses">
         <div class="status-section solo">
           <div class="status-column">
-            <app-led
-                [informationType]="setStatusLed(systemStatus.overall)"></app-led>
+            <oth-led
+                [informationType]="setStatusLed(systemStatus.overall)"></oth-led>
             <h4>{{ systemStatus.name | titlecase }}
             </h4>
           </div>
         </div>
         <div *ngFor="let status of systemStatus.statuses; index as i" class="status-section">
           <div *ngIf="i % 2 == 0" class="status-column">
-            <app-led
-                [informationType]="setStatusLed(status.alive)"></app-led>
+            <oth-led
+                [informationType]="setStatusLed(status.alive)"></oth-led>
             <h4>{{ status.name | titlecase}}
             </h4>
           </div>
           <div *ngIf="i % 2 != 0" class="status-column second">
-            <app-led
-                [informationType]="setStatusLed(status.alive)"></app-led>
+            <oth-led
+                [informationType]="setStatusLed(status.alive)"></oth-led>
             <h4>{{ status.name | titlecase}}
             </h4>
           </div>
@@ -36,7 +36,7 @@
       <small>{{ overallSystemStatus.checkDate ? 'Last check ' + ( overallSystemStatus.checkDate | date: 'dd MMM, HH:mm:ss' ) : '' }}</small>
       <div class="right">
         <small>Overall Status: </small>
-        <app-led [informationType]="setStatusLed(overallSystemStatus.overall)"></app-led>
+        <oth-led [informationType]="setStatusLed(overallSystemStatus.overall)"></oth-led>
       </div>
     </div>
   </ng-template>

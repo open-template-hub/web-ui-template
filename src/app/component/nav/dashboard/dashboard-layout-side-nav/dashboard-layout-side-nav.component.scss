@@ -41,8 +41,11 @@
 }
 
 #menu {
-  margin-top: auto;
   margin-bottom: env(safe-area-inset-bottom);
+}
+
+#contact-us {
+  margin-top: auto;
 }
 
 .side-nav a i, .side-nav .dashboard-layout-side-nav-search i {

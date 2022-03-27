@@ -5,7 +5,8 @@
       <h2 class="side-nav-brand-text">Open Template Hub</h2>
     </a>
     <a *ngIf="currentUser" routerLink="{{URLS.dashboard.myProfile}}">
-      <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme" [class.premium-border]="userIsPremium"/>
+      <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme"
+           [class.premium-border]="userIsPremium"/>
       <span *ngIf="sideNavClosed === 'false'">
         MY PROFILE
     </span>
@@ -49,18 +50,13 @@
       </a>
       <a (click)="settingsMoreOpened = !settingsMoreOpened" *ngIf="currentUser" href="javascript:void(0)"
          id=more-settings>
-        <i [class]="'fas fa-fw fa-lg ' + (!settingsMoreOpened ? 'fa-chevron-down' : 'fa-chevron-up')" aria-hidden="true"></i>
+        <i [class]="'fas fa-fw fa-lg ' + (!settingsMoreOpened ? 'fa-chevron-down' : 'fa-chevron-up')"
+           aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           {{!settingsMoreOpened ? 'MORE' : 'LESS'}}
         </span>
       </a>
     </div>
-    <a *ngIf="currentUser" routerLink="{{URLS.contactUs}}">
-      <i [class]="'fas fa-envelope fa-fw fa-lg'" aria-hidden="true"></i>
-      <span *ngIf="sideNavClosed === 'false'">
-        CONTACT US
-    </span>
-    </a>
     <a *ngIf="!currentUser" routerLink="{{URLS.signup}}">
       <i [class]="'fas fa-user-plus fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
@@ -73,9 +69,15 @@
         LOG IN
       </span>
     </a>
+    <a routerLink="{{URLS.contactUs}}" id="contact-us">
+      <i [class]="'fas fa-envelope fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        CONTACT US
+      </span>
+    </a>
     <a (click)="toggleSideNav()" href="javascript:void(0)" id=menu>
-      <i [class]="'fas fa-bars fa-fw fa-lg'" aria-hidden="true"></i>
-      <span>
+      <i [class]="'fas fa-fw fa-lg ' + (sideNavClosed === 'false' ? 'fa-angles-left' : 'fa-angles-right')" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
       </span>
     </a>
   </nav>
