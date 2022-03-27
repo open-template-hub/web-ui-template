@@ -10,16 +10,17 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
+import { AnimatedCodeEditorModule } from '@open-template-hub/animated-code-editor';
+import { HeroModule } from '@open-template-hub/hero';
+import { LedModule } from '@open-template-hub/led';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { HeroModule } from '@open-template-hub/hero';
 import { MarkdownModule } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
 import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AnimatedCodeEditorComponent } from './component/animated-code-editor/animated-code-editor.component';
 import { BrandButtonComponent } from './component/button/brand-button/brand-button.component';
 import { ButtonComponent } from './component/button/button.component';
 import { EventButtonComponent } from './component/button/event-button/event-button.component';
@@ -51,7 +52,6 @@ import {
 } from './component/card/timeline-card/step-timeline-card/step-timeline-card.component';
 import { TimelineCardComponent } from './component/card/timeline-card/timeline-card.component';
 import { ColorChartComponent } from './component/color-chart/color-chart.component';
-import { CommandLineComponent } from './component/command-line/command-line.component';
 import { BoxContentLoaderComponent } from './component/content-loader/box-content-loader/box-content-loader.component';
 import { ContentLoaderComponent } from './component/content-loader/content-loader.component';
 import {
@@ -72,7 +72,6 @@ import { LeafTopSvgComponent } from './component/design/top-svg/leaf-top-svg/lea
 import { SharpTopSvgComponent } from './component/design/top-svg/sharp-top-svg/sharp-top-svg.component';
 import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
-import { LedComponent } from './component/led/led.component';
 import {
   DashboardLayoutBottomNavComponent
 } from './component/nav/dashboard/dashboard-layout-bottom-nav/dashboard-layout-bottom-nav.component';
@@ -94,7 +93,7 @@ import { PricePlanComponent } from './component/price-plan/price-plan.component'
 import { ProductPresentationComponent } from './component/product-represantation/product-presentation.component';
 import { RateBarComponent } from './component/rate-bar/rate-bar.component';
 import { SearchComponent } from './component/search/search.component';
-import { SecondCounterComponent } from './component/second-counter/second-counter.component';
+import { CountdownComponent } from './component/countdown/countdown.component';
 import { SettingsDropdownMenuComponent } from './component/settings-dropdown-menu/settings-dropdown-menu.component';
 import { SideContentComponent } from './component/side-content/side-content.component';
 import {
@@ -216,8 +215,6 @@ FullCalendarModule.registerPlugins( [
     AboutUsPageComponent,
     PricePlanComponent,
     ContactUsPageComponent,
-    AnimatedCodeEditorComponent,
-    CommandLineComponent,
     StatusPageComponent,
     ProductPresentationComponent,
     CardComponent,
@@ -237,7 +234,6 @@ FullCalendarModule.registerPlugins( [
     ImageContentLoaderComponent,
     TextContentLoaderComponent,
     BoxContentLoaderComponent,
-    LedComponent,
     BusinessPartnerSwiperComponent,
     PresentationSwiperComponent,
     SitemapPageComponent,
@@ -269,7 +265,7 @@ FullCalendarModule.registerPlugins( [
     DashboardLayoutBottomNavComponent,
     ContactInformationCardComponent,
     EditSecurityComponent,
-    SecondCounterComponent,
+    CountdownComponent,
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
   ],
@@ -285,6 +281,8 @@ FullCalendarModule.registerPlugins( [
     BrowserModule,
     FullCalendarModule,
     SwiperModule,
+    AnimatedCodeEditorModule,
+    LedModule,
     HeroModule,
     ToastrModule.forRoot( { preventDuplicates: true } ),
     MarkdownModule.forRoot( { loader: HttpClient } ),

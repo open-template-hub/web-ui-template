@@ -34,10 +34,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     { text: $localize`:@@productPage.testimonialsTitle.2:What our customers are saying...` }
   ];
 
-  relatedProductAppHero = [
-    { text: $localize`:@@productPage.relatedProductAppHero:Related Products`, level: 2 }
-  ];
-
   npmPackageInstallationAndUsage = [
     { text: $localize`:@@productPage.npmPackageInstallationAndUsage:Package Installation & Usage`, level: 2 }
   ];

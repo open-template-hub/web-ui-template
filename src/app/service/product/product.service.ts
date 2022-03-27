@@ -1,24 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Product } from '../../model/product/product.model';
+import { URLS } from '../../data/navigation/navigation.data';
+import { Product, ProductLine } from '../../model/product/product.model';
 
 @Injectable( {
   providedIn: 'root'
 } )
 export class ProductService {
 
+  URLS = URLS;
+
   public product: Observable<Product>;
   private productSubject: BehaviorSubject<Product>;
-  private productStorageKey = 'product'
+  private productStorageKey = 'product';
 
-  public premiumProducts: Observable<any>
-  public premiumProductsSubject: BehaviorSubject<any>
-  private premiumProductsStorageKey = 'premiumProducts'
+  public premiumProducts: Observable<any>;
+  public premiumProductsSubject: BehaviorSubject<any>;
+  private premiumProductsStorageKey = 'premiumProducts';
 
   constructor(
-    private http: HttpClient
+      private http: HttpClient,
+      private router: Router
   ) {
     let productStorageItem: Product = JSON.parse( localStorage.getItem( this.productStorageKey ) ?
         localStorage.getItem( this.productStorageKey ) : sessionStorage.getItem( this.productStorageKey ) );
@@ -35,7 +40,7 @@ export class ProductService {
   }
 
   setSelectedProduct( product: Product ) {
-    if (product) {
+    if ( product ) {
       if ( localStorage.getItem( 'currentUser' ) ) {
         sessionStorage.removeItem( this.productStorageKey );
         localStorage.setItem( this.productStorageKey, JSON.stringify( product ) );
@@ -50,8 +55,8 @@ export class ProductService {
   }
 
   private setPremiumProduct( premiumProducts: any ) {
-    localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) )
-    this.premiumProductsSubject.next( premiumProducts )
+    localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) );
+    this.premiumProductsSubject.next( premiumProducts );
   }
 
   checkProduct( productId: string ) {
@@ -61,8 +66,18 @@ export class ProductService {
     } );
   }
 
+  redirectToProductUrl( product: Product, productLine: ProductLine ) {
+    if ( !product.redirectToUrl ) {
+      this.router.navigate( [ URLS.product + '/' + productLine.key + '/' + product.key ] ).then( () => {
+        return true;
+      } );
+    } else {
+      window.open( product.url, '_blank' );
+    }
+  }
+
   logout() {
     localStorage.removeItem( this.productStorageKey );
-    this.premiumProductsSubject.next( undefined )
+    this.premiumProductsSubject.next( undefined );
   }
 }
