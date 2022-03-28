@@ -1,6 +1,5 @@
-<oth-hero [contents]="[{text: 'Theme Settings', level: 2}]"></oth-hero>
 <div class="settings-form-wrapper">
-  <app-card [bodyTemplate]="bodyTemplate">
+  <app-card [header]="'Theme Settings'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate">
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="section-header">

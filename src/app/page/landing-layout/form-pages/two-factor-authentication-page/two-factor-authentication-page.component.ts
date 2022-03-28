@@ -35,8 +35,6 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
 
   URLS = URLS;
 
-  appHeroContents = [ { text: 'SMS Verification', level: 1 } ];
-
   showMoreToggle = false;
 
   preAuthToken: string;
@@ -105,7 +103,6 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
 
       if ( this.timeLeft <= 0 ) {
         clearInterval( this.timerInterval );
-        this.toastService.error( 'Time has expired' );
       }
     }, 1000 );
   }
@@ -116,7 +113,7 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
     .subscribe( ( currentUser ) => {
       clearInterval( this.timerInterval );
       this.authenticationService.setLoginParams( currentUser, false );
-      this.analyticsService.logLoginEvent(this.oauth).subscribe();
+      this.analyticsService.logLoginEvent( this.oauth ).subscribe();
       this.router.navigate( [ URLS.dashboard.root ] );
     } );
   }

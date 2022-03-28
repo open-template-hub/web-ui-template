@@ -30,8 +30,6 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
 
   URLS = URLS;
 
-  appHeroContents = [{text: $localize `:@@signUp.appHero:Register`, level: 1}]
-
   websites: WebsiteModel[] = [];
 
   showMoreToggle = false;
@@ -55,7 +53,7 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
 
     for ( const website in environmentCommon.website ) {
       if ( ( environmentCommon.website[ website ] as WebsiteModel )?.websiteType === 'oauth' ) {
-        this.websites.push( environmentCommon.website[ website ] )
+        this.websites.push( environmentCommon.website[ website ] );
       }
     }
   }
@@ -83,10 +81,10 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
     this.submitted = true;
 
     const errorMessages = {
-      username: $localize `:@@signUp.error.username:Please provide a valid username`,
-      email: $localize `:@@signUp.error.email:Please provide a valid email address`,
-      password: $localize `:@@signUp.error.password:Please provide a valid password (min length 6)`,
-      confirmPassword: $localize `:@@signUp.error.confirmPassword:Please provide the same value for confirm password`
+      username: $localize`:@@signUp.error.username:Please provide a valid username`,
+      email: $localize`:@@signUp.error.email:Please provide a valid email address`,
+      password: $localize`:@@signUp.error.password:Please provide a valid password (min length 6)`,
+      confirmPassword: $localize`:@@signUp.error.confirmPassword:Please provide the same value for confirm password`
     };
 
     if ( this.form.invalid ) {
