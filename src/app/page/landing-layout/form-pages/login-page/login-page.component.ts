@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { environmentCommon } from 'src/environments/environment-common';
 import { environment } from '../../../../../environments/environment';
 import { URLS } from '../../../../data/navigation/navigation.data';
+import { WebsiteModel } from '../../../../model/website/website.model';
 import { AnalyticsService } from '../../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
@@ -12,7 +13,6 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { InformationService } from '../../../../service/information/information.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ToastService } from '../../../../service/toast/toast.service';
-import { WebsiteModel } from '../../../../model/website/website.model'
 
 @Component( {
   selector: 'app-login-page',
@@ -32,8 +32,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   disabled = false;
 
   URLS = URLS;
-
-  appHeroContents = [ {text: $localize `:@@loginPage.appHero:Welcome`, level: 1} ];
 
   websites: WebsiteModel[] = [];
 
@@ -58,7 +56,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     for ( const website in environmentCommon.website ) {
       if ( ( environmentCommon.website[ website ] as WebsiteModel )?.websiteType === 'oauth' ) {
-        this.websites.push( environmentCommon.website[ website ] )
+        this.websites.push( environmentCommon.website[ website ] );
       }
     }
   }
@@ -86,8 +84,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.submitted = true;
 
     const errorMessages = {
-      username: $localize `:@@loginPage.error.username:Please provide a valid username`,
-      password: $localize `:@@loginPage.error.password:Please provide a valid password`,
+      username: $localize`:@@loginPage.error.username:Please provide a valid username`,
+      password: $localize`:@@loginPage.error.password:Please provide a valid password`,
     };
 
     if ( this.form.invalid ) {
@@ -127,11 +125,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     ).pipe( first() )
     .subscribe(
         ( response ) => {
-          if( response.preAuthToken ) {
+          if ( response.preAuthToken ) {
             this.authenticationService.setPreauthToken( response );
-            this.router.navigate( [ URLS.twoFactorVerification ])
-          }
-          else {
+            this.router.navigate( [ URLS.twoFactorVerification ] );
+          } else {
             this.analyticsService.logLoginEvent().subscribe();
             if ( this.returnUrl !== URLS.dashboard.root ) {
               this.loginWithoutOpeningDashboard();

@@ -1,12 +1,17 @@
+@use '../../../../../styles/util/util';
 @use '../../landing-layout.component';
 
 .form-page-layout {
+
+  & .two-factor-authentication-card {
+
     & .body {
-        & .section {
-            p {
-                text-align: center;
-                margin-bottom: 15px;
-            }
+      & .section {
+        p {
+          text-align: center;
+          margin-bottom: 15px;
         }
+      }
     }
+  }
 }

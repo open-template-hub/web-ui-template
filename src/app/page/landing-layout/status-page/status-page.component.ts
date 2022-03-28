@@ -11,12 +11,8 @@ export class StatusPageComponent {
 
   overallSystemStatus = DEFAULT_SYSTEM_STATUS;
 
-  appHeroContent = [
-    {text: $localize `:@@status.appHero:System Status`, level: 1}
-  ]
-
   constructor( private monitoringService: MonitoringService ) {
-    this.monitoringService.alive()
+    this.monitoringService.alive();
 
     this.monitoringService.systemStatuses.subscribe( systemStatuses => {
       const overallSystemStatus = this.monitoringService.parseSystemStatuses( systemStatuses );
