@@ -1,7 +1,6 @@
 <div class="form-page-layout">
   <!-- Welcome -->
-  <oth-hero [contents]="appHeroContents"></oth-hero>
-  <app-card [bodyTemplate]="bodyTemplate">
+  <app-card [header]="'Login'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate">
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
