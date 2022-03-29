@@ -15,6 +15,7 @@ export class InfiniteScrollingService {
       new IntersectionObserver( this.intersectionCallback.bind( this ), this.intersectionOptions );
 
   constructor() {
+    // Intentionally blank
   }
 
   getObservable() {
