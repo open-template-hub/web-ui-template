@@ -69,7 +69,7 @@ export class DashboardLayoutTopNavComponent {
     const q = event.target.value;
 
     if ( !q || q.length < 3 ) {
-      this.searchResults = []
+      this.searchResults = [];
     }
   }
 }

@@ -33,15 +33,15 @@ export class LandingLayoutTopNavComponent {
     { name: 'Edit Profile', icon: 'user', url: URLS.settings.editProfile },
     { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
     { name: 'Logout', icon: 'sign-out-alt', logout: true }
-  ]
+  ];
 
   constructor(
-    private router: Router,
-    private loadingService: LoadingService,
-    private authenticationService: AuthenticationService,
-    private fileStorageService: FileStorageService,
-    private paymentService: PaymentService,
-    private productService: ProductService
+      private router: Router,
+      private loadingService: LoadingService,
+      private authenticationService: AuthenticationService,
+      private fileStorageService: FileStorageService,
+      private paymentService: PaymentService,
+      private productService: ProductService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
@@ -50,13 +50,13 @@ export class LandingLayoutTopNavComponent {
     } );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-        if ( profileImg?.file?.data ) {
-          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
-        }
-      } );
+      if ( profileImg?.file?.data ) {
+        this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+      }
+    } );
 
     this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined
+      this.userIsPremium = product?.name !== undefined;
     } );
   }
 

@@ -1,4 +1,4 @@
-<nav class="top-nav" #dropdownMenuParent>
+<nav #dropdownMenuParent class="top-nav">
   <a [routerLink]="URLS.root"
      class="brand">
     <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" height="40" width="40"/>
@@ -11,11 +11,11 @@
       <i [class]="'fas fa-envelope fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.contactUs">Contact Us</span>
     </a>
-    <a [routerLink]="URLS.login" *ngIf="!currentUser">
+    <a *ngIf="!currentUser" [routerLink]="URLS.login">
       <i [class]="'fas fa-fingerprint fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.login">Login</span>
     </a>
-    <a [routerLink]="URLS.signup" *ngIf="!currentUser"
+    <a *ngIf="!currentUser" [routerLink]="URLS.signup"
        class="sign-up">
       <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.signUp">Sign Up</span>
@@ -24,21 +24,22 @@
       <i [class]="'fas fa-star fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.premium">Premium</span>
     </a>
-    <a *ngIf="currentUser"
+    <a (click)="dropdownMenuProducts.toggleDropdown();"
        (mouseenter)="dropdownMenuProducts.openDropdown();"
-       (click)="dropdownMenuProducts.toggleDropdown();">
+       *ngIf="currentUser">
       <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
       <app-dropdown-menu
-        #dropdownMenuProducts
-        [items]="settings"
-        [dropdownParent]="dropdownMenuParent">
+          #dropdownMenuProducts
+          [dropdownParent]="dropdownMenuParent"
+          [items]="settings">
         <span i18n="@@landingLayoutTopNav.settings">Settings</span>
         <i [class]="'caret fas fa-fw ' + (!dropdownMenuProducts.isDropdownOpen ? 'fa-chevron-down' : 'fa-chevron-up')"
            aria-hidden="true"></i>
       </app-dropdown-menu>
     </a>
-    <a [routerLink]="URLS.dashboard.myProfile" *ngIf="currentUser">
-      <img [src]="profileImg" [class.premium-border]="userIsPremium" alt="profile img" class="profile-img-small yellow-theme"/>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
+      <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+           class="profile-img-small yellow-theme"/>
       <span i18n="@@landingLayoutTopNav.myProfile">My Profile</span>
     </a>
   </div>

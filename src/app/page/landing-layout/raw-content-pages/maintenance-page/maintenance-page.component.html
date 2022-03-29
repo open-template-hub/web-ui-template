@@ -1,11 +1,11 @@
 <div class="raw-content-page-layout">
-    <div class="logo-wrapper">
-      <img [src]="BRAND.logo.maintenance" alt="logo" class="brand-logo" height="150"/>
-    </div>
+  <div class="logo-wrapper">
+    <img [src]="BRAND.logo.maintenance" alt="logo" class="brand-logo" height="150"/>
+  </div>
 
-    <!-- Under maintenance -->
-    <oth-hero [contents]="appHeroContents"
-              [heroClass]="'no-padding'"></oth-hero>
-    <app-information-button (click)="router.navigate([URLS.root])" [informationType]="INFORMATION_TYPES.warning"
-                            i18n-text="@@maintenance.home.button" text="HOME"></app-information-button>
+  <!-- Under maintenance -->
+  <oth-hero [contents]="appHeroContents"
+            [heroClass]="'no-padding'"></oth-hero>
+  <app-information-button (click)="router.navigate([URLS.root])" [informationType]="INFORMATION_TYPES.warning"
+                          i18n-text="@@maintenance.home.button" text="HOME"></app-information-button>
 </div>

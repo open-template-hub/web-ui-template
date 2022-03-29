@@ -19,6 +19,7 @@
   & .hero-left {
     @include util.flex-layout-column;
     @include util.flex-center-center;
+
     & p {
       font-size: 24px;
     }

@@ -10,8 +10,8 @@ import { LoadingService } from '../loading/loading.service';
 export class PaymentService {
   constructor(
       private http: HttpClient,
-      private loadingService: LoadingService )
-  { /* Intentionally blank */ }
+      private loadingService: LoadingService ) { /* Intentionally blank */
+  }
 
   initPayment( paymentConfig: any, productId: string, quantity: number ) {
     return this.http.post<any>( `${ environment.serverUrl }/payment`, {

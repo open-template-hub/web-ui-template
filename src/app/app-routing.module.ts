@@ -8,30 +8,50 @@ import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layo
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
-import { BlogContentPageComponent } from './page/landing-layout/blog-page/blog-content-page/blog-content-page.component';
+import {
+  BlogContentPageComponent
+} from './page/landing-layout/blog-page/blog-content-page/blog-content-page.component';
 import { BlogPageComponent } from './page/landing-layout/blog-page/blog-page.component';
 import { BrandingPageComponent } from './page/landing-layout/branding-page/branding-page.component';
 import { ContactUsPageComponent } from './page/landing-layout/contact-us-page/contact-us-page.component';
 import { CustomersPageComponent } from './page/landing-layout/customers-page/customers-page.component';
-import { DocsContentPageComponent } from './page/landing-layout/docs-page/docs-content-page/docs-content-page.component';
+import {
+  DocsContentPageComponent
+} from './page/landing-layout/docs-page/docs-content-page/docs-content-page.component';
 import { DocsPageComponent } from './page/landing-layout/docs-page/docs-page.component';
-import { ForgetPasswordPageComponent } from './page/landing-layout/form-pages/forget-password-page/forget-password-page.component';
+import {
+  ForgetPasswordPageComponent
+} from './page/landing-layout/form-pages/forget-password-page/forget-password-page.component';
 import { LoginPageComponent } from './page/landing-layout/form-pages/login-page/login-page.component';
-import { ResetPasswordPageComponent } from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
+import {
+  ResetPasswordPageComponent
+} from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
 import { SignUpPageComponent } from './page/landing-layout/form-pages/sign-up-page/sign-up-page.component';
-import { TwoFactorAuthenticationPageComponent } from './page/landing-layout/form-pages/two-factor-authentication-page/two-factor-authentication-page.component';
+import {
+  TwoFactorAuthenticationPageComponent
+} from './page/landing-layout/form-pages/two-factor-authentication-page/two-factor-authentication-page.component';
 import { HomePageComponent } from './page/landing-layout/home-page/home-page.component';
 import { LandingLayoutComponent } from './page/landing-layout/landing-layout.component';
 import { PartnersPageComponent } from './page/landing-layout/partners-page/partners-page.component';
-import { CookiePolicyPageComponent } from './page/landing-layout/policy-pages/cookie-policy-page/cookie-policy-page.component';
-import { PrivacyPolicyPageComponent } from './page/landing-layout/policy-pages/privacy-policy-page/privacy-policy-page.component';
+import {
+  CookiePolicyPageComponent
+} from './page/landing-layout/policy-pages/cookie-policy-page/cookie-policy-page.component';
+import {
+  PrivacyPolicyPageComponent
+} from './page/landing-layout/policy-pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsPageComponent } from './page/landing-layout/policy-pages/terms-page/terms-page.component';
 import { PricingPageComponent } from './page/landing-layout/pricing-page/pricing-page.component';
 import { ProductPageComponent } from './page/landing-layout/product-page/product-page.component';
-import { MaintenancePageComponent } from './page/landing-layout/raw-content-pages/maintenance-page/maintenance-page.component';
+import {
+  MaintenancePageComponent
+} from './page/landing-layout/raw-content-pages/maintenance-page/maintenance-page.component';
 import { NotFoundPageComponent } from './page/landing-layout/raw-content-pages/not-found-page/not-found-page.component';
-import { SignUpSuccessPageComponent } from './page/landing-layout/raw-content-pages/sign-up-success-page/sign-up-success-page.component';
-import { VerifyAccountPageComponent } from './page/landing-layout/raw-content-pages/verify-account-page/verify-account-page.component';
+import {
+  SignUpSuccessPageComponent
+} from './page/landing-layout/raw-content-pages/sign-up-success-page/sign-up-success-page.component';
+import {
+  VerifyAccountPageComponent
+} from './page/landing-layout/raw-content-pages/verify-account-page/verify-account-page.component';
 import { SitemapPageComponent } from './page/landing-layout/sitemap-page/sitemap-page.component';
 import { StatusPageComponent } from './page/landing-layout/status-page/status-page.component';
 import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
@@ -39,7 +59,9 @@ import { EditSecurityComponent } from './page/settings-layout/edit-security/edit
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
 import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.component';
 import { CallbackPageComponent } from './page/splash-layout/callback-page/callback-page.component';
-import { ExternalRedirectPageComponent } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
+import {
+  ExternalRedirectPageComponent
+} from './page/splash-layout/external-redirect-page/external-redirect-page.component';
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
 
 const routes: Routes = [

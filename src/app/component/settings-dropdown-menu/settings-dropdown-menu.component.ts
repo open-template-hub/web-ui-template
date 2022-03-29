@@ -14,7 +14,7 @@ export class SettingsDropdownMenuComponent {
 
   @Input() isDropdownOpen = false;
   @Input() dropdownParent: ElementRef = null;
-  @Input() items: any[] = []
+  @Input() items: any[] = [];
 
   @ViewChild( 'toggleButton' ) toggleButton: ElementRef;
   @ViewChild( 'dropdownContent' ) dropdownContent: ElementRef;
@@ -22,10 +22,11 @@ export class SettingsDropdownMenuComponent {
   closeDropdownInternalClicked = false;
 
   constructor(
-    private utilService: UtilService,
-    private authenticationService: AuthenticationService,
-    private router: Router
-  ) { }
+      private utilService: UtilService,
+      private authenticationService: AuthenticationService,
+      private router: Router
+  ) {
+  }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

@@ -1,9 +1,9 @@
 <div class="settings-form-wrapper">
-  <app-card [header]="'Theme Settings'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate">
+  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Theme Settings'">
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="section-header">
-          <p i18n="@@editTheme.darkLightMode" class="dim">Dark/Light Mode</p>
+          <p class="dim" i18n="@@editTheme.darkLightMode">Dark/Light Mode</p>
           <hr/>
         </div>
         <div class="section horizontal">
@@ -16,7 +16,7 @@
           </app-button>
         </div>
         <div class="section-header">
-          <p i18n="@@editTheme.header.color" class="dim">Color</p>
+          <p class="dim" i18n="@@editTheme.header.color">Color</p>
           <hr/>
         </div>
         <div class="section horizontal">
@@ -26,7 +26,7 @@
           </app-button>
         </div>
         <div class="section-header">
-          <p i18n="@@editTheme.header.design" class="dim">Design</p>
+          <p class="dim" i18n="@@editTheme.header.design">Design</p>
           <hr/>
         </div>
         <div class="section horizontal">
@@ -36,7 +36,7 @@
           </app-button>
         </div>
         <div class="section-header">
-          <p i18n="@@editTheme.header.default" class="dim">Default</p>
+          <p class="dim" i18n="@@editTheme.header.default">Default</p>
           <hr/>
         </div>
         <div class="section horizontal">

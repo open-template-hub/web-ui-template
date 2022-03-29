@@ -5,13 +5,13 @@
       <h2 class="side-nav-brand-text">Open Template Hub</h2>
     </a>
     <a *ngIf="currentUser" routerLink="{{URLS.dashboard.myProfile}}">
-      <img [src]="profileImg" alt="profile img" class="profile-img-small yellow-theme"
-           [class.premium-border]="userIsPremium"/>
+      <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+           class="profile-img-small yellow-theme"/>
       <span *ngIf="sideNavClosed === 'false'">
         MY PROFILE
     </span>
     </a>
-    <a *ngIf="currentUser && !userIsPremium" (click)="buy()">
+    <a (click)="buy()" *ngIf="currentUser && !userIsPremium">
       <i [class]="'fas fa-star fa-fw fa-lg yellow-theme'" aria-hidden="true" style="color: var(--theme-color)"></i>
       <span *ngIf="sideNavClosed === 'false'">
         PREMIUM
@@ -69,14 +69,15 @@
         LOG IN
       </span>
     </a>
-    <a routerLink="{{URLS.contactUs}}" id="contact-us">
+    <a id="contact-us" routerLink="{{URLS.contactUs}}">
       <i [class]="'fas fa-envelope fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         CONTACT US
       </span>
     </a>
     <a (click)="toggleSideNav()" href="javascript:void(0)" id=menu>
-      <i [class]="'fas fa-fw fa-lg ' + (sideNavClosed === 'false' ? 'fa-angles-left' : 'fa-angles-right')" aria-hidden="true"></i>
+      <i [class]="'fas fa-fw fa-lg ' + (sideNavClosed === 'false' ? 'fa-angles-left' : 'fa-angles-right')"
+         aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
       </span>
     </a>

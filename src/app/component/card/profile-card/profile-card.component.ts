@@ -23,7 +23,7 @@ export class ProfileCardComponent {
     },
   };
 
-  @Input() photoUri: string = undefined
+  @Input() photoUri: string = undefined;
 
   @Input() userIsPremium;
 
@@ -33,10 +33,10 @@ export class ProfileCardComponent {
 
   setEmployeePhotoLoaded = () => {
     this.employeePhotoLoaded = true;
-  }
+  };
 
-  parseSocialUrl(url: string): string {
-    const directories = url.split('/');
-    return directories[(directories.length - 1)];
+  parseSocialUrl( url: string ): string {
+    const directories = url.split( '/' );
+    return directories[ ( directories.length - 1 ) ];
   }
 }

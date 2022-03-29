@@ -14,11 +14,10 @@ export class ProductService {
   URLS = URLS;
 
   public product: Observable<Product>;
-  private productSubject: BehaviorSubject<Product>;
-  private productStorageKey = 'product';
-
   public premiumProducts: Observable<any>;
   public premiumProductsSubject: BehaviorSubject<any>;
+  private productSubject: BehaviorSubject<Product>;
+  private productStorageKey = 'product';
   private premiumProductsStorageKey = 'premiumProducts';
 
   constructor(
@@ -54,11 +53,6 @@ export class ProductService {
     }
   }
 
-  private setPremiumProduct( premiumProducts: any ) {
-    localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) );
-    this.premiumProductsSubject.next( premiumProducts );
-  }
-
   checkProduct( productId: string ) {
     return this.http.get<any>( `${ environment.serverUrl }/product?product_id=${ productId }` )
     .subscribe( ( premiumProduct ) => {
@@ -79,5 +73,10 @@ export class ProductService {
   logout() {
     localStorage.removeItem( this.productStorageKey );
     this.premiumProductsSubject.next( undefined );
+  }
+
+  private setPremiumProduct( premiumProducts: any ) {
+    localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) );
+    this.premiumProductsSubject.next( premiumProducts );
   }
 }

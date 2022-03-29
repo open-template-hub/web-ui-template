@@ -60,6 +60,7 @@ import {
 import {
   TextContentLoaderComponent
 } from './component/content-loader/text-content-loader/text-content-loader.component';
+import { CountdownComponent } from './component/countdown/countdown.component';
 import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.component';
 import {
   DefaultBottomSvgComponent
@@ -93,7 +94,6 @@ import { PricePlanComponent } from './component/price-plan/price-plan.component'
 import { ProductPresentationComponent } from './component/product-represantation/product-presentation.component';
 import { RateBarComponent } from './component/rate-bar/rate-bar.component';
 import { SearchComponent } from './component/search/search.component';
-import { CountdownComponent } from './component/countdown/countdown.component';
 import { SettingsDropdownMenuComponent } from './component/settings-dropdown-menu/settings-dropdown-menu.component';
 import { SideContentComponent } from './component/side-content/side-content.component';
 import {

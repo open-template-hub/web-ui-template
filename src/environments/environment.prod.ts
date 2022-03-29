@@ -74,7 +74,7 @@ export const environment: EnvironmentModel = {
       tag: 'OUTLOOK'
     }
   },
-  
+
   sms: {
     twillio: {
       tag: 'TWILLIO'
@@ -83,7 +83,7 @@ export const environment: EnvironmentModel = {
       tag: 'AWS_SNS'
     }
   },
-  
+
   analytics: {
     googleAnalytics: {
       tag: 'GTM-NNRF845'

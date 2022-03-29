@@ -32,6 +32,7 @@
     & .key-value-area {
       display: flex;
       margin-top: 30px;
+
       & .key {
         width: -webkit-fill-available;
         text-align: right;
@@ -66,6 +67,7 @@
 
     & .social-area {
       display: flex;
+
       & i {
         color: var(--theme-color-lighter-6);
 

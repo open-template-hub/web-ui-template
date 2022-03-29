@@ -54,12 +54,12 @@ export class DashboardPageComponent implements OnDestroy {
     this.businessLogicService.me()
     .subscribe( userInfo => {
       this.userInfo = userInfo;
-      this.productService.checkProduct( PremiumProducts.premiumAccount )
+      this.productService.checkProduct( PremiumProducts.premiumAccount );
       if ( !this.userInfo.payload ) {
         this.businessLogicService.createMyInfo()
         .subscribe( () => {
-              this.router.navigate( [ URLS.settings.editProfile ] );
-            } );
+          this.router.navigate( [ URLS.settings.editProfile ] );
+        } );
       } else {
         if ( this.userInfo?.payload?.profileImageId ) {
           this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();

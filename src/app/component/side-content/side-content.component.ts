@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { URLS } from '../../data/navigation/navigation.data';
@@ -16,7 +16,7 @@ export class SideContentComponent {
   URLS = URLS;
   environment = environment;
 
-  events: any[] = []
+  events: any[] = [];
   categories: any = {};
 
   constructor(
@@ -27,13 +27,13 @@ export class SideContentComponent {
     this.businessLogicService.userInfo.subscribe( userInfo => {
       this.userInfo = userInfo;
 
-      if( userInfo ) {
+      if ( userInfo ) {
         this.analyticsService.getCategories().subscribe( getCategoriesResponse => {
-          this.categories = this.analyticsService.convertCategoriesToMappedObject(getCategoriesResponse);
-          this.analyticsService.getEvents( undefined, undefined, undefined, 0, analyticsService.configs.sideContentLimit).subscribe( getEventsResponse => {
-            this.events = getEventsResponse.data
+          this.categories = this.analyticsService.convertCategoriesToMappedObject( getCategoriesResponse );
+          this.analyticsService.getEvents( undefined, undefined, undefined, 0, analyticsService.configs.sideContentLimit ).subscribe( getEventsResponse => {
+            this.events = getEventsResponse.data;
           } );
-        } )
+        } );
       }
     } );
   }

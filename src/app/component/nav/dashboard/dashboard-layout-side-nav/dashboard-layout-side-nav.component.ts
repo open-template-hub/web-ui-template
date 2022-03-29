@@ -70,7 +70,7 @@ export class DashboardLayoutSideNavComponent {
     );
 
     this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined
+      this.userIsPremium = product?.name !== undefined;
     } );
   }
 

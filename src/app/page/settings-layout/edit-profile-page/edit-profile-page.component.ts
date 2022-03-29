@@ -12,11 +12,11 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { ToastService } from '../../../service/toast/toast.service';
 
-@Component({
+@Component( {
   selector: 'app-edit-profile-page',
   templateUrl: './edit-profile-page.component.html',
-  styleUrls: ['./edit-profile-page.component.scss']
-})
+  styleUrls: [ './edit-profile-page.component.scss' ]
+} )
 export class EditProfilePageComponent implements OnInit, OnDestroy {
   currentUser: AuthToken;
   userInfoForm: FormGroup;
@@ -34,33 +34,33 @@ export class EditProfilePageComponent implements OnInit, OnDestroy {
   @ViewChild( 'searchArea' ) searchArea: ElementRef;
 
   appHeroContent = [
-    {text: 'Edit Profile', level: 3}
-  ]
+    { text: 'Edit Profile', level: 3 }
+  ];
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
-    private authenticationService: AuthenticationService,
-    public businessLogicService: BusinessLogicService,
-    private fileStorageService: FileStorageService,
-    private loadingService: LoadingService,
-    private informationService: InformationService,
-    private toastService: ToastService
+      private formBuilder: FormBuilder,
+      private router: Router,
+      private route: ActivatedRoute,
+      private authenticationService: AuthenticationService,
+      public businessLogicService: BusinessLogicService,
+      private fileStorageService: FileStorageService,
+      private loadingService: LoadingService,
+      private informationService: InformationService,
+      private toastService: ToastService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
     this.authenticationService.currentUser.subscribe( currentUser => this.currentUser = currentUser );
 
     this.businessLogicService.userInfo.subscribe( userInfo => {
-        this.userInfo = userInfo;
-      }
+          this.userInfo = userInfo;
+        }
     );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-        if ( profileImg?.file?.data ) {
-          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+          if ( profileImg?.file?.data ) {
+            this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+          }
         }
-      }
     );
   }
 
@@ -92,7 +92,7 @@ export class EditProfilePageComponent implements OnInit, OnDestroy {
     // stop here if form is invalid
     if ( this.userInfoForm.invalid ) {
       if ( this.f.twitter.invalid || this.f.linkedin.invalid || this.f.github.invalid ) {
-        this.toastService.error( 'Please provide a valid username.', '');
+        this.toastService.error( 'Please provide a valid username.', '' );
       }
       if ( this.f.phone.invalid ) {
         this.toastService.error( 'Please provide a valid phone number.', '' );
@@ -109,9 +109,9 @@ export class EditProfilePageComponent implements OnInit, OnDestroy {
     if ( this.candidateProfileImg ) {
       this.fileStorageService.createFile( this.candidateProfileImg, this.userInfo.username + '/profile_img', 'profile image', 'image/png' )
       .subscribe( response => {
-          this.fileStorageService.setProfileImageFileData( this.candidateProfileImg );
-          this.updateMyInfo( response.id );
-        }
+            this.fileStorageService.setProfileImageFileData( this.candidateProfileImg );
+            this.updateMyInfo( response.id );
+          }
       );
     } else {
       this.updateMyInfo( this.businessLogicService.userInfoValue?.payload?.profileImageId );
@@ -172,10 +172,10 @@ export class EditProfilePageComponent implements OnInit, OnDestroy {
 
     this.businessLogicService.updateMyInfo( payload )
     .subscribe( () => {
-        this.businessLogicService.me().subscribe( result => {
-          this.router.navigate( [ URLS.dashboard.root ] );
-        });
-      }
+          this.businessLogicService.me().subscribe( result => {
+            this.router.navigate( [ URLS.dashboard.root ] );
+          } );
+        }
     );
   }
 }

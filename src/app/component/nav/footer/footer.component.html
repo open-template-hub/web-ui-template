@@ -4,7 +4,8 @@
       <!--COMPANY-->
       <p i18n="@@footer.company">Company</p>
       <ng-container *ngFor="let companyPage of COMPANY_PAGES">
-        <a *ngIf="!companyPage.isExternal" [routerLink]="companyPage.url" class="footer-link-item"> {{ companyPage.name }} </a>
+        <a *ngIf="!companyPage.isExternal" [routerLink]="companyPage.url"
+           class="footer-link-item"> {{ companyPage.name }} </a>
         <app-ext-link *ngIf="companyPage.isExternal"
                       [href]="environmentCommon.website.linkedin.companyUrl + '/' + environmentCommon.oth.social.linkedin + '/jobs'"
                       [linkClass]="'align-flex-start link'">
@@ -22,7 +23,7 @@
         </a>
         <app-ext-link *ngIf="developersPage.isExternal" [href]="developersPage.url"
                       [linkClass]="'align-flex-start link'">
-        <span body> {{ developersPage.name }} </span>
+          <span body> {{ developersPage.name }} </span>
         </app-ext-link>
       </ng-container>
       <!--DEVELOPERS-END-->
@@ -32,7 +33,7 @@
       <p i18n="@@footer.resources">Resources</p>
       <ng-container *ngFor="let resourcePage of RESOURCES_PAGES">
         <a *ngIf="!resourcePage.isExternal" [routerLink]="resourcePage.url" class="footer-link-item">
-            {{ resourcePage.name }}
+          {{ resourcePage.name }}
         </a>
         <app-ext-link *ngIf="resourcePage.isExternal" [href]="resourcePage.url"
                       [linkClass]="'align-flex-start link'">
@@ -46,7 +47,7 @@
     <hr/>
   </div>
   <div class="footer-brand-row">
-    <a class="brand" [href]="environmentCommon.oth.website" target="_blank">
+    <a [href]="environmentCommon.oth.website" class="brand" target="_blank">
       <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" height="40" width="40"/>
       <h2>Open Template Hub <span class="copyright">&#169; 2021</span></h2>
     </a>
