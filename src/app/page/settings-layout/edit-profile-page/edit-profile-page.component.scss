@@ -35,6 +35,23 @@
       }
     }
 
+    & .image-cropper-wrapper {
+      margin-left: auto;
+      margin-right: auto;
+
+      & image-cropper {
+
+        border: 2px solid var(--shadow-lighter);
+
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 400px;
+
+        padding: 0
+      }
+    }
+
     & .body {
       min-height: 265px;
       padding: 10px 20px 20px;
