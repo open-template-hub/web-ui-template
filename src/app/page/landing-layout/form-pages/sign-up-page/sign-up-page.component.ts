@@ -109,7 +109,7 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
   }
 
   socialLogin( social: any ) {
-    if ( this.loading || this.disabled || !social.key ) {
+    if ( this.loading || this.disabled || !social.tag ) {
       return;
     }
 
