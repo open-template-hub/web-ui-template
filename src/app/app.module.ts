@@ -62,15 +62,6 @@ import {
 } from './component/content-loader/text-content-loader/text-content-loader.component';
 import { CountdownComponent } from './component/countdown/countdown.component';
 import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.component';
-import {
-  DefaultBottomSvgComponent
-} from './component/design/bottom-svg/default-bottom-svg/default-bottom-svg.component';
-import {
-  CounterBordersTopSvgComponent
-} from './component/design/top-svg/counter-borders-top-svg/counter-borders-top-svg.component';
-import { RoundTopSvgComponent } from './component/design/top-svg/round-top-svg/round-top-svg.component';
-import { LeafTopSvgComponent } from './component/design/top-svg/leaf-top-svg/leaf-top-svg.component';
-import { SharpTopSvgComponent } from './component/design/top-svg/sharp-top-svg/sharp-top-svg.component';
 import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
 import {
@@ -238,11 +229,7 @@ FullCalendarModule.registerPlugins( [
     PresentationSwiperComponent,
     SitemapPageComponent,
     FeatureCardComponent,
-    SharpTopSvgComponent,
-    RoundTopSvgComponent,
-    CounterBordersTopSvgComponent,
     TopSvgComponent,
-    LeafTopSvgComponent,
     CustomersPageComponent,
     AssetCardComponent,
     BlogPageComponent,
@@ -257,7 +244,6 @@ FullCalendarModule.registerPlugins( [
     DocHolderCardComponent,
     DocsContentPageComponent,
     StepTimelineCardComponent,
-    DefaultBottomSvgComponent,
     BottomSvgComponent,
     ActivityCardComponent,
     ProfileCardComponent,
