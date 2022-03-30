@@ -100,7 +100,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   socialLogin( social: any ) {
-    if ( this.loading || this.disabled ) {
+    if ( this.loading || this.disabled || !social.key ) {
       return;
     }
 

@@ -6,7 +6,7 @@
       <div class="body">
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button (click)="socialLogin( website )"
+            <app-brand-button (click)="socialLogin( website )" [disabled]="!website.tag"
                               *ngFor="let website of websites.slice(0, 4)" [icon]="website.cssClass">
             </app-brand-button>
           </ng-container>
@@ -18,7 +18,7 @@
         </a>
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button (click)="socialLogin( website )"
+            <app-brand-button (click)="socialLogin( website )" [disabled]="!website.tag"
                               *ngFor="let website of websites.slice(4)" [icon]="website.cssClass"
                               [style.height]="showMoreToggle ? 'auto' : 0"
                               [style.opacity]="showMoreToggle ? 1 : 0"

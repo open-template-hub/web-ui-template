@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="section-submit">
-            <app-button [buttonClasses]="timeLeft <= 0 ? ['lighter-contrast-background-color', 'disabled-hover'] : []" i18n-text="@@loginPage.loginButton"
+            <app-button [disabled]="timeLeft <= 0" i18n-text="@@loginPage.loginButton"
                         text="SUBMIT"></app-button>
             <p *ngIf="timeLeft <= 0" i18n="@@signUp.alreadyHaveAccount">
               Time has expired, please
