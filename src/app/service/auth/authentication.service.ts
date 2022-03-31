@@ -31,8 +31,6 @@ export class AuthenticationService {
       private productService: ProductService,
       private browserLocaleService: BrowserLocaleService
   ) {
-    this.socket = io( environment.serverUrl );
-
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
         ? localStorage.getItem( 'currentUser' )
         : sessionStorage.getItem( 'currentUser' );
@@ -89,6 +87,11 @@ export class AuthenticationService {
       sessionStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
     }
     this.currentUserSubject.next( currentUser );
+    this.socket = io( environment.serverUrl, {
+      auth: {
+        token: currentUser.accessToken
+      }
+    } );
 
     this.themeService.setDarkLightSetting( DarkLightSettings.auto );
     this.themeService.setThemeColorSetting( DEFAULT_THEME );

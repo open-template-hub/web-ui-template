@@ -71,8 +71,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
           this.router.navigate( [ URLS.settings.editProfile ] );
         } );
       } else {
-        console.log( this.userInfo );
-        this.authenticationService.socket?.emit( 'message', this.userInfo.username + ' joined' );
         this.authenticationService.socket?.on( 'message', ( message: string ) => {
           this.socketActivityList.push( message );
         } );
@@ -109,7 +107,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
 
   sendMessage() {
-    this.authenticationService.socket?.emit( 'message', this.form.controls.message.value, );
+    this.authenticationService.socket?.emit( 'message', this.form.controls.message.value);
   }
 
   onSubmit() {
