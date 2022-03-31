@@ -77,12 +77,11 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         this.authenticationService.socket?.on( 'message', ( message ) => {
           this.socketActivityList.push( message );
         } );
+        this.authenticationService.socket?.on( 'notification', ( message ) => {
+          this.socketActivityList.push( message );
+        } );
         this.authenticationService.socket?.on( 'users', ( users ) => {
-          this.users = [];
-          users.split( ';' ).forEach( userString => {
-            const [ id, username ] = userString.split( ':' );
-            this.users.push( { id, username } );
-          } );
+          this.users = users;
         } );
 
         if ( this.userInfo?.payload?.profileImageId ) {

@@ -53,7 +53,7 @@
 
           overflow-y: auto;
 
-          height: 100%;
+          height: -webkit-fill-available;
 
           & .user-wrapper {
             @include util.flex-layout-row;
@@ -94,12 +94,24 @@
       & .input-with-icon {
         flex-direction: row;
 
+        & i {
+          @include util.default-border-radius;
+          box-shadow: 0 -6px 15px -7px var(--shadow);
+          border: 1px solid var(--lighter-contrast);
+
+          padding: 0.65em 1.25em;
+          margin-top: 0.5em;
+          cursor: pointer;
+
+          color: var(--lighter-contrast);
+        }
+
         & textarea:focus {
-          border-color: var(--theme-color);
+          border-color: var(--theme-color-lighter-6);
 
           & + i {
+            border: 1px solid var(--theme-color-lighter-6);
             color: var(--theme-color);
-            cursor: pointer;
           }
         }
       }
@@ -124,10 +136,15 @@
 
         & .chat {
           height: 70%;
+          padding-right: 0;
         }
 
         & .users {
           margin-top: 0.5em;
+
+          & .users-list {
+            height: auto;
+          }
         }
       }
     }
