@@ -87,11 +87,6 @@ export class AuthenticationService {
       sessionStorage.setItem( 'currentUser', JSON.stringify( currentUser ) );
     }
     this.currentUserSubject.next( currentUser );
-    this.socket = io( environment.serverUrl, {
-      auth: {
-        token: currentUser.accessToken
-      }
-    } );
 
     this.themeService.setDarkLightSetting( DarkLightSettings.auto );
     this.themeService.setThemeColorSetting( DEFAULT_THEME );
@@ -253,5 +248,13 @@ export class AuthenticationService {
     return this.http.delete<any>(
         `${ environment.serverUrl }/auth/submitted-phone-number`
     );
+  }
+
+  connectToSocket() {
+    this.socket = io( environment.serverUrl, {
+      auth: {
+        token: this.currentUserValue.accessToken
+      }
+    } );
   }
 }

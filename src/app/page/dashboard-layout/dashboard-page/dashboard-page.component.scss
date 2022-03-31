@@ -10,11 +10,66 @@
     margin: 30px;
 
     & .body {
-      min-height: 120px;
+      @include util.flex-layout-row;
+
+      height: 246px;
 
       padding: 0.5em 1.5em 1.5em;
 
       font-size: 16px;
+
+      & .chat {
+        overflow: auto;
+        display: flex;
+        flex-direction: column-reverse;
+
+        padding-right: 0.5em;
+        width: 70%;
+
+        box-sizing: border-box;
+      }
+
+      & .users {
+        font-size: 15px;
+
+        width: 30%;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+
+        & .title {
+          border-bottom: 1px solid var(--theme-color);
+          margin-bottom: 0.5em;
+        }
+
+        & .users-list {
+          @include util.default-border-radius;
+
+          background-color: var(--card);
+          border: 2px solid var(--shadow-lighter);
+          box-shadow: 0 -6px 15px -7px var(--shadow);
+
+          box-sizing: border-box;
+          padding: 0.5em;
+
+          overflow-y: auto;
+
+          height: 100%;
+
+          & .user-wrapper {
+            @include util.flex-layout-row;
+
+            justify-content: flex-start;
+            align-items: center;
+
+            & p {
+              margin-left: 0.5em;
+              font-weight: 400;
+              color: var(--theme-color-darker-2);
+            }
+          }
+        }
+      }
+
 
       & p {
         &.even {
@@ -56,5 +111,25 @@
   .dashboard-page {
     margin-left: 0;
     margin-right: 0;
+
+    & .socket-activity-card {
+      margin: 30px;
+
+      & .body {
+        @include util.flex-layout-column;
+
+        & .chat, & .users {
+          width: 100%;
+        }
+
+        & .chat {
+          height: 70%;
+        }
+
+        & .users {
+          margin-top: 0.5em;
+        }
+      }
+    }
   }
 }

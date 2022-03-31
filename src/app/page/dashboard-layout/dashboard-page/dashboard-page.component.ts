@@ -34,6 +34,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   INFORMATION_RIBBONS = INFORMATION_RIBBONS;
 
   socketActivityList: any[] = [];
+  users: any[] = [];
 
   form: FormGroup;
 
@@ -61,6 +62,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
+    this.authenticationService.connectToSocket();
+
     this.businessLogicService.me()
     .subscribe( userInfo => {
       this.userInfo = userInfo;
@@ -71,8 +74,15 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
           this.router.navigate( [ URLS.settings.editProfile ] );
         } );
       } else {
-        this.authenticationService.socket?.on( 'message', ( message: string ) => {
+        this.authenticationService.socket?.on( 'message', ( message ) => {
           this.socketActivityList.push( message );
+        } );
+        this.authenticationService.socket?.on( 'users', ( users ) => {
+          this.users = [];
+          users.split( ';' ).forEach( userString => {
+            const [ id, username ] = userString.split( ':' );
+            this.users.push( { id, username } );
+          } );
         } );
 
         if ( this.userInfo?.payload?.profileImageId ) {
@@ -107,7 +117,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
 
   sendMessage() {
-    this.authenticationService.socket?.emit( 'message', this.form.controls.message.value);
+    this.authenticationService.socket?.emit( 'message', this.form.controls.message.value );
   }
 
   onSubmit() {

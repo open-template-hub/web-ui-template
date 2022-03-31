@@ -7,9 +7,21 @@
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
-        <p *ngFor="let socketActivity of socketActivityList; index as i"
-           [class.even]="(i+1) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'yyyy/MM/dd HH:mm' ) + ') ' }}
-          <span class="author">{{socketActivity.author + ':'}}</span> {{socketActivity.message }}</p>
+        <div class="chat">
+          <p *ngFor="let socketActivity of socketActivityList.reverse(); index as i"
+             [class.even]="(i+1) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'dd MMM HH:mm' ) + ') ' }}
+            <span class="author">{{socketActivity.author + ':'}}</span> {{socketActivity.message }}</p>
+        </div>
+        <div class="users">
+          <p class="title">Active Users</p>
+          <div class="users-list">
+            <div *ngFor="let user of users; index as i" class="user-wrapper">
+              <oth-led [informationType]="'success'">
+              </oth-led>
+              <p>{{' ' + user.username}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </ng-template>
     <!-- Footer -->
