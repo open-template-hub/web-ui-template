@@ -1,3 +1,14 @@
 <div class="dashboard-page">
   <app-profile-card [photoUri]="profileImg" [userIsPremium]="userIsPremium" [user]="userInfo"></app-profile-card>
+
+  <app-card [bodyTemplate]="bodyTemplate" [header]="'Socket Activity'" [defaultHeaderClass]="'underline'"
+            class="socket-activity-card" [ribbon]="INFORMATION_RIBBONS.get('development')">
+    <!-- Body -->
+    <ng-template #bodyTemplate>
+      <div class="body">
+        <p *ngFor="let socketActivity of socketActivityList; index as i"
+           [class.even]="(i+1) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'yyyy/MM/dd HH:mm' ) + ') ' + socketActivity.message }}</p>
+      </div>
+    </ng-template>
+  </app-card>
 </div>

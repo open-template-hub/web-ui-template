@@ -1,7 +1,29 @@
+@use "../../../component/card/card.component";
+
 .dashboard-page {
   padding-top: 120px;
   margin-left: 60px;
   margin-right: 60px;
+
+  & > * {
+    margin: 30px;
+  }
+
+  & .socket-activity-card {
+    & .body {
+      min-height: 120px;
+
+      padding: 0.5em 1.5em 1.5em;
+
+      font-size: 16px;
+
+      & p {
+        &.even {
+          background-color: var(--contrast);
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 999px) {

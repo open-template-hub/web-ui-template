@@ -2,6 +2,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { io } from 'socket.io-client';
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
@@ -20,6 +21,8 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<AuthToken>;
   private preAuthTokenSubject: BehaviorSubject<any>;
 
+  public socket;
+
   constructor(
       private http: HttpClient,
       private themeService: ThemeService,
@@ -28,6 +31,8 @@ export class AuthenticationService {
       private productService: ProductService,
       private browserLocaleService: BrowserLocaleService
   ) {
+    this.socket = io( environment.serverUrl );
+
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
         ? localStorage.getItem( 'currentUser' )
         : sessionStorage.getItem( 'currentUser' );
@@ -91,7 +96,7 @@ export class AuthenticationService {
     this.themeService.initSideNavClosed( false );
   }
 
-  setPreauthToken( preAuthToken: any ) {
+  setPreAuthToken( preAuthToken: any ) {
     localStorage.setItem( 'preAuthToken', JSON.stringify( preAuthToken ) );
     this.preAuthTokenSubject.next( preAuthToken );
   }

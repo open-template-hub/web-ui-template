@@ -5,6 +5,7 @@ import { Rate } from '../../../component/rate-bar/rate-bar.component';
 import { URLS } from '../../../data/navigation/navigation.data';
 import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../data/profile/profile.data';
+import { INFORMATION_RIBBONS } from '../../../data/ribbon/ribbon.data';
 import { AuthToken } from '../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
@@ -28,6 +29,9 @@ export class DashboardPageComponent implements OnDestroy {
   loading = false;
   userIsPremium;
   URLS = URLS;
+  INFORMATION_RIBBONS = INFORMATION_RIBBONS;
+
+  socketActivityList: any[] = [];
 
   rateObject: Rate;
 
@@ -61,6 +65,12 @@ export class DashboardPageComponent implements OnDestroy {
           this.router.navigate( [ URLS.settings.editProfile ] );
         } );
       } else {
+        console.log(this.userInfo);
+        this.authenticationService.socket?.emit( 'message', this.userInfo.username + ' joined' );
+        this.authenticationService.socket?.on( 'message', ( message: string ) => {
+          this.socketActivityList.push( {date: new Date(), message} );
+        } );
+
         if ( this.userInfo?.payload?.profileImageId ) {
           this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
         }

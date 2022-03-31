@@ -126,7 +126,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     .subscribe(
         ( response ) => {
           if ( response.preAuthToken ) {
-            this.authenticationService.setPreauthToken( response );
+            this.authenticationService.setPreAuthToken( response );
             this.router.navigate( [ URLS.twoFactorVerification ] );
           } else {
             this.analyticsService.logLoginEvent().subscribe();

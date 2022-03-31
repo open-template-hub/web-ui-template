@@ -141,7 +141,7 @@ export class CallbackPageComponent implements OnInit {
     .subscribe(
         ( response ) => {
           if ( response.preAuthToken ) {
-            this.authenticationService.setPreauthToken( response );
+            this.authenticationService.setPreAuthToken( response );
             this.router.navigate( [ URLS.twoFactorVerification ], {
               queryParams: {
                 oauthName: this.oauth.name,

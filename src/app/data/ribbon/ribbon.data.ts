@@ -12,3 +12,8 @@ export const EVENT_RIBBONS = new Map<string, Ribbon>( [
 export const PRODUCT_RIBBONS = new Map<string, Ribbon>( [
   [ 'deal', { theme: 'blue', text: $localize`:@@ribbonData.deal:Deal` } ]
 ] );
+
+export const INFORMATION_RIBBONS = new Map<string, Ribbon>( [
+  [ 'maintenance', { theme: 'yellow', text: 'Under Maintenance' } ],
+  [ 'development', { theme: 'red', text: 'Under Development' } ],
+] );
