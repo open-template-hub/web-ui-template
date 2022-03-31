@@ -1,13 +1,27 @@
 <div class="dashboard-page">
   <app-profile-card [photoUri]="profileImg" [userIsPremium]="userIsPremium" [user]="userInfo"></app-profile-card>
 
-  <app-card [bodyTemplate]="bodyTemplate" [header]="'Socket Activity'" [defaultHeaderClass]="'underline'"
+  <app-card [header]="'Socket Activity'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate"
+            [footerTemplate]="footerTemplate"
             class="socket-activity-card" [ribbon]="INFORMATION_RIBBONS.get('development')">
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
         <p *ngFor="let socketActivity of socketActivityList; index as i"
-           [class.even]="(i+1) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'yyyy/MM/dd HH:mm' ) + ') ' + socketActivity.message }}</p>
+           [class.even]="(i+1) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'yyyy/MM/dd HH:mm' ) + ') ' }}
+          <span class="author">{{socketActivity.author + ':'}}</span> {{socketActivity.message }}</p>
+      </div>
+    </ng-template>
+    <!-- Footer -->
+    <ng-template #footerTemplate>
+      <div class="footer">
+        <form [formGroup]="form">
+          <div class="input-with-icon">
+            <textarea formControlName="message" placeholder="Message.." type="text" (keyup.enter)="onSubmit()">
+            </textarea>
+            <i aria-hidden="true" class="fas fa-paper-plane fa-lg fa-fw" (click)="onSubmit()"></i>
+          </div>
+        </form>
       </div>
     </ng-template>
   </app-card>

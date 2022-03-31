@@ -1,3 +1,4 @@
+@use "../../../../styles/util/util";
 @use "../../../component/card/card.component";
 
 .dashboard-page {
@@ -17,7 +18,34 @@
 
       & p {
         &.even {
-          background-color: var(--contrast);
+          background-color: var(--darker-contrast);
+        }
+
+        & .author {
+          font-weight: 500;
+          color: var(--theme-color-darker-2);
+        }
+      }
+    }
+
+    & .footer {
+      @include card.default-footer;
+      padding: 1em;
+
+      & form {
+        width: 100%;
+      }
+
+      & .input-with-icon {
+        flex-direction: row;
+
+        & textarea:focus {
+          border-color: var(--theme-color);
+
+          & + i {
+            color: var(--theme-color);
+            cursor: pointer;
+          }
         }
       }
     }

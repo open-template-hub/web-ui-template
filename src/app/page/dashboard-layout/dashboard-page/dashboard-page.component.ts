@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/rate-bar/rate-bar.component';
@@ -14,13 +15,14 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { PaymentService } from '../../../service/payment/payment.service';
 import { ProductService } from '../../../service/product/product.service';
+import { ToastService } from '../../../service/toast/toast.service';
 
 @Component( {
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: [ './dashboard-page.component.scss' ]
 } )
-export class DashboardPageComponent implements OnDestroy {
+export class DashboardPageComponent implements OnInit, OnDestroy {
 
   currentUser: AuthToken;
   userInfo: any = {};
@@ -33,15 +35,19 @@ export class DashboardPageComponent implements OnDestroy {
 
   socketActivityList: any[] = [];
 
+  form: FormGroup;
+
   rateObject: Rate;
 
   constructor(
+      private formBuilder: FormBuilder,
       private router: Router,
       private authenticationService: AuthenticationService,
       private loadingService: LoadingService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
+      private toastService: ToastService,
       private paymentService: PaymentService,
       private productService: ProductService
   ) {
@@ -65,10 +71,10 @@ export class DashboardPageComponent implements OnDestroy {
           this.router.navigate( [ URLS.settings.editProfile ] );
         } );
       } else {
-        console.log(this.userInfo);
+        console.log( this.userInfo );
         this.authenticationService.socket?.emit( 'message', this.userInfo.username + ' joined' );
         this.authenticationService.socket?.on( 'message', ( message: string ) => {
-          this.socketActivityList.push( {date: new Date(), message} );
+          this.socketActivityList.push( message );
         } );
 
         if ( this.userInfo?.payload?.profileImageId ) {
@@ -88,7 +94,34 @@ export class DashboardPageComponent implements OnDestroy {
     } );
   }
 
+  ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = this.formBuilder.group( {
+      message: [ '', Validators.required ]
+    } );
+  }
+
   ngOnDestroy() {
     this.informationService.clearInformation();
+  }
+
+  sendMessage() {
+    this.authenticationService.socket?.emit( 'message', this.form.controls.message.value, );
+  }
+
+  onSubmit() {
+    if ( this.form.invalid ) {
+      for ( const control in this.form.controls ) {
+        if ( this.form.controls[ control ].invalid ) {
+          this.toastService.error( 'Please provide a valid message', '' );
+        }
+      }
+      return;
+    }
+    this.sendMessage();
+    this.initForm();
   }
 }
