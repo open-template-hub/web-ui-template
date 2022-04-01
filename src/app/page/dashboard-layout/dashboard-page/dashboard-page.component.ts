@@ -15,6 +15,7 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { PaymentService } from '../../../service/payment/payment.service';
 import { ProductService } from '../../../service/product/product.service';
+import { SocketService } from '../../../service/socket/socket.service';
 import { ToastService } from '../../../service/toast/toast.service';
 
 @Component( {
@@ -33,8 +34,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   URLS = URLS;
   INFORMATION_RIBBONS = INFORMATION_RIBBONS;
 
-  socketActivityList: any[] = [];
   users: any[] = [];
+  socketActivityList: any[] = [];
 
   form: FormGroup;
 
@@ -44,6 +45,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       private formBuilder: FormBuilder,
       private router: Router,
       private authenticationService: AuthenticationService,
+      private socketService: SocketService,
       private loadingService: LoadingService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
@@ -60,9 +62,15 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       this.userInfo = userInfo;
     } );
 
-    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+    this.socketService.users.subscribe( users => {
+      this.users = users;
+    } );
 
-    this.authenticationService.connectToSocket();
+    this.socketService.socketActivityList.subscribe( socketActivityList => {
+      this.socketActivityList = socketActivityList;
+    } );
+
+    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
     this.businessLogicService.me()
     .subscribe( userInfo => {
@@ -74,15 +82,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
           this.router.navigate( [ URLS.settings.editProfile ] );
         } );
       } else {
-        this.authenticationService.socket?.on( 'message', ( message ) => {
-          this.socketActivityList.push( message );
-        } );
-        this.authenticationService.socket?.on( 'notification', ( message ) => {
-          this.socketActivityList.push( message );
-        } );
-        this.authenticationService.socket?.on( 'users', ( users ) => {
-          this.users = users;
-        } );
 
         if ( this.userInfo?.payload?.profileImageId ) {
           this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
@@ -115,10 +114,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.informationService.clearInformation();
   }
 
-  sendMessage() {
-    this.authenticationService.socket?.emit( 'message', this.form.controls.message.value );
-  }
-
   onSubmit() {
     if ( this.form.invalid ) {
       for ( const control in this.form.controls ) {
@@ -128,7 +123,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       }
       return;
     }
-    this.sendMessage();
+
+    this.socketService.sendMessage( this.form.controls.message.value );
     this.initForm();
   }
 }

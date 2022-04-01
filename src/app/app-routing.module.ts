@@ -267,11 +267,6 @@ const routes: Routes = [
         component: MyProfilePageComponent,
         canActivate: [ AuthGuard ],
       },
-      {
-        path: NAVIGATIONS.privacy.url,
-        component: MaintenancePageComponent,
-        canActivate: [ AuthGuard ],
-      },
     ],
   },
   {

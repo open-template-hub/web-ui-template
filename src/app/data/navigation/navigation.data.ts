@@ -361,12 +361,6 @@ export const NAVIGATIONS = {
     description: BRAND.name + $localize`:@@navigationData.root.description:: Minimizes your effort while building a new software business with our open source GitHub micro server templates and responsive web UI + mobile UI templates`,
     keywords: [ BRAND.name, 'oth', 'software business', 'open source' ],
   },
-  privacy: {
-    url: 'privacy',
-    title: BRAND.name,
-    description: BRAND.name + $localize`:@@navigationData.root.description:: Minimizes your effort while building a new software business with our open source GitHub micro server templates and responsive web UI + mobile UI templates`,
-    keywords: [ BRAND.name, 'oth', 'software business', 'open source' ],
-  },
   user: {
     url: 'user',
     title: BRAND.name,
@@ -466,7 +460,6 @@ export const URLS = {
     contribute: '/' + NAVIGATIONS.dashboard.url + '/' + NAVIGATIONS.event.url,
     learn: '/' + NAVIGATIONS.dashboard.url + '/' + NAVIGATIONS.learn.url,
     event: '/' + NAVIGATIONS.dashboard.url + '/' + NAVIGATIONS.createEvent.url,
-    privacy: '/' + NAVIGATIONS.dashboard.url + '/' + NAVIGATIONS.privacy.url,
   },
   user: {
     root: '/' + NAVIGATIONS.user.url,

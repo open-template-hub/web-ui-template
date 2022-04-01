@@ -2,7 +2,6 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { io } from 'socket.io-client';
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
@@ -10,6 +9,7 @@ import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 import { BusinessLogicService } from '../business-logic/business-logic.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
 import { ProductService } from '../product/product.service';
+import { SocketService } from '../socket/socket.service';
 import { ThemeService } from '../theme/theme.service';
 
 @Injectable( {
@@ -21,14 +21,13 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<AuthToken>;
   private preAuthTokenSubject: BehaviorSubject<any>;
 
-  public socket;
-
   constructor(
       private http: HttpClient,
       private themeService: ThemeService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private productService: ProductService,
+      private socketService: SocketService,
       private browserLocaleService: BrowserLocaleService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
@@ -214,6 +213,7 @@ export class AuthenticationService {
 
     this.currentUser.subscribe( () => {
       this.productService.logout();
+      this.socketService.logout();
       this.businessLogicService.logout();
       this.businessLogicService.userInfo.subscribe( () => {
         this.fileStorageService.logout();
@@ -250,11 +250,4 @@ export class AuthenticationService {
     );
   }
 
-  connectToSocket() {
-    this.socket = io( environment.serverUrl, {
-      auth: {
-        token: this.currentUserValue.accessToken
-      }
-    } );
-  }
 }

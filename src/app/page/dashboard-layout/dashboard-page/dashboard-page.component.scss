@@ -96,21 +96,21 @@
 
         & i {
           @include util.default-border-radius;
-          box-shadow: 0 -6px 15px -7px var(--shadow);
-          border: 1px solid var(--lighter-contrast);
 
-          padding: 0.65em 1.25em;
-          margin-top: 0.5em;
+          border: 1px solid var(--lighter-contrast);
+          box-shadow: 0 0 15px -4px var(--shadow);
+
+          padding: 0.65em 1.1em;
           cursor: pointer;
 
           color: var(--lighter-contrast);
         }
 
-        & textarea:focus {
+        & input:focus {
           border-color: var(--theme-color-lighter-6);
 
           & + i {
-            border: 1px solid var(--theme-color-lighter-6);
+            border-color: var(--theme-color-lighter-6);
             color: var(--theme-color);
           }
         }

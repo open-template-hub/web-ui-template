@@ -62,7 +62,6 @@ export class AnalyticsEventCardComponent implements OnInit {
         skip,
         limit
     ).subscribe( response => {
-      console.log( 'fetchAnalyticsEvent: ', response );
       this.paginationConfig.totalEventCount = response.meta.count;
       if ( response.meta.limit ) {
         this.paginationConfig.limit = response.meta.limit;

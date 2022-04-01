@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { NAVIGATIONS } from 'src/app/data/navigation/navigation.data';
 import { AuthenticationService } from '../../service/auth/authentication.service';
+import { SocketService } from '../../service/socket/socket.service';
 
 @Injectable( {
   providedIn: 'root',
@@ -10,7 +11,8 @@ import { AuthenticationService } from '../../service/auth/authentication.service
 export class AuthGuard implements CanActivate {
   constructor(
       private router: Router,
-      private authenticationService: AuthenticationService
+      private authenticationService: AuthenticationService,
+      private socketService: SocketService
   ) {
   }
 
@@ -25,6 +27,8 @@ export class AuthGuard implements CanActivate {
     const currentUser = this.authenticationService.currentUserValue;
     if ( currentUser ) {
       // logged in so return true
+      this.socketService.connectToSocket( currentUser.accessToken );
+
       return true;
     }
 

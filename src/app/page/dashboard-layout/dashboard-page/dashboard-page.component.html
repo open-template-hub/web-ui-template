@@ -31,8 +31,7 @@
       <div class="footer">
         <form [formGroup]="form">
           <div class="input-with-icon">
-            <textarea formControlName="message" placeholder="Message.." type="text" (keyup.enter)="onSubmit()">
-            </textarea>
+            <input formControlName="message" placeholder="Message.." type="text" (keyup.enter)="onSubmit()"/>
             <i aria-hidden="true" class="fas fa-paper-plane fa-lg fa-fw" (click)="onSubmit()"></i>
           </div>
         </form>
