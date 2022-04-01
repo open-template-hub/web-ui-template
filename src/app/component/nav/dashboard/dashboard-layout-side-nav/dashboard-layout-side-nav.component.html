@@ -54,7 +54,7 @@
       <a (click)="logout()" *ngIf="currentUser && settingsMoreOpened" href="javascript:void(0)" id=logout>
         <i [class]="'fas fa-sign-out-alt fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
-          Log out
+          Logout
         </span>
       </a>
       <a (click)="settingsMoreOpened = !settingsMoreOpened" *ngIf="currentUser" href="javascript:void(0)"
