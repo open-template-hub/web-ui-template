@@ -38,16 +38,8 @@
       font-size: 19px;
     }
 
-    &:hover {
-      background: var(--hover);
-    }
-
     &.disabled {
       cursor: auto;
-
-      &:hover {
-        background: none;
-      }
     }
 
     & .notifications {
@@ -73,14 +65,9 @@
     }
   }
 
-  & .login {
+  & .sign-up {
     color: var(--theme-color);
     border-bottom: var(--theme-color) 1px solid;
-
-    &:hover {
-      color: white;
-      background: var(--theme-color);
-    }
   }
 
   & .contact {
@@ -91,18 +78,30 @@
     & span {
       font-size: 0.8em;
     }
-
-    &:hover {
-      color: white;
-      border-radius: 3px;
-      background: var(--theme-color);
-    }
   }
+}
 
-  & .non-clickable {
-    &:hover {
-      background: none;
-      cursor: auto;
+@media (hover: hover) {
+  .bottom-nav {
+    & a {
+      &:hover {
+        background: var(--hover);
+      }
+
+      &.disabled {
+        cursor: auto;
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
+
+    & .sign-up {
+      &:hover {
+        color: white;
+        background: var(--theme-color);
+      }
     }
   }
 }
