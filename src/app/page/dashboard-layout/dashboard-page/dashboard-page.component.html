@@ -1,7 +1,7 @@
 <div class="dashboard-page">
   <app-profile-card [photoUri]="profileImg" [userIsPremium]="userIsPremium" [user]="userInfo"></app-profile-card>
 
-  <app-card [header]="'Socket Activity'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate"
+  <app-card [header]="'Messages'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate"
             [footerTemplate]="footerTemplate"
             class="socket-activity-card" [ribbon]="INFORMATION_RIBBONS.get('development')">
     <!-- Body -->
@@ -15,7 +15,7 @@
           </p>
         </div>
         <div class="users">
-          <p class="title">Active Users</p>
+          <p class="title"> {{ 'Active Users (' + activeUsers.size + ')' }}</p>
           <div class="users-list">
             <div *ngFor="let user of activeUsers; index as i" class="user-wrapper">
               <oth-led [informationType]="'success'">

@@ -11,6 +11,7 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
+import { SocketService } from '../../../../service/socket/socket.service';
 
 @Component( {
   selector: 'app-dashboard-layout-bottom-nav',
@@ -23,8 +24,11 @@ export class DashboardLayoutBottomNavComponent {
   userInfo: any = {};
   loading = false;
   settingsOpened = false;
+  moreOpened = false;
   profileImg = PROFILE_IMG;
   userIsPremium;
+
+  notifications: any[] = [];
 
   URLS = URLS;
 
@@ -38,7 +42,8 @@ export class DashboardLayoutBottomNavComponent {
       private businessLogicService: BusinessLogicService,
       private paymentService: PaymentService,
       private fileStorageService: FileStorageService,
-      private productService: ProductService
+      private productService: ProductService,
+      private socketService: SocketService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -64,6 +69,10 @@ export class DashboardLayoutBottomNavComponent {
 
     this.productService.premiumProducts.subscribe( product => {
       this.userIsPremium = product?.name !== undefined;
+    } );
+
+    this.socketService.socketActivityList.subscribe( socketActivityList => {
+      this.notifications = socketActivityList;
     } );
   }
 

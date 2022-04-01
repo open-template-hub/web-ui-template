@@ -1,3 +1,5 @@
+@use "../util/util";
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -29,6 +31,8 @@
     transition: background-color 0.1s ease-in-out;
     cursor: pointer;
 
+    position: relative;
+
     & i {
       margin: 0.2em;
       font-size: 19px;
@@ -36,6 +40,36 @@
 
     &:hover {
       background: var(--hover);
+    }
+
+    &.disabled {
+      cursor: auto;
+
+      &:hover {
+        background: none;
+      }
+    }
+
+    & .notifications {
+      @include util.flex-layout-row;
+      @include util.flex-center-center;
+
+      border-radius: 100%;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 -6px 15px -7px var(--shadow);
+      border: 1px solid var(--card);
+      background-color: var(--error);
+      color: var(--card);
+
+      position: absolute;
+      left: 52px;
+      top: 4px;
+
+      &.smaller-font {
+        font-size: 11px;
+      }
     }
   }
 

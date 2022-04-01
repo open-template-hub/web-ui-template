@@ -11,6 +11,7 @@ import { BusinessLogicService } from '../../../../service/business-logic/busines
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
+import { SocketService } from '../../../../service/socket/socket.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component( {
@@ -34,6 +35,8 @@ export class DashboardLayoutSideNavComponent {
   @ViewChild( 'searchArea' )
   searchArea: ElementRef;
 
+  notifications: any[] = [];
+
   constructor(
       private router: Router,
       private authenticationService: AuthenticationService,
@@ -41,7 +44,8 @@ export class DashboardLayoutSideNavComponent {
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
       private paymentService: PaymentService,
-      private productService: ProductService
+      private productService: ProductService,
+      private socketService: SocketService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -72,6 +76,10 @@ export class DashboardLayoutSideNavComponent {
     this.productService.premiumProducts.subscribe( product => {
       this.userIsPremium = product?.name !== undefined;
     } );
+
+    this.socketService.socketActivityList.subscribe( socketActivityList => {
+      this.notifications = socketActivityList;
+    } );
   }
 
   logout() {
@@ -87,5 +95,12 @@ export class DashboardLayoutSideNavComponent {
 
   buy() {
     this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
+  }
+
+  openNotifications() {
+    // TODO: open notifications
+    this.router.navigate( [ URLS.dashboard.root ] ).then( () => {
+      return true;
+    } );
   }
 }

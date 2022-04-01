@@ -20,22 +20,9 @@
       <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.signUp">Sign Up</span>
     </a>
-    <a (click)="buy()" *ngIf="currentUser && !userIsPremium" class="yellow-theme" style="color: var(--theme-color);">
-      <i [class]="'fas fa-star fa-fw'" aria-hidden="true"></i>
-      <span i18n="@@landingLayoutTopNav.premium">Premium</span>
-    </a>
-    <a (click)="dropdownMenuProducts.toggleDropdown();"
-       (mouseenter)="dropdownMenuProducts.openDropdown();"
-       *ngIf="currentUser">
-      <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
-      <app-dropdown-menu
-          #dropdownMenuProducts
-          [dropdownParent]="dropdownMenuParent"
-          [items]="settings">
-        <span i18n="@@landingLayoutTopNav.settings">Settings</span>
-        <i [class]="'caret fas fa-fw ' + (!dropdownMenuProducts.isDropdownOpen ? 'fa-chevron-down' : 'fa-chevron-up')"
-           aria-hidden="true"></i>
-      </app-dropdown-menu>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
+      <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.contactUs">Dashboard</span>
     </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
       <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
