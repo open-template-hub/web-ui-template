@@ -17,10 +17,15 @@
         <div class="users">
           <p class="title">Active Users</p>
           <div class="users-list">
-            <div *ngFor="let user of users; index as i" class="user-wrapper">
+            <div *ngFor="let user of activeUsers; index as i" class="user-wrapper">
               <oth-led [informationType]="'success'">
               </oth-led>
               <p>{{' ' + user}}</p>
+            </div>
+            <div *ngFor="let user of disconnectedUsers; index as i" class="user-wrapper">
+              <oth-led [informationType]="'error'">
+              </oth-led>
+              <p class="red-theme">{{' ' + user}}</p>
             </div>
           </div>
         </div>

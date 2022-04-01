@@ -34,7 +34,9 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   URLS = URLS;
   INFORMATION_RIBBONS = INFORMATION_RIBBONS;
 
-  users: any[] = [];
+  activeUsers = new Set();
+  disconnectedUsers = new Set();
+
   socketActivityList: any[] = [];
 
   form: FormGroup;
@@ -63,7 +65,20 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     } );
 
     this.socketService.users.subscribe( users => {
-      this.users = users;
+      users.forEach( ( user ) => {
+        this.activeUsers.add( user );
+        this.disconnectedUsers.delete( user );
+      } );
+
+      this.activeUsers.forEach( user => {
+        if ( !users.includes( user ) ) {
+          this.disconnectedUsers.add( user );
+        }
+      } );
+
+      this.disconnectedUsers.forEach( user => {
+        this.activeUsers.delete( user );
+      } );
     } );
 
     this.socketService.socketActivityList.subscribe( socketActivityList => {

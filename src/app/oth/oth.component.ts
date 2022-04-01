@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
-import { AuthenticationService } from '../service/auth/authentication.service';
 import { SocketService } from '../service/socket/socket.service';
 import { ThemeService } from '../service/theme/theme.service';
 
