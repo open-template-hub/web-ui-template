@@ -128,22 +128,26 @@
       margin: 30px;
 
       & .body {
-        @include util.flex-layout-column;
+        @include util.flex-layout-column-reverse;
 
         & .chat, & .users {
           width: 100%;
         }
 
+        height: auto;
+
         & .chat {
-          height: 70%;
+          height: 300px;
           padding-right: 0;
         }
 
         & .users {
-          margin-top: 0.5em;
+          height: auto;
+          padding-bottom: 0.5em;
+          border-bottom: 1px solid var(--shadow-lighter);
 
           & .users-list {
-            height: auto;
+            height: 150px;
           }
         }
       }
