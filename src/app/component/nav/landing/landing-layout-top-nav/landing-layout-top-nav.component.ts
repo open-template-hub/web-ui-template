@@ -9,8 +9,10 @@ import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
+import { NotificationService } from '../../../../service/notification/notification.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
+import { SocketService } from '../../../../service/socket/socket.service';
 
 @Component( {
   selector: 'app-landing-layout-top-nav',
@@ -29,6 +31,8 @@ export class LandingLayoutTopNavComponent {
 
   @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
+  notifications: any[] = [];
+
   settings = [
     { name: 'Edit Profile', icon: 'user', url: URLS.settings.editProfile },
     { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
@@ -41,12 +45,15 @@ export class LandingLayoutTopNavComponent {
       private authenticationService: AuthenticationService,
       private fileStorageService: FileStorageService,
       private paymentService: PaymentService,
-      private productService: ProductService
+      private productService: ProductService,
+      private notificationService: NotificationService,
+      private socketService: SocketService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
+      this.socketService.connectToSocket(this.currentUser?.accessToken);
     } );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
@@ -57,6 +64,10 @@ export class LandingLayoutTopNavComponent {
 
     this.productService.premiumProducts.subscribe( product => {
       this.userIsPremium = product?.name !== undefined;
+    } );
+
+    this.notificationService.notifications.subscribe( notifications => {
+      this.notifications = notifications;
     } );
   }
 

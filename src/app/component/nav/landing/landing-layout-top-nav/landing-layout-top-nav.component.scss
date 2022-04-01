@@ -26,6 +26,30 @@
     font-weight: 500;
     margin-left: 5px;
 
+    position: relative;
+
+    & .notifications {
+      @include util.flex-layout-row;
+      @include util.flex-center-center;
+
+      border-radius: 100%;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 -6px 15px -7px var(--shadow);
+      border: 1px solid var(--card);
+      background-color: var(--error);
+      color: var(--card);
+
+      position: absolute;
+      left: 57px;
+      top: 2px;
+
+      &.smaller-font {
+        font-size: 11px;
+      }
+    }
+
     & i {
       font-size: 21px;
 

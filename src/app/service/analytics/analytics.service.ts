@@ -105,8 +105,6 @@ export class AnalyticsService {
       data.payload = { icon };
     }
 
-    console.log( 'logloginevent', data );
-
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 }

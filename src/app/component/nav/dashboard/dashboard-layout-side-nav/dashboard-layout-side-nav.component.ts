@@ -9,6 +9,7 @@ import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
+import { NotificationService } from '../../../../service/notification/notification.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
 import { SocketService } from '../../../../service/socket/socket.service';
@@ -35,7 +36,7 @@ export class DashboardLayoutSideNavComponent {
   @ViewChild( 'searchArea' )
   searchArea: ElementRef;
 
-  notifications: any[] = [];
+  notifications: any[] = [ 'test' ];
 
   constructor(
       private router: Router,
@@ -45,7 +46,7 @@ export class DashboardLayoutSideNavComponent {
       private themeService: ThemeService,
       private paymentService: PaymentService,
       private productService: ProductService,
-      private socketService: SocketService
+      private notificationService: NotificationService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -77,8 +78,8 @@ export class DashboardLayoutSideNavComponent {
       this.userIsPremium = product?.name !== undefined;
     } );
 
-    this.socketService.socketActivityList.subscribe( socketActivityList => {
-      this.notifications = socketActivityList;
+    this.notificationService.notifications.subscribe( notifications => {
+      this.notifications = notifications;
     } );
   }
 

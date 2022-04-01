@@ -8,6 +8,7 @@ import { AuthToken } from '../../model/auth/auth-token.model';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 import { BusinessLogicService } from '../business-logic/business-logic.service';
 import { FileStorageService } from '../file-storage/file-storage.service';
+import { NotificationService } from '../notification/notification.service';
 import { ProductService } from '../product/product.service';
 import { SocketService } from '../socket/socket.service';
 import { ThemeService } from '../theme/theme.service';
@@ -28,6 +29,7 @@ export class AuthenticationService {
       private fileStorageService: FileStorageService,
       private productService: ProductService,
       private socketService: SocketService,
+      private notificationService: NotificationService,
       private browserLocaleService: BrowserLocaleService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
@@ -214,6 +216,7 @@ export class AuthenticationService {
     this.currentUser.subscribe( () => {
       this.productService.logout();
       this.socketService.logout();
+      this.notificationService.logout();
       this.businessLogicService.logout();
       this.businessLogicService.userInfo.subscribe( () => {
         this.fileStorageService.logout();

@@ -13,6 +13,7 @@ export class ProfileCardComponent {
   employeePhotoLoaded = false;
 
   @Input() user: any = {
+    username: '',
     name: '',
     title: '',
     bio: '',

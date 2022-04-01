@@ -9,6 +9,7 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
+import { NotificationService } from '../../../../service/notification/notification.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
 import { SocketService } from '../../../../service/socket/socket.service';
@@ -43,7 +44,7 @@ export class DashboardLayoutBottomNavComponent {
       private paymentService: PaymentService,
       private fileStorageService: FileStorageService,
       private productService: ProductService,
-      private socketService: SocketService
+      private notificationService: NotificationService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -71,8 +72,8 @@ export class DashboardLayoutBottomNavComponent {
       this.userIsPremium = product?.name !== undefined;
     } );
 
-    this.socketService.socketActivityList.subscribe( socketActivityList => {
-      this.notifications = socketActivityList;
+    this.notificationService.notifications.subscribe( notifications => {
+      this.notifications = notifications;
     } );
   }
 

@@ -34,8 +34,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   URLS = URLS;
   INFORMATION_RIBBONS = INFORMATION_RIBBONS;
 
-  activeUsers = new Set();
-  disconnectedUsers = new Set();
+  activeUsers = new Map();
+  disconnectedUsers = new Map();
 
   socketActivityList: any[] = [];
 
@@ -66,18 +66,16 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
     this.socketService.users.subscribe( users => {
       users.forEach( ( user ) => {
-        this.activeUsers.add( user );
-        this.disconnectedUsers.delete( user );
+        this.activeUsers.set( user.username, user );
+        this.disconnectedUsers.delete( user.username );
       } );
 
-      this.activeUsers.forEach( user => {
-        if ( !users.includes( user ) ) {
-          this.disconnectedUsers.add( user );
-        }
-      } );
+      const diff = this.getActiveUsers().filter( user => !users.find( u => u.username === user.username ) );
 
-      this.disconnectedUsers.forEach( user => {
-        this.activeUsers.delete( user );
+      diff.forEach( user => this.disconnectedUsers.set( user.username, user ) );
+
+      this.getDisconnectedUsers().forEach( user => {
+        this.activeUsers.delete( user.username );
       } );
     } );
 
@@ -113,6 +111,14 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.productService.premiumProducts.subscribe( response => {
       this.userIsPremium = response?.name !== undefined;
     } );
+  }
+
+  getActiveUsers() {
+    return Array.from( this.activeUsers.values() );
+  }
+
+  getDisconnectedUsers() {
+    return Array.from( this.disconnectedUsers.values() );
   }
 
   ngOnInit() {

@@ -10,22 +10,26 @@
         <div class="chat">
           <p *ngFor="let socketActivity of socketActivityList.reverse(); index as i"
              [class.even]="(socketActivityList.length - i) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'dd MMM HH:mm' ) + ') ' }}
-            <span class="author"
-                  [class.red-theme]="socketActivity.type === 'Notification'">{{socketActivity.author + ':'}}</span> {{socketActivity.message }}
+            <span class="author" [class.blue-theme]="userInfo.username === socketActivity.username">
+              {{socketActivity.author + ': '}}
+            </span>
+            {{socketActivity.message }}
           </p>
         </div>
         <div class="users">
           <p class="title"> {{ 'Active Users (' + activeUsers.size + ')' }}</p>
           <div class="users-list">
-            <div *ngFor="let user of activeUsers; index as i" class="user-wrapper">
-              <oth-led [informationType]="'success'">
+            <div *ngFor="let user of getActiveUsers(); index as i" class="user-wrapper">
+              <oth-led [informationType]="userInfo.username === user.username ? 'info' : 'success'">
               </oth-led>
-              <p>{{' ' + user}}</p>
+              <p [class.blue-theme]="userInfo.username === user.username">
+                {{' ' + user.alias + ( userInfo.username === user.username ? ' (you)' : '' )}}
+              </p>
             </div>
-            <div *ngFor="let user of disconnectedUsers; index as i" class="user-wrapper">
+            <div *ngFor="let user of getDisconnectedUsers(); index as i" class="user-wrapper">
               <oth-led [informationType]="'error'">
               </oth-led>
-              <p class="red-theme">{{' ' + user}}</p>
+              <p class="red-theme">{{' ' + user.alias}}</p>
             </div>
           </div>
         </div>

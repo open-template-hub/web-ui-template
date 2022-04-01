@@ -31,21 +31,26 @@ export class SocketService {
           token: accessToken
         }
       } );
+
+      this.connectToMessages();
+      this.connectToUsers();
     }
+  }
 
+  connectToMessages() {
     this.socket?.on( 'message', ( message ) => {
-      const newSocketActivityList = this.socketActivityListSubject.value;
-      newSocketActivityList.push(message);
-      this.socketActivityListSubject.next( newSocketActivityList );
+      this.socketActivityListSubject.next( [ ...this.socketActivityListSubject.value, message ] );
     } );
+  }
 
+  connectToUsers() {
     this.socket?.on( 'users', ( users ) => {
       this.usersSubject.next( users );
     } );
   }
 
   sendMessage( message: string ) {
-    this.socket?.emit( 'message', message);
+    this.socket?.emit( 'message', message );
   }
 
   logout() {
