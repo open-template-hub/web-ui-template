@@ -10,7 +10,9 @@
         <div class="chat">
           <p *ngFor="let socketActivity of socketActivityList.reverse(); index as i"
              [class.even]="(i+1) % 2 === 0">{{ '> (' + ( socketActivity.date | date: 'dd MMM HH:mm' ) + ') ' }}
-            <span class="author" [class.red-theme]="socketActivity.type === 'Notification'">{{socketActivity.author + ':'}}</span> {{socketActivity.message }}</p>
+            <span class="author"
+                  [class.red-theme]="socketActivity.type === 'Notification'">{{socketActivity.author + ':'}}</span> {{socketActivity.message }}
+          </p>
         </div>
         <div class="users">
           <p class="title">Active Users</p>
