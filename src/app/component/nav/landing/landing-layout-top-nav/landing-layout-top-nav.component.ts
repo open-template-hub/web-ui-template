@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
+import { environmentCommon } from '../../../../../environments/environment-common';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
@@ -25,6 +26,8 @@ export class LandingLayoutTopNavComponent {
   userIsPremium;
   currentUser: AuthToken;
   loading = false;
+
+  environmentCommon = environmentCommon;
 
   URLS = URLS;
   BRAND = BRAND;
@@ -53,7 +56,7 @@ export class LandingLayoutTopNavComponent {
 
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
-      this.socketService.connectToSocket(this.currentUser?.accessToken);
+      this.socketService.connectToSocket( this.currentUser?.accessToken );
     } );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
@@ -73,5 +76,11 @@ export class LandingLayoutTopNavComponent {
 
   buy() {
     this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
+  }
+
+  premiumClick() {
+    !this.userIsPremium ? this.buy() : this.router.navigate( [ URLS.maintenance ] ).then( () => {
+      return true;
+    } );
   }
 }

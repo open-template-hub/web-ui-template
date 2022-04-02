@@ -12,7 +12,6 @@ import { LoadingService } from '../../../../service/loading/loading.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
-import { SocketService } from '../../../../service/socket/socket.service';
 
 @Component( {
   selector: 'app-dashboard-layout-bottom-nav',
@@ -27,7 +26,7 @@ export class DashboardLayoutBottomNavComponent {
   settingsOpened = false;
   moreOpened = false;
   profileImg = PROFILE_IMG;
-  userIsPremium;
+  userIsPremium = undefined;
 
   notifications: any[] = [];
 
@@ -86,5 +85,11 @@ export class DashboardLayoutBottomNavComponent {
 
   buy() {
     this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
+  }
+
+  premiumClick() {
+    !this.userIsPremium ? this.buy() : this.router.navigate( [ URLS.maintenance ] ).then( () => {
+      return true;
+    } );
   }
 }

@@ -26,7 +26,7 @@
         Dashboard
     </span>
     </a>
-    <a (click)="buy()" *ngIf="currentUser && !userIsPremium">
+    <a (click)="premiumClick()" *ngIf="currentUser">
       <i [class]="'fas fa-star fa-fw fa-lg yellow-theme'" aria-hidden="true" style="color: var(--theme-color)"></i>
       <span *ngIf="sideNavClosed === 'false'">
         Premium

@@ -7,6 +7,10 @@
   <div class="left-item-wrapper">
   </div>
   <div class="right-item-wrapper">
+    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github" [target]="'_blank'">
+      <i [class]="'fab fa-github fa-fw'" aria-hidden="true"></i>
+      <span> GitHub </span>
+    </a>
     <a *ngIf="!currentUser" [routerLink]="URLS.contactUs">
       <i [class]="'fas fa-envelope fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.contactUs">Contact Us</span>
@@ -31,7 +35,7 @@
         <span i18n="@@landingLayoutTopNav.settings">Settings</span>
       </app-dropdown-menu>
     </a>
-    <a (click)="buy()" *ngIf="currentUser && !userIsPremium" class="yellow-theme" style="color: var(--theme-color);">
+    <a (click)="premiumClick()" *ngIf="currentUser" class="yellow-theme" style="color: var(--theme-color);">
       <i [class]="'fas fa-star fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.premium">Premium</span>
     </a>

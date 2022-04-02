@@ -12,7 +12,6 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { NotificationService } from '../../../../service/notification/notification.service';
 import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
-import { SocketService } from '../../../../service/socket/socket.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component( {
@@ -101,6 +100,12 @@ export class DashboardLayoutSideNavComponent {
   openNotifications() {
     // TODO: open notifications
     this.router.navigate( [ URLS.dashboard.root ] ).then( () => {
+      return true;
+    } );
+  }
+
+  premiumClick() {
+    !this.userIsPremium ? this.buy() : this.router.navigate( [ URLS.maintenance ] ).then( () => {
       return true;
     } );
   }
