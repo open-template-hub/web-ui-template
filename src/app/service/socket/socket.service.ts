@@ -11,6 +11,9 @@ export class SocketService {
   public users: Observable<any>;
   public usersSubject: BehaviorSubject<any>;
 
+  public notification: Observable<any>;
+  public notificationSubject: BehaviorSubject<any>;
+
   public socketActivityList: Observable<any>;
   public socketActivityListSubject: BehaviorSubject<any>;
 
@@ -19,6 +22,9 @@ export class SocketService {
   constructor() {
     this.usersSubject = new BehaviorSubject<any>( [] );
     this.users = this.usersSubject.asObservable();
+
+    this.notificationSubject = new BehaviorSubject<any>( undefined );
+    this.notification = this.notificationSubject.asObservable();
 
     this.socketActivityListSubject = new BehaviorSubject<any>( [] );
     this.socketActivityList = this.socketActivityListSubject.asObservable();
@@ -34,6 +40,7 @@ export class SocketService {
 
       this.connectToMessages();
       this.connectToUsers();
+      this.connectToNotifications();
     }
   }
 
@@ -49,6 +56,12 @@ export class SocketService {
     } );
   }
 
+  connectToNotifications() {
+    this.socket?.on( 'notification', ( notification ) => {
+      this.notificationSubject.next( notification );
+    } );
+  }
+
   sendMessage( message: string ) {
     this.socket?.emit( 'message', message );
   }
@@ -56,6 +69,7 @@ export class SocketService {
   logout() {
     this.socket = undefined;
     this.usersSubject.next( [] );
+    this.notificationSubject.next( undefined );
     this.socketActivityListSubject.next( [] );
   }
 }

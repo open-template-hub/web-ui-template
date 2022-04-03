@@ -14,9 +14,10 @@ export class NotificationService {
     this.notificationsSubject = new BehaviorSubject<any>( [] );
     this.notifications = this.notificationsSubject.asObservable();
 
-    // TODO: Get notifications from server, socket added for test purpose only
-    this.socketService.socketActivityListSubject.subscribe( socketActivity => {
-      this.notificationsSubject.next( socketActivity );
+    this.socketService.notificationSubject.subscribe( notification => {
+      if ( notification ) {
+        this.notificationsSubject.next( [ ...this.notificationsSubject.value, notification ] );
+      }
     } );
   }
 

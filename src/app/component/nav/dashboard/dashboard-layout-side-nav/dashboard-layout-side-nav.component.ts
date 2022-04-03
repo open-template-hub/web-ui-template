@@ -35,7 +35,7 @@ export class DashboardLayoutSideNavComponent {
   @ViewChild( 'searchArea' )
   searchArea: ElementRef;
 
-  notifications: any[] = [ 'test' ];
+  notifications: any[] = [];
 
   constructor(
       private router: Router,
