@@ -88,7 +88,7 @@ export class DashboardLayoutBottomNavComponent {
   }
 
   premiumClick() {
-    !this.userIsPremium ? this.buy() : this.router.navigate( [ URLS.maintenance ] ).then( () => {
+    !this.userIsPremium ? this.buy() : this.router.navigate( [ URLS.dashboard.premium ] ).then( () => {
       return true;
     } );
   }
