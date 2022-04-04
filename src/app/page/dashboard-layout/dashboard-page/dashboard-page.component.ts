@@ -6,7 +6,6 @@ import { Rate } from '../../../component/rate-bar/rate-bar.component';
 import { URLS } from '../../../data/navigation/navigation.data';
 import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../data/profile/profile.data';
-import { INFORMATION_RIBBONS } from '../../../data/ribbon/ribbon.data';
 import { AuthToken } from '../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
@@ -15,7 +14,6 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { PaymentService } from '../../../service/payment/payment.service';
 import { ProductService } from '../../../service/product/product.service';
-import { SocketService } from '../../../service/socket/socket.service';
 import { ToastService } from '../../../service/toast/toast.service';
 
 @Component( {
@@ -32,12 +30,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   loading = false;
   userIsPremium;
   URLS = URLS;
-  INFORMATION_RIBBONS = INFORMATION_RIBBONS;
-
-  activeUsers = new Map();
-  disconnectedUsers = new Map();
-
-  socketActivityList: any[] = [];
 
   form: FormGroup;
 
@@ -47,7 +39,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       private formBuilder: FormBuilder,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private socketService: SocketService,
       private loadingService: LoadingService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
@@ -64,24 +55,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       this.userInfo = userInfo;
     } );
 
-    this.socketService.users.subscribe( users => {
-      users.forEach( ( user ) => {
-        this.activeUsers.set( user.username, user );
-        this.disconnectedUsers.delete( user.username );
-      } );
-
-      const diff = this.getActiveUsers().filter( user => !users.find( u => u.username === user.username ) );
-
-      diff.forEach( user => this.disconnectedUsers.set( user.username, user ) );
-
-      this.getDisconnectedUsers().forEach( user => {
-        this.activeUsers.delete( user.username );
-      } );
-    } );
-
-    this.socketService.socketActivityList.subscribe( socketActivityList => {
-      this.socketActivityList = socketActivityList;
-    } );
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
@@ -113,14 +86,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     } );
   }
 
-  getActiveUsers() {
-    return Array.from( this.activeUsers.values() );
-  }
-
-  getDisconnectedUsers() {
-    return Array.from( this.disconnectedUsers.values() );
-  }
-
   ngOnInit() {
     this.initForm();
   }
@@ -133,19 +98,5 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.informationService.clearInformation();
-  }
-
-  onSubmit() {
-    if ( this.form.invalid ) {
-      for ( const control in this.form.controls ) {
-        if ( this.form.controls[ control ].invalid ) {
-          this.toastService.error( 'Please provide a valid message', '' );
-        }
-      }
-      return;
-    }
-
-    this.socketService.sendMessage( this.form.controls.message.value );
-    this.initForm();
   }
 }

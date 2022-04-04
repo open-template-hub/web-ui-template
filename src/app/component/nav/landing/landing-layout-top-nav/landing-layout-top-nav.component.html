@@ -7,7 +7,8 @@
   <div class="left-item-wrapper">
   </div>
   <div class="right-item-wrapper">
-    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github" [target]="'_blank'">
+    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github"
+       [target]="'_blank'">
       <i [class]="'fab fa-github fa-fw'" aria-hidden="true"></i>
       <span> GitHub </span>
     </a>
@@ -35,15 +36,16 @@
         <span i18n="@@landingLayoutTopNav.settings">Settings</span>
       </app-dropdown-menu>
     </a>
-    <a (click)="premiumClick()" *ngIf="currentUser" class="yellow-theme" style="color: var(--theme-color);">
-      <i [class]="'fas fa-star fa-fw'" aria-hidden="true"></i>
+    <a [routerLink]="URLS.dashboard.premium" *ngIf="currentUser">
+      <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true"
+         style="color: var(--theme-color);"></i>
       <span i18n="@@landingLayoutTopNav.premium">Premium</span>
     </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
       <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
       <span i18n="@@landingLayoutTopNav.contactUs">Dashboard</span>
     </a>
-    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.notifications">
       <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
         {{ notifications.length > 9 ? '9+' : notifications.length }}
       </div>

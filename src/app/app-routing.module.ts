@@ -7,6 +7,7 @@ import { NavigationInterceptor } from './interceptor/navigation/navigation.inter
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
+import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
 import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
@@ -271,6 +272,11 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.premium.url,
         component: PremiumPageComponent,
+        canActivate: [ AuthGuard ],
+      },
+      {
+        path: NAVIGATIONS.notifications.url,
+        component: NotificationsPageComponent,
         canActivate: [ AuthGuard ],
       },
     ],

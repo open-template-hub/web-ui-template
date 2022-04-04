@@ -157,6 +157,7 @@ import {
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
 import { SocketService } from './service/socket/socket.service';
 import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
+import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -257,6 +258,7 @@ FullCalendarModule.registerPlugins( [
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
     PremiumPageComponent,
+    NotificationsPageComponent,
   ],
   imports: [
     BrowserModule,

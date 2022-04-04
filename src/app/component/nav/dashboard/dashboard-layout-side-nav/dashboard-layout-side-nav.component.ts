@@ -1,16 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../environments/environment';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
-import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
-import { PaymentService } from '../../../../service/payment/payment.service';
 import { ProductService } from '../../../../service/product/product.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
@@ -43,7 +40,6 @@ export class DashboardLayoutSideNavComponent {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
-      private paymentService: PaymentService,
       private productService: ProductService,
       private notificationService: NotificationService
   ) {
@@ -78,7 +74,7 @@ export class DashboardLayoutSideNavComponent {
     } );
 
     this.notificationService.notifications.subscribe( notifications => {
-      this.notifications = notifications;
+      this.notifications = notifications.filter( notification => !notification.read );
     } );
   }
 
@@ -91,22 +87,5 @@ export class DashboardLayoutSideNavComponent {
 
   toggleSideNav() {
     this.themeService.toggleSideNav();
-  }
-
-  buy() {
-    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
-  }
-
-  openNotifications() {
-    // TODO: open notifications
-    this.router.navigate( [ URLS.dashboard.root ] ).then( () => {
-      return true;
-    } );
-  }
-
-  premiumClick() {
-    !this.userIsPremium ? this.buy() : this.router.navigate( [ URLS.dashboard.premium ] ).then( () => {
-      return true;
-    } );
   }
 }

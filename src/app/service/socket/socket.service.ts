@@ -30,7 +30,9 @@ export class SocketService {
     this.socketActivityList = this.socketActivityListSubject.asObservable();
   }
 
-  connectToSocket( accessToken ) {
+  // To activate sockets use the following code
+  /*
+   connectToSocket( accessToken ) {
     if ( accessToken && !this.socket ) {
       this.socket = io( environment.serverUrl, {
         auth: {
@@ -43,6 +45,7 @@ export class SocketService {
       this.connectToNotifications();
     }
   }
+   */
 
   connectToMessages() {
     this.socket?.on( 'message', ( message ) => {

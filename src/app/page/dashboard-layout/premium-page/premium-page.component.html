@@ -1,11 +1,15 @@
-<div class="full-width-cards-wrapper">
-  <app-card *ngIf="product" [defaultHeaderClass]="'underline yellow-theme'" [header]="product.name" [bodyTemplate]="bodyTemplate"
+<div class="full-width-cards-wrapper" *ngIf="product?.name !== undefined">
+  <app-card [defaultHeaderClass]="'underline yellow-theme'" [header]="product.name"
+            [bodyTemplate]="bodyTemplate"
             [footerTemplate]="footerTemplate"
             class="premium-card">
+
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
-        <p>{{ product.description }}</p>
+        <p>
+          You have access to premium features!
+        </p>
       </div>
     </ng-template>
 
@@ -15,4 +19,12 @@
       </div>
     </ng-template>
   </app-card>
+</div>
+
+<div class="cards-wrapper" *ngIf="product?.name === undefined">
+  <ng-container>
+    <app-pricing-card *ngFor="let pricing of premiumAccountPricingOptions" class="yellow-theme"
+                      [pricingFeatures]="premiumAccountPricingFeatures"
+                      [pricingOption]="pricing"></app-pricing-card>
+  </ng-container>
 </div>
