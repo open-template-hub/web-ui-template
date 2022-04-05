@@ -24,11 +24,15 @@ export class NotificationService {
     this.authenticationService.currentUser.subscribe( currentUser => {
       if ( !currentUser ) {
         this.logout();
+      } else {
+        this.getNotifications();
       }
     } );
 
-    this.socketService.notification.subscribe( () => {
-      this.getNotifications();
+    this.socketService.notification.subscribe( notification => {
+      if ( notification ) {
+        this.getNotifications();
+      }
     } );
   }
 
@@ -38,9 +42,8 @@ export class NotificationService {
       return;
     }
 
-    // TODO: Update database too
     notification.read = true;
-
+    this.updateNotification( { id: notification._id, read: true } ).subscribe();
     this.notificationsSubject.next( this.notificationsSubject.value );
   }
 
@@ -49,6 +52,10 @@ export class NotificationService {
     this.http.get<any>( `${ environment.serverUrl }/notification/me` ).subscribe( response => {
       this.notificationsSubject.next( response );
     } );
+  }
+
+  updateNotification( payload: any ) {
+    return this.http.put<any>( `${ environment.serverUrl }/notification/me`, payload );
   }
 
   logout() {

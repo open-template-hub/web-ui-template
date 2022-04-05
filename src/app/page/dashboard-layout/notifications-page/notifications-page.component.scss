@@ -29,6 +29,10 @@
 
       &.dim {
         color: var(--lighter-contrast);
+
+        &:hover {
+          cursor: auto;
+        }
       }
 
       & .date {

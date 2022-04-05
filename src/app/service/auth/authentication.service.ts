@@ -6,10 +6,6 @@ import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
-import { BusinessLogicService } from '../business-logic/business-logic.service';
-import { FileStorageService } from '../file-storage/file-storage.service';
-import { NotificationService } from '../notification/notification.service';
-import { ProductService } from '../product/product.service';
 import { SocketService } from '../socket/socket.service';
 import { ThemeService } from '../theme/theme.service';
 
@@ -25,9 +21,6 @@ export class AuthenticationService {
   constructor(
       private http: HttpClient,
       private themeService: ThemeService,
-      private businessLogicService: BusinessLogicService,
-      private fileStorageService: FileStorageService,
-      private productService: ProductService,
       private socketService: SocketService,
       private browserLocaleService: BrowserLocaleService
   ) {
@@ -209,21 +202,13 @@ export class AuthenticationService {
   // https://stackoverflow.com/questions/48853678/what-happens-if-we-does-not-subscribe-to-httpclient-request-which-return-observa
   logout() {
     this.themeService.logout();
+    this.socketService.logout();
 
     const refreshToken = this.currentUserValue.refreshToken;
 
     localStorage.clear();
     sessionStorage.clear();
     this.currentUserSubject.next( null );
-
-    this.currentUser.subscribe( () => {
-      this.productService.logout();
-      this.socketService.logout();
-      this.businessLogicService.logout();
-      this.businessLogicService.userInfo.subscribe( () => {
-        this.fileStorageService.logout();
-      } );
-    } );
 
     return this.http
     .post<any>( `${ environment.serverUrl }/auth/logout`, {

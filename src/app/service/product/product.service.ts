@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { URLS } from '../../data/navigation/navigation.data';
 import { Product, ProductLine } from '../../model/product/product.model';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Injectable( {
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class ProductService {
 
   constructor(
       private http: HttpClient,
-      private router: Router
+      private router: Router,
+      private authenticationService: AuthenticationService
   ) {
     let productStorageItem: Product = JSON.parse( localStorage.getItem( this.productStorageKey ) ?
         localStorage.getItem( this.productStorageKey ) : sessionStorage.getItem( this.productStorageKey ) );
@@ -36,6 +38,12 @@ export class ProductService {
 
     this.premiumProductsSubject = new BehaviorSubject<any>( premiumProductsStorageItem );
     this.premiumProducts = this.premiumProductsSubject.asObservable();
+
+    this.authenticationService.currentUser.subscribe( currentUser => {
+      if ( !currentUser ) {
+        this.logout();
+      }
+    } );
   }
 
   setSelectedProduct( product: Product ) {
