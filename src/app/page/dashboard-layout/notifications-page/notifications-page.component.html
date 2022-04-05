@@ -8,13 +8,13 @@
         <p *ngIf="notifications.length === 0">
           No new notifications!
         </p>
-        <div class="notification" *ngFor="let notification of notifications; index as i" [routerLink]="notification.link" (click)="read(i)"
+        <div class="notification" *ngFor="let notification of notifications; index as i" (click)="read(i)"
              [class.dim]="notification.read">
           <p class="message">
             {{ notification.message }}
           </p>
           <p class="date">
-            {{ notification.date | date: 'dd MMM HH:mm' }}
+            {{ timestampToDate(notification.timestamp) | date: 'dd MMM HH:mm' }}
           </p>
         </div>
       </div>

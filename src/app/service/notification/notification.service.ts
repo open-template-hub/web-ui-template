@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { URLS } from '../../data/navigation/navigation.data';
+import { environment } from '../../../environments/environment';
+import { AuthenticationService } from '../auth/authentication.service';
+import { SocketService } from '../socket/socket.service';
 
 @Injectable( {
   providedIn: 'root'
@@ -10,10 +13,23 @@ export class NotificationService {
   public notifications: Observable<any>;
   public notificationsSubject: BehaviorSubject<any>;
 
-  constructor() {
+  constructor(
+      private http: HttpClient,
+      private socketService: SocketService,
+      private authenticationService: AuthenticationService
+  ) {
     this.notificationsSubject = new BehaviorSubject<any>( [] );
     this.notifications = this.notificationsSubject.asObservable();
-    this.getNotifications();
+
+    this.authenticationService.currentUser.subscribe( currentUser => {
+      if ( !currentUser ) {
+        this.logout();
+      }
+    } );
+
+    this.socketService.notification.subscribe( () => {
+      this.getNotifications();
+    } );
   }
 
   readNotification( index: any ) {
@@ -29,14 +45,10 @@ export class NotificationService {
   }
 
   getNotifications() {
-    // TODO: Collect notifications from database
-    const testNotifications = [
-      { read: true, date: new Date(), message: 'Welcome to Open Template Hub!', link: URLS.dashboard.root },
-      { read: false, date: new Date(), message: 'Buy premium today!', link: URLS.dashboard.premium },
-      { read: false, date: new Date(), message: 'Social Login Activity', link: URLS.settings.editSecurity },
-    ];
 
-    this.notificationsSubject.next( testNotifications );
+    this.http.get<any>( `${ environment.serverUrl }/notification/me` ).subscribe( response => {
+      this.notificationsSubject.next( response );
+    } );
   }
 
   logout() {

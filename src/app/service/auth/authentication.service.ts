@@ -29,7 +29,6 @@ export class AuthenticationService {
       private fileStorageService: FileStorageService,
       private productService: ProductService,
       private socketService: SocketService,
-      private notificationService: NotificationService,
       private browserLocaleService: BrowserLocaleService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
@@ -141,7 +140,11 @@ export class AuthenticationService {
 
   addAuthorizationHeader( request: HttpRequest<unknown> ) {
     const currentUser = this.currentUserSubject.value;
+
     if ( currentUser && currentUser.accessToken ) {
+
+      this.socketService.connectToSocket( currentUser.accessToken );
+
       request = request.clone( {
         setHeaders: {
           Authorization: `Bearer ${ currentUser.accessToken }`,
@@ -216,7 +219,6 @@ export class AuthenticationService {
     this.currentUser.subscribe( () => {
       this.productService.logout();
       this.socketService.logout();
-      this.notificationService.logout();
       this.businessLogicService.logout();
       this.businessLogicService.userInfo.subscribe( () => {
         this.fileStorageService.logout();

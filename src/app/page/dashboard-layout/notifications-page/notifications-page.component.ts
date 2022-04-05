@@ -19,4 +19,8 @@ export class NotificationsPageComponent {
   read( index: any ) {
     this.notificationService.readNotification( index );
   }
+
+  timestampToDate( timestamp: any ): Date {
+    return new Date( timestamp );
+  }
 }

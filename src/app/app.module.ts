@@ -99,6 +99,8 @@ import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layo
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
+import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
+import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
   BlogContentPageComponent
@@ -155,9 +157,6 @@ import {
   ExternalRedirectPageComponent
 } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
-import { SocketService } from './service/socket/socket.service';
-import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
-import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,

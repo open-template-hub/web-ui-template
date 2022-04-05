@@ -10,12 +10,12 @@ export class SocketService {
 
   private socket = undefined;
 
-  public notifications: Observable<any>;
-  public notificationsSubject: BehaviorSubject<any>;
+  public notification: Observable<any>;
+  public notificationSubject: BehaviorSubject<any>;
 
   constructor() {
-    this.notificationsSubject = new BehaviorSubject<any>( [] );
-    this.notifications = this.notificationsSubject.asObservable();
+    this.notificationSubject = new BehaviorSubject<any>( undefined );
+    this.notification = this.notificationSubject.asObservable();
   }
 
   // To activate socket use the following function
@@ -31,12 +31,12 @@ export class SocketService {
 
   connectToNotifications() {
     this.socket?.on( 'notification', ( notification ) => {
-      this.notificationsSubject.next( [ ...this.notificationsSubject.value, notification ] );
+      this.notificationSubject.next( notification );
     } );
   }
 
   logout() {
     this.socket = undefined;
-    this.notificationsSubject.next( [] );
+    this.notificationSubject.next( undefined );
   }
 }
