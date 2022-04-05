@@ -76,13 +76,13 @@ export class AnalyticsService {
   }
 
   getCategories() {
-    let language = this.browserLocaleService.getBrowserLocale();
+    const language = this.browserLocaleService.getBrowserLocale();
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event/categories?language=${ language }` );
   }
 
   convertCategoriesToMappedObject( categoriesResponse: any ): any {
-    let categories: any = {};
-    for ( let category of categoriesResponse ) {
+    const categories: any = {};
+    for ( const category of categoriesResponse ) {
       if ( category.messages.length > 0 ) {
         categories[ category.key ] = category.messages[ 0 ].text;
       }
