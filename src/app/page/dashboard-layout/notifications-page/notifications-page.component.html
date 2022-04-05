@@ -4,7 +4,7 @@
 
     <!-- Body -->
     <ng-template #bodyTemplate>
-      <div class="body">
+      <div class="body" [style.justify-content]="notifications.length === 0 ? 'center' : ''">
         <p *ngIf="notifications.length === 0">
           No new notifications!
         </p>

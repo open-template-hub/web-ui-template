@@ -67,17 +67,6 @@
 
   & .sign-up {
     color: var(--theme-color);
-    border-bottom: var(--theme-color) 1px solid;
-  }
-
-  & .contact {
-    color: var(--theme-color);
-    border-radius: 0;
-    border-bottom: var(--theme-color) 1px solid;
-
-    & span {
-      font-size: 0.8em;
-    }
   }
 }
 

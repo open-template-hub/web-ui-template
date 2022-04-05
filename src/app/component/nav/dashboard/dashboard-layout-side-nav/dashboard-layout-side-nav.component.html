@@ -11,6 +11,12 @@
         My Profile
     </span>
     </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
+      <i [class]="'fas fa-clipboard-list fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Dashboard
+    </span>
+    </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.notifications">
       <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
         {{ notifications.length > 9 ? '9+' : notifications.length }}
@@ -18,12 +24,6 @@
       <i [class]="'fas fa-bell fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         Notifications
-    </span>
-    </a>
-    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
-      <i [class]="'fas fa-clipboard-list fa-fw fa-lg'" aria-hidden="true"></i>
-      <span *ngIf="sideNavClosed === 'false'">
-        Dashboard
     </span>
     </a>
     <a [routerLink]="URLS.dashboard.premium" *ngIf="currentUser">
