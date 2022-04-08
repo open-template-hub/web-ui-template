@@ -1,15 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../environments/environment';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
-import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
-import { PaymentService } from '../../../../service/payment/payment.service';
+import { NotificationService } from '../../../../service/notification/notification.service';
 import { ProductService } from '../../../../service/product/product.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
@@ -34,14 +32,16 @@ export class DashboardLayoutSideNavComponent {
   @ViewChild( 'searchArea' )
   searchArea: ElementRef;
 
+  notifications: any[] = [];
+
   constructor(
       private router: Router,
       private authenticationService: AuthenticationService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
-      private paymentService: PaymentService,
-      private productService: ProductService
+      private productService: ProductService,
+      private notificationService: NotificationService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -70,7 +70,11 @@ export class DashboardLayoutSideNavComponent {
     );
 
     this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined
+      this.userIsPremium = product?.name !== undefined;
+    } );
+
+    this.notificationService.notifications.subscribe( notifications => {
+      this.notifications = notifications.filter( notification => !notification.read );
     } );
   }
 
@@ -83,9 +87,5 @@ export class DashboardLayoutSideNavComponent {
 
   toggleSideNav() {
     this.themeService.toggleSideNav();
-  }
-
-  buy() {
-    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
   }
 }

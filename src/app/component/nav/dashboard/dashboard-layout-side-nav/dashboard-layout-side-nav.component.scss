@@ -1,3 +1,5 @@
+@use "../../../../../styles/util/util";
+
 .side-nav-wrapper {
   height: 100vh;
   margin: 0;
@@ -19,6 +21,32 @@
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0 0 0 env(safe-area-inset-left);
+
+  & a {
+    position: relative;
+
+    & .notifications {
+      @include util.flex-layout-row;
+      @include util.flex-center-center;
+
+      border-radius: 100%;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 -6px 15px -7px var(--shadow);
+      border: 1px solid var(--card);
+      background-color: var(--error);
+      color: var(--card);
+
+      position: absolute;
+      left: 40px;
+      top: 24px;
+
+      &.smaller-font {
+        font-size: 11px;
+      }
+    }
+  }
 }
 
 .side-nav a, .side-nav .dashboard-layout-side-nav-search {
@@ -41,11 +69,8 @@
 }
 
 #menu {
-  margin-bottom: env(safe-area-inset-bottom);
-}
-
-#contact-us {
   margin-top: auto;
+  margin-bottom: env(safe-area-inset-bottom);
 }
 
 .side-nav a i, .side-nav .dashboard-layout-side-nav-search i {

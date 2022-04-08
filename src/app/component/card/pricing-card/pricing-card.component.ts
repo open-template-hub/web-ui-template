@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 import { URLS } from '../../../data/navigation/navigation.data';
+import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { PricingOption } from '../../../model/pricing/pricing.model';
 import { PricingFeature } from '../../../model/product/product.model';
+import { PaymentService } from '../../../service/payment/payment.service';
 
 @Component( {
   selector: 'app-pricing-card',
@@ -19,7 +22,7 @@ export class PricingCardComponent {
 
   @Input() pricingOption: PricingOption;
 
-  constructor( private router: Router ) {
+  constructor( private router: Router, private paymentService: PaymentService ) {
     // Intentionally blank
   }
 
@@ -29,7 +32,7 @@ export class PricingCardComponent {
     } else if ( this.pricingOption.link ) {
       this.redirect( this.pricingOption.link );
     } else {
-      this.redirect( URLS.maintenance );
+      this.buy();
     }
   }
 
@@ -39,5 +42,9 @@ export class PricingCardComponent {
     } else {
       window.location.href = href;
     }
+  }
+
+  buy() {
+    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
   }
 }

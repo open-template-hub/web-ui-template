@@ -1,5 +1,5 @@
 <div class="form-page-layout">
-  <app-card [header]="'Sitemap'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate">
+  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Sitemap'">
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="column">
@@ -12,8 +12,8 @@
                 <a *ngIf="!companyPage.isExternal" [routerLink]="companyPage.url" class="link-item">
                   {{ companyPage.name }}
                 </a>
-                <app-ext-link *ngIf="companyPage.isExternal" [href]="companyPage.url" class="link-item"
-                              [linkClass]="'align-flex-start link'">
+                <app-ext-link *ngIf="companyPage.isExternal" [href]="companyPage.url" [linkClass]="'align-flex-start link'"
+                              class="link-item">
                 <span body>
                   {{ companyPage.name }}
                 </span>
@@ -28,8 +28,8 @@
                 <a *ngIf="!developersPage.isExternal" [routerLink]="developersPage.url" class="link-item">
                   {{ developersPage.name }}
                 </a>
-                <app-ext-link *ngIf="developersPage.isExternal" [href]="developersPage.url" class="link-item"
-                              [linkClass]="'align-flex-start link'">
+                <app-ext-link *ngIf="developersPage.isExternal" [href]="developersPage.url" [linkClass]="'align-flex-start link'"
+                              class="link-item">
                   <span body>
                     {{ developersPage.name }}
                   </span>
@@ -48,8 +48,8 @@
                 <a *ngIf="!resourcesPage.isExternal" [routerLink]="resourcesPage.url" class="link-item">
                   {{ resourcesPage.name }}
                 </a>
-                <app-ext-link *ngIf="resourcesPage.isExternal" [href]="resourcesPage.url" class="link-item"
-                              [linkClass]="'link'">
+                <app-ext-link *ngIf="resourcesPage.isExternal" [href]="resourcesPage.url" [linkClass]="'link'"
+                              class="link-item">
                 <span body>
                   {{ resourcesPage.name }}
                 </span>

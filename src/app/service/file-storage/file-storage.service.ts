@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { BusinessLogicService } from '../business-logic/business-logic.service';
 
 @Injectable( {
   providedIn: 'root'
@@ -12,10 +13,16 @@ export class FileStorageService {
   public sharedProfileImage: Observable<any>;
   private profileImageSubject: BehaviorSubject<any>;
 
-  constructor( private http: HttpClient ) {
+  constructor( private http: HttpClient, private businessLogicService: BusinessLogicService ) {
     const profileImageStorageItem = localStorage.getItem( 'profileImage' ) ? localStorage.getItem( 'profileImage' ) : sessionStorage.getItem( 'profileImage' );
     this.profileImageSubject = new BehaviorSubject<any>( JSON.parse( profileImageStorageItem ) );
     this.sharedProfileImage = this.profileImageSubject.asObservable();
+
+    this.businessLogicService.userInfo.subscribe( userInfo => {
+      if ( !userInfo ) {
+        this.logout();
+      }
+    } );
   }
 
   public setProfileImageFileData( profileImg: any ) {

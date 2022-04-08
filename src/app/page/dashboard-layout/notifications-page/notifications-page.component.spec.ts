@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DefaultBottomSvgComponent } from './default-bottom-svg.component';
+import { NotificationsPageComponent } from './notifications-page.component';
 
-describe('DefaultBottomSvgComponent', () => {
-  let component: DefaultBottomSvgComponent;
-  let fixture: ComponentFixture<DefaultBottomSvgComponent>;
+describe('NotificationsPageComponent', () => {
+  let component: NotificationsPageComponent;
+  let fixture: ComponentFixture<NotificationsPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DefaultBottomSvgComponent ]
+      declarations: [ NotificationsPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DefaultBottomSvgComponent);
+    fixture = TestBed.createComponent(NotificationsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

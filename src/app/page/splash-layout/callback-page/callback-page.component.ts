@@ -141,8 +141,13 @@ export class CallbackPageComponent implements OnInit {
     .subscribe(
         ( response ) => {
           if ( response.preAuthToken ) {
-            this.authenticationService.setPreauthToken( response );
-            this.router.navigate( [ URLS.twoFactorVerification ], { queryParams: { oauthName: this.oauth.name, oauthLogo: this.oauth.logo } } );
+            this.authenticationService.setPreAuthToken( response );
+            this.router.navigate( [ URLS.twoFactorVerification ], {
+              queryParams: {
+                oauthName: this.oauth.name,
+                oauthLogo: this.oauth.logo
+              }
+            } );
           } else {
             this.analyticsService.logLoginEvent( this.oauth ).subscribe();
             this.router.navigate( [ URLS.dashboard.root ] );

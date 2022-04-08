@@ -9,10 +9,10 @@
   </ng-template>
   <ng-template #bodyTemplate>
     <div class="body">
-      <div class="row" *ngFor="let event of events; let last = last">
+      <div *ngFor="let event of events; let last = last" class="row">
         <img [src]="event.payload?.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
         <div *ngIf="categories[event.category]" class="column">
-          <p class="message">{{ categories[event.category] }}</p>
+          <p class="message">{{ categories[ event.category ] }}</p>
           <p class="date">{{ timestampToString( event.timestamp ) }}</p>
         </div>
       </div>

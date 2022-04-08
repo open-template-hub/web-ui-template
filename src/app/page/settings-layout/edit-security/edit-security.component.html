@@ -1,7 +1,7 @@
 <div class="edit-security-page">
 
   <div class="two-factor-auth-wrapper">
-    <app-card *ngIf="twoFactorVerificationState" [headerTemplate]="headerTemplate" [bodyTemplate]="bodyTemplate"
+    <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate" [headerTemplate]="headerTemplate"
               class="edit-two-factor-auth-card">
       <!-- Header -->
       <ng-template #headerTemplate>
@@ -27,7 +27,7 @@
                   [timeLeft]="timeLeft < 0 ? 0 : timeLeft"
                   [totalTime]="totalTime">
               </app-countdown>
-              <input formControlName="verificationCode" autocomplete="one-time-code" placeholder="Verification Code"
+              <input autocomplete="one-time-code" formControlName="verificationCode" placeholder="Verification Code"
                      type="text">
               <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
             </div>
@@ -41,10 +41,10 @@
           <div class="section-submit">
             <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'"
                         text="Submit"></app-button>
-            <app-button *ngIf="twoFactorVerificationState === 'expired'" text="Retry" (click)="retry()"
-                        [buttonClasses]="['information-button']"></app-button>
-            <app-button *ngIf="twoFactorVerificationState === 'verified'" (click)="deleteSubmittedPhoneNumber()"
-                        text="Delete" [buttonClasses]="['error-background-color']"></app-button>
+            <app-button (click)="retry()" *ngIf="twoFactorVerificationState === 'expired'" [buttonClasses]="['information-button']"
+                        text="Retry"></app-button>
+            <app-button (click)="deleteSubmittedPhoneNumber()" *ngIf="twoFactorVerificationState === 'verified'"
+                        [buttonClasses]="['error-background-color']" text="Delete"></app-button>
           </div>
         </form>
       </ng-template>

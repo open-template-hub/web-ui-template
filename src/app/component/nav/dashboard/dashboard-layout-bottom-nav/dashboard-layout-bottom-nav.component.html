@@ -4,39 +4,47 @@
     <span> Back </span>
   </a>
   <a *ngIf="!settingsOpened"
-     [routerLink]="URLS.dashboard.myProfile">
-    <img [src]="profileImg" [class.premium-border]="userIsPremium" alt="profile img"
-         class="profile-img-small yellow-theme"/>
-    <span> My Profile </span>
-  </a>
-  <a *ngIf="!settingsOpened"
      [routerLink]="URLS.dashboard.root">
     <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
     <span> Dashboard </span>
   </a>
-  <a (click)="settingsOpened = !settingsOpened" *ngIf="!settingsOpened" href="javascript:void(0)">
-    <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
-    <span> Settings </span>
+  <a *ngIf="!settingsOpened" [routerLink]="URLS.dashboard.notifications">
+    <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
+      {{ notifications.length > 9 ? '9+' : notifications.length }}
+    </div>
+    <i [class]="'fas fa-bell fa-fw'" aria-hidden="true"></i>
+    <span> Notifications </span>
   </a>
-  <a [routerLink]="URLS.contactUs" *ngIf="!settingsOpened" href="javascript:void(0)">
-    <i [class]="'fas fa-envelope fa-fw'" aria-hidden="true"></i>
-    <span> Contact Us </span>
-  </a>
-  <a *ngIf="!settingsOpened && !userIsPremium"
-     (click)="buy()">
+  <a [routerLink]="URLS.dashboard.premium" *ngIf="!settingsOpened">
     <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true" style="color: var(--theme-color);"></i>
     <span> Premium </span>
   </a>
-  <a [routerLink]="URLS.settings.editProfile" *ngIf="settingsOpened">
+  <a (click)="settingsOpened = true" *ngIf="!settingsOpened"
+     href="javascript:void(0)">
+    <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
+    <span> Settings </span>
+  </a>
+
+  <a *ngIf="!settingsOpened"
+     [routerLink]="URLS.dashboard.myProfile">
+    <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+         class="profile-img-small yellow-theme"/>
+    <span> My Profile </span>
+  </a>
+
+  <a *ngIf="settingsOpened" [routerLink]="URLS.settings.editProfile">
     <i [class]="'fas fa-user fa-fw'" aria-hidden="true"></i>
     <span> Edit Profile </span>
   </a>
-  <a [routerLink]="URLS.settings.editSecurity" *ngIf="settingsOpened">
+  <a *ngIf="settingsOpened" [routerLink]="URLS.settings.editSecurity">
     <i [class]="'fas fa-shield-alt fa-fw'" aria-hidden="true"></i>
     <span> Security </span>
   </a>
   <a (click)="logout()" *ngIf="settingsOpened" href="javascript:void(0)" id=logout>
     <i [class]="'fas fa-sign-out-alt fa-fw'" aria-hidden="true"></i>
     <span> Logout </span>
+  </a>
+  <a *ngIf="settingsOpened" class="disabled">
+    <span></span>
   </a>
 </nav>

@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { URLS } from '../../data/navigation/navigation.data';
 import { Product, ProductLine } from '../../model/product/product.model';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Injectable( {
   providedIn: 'root'
@@ -14,16 +15,16 @@ export class ProductService {
   URLS = URLS;
 
   public product: Observable<Product>;
-  private productSubject: BehaviorSubject<Product>;
-  private productStorageKey = 'product';
-
   public premiumProducts: Observable<any>;
   public premiumProductsSubject: BehaviorSubject<any>;
+  private productSubject: BehaviorSubject<Product>;
+  private productStorageKey = 'product';
   private premiumProductsStorageKey = 'premiumProducts';
 
   constructor(
       private http: HttpClient,
-      private router: Router
+      private router: Router,
+      private authenticationService: AuthenticationService
   ) {
     let productStorageItem: Product = JSON.parse( localStorage.getItem( this.productStorageKey ) ?
         localStorage.getItem( this.productStorageKey ) : sessionStorage.getItem( this.productStorageKey ) );
@@ -37,6 +38,12 @@ export class ProductService {
 
     this.premiumProductsSubject = new BehaviorSubject<any>( premiumProductsStorageItem );
     this.premiumProducts = this.premiumProductsSubject.asObservable();
+
+    this.authenticationService.currentUser.subscribe( currentUser => {
+      if ( !currentUser ) {
+        this.logout();
+      }
+    } );
   }
 
   setSelectedProduct( product: Product ) {
@@ -52,11 +59,6 @@ export class ProductService {
       localStorage.removeItem( this.productStorageKey );
       sessionStorage.removeItem( this.productStorageKey );
     }
-  }
-
-  private setPremiumProduct( premiumProducts: any ) {
-    localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) );
-    this.premiumProductsSubject.next( premiumProducts );
   }
 
   checkProduct( productId: string ) {
@@ -79,5 +81,10 @@ export class ProductService {
   logout() {
     localStorage.removeItem( this.productStorageKey );
     this.premiumProductsSubject.next( undefined );
+  }
+
+  private setPremiumProduct( premiumProducts: any ) {
+    localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) );
+    this.premiumProductsSubject.next( premiumProducts );
   }
 }

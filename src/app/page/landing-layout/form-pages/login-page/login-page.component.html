@@ -1,38 +1,41 @@
 <div class="form-page-layout">
   <!-- Welcome -->
-  <app-card [header]="'Login'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate">
+  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Login'">
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button *ngFor="let website of websites.slice(0, 4)"
-                              (click)="socialLogin( website )" [icon]="website.cssClass">
+            <app-brand-button (click)="socialLogin( website )" [disabled]="!website.tag"
+                              *ngFor="let website of websites.slice(0, 4)" [icon]="website.cssClass">
             </app-brand-button>
           </ng-container>
         </div>
-        <a *ngIf="!showMoreToggle" (click)="showMoreToggle = !showMoreToggle" class="more flex-layout-row flex-center-center theme-color-link">
+        <a (click)="showMoreToggle = !showMoreToggle" *ngIf="!showMoreToggle"
+           class="more flex-layout-row flex-center-center theme-color-link">
           <p i18n="@@signUp.more.text">more..</p>
-          <i aria-hidden="true" [class]="'fas fa-lg fa-fw fa-caret-down'"></i>
+          <i [class]="'fas fa-lg fa-fw fa-caret-down'" aria-hidden="true"></i>
         </a>
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button *ngFor="let website of websites.slice(4)"
-                              (click)="socialLogin( website )" [icon]="website.cssClass"
+            <app-brand-button (click)="socialLogin( website )" [disabled]="!website.tag"
+                              *ngFor="let website of websites.slice(4)" [icon]="website.cssClass"
+                              [style.height]="showMoreToggle ? 'auto' : 0"
                               [style.opacity]="showMoreToggle ? 1 : 0"
-                              [style.visibility]="showMoreToggle ? 'visible' : 'hidden'"
-                              [style.height]="showMoreToggle ? 'auto' : 0">
+                              [style.visibility]="showMoreToggle ? 'visible' : 'hidden'">
             </app-brand-button>
           </ng-container>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
           <div class="section">
             <div [class.error-input]="submitted && form.controls.username.invalid" class="input-with-icon">
-              <input formControlName="username" i18n-placeholder="@@loginPage.usernameOrEmail.placeholder" placeholder="Username or Email..." required type="text">
+              <input formControlName="username" i18n-placeholder="@@loginPage.usernameOrEmail.placeholder"
+                     placeholder="Username or Email..." required type="text">
               <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
             </div>
             <div [class.error-input]="submitted && form.controls.password.invalid" class="input-with-icon">
-              <input formControlName="password" i18n-placeholder="@@loginPage.password.placeholder" placeholder="Password..." required type="password">
+              <input formControlName="password" i18n-placeholder="@@loginPage.password.placeholder"
+                     placeholder="Password..." required type="password">
               <i aria-hidden="true" class="fas fa-lock fa-lg fa-fw"></i>
             </div>
             <div class="input-checkbox">
@@ -47,12 +50,12 @@
             <app-button i18n-text="@@loginPage.loginButton" text="LOG IN"></app-button>
             <p>
               <ng-container i18n="@@loginPage.dontHaveAccount">Don't have an account?</ng-container>
-              <a i18n="@@loginPage.signUp" [routerLink]="URLS.signup" class="theme-color-link">
+              <a [routerLink]="URLS.signup" class="theme-color-link" i18n="@@loginPage.signUp">
                 Sign Up
               </a>
             </p>
             <p>
-              <a i18n="@@loginPage.forgetPassword" [routerLink]="URLS.forgetPassword" class="theme-color-link">
+              <a [routerLink]="URLS.forgetPassword" class="theme-color-link" i18n="@@loginPage.forgetPassword">
                 Forget password?
               </a>
             </p>

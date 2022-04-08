@@ -6,15 +6,15 @@
     class="profile-card">
   <!-- Header -->
   <ng-template #headerTemplate>
-    <div class="header" [class.yellow-theme]="userIsPremium">
+    <div [class.yellow-theme]="userIsPremium" class="header">
       <app-image-content-loader
           *ngIf="!employeePhotoLoaded"
           [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
       <img
           (load)="setEmployeePhotoLoaded()"
+          [class.premium-border]="userIsPremium"
           [src]="photoUri ? photoUri : './assets/common/profile-img.png'"
-          [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')"
-          alt="profile-img" class="profile-img" [class.premium-border]="userIsPremium"/>
+          [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')" alt="profile-img" class="profile-img"/>
       <p *ngIf="userIsPremium" class="theme-color yellow-theme">(premium)</p>
       <p>@{{ user.username }}</p>
     </div>
@@ -23,35 +23,35 @@
   <!-- Body -->
   <ng-template #bodyTemplate>
     <div class="body">
-      <div class="key-value-area" *ngIf="user.payload?.firstName">
+      <div *ngIf="user.payload?.firstName" class="key-value-area">
         <p class="key">First Name</p>
         <p class="value">{{ user.payload?.firstName }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.lastName">
+      <div *ngIf="user.payload?.lastName" class="key-value-area">
         <p class="key">Last Name</p>
         <p class="value">{{ user.payload?.lastName }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.bio">
+      <div *ngIf="user.payload?.bio" class="key-value-area">
         <p class="key">Bio</p>
         <p class="value">{{ user.payload?.bio }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.location">
+      <div *ngIf="user.payload?.location" class="key-value-area">
         <p class="key">Location</p>
         <p class="value">{{ user.payload?.location }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.phone">
+      <div *ngIf="user.payload?.phone" class="key-value-area">
         <p class="key">Phone</p>
         <p class="value">{{ user.payload?.phone }}</p>
       </div>
 
-      <div class="key-value-area" *ngIf="user.payload?.website">
+      <div *ngIf="user.payload?.website" class="key-value-area">
         <p class="key">Website</p>
         <div class="value">
-          <a class="website" [href]="user.payload?.website">{{ user.payload?.website }}</a>
+          <a [href]="user.payload?.website" class="website">{{ user.payload?.website }}</a>
         </div>
       </div>
     </div>
@@ -59,9 +59,9 @@
 
   <!-- Footer -->
   <ng-template #footerTemplate>
-    <div class="footer"
-         *ngIf="user.payload?.social?.linkedin || user.payload?.social?.twitter || user.payload?.social?.github">
-      <div class="social-area" *ngIf="user.payload?.social?.twitter">
+    <div *ngIf="user.payload?.social?.linkedin || user.payload?.social?.twitter || user.payload?.social?.github"
+         class="footer">
+      <div *ngIf="user.payload?.social?.twitter" class="social-area">
         <app-ext-link
             [href]="user.payload.social.twitter">
           <i [class]="'fab fa-' + environmentCommon.website.twitter.cssClass + ' fa-fw'"
@@ -71,7 +71,7 @@
         </app-ext-link>
         <p>{{ parseSocialUrl( user.payload.social.twitter ) }}</p>
       </div>
-      <div class="social-area" *ngIf="user.payload?.social?.linkedin">
+      <div *ngIf="user.payload?.social?.linkedin" class="social-area">
         <app-ext-link
             [href]="user.payload.social.linkedin">
           <i [class]="'fab fa-' + environmentCommon.website.linkedin.cssClass + ' fa-fw'"
@@ -81,7 +81,7 @@
         </app-ext-link>
         <p>{{ parseSocialUrl( user.payload.social.linkedin ) }}</p>
       </div>
-      <div class="social-area" *ngIf="user.payload?.social?.github">
+      <div *ngIf="user.payload?.social?.github" class="social-area">
         <app-ext-link [href]="user.payload.social.github">
           <i [class]="'fab fa-' + environmentCommon.website.github.cssClass + ' fa-fw'"
              aria-hidden="true"

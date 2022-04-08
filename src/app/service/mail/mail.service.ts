@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 
@@ -7,19 +7,19 @@ import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
   providedIn: 'root',
 } )
 export class MailService {
-  constructor( 
-    private http: HttpClient,
-    private browserLocale: BrowserLocaleService
+  constructor(
+      private http: HttpClient,
+      private browserLocale: BrowserLocaleService
   ) {
     // intentionally blank
   }
 
   sendContactUsMail( params: any ) {
-    const preferredLanguage = this.browserLocale.getBrowserLocale()
+    const preferredLanguage = this.browserLocale.getBrowserLocale();
 
-    return this.http.post<any>( 
-      `${ environment.serverUrl }/mail/contact`, 
-      { params, preferredLanguage } 
+    return this.http.post<any>(
+        `${ environment.serverUrl }/mail/contact`,
+        { params, preferredLanguage }
     );
   }
 }

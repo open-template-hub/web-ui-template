@@ -31,13 +31,13 @@ export class MyProfilePageComponent implements OnDestroy {
   rateObject: Rate;
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private loadingService: LoadingService,
-    private businessLogicService: BusinessLogicService,
-    private fileStorageService: FileStorageService,
-    private informationService: InformationService,
-    private productService: ProductService
+      private router: Router,
+      private authenticationService: AuthenticationService,
+      private loadingService: LoadingService,
+      private businessLogicService: BusinessLogicService,
+      private fileStorageService: FileStorageService,
+      private informationService: InformationService,
+      private productService: ProductService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
       this.currentUser = currentUser;
@@ -51,20 +51,20 @@ export class MyProfilePageComponent implements OnDestroy {
 
     this.businessLogicService.me()
     .subscribe( userInfo => {
-        this.userInfo = userInfo;
+          this.userInfo = userInfo;
 
-        if ( !this.userInfo.payload ) {
-          this.businessLogicService.createMyInfo()
-          .subscribe( () => {
-              this.router.navigate( [ URLS.settings.editProfile ] );
+          if ( !this.userInfo.payload ) {
+            this.businessLogicService.createMyInfo()
+            .subscribe( () => {
+                  this.router.navigate( [ URLS.settings.editProfile ] );
+                }
+            );
+          } else {
+            if ( this.userInfo?.payload?.profileImageId ) {
+              this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
             }
-          );
-        } else {
-          if ( this.userInfo?.payload?.profileImageId ) {
-            this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
           }
         }
-      }
     );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {

@@ -1,3 +1,5 @@
+@use "../util/util";
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -22,53 +24,73 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 25vw;
+    min-width: 20vw;
     overflow: hidden;
     white-space: nowrap;
     font-size: 13px;
     transition: background-color 0.1s ease-in-out;
     cursor: pointer;
 
+    position: relative;
+
     & i {
       margin: 0.2em;
       font-size: 19px;
     }
 
-    &:hover {
-      background: var(--hover);
-    }
-  }
-
-  & .login {
-    color: var(--theme-color);
-    border-bottom: var(--theme-color) 1px solid;
-
-    &:hover {
-      color: white;
-      background: var(--theme-color);
-    }
-  }
-
-  & .contact {
-    color: var(--theme-color);
-    border-radius: 0;
-    border-bottom: var(--theme-color) 1px solid;
-
-    & span {
-      font-size: 0.8em;
-    }
-
-    &:hover {
-      color: white;
-      border-radius: 3px;
-      background: var(--theme-color);
-    }
-  }
-
-  & .non-clickable {
-    &:hover {
-      background: none;
+    &.disabled {
       cursor: auto;
+    }
+
+    & .notifications {
+      @include util.flex-layout-row;
+      @include util.flex-center-center;
+
+      border-radius: 100%;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 -6px 15px -7px var(--shadow);
+      border: 1px solid var(--card);
+      background-color: var(--error);
+      color: var(--card);
+
+      position: absolute;
+      left: 10vw;
+      top: 4px;
+
+      &.smaller-font {
+        font-size: 11px;
+      }
+    }
+  }
+
+  & .sign-up {
+    color: var(--theme-color);
+  }
+}
+
+@media (hover: hover) {
+  .bottom-nav {
+    & a {
+      &:hover {
+        background: var(--hover);
+      }
+
+      &.disabled {
+        cursor: auto;
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
+
+    & .sign-up {
+      &:hover {
+        color: white;
+        background: var(--theme-color);
+      }
     }
   }
 }

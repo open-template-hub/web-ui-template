@@ -1,36 +1,37 @@
 <div class="edit-profile-page">
   <h2>Edit Profile</h2>
   <app-card
-    [bodyTemplate]="bodyTemplate"
-    [headerTemplate]="headerTemplate"
-    class="edit-profile-card">
+      [bodyTemplate]="bodyTemplate"
+      [headerTemplate]="headerTemplate"
+      class="edit-profile-card">
     <!-- Header -->
     <ng-template #headerTemplate>
       <div class="header">
         <div (click)="fileInput.click()" class="profile-image-wrapper" style="cursor: pointer">
-            <img [src]="candidateProfileImg ? candidateProfileImg : profileImg" alt="profile img"
-                 class="profile-img"/>
+          <img [src]="candidateProfileImg ? candidateProfileImg : profileImg" alt="profile img"
+               class="profile-img"/>
           <div class="edit-photo">
             <i aria-hidden="true" class="fas fa-pencil-alt fa-fw"></i>
             <span> Edit</span>
           </div>
         </div>
 
-        <input #fileInput (change)="fileChangeEvent($event)" accept="image/*" hidden style="height: 0" type="file"/>
+        <div class="image-cropper-wrapper">
+          <input #fileInput (change)="fileChangeEvent($event)" accept="image/*" hidden style="height: 0" type="file"/>
 
-        <image-cropper (cropperReady)="cropperReady()"
-                       (imageCropped)="imageCropped($event)"
-                       (imageLoaded)="imageLoaded()"
-                       (loadImageFailed)="loadImageFailed()"
-                       [aspectRatio]="1"
-                       [imageChangedEvent]="imageChangedEvent"
-                       [maintainAspectRatio]="true"
-                       [resizeToWidth]="400"
-                       [style]="imageChangedEvent ? 'display:block' : 'display:none'"
-                       format="png"
-                       outputType="file"
-                       style="max-width: 400px; padding: 0"
-        ></image-cropper>
+          <image-cropper (cropperReady)="cropperReady()"
+                         (imageCropped)="imageCropped($event)"
+                         (imageLoaded)="imageLoaded()"
+                         (loadImageFailed)="loadImageFailed()"
+                         [aspectRatio]="1"
+                         [imageChangedEvent]="imageChangedEvent"
+                         [maintainAspectRatio]="true"
+                         [resizeToWidth]="400"
+                         [style]="imageChangedEvent ? 'display:block' : 'display:none'"
+                         format="png"
+                         outputType="file">
+          </image-cropper>
+        </div>
       </div>
     </ng-template>
 

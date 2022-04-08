@@ -1,4 +1,5 @@
 <app-search></app-search>
 <div class="side-content-wrapper">
-  <app-activity-card *ngIf="events?.length > 0" class="recent-activity" [events]="events" [categories]="categories"></app-activity-card>
+  <app-activity-card *ngIf="events?.length > 0" [categories]="categories" [events]="events"
+                     class="recent-activity"></app-activity-card>
 </div>
