@@ -6,7 +6,7 @@
 
 
 <h1 align="center">
-Open Template Hub - Web UI Template v3
+Open Template Hub - Web UI Template v4
   <br/>
 (favicon generation guide)
 </h1>
