@@ -86,7 +86,11 @@ export class GithubProviderService {
     if ( response != null ) {
       const json: any[] = JSON.parse( response as string );
       return json.map( item => {
-        const activity: Activity = { type: 'commit', date: new Date( item.commit?.committer?.date ), payload: item.sha };
+        const activity: Activity = {
+          type: 'commit',
+          date: new Date( item.commit?.committer?.date ),
+          payload: item.sha
+        };
         return activity;
       } );
     }

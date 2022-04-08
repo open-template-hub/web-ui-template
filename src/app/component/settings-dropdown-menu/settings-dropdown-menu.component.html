@@ -4,11 +4,11 @@
   </div>
 
   <div #dropdownContent
-      *ngIf="isDropdownOpen"
-      [class.dropdown-opened]="isDropdownOpen && closeDropdownInternalClicked"
-      class="dropdown-content">
+       *ngIf="isDropdownOpen"
+       [class.dropdown-opened]="isDropdownOpen && closeDropdownInternalClicked"
+       class="dropdown-content">
     <i aria-hidden="true"
-        class="dropdown-caret fas fa-caret-up fa-lg fa-fw"></i>
+       class="dropdown-caret fas fa-caret-up fa-lg fa-fw"></i>
     <div (click)="closeDropDownInternal()" class="dropdown-top-menu">
       <i aria-hidden="true" class="fas fa-times fa-lg fa-fw"></i>
     </div>
@@ -16,7 +16,7 @@
     <div class="section-column-wrapper">
       <div class="section-column">
         <ng-container *ngFor="let item of items; last as isLast; first as isFirst">
-          <a *ngIf="item.url" (click)="closeDropDownInternal()"
+          <a (click)="closeDropDownInternal()" *ngIf="item.url"
              [routerLink]="item.url"
              class="dropdown-item">
             <div class="dropdown-item-content">
@@ -26,7 +26,7 @@
               </h6>
             </div>
           </a>
-          <a *ngIf="item.logout" (click)="closeDropDownInternal(); logout()"
+          <a (click)="closeDropDownInternal(); logout()" *ngIf="item.logout"
              class="dropdown-item">
             <div class="dropdown-item-content">
               <i [class]="'fas fa-fw fa-' + item.icon" aria-hidden="true"></i>

@@ -99,6 +99,11 @@
   flex-direction: column;
 }
 
+@mixin flex-layout-column-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 @mixin flex-layout-row-wrap {
   display: flex;
   flex-direction: row;

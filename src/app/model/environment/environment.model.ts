@@ -11,7 +11,7 @@ export interface EnvironmentModel {
   serverUrl: string;
   clientUrl: string;
   mockDataEnabled: boolean;
-  
+
   oauth: {
     twitter: OauthModel
     google: OauthModel
@@ -22,29 +22,29 @@ export interface EnvironmentModel {
     dribbble: OauthModel
     reddit: OauthModel
   };
-  
+
   payment: {
     stripe: PaymentModel
     coinbase: PaymentModel
     paypal: PaymentModel
   };
-  
+
   fileStorage: {
     aws: FileStorageModel
     googleCloud: FileStorageModel
   };
-  
+
   mail: {
     gmail: MailModel
     yahoo: MailModel
     outlook: MailModel
   };
-  
+
   sms: {
     twillio: SmsModel
     awsSns: SmsModel
   };
-  
+
   analytics: {
     googleAnalytics: AnalyticsModel,
     matomo: AnalyticsModel

@@ -1,12 +1,156 @@
+@use "../../../../styles/util/util";
+@use "../../../component/card/card.component";
+
 .dashboard-page {
   padding-top: 120px;
   margin-left: 60px;
   margin-right: 60px;
+
+  & .socket-activity-card {
+    margin: 30px;
+
+    & .body {
+      @include util.flex-layout-row;
+
+      height: 246px;
+
+      padding: 0.5em 1.5em 1.5em;
+
+      font-size: 16px;
+
+      & .chat {
+        overflow: auto;
+        display: flex;
+        flex-direction: column-reverse;
+
+        padding-right: 0.5em;
+        width: 70%;
+
+        box-sizing: border-box;
+      }
+
+      & .users {
+        font-size: 15px;
+
+        width: 30%;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+
+        & .title {
+          border-bottom: 1px solid var(--theme-color);
+          margin-bottom: 0.5em;
+        }
+
+        & .users-list {
+          @include util.default-border-radius;
+
+          background-color: var(--card);
+          border: 2px solid var(--shadow-lighter);
+          box-shadow: 0 -6px 15px -7px var(--shadow);
+
+          box-sizing: border-box;
+          padding: 0.5em;
+
+          overflow-y: auto;
+
+          height: -webkit-fill-available;
+
+          & .user-wrapper {
+            @include util.flex-layout-row;
+
+            justify-content: flex-start;
+            align-items: center;
+
+            & p {
+              margin-left: 0.5em;
+              font-weight: 400;
+              color: var(--theme-color-darker-2);
+            }
+          }
+        }
+      }
+
+
+      & p {
+        &.even {
+          background-color: var(--darker-contrast);
+        }
+
+        & .author {
+          font-weight: 500;
+          color: var(--theme-color-darker-2);
+        }
+      }
+    }
+
+    & .footer {
+      @include card.default-footer;
+      padding: 1em;
+
+      & form {
+        width: 100%;
+      }
+
+      & .input-with-icon {
+        flex-direction: row;
+
+        & i {
+          @include util.default-border-radius;
+
+          border: 1px solid var(--lighter-contrast);
+          box-shadow: 0 0 15px -4px var(--shadow);
+
+          padding: 0.65em 1.1em;
+          cursor: pointer;
+
+          color: var(--lighter-contrast);
+        }
+
+        & input:focus {
+          border-color: var(--theme-color-lighter-6);
+
+          & + i {
+            border-color: var(--theme-color-lighter-6);
+            color: var(--theme-color);
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 999px) {
   .dashboard-page {
     margin-left: 0;
     margin-right: 0;
+
+    & .socket-activity-card {
+      margin: 30px;
+
+      & .body {
+        @include util.flex-layout-column-reverse;
+
+        & .chat, & .users {
+          width: 100%;
+        }
+
+        height: auto;
+
+        & .chat {
+          height: 300px;
+          padding-right: 0;
+        }
+
+        & .users {
+          height: auto;
+          padding-bottom: 0.5em;
+          border-bottom: 1px solid var(--shadow-lighter);
+
+          & .users-list {
+            height: 150px;
+          }
+        }
+      }
+    }
   }
 }

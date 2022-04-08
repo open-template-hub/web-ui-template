@@ -10,7 +10,7 @@ export class AnalyticsService {
   configs = {
     sideContentLimit: 12,
     editSecurityLimit: 12
-  }
+  };
 
   constructor(
       private http: HttpClient,
@@ -33,26 +33,6 @@ export class AnalyticsService {
 
       return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
     }
-  }
-
-  private logSocialLoginEvent( provider: string, icon: string ) {
-
-    const data: any = {
-      category: 'SOCIAL_LOGIN',
-      source: environment.clientUrl
-    };
-
-    if ( provider ) {
-      data.payload = { provider };
-    }
-
-    if ( icon ) {
-      data.payload = { icon };
-    }
-
-    console.log( 'logloginevent', data );
-
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
   logPaymentEvent( payment: any ) {
@@ -78,35 +58,53 @@ export class AnalyticsService {
   }
 
   getEvents( category: string | undefined, start: number | undefined, end: number | undefined, skip: number, limit: number ) {
-    let queryParams = `skip=${skip}&limit=${limit}`;
+    let queryParams = `skip=${ skip }&limit=${ limit }`;
 
-    if(category) {
-      queryParams += `&category=${category}`;
+    if ( category ) {
+      queryParams += `&category=${ category }`;
     }
 
-    if(start) {
-      queryParams += `&start=${start}`;
+    if ( start ) {
+      queryParams += `&start=${ start }`;
     }
 
-    if(end) {
-      queryParams += `&end=${end}`;
+    if ( end ) {
+      queryParams += `&end=${ end }`;
     }
 
-    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?${queryParams}`);
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event?${ queryParams }` );
   }
 
   getCategories() {
-    let language = this.browserLocaleService.getBrowserLocale();
-    return this.http.get<any>( `${ environment.serverUrl }/analytics/event/categories?language=${ language }`);
+    const language = this.browserLocaleService.getBrowserLocale();
+    return this.http.get<any>( `${ environment.serverUrl }/analytics/event/categories?language=${ language }` );
   }
 
-  convertCategoriesToMappedObject(categoriesResponse: any): any {
-    let categories: any = { }
-    for(let category of categoriesResponse) {
-      if(category.messages.length > 0) {
-        categories[category.key] = category.messages[0].text;
+  convertCategoriesToMappedObject( categoriesResponse: any ): any {
+    const categories: any = {};
+    for ( const category of categoriesResponse ) {
+      if ( category.messages.length > 0 ) {
+        categories[ category.key ] = category.messages[ 0 ].text;
       }
     }
     return categories;
+  }
+
+  private logSocialLoginEvent( provider: string, icon: string ) {
+
+    const data: any = {
+      category: 'SOCIAL_LOGIN',
+      source: environment.clientUrl
+    };
+
+    if ( provider ) {
+      data.payload = { provider };
+    }
+
+    if ( icon ) {
+      data.payload = { icon };
+    }
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 }

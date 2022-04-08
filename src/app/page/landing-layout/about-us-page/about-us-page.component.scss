@@ -69,6 +69,7 @@
 
   .contact-information-wrapper {
     @include util.flex-layout-column;
+
     & app-contact-information-card {
       width: 800px;
     }

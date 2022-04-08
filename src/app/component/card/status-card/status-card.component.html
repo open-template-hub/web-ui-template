@@ -1,6 +1,6 @@
-<app-card *ngIf="overallSystemStatus.systemStatuses" [header]="'System Status'" [defaultHeaderClass]="'underline'"
-          [bodyTemplate]="bodyTemplate"
-          [footerTemplate]="footerTemplate" class="status-card">
+<app-card *ngIf="overallSystemStatus.systemStatuses" [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'"
+          [footerTemplate]="footerTemplate"
+          [header]="'System Status'" class="status-card">
   <!-- Body -->
   <ng-template #bodyTemplate>
     <div class="body">

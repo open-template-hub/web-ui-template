@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
 import { AuthenticationService } from 'src/app/service/auth/authentication.service';
-import { BusinessLogicService } from 'src/app/service/business-logic/business-logic.service';
 import { ToastService } from 'src/app/service/toast/toast.service';
 import { TwoFactorCodeService } from 'src/app/service/two-factor-code/two-factor-code.service';
 
@@ -14,7 +13,7 @@ import { TwoFactorCodeService } from 'src/app/service/two-factor-code/two-factor
   styleUrls: [ './edit-security.component.scss' ]
 } )
 export class EditSecurityComponent implements OnInit, OnDestroy {
-  
+
   form: FormGroup;
   submitted = false;
   loading = false;
@@ -29,7 +28,7 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
   twoFactorVerificationState: 'request' | 'verify' | 'verified' | 'expired';
 
   submittedPhoneNumber: string;
-  
+
   maskedPhoneNumberOptions = {
     beginningLengthThreshold: 3,
     lastLengthThreshold: 2
@@ -38,7 +37,7 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
   events: any[] = [];
 
   skip = 0;
-  
+
   constructor(
       private fromBuilder: FormBuilder,
       private toastService: ToastService,
@@ -48,39 +47,38 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
       private router: Router
   ) {
   }
-  
+
   ngOnInit(): void {
     this.form = this.fromBuilder.group( {
       phoneNumber: [ '' ],
-      verificationCode: [ '']
+      verificationCode: [ '' ]
     } );
-    
+
     this.authenticationService.getSubmittedPhoneNumber().subscribe( response => {
-      if( response.phoneNumber ) {
+      if ( response.phoneNumber ) {
         this.submittedPhoneNumber = response.phoneNumber;
-        this.twoFactorVerificationState = 'verified'
+        this.twoFactorVerificationState = 'verified';
+      } else {
+        this.twoFactorVerificationState = 'request';
       }
-      else {
-        this.twoFactorVerificationState = 'request'
-      }
-    });
+    } );
   }
 
   ngOnDestroy(): void {
-      clearInterval(this.timerInterval);
+    clearInterval( this.timerInterval );
   }
 
   startTimer() {
-    this.timerInterval = setInterval(() => {
+    this.timerInterval = setInterval( () => {
       this.timePassed += 1;
       this.timeLeft = this.totalTime - this.timePassed;
-  
-      if( this.timeLeft === 0 ) {
-        clearInterval(this.timerInterval);
+
+      if ( this.timeLeft === 0 ) {
+        clearInterval( this.timerInterval );
         this.toastService.error( 'Time has expired' );
         this.twoFactorVerificationState = 'expired';
       }
-    }, 1000);
+    }, 1000 );
   }
 
   onPhoneNumberSubmit() {
@@ -99,10 +97,9 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if( this.twoFactorVerificationState === 'request' ) {
+    if ( this.twoFactorVerificationState === 'request' ) {
       this.submitPhoneNumber();
-    }
-    else if( this.twoFactorVerificationState === 'verify' ) {
+    } else if ( this.twoFactorVerificationState === 'verify' ) {
       this.verifyPhoneNumber();
     }
   }
@@ -111,15 +108,15 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
     this.twoFactorCodeService.submitPhoneNumber(
         this.form.controls.phoneNumber.value
     ).subscribe(
-        (response) => {
+        ( response ) => {
           this.totalTime = undefined;
           this.timePassed = 0;
           this.timeLeft = undefined;
-          
-          this.formatAndSetTime( response.expire )
+
+          this.formatAndSetTime( response.expire );
           this.form.controls.phoneNumber.disable();
           this.twoFactorVerificationState = 'verify';
-          this.startTimer()
+          this.startTimer();
           this.toastService.success( 'Code sent to your phone number' );
         }
     );
@@ -133,30 +130,30 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
     const expireDate = new Date( +expiry );
     const currentDate = new Date();
 
-    const diff =  Math.floor( ( expireDate.getTime() - currentDate.getTime() ) / 1000 );
+    const diff = Math.floor( ( expireDate.getTime() - currentDate.getTime() ) / 1000 );
     this.totalTime = diff;
     this.timeLeft = diff;
   }
 
   verifyPhoneNumber() {
     this.twoFactorCodeService.verify(
-      this.form.controls.verificationCode.value,
-      true
+        this.form.controls.verificationCode.value,
+        true
     ).subscribe(
-      () => {
-        this.analyticsService.logSubmitPhoneNumberEvent().subscribe();
-        this.twoFactorVerificationState = 'verified';
-        this.toastService.success( 'Phone number verified' );
-        this.router.navigate( [ URLS.dashboard.root ] );
-      }
-    )
+        () => {
+          this.analyticsService.logSubmitPhoneNumberEvent().subscribe();
+          this.twoFactorVerificationState = 'verified';
+          this.toastService.success( 'Phone number verified' );
+          this.router.navigate( [ URLS.dashboard.root ] );
+        }
+    );
   }
 
   deleteSubmittedPhoneNumber() {
     this.authenticationService.deleteSubmittedPhoneNumber().subscribe( () => {
-      this.submittedPhoneNumber = undefined
+      this.submittedPhoneNumber = undefined;
       this.twoFactorVerificationState = 'request';
-      this.toastService.success("Submitted phone number removed")
+      this.toastService.success( 'Submitted phone number removed' );
     } );
   }
 }

@@ -2,24 +2,24 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileCardComponent } from './profile-card.component';
 
-describe('ProfileCardComponent', () => {
+describe( 'ProfileCardComponent', () => {
   let component: ProfileCardComponent;
   let fixture: ComponentFixture<ProfileCardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach( async () => {
+    await TestBed.configureTestingModule( {
       declarations: [ ProfileCardComponent ]
-    })
+    } )
     .compileComponents();
-  });
+  } );
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileCardComponent);
+  beforeEach( () => {
+    fixture = TestBed.createComponent( ProfileCardComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  } );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it( 'should create', () => {
+    expect( component ).toBeTruthy();
+  } );
+} );

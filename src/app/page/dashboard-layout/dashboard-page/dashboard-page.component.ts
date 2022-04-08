@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/rate-bar/rate-bar.component';
@@ -13,13 +14,14 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { PaymentService } from '../../../service/payment/payment.service';
 import { ProductService } from '../../../service/product/product.service';
+import { ToastService } from '../../../service/toast/toast.service';
 
 @Component( {
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: [ './dashboard-page.component.scss' ]
 } )
-export class DashboardPageComponent implements OnDestroy {
+export class DashboardPageComponent implements OnInit, OnDestroy {
 
   currentUser: AuthToken;
   userInfo: any = {};
@@ -29,15 +31,19 @@ export class DashboardPageComponent implements OnDestroy {
   userIsPremium;
   URLS = URLS;
 
+  form: FormGroup;
+
   rateObject: Rate;
 
   constructor(
+      private formBuilder: FormBuilder,
       private router: Router,
       private authenticationService: AuthenticationService,
       private loadingService: LoadingService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
+      private toastService: ToastService,
       private paymentService: PaymentService,
       private productService: ProductService
   ) {
@@ -49,18 +55,20 @@ export class DashboardPageComponent implements OnDestroy {
       this.userInfo = userInfo;
     } );
 
+
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
     this.businessLogicService.me()
     .subscribe( userInfo => {
       this.userInfo = userInfo;
-      this.productService.checkProduct( PremiumProducts.premiumAccount )
+      this.productService.checkProduct( PremiumProducts.premiumAccount );
       if ( !this.userInfo.payload ) {
         this.businessLogicService.createMyInfo()
         .subscribe( () => {
-              this.router.navigate( [ URLS.settings.editProfile ] );
-            } );
+          this.router.navigate( [ URLS.settings.editProfile ] );
+        } );
       } else {
+
         if ( this.userInfo?.payload?.profileImageId ) {
           this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
         }
@@ -75,6 +83,16 @@ export class DashboardPageComponent implements OnDestroy {
 
     this.productService.premiumProducts.subscribe( response => {
       this.userIsPremium = response?.name !== undefined;
+    } );
+  }
+
+  ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = this.formBuilder.group( {
+      message: [ '', Validators.required ]
     } );
   }
 

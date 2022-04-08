@@ -26,7 +26,7 @@ export class MonitoringService {
     return this.http.get<any>( `${ environment.serverUrl }/monitor/alive` ).subscribe( observer );
   }
 
-  parseSystemStatuses(systemStatuses) {
+  parseSystemStatuses( systemStatuses ) {
     let overallSystemStatus = DEFAULT_SYSTEM_STATUS;
 
     if ( !systemStatuses ) {
@@ -96,6 +96,6 @@ export class MonitoringService {
 
     overallSystemStatus.checkDate = new Date();
 
-    return overallSystemStatus
+    return overallSystemStatus;
   }
 }

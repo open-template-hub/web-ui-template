@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { PRODUCT_LINES } from 'src/app/data/product/product.data';
+import { environmentCommon } from 'src/environments/environment-common';
 import { COMPANY_PAGES } from '../../../data/company/company.data';
 import { DEVELOPERS_PAGES } from '../../../data/developers/developers.data';
-import { RESOURCES_PAGES } from '../../../data/resources/resources.data';
-import { environmentCommon } from 'src/environments/environment-common';
 import { URLS } from '../../../data/navigation/navigation.data';
+import { RESOURCES_PAGES } from '../../../data/resources/resources.data';
 import { ProductLine } from '../../../model/product/product.model';
 
 @Component( {

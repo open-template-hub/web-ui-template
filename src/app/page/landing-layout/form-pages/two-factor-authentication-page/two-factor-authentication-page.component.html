@@ -1,36 +1,38 @@
 <div class="form-page-layout">
-    <!-- Welcome -->
-    <app-card [header]="'Verify SMS Code'" [defaultHeaderClass]="'underline'" [bodyTemplate]="bodyTemplate" class="two-factor-authentication-card">
-      <!-- Body -->
-      <ng-template #bodyTemplate>
-        <div class="body">
-          <form (ngSubmit)="onSubmit()" [formGroup]="form">
-            <div class="section">
-              <p>Two factor authentication code sent to {{ maskedPhoneNumber }}</p>
-              <div [class.error-input]="submitted && form.controls.verificationCode.invalid" class="input-with-icon">
-                <app-countdown
+  <!-- Welcome -->
+  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Verify SMS Code'"
+            class="two-factor-authentication-card">
+    <!-- Body -->
+    <ng-template #bodyTemplate>
+      <div class="body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+          <div class="section">
+            <p>Two factor authentication code sent to {{ maskedPhoneNumber }}</p>
+            <div [class.error-input]="submitted && form.controls.verificationCode.invalid" class="input-with-icon">
+              <app-countdown
                   [timeLeft]="timeLeft < 0 ? 0 : timeLeft"
                   [totalTime]="totalTime">
-                </app-countdown>
-                <input formControlName="verificationCode" autocomplete="one-time-code" placeholder="Code" required type="text">
-                <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
-              </div>
+              </app-countdown>
+              <input autocomplete="one-time-code" formControlName="verificationCode" placeholder="Code" required
+                     type="text">
+              <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
             </div>
-            <div class="section-submit">
-              <app-button i18n-text="@@loginPage.loginButton" text="SUBMIT"
-                [buttonClasses]="timeLeft <= 0 ? ['lighter-contrast-background-color', 'disabled-hover'] : []"></app-button>
-              <p i18n="@@signUp.alreadyHaveAccount" *ngIf="timeLeft <= 0">
-                Time has expired, please
-                <a [routerLink]="URLS.login" class="theme-color-link">
-                  retry
-                </a>
-              </p>
-            </div>
-          </form>
-        </div>
-      </ng-template>
-    </app-card>
-  </div>
-  <app-cookies></app-cookies>
+          </div>
+          <div class="section-submit">
+            <app-button [disabled]="timeLeft <= 0" i18n-text="@@loginPage.loginButton"
+                        text="SUBMIT"></app-button>
+            <p *ngIf="timeLeft <= 0" i18n="@@signUp.alreadyHaveAccount">
+              Time has expired, please
+              <a [routerLink]="URLS.login" class="theme-color-link">
+                retry
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </app-card>
+</div>
+<app-cookies></app-cookies>
 
 

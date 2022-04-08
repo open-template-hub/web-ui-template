@@ -1,0 +1,58 @@
+@use '../../../../styles/util/util';
+@use '../../../component/card/card.component';
+
+.notifications-card {
+
+  & .body {
+    @include card.default-body;
+
+    justify-content: flex-start;
+
+    width: 100%;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    & .notification {
+      @include util.flex-layout-row;
+
+      align-items: center;
+
+      width: 100%;
+      height: 50px;
+
+      border-bottom: 1px solid var(--theme-color-lighter-7);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.dim {
+        color: var(--lighter-contrast);
+
+        &:hover {
+          cursor: auto;
+        }
+      }
+
+      & .date {
+        width: 25%;
+        padding-right: 10px;
+      }
+
+      & .message {
+        width: 75%;
+        text-align: left;
+        padding-left: 10px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .footer {
+    @include card.default-footer;
+  }
+}

@@ -25,16 +25,16 @@ export class VerifyAccountPageComponent implements OnInit, OnDestroy {
   BRAND = BRAND;
 
   verifyingAccountAppHeroContents = [
-    {text: $localize `:@@verifyAccount.verifyAccountAppHero:Verifying account...`, level: 2}
-  ]
+    { text: $localize`:@@verifyAccount.verifyAccountAppHero:Verifying account...`, level: 2 }
+  ];
   accountVerificationFailedAppHeroContents = [
-    {text: $localize `:@@verifyAccount.accountVerificationFailedAppHero.1:Account verification failed`, level: 2},
-    {text: $localize `:@@verifyAccount.accountVerificationFailedAppHero.2:Something went wrong!`}
-  ]
+    { text: $localize`:@@verifyAccount.accountVerificationFailedAppHero.1:Account verification failed`, level: 2 },
+    { text: $localize`:@@verifyAccount.accountVerificationFailedAppHero.2:Something went wrong!` }
+  ];
   accountVerifiedAppHeroContents = [
-    {text: $localize `:@@verifyAccount.verifiedAppHero.1:Account verified 🎉`, level: 2},
-    {text: $localize `:@@verifyAccount.verifiedAppHero.2:Please proceed with login`}
-  ]
+    { text: $localize`:@@verifyAccount.verifiedAppHero.1:Account verified 🎉`, level: 2 },
+    { text: $localize`:@@verifyAccount.verifiedAppHero.2:Please proceed with login` }
+  ];
 
   constructor( private route: ActivatedRoute,
       public router: Router,

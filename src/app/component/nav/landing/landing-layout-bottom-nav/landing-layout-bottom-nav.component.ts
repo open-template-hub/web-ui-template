@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { environmentCommon } from '../../../../../environments/environment-common';
 import { URLS } from '../../../../data/navigation/navigation.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
@@ -16,6 +17,8 @@ export class LandingLayoutBottomNavComponent {
   currentUser: AuthToken;
   userInfo: any = {};
   loading = false;
+
+  environmentCommon = environmentCommon;
 
   URLS = URLS;
 

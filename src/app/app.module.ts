@@ -60,16 +60,8 @@ import {
 import {
   TextContentLoaderComponent
 } from './component/content-loader/text-content-loader/text-content-loader.component';
+import { CountdownComponent } from './component/countdown/countdown.component';
 import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.component';
-import {
-  DefaultBottomSvgComponent
-} from './component/design/bottom-svg/default-bottom-svg/default-bottom-svg.component';
-import {
-  CounterBordersTopSvgComponent
-} from './component/design/top-svg/counter-borders-top-svg/counter-borders-top-svg.component';
-import { DefaultTopSvgComponent } from './component/design/top-svg/default-top-svg/default-top-svg.component';
-import { LeafTopSvgComponent } from './component/design/top-svg/leaf-top-svg/leaf-top-svg.component';
-import { SharpTopSvgComponent } from './component/design/top-svg/sharp-top-svg/sharp-top-svg.component';
 import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
 import {
@@ -93,7 +85,6 @@ import { PricePlanComponent } from './component/price-plan/price-plan.component'
 import { ProductPresentationComponent } from './component/product-represantation/product-presentation.component';
 import { RateBarComponent } from './component/rate-bar/rate-bar.component';
 import { SearchComponent } from './component/search/search.component';
-import { CountdownComponent } from './component/countdown/countdown.component';
 import { SettingsDropdownMenuComponent } from './component/settings-dropdown-menu/settings-dropdown-menu.component';
 import { SideContentComponent } from './component/side-content/side-content.component';
 import {
@@ -108,6 +99,8 @@ import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layo
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
+import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
+import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
   BlogContentPageComponent
@@ -238,11 +231,7 @@ FullCalendarModule.registerPlugins( [
     PresentationSwiperComponent,
     SitemapPageComponent,
     FeatureCardComponent,
-    SharpTopSvgComponent,
-    DefaultTopSvgComponent,
-    CounterBordersTopSvgComponent,
     TopSvgComponent,
-    LeafTopSvgComponent,
     CustomersPageComponent,
     AssetCardComponent,
     BlogPageComponent,
@@ -257,7 +246,6 @@ FullCalendarModule.registerPlugins( [
     DocHolderCardComponent,
     DocsContentPageComponent,
     StepTimelineCardComponent,
-    DefaultBottomSvgComponent,
     BottomSvgComponent,
     ActivityCardComponent,
     ProfileCardComponent,
@@ -268,6 +256,8 @@ FullCalendarModule.registerPlugins( [
     CountdownComponent,
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
+    PremiumPageComponent,
+    NotificationsPageComponent,
   ],
   imports: [
     BrowserModule,

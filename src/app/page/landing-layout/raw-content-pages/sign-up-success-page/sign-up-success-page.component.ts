@@ -24,9 +24,9 @@ export class SignUpSuccessPageComponent implements OnInit {
       if ( params.email ) {
         this.email = params.email;
         this.appHeroContents = [
-          {text: $localize `:@@signUpSuccess.appHero.1:Registration successful 🎉`, level: 2},
-          {text: $localize `:@@signUpSuccess.appHero.2:Verification email sent to: ` + this.email}
-        ]
+          { text: $localize`:@@signUpSuccess.appHero.1:Registration successful 🎉`, level: 2 },
+          { text: $localize`:@@signUpSuccess.appHero.2:Verification email sent to: ` + this.email }
+        ];
       }
     } );
   }

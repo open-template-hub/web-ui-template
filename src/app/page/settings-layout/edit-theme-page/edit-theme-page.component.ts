@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { DarkLightSettings, DEFAULT_THEME, ThemeColorSettings, ThemeDesignSettings } from '../../../data/theme/theme.data';
+import {
+  DarkLightSettings,
+  DEFAULT_THEME,
+  ThemeColorSettings,
+  ThemeDesignSettings
+} from '../../../data/theme/theme.data';
 import { ThemeService } from '../../../service/theme/theme.service';
 
 @Component( {

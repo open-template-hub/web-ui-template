@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Injectable( {
   providedIn: 'root'
@@ -12,12 +13,18 @@ export class BusinessLogicService {
   public userInfo: Observable<any>;
   public userInfoSubject: BehaviorSubject<any>;
 
-  constructor( private http: HttpClient ) {
+  constructor( private http: HttpClient, private authenticationService: AuthenticationService ) {
     const userInfoStorageItem = localStorage.getItem( 'userInfo' ) ?
         localStorage.getItem( 'userInfo' ) :
         sessionStorage.getItem( 'userInfo' );
     this.userInfoSubject = new BehaviorSubject<any>( JSON.parse( userInfoStorageItem ) );
     this.userInfo = this.userInfoSubject.asObservable();
+
+    this.authenticationService.currentUser.subscribe( currentUser => {
+      if ( !currentUser ) {
+        this.logout();
+      }
+    } );
   }
 
   public get userInfoValue(): any {

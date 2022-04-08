@@ -1,53 +1,53 @@
 base-timer {
-    position: relative;
+  position: relative;
 }
-  
+
 .base-timer__svg {
-    transform: scaleX(-1);
-    width: 50px;
-    height: 50px;
+  transform: scaleX(-1);
+  width: 50px;
+  height: 50px;
 }
-  
+
 .base-timer__circle {
-    fill: none;
-    stroke: none;
+  fill: none;
+  stroke: none;
 }
-  
+
 .base-timer__path-elapsed {
-    stroke-width: 7px;
-    stroke: grey;
+  stroke-width: 7px;
+  stroke: grey;
 }
-  
+
 .base-timer__path-remaining {
-    stroke-width: 7px;
-    stroke-linecap: round;
-    transform: rotate(90deg);
-    transform-origin: center;
-    transition: 1s linear all;
-    fill-rule: nonzero;
-    stroke: currentColor;
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
 }
-  
+
 .base-timer__path-remaining.green {
-    color: rgb(65, 184, 131);
+  color: rgb(65, 184, 131);
 }
-  
+
 .base-timer__path-remaining.orange {
-    color: orange;
+  color: orange;
 }
-  
+
 .base-timer__path-remaining.red {
-    color: red;
+  color: red;
 }
 
 .base-timer__label {
-    position: absolute;
-    width: 60px;
-    height: 51px;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--color);
+  position: absolute;
+  width: 60px;
+  height: 51px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--color);
 }

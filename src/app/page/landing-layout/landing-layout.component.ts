@@ -13,10 +13,12 @@ export class LandingLayoutComponent {
 
   currentUser: AuthToken;
   loading = false;
+  bottomSvgActiveComponents = [ HomePageComponent ];
+  isBottomSvgActive = false;
 
   constructor(
-    private loadingService: LoadingService,
-    private authenticationService: AuthenticationService
+      private loadingService: LoadingService,
+      private authenticationService: AuthenticationService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
@@ -25,12 +27,9 @@ export class LandingLayoutComponent {
     } );
   }
 
-  bottomSvgActiveComponents = [ HomePageComponent ]
-  isBottomSvgActive = false;
-
   onRouterOutletActivate( event: any ) {
-    for( const component of this.bottomSvgActiveComponents ) {
-      if( event instanceof component ) {
+    for ( const component of this.bottomSvgActiveComponents ) {
+      if ( event instanceof component ) {
         this.isBottomSvgActive = true;
         return;
       }

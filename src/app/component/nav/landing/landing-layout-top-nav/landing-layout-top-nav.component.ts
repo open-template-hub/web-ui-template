@@ -1,15 +1,14 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../environments/environment';
+import { environmentCommon } from '../../../../../environments/environment-common';
 import { BRAND } from '../../../../data/brand/brand.data';
 import { URLS } from '../../../../data/navigation/navigation.data';
-import { PremiumProducts } from '../../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../../data/profile/profile.data';
 import { AuthToken } from '../../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../../service/auth/authentication.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
-import { PaymentService } from '../../../../service/payment/payment.service';
+import { NotificationService } from '../../../../service/notification/notification.service';
 import { ProductService } from '../../../../service/product/product.service';
 
 @Component( {
@@ -24,24 +23,28 @@ export class LandingLayoutTopNavComponent {
   currentUser: AuthToken;
   loading = false;
 
+  environmentCommon = environmentCommon;
+
   URLS = URLS;
   BRAND = BRAND;
 
   @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
+  notifications: any[] = [];
+
   settings = [
     { name: 'Edit Profile', icon: 'user', url: URLS.settings.editProfile },
     { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
     { name: 'Logout', icon: 'sign-out-alt', logout: true }
-  ]
+  ];
 
   constructor(
-    private router: Router,
-    private loadingService: LoadingService,
-    private authenticationService: AuthenticationService,
-    private fileStorageService: FileStorageService,
-    private paymentService: PaymentService,
-    private productService: ProductService
+      private router: Router,
+      private loadingService: LoadingService,
+      private authenticationService: AuthenticationService,
+      private fileStorageService: FileStorageService,
+      private productService: ProductService,
+      private notificationService: NotificationService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
@@ -50,17 +53,17 @@ export class LandingLayoutTopNavComponent {
     } );
 
     this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-        if ( profileImg?.file?.data ) {
-          this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
-        }
-      } );
+      if ( profileImg?.file?.data ) {
+        this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+      }
+    } );
 
     this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined
+      this.userIsPremium = product?.name !== undefined;
     } );
-  }
 
-  buy() {
-    this.paymentService.initPayment( environment.payment.stripe, PremiumProducts.premiumAccount, 1 );
+    this.notificationService.notifications.subscribe( notifications => {
+      this.notifications = notifications.filter( notification => !notification.read );
+    } );
   }
 }

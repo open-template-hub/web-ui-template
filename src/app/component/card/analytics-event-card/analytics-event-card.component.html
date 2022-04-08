@@ -1,16 +1,18 @@
 <app-card
     [bodyTemplate]="bodyTemplate"
-    [headerTemplate]="headerTemplate"
     [footerTemplate]="footerTemplate"
+    [headerTemplate]="headerTemplate"
     class="analytics-event-card">
   <ng-template #headerTemplate>
     <div class="header">
       <div class="upper-header-wrapper">
         <h3>Recent Activities</h3>
-        <div class="page-routing-wrapper" *ngIf="paginationConfig.shouldShowNavigationBars">
-          <i [class.active-routing-item]="paginationConfig.hasPreviousPage" (click)="goToPreviousPage()" aria-hidden="true" class="fas fa-angle-left"></i>
+        <div *ngIf="paginationConfig.shouldShowNavigationBars" class="page-routing-wrapper">
+          <i (click)="goToPreviousPage()" [class.active-routing-item]="paginationConfig.hasPreviousPage"
+             aria-hidden="true" class="fas fa-angle-left"></i>
           <span class="page-count-span">{{ paginationConfig.currentPageCount }}</span>
-          <i [class.active-routing-item]="paginationConfig.hasNextPage" (click)="goToNextPage()" aria-hidden="true" class="fas fa-angle-right"></i>
+          <i (click)="goToNextPage()" [class.active-routing-item]="paginationConfig.hasNextPage" aria-hidden="true"
+             class="fas fa-angle-right"></i>
         </div>
       </div>
       <div class="filters-wrapper">
@@ -19,26 +21,28 @@
           <select (change)="changeCategory($event)">
             <option *ngFor="let category of categories" [id]="category.id">
               <ng-container *ngIf="category.messages.length > 0">
-                {{ category.messages[0].text }}
+                {{ category.messages[ 0 ].text }}
               </ng-container>
             </option>
           </select>
         </div>
         <div class="date-filter-wrapper">
           <i aria-hidden="true" class="fas fa-calendar fa-lg fa-fw"></i>
-          <input type="date" (change)="changeStartDate($event)" [ngModel]="selectedStartDate | date:'yyyy-MM-dd'" [max]="selectedEndDate | date:'yyyy-MM-dd'">
+          <input (change)="changeStartDate($event)" [max]="selectedEndDate | date:'yyyy-MM-dd'" [ngModel]="selectedStartDate | date:'yyyy-MM-dd'"
+                 type="date">
           <i aria-hidden="true" class="fas fa-arrow-right fa-lg fa-fw"></i>
-          <input (change)="changeEndDate($event)" type="date" [ngModel]="selectedEndDate | date:'yyyy-MM-dd'" [max]="currentDate | date:'yyyy-MM-dd'" [min]="selectedStartDate | date:'yyyy-MM-dd'">
+          <input (change)="changeEndDate($event)" [max]="currentDate | date:'yyyy-MM-dd'" [min]="selectedStartDate | date:'yyyy-MM-dd'"
+                 [ngModel]="selectedEndDate | date:'yyyy-MM-dd'" type="date">
         </div>
       </div>
     </div>
   </ng-template>
   <ng-template #bodyTemplate>
-    <div class="body" *ngIf="events">
-      <div class="row" *ngFor="let event of events; let last = last; let i = index" id="target{{ i + 1 }}">
+    <div *ngIf="events" class="body">
+      <div *ngFor="let event of events; let last = last; let i = index" class="row" id="target{{ i + 1 }}">
         <img [src]="event.payload?.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
-        <div class="column" *ngIf="mappedCategories[event.category]">
-          <p class="message">{{ mappedCategories[event.category] }}</p>
+        <div *ngIf="mappedCategories[event.category]" class="column">
+          <p class="message">{{ mappedCategories[ event.category ] }}</p>
           <p class="date">{{ timestampToString( event.timestamp ) }}</p>
         </div>
       </div>
