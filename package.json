@@ -1,7 +1,7 @@
 {
   "name": "web-ui-template",
   "description": "Web UI Template is a modern, responsive, and customizable web UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "license": "MIT",
   "scripts": {
     "buildLocal": "ng build --configuration=local --localize",
@@ -43,6 +43,7 @@
     "@open-template-hub/animated-code-editor": "^0.0.3",
     "@open-template-hub/hero": "^0.0.6",
     "@open-template-hub/led": "^0.0.9",
+    "@open-template-hub/countdown": "^4.0.1",
     "@stripe/stripe-js": "^1.27.0",
     "@types/simple-icons": "^5.0.0",
     "angular-google-tag-manager": "^1.5.0",

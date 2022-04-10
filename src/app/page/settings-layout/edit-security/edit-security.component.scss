@@ -36,6 +36,12 @@
 
         & .section {
           margin-top: 0;
+
+          & .verified-phone-number-wrapper {
+            width: -webkit-fit-content;
+            margin-left: auto;
+            margin-right: auto;
+          }
         }
       }
     }
