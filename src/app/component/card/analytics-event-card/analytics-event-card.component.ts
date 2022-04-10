@@ -22,7 +22,7 @@ export class AnalyticsEventCardComponent implements OnInit {
   selectedEndDate: Date;
 
   categories: [];
-  mappedCategories: any = {};
+  mappedCategories: any;
 
   currentDate = new Date();
 

@@ -13,6 +13,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { AnimatedCodeEditorModule } from '@open-template-hub/animated-code-editor';
 import { HeroModule } from '@open-template-hub/hero';
 import { LedModule } from '@open-template-hub/led';
+import { CountdownModule } from '@open-template-hub/countdown';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
@@ -60,7 +61,6 @@ import {
 import {
   TextContentLoaderComponent
 } from './component/content-loader/text-content-loader/text-content-loader.component';
-import { CountdownComponent } from './component/countdown/countdown.component';
 import { BottomSvgComponent } from './component/design/bottom-svg/bottom-svg.component';
 import { TopSvgComponent } from './component/design/top-svg/top-svg.component';
 import { ExtLinkComponent } from './component/ext-link/ext-link.component';
@@ -253,7 +253,6 @@ FullCalendarModule.registerPlugins( [
     DashboardLayoutBottomNavComponent,
     ContactInformationCardComponent,
     EditSecurityComponent,
-    CountdownComponent,
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
     PremiumPageComponent,
@@ -274,6 +273,7 @@ FullCalendarModule.registerPlugins( [
     AnimatedCodeEditorModule,
     LedModule,
     HeroModule,
+    CountdownModule,
     ToastrModule.forRoot( { preventDuplicates: true } ),
     MarkdownModule.forRoot( { loader: HttpClient } ),
     GoogleTagManagerModule.forRoot( { id: environment.analytics.googleAnalytics.tag } ),

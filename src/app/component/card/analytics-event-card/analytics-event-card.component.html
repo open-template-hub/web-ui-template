@@ -1,4 +1,5 @@
 <app-card
+    *ngIf="mappedCategories"
     [bodyTemplate]="bodyTemplate"
     [footerTemplate]="footerTemplate"
     [headerTemplate]="headerTemplate"
@@ -7,7 +8,7 @@
     <div class="header">
       <div class="upper-header-wrapper">
         <h3>Recent Activities</h3>
-        <div *ngIf="paginationConfig.shouldShowNavigationBars" class="page-routing-wrapper">
+        <div class="page-routing-wrapper">
           <i (click)="goToPreviousPage()" [class.active-routing-item]="paginationConfig.hasPreviousPage"
              aria-hidden="true" class="fas fa-angle-left"></i>
           <span class="page-count-span">{{ paginationConfig.currentPageCount }}</span>
