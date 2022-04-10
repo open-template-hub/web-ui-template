@@ -9,10 +9,10 @@
           <div class="section">
             <p>Two factor authentication code sent to {{ maskedPhoneNumber }}</p>
             <div [class.error-input]="submitted && form.controls.verificationCode.invalid" class="input-with-icon">
-              <app-countdown
+              <oth-countdown
                   [timeLeft]="timeLeft < 0 ? 0 : timeLeft"
                   [totalTime]="totalTime">
-              </app-countdown>
+              </oth-countdown>
               <input autocomplete="one-time-code" formControlName="verificationCode" placeholder="Code" required
                      type="text">
               <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
