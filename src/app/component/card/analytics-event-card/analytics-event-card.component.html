@@ -1,20 +1,13 @@
 <app-card
     *ngIf="mappedCategories"
+    [headerTemplate]="headerTemplate"
     [bodyTemplate]="bodyTemplate"
     [footerTemplate]="footerTemplate"
-    [headerTemplate]="headerTemplate"
     class="analytics-event-card">
   <ng-template #headerTemplate>
     <div class="header">
       <div class="upper-header-wrapper">
         <h3>Recent Activities</h3>
-        <div class="page-routing-wrapper">
-          <i (click)="goToPreviousPage()" [class.active-routing-item]="paginationConfig.hasPreviousPage"
-             aria-hidden="true" class="fas fa-angle-left"></i>
-          <span class="page-count-span">{{ paginationConfig.currentPageCount }}</span>
-          <i (click)="goToNextPage()" [class.active-routing-item]="paginationConfig.hasNextPage" aria-hidden="true"
-             class="fas fa-angle-right"></i>
-        </div>
       </div>
       <div class="filters-wrapper">
         <div class="category-filter-wrapper">
@@ -29,10 +22,12 @@
         </div>
         <div class="date-filter-wrapper">
           <i aria-hidden="true" class="fas fa-calendar fa-lg fa-fw"></i>
-          <input (change)="changeStartDate($event)" [max]="selectedEndDate | date:'yyyy-MM-dd'" [ngModel]="selectedStartDate | date:'yyyy-MM-dd'"
+          <input (change)="changeStartDate($event)" [max]="selectedEndDate | date:'yyyy-MM-dd'"
+                 [ngModel]="selectedStartDate | date:'yyyy-MM-dd'"
                  type="date">
           <i aria-hidden="true" class="fas fa-arrow-right fa-lg fa-fw"></i>
-          <input (change)="changeEndDate($event)" [max]="currentDate | date:'yyyy-MM-dd'" [min]="selectedStartDate | date:'yyyy-MM-dd'"
+          <input (change)="changeEndDate($event)" [max]="currentDate | date:'yyyy-MM-dd'"
+                 [min]="selectedStartDate | date:'yyyy-MM-dd'"
                  [ngModel]="selectedEndDate | date:'yyyy-MM-dd'" type="date">
         </div>
       </div>
@@ -54,9 +49,16 @@
   </ng-template>
   <ng-template #footerTemplate>
     <div class="footer">
-      <ng-container *ngIf="paginationConfig.skip !== undefined && paginationConfig.totalEventCount !== undefined">
+      <div *ngIf="paginationConfig.skip !== undefined && paginationConfig.totalEventCount !== undefined">
         {{ events.length + paginationConfig.skip }} / {{ paginationConfig.totalEventCount }}
-      </ng-container>
+      </div>
+      <div class="page-routing-wrapper">
+        <i (click)="goToPreviousPage()" [class.active-routing-item]="paginationConfig.hasPreviousPage"
+           aria-hidden="true" class="fas fa-angle-left"></i>
+        <span class="page-count-span">{{ paginationConfig.currentPageCount }}</span>
+        <i (click)="goToNextPage()" [class.active-routing-item]="paginationConfig.hasNextPage" aria-hidden="true"
+           class="fas fa-angle-right"></i>
+      </div>
     </div>
   </ng-template>
 </app-card>

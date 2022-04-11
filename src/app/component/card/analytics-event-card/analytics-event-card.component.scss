@@ -29,32 +29,6 @@
         text-align: center;
         width: 100%;
       }
-
-      & .page-routing-wrapper {
-        display: flex;
-        font-size: 20px;
-        align-items: center;
-        width: -webkit-fit-content;
-        padding-left: 15px;
-
-        & * {
-          padding: 5px;
-        }
-
-        & span {
-          color: var(--lighter);
-        }
-
-        & i {
-          cursor: initial;
-          color: var(--lighter-contrast);
-
-          &.active-routing-item {
-            color: var(--theme-color);
-            cursor: pointer;
-          }
-        }
-      }
     }
 
     & .filters-wrapper {
@@ -114,17 +88,22 @@
   }
 
   & .body {
-    display: flex;
+    @include util.flex-layout-row;
+
+    justify-content: center;
+
     flex-wrap: wrap;
     text-align: left;
-    padding: 0 1em 1em;
+    padding: 0 2em 1em;
     height: -webkit-fit-content;
-    margin-top: 30px;
+    margin-top: 40px;
 
     & .row {
       @include util.flex-layout-row;
-      width: 30%;
-      padding: 10px 5px;
+      width: 33%;
+
+      box-sizing: border-box;
+      padding: 10px 15px;
       border-bottom: 2px solid var(--theme-color-lighter-8);
       align-items: center;
 
@@ -165,11 +144,42 @@
   }
 
   & .footer {
-    padding: 10px;
-    width: -webkit-fit-content;
+    @include util.flex-layout-row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    padding: 1em 2.5em 2em;
+    width: 100%;
     margin-left: auto;
     color: var(--lighter-contrast);
 
+    & .page-routing-wrapper {
+      display: flex;
+      font-size: 20px;
+      align-items: center;
+      width: -webkit-fit-content;
+
+      & * {
+        padding: 5px;
+      }
+
+      & span {
+        color: var(--lighter);
+      }
+
+      & i {
+        cursor: initial;
+        color: var(--lighter-contrast);
+
+        &.active-routing-item {
+          color: var(--theme-color);
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 
@@ -203,6 +213,8 @@
     & .body {
       & .row {
         width: 100%;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   }
