@@ -7,6 +7,7 @@ import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
   styleUrls: [ './analytics-event-card.component.scss' ]
 } )
 export class AnalyticsEventCardComponent implements OnInit {
+
   paginationConfig = {
     skip: 0,
     totalEventCount: undefined,
@@ -29,7 +30,7 @@ export class AnalyticsEventCardComponent implements OnInit {
   events: any[];
 
   constructor(
-      /*private scrollService: InfiniteScrollingService,*/
+      // private scrollService: InfiniteScrollingService,
       private analyticsService: AnalyticsService
   ) {
     const startDate = new Date();
@@ -49,7 +50,8 @@ export class AnalyticsEventCardComponent implements OnInit {
         this.selectedCategory = response[ 0 ];
       }
 
-      this.fetchAnalyticsEvent( this.paginationConfig.skip, this.paginationConfig.limit, () => {/*intentionally blank*/
+      this.fetchAnalyticsEvent( this.paginationConfig.skip, this.paginationConfig.limit, () => {
+        // Intentionally blank
       } );
     } );
   }
