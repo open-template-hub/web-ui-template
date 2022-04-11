@@ -10,11 +10,14 @@
         </p>
         <div class="notification" *ngFor="let notification of notifications; index as i" (click)="read(i)"
              [class.dim]="notification.read">
+          <div class="led-wrapper">
+            <oth-led *ngIf="!notification.read" [informationType]="'info'"></oth-led>
+          </div>
           <p class="message">
             {{ notification.message }}
           </p>
           <p class="date">
-            {{ timestampToDate(notification.timestamp) | date: 'dd MMM HH:mm' }}
+            {{ timestampToDate( notification.timestamp ) | date: 'dd MMM HH:mm' }}
           </p>
         </div>
       </div>

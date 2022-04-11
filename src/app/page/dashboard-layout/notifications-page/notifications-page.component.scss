@@ -35,13 +35,20 @@
         }
       }
 
+      & .led-wrapper {
+        @include util.flex-layout-row;
+        @include util.flex-center-center;
+
+        width: 4%;
+      }
+
       & .date {
         width: 25%;
         padding-right: 10px;
       }
 
       & .message {
-        width: 75%;
+        width: 71%;
         text-align: left;
         padding-left: 10px;
       }
