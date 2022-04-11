@@ -90,8 +90,6 @@
   & .body {
     @include util.flex-layout-row;
 
-    justify-content: center;
-
     flex-wrap: wrap;
     text-align: left;
     padding: 0 2em 1em;
@@ -100,7 +98,7 @@
 
     & .row {
       @include util.flex-layout-row;
-      width: 33%;
+      width: 33.333%;
 
       box-sizing: border-box;
       padding: 10px 15px;
