@@ -18,7 +18,7 @@
     </span>
     </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.notifications">
-      <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
+      <div *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9" class="notifications">
         {{ notifications.length > 9 ? '9+' : notifications.length }}
       </div>
       <i [class]="'fas fa-bell fa-fw fa-lg'" aria-hidden="true"></i>
@@ -26,7 +26,7 @@
         Notifications
     </span>
     </a>
-    <a [routerLink]="URLS.dashboard.premium" *ngIf="currentUser">
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.premium">
       <i [class]="'fas fa-star fa-fw fa-lg yellow-theme'" aria-hidden="true" style="color: var(--theme-color)"></i>
       <span *ngIf="sideNavClosed === 'false'">
         Premium
@@ -72,7 +72,7 @@
         Sign Up
       </span>
     </a>
-    <a *ngIf="!currentUser" class="login" [routerLink]="URLS.login">
+    <a *ngIf="!currentUser" [routerLink]="URLS.login" class="login">
       <i [class]="'fas fa-fingerprint fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         Log In

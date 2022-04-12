@@ -8,10 +8,9 @@ import { environment } from '../../../environments/environment';
 } )
 export class SocketService {
 
-  private socket = undefined;
-
   public notification: Observable<any>;
   public notificationSubject: BehaviorSubject<any>;
+  private socket = undefined;
 
   constructor() {
     this.notificationSubject = new BehaviorSubject<any>( undefined );

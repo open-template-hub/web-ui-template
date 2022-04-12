@@ -1,5 +1,5 @@
 @use '../../../../styles/util/util';
-@use '../../../component/card/card.component';
+@use 'node_modules/@open-template-hub/card/styles/card/card';
 
 .edit-security-page {
   & .two-factor-auth-wrapper {

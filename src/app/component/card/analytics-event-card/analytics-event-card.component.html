@@ -1,8 +1,8 @@
-<app-card
+<oth-card
     *ngIf="mappedCategories"
-    [headerTemplate]="headerTemplate"
     [bodyTemplate]="bodyTemplate"
     [footerTemplate]="footerTemplate"
+    [headerTemplate]="headerTemplate"
     class="analytics-event-card">
   <ng-template #headerTemplate>
     <div class="header">
@@ -61,4 +61,4 @@
       </div>
     </div>
   </ng-template>
-</app-card>
+</oth-card>

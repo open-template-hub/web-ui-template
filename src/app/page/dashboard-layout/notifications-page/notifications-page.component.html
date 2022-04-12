@@ -1,15 +1,15 @@
 <div class="full-width-cards-wrapper">
-  <app-card [defaultHeaderClass]="'underline'" [header]="'Notifications'"
-            [bodyTemplate]="bodyTemplate" class="notifications-card" [footerTemplate]="footerTemplate">
+  <oth-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'"
+            [footerTemplate]="footerTemplate" [header]="'Notifications'" class="notifications-card">
 
     <!-- Body -->
     <ng-template #bodyTemplate>
-      <div class="body" [style.justify-content]="notifications.length === 0 ? 'center' : ''">
+      <div [style.justify-content]="notifications.length === 0 ? 'center' : ''" class="body">
         <p *ngIf="notifications.length === 0">
           No new notifications!
         </p>
-        <div class="notification" *ngFor="let notification of notifications; index as i" (click)="read(i)"
-             [class.dim]="notification.read">
+        <div (click)="read(i)" *ngFor="let notification of notifications; index as i" [class.dim]="notification.read"
+             class="notification">
           <div class="led-wrapper">
             <oth-led *ngIf="!notification.read" [informationType]="'info'"></oth-led>
           </div>
@@ -28,5 +28,5 @@
       <div class="footer">
       </div>
     </ng-template>
-  </app-card>
+  </oth-card>
 </div>

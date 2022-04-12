@@ -11,9 +11,10 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // must go before pl
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { AnimatedCodeEditorModule } from '@open-template-hub/animated-code-editor';
+import { CardModule } from '@open-template-hub/card';
+import { CountdownModule } from '@open-template-hub/countdown';
 import { HeroModule } from '@open-template-hub/hero';
 import { LedModule } from '@open-template-hub/led';
-import { CountdownModule } from '@open-template-hub/countdown';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
@@ -33,7 +34,6 @@ import { AnalyticsEventCardComponent } from './component/card/analytics-event-ca
 import { AssetCardComponent } from './component/card/asset-card/asset-card.component';
 import { BlogCardComponent } from './component/card/blog-card/blog-card.component';
 import { BlogHolderCardComponent } from './component/card/blog-holder-card/blog-holder-card.component';
-import { CardComponent } from './component/card/card.component';
 import {
   ContactInformationCardComponent
 } from './component/card/contact-information-card/contact-information-card.component';
@@ -210,7 +210,6 @@ FullCalendarModule.registerPlugins( [
     ContactUsPageComponent,
     StatusPageComponent,
     ProductPresentationComponent,
-    CardComponent,
     EmployeeCardComponent,
     ProductPresentationComponent,
     StatusCardComponent,
@@ -270,6 +269,7 @@ FullCalendarModule.registerPlugins( [
     BrowserModule,
     FullCalendarModule,
     SwiperModule,
+    CardModule,
     AnimatedCodeEditorModule,
     LedModule,
     HeroModule,
