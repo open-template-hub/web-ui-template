@@ -1,7 +1,7 @@
 @use '../../../../styles/page/page';
 @use '../../../../styles/util/util';
 @use '../landing-layout.component';
-@use '../../../component/card/card.component';
+@use 'node_modules/@open-template-hub/card/styles/card/card';
 
 .hero {
   @include util.flex-layout-row;
@@ -24,7 +24,7 @@
       font-size: 24px;
     }
 
-    & app-button {
+    & oth-button {
       padding: 25px;
     }
   }
@@ -96,7 +96,7 @@
         font-size: 18px;
       }
 
-      & app-button {
+      & oth-button {
         padding: 25px;
       }
     }

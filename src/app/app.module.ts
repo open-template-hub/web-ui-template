@@ -11,9 +11,11 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // must go before pl
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { AnimatedCodeEditorModule } from '@open-template-hub/animated-code-editor';
+import { ButtonModule } from '@open-template-hub/button';
+import { CardModule } from '@open-template-hub/card';
+import { CountdownModule } from '@open-template-hub/countdown';
 import { HeroModule } from '@open-template-hub/hero';
 import { LedModule } from '@open-template-hub/led';
-import { CountdownModule } from '@open-template-hub/countdown';
 import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
@@ -22,10 +24,6 @@ import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { BrandButtonComponent } from './component/button/brand-button/brand-button.component';
-import { ButtonComponent } from './component/button/button.component';
-import { EventButtonComponent } from './component/button/event-button/event-button.component';
-import { InformationButtonComponent } from './component/button/information-button/information-button.component';
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { ActivityCardComponent } from './component/card/activity-card/activity-card.component';
 import { ActivityHistoryCardComponent } from './component/card/activity-history-card/activity-history-card.component';
@@ -33,7 +31,6 @@ import { AnalyticsEventCardComponent } from './component/card/analytics-event-ca
 import { AssetCardComponent } from './component/card/asset-card/asset-card.component';
 import { BlogCardComponent } from './component/card/blog-card/blog-card.component';
 import { BlogHolderCardComponent } from './component/card/blog-holder-card/blog-holder-card.component';
-import { CardComponent } from './component/card/card.component';
 import {
   ContactInformationCardComponent
 } from './component/card/contact-information-card/contact-information-card.component';
@@ -210,18 +207,13 @@ FullCalendarModule.registerPlugins( [
     ContactUsPageComponent,
     StatusPageComponent,
     ProductPresentationComponent,
-    CardComponent,
     EmployeeCardComponent,
     ProductPresentationComponent,
     StatusCardComponent,
     PolicyCardComponent,
     TimelineCardComponent,
-    ButtonComponent,
-    BrandButtonComponent,
-    InformationButtonComponent,
     BrandingPageComponent,
     PresentationCardComponent,
-    EventButtonComponent,
     ActivityHistoryCardComponent,
     ContentLoaderComponent,
     ImageContentLoaderComponent,
@@ -270,6 +262,8 @@ FullCalendarModule.registerPlugins( [
     BrowserModule,
     FullCalendarModule,
     SwiperModule,
+    CardModule,
+    ButtonModule,
     AnimatedCodeEditorModule,
     LedModule,
     HeroModule,

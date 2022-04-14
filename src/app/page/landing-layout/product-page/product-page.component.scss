@@ -1,6 +1,6 @@
 @use '../../../../styles/util/util';
 @use '../../../component/content-loader/box-content-loader/box-content-loader.component';
-@use '../../../component/card/card.component';
+@use 'node_modules/@open-template-hub/card/styles/card/card';
 
 .product-page-content {
   @include util.flex-layout-column;

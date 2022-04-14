@@ -12,15 +12,15 @@
   <oth-hero *ngIf="!loading && error"
             [contents]="accountVerificationFailedAppHeroContents"
             [heroClass]="'no-padding'"></oth-hero>
-  <app-information-button (click)="router.navigate([URLS.root])" *ngIf="!loading && error"
+  <oth-information-button (click)="router.navigate([URLS.root])" *ngIf="!loading && error"
                           [informationType]="INFORMATION_TYPES.error" i18n-text="@@verifyAccount.home.button"
-                          text="HOME"></app-information-button>
+                          text="HOME"></oth-information-button>
 
   <!-- Account verified -->
   <oth-hero *ngIf="!loading && !error"
             [contents]="accountVerifiedAppHeroContents"
             [heroClass]="'no-padding'"></oth-hero>
-  <app-information-button (click)="router.navigate([URLS.login])" *ngIf="!loading && !error"
+  <oth-information-button (click)="router.navigate([URLS.login])" *ngIf="!loading && !error"
                           [informationType]="INFORMATION_TYPES.success" i18n-text="@@verifyAccount.logIn.button"
-                          text="LOG IN"></app-information-button>
+                          text="LOG IN"></oth-information-button>
 </div>

@@ -68,7 +68,7 @@ export class DashboardLayoutBottomNavComponent {
     } );
 
     this.notificationService.notifications.subscribe( notifications => {
-      this.notifications = notifications.filter( notification => !notification.read);
+      this.notifications = notifications.filter( notification => !notification.read );
     } );
   }
 
