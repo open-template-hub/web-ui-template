@@ -6,9 +6,9 @@
       <div class="body">
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button (click)="socialLogin( website )" *ngFor="let website of websites.slice(0, 4)"
+            <oth-brand-button (click)="socialLogin( website )" *ngFor="let website of websites.slice(0, 4)"
                               [disabled]="!website.tag" [icon]="website.cssClass">
-            </app-brand-button>
+            </oth-brand-button>
           </ng-container>
         </div>
         <a (click)="showMoreToggle = !showMoreToggle" *ngIf="!showMoreToggle"
@@ -18,12 +18,12 @@
         </a>
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button (click)="socialLogin( website )" *ngFor="let website of websites.slice(4)"
+            <oth-brand-button (click)="socialLogin( website )" *ngFor="let website of websites.slice(4)"
                               [disabled]="!website.tag" [icon]="website.cssClass"
                               [style.height]="showMoreToggle ? 'auto' : 0"
                               [style.opacity]="showMoreToggle ? 1 : 0"
                               [style.visibility]="showMoreToggle ? 'visible' : 'hidden'">
-            </app-brand-button>
+            </oth-brand-button>
           </ng-container>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="section-submit">
-            <app-button i18n-text="@@signUp.continue.button" text="CONTINUE"></app-button>
+            <oth-button i18n-text="@@signUp.continue.button" text="CONTINUE"></oth-button>
             <p>
               <small class="dim" i18n="@@signUp.terms">By signing up, you agree
                 <a class="theme-color-link" rel=noopener routerLink="{{URLS.terms}}" target="_blank">Terms of Use</a>,

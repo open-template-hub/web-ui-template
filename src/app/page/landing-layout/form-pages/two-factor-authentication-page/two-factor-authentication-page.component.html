@@ -19,8 +19,8 @@
             </div>
           </div>
           <div class="section-submit">
-            <app-button [disabled]="timeLeft <= 0" i18n-text="@@loginPage.loginButton"
-                        text="SUBMIT"></app-button>
+            <oth-button [disabled]="timeLeft <= 0" i18n-text="@@loginPage.loginButton"
+                        text="SUBMIT"></oth-button>
             <p *ngIf="timeLeft <= 0" i18n="@@signUp.alreadyHaveAccount">
               Time has expired, please
               <a [routerLink]="URLS.login" class="theme-color-link">

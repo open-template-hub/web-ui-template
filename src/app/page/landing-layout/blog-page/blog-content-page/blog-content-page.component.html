@@ -5,10 +5,10 @@
         [src]="'./assets/blog/' + blog.url"></app-blog-card>
   </div>
 
-  <app-button [buttonClasses]="['lighter-contrast-border-color', 'lighter-contrast-font-color', 'transparent-button']"
+  <oth-button [buttonClasses]="['lighter-contrast-border-color', 'lighter-contrast-font-color', 'transparent-button']"
               [icon]="'chevron-left'" [routerLink]="URLS.blog"
               [text]="'Back'">
-  </app-button>
+  </oth-button>
 
   <oth-hero [contents]="[{ text: 'About the Author', level: 2 }]"></oth-hero>
   <div class="employees-wrapper">

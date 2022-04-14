@@ -6,6 +6,7 @@ import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
 import { AuthenticationService } from 'src/app/service/auth/authentication.service';
 import { ToastService } from 'src/app/service/toast/toast.service';
 import { TwoFactorCodeService } from 'src/app/service/two-factor-code/two-factor-code.service';
+import { INFORMATION_TYPES } from '../../../data/information/information.data';
 
 @Component( {
   selector: 'app-edit-security',
@@ -26,6 +27,8 @@ export class EditSecurityComponent implements OnInit, OnDestroy {
   expiry;
 
   twoFactorVerificationState: 'request' | 'verify' | 'verified' | 'expired';
+
+  INFORMATION_TYPES = INFORMATION_TYPES;
 
   submittedPhoneNumber: string;
 

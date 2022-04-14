@@ -7,42 +7,42 @@
           <hr/>
         </div>
         <div class="section horizontal">
-          <app-button (click)="setDarkLightSetting(DarkLightSettings.light)" [icon]="'sun'" i18n-text
+          <oth-button (click)="setDarkLightSetting(DarkLightSettings.light)" [icon]="'sun'" i18n-text
                       text="Light theme">
-          </app-button>
-          <app-button (click)="setDarkLightSetting(DarkLightSettings.dark)" [icon]="'moon'" i18n-text text="Dark theme">
-          </app-button>
-          <app-button (click)="setDarkLightSetting(DarkLightSettings.auto)" [icon]="'adjust'" i18n-text text="Auto">
-          </app-button>
+          </oth-button>
+          <oth-button (click)="setDarkLightSetting(DarkLightSettings.dark)" [icon]="'moon'" i18n-text text="Dark theme">
+          </oth-button>
+          <oth-button (click)="setDarkLightSetting(DarkLightSettings.auto)" [icon]="'adjust'" i18n-text text="Auto">
+          </oth-button>
         </div>
         <div class="section-header">
           <p class="dim" i18n="@@editTheme.header.color">Color</p>
           <hr/>
         </div>
         <div class="section horizontal">
-          <app-button (click)="setThemeColorSetting(themeColor)" *ngFor="let themeColor of themeColorSettingsList"
+          <oth-button (click)="setThemeColorSetting(themeColor)" *ngFor="let themeColor of themeColorSettingsList"
                       [buttonClasses]="[themeColor]" [icon]="'tint'"
                       [text]="themeColor.split('-').join(' ') | titlecase">
-          </app-button>
+          </oth-button>
         </div>
         <div class="section-header">
           <p class="dim" i18n="@@editTheme.header.design">Design</p>
           <hr/>
         </div>
         <div class="section horizontal">
-          <app-button (click)="setThemeDesignSetting(themeDesign)" *ngFor="let themeDesign of themeDesignSettingsList"
+          <oth-button (click)="setThemeDesignSetting(themeDesign)" *ngFor="let themeDesign of themeDesignSettingsList"
                       [buttonClasses]="[themeDesign]" [icon]="'draw-polygon'"
                       [text]="themeDesign.split('-').join(' ') | titlecase">
-          </app-button>
+          </oth-button>
         </div>
         <div class="section-header">
           <p class="dim" i18n="@@editTheme.header.default">Default</p>
           <hr/>
         </div>
         <div class="section horizontal">
-          <app-button (click)="restoreDefaultSettings()" [buttonClasses]="[DEFAULT_THEME]" [icon]="'undo-alt'"
+          <oth-button (click)="restoreDefaultSettings()" [buttonClasses]="[DEFAULT_THEME]" [icon]="'undo-alt'"
                       [text]="DEFAULT_THEME.split('-').join(' ') | titlecase">
-          </app-button>
+          </oth-button>
         </div>
       </div>
     </ng-template>
