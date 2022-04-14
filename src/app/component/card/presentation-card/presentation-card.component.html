@@ -1,4 +1,4 @@
-<app-card (click)="redirect()" [bodyTemplate]="bodyTemplate" [bottomWrapperTemplate]="bottomWrapperTemplate"
+<oth-card (click)="redirect()" [bodyTemplate]="bodyTemplate" [bottomWrapperTemplate]="bottomWrapperTemplate"
           [footerTemplate]="footerTemplate" [headerTemplate]="headerTemplate" class="presentation-card">
   <!-- Header -->
   <ng-template #headerTemplate>
@@ -17,9 +17,10 @@
   <ng-template #bodyTemplate>
     <div class="body">
       <p class="presentation-description">{{ secondaryText }}</p>
-      <app-button [buttonClasses]="['theme-color-border-color', 'theme-color-font-color', 'transparent-button']" class="button" i18n-text="@@learnMore.button"
+      <oth-button [buttonClasses]="['theme-color-border-color', 'theme-color-font-color', 'transparent-button']"
+                  class="button" i18n-text="@@learnMore.button"
                   text="Learn more">
-      </app-button>
+      </oth-button>
     </div>
   </ng-template>
 
@@ -30,4 +31,4 @@
     </div>
   </ng-template>
   <ng-template #bottomWrapperTemplate></ng-template>
-</app-card>
+</oth-card>

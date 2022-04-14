@@ -1,5 +1,5 @@
 @use '../../../../styles/util/util';
-@use '../card.component';
+@use 'node_modules/@open-template-hub/card/styles/card/card';
 
 .presentation-card {
   cursor: pointer;

@@ -1,7 +1,7 @@
-<div class="full-width-cards-wrapper" *ngIf="product?.name !== undefined">
-  <app-card [defaultHeaderClass]="'underline yellow-theme'" [header]="product.name"
-            [bodyTemplate]="bodyTemplate"
+<div *ngIf="product?.name !== undefined" class="full-width-cards-wrapper">
+  <oth-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline yellow-theme'"
             [footerTemplate]="footerTemplate"
+            [header]="product.name"
             class="premium-card">
 
     <!-- Body -->
@@ -18,13 +18,13 @@
       <div class="footer">
       </div>
     </ng-template>
-  </app-card>
+  </oth-card>
 </div>
 
-<div class="cards-wrapper" *ngIf="product?.name === undefined">
+<div *ngIf="product?.name === undefined" class="cards-wrapper">
   <ng-container>
-    <app-pricing-card *ngFor="let pricing of premiumAccountPricingOptions" class="yellow-theme"
-                      [pricingFeatures]="premiumAccountPricingFeatures"
-                      [pricingOption]="pricing"></app-pricing-card>
+    <app-pricing-card *ngFor="let pricing of premiumAccountPricingOptions" [pricingFeatures]="premiumAccountPricingFeatures"
+                      [pricingOption]="pricing"
+                      class="yellow-theme"></app-pricing-card>
   </ng-container>
 </div>

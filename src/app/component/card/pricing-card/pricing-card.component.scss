@@ -1,5 +1,5 @@
 @use '../../../../styles/util/util';
-@use '../../card/card.component';
+@use 'node_modules/@open-template-hub/card/styles/card/card';
 
 .pricing-card {
 
@@ -91,7 +91,7 @@
     border: 0;
     padding-bottom: 35px;
 
-    & app-brand-button {
+    & oth-brand-button {
       @include util.flex-layout-column;
       @include util.flex-center-center;
 

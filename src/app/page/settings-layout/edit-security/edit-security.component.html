@@ -1,7 +1,7 @@
 <div class="edit-security-page">
 
   <div class="two-factor-auth-wrapper">
-    <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate" [headerTemplate]="headerTemplate"
+    <oth-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate" [headerTemplate]="headerTemplate"
               class="edit-two-factor-auth-card">
       <!-- Header -->
       <ng-template #headerTemplate>
@@ -39,16 +39,17 @@
           </div>
 
           <div class="section-submit">
-            <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'"
-                        text="Submit"></app-button>
-            <app-button (click)="retry()" *ngIf="twoFactorVerificationState === 'expired'" [buttonClasses]="['information-button']"
-                        text="Retry"></app-button>
-            <app-button (click)="deleteSubmittedPhoneNumber()" *ngIf="twoFactorVerificationState === 'verified'"
-                        [buttonClasses]="['error-background-color']" text="Delete"></app-button>
+            <oth-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'"
+                        text="Submit"></oth-button>
+            <oth-information-button (click)="retry()" *ngIf="twoFactorVerificationState === 'expired'"
+                                    [informationType]="INFORMATION_TYPES.warning" text="Retry"></oth-information-button>
+            <oth-information-button (click)="deleteSubmittedPhoneNumber()"
+                                    *ngIf="twoFactorVerificationState === 'verified'"
+                                    [informationType]="INFORMATION_TYPES.error" text="Delete"></oth-information-button>
           </div>
         </form>
       </ng-template>
-    </app-card>
+    </oth-card>
   </div>
 
   <div class="analytics-event-wrapper">

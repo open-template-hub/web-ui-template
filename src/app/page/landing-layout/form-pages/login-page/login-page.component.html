@@ -1,14 +1,14 @@
 <div class="form-page-layout">
   <!-- Welcome -->
-  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Login'">
+  <oth-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Login'">
     <!-- Body -->
     <ng-template #bodyTemplate>
       <div class="body">
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button (click)="socialLogin( website )" [disabled]="!website.tag"
-                              *ngFor="let website of websites.slice(0, 4)" [icon]="website.cssClass">
-            </app-brand-button>
+            <oth-brand-button (click)="socialLogin( website )" *ngFor="let website of websites.slice(0, 4)"
+                              [disabled]="!website.tag" [icon]="website.cssClass">
+            </oth-brand-button>
           </ng-container>
         </div>
         <a (click)="showMoreToggle = !showMoreToggle" *ngIf="!showMoreToggle"
@@ -18,12 +18,12 @@
         </a>
         <div class="flex-layout-row-wrap flex-center-center auth-social-login-wrapper">
           <ng-container>
-            <app-brand-button (click)="socialLogin( website )" [disabled]="!website.tag"
-                              *ngFor="let website of websites.slice(4)" [icon]="website.cssClass"
+            <oth-brand-button (click)="socialLogin( website )" *ngFor="let website of websites.slice(4)"
+                              [disabled]="!website.tag" [icon]="website.cssClass"
                               [style.height]="showMoreToggle ? 'auto' : 0"
                               [style.opacity]="showMoreToggle ? 1 : 0"
                               [style.visibility]="showMoreToggle ? 'visible' : 'hidden'">
-            </app-brand-button>
+            </oth-brand-button>
           </ng-container>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="section-submit">
-            <app-button i18n-text="@@loginPage.loginButton" text="LOG IN"></app-button>
+            <oth-button i18n-text="@@loginPage.loginButton" text="LOG IN"></oth-button>
             <p>
               <ng-container i18n="@@loginPage.dontHaveAccount">Don't have an account?</ng-container>
               <a [routerLink]="URLS.signup" class="theme-color-link" i18n="@@loginPage.signUp">
@@ -63,7 +63,7 @@
         </form>
       </div>
     </ng-template>
-  </app-card>
+  </oth-card>
 </div>
 <app-cookies></app-cookies>
 

@@ -9,13 +9,13 @@
     <span> Dashboard </span>
   </a>
   <a *ngIf="!settingsOpened" [routerLink]="URLS.dashboard.notifications">
-    <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
+    <div *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9" class="notifications">
       {{ notifications.length > 9 ? '9+' : notifications.length }}
     </div>
     <i [class]="'fas fa-bell fa-fw'" aria-hidden="true"></i>
     <span> Notifications </span>
   </a>
-  <a [routerLink]="URLS.dashboard.premium" *ngIf="!settingsOpened">
+  <a *ngIf="!settingsOpened" [routerLink]="URLS.dashboard.premium">
     <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true" style="color: var(--theme-color);"></i>
     <span> Premium </span>
   </a>
