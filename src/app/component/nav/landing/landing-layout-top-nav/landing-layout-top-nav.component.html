@@ -2,12 +2,12 @@
   <a [routerLink]="URLS.root"
      class="brand">
     <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" height="40" width="40"/>
-    <h2>Open Template Hub</h2>
+    <h2>{{ BRAND.name }}</h2>
   </a>
   <div class="left-item-wrapper">
   </div>
   <div class="right-item-wrapper">
-    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github"
+    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.company.social.github"
        [target]="'_blank'">
       <i [class]="'fab fa-github fa-fw'" aria-hidden="true"></i>
       <span> GitHub </span>

@@ -2,7 +2,7 @@
   <nav class="side-nav">
     <a (click)="toggleSideNav()" class="brand" href="javascript:void(0)">
       <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" width="40"/>
-      <h2 class="side-nav-brand-text">Open Template Hub</h2>
+      <h2 class="side-nav-brand-text">{{ BRAND.name }}</h2>
     </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
       <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"

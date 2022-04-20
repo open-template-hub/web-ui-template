@@ -91,7 +91,7 @@ import { PresentationSwiperComponent } from './component/swiper/presentation-swi
 import { ScreenshotSwiperComponent } from './component/swiper/screenshot-swiper/screenshot-swiper.component';
 import { RequestInterceptor } from './interceptor/request/request.interceptor';
 import { ResponseInterceptor } from './interceptor/response/response.interceptor';
-import { OthComponent } from './oth/oth.component';
+import { AppComponent } from './app.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
@@ -162,7 +162,7 @@ FullCalendarModule.registerPlugins( [
 
 @NgModule( {
   declarations: [
-    OthComponent,
+    AppComponent,
     HomePageComponent,
     LoginPageComponent,
     DashboardPageComponent,
@@ -284,7 +284,7 @@ FullCalendarModule.registerPlugins( [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ],
-  bootstrap: [ OthComponent ]
+  bootstrap: [ AppComponent ]
 } )
 export class AppModule {
 }
