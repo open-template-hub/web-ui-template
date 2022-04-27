@@ -37,12 +37,14 @@ export class AboutUsPageComponent {
     for ( const website in environmentCommon.company.social ) {
       if ( environmentCommon.company.social[ website ] && website !== 'npm' ) {
         this.websites.push( {
-          name: website.split( /(?=[A-Z])/ ).join( ' ' ),
+          name: environmentCommon.website[ website ].name,
           handle: environmentCommon.company.social[ website ],
           cssClass: environmentCommon.website[ website ].cssClass,
-          url: environmentCommon.website[ website ].companyUrl ?
-              environmentCommon.website[ website ].companyUrl :
-              environmentCommon.website[ website ].url
+          url: environmentCommon.website[ website ].companyUrl
+              ? environmentCommon.website[ website ].companyUrl
+              : ( environmentCommon.website[ website ].channelUrl
+                  ? environmentCommon.website[ website ].channelUrl
+                  : environmentCommon.website[ website ].url ),
         } );
       }
     }
