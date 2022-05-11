@@ -63,9 +63,9 @@ PROJECT=OTH
 MODULE=AuthServer
 ENVIRONMENT=Local
 
-CLIENT_URL=http://localhost:4200
-CLIENT_RESET_PASSWORD_URL=http://localhost:4200/reset-password
-CLIENT_VERIFICATION_SUCCESS_URL=http://localhost:4200/verify-account
+CLIENT_URL=http://localhost:4201
+CLIENT_RESET_PASSWORD_URL=http://localhost:4201/reset-password
+CLIENT_VERIFICATION_SUCCESS_URL=http://localhost:4201/verify-account
 
 DATABASE_URL={Database Connection Url}
 POSTGRESQL_CONNECTION_LIMIT={Postgresql Connection Limit}

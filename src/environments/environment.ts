@@ -7,7 +7,7 @@ export const environment: EnvironmentModel = {
 
   serverUrl: 'http://localhost:4000',
 
-  clientUrl: 'http://localhost:4200',
+  clientUrl: 'http://localhost:4201',
 
   oauth: {
     twitter: {
