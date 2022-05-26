@@ -20,7 +20,9 @@ export class MonitoringService {
   alive() {
     const observer = {
       next: response => this.systemStatusesSubject.next( response ),
-      error: error => this.systemStatusesSubject.next( error )
+      error: error => {
+        this.systemStatusesSubject.next( error );
+      }
     };
 
     return this.http.get<any>( `${ environment.serverUrl }/monitor/alive` ).subscribe( observer );
@@ -31,7 +33,7 @@ export class MonitoringService {
 
     if ( !systemStatuses ) {
       return;
-    } else if ( systemStatuses instanceof HttpErrorResponse && systemStatuses.statusText === 'Unknown Error' ) {
+    } else if ( systemStatuses instanceof HttpErrorResponse ) {
       overallSystemStatus = DEFAULT_SYSTEM_STATUS;
       overallSystemStatus.checkDate = new Date();
       overallSystemStatus.overall = 'WARN';

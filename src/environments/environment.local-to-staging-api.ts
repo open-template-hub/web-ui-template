@@ -7,9 +7,7 @@ export const environment: EnvironmentModel = {
 
   serverUrl: 'https://oth-server-orchestra-dev.herokuapp.com',
 
-  clientUrl: 'http://localhost:4200',
-
-  mockDataEnabled: true,
+  clientUrl: 'http://localhost:4201',
 
   oauth: {
     twitter: {

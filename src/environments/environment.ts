@@ -7,9 +7,7 @@ export const environment: EnvironmentModel = {
 
   serverUrl: 'http://localhost:4000',
 
-  clientUrl: 'http://localhost:4200',
-
-  mockDataEnabled: true,
+  clientUrl: 'http://localhost:4201',
 
   oauth: {
     twitter: {
