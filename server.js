@@ -18,6 +18,9 @@ app.disable( "x-powered-by" );
 // directory that we will serve
 app.use( express.static( __dirname + "/dist/web-ui-template" ) );
 
+// Not required for Cloudflare Flexible SSL configuration
+// https://support.cloudflare.com/hc/en-us/articles/115000219871-Troubleshooting-redirect-loop-errors-
+/*
 app.get( "*", function ( req, res, next ) {
 
   if ( "https" !== req.headers[ "x-forwarded-proto" ] && "production" === process.env.NODE_ENV ) {
@@ -28,6 +31,7 @@ app.get( "*", function ( req, res, next ) {
   }
 
 } );
+*/
 
 // redirect all requests to index.html
 app.get( "/*", function ( req, res ) {
@@ -41,7 +45,7 @@ app.get( "/*", function ( req, res ) {
 } );
 
 // listen port
-const port = process.env.PORT || 4200;
+const port = process.env.PORT || 4201;
 app.listen( port, () => {
   console.info( "UI Server is running on port: ", port );
 } );

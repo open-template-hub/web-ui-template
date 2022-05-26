@@ -7,7 +7,7 @@
         <a *ngIf="!companyPage.isExternal" [routerLink]="companyPage.url"
            class="footer-link-item"> {{ companyPage.name }} </a>
         <app-ext-link *ngIf="companyPage.isExternal"
-                      [href]="environmentCommon.website.linkedin.companyUrl + '/' + environmentCommon.oth.social.linkedin + '/jobs'"
+                      [href]="environmentCommon.website.linkedin.companyUrl + '/' + environmentCommon.company.social.linkedin + '/jobs'"
                       [linkClass]="'align-flex-start link'">
           <span body> {{ companyPage.name }} </span>
         </app-ext-link>
@@ -47,9 +47,9 @@
     <hr/>
   </div>
   <div class="footer-brand-row">
-    <a [href]="environmentCommon.oth.website" class="brand" target="_blank">
+    <a [href]="environmentCommon.company.website" class="brand" target="_blank">
       <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" height="40" width="40"/>
-      <h2>Open Template Hub <span class="copyright">&#169; 2021</span></h2>
+      <h2>{{ BRAND.name }} <span class="copyright">&#169; 2022</span></h2>
     </a>
     <div class="footer-social">
       <app-ext-link *ngFor="let brandPage of BRAND_PAGES" [href]="brandPage.url">
