@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { GoogleTagManagerService } from 'angular-google-tag-manager';
+import { Router } from '@angular/router';
 import { SocketService } from './service/socket/socket.service';
 import { ThemeService } from './service/theme/theme.service';
 
@@ -18,20 +17,7 @@ export class AppComponent {
   constructor(
       private themeService: ThemeService,
       private socketService: SocketService,
-      private googleTagManagerService: GoogleTagManagerService,
       private router: Router ) {
-
-    this.router.events.forEach( item => {
-      if ( item instanceof NavigationEnd ) {
-
-        const googleTagManagerTag = {
-          event: 'page',
-          pageName: item.url
-        };
-
-        this.googleTagManagerService.pushTag( googleTagManagerTag );
-      }
-    } );
 
     this.themeService.darkLightSetting.subscribe( darkLightSetting => {
       this.darkLightSetting = darkLightSetting;
