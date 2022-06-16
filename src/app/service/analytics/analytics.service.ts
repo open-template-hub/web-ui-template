@@ -2,11 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
+import mixpanel from 'mixpanel-browser';
 
 @Injectable( {
   providedIn: 'root',
 } )
 export class AnalyticsService {
+
+  mixpanelEnabled = false;
+
   configs = {
     sideContentLimit: 12,
     editSecurityLimit: 12
@@ -16,7 +20,10 @@ export class AnalyticsService {
       private http: HttpClient,
       private browserLocaleService: BrowserLocaleService
   ) {
-    // intentionally blank
+    if ( environment.analytics.mixPanel.tag ) {
+      mixpanel.init( environment.analytics.mixPanel.tag );
+      this.mixpanelEnabled = true;
+    }
   }
 
   logLoginEvent( oauth?: any ) {
@@ -106,5 +113,13 @@ export class AnalyticsService {
     }
 
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
+  }
+
+  logEvent( event: string, attributes: any ) {
+    if ( this.mixpanelEnabled ) {
+      mixpanel.track( event, attributes );
+    } else {
+      console.log( 'Event: ', event, attributes );
+    }
   }
 }
