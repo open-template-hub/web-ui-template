@@ -97,7 +97,7 @@ export class AnalyticsService {
   }
 
   identifyUser(userInfo: any) {
-    if ( this.mixpanelEnabled ) {
+    if ( this.mixpanelEnabled && userInfo?.username ) {
       mixpanel.identify( userInfo?.username );
       mixpanel.people.set( {
         $first_name: userInfo?.payload?.firstName,
