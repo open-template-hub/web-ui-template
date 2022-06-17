@@ -263,21 +263,21 @@ const routes: Routes = [
     path: NAVIGATIONS.dashboard.url,
     component: DashboardLayoutComponent,
     children: [
-      { path: '', component: DashboardPageComponent, canActivate: [ AuthGuard ] },
+      { path: '', component: DashboardPageComponent, canActivate: [ AuthGuard, NavigationInterceptor ] },
       {
         path: NAVIGATIONS.myProfile.url,
         component: MyProfilePageComponent,
-        canActivate: [ AuthGuard ],
+        canActivate: [ AuthGuard, NavigationInterceptor ],
       },
       {
         path: NAVIGATIONS.premium.url,
         component: PremiumPageComponent,
-        canActivate: [ AuthGuard ],
+        canActivate: [ AuthGuard, NavigationInterceptor ],
       },
       {
         path: NAVIGATIONS.notifications.url,
         component: NotificationsPageComponent,
-        canActivate: [ AuthGuard ],
+        canActivate: [ AuthGuard, NavigationInterceptor ],
       },
     ],
   },
@@ -288,17 +288,17 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.editTheme.url,
         component: EditThemePageComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.editProfile.url,
         component: EditProfilePageComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.editSecurity.url,
         component: EditSecurityComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       }
     ],
   },
