@@ -37,7 +37,6 @@ export class AnalyticsService {
         category: 'LOGIN',
         source: environment.clientUrl
       };
-
       return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
     }
   }
@@ -97,6 +96,26 @@ export class AnalyticsService {
     return categories;
   }
 
+  identifyUser(userInfo: any) {
+    if ( this.mixpanelEnabled ) {
+      mixpanel.identify( userInfo?.username );
+      mixpanel.people.set( {
+        $first_name: userInfo?.payload?.firstName,
+        $last_name: userInfo?.payload?.lastName,
+        $created: Date.now(),
+        $email: userInfo?.email
+      } );
+    }
+  }
+
+  logEvent( event: string, attributes: any ) {
+    if ( this.mixpanelEnabled ) {
+      mixpanel.track( event, attributes );
+    } else {
+      console.log( 'Event: ', event, attributes );
+    }
+  }
+
   private logSocialLoginEvent( provider: string, icon: string ) {
 
     const data: any = {
@@ -113,13 +132,5 @@ export class AnalyticsService {
     }
 
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
-  }
-
-  logEvent( event: string, attributes: any ) {
-    if ( this.mixpanelEnabled ) {
-      mixpanel.track( event, attributes );
-    } else {
-      console.log( 'Event: ', event, attributes );
-    }
   }
 }
