@@ -14,7 +14,7 @@ export class NavigationInterceptor implements CanActivate {
   }
 
   canActivate(
-      next: ActivatedRouteSnapshot,
+      _next: ActivatedRouteSnapshot,
       state: RouterStateSnapshot
   ):
       | Observable<boolean | UrlTree>

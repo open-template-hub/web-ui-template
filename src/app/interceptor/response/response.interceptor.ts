@@ -44,7 +44,7 @@ export class ResponseInterceptor implements HttpInterceptor {
                   return this.refreshTokenSubject.pipe(
                       filter( currentUser => currentUser != null ),
                       take( 1 ),
-                      switchMap( jwt => {
+                      switchMap( () => {
                         request = this.authenticationService.addAuthorizationHeader( request );
                         return next.handle( request );
                       } ) );

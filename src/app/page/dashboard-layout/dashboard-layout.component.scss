@@ -27,7 +27,9 @@
 @media only screen and (min-width: 1000px) {
   .wrapper {
     & .page, & .footer-wrap {
-      margin-right: 320px;
+      margin-left: 256px;
+      margin-right: 400px;
+
     }
 
     &.side-nav-closed {
@@ -39,11 +41,6 @@
     & .page {
       margin-top: 0;
       min-height: calc(100vh - 480px);
-    }
-
-    & .page, & .footer-wrap {
-      margin-left: 256px;
-      margin-right: 400px;
     }
   }
 }

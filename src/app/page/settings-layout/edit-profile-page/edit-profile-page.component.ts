@@ -172,7 +172,7 @@ export class EditProfilePageComponent implements OnInit, OnDestroy {
 
     this.businessLogicService.updateMyInfo( payload )
     .subscribe( () => {
-          this.businessLogicService.me().subscribe( result => {
+          this.businessLogicService.me().subscribe( () => {
             this.router.navigate( [ URLS.dashboard.root ] );
           } );
         }

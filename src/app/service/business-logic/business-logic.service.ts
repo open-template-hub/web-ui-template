@@ -24,6 +24,10 @@ export class BusinessLogicService {
     this.userInfoSubject = new BehaviorSubject<any>( JSON.parse( userInfoStorageItem ) );
     this.userInfo = this.userInfoSubject.asObservable();
 
+    if ( this.userInfoSubject.value ) {
+      this.analyticsService.identifyUser( this.userInfoSubject.value );
+    }
+
     this.authenticationService.currentUser.subscribe( currentUser => {
       if ( !currentUser ) {
         this.logout();

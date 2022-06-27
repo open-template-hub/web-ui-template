@@ -121,7 +121,7 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
         data => {
           window.location.href = data.loginUrl;
         },
-        error => {
+        () => {
           this.disabled = false;
         }
     );
