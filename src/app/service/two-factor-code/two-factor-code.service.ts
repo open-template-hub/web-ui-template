@@ -14,8 +14,6 @@ export class TwoFactorCodeService {
   }
 
   submitPhoneNumber( phoneNumber: string ) {
-    // TODO: Will we use language code?
-    const languageCode = this.browserLocaleService.getBrowserLocale();
     return this.http.post<any>( `${ environment.serverUrl }/2fa/request`, {
       phoneNumber,
     } );
