@@ -37,8 +37,25 @@ export class AnalyticsService {
         category: 'LOGIN',
         source: environment.clientUrl
       };
+
+      this.logEvent( 'Login', data );
+
       return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
     }
+  }
+
+  logLogoutEvent() {
+    const data = {
+      payload: {
+        icon: './assets/common/profile-img.png'
+      },
+      category: 'LOGOUT',
+      source: environment.clientUrl
+    };
+
+    this.logEvent( 'Logout', data );
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
   logPaymentEvent( payment: any ) {
@@ -51,6 +68,8 @@ export class AnalyticsService {
       source: environment.clientUrl
     };
 
+    this.logEvent( 'Payment', data );
+
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 
@@ -59,6 +78,8 @@ export class AnalyticsService {
       category: 'TWO_FACTOR_AUTH',
       source: environment.clientUrl
     };
+
+    this.logEvent( 'Submit Phone Number', data );
 
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
@@ -96,7 +117,7 @@ export class AnalyticsService {
     return categories;
   }
 
-  identifyUser(userInfo: any) {
+  identifyUser( userInfo: any ) {
     if ( this.mixpanelEnabled && userInfo?.username ) {
       mixpanel.identify( userInfo?.username );
       mixpanel.people.set( {
@@ -116,6 +137,13 @@ export class AnalyticsService {
     }
   }
 
+  logout() {
+    this.logLogoutEvent();
+    if ( this.mixpanelEnabled ) {
+      mixpanel.reset();
+    }
+  }
+
   private logSocialLoginEvent( provider: string, icon: string ) {
 
     const data: any = {
@@ -123,13 +151,17 @@ export class AnalyticsService {
       source: environment.clientUrl
     };
 
+    data.payload = {};
+
     if ( provider ) {
-      data.payload = { provider };
+      data.payload.provider = provider;
     }
 
     if ( icon ) {
-      data.payload = { icon };
+      data.payload.icon = icon;
     }
+
+    this.logEvent( 'Social Login', data );
 
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
