@@ -6,6 +6,7 @@ import { URLS } from '../../../data/navigation/navigation.data';
 import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { AnalyticsService } from '../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
+import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
 import { InformationService } from '../../../service/information/information.service';
 import { PaymentService } from '../../../service/payment/payment.service';
 import { ProductService } from '../../../service/product/product.service';
@@ -33,6 +34,7 @@ export class CallbackPageComponent implements OnInit {
       private informationService: InformationService,
       private paymentService: PaymentService,
       private productService: ProductService,
+      private businessLogicService: BusinessLogicService,
       private analyticsService: AnalyticsService
   ) {
     // Intentionally blank
@@ -149,7 +151,10 @@ export class CallbackPageComponent implements OnInit {
               }
             } );
           } else {
-            this.analyticsService.logLoginEvent( this.oauth ).subscribe();
+            this.businessLogicService.me()
+            .subscribe( () => {
+              this.analyticsService.logLoginEvent( this.oauth ).subscribe();
+            } );
             this.router.navigate( [ URLS.dashboard.root ] );
           }
         },

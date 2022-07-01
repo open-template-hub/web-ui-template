@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
+import { AnalyticsService } from '../analytics/analytics.service';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 import { SocketService } from '../socket/socket.service';
 import { ThemeService } from '../theme/theme.service';
@@ -22,7 +23,8 @@ export class AuthenticationService {
       private http: HttpClient,
       private themeService: ThemeService,
       private socketService: SocketService,
-      private browserLocaleService: BrowserLocaleService
+      private browserLocaleService: BrowserLocaleService,
+      private analyticsService: AnalyticsService
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
         ? localStorage.getItem( 'currentUser' )
@@ -203,6 +205,7 @@ export class AuthenticationService {
   logout() {
     this.themeService.logout();
     this.socketService.logout();
+    this.analyticsService.logout();
 
     const refreshToken = this.currentUserValue.refreshToken;
 

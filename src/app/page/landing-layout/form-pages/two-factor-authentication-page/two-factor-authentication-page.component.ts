@@ -113,7 +113,11 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
     .subscribe( ( currentUser ) => {
       clearInterval( this.timerInterval );
       this.authenticationService.setLoginParams( currentUser, false );
-      this.analyticsService.logLoginEvent( this.oauth ).subscribe();
+      this.businessLogicService.me()
+      .subscribe( () => {
+        this.analyticsService.logLoginEvent( this.oauth ).subscribe();
+      } );
+
       this.router.navigate( [ URLS.dashboard.root ] );
     } );
   }
