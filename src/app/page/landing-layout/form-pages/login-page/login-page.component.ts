@@ -129,7 +129,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
             this.authenticationService.setPreAuthToken( response );
             this.router.navigate( [ URLS.twoFactorVerification ] );
           } else {
-            this.analyticsService.logLoginEvent().subscribe();
             if ( this.returnUrl !== URLS.dashboard.root ) {
               this.loginWithoutOpeningDashboard();
             } else {
@@ -144,6 +143,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     // Special case for initialization (if return url is else than dashboard)
     this.businessLogicService.me()
     .subscribe( userInfo => {
+          this.analyticsService.logLoginEvent().subscribe();
           this.router.navigateByUrl( this.returnUrl );
           if ( !userInfo.payload ) {
             this.businessLogicService.createMyInfo()
