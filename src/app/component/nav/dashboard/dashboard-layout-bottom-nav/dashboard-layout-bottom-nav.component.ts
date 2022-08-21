@@ -63,8 +63,8 @@ export class DashboardLayoutBottomNavComponent {
       }
     } );
 
-    this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined;
+    this.productService.premiumProducts.subscribe( products => {
+        this.userIsPremium = products?.length > 0;
     } );
 
     this.notificationService.notifications.subscribe( notifications => {

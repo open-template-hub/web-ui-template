@@ -13,7 +13,7 @@ import { ProductService } from '../../../service/product/product.service';
 } )
 export class PremiumPageComponent {
 
-  product = undefined;
+  products = undefined;
 
   PRODUCT_RIBBONS = PRODUCT_RIBBONS;
 
@@ -22,7 +22,7 @@ export class PremiumPageComponent {
 
   constructor( private productService: ProductService ) {
     this.productService.premiumProducts.subscribe( product => {
-      this.product = product;
+      this.products = product;
     } );
   }
 }
