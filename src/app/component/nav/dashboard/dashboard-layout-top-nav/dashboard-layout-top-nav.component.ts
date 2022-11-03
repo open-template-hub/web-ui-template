@@ -55,9 +55,10 @@ export class DashboardLayoutTopNavComponent {
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
 
-    this.productService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
+    this.productService.premiumProducts.subscribe( products => {
+      this.userIsPremium = products?.length > 0;
     } );
+    
   }
 
   @HostListener( 'document:click', [ '$event' ] )

@@ -76,7 +76,7 @@ export class CallbackPageComponent implements OnInit {
             );
             this.router.navigate( [ URLS.dashboard.root ] );
 
-            this.productService.checkProduct( PremiumProducts.premiumAccount );
+            this.productService.checkProduct();
           },
           () => {
             this.informationService.setInformation(

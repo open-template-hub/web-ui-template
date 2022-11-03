@@ -61,7 +61,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.businessLogicService.me()
     .subscribe( userInfo => {
       this.userInfo = userInfo;
-      this.productService.checkProduct( PremiumProducts.premiumAccount );
+      this.productService.checkProduct();
       if ( !this.userInfo.payload ) {
         this.businessLogicService.createMyInfo()
         .subscribe( () => {
@@ -81,8 +81,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       }
     } );
 
-    this.productService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
+    this.productService.premiumProducts.subscribe( products => {
+      this.userIsPremium = products?.length > 0;
     } );
   }
 
