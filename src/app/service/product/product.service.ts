@@ -61,10 +61,10 @@ export class ProductService {
     }
   }
 
-  checkProduct( productId: string ) {
-    return this.http.get<any>( `${ environment.serverUrl }/product?product_id=${ productId }` )
-    .subscribe( ( premiumProduct ) => {
-      this.setPremiumProduct( premiumProduct );
+  checkProduct() {
+    return this.http.get<any>( `${ environment.serverUrl }/product` )
+    .subscribe( ( premiumProducts ) => {
+      this.setPremiumProduct( premiumProducts );
     } );
   }
 

@@ -1,7 +1,7 @@
-<div *ngIf="product?.name !== undefined" class="full-width-cards-wrapper">
+<div *ngIf="products?.length > 0" class="full-width-cards-wrapper">
   <oth-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline yellow-theme'"
             [footerTemplate]="footerTemplate"
-            [header]="product.name"
+            [header]="products[0].name"
             class="premium-card">
 
     <!-- Body -->
@@ -21,7 +21,7 @@
   </oth-card>
 </div>
 
-<div *ngIf="product?.name === undefined" class="cards-wrapper">
+<div *ngIf="products === undefined || products?.length === 0" class="cards-wrapper">
   <ng-container>
     <app-pricing-card *ngFor="let pricing of premiumAccountPricingOptions" [pricingFeatures]="premiumAccountPricingFeatures"
                       [pricingOption]="pricing"
