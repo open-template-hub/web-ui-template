@@ -5,7 +5,9 @@ export const environment: EnvironmentModel = {
 
   production: true,
 
-  serverUrl: 'https://oth-server-orchestra-live.herokuapp.com',
+  // TODO: Disabled until heroku issue fixed
+  //  serverUrl: 'https://oth-server-orchestra-live.herokuapp.com',
+  serverUrl: 'https://oth-server-orchestra-dev.herokuapp.com',
 
   clientUrl: 'https://web.opentemplatehub.com',
 
