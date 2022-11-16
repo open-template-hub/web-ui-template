@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NpmProviderService } from 'src/app/service/provider/npm-provider.service';
 import { environment } from '../../../../environments/environment';
 import { environmentCommon } from '../../../../environments/environment-common';
 import { BRAND } from '../../../data/brand/brand.data';
@@ -72,7 +71,6 @@ export class HomePageComponent {
       private formBuilder: FormBuilder,
       public router: Router,
       private authenticationService: AuthenticationService,
-      private npmProviderService: NpmProviderService,
       private monitoringService: MonitoringService,
       private githubService: GithubProviderService,
   ) {
