@@ -1,4 +1,5 @@
 import { EnvironmentModel } from '../app/model/environment/environment.model';
+import { defaultEnvironmentConfigurations } from './environment-init';
 
 export const environment: EnvironmentModel = {
   identity: 'staging',
@@ -11,88 +12,51 @@ export const environment: EnvironmentModel = {
 
   oauth: {
     twitter: {
-      tag: 'TWITTER_DEVELOPMENT'
+      tag: 'TWITTER_WEB_DEVELOPMENT'
     },
     google: {
-      tag: 'GOOGLE_DEVELOPMENT'
+      tag: 'GOOGLE_WEB_DEVELOPMENT'
     },
     facebook: {
-      tag: 'FACEBOOK_DEVELOPMENT'
+      tag: 'FACEBOOK_WEB_DEVELOPMENT'
     },
     linkedin: {
-      tag: 'LINKEDIN_DEVELOPMENT'
+      tag: 'LINKEDIN_WEB_DEVELOPMENT'
     },
     twitch: {
-      tag: 'TWITCH_DEVELOPMENT'
+      tag: 'TWITCH_WEB_DEVELOPMENT'
     },
     github: {
-      tag: 'GITHUB_DEVELOPMENT'
+      tag: 'GITHUB_WEB_DEVELOPMENT'
     },
     dribbble: {
-      tag: 'DRIBBBLE_DEVELOPMENT'
+      tag: 'DRIBBBLE_WEB_DEVELOPMENT'
     },
     reddit: {
-      tag: 'REDDIT_DEVELOPMENT'
+      tag: 'REDDIT_WEB_DEVELOPMENT'
     }
   },
 
   payment: {
     stripe: {
-      tag: 'STRIPE_DEVELOPMENT',
+      tag: 'STRIPE_WEB_DEVELOPMENT',
       publishableKey: 'pk_test_51I4pFdJslj2vUcp7AkRtYwCPiZJbSvGK7lNFggSbLp9LQopdnUJU44mBKlREonmvszmASnyv4FMxQztzFedllxJO00wg7mHS85',
     },
     coinbase: {
-      tag: 'COINBASE_DEVELOPMENT'
+      tag: 'COINBASE_WEB_DEVELOPMENT'
     },
     paypal: {
-      tag: 'PAYPAL_DEVELOPMENT',
+      tag: 'PAYPAL_WEB_DEVELOPMENT',
       clientId: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
       env: 'sandbox'
     }
   },
 
-  fileStorage: {
-    aws: {
-      tag: 'AWS_DEVELOPMENT'
-    },
-    googleCloud: {
-      tag: 'GOOGLE_CLOUD_DEVELOPMENT'
-    }
-  },
+  fileStorage: defaultEnvironmentConfigurations.fileStorage,
 
-  mail: {
-    gmail: {
-      tag: 'GMAIL_DEVELOPMENT'
-    },
-    yahoo: {
-      tag: 'YAHOO_DEVELOPMENT'
-    },
-    outlook: {
-      tag: 'OUTLOOK_DEVELOPMENT'
-    }
-  },
+  mail: defaultEnvironmentConfigurations.mail,
 
-  sms: {
-    twillio: {
-      tag: 'TWILLIO_DEVELOPMENT'
-    },
-    awsSns: {
-      tag: 'AWS_SNS_DEVELOPMENT'
-    }
-  },
+  sms: defaultEnvironmentConfigurations.sms,
 
-  analytics: {
-    googleAnalytics: {
-      tag: '',
-      id: ''
-    },
-    matomo: {
-      tag: '',
-      id: ''
-    },
-    mixPanel: {
-      tag: '',
-      id: ''
-    }
-  }
+  analytics: defaultEnvironmentConfigurations.analytics
 };
