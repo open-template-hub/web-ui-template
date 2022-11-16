@@ -1,87 +1,63 @@
 import { EnvironmentModel } from '../app/model/environment/environment.model';
+import { defaultEnvironmentConfigurations } from './environment-init';
 
 export const environment: EnvironmentModel = {
   identity: 'production',
 
   production: true,
 
-  // TODO: Disabled until heroku issue fixed
-  //  serverUrl: 'https://oth-server-orchestra-live.herokuapp.com',
+  // serverUrl: 'https://oth-server-orchestra-live.herokuapp.com',
   serverUrl: 'https://oth-server-orchestra-dev.herokuapp.com',
 
   clientUrl: 'https://web.opentemplatehub.com',
 
   oauth: {
     twitter: {
-      tag: 'TWITTER'
+      tag: 'TWITTER_WEB'
     },
     google: {
-      tag: 'GOOGLE'
+      tag: 'GOOGLE_WEB'
     },
     facebook: {
-      tag: 'FACEBOOK'
+      tag: 'FACEBOOK_WEB'
     },
     linkedin: {
-      tag: 'LINKEDIN'
+      tag: 'LINKEDIN_WEB'
     },
     twitch: {
-      tag: 'TWITCH'
+      tag: 'TWITCH_WEB'
     },
     github: {
-      tag: 'GITHUB'
+      tag: 'GITHUB_WEB'
     },
     dribbble: {
-      tag: 'DRIBBBLE'
+      tag: 'DRIBBBLE_WEB'
     },
     reddit: {
-      tag: 'REDDIT'
+      tag: 'REDDIT_WEB'
     }
   },
 
   payment: {
     stripe: {
-      tag: 'STRIPE',
+      tag: 'STRIPE_WEB',
       publishableKey: 'pk_test_51I4pFdJslj2vUcp7AkRtYwCPiZJbSvGK7lNFggSbLp9LQopdnUJU44mBKlREonmvszmASnyv4FMxQztzFedllxJO00wg7mHS85',
     },
     coinbase: {
-      tag: 'COINBASE'
+      tag: 'COINBASE_WEB'
     },
     paypal: {
-      tag: 'PAYPAL',
+      tag: 'PAYPAL_WEB',
       clientId: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
       env: 'live'
     }
   },
 
-  fileStorage: {
-    aws: {
-      tag: 'AWS'
-    },
-    googleCloud: {
-      tag: 'GOOGLE_CLOUD'
-    }
-  },
+  fileStorage: defaultEnvironmentConfigurations.fileStorage,
 
-  mail: {
-    gmail: {
-      tag: 'GMAIL'
-    },
-    yahoo: {
-      tag: 'YAHOO'
-    },
-    outlook: {
-      tag: 'OUTLOOK'
-    }
-  },
+  mail: defaultEnvironmentConfigurations.mail,
 
-  sms: {
-    twillio: {
-      tag: 'TWILLIO'
-    },
-    awsSns: {
-      tag: 'AWS_SNS'
-    }
-  },
+  sms: defaultEnvironmentConfigurations.sms,
 
   analytics: {
     googleAnalytics: {

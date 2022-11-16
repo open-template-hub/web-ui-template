@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/rate-bar/rate-bar.component';
 import { URLS } from '../../../data/navigation/navigation.data';
-import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../data/profile/profile.data';
 import { AuthToken } from '../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';

@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { BRAND } from '../../../data/brand/brand.data';
 import { URLS } from '../../../data/navigation/navigation.data';
-import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { AnalyticsService } from '../../../service/analytics/analytics.service';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
 import { BusinessLogicService } from '../../../service/business-logic/business-logic.service';
