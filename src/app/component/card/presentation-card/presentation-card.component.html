@@ -1,5 +1,5 @@
-<oth-card (click)="redirect()" [bodyTemplate]="bodyTemplate" [bottomWrapperTemplate]="bottomWrapperTemplate"
-          [footerTemplate]="footerTemplate" [headerTemplate]="headerTemplate" class="presentation-card">
+<oth-card (click)="redirect()" [bodyTemplate]="bodyTemplate" [footerTemplate]="footerTemplate"
+          [headerTemplate]="headerTemplate" class="presentation-card">
   <!-- Header -->
   <ng-template #headerTemplate>
     <div class="header">
@@ -30,5 +30,4 @@
       <p *ngIf="footerText">{{ footerText }}</p>
     </div>
   </ng-template>
-  <ng-template #bottomWrapperTemplate></ng-template>
 </oth-card>
