@@ -11,11 +11,11 @@ import { NotificationService } from '../../../../service/notification/notificati
 import { ProductService } from '../../../../service/product/product.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
-@Component( {
+@Component({
   selector: 'app-dashboard-layout-side-nav',
   templateUrl: './dashboard-layout-side-nav.component.html',
-  styleUrls: [ './dashboard-layout-side-nav.component.scss' ]
-} )
+  styleUrls: ['./dashboard-layout-side-nav.component.scss'],
+})
 export class DashboardLayoutSideNavComponent {
   userIsPremium;
   sideNavClosed = 'false';
@@ -29,60 +29,62 @@ export class DashboardLayoutSideNavComponent {
   settingsOpened = false;
   settingsMoreOpened = false;
 
-  @ViewChild( 'searchArea' )
+  @ViewChild('searchArea')
   searchArea: ElementRef;
 
   notifications: any[] = [];
 
   constructor(
-      private router: Router,
-      private authenticationService: AuthenticationService,
-      private businessLogicService: BusinessLogicService,
-      private fileStorageService: FileStorageService,
-      private themeService: ThemeService,
-      private productService: ProductService,
-      private notificationService: NotificationService
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private businessLogicService: BusinessLogicService,
+    private fileStorageService: FileStorageService,
+    private themeService: ThemeService,
+    private productService: ProductService,
+    private notificationService: NotificationService
   ) {
-    this.authenticationService.currentUser.subscribe( currentUser => {
+    this.authenticationService.currentUser.subscribe((currentUser) => {
       this.currentUser = currentUser;
-    } );
+    });
 
-    this.themeService.sideNavClosed.subscribe( sideNavClosed => {
+    this.themeService.sideNavClosed.subscribe((sideNavClosed) => {
       this.sideNavClosed = sideNavClosed;
-    } );
+    });
 
-    this.businessLogicService.userInfo.subscribe( userInfo => {
-          if ( userInfo ) {
-            this.userInfo = userInfo;
-          }
+    this.businessLogicService.userInfo.subscribe((userInfo) => {
+      if (userInfo) {
+        this.userInfo = userInfo;
+      }
 
-          if ( this.userInfo.profileImg ) {
-            this.profileImg = userInfo.profileImg;
-          }
-        }
-    );
+      if (this.userInfo.profileImg) {
+        this.profileImg = userInfo.profileImg;
+      }
+    });
 
-    this.fileStorageService.sharedProfileImage?.subscribe( profileImg => {
-          if ( profileImg?.file?.data ) {
-            this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
-          }
-        }
-    );
+    this.fileStorageService.sharedProfileImage?.subscribe((profileImg) => {
+      if (profileImg?.file?.url) {
+        this.profileImg = profileImg.file.url;
+      } else if (profileImg?.file?.data) {
+        this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+      }
+    });
 
-    this.productService.premiumProducts.subscribe( products => {
+    this.productService.premiumProducts.subscribe((products) => {
       this.userIsPremium = products?.length > 0;
-    } );
+    });
 
-    this.notificationService.notifications.subscribe( notifications => {
-      this.notifications = notifications.filter( notification => !notification.read );
-    } );
+    this.notificationService.notifications.subscribe((notifications) => {
+      this.notifications = notifications.filter(
+        (notification) => !notification.read
+      );
+    });
   }
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate( [ '/' ] ).then( () => {
+    this.router.navigate(['/']).then(() => {
       return true;
-    } );
+    });
   }
 
   toggleSideNav() {
