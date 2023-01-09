@@ -23,7 +23,8 @@
 
 <div *ngIf="products === undefined || products?.length === 0" class="cards-wrapper">
   <ng-container>
-    <app-pricing-card *ngFor="let pricing of premiumAccountPricingOptions" [pricingFeatures]="premiumAccountPricingFeatures"
+    <app-pricing-card *ngFor="let pricing of premiumAccountPricingOptions"
+                      [pricingFeatures]="premiumAccountPricingFeatures"
                       [pricingOption]="pricing"
                       class="yellow-theme"></app-pricing-card>
   </ng-container>

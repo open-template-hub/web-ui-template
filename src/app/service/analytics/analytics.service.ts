@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import mixpanel from 'mixpanel-browser';
 import { environment } from '../../../environments/environment';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
-import mixpanel from 'mixpanel-browser';
 
 @Injectable( {
   providedIn: 'root',

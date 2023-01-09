@@ -7,11 +7,11 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { ProductService } from '../../../../service/product/product.service';
 
-@Component({
+@Component( {
   selector: 'app-dashboard-layout-top-nav',
   templateUrl: './dashboard-layout-top-nav.component.html',
-  styleUrls: ['./dashboard-layout-top-nav.component.scss'],
-})
+  styleUrls: [ './dashboard-layout-top-nav.component.scss' ],
+} )
 export class DashboardLayoutTopNavComponent {
   userInfo: any = {};
   loading = false;
@@ -25,51 +25,51 @@ export class DashboardLayoutTopNavComponent {
   URLS = URLS;
   BRAND = BRAND;
 
-  @ViewChild('searchArea') searchArea: ElementRef;
+  @ViewChild( 'searchArea' ) searchArea: ElementRef;
 
   constructor(
-    private businessLogicService: BusinessLogicService,
-    private fileStorageService: FileStorageService,
-    private loadingService: LoadingService,
-    private _eref: ElementRef,
-    private productService: ProductService
+      private businessLogicService: BusinessLogicService,
+      private fileStorageService: FileStorageService,
+      private loadingService: LoadingService,
+      private _eref: ElementRef,
+      private productService: ProductService
   ) {
-    this.businessLogicService.userInfo.subscribe((userInfo) => {
-      if (userInfo) {
+    this.businessLogicService.userInfo.subscribe( ( userInfo ) => {
+      if ( userInfo ) {
         this.userInfo = userInfo;
       }
 
-      if (this.userInfo.profileImg) {
+      if ( this.userInfo.profileImg ) {
         this.profileImg = userInfo.profileImg;
       }
-    });
+    } );
 
-    this.fileStorageService.sharedProfileImage.subscribe((profileImg) => {
-      if (profileImg?.file?.url) {
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
         this.profileImg = profileImg.file.url;
-      } else if (profileImg?.file?.data) {
+      } else if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    });
+    } );
 
     this.loadingService.sharedLoading.subscribe(
-      (loading) => (this.loading = loading)
+        ( loading ) => ( this.loading = loading )
     );
 
-    this.productService.premiumProducts.subscribe((products) => {
+    this.productService.premiumProducts.subscribe( ( products ) => {
       this.userIsPremium = products?.length > 0;
-    });
+    } );
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event) {
-    this.searchEnabled = !!this.searchArea.nativeElement.contains(event.target);
+  @HostListener( 'document:click', [ '$event' ] )
+  onDocumentClick( event ) {
+    this.searchEnabled = !!this.searchArea.nativeElement.contains( event.target );
   }
 
-  search(event: any) {
+  search( event: any ) {
     const q = event.target.value;
 
-    if (!q || q.length < 3) {
+    if ( !q || q.length < 3 ) {
       this.searchResults = [];
     }
   }

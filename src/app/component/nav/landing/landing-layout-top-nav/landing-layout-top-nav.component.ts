@@ -11,11 +11,11 @@ import { LoadingService } from '../../../../service/loading/loading.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
 import { ProductService } from '../../../../service/product/product.service';
 
-@Component({
+@Component( {
   selector: 'app-landing-layout-top-nav',
   templateUrl: './landing-layout-top-nav.component.html',
-  styleUrls: ['./landing-layout-top-nav.component.scss'],
-})
+  styleUrls: [ './landing-layout-top-nav.component.scss' ],
+} )
 export class LandingLayoutTopNavComponent {
   profileImg = PROFILE_IMG;
   userIsPremium;
@@ -27,7 +27,7 @@ export class LandingLayoutTopNavComponent {
   URLS = URLS;
   BRAND = BRAND;
 
-  @ViewChild('dropdownMenuParent') dropdownMenuParent: ElementRef;
+  @ViewChild( 'dropdownMenuParent' ) dropdownMenuParent: ElementRef;
 
   notifications: any[] = [];
 
@@ -38,37 +38,37 @@ export class LandingLayoutTopNavComponent {
   ];
 
   constructor(
-    private router: Router,
-    private loadingService: LoadingService,
-    private authenticationService: AuthenticationService,
-    private fileStorageService: FileStorageService,
-    private productService: ProductService,
-    private notificationService: NotificationService
+      private router: Router,
+      private loadingService: LoadingService,
+      private authenticationService: AuthenticationService,
+      private fileStorageService: FileStorageService,
+      private productService: ProductService,
+      private notificationService: NotificationService
   ) {
     this.loadingService.sharedLoading.subscribe(
-      (loading) => (this.loading = loading)
+        ( loading ) => ( this.loading = loading )
     );
 
-    this.authenticationService.currentUser.subscribe((currentUser) => {
+    this.authenticationService.currentUser.subscribe( ( currentUser ) => {
       this.currentUser = currentUser;
-    });
+    } );
 
-    this.fileStorageService.sharedProfileImage.subscribe((profileImg) => {
-      if (profileImg?.file?.url) {
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
         this.profileImg = profileImg.file.url;
-      } else if (profileImg?.file?.data) {
+      } else if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    });
+    } );
 
-    this.productService.premiumProducts.subscribe((products) => {
+    this.productService.premiumProducts.subscribe( ( products ) => {
       this.userIsPremium = products?.length > 0;
-    });
+    } );
 
-    this.notificationService.notifications.subscribe((notifications) => {
+    this.notificationService.notifications.subscribe( ( notifications ) => {
       this.notifications = notifications.filter(
-        (notification) => !notification.read
+          ( notification ) => !notification.read
       );
-    });
+    } );
   }
 }

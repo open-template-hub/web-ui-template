@@ -12,11 +12,11 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { ProductService } from '../../../service/product/product.service';
 
-@Component({
+@Component( {
   selector: 'app-my-profile-page',
   templateUrl: './my-profile-page.component.html',
-  styleUrls: ['./my-profile-page.component.scss'],
-})
+  styleUrls: [ './my-profile-page.component.scss' ],
+} )
 export class MyProfilePageComponent implements OnDestroy {
   currentUser: AuthToken;
   userInfo: any = {};
@@ -30,53 +30,53 @@ export class MyProfilePageComponent implements OnDestroy {
   rateObject: Rate;
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private loadingService: LoadingService,
-    private businessLogicService: BusinessLogicService,
-    private fileStorageService: FileStorageService,
-    private informationService: InformationService,
-    private productService: ProductService
+      private router: Router,
+      private authenticationService: AuthenticationService,
+      private loadingService: LoadingService,
+      private businessLogicService: BusinessLogicService,
+      private fileStorageService: FileStorageService,
+      private informationService: InformationService,
+      private productService: ProductService
   ) {
-    this.authenticationService.currentUser.subscribe((currentUser) => {
+    this.authenticationService.currentUser.subscribe( ( currentUser ) => {
       this.currentUser = currentUser;
-    });
+    } );
 
-    this.businessLogicService.userInfo.subscribe((userInfo) => {
+    this.businessLogicService.userInfo.subscribe( ( userInfo ) => {
       this.userInfo = userInfo;
-    });
+    } );
 
     this.loadingService.sharedLoading.subscribe(
-      (loading) => (this.loading = loading)
+        ( loading ) => ( this.loading = loading )
     );
 
-    this.businessLogicService.me().subscribe((userInfo) => {
+    this.businessLogicService.me().subscribe( ( userInfo ) => {
       this.userInfo = userInfo;
 
-      if (!this.userInfo.payload) {
-        this.businessLogicService.createMyInfo().subscribe(() => {
-          this.router.navigate([URLS.settings.editProfile]);
-        });
+      if ( !this.userInfo.payload ) {
+        this.businessLogicService.createMyInfo().subscribe( () => {
+          this.router.navigate( [ URLS.settings.editProfile ] );
+        } );
       } else {
-        if (this.userInfo?.payload?.profileImageId) {
+        if ( this.userInfo?.payload?.profileImageId ) {
           this.fileStorageService
-            .downloadProfileImage(this.userInfo.payload.profileImageId)
-            .subscribe();
+          .downloadProfileImage( this.userInfo.payload.profileImageId )
+          .subscribe();
         }
       }
-    });
+    } );
 
-    this.fileStorageService.sharedProfileImage.subscribe((profileImg) => {
-      if (profileImg?.file?.url) {
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
         this.profileImg = profileImg.file.url;
-      } else if (profileImg?.file?.data) {
+      } else if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    });
+    } );
 
-    this.productService.premiumProducts.subscribe((products) => {
+    this.productService.premiumProducts.subscribe( ( products ) => {
       this.userIsPremium = products?.length > 0;
-    });
+    } );
   }
 
   ngOnDestroy() {
