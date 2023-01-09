@@ -10,10 +10,9 @@ import { ProductService } from '../../../../service/product/product.service';
 @Component( {
   selector: 'app-dashboard-layout-top-nav',
   templateUrl: './dashboard-layout-top-nav.component.html',
-  styleUrls: [ './dashboard-layout-top-nav.component.scss' ]
+  styleUrls: [ './dashboard-layout-top-nav.component.scss' ],
 } )
 export class DashboardLayoutTopNavComponent {
-
   userInfo: any = {};
   loading = false;
   profileImg = PROFILE_IMG;
@@ -35,30 +34,31 @@ export class DashboardLayoutTopNavComponent {
       private _eref: ElementRef,
       private productService: ProductService
   ) {
-    this.businessLogicService.userInfo.subscribe( userInfo => {
-          if ( userInfo ) {
-            this.userInfo = userInfo;
-          }
+    this.businessLogicService.userInfo.subscribe( ( userInfo ) => {
+      if ( userInfo ) {
+        this.userInfo = userInfo;
+      }
 
-          if ( this.userInfo.profileImg ) {
-            this.profileImg = userInfo.profileImg;
-          }
-        }
+      if ( this.userInfo.profileImg ) {
+        this.profileImg = userInfo.profileImg;
+      }
+    } );
+
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
+        this.profileImg = profileImg.file.url;
+      } else if ( profileImg?.file?.data ) {
+        this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+      }
+    } );
+
+    this.loadingService.sharedLoading.subscribe(
+        ( loading ) => ( this.loading = loading )
     );
 
-    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-          if ( profileImg?.file?.data ) {
-            this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
-          }
-        }
-    );
-
-    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-
-    this.productService.premiumProducts.subscribe( products => {
+    this.productService.premiumProducts.subscribe( ( products ) => {
       this.userIsPremium = products?.length > 0;
     } );
-    
   }
 
   @HostListener( 'document:click', [ '$event' ] )

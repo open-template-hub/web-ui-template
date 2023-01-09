@@ -13,10 +13,9 @@ import { ProductService } from '../../../../service/product/product.service';
 @Component( {
   selector: 'app-dashboard-layout-bottom-nav',
   templateUrl: './dashboard-layout-bottom-nav.component.html',
-  styleUrls: [ './dashboard-layout-bottom-nav.component.scss' ]
+  styleUrls: [ './dashboard-layout-bottom-nav.component.scss' ],
 } )
 export class DashboardLayoutBottomNavComponent {
-
   currentUser: AuthToken;
   userInfo: any = {};
   loading = false;
@@ -41,13 +40,15 @@ export class DashboardLayoutBottomNavComponent {
       private productService: ProductService,
       private notificationService: NotificationService
   ) {
-    this.authenticationService.currentUser.subscribe( currentUser => {
+    this.authenticationService.currentUser.subscribe( ( currentUser ) => {
       this.currentUser = currentUser;
     } );
 
-    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+    this.loadingService.sharedLoading.subscribe(
+        ( loading ) => ( this.loading = loading )
+    );
 
-    this.businessLogicService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe( ( userInfo ) => {
       if ( userInfo ) {
         this.userInfo = userInfo;
       }
@@ -57,18 +58,22 @@ export class DashboardLayoutBottomNavComponent {
       }
     } );
 
-    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-      if ( profileImg?.file?.data ) {
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
+        this.profileImg = profileImg.file.url;
+      } else if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
     } );
 
-    this.productService.premiumProducts.subscribe( products => {
-        this.userIsPremium = products?.length > 0;
+    this.productService.premiumProducts.subscribe( ( products ) => {
+      this.userIsPremium = products?.length > 0;
     } );
 
-    this.notificationService.notifications.subscribe( notifications => {
-      this.notifications = notifications.filter( notification => !notification.read );
+    this.notificationService.notifications.subscribe( ( notifications ) => {
+      this.notifications = notifications.filter(
+          ( notification ) => !notification.read
+      );
     } );
   }
 
