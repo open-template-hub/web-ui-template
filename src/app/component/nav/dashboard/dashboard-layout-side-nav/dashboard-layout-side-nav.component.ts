@@ -14,7 +14,7 @@ import { ThemeService } from '../../../../service/theme/theme.service';
 @Component( {
   selector: 'app-dashboard-layout-side-nav',
   templateUrl: './dashboard-layout-side-nav.component.html',
-  styleUrls: [ './dashboard-layout-side-nav.component.scss' ]
+  styleUrls: [ './dashboard-layout-side-nav.component.scss' ],
 } )
 export class DashboardLayoutSideNavComponent {
   userIsPremium;
@@ -43,38 +43,40 @@ export class DashboardLayoutSideNavComponent {
       private productService: ProductService,
       private notificationService: NotificationService
   ) {
-    this.authenticationService.currentUser.subscribe( currentUser => {
+    this.authenticationService.currentUser.subscribe( ( currentUser ) => {
       this.currentUser = currentUser;
     } );
 
-    this.themeService.sideNavClosed.subscribe( sideNavClosed => {
+    this.themeService.sideNavClosed.subscribe( ( sideNavClosed ) => {
       this.sideNavClosed = sideNavClosed;
     } );
 
-    this.businessLogicService.userInfo.subscribe( userInfo => {
-          if ( userInfo ) {
-            this.userInfo = userInfo;
-          }
+    this.businessLogicService.userInfo.subscribe( ( userInfo ) => {
+      if ( userInfo ) {
+        this.userInfo = userInfo;
+      }
 
-          if ( this.userInfo.profileImg ) {
-            this.profileImg = userInfo.profileImg;
-          }
-        }
-    );
+      if ( this.userInfo.profileImg ) {
+        this.profileImg = userInfo.profileImg;
+      }
+    } );
 
-    this.fileStorageService.sharedProfileImage?.subscribe( profileImg => {
-          if ( profileImg?.file?.data ) {
-            this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
-          }
-        }
-    );
+    this.fileStorageService.sharedProfileImage?.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
+        this.profileImg = profileImg.file.url;
+      } else if ( profileImg?.file?.data ) {
+        this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
+      }
+    } );
 
-    this.productService.premiumProducts.subscribe( products => {
+    this.productService.premiumProducts.subscribe( ( products ) => {
       this.userIsPremium = products?.length > 0;
     } );
 
-    this.notificationService.notifications.subscribe( notifications => {
-      this.notifications = notifications.filter( notification => !notification.read );
+    this.notificationService.notifications.subscribe( ( notifications ) => {
+      this.notifications = notifications.filter(
+          ( notification ) => !notification.read
+      );
     } );
   }
 

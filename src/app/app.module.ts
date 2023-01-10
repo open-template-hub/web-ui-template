@@ -20,6 +20,7 @@ import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { ActivityCardComponent } from './component/card/activity-card/activity-card.component';
 import { ActivityHistoryCardComponent } from './component/card/activity-history-card/activity-history-card.component';
 import { AnalyticsEventCardComponent } from './component/card/analytics-event-card/analytics-event-card.component';
@@ -86,7 +87,6 @@ import { PresentationSwiperComponent } from './component/swiper/presentation-swi
 import { ScreenshotSwiperComponent } from './component/swiper/screenshot-swiper/screenshot-swiper.component';
 import { RequestInterceptor } from './interceptor/request/request.interceptor';
 import { ResponseInterceptor } from './interceptor/response/response.interceptor';
-import { AppComponent } from './app.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';

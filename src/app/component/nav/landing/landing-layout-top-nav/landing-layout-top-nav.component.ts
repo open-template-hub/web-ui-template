@@ -14,10 +14,9 @@ import { ProductService } from '../../../../service/product/product.service';
 @Component( {
   selector: 'app-landing-layout-top-nav',
   templateUrl: './landing-layout-top-nav.component.html',
-  styleUrls: [ './landing-layout-top-nav.component.scss' ]
+  styleUrls: [ './landing-layout-top-nav.component.scss' ],
 } )
 export class LandingLayoutTopNavComponent {
-
   profileImg = PROFILE_IMG;
   userIsPremium;
   currentUser: AuthToken;
@@ -35,7 +34,7 @@ export class LandingLayoutTopNavComponent {
   settings = [
     { name: 'Edit Profile', icon: 'user', url: URLS.settings.editProfile },
     { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
-    { name: 'Logout', icon: 'sign-out-alt', logout: true }
+    { name: 'Logout', icon: 'sign-out-alt', logout: true },
   ];
 
   constructor(
@@ -46,24 +45,30 @@ export class LandingLayoutTopNavComponent {
       private productService: ProductService,
       private notificationService: NotificationService
   ) {
-    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
+    this.loadingService.sharedLoading.subscribe(
+        ( loading ) => ( this.loading = loading )
+    );
 
-    this.authenticationService.currentUser.subscribe( currentUser => {
+    this.authenticationService.currentUser.subscribe( ( currentUser ) => {
       this.currentUser = currentUser;
     } );
 
-    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-      if ( profileImg?.file?.data ) {
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
+        this.profileImg = profileImg.file.url;
+      } else if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
     } );
 
-    this.productService.premiumProducts.subscribe( products => {
+    this.productService.premiumProducts.subscribe( ( products ) => {
       this.userIsPremium = products?.length > 0;
     } );
 
-    this.notificationService.notifications.subscribe( notifications => {
-      this.notifications = notifications.filter( notification => !notification.read );
+    this.notificationService.notifications.subscribe( ( notifications ) => {
+      this.notifications = notifications.filter(
+          ( notification ) => !notification.read
+      );
     } );
   }
 }

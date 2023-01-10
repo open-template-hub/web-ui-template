@@ -7,7 +7,8 @@
   <div class="left-item-wrapper">
   </div>
   <div class="right-item-wrapper">
-    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.company.social.github"
+    <a *ngIf="!currentUser"
+       [href]="environmentCommon.website.github.url + '/' + environmentCommon.company.social.github"
        [target]="'_blank'">
       <i [class]="'fab fa-github fa-fw'" aria-hidden="true"></i>
       <span> GitHub </span>
