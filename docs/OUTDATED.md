@@ -15,10 +15,10 @@ Following packages are not updated in the develop branch yet. So, if you want to
 
 | Package | Current | Wanted | Latest | Location |
 | --- | --- | --- | --- | --- |
-| @angular-devkit/build-angular | 15.2.11 | 15.2.11 | 18.2.8 | node_modules/@angular-devkit/build-angular |
+| @angular-devkit/build-angular | 15.2.11 | 15.2.11 | 18.2.9 | node_modules/@angular-devkit/build-angular |
 | @angular/animations | 15.2.10 | 15.2.10 | 18.2.8 | node_modules/@angular/animations |
-| @angular/cdk | 15.2.9 | 15.2.9 | 18.2.8 | node_modules/@angular/cdk |
-| @angular/cli | 15.2.11 | 15.2.11 | 18.2.8 | node_modules/@angular/cli |
+| @angular/cdk | 15.2.9 | 15.2.9 | 18.2.9 | node_modules/@angular/cdk |
+| @angular/cli | 15.2.11 | 15.2.11 | 18.2.9 | node_modules/@angular/cli |
 | @angular/common | 15.2.10 | 15.2.10 | 18.2.8 | node_modules/@angular/common |
 | @angular/compiler | 15.2.10 | 15.2.10 | 18.2.8 | node_modules/@angular/compiler |
 | @angular/compiler-cli | 15.2.10 | 15.2.10 | 18.2.8 | node_modules/@angular/compiler-cli |
@@ -32,7 +32,7 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | @angular/service-worker | 15.2.10 | 15.2.10 | 18.2.8 | node_modules/@angular/service-worker |
 | @stripe/stripe-js | 1.54.2 | 1.54.2 | 4.8.0 | node_modules/@stripe/stripe-js |
 | @types/jasmine | 4.6.4 | 4.6.4 | 5.1.4 | node_modules/@types/jasmine |
-| @types/node | 18.19.55 | 18.19.55 | 22.7.5 | node_modules/@types/node |
+| @types/node | 18.19.57 | 18.19.57 | 22.7.7 | node_modules/@types/node |
 | helmet | 6.2.0 | 6.2.0 | 8.0.0 | node_modules/helmet |
 | ics | 2.44.0 | 2.44.0 | 3.8.1 | node_modules/ics |
 | jasmine-core | 4.6.1 | 4.6.1 | 5.4.0 | node_modules/jasmine-core |
@@ -40,7 +40,7 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | ngx-image-cropper | 6.3.4 | 6.3.4 | 8.0.0 | node_modules/ngx-image-cropper |
 | ngx-markdown | 15.1.2 | 15.1.2 | 18.1.0 | node_modules/ngx-markdown |
 | ngx-toastr | 16.2.0 | 16.2.0 | 19.0.0 | node_modules/ngx-toastr |
-| simple-icons | 8.15.0 | 8.15.0 | 13.14.0 | node_modules/simple-icons |
+| simple-icons | 8.15.0 | 8.15.0 | 13.14.1 | node_modules/simple-icons |
 | swiper | 8.4.7 | 8.4.7 | 11.1.14 | node_modules/swiper |
 | typescript | 4.9.5 | 4.9.5 | 5.6.3 | node_modules/typescript |
 | zone.js | 0.12.0 | 0.12.0 | 0.15.0 | node_modules/zone.js |
