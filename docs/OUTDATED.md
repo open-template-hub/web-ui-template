@@ -32,7 +32,7 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | @angular/service-worker | 15.2.10 | 15.2.10 | 19.0.5 | node_modules/@angular/service-worker |
 | @stripe/stripe-js | 1.54.2 | 1.54.2 | 5.4.0 | node_modules/@stripe/stripe-js |
 | @types/jasmine | 4.6.4 | 4.6.4 | 5.1.5 | node_modules/@types/jasmine |
-| @types/node | 18.19.68 | 18.19.68 | 22.10.2 | node_modules/@types/node |
+| @types/node | 18.19.69 | 18.19.69 | 22.10.5 | node_modules/@types/node |
 | helmet | 6.2.0 | 6.2.0 | 8.0.0 | node_modules/helmet |
 | ics | 2.44.0 | 2.44.0 | 3.8.1 | node_modules/ics |
 | jasmine-core | 4.6.1 | 4.6.1 | 5.5.0 | node_modules/jasmine-core |
@@ -40,8 +40,8 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | ngx-image-cropper | 6.3.4 | 6.3.4 | 9.0.0 | node_modules/ngx-image-cropper |
 | ngx-markdown | 15.1.2 | 15.1.2 | 19.0.0 | node_modules/ngx-markdown |
 | ngx-toastr | 16.2.0 | 16.2.0 | 19.0.0 | node_modules/ngx-toastr |
-| simple-icons | 8.15.0 | 8.15.0 | 14.0.1 | node_modules/simple-icons |
-| swiper | 8.4.7 | 8.4.7 | 11.1.15 | node_modules/swiper |
+| simple-icons | 8.15.0 | 8.15.0 | 14.1.0 | node_modules/simple-icons |
+| swiper | 8.4.7 | 8.4.7 | 11.2.0 | node_modules/swiper |
 | typescript | 4.9.5 | 4.9.5 | 5.7.2 | node_modules/typescript |
 | zone.js | 0.12.0 | 0.12.0 | 0.15.0 | node_modules/zone.js |
 
